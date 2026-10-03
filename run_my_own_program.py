@@ -68,7 +68,7 @@ try:
 ✓ python3 run_my_own_program.py を実行して結果を確認
 ✓ 各種関数を試す: c(), mean(), var(), cor(), matrix(), etc.
 
-困ったときは README_FULL.md を参照してください！
+困ったときは ngsl/README.md を参照してください！
     """)
     
 except Exception as e:
