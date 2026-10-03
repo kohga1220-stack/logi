@@ -1,5 +1,7 @@
 # NGSL - Next-Generation Statistical Language
 
+> このディレクトリの NGSL（統計プログラミング言語）は、構成言語 Logi（旧称 SVO-Logi / NGSL）とは別のプロジェクトです。Logi は [リポジトリのルート README](../README.md) を参照してください。ライセンスは MIT（ルートの `LICENSE`）です。
+
 NGSL是一个带有**Rust风格的所有权系统**和**RStudio风格统计处理**的现代统计编程语言，使用**高速NumPy/SciPy/BLAS/LAPACK后端**。
 
 ## 🎯 项目概览
@@ -73,21 +75,21 @@ NGSL编译链:
 │   ├── test_parser.py           # 语法分析器测试 (4个)
 │   ├── test_semantics.py        # 语义分析测试 (3个)
 │   ├── test_semantics_inference.py  # 类型推理测试 (11个)
-│   ├── test_statistics.py       # 统计功能测试 (35个)
-│   └── test_interpreter.py      # 解释器测试 (22个) NEW
+│   ├── test_statistics.py       # 统计功能测试 (40个)
+│   └── test_interpreter.py      # 解释器测试 (28个) NEW
 ├── demo.py                      # 基本功能演示
 ├── demo_statistics.py           # 统计处理演示
 ├── benchmark_blas.py            # BLAS/LAPACK性能基准 NEW
 └── README.md
 ```
 
-**测试状态**: ✅ **78个测试全部通过**
+**测试状态**: ✅ **89个测试全部通过**
 - Lexer: 3个
 - Parser: 4个  
 - Semantics: 3个
 - Type Inference: 11个
-- Statistics: 35个
-- Interpreter (新): 22个
+- Statistics: 40个
+- Interpreter (新): 28个
 
 ## 🚀 快速开始
 
@@ -229,7 +231,7 @@ let ptr = &x;
 | **线性代数** | NumPy BLAS封装 |
 | **矩阵运算** | NumPy LAPACK封装 |
 | **统计函数** | SciPy统计模块 |
-| **测试** | pytest (78个测试) |
+| **测试** | pytest (89个测试) |
 
 ## 📈 未来计划
 

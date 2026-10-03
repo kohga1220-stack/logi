@@ -122,9 +122,16 @@ logi/
 
 ---
 
-## License
+## License / ライセンス
 
-Creative Commons Attribution 4.0 International (CC BY 4.0)
+| Part | License |
+|---|---|
+| Language specification, dictionary and example corpus (`docs/`, `dictionary/`, `corpus/`) | [Creative Commons Attribution 4.0 International (CC BY 4.0)](https://creativecommons.org/licenses/by/4.0/) |
+| Source code and tests (`tools/`, `tests/`, `ngsl/` and the other code files) | MIT License (see `LICENSE`) |
+
+## Other content in this repository / このリポジトリの他の内容
+
+`ngsl/` and the `*.ngsl` / `run_*.py` / `demo*.py` files at the root belong to **NGSL**, a separate statistical programming language project (documented in `ngsl/README.md`). It is unrelated to the constructed language Logi, although Logi was once called NGSL.
 
 ---
 
