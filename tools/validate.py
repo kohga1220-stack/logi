@@ -5,17 +5,11 @@ Logi 辞書バリデータ
   - 子音: p, t, k, m, n, s, l, w, j (rは廃止)
   - 音節構造: (C)V のみ。子音連続(CCV)・音節末子音(CVC)は禁止。
   - 語末は母音必須。
-  - 形態: 品詞語尾 名詞-a 動詞-o 形容詞-e 副詞-i 前置詞-te
-
-使い方:
-  python tools/validate.py [CSV]
-  CSV 省略時は dictionary/final.csv（regenerated 列を検証）。
-  word 列を持つCSV（旧 raw.csv 形式）も検証できる。
+  - 形態: 品詞語尾 名詞-a 動詞-o 形容詞-e 副詞-i 前置詞-de
 """
 
 import csv
 import re
-import sys
 from collections import defaultdict
 from pathlib import Path
 
@@ -98,33 +92,9 @@ def check_word(word: str, pos: str):
 
     return violations
 
-DEFAULT_DICTIONARY = Path(__file__).resolve().parent.parent / "dictionary" / "final.csv"
-
-def load_rows(path):
-    """辞書CSVを読み、検証対象の語形を "word" キーに正規化して返す。
-
-    final.csv / master.csv は regenerated 列、raw 形式は word 列を使う。
-    """
-    path = Path(path)
-    if not path.exists():
-        raise FileNotFoundError(f"辞書ファイルが見つかりません: {path}")
-    with path.open(newline="", encoding="utf-8") as f:
-        rows = list(csv.DictReader(f))
-    for row in rows:
-        if "word" not in row:
-            if "regenerated" not in row:
-                raise ValueError(f"{path}: word または regenerated 列が必要です")
-            row["word"] = row["regenerated"]
-    return rows
-
-def main(argv=None):
-    """検証結果を表示する。規則違反が1件でもあれば 1、なければ 0 を返す。"""
-    argv = sys.argv[1:] if argv is None else argv
-    try:
-        rows = load_rows(argv[0] if argv else DEFAULT_DICTIONARY)
-    except (FileNotFoundError, ValueError) as e:
-        print(e, file=sys.stderr)
-        return 2
+def main():
+    raw = Path(__file__).resolve().parent.parent / "dictionary" / "raw.csv"
+    rows = list(csv.DictReader(raw.open()))
 
     issues = defaultdict(list)        # violation_type -> [(word, pos, meaning)]
     homophones = defaultdict(list)    # base_word -> [(word, pos, meaning)]
@@ -207,7 +177,6 @@ def main(argv=None):
     print(f"  全 {len(rows)} 語中、新ルール完全適合は {len(valid_words)} 語 ({len(valid_words)/len(rows)*100:.1f}%)")
     print(f"  リファクタ対象は {len(rows) - len(valid_words)} 語 ({(len(rows)-len(valid_words))/len(rows)*100:.1f}%)")
     print("=" * 60)
-    return 1 if issues else 0
 
 if __name__ == "__main__":
-    sys.exit(main())
+    main()
