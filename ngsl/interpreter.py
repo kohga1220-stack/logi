@@ -23,6 +23,7 @@ from .ast import (
     LetStatement,
     MethodCallExpression,
     NumberLiteral,
+    Program,
     PropertyAccess,
     ReturnStatement,
     StringLiteral,
