@@ -107,19 +107,24 @@ def load_rows(path):
     """
     path = Path(path)
     if not path.exists():
-        sys.exit(f"辞書ファイルが見つかりません: {path}")
+        raise FileNotFoundError(f"辞書ファイルが見つかりません: {path}")
     with path.open(newline="", encoding="utf-8") as f:
         rows = list(csv.DictReader(f))
     for row in rows:
         if "word" not in row:
             if "regenerated" not in row:
-                sys.exit(f"{path}: word または regenerated 列が必要です")
+                raise ValueError(f"{path}: word または regenerated 列が必要です")
             row["word"] = row["regenerated"]
     return rows
 
 def main(argv=None):
+    """検証結果を表示する。規則違反が1件でもあれば 1、なければ 0 を返す。"""
     argv = sys.argv[1:] if argv is None else argv
-    rows = load_rows(argv[0] if argv else DEFAULT_DICTIONARY)
+    try:
+        rows = load_rows(argv[0] if argv else DEFAULT_DICTIONARY)
+    except (FileNotFoundError, ValueError) as e:
+        print(e, file=sys.stderr)
+        return 2
 
     issues = defaultdict(list)        # violation_type -> [(word, pos, meaning)]
     homophones = defaultdict(list)    # base_word -> [(word, pos, meaning)]
@@ -202,6 +207,7 @@ def main(argv=None):
     print(f"  全 {len(rows)} 語中、新ルール完全適合は {len(valid_words)} 語 ({len(valid_words)/len(rows)*100:.1f}%)")
     print(f"  リファクタ対象は {len(rows) - len(valid_words)} 語 ({(len(rows)-len(valid_words))/len(rows)*100:.1f}%)")
     print("=" * 60)
+    return 1 if issues else 0
 
 if __name__ == "__main__":
-    main()
+    sys.exit(main())

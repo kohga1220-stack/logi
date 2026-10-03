@@ -17,7 +17,7 @@
 - **No passive voice** — always active SVO
 - **No plural suffix** — plurality expressed via `mene` (many)
 - **616-word core dictionary** — machine-validated; the only homophones are numerals vs. function words (`tu`, `li`, `ka`)
-- **Function words end in `-u`** when a bare form would end in a consonant (`pasu`, `konu`, `misu` …)
+- **Function words take `-u`**: a final consonant gets `-u` (`pas`→`pasu`), a consonant cluster is split by `u` (`tante`→`tanute`)
 
 ---
 
@@ -46,7 +46,7 @@ No consonant clusters. No word-final consonants.
 | Progressive | konu + V | mi konu toko tu. |
 | Perfective | pinu + V | mi pinu toko tu. |
 | Gerund | V + na | piona（being）, titusona（teaching）|
-| Comparative | moli … tanute | mi pio moli kute tanute tu. |
+| Comparative | moli + adj + tanute | mi pio moli kute tanute tu. |
 | Superlative | mosi + adj | mi mosi laiko apa. |
 | Relative clause | N + ta + clause | mana ta li lano（the person who runs）|
 

@@ -43,9 +43,9 @@ id,feature,logi,ja
 42,unspecified-agent,somena ito apa.,誰かがリンゴを食べる。
 43,pronoun-inclusive,misu iko tote sukula.,私たち（聞き手を含む）は学校へ行く。
 44,pronoun-exclusive,mipu iko tote sukula.,私たち（聞き手を含まない）は学校へ行く。
-45,question-where,tuka alo wela ka?,犬はどこにいますか？
+45,question-where,tuka alo atute wela ka?,犬はどこにいますか？
 46,question-where-to,tu iko tote wela ka?,あなたはどこへ行きますか？
-47,question-when,tu putu komo wena ka?,あなたはいつ来ますか？
+47,question-when,tu putu komo atute wena ka?,あなたはいつ来ますか？
 48,question-why,tu waia no ito apa ka?,なぜあなたはリンゴを食べないのですか？
 49,question-how,tu aua pasu komo ka?,あなたはどうやって来たのですか？
 50,modal-negation,mi kani no lano.,私は走れない。

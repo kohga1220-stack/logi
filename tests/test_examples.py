@@ -1,4 +1,4 @@
-"""docs/grammar.md と README.md の Logi 例文が、辞書の語だけで書かれていることを検証する。"""
+"""docs/grammar.md・README.md・corpus/examples.csv の Logi 例文を辞書と照合する。"""
 
 import csv
 import re
@@ -10,64 +10,31 @@ import pytest
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT / "tools"))
 
+from logi_common import is_known, logi_sentences_in_doc, tokenize  # noqa: E402
 from validate import DEFAULT_DICTIONARY, load_rows  # noqa: E402
+
+DOCS = ["README.md", "docs/grammar.md"]
+CORPUS = ROOT / "corpus" / "examples.csv"
 
 
 @pytest.fixture(scope="module")
-def lexicon():
-    rows = load_rows(DEFAULT_DICTIONARY)
-    words = {r["word"] for r in rows}
-    verbs = {r["word"] for r in rows if r["pos"] == "verb"}
+def dictionary():
+    return load_rows(DEFAULT_DICTIONARY)
+
+
+@pytest.fixture(scope="module")
+def lexicon(dictionary):
+    words = {r["word"] for r in dictionary}
+    verbs = {r["word"] for r in dictionary if r["pos"] == "verb"}
     return words, verbs
 
 
-def test_docs_and_corpus_do_not_use_deprecated_words(corpus):
-    rows = load_rows(DEFAULT_DICTIONARY)
-    deprecated = {r["word"] for r in rows if r["status"] == "deprecated"}
-    texts = [row["logi"] for row in corpus]
-    for doc in ("README.md", "docs/grammar.md"):
-        texts += doc_sentences(ROOT / doc)
-    used = {t for text in texts for t in tokens(text)}
-    assert used & deprecated == set()
-
-
-def logi_paragraphs(path):
-    """'**Logi**' 見出しの直後の段落を返す。"""
-    text = path.read_text(encoding="utf-8")
-    return re.findall(r"\*\*Logi\*\*\s*\n(.+)", text)
-
-
-def tokens(sentence):
-    return re.findall(r"[a-z]+", sentence.lower())
-
-
-def is_known(token, words, verbs):
-    if token in words:
-        return True
-    # 動名詞: 動詞 + na（pio → piona）
-    return token.endswith("na") and token[:-2] in verbs
-
-
-@pytest.mark.parametrize("doc", ["README.md", "docs/grammar.md"])
-def test_sample_text_uses_dictionary_words(doc, lexicon):
-    words, verbs = lexicon
-    paragraphs = logi_paragraphs(ROOT / doc)
-    assert paragraphs, f"{doc} に Logi 例文が見つかりません"
-    unknown = {
-        t for para in paragraphs for t in tokens(para) if not is_known(t, words, verbs)
-    }
-    assert unknown == set()
-
-
-@pytest.mark.parametrize("doc", ["README.md", "docs/grammar.md"])
-def test_questions_end_with_ka_question_mark(doc):
-    for para in logi_paragraphs(ROOT / doc):
-        for sentence in re.findall(r"[^.?]+[.?]", para):
-            if sentence.strip().endswith("?"):
-                assert sentence.strip().endswith("ka?")
-
-
-CORPUS = ROOT / "corpus" / "examples.csv"
+@pytest.fixture(scope="module")
+def pos(dictionary):
+    table = {}
+    for r in dictionary:
+        table.setdefault(r["word"], set()).add(r["pos"])
+    return table
 
 
 @pytest.fixture(scope="module")
@@ -76,12 +43,57 @@ def corpus():
         return list(csv.DictReader(f))
 
 
+def logi_paragraphs(path):
+    """'**Logi**' 見出しの直後の段落を返す。"""
+    text = path.read_text(encoding="utf-8")
+    return re.findall(r"\*\*Logi\*\*\s*\n(.+)", text)
+
+
+@pytest.mark.parametrize("doc", DOCS)
+def test_sample_text_uses_dictionary_words(doc, lexicon):
+    words, verbs = lexicon
+    paragraphs = logi_paragraphs(ROOT / doc)
+    assert paragraphs, f"{doc} に Logi 例文が見つかりません"
+    unknown = {
+        t for para in paragraphs for t in tokenize(para) if not is_known(t, words, verbs)
+    }
+    assert unknown == set()
+
+
+@pytest.mark.parametrize("doc", DOCS)
+def test_questions_end_with_ka_question_mark(doc):
+    for para in logi_paragraphs(ROOT / doc):
+        for sentence in re.findall(r"[^.?]+[.?]", para):
+            if sentence.strip().endswith("?"):
+                assert sentence.strip().endswith("ka?")
+
+
+@pytest.mark.parametrize("doc", DOCS)
+def test_doc_example_sentences_use_dictionary_words(doc, lexicon):
+    words, verbs = lexicon
+    sentences = logi_sentences_in_doc((ROOT / doc).read_text(encoding="utf-8"))
+    assert sentences, f"{doc} に例文が見つかりません"
+    unknown = {
+        t for s in sentences for t in tokenize(s) if not is_known(t, words, verbs)
+    }
+    assert unknown == set()
+
+
+def test_docs_and_corpus_do_not_use_deprecated_words(dictionary, corpus):
+    deprecated = {r["word"] for r in dictionary if r["status"] == "deprecated"}
+    texts = [row["logi"] for row in corpus]
+    for doc in DOCS:
+        texts += logi_sentences_in_doc((ROOT / doc).read_text(encoding="utf-8"))
+    used = {t for text in texts for t in tokenize(text)}
+    assert used & deprecated == set()
+
+
 def test_corpus_uses_only_dictionary_words(corpus, lexicon):
     words, verbs = lexicon
     unknown = {
         (row["id"], t)
         for row in corpus
-        for t in tokens(row["logi"])
+        for t in tokenize(row["logi"])
         if not is_known(t, words, verbs)
     }
     assert unknown == set()
@@ -116,38 +128,22 @@ def test_corpus_covers_grammar_features(corpus):
     assert required <= features
 
 
-def doc_sentences(path):
-    """表・箇条書きの中の Logi 例文（代名詞・ipu で始まり . か ? で終わる）を返す。"""
-    found = []
-    for line in path.read_text(encoding="utf-8").splitlines():
-        if not line.startswith(("|", "- ")):
-            continue
-        for cell in line.lstrip("- ").split("|"):
-            cell = re.sub(r"[（(].*$", "", cell).strip()
-            if re.fullmatch(r"(mi|tu|li|ipu|tuka|kua)\b[a-z ,]*[.?]", cell):
-                found.append(cell)
-    return found
-
-
-@pytest.mark.parametrize("doc", ["README.md", "docs/grammar.md"])
-def test_doc_example_sentences_use_dictionary_words(doc, lexicon):
-    words, verbs = lexicon
-    sentences = doc_sentences(ROOT / doc)
-    assert sentences, f"{doc} に例文が見つかりません"
-    unknown = {
-        t for s in sentences for t in tokens(s) if not is_known(t, words, verbs)
-    }
-    assert unknown == set()
-
-
-def test_corpus_waia_aua_sit_between_subject_and_verb(corpus):
-    rows = load_rows(DEFAULT_DICTIONARY)
-    pos = {}
-    for r in rows:
-        pos.setdefault(r["word"], set()).add(r["pos"])
+def test_corpus_waia_aua_sit_between_subject_and_verb(corpus, pos):
+    """waia・aua は副詞の位置: 主語（代名詞・名詞）の直後、マーカーか動詞の直前。"""
     for row in corpus:
-        toks = tokens(row["logi"])
+        toks = tokenize(row["logi"])
         for i, t in enumerate(toks):
-            if t in {"waia", "aua"}:
-                assert pos[toks[i - 1]] & {"pronoun", "noun"}, row["id"]
-                assert pos[toks[i + 1]] & {"marker", "verb"}, row["id"]
+            if t not in {"waia", "aua"}:
+                continue
+            assert 0 < i < len(toks) - 1, f"{row['id']}: {t} は文頭・文末に置けない"
+            assert pos.get(toks[i - 1], set()) & {"pronoun", "noun"}, row["id"]
+            assert pos.get(toks[i + 1], set()) & {"marker", "verb"}, row["id"]
+
+
+def test_corpus_wela_wena_follow_a_preposition(corpus, pos):
+    """wela・wena は前置詞の目的語としてのみ現れる。"""
+    for row in corpus:
+        toks = tokenize(row["logi"])
+        for i, t in enumerate(toks):
+            if t in {"wela", "wena"}:
+                assert i > 0 and "prep" in pos.get(toks[i - 1], set()), row["id"]

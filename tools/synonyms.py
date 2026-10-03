@@ -18,9 +18,13 @@ import sys
 from collections import defaultdict
 from pathlib import Path
 
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from logi_common import logi_sentences_in_doc, tokenize
+from validate import DEFAULT_DICTIONARY
+
 ROOT = Path(__file__).resolve().parent.parent
-DICTIONARY = ROOT / "dictionary" / "final.csv"
-USAGE_FILES = [ROOT / "README.md", ROOT / "docs" / "grammar.md", ROOT / "corpus" / "examples.csv"]
+DOCS = [ROOT / "README.md", ROOT / "docs" / "grammar.md"]
+CORPUS = ROOT / "corpus" / "examples.csv"
 EXTRA_FIELDS = ["status", "replaced_by"]
 
 # 規則より優先する例外: (meaning_ja, pos) -> 正本
@@ -33,10 +37,13 @@ def syllables(word):
 
 
 def used_words():
-    used = set()
-    for path in USAGE_FILES:
-        used |= set(re.findall(r"[a-z]+", path.read_text(encoding="utf-8").lower()))
-    return used
+    """例文として実際に使われている語（散文中の言及は数えない）。"""
+    sentences = []
+    with CORPUS.open(newline="", encoding="utf-8") as f:
+        sentences += [row["logi"] for row in csv.DictReader(f)]
+    for doc in DOCS:
+        sentences += logi_sentences_in_doc(doc.read_text(encoding="utf-8"))
+    return {t for s in sentences for t in tokenize(s)}
 
 
 def choose(group, all_words, used):
@@ -76,17 +83,15 @@ def propose(rows):
 
 def main(argv=None):
     argv = sys.argv[1:] if argv is None else argv
-    with DICTIONARY.open(newline="", encoding="utf-8") as f:
+    with DEFAULT_DICTIONARY.open(newline="", encoding="utf-8") as f:
         reader = csv.DictReader(f)
         fields = list(reader.fieldnames)
         rows = list(reader)
     deprecated = propose(rows)
     for r in rows:
-        r.setdefault("status", "active")
-        r.setdefault("replaced_by", "")
-        if id(r) in deprecated:
-            r["status"] = "deprecated"
-            r["replaced_by"] = deprecated[id(r)]
+        # 毎回ゼロから決め直す（前回の status は引き継がない）
+        r["status"] = "deprecated" if id(r) in deprecated else "active"
+        r["replaced_by"] = deprecated.get(id(r), "")
     for r in rows:
         if r["status"] == "deprecated":
             print(f"{r['regenerated']:<10} -> {r['replaced_by']:<10} ({r['meaning_ja']}, {r['pos']})")
@@ -95,7 +100,7 @@ def main(argv=None):
         for extra in EXTRA_FIELDS:
             if extra not in fields:
                 fields.append(extra)
-        with DICTIONARY.open("w", newline="", encoding="utf-8") as f:
+        with DEFAULT_DICTIONARY.open("w", newline="", encoding="utf-8") as f:
             writer = csv.DictWriter(f, fieldnames=fields)
             writer.writeheader()
             writer.writerows(rows)

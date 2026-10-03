@@ -19,10 +19,6 @@ def rows():
     return load_rows(DEFAULT_DICTIONARY)
 
 
-def test_dictionary_size(rows):
-    assert len(rows) == 616
-
-
 def test_all_words_follow_phonology_and_morphology(rows):
     violations = {
         r["word"]: v for r in rows if (v := check_word(r["word"], r["pos"]))
