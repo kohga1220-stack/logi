@@ -16,7 +16,8 @@
 - **Suffix-based part-of-speech** — noun `-a`, verb `-o`, adjective `-e`, adverb `-i`, preposition `-te`
 - **No passive voice** — always active SVO
 - **No plural suffix** — plurality expressed via `mene` (many)
-- **602-word core dictionary** — machine-validated, zero homophone collisions
+- **617-word core dictionary** — machine-validated; the only homophones are numerals vs. function words (`tu`, `li`, `ka`)
+- **Function words end in `-u`** when a bare form would end in a consonant (`pasu`, `konu`, `misu` …)
 
 ---
 
@@ -37,14 +38,14 @@ No consonant clusters. No word-final consonants.
 | Feature | Rule | Example |
 |---|---|---|
 | Word order | S-V-O | mi toko tu. |
-| Past tense | pas + V | mi pas toko tu. |
-| Future | fut + V | mi fut toko tu. |
+| Past tense | pasu + V | mi pasu toko tu. |
+| Future | putu + V | mi putu toko tu. |
 | Negation | no + V | mi no toko tu. |
 | Question | V … ka? | tu pio kute ka? |
-| Progressive | kon + V | mi kon toko tu. |
-| Perfective | pin + V | mi pin toko tu. |
+| Progressive | konu + V | mi konu toko tu. |
+| Perfective | pinu + V | mi pinu toko tu. |
 | Gerund | V-stem + na | piona（being）, tikona（teaching）|
-| Comparative | mor … tante | mi pio mor kute tante tu. |
+| Comparative | molu … tanute | mi pio molu kute tanute tu. |
 | Superlative | mosi + adj | mi mosi laiko apa. |
 | Relative clause | N + ta + clause | mana ta li rano（the person who runs）|
 
@@ -79,10 +80,10 @@ Examples: 20 = `tu pulu` / 25 = `tu pulu li` / 2025 = `tu mipulu ni kupulu tu pu
 
 | | Singular | Plural (inclusive) | Plural (exclusive) |
 |---|---|---|---|
-| 1st | mi | mis | mip |
-| 2nd | tu | tus | — |
-| 3rd | li | lis | — |
-| Reflexive | so | — | — |
+| 1st | mi | misu | mipu |
+| 2nd | tu | tusu | — |
+| 3rd | li | lisu | — |
+| Reflexive | selu | — | — |
 
 ---
 
@@ -94,7 +95,7 @@ logi/
 ├── docs/
 │   └── grammar.md          Full grammar specification / 文法仕様書（完全版）
 ├── dictionary/
-│   └── final.csv           602-word validated dictionary / 検証済み辞書602語
+│   └── final.csv           617-word validated dictionary / 検証済み辞書617語
 └── tools/
     ├── validate.py         Phonology rule checker (default: dictionary/final.csv) / 音韻ルール検証
     ├── regenerate.py       Auto-conversion to new phonology / 自動音韻変換
@@ -110,6 +111,7 @@ logi/
 | v0.1 | Initial release as SVO-Logi / NGSL |
 | v0.2 | Removed `r`, fixed syllable structure to (C)V |
 | v0.3 | Preposition suffix `-de` → `-te`; gerund `-ina` → `-na`; plural `-s` abolished; `ka?` question rule; 602-word dictionary, 100% rule-compliant |
+| v0.4 | Function words with a final consonant take `-u` (`pas`→`pasu`, `fut`→`putu`, `mor`→`molu`, `mis`→`misu`, `tante`→`tanute` …); reflexive `so`→`selu`, conjunction `so`→`sonu` (6 stays `so`); numerals, unit words, `mipu`, `molu`, `selu` added; duplicate `komo` removed; 617 words |
 
 ---
 

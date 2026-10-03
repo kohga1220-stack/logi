@@ -2,7 +2,7 @@ original,regenerated,pos,meaning_ja,violations_before,violations_after,notes
 mi,mi,pronoun,私,OK,OK,
 tu,tu,pronoun,あなた,OK,OK,
 li,li,pronoun,彼/彼女/それ,OK,OK,
-mis,misu,pronoun,私たち,cluster_or_coda@2:s;non_vowel_ending,OK,
+mis,misu,pronoun,私たち（包括）,cluster_or_coda@2:s;non_vowel_ending,OK,
 tus,tusu,pronoun,あなたたち,cluster_or_coda@2:s;non_vowel_ending,OK,
 lis,lisu,pronoun,彼ら,cluster_or_coda@2:s;non_vowel_ending,OK,
 wata,wata,wh,何,OK,OK,
@@ -15,7 +15,7 @@ somena,somena,pronoun,誰か,OK,OK,
 e,e,conj,と,OK,OK,
 pat,patu,conj,しかし,cluster_or_coda@2:t;non_vowel_ending,OK,
 o,o,conj,または,OK,OK,
-so,so,conj,だから,OK,OK,
+so,sonu,conj,だから,OK,OK,v0.4: 数詞6との同音回避 so→sonu
 ip,ipu,conj,もし,cluster_or_coda@1:p;non_vowel_ending,OK,
 tande,tanute,conj,より,invalid_char:d,OK,
 atde,atute,prep,で,invalid_char:d,OK,
@@ -390,7 +390,6 @@ woko,woko,verb,働く,OK,OK,
 iko,iko,verb,行く,OK,OK,
 koo,ko,verb,行く,OK,OK,
 komo,komo,verb,来る,OK,OK,
-kuro2,komo,verb,来る,uses_r,OK,手動解決: 既存komo(来る)に統合
 stano,sutano,verb,立つ,cluster_or_coda@0:st,OK,
 sito,sito,verb,座る,OK,OK,
 wako,wako,verb,歩く,OK,OK,
@@ -601,3 +600,19 @@ no,no,marker,否定,OK,OK,
 ka,ka,marker,疑問,OK,OK,
 ta,ta,marker,関係,OK,OK,
 wut,wutu,marker,仮定,cluster_or_coda@2:t;non_vowel_ending,OK,
+ni,ni,num,0,OK,OK,v0.4追加
+pa,pa,num,1,OK,OK,v0.4追加
+tu,tu,num,2,OK,OK,v0.4追加
+te,te,num,3,OK,OK,v0.4追加
+ka,ka,num,4,OK,OK,v0.4追加
+li,li,num,5,OK,OK,v0.4追加
+so,so,num,6,OK,OK,v0.4追加
+se,se,num,7,OK,OK,v0.4追加
+wa,wa,num,8,OK,OK,v0.4追加
+ja,ja,num,9,OK,OK,v0.4追加
+pulu,pulu,num,十（位の単位）,OK,OK,v0.4追加
+kupulu,kupulu,num,百（位の単位）,OK,OK,v0.4追加
+mipulu,mipulu,num,千（位の単位）,OK,OK,v0.4追加
+mipu,mipu,pronoun,私たち（排他）,OK,OK,v0.4追加
+selu,selu,pronoun,自分（再帰）,OK,OK,"v0.4追加: 英self音訳(f削除,語尾-u)"
+molu,molu,marker,比較（より〜）,OK,OK,v0.4追加: 旧mor（r廃止・語末母音）

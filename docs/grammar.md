@@ -38,8 +38,18 @@ p, t, k, m, n, s, l, w, j
 | 動詞 | -o | toko（話す）, laiko（好む）|
 | 形容詞 | -e | kute（良い）, nue（新しい）|
 | 副詞 | -i | mosi（最も）, naui（今）|
-| 前置詞 | **-te** | tote（〜へ）, wite（〜と） ※旧-deから変更 |
+| 前置詞 | **-te** | tote（〜へ）, witute（〜と） ※旧-deから変更 |
 | 動名詞 | **-na** | piona（であること）, tikona（教えること）※旧-inaから変更 |
+
+### 機能語の語末子音（v0.4 確定）
+マーカー・代名詞複数形・接続詞など、語形が子音で終わる機能語は語末に **-u** を付ける。
+(C)V 規則を保つための措置で、辞書の形が正本である。
+- 例: pas → **pasu**, kon → **konu**, pin → **pinu**, wut → **wutu**, ip → **ipu**
+- 例: mis → **misu**, tus → **tusu**, lis → **lisu**, tante → **tanute**
+- f は使えないため fut → **putu**、r は廃止のため mor → **molu**
+
+### 動名詞の作り方
+動詞（-o で終わる形）の末尾に **na** を付ける: pio → piona, tiko → tikona。
 
 ---
 
@@ -49,17 +59,17 @@ p, t, k, m, n, s, l, w, j
 
 | マーカー | 意味 | 例 |
 |---|---|---|
-| pas | 過去 | mi pas toko tu. |
-| fut | 未来 | mi fut toko tu. |
-| kon | 進行（〜している）| mi kon toko tu. |
-| pin | 完了（〜してしまった）| mi pin toko tu. |
+| pasu | 過去 | mi pasu toko tu. |
+| putu | 未来 | mi putu toko tu. |
+| konu | 進行（〜している）| mi konu toko tu. |
+| pinu | 完了（〜してしまった）| mi pinu toko tu. |
 | no | 否定 | mi no toko tu. |
 | ka + **?** | 疑問（文末）| tu nema pio wata ka? |
 
 ### 組み合わせ例
-- 過去進行: mi pas kon toko tu.
-- 過去否定: mi pas no toko tu.
-- 未来完了: mi fut pin toko tu.
+- 過去進行: mi pasu konu toko tu.
+- 過去否定: mi pasu no toko tu.
+- 未来完了: mi putu pinu toko tu.
 
 ### 疑問文のルール（新規確定）
 - 文末に **ka ?** を置く。
@@ -97,6 +107,14 @@ p, t, k, m, n, s, l, w, j
 
 10以上は位取り合成。位の単位語: pulu（〜十）、kupulu（〜百）、mipulu（〜千）
 
+### 数詞と機能語の同音（v0.4・暫定規則）
+数詞 tu(2) / li(5) / ka(4) は、代名詞 tu・li、疑問マーカー ka と同音である（辞書で唯一許容する同音）。
+- 数詞列: 数詞と位の単位語（pulu kupulu mipulu）の連続は一つの数詞句として読む。
+  例: mi oto tu pulu ila.（私は20歳）の tu pulu は数詞句。
+- 疑問マーカー ka は文末の `ka?` の形でのみ現れる。数詞4で文を終える場合は直後に名詞または単位語を置く。
+- 未解決: 目的語の代名詞 tu/li の直後に数詞句が続く文（例: 「あなたたち二人を見る」を tu tu mana と書く場合）は
+  曖昧になり得る。この場合は前置詞句で言い換える。例文コーパスの拡充（ステップ3）で実例を検証して確定する。
+
 | 数 | Logi |
 |---|---|
 | 10 | pa pulu |
@@ -111,10 +129,10 @@ p, t, k, m, n, s, l, w, j
 
 | 人称 | 単数 | 複数（包括） | 複数（排他）|
 |---|---|---|---|
-| 1人称 | mi | mis | mip |
-| 2人称 | tu | tus | — |
-| 3人称 | li | lis | — |
-| 再帰 | so | — | — |
+| 1人称 | mi | misu | mipu |
+| 2人称 | tu | tusu | — |
+| 3人称 | li | lisu | — |
+| 再帰 | selu | — | — |
 
 ※ 包括（inclusive）: 聞き手を含む「私たち」
 ※ 排他（exclusive）: 聞き手を含まない「私たち」
@@ -127,18 +145,18 @@ p, t, k, m, n, s, l, w, j
 [S] [副詞] [マーカー] [V] [形容詞+O] [前置詞句]
 
 ### 受動態: 禁止
-常に能動態で表現。能動主体不明の場合は so（不特定）を主語に置く。
+常に能動態で表現。能動主体不明の場合は somena（誰か）を主語に置く。
 
 ### SVOO / SVOC: 禁止
 SVO + 前置詞句で代替。
-- 「私はあなたに本をあげた」→ mi pas kipo puka tote tu.
+- 「私はあなたに本をあげた」→ mi pasu kipo puka tote tu.
 
 ### 関係節
 マーカー **ta** を名詞の直後に置く。
 - mi sio mana ta li rano.（私は走っている人を見る）
 
 ### 比較
-- 比較級: mor + tante（〜より）
+- 比較級: molu + tanute（〜より）
 - 最上級: mosi + 形容詞
 - 同等: seme + tote（〜と同じ）
 
@@ -147,8 +165,8 @@ SVO + 前置詞句で代替。
 - mi koso li tote koina.（私は彼をここへ来させる）
 
 ### 仮定法
-接続詞 ip（もし）+ 仮定マーカー wut
-- ip mi wut pio pata, mi wut palaio.（もし鳥なら、飛ぶのに）
+接続詞 ipu（もし）+ 仮定マーカー wutu
+- ipu mi wutu pio pata, mi wutu palaio.（もし鳥なら、飛ぶのに）
 
 ---
 
@@ -209,3 +227,7 @@ mi toko tu. mi oto tu pulu ila e mi pio sutua. mi mosi laiko apa. mi wonuto pion
 | v0.3 | 疑問文 ka + ? 規則確定 |
 | v0.3 | osujo廃止（titusoniに統合）|
 | v0.3 | 辞書602語、新ルール100%適合 |
+| v0.4 | 語末子音を持つ機能語に `-u` を付加（pas→pasu, fut→putu, mor→molu, mis→misu, ip→ipu, tante→tanute 等）。辞書の形が正 |
+| v0.4 | 再帰代名詞 so→selu、接続詞「だから」so→sonu（数詞6の so と分離）|
+| v0.4 | 数詞0〜9・位の単位・mipu・molu・selu を辞書に追加、重複行 komo を削除し617語 |
+| v0.4 | 数詞と機能語の同音（tu/li/ka）を許容し、曖昧性規則を §5 に追加 |

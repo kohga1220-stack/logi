@@ -11,7 +11,7 @@ sys.path.insert(0, str(TOOLS))
 
 from validate import DEFAULT_DICTIONARY, POS_SUFFIX, check_word, load_rows  # noqa: E402
 
-KNOWN_POS = set(POS_SUFFIX) | {"pronoun", "marker", "wh", "conj"}
+KNOWN_POS = set(POS_SUFFIX) | {"pronoun", "marker", "wh", "conj", "num"}
 
 
 @pytest.fixture(scope="module")
@@ -20,7 +20,7 @@ def rows():
 
 
 def test_dictionary_size(rows):
-    assert len(rows) == 602
+    assert len(rows) == 617
 
 
 def test_all_words_follow_phonology_and_morphology(rows):
@@ -35,12 +35,23 @@ def test_pos_values_are_known(rows):
 
 
 def test_no_homophone_collisions(rows):
-    # 同じ語形・品詞・意味の重複行（resolve.py での統合残り）は衝突とみなさない
-    groups = defaultdict(set)
+    # 数詞（pos=num）と機能語の同音は仕様上許容（docs/grammar.md §5）。それ以外は禁止。
+    groups = defaultdict(list)
     for r in rows:
-        groups[r["word"]].add((r["pos"], r["meaning_ja"]))
-    collisions = {w: sorted(m) for w, m in groups.items() if len(m) > 1}
+        groups[r["word"]].append(r["pos"])
+    collisions = {
+        w: pos for w, pos in groups.items()
+        if len(pos) > 1 and "num" not in pos
+    }
     assert collisions == {}
+
+
+def test_numeral_overlaps_are_only_with_function_words(rows):
+    groups = defaultdict(list)
+    for r in rows:
+        groups[r["word"]].append(r["pos"])
+    overlaps = {w for w, pos in groups.items() if "num" in pos and len(pos) > 1}
+    assert overlaps == {"tu", "li", "ka"}
 
 
 def test_validator_detects_violations():
