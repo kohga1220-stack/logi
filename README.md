@@ -16,7 +16,8 @@
 - **Suffix-based part-of-speech** — noun `-a`, verb `-o`, adjective `-e`, adverb `-i`, preposition `-te`
 - **No passive voice** — always active SVO
 - **No plural suffix** — plurality expressed via `mene` (many)
-- **602-word core dictionary** — machine-validated, zero homophone collisions
+- **616-word core dictionary** — machine-validated; the only homophones are numerals vs. function words (`tu`, `li`, `ka`)
+- **Function words take `-u`**: a final consonant gets `-u` (`pas`→`pasu`), a consonant cluster is split by `u` (`tante`→`tanute`)
 
 ---
 
@@ -37,16 +38,17 @@ No consonant clusters. No word-final consonants.
 | Feature | Rule | Example |
 |---|---|---|
 | Word order | S-V-O | mi toko tu. |
-| Past tense | pas + V | mi pas toko tu. |
-| Future | fut + V | mi fut toko tu. |
+| Past tense | pasu + V | mi pasu toko tu. |
+| Future | putu + V | mi putu toko tu. |
 | Negation | no + V | mi no toko tu. |
 | Question | V … ka? | tu pio kute ka? |
-| Progressive | kon + V | mi kon toko tu. |
-| Perfective | pin + V | mi pin toko tu. |
-| Gerund | V-stem + na | piona（being）, tikona（teaching）|
-| Comparative | mor … tante | mi pio mor kute tante tu. |
+| Wh-question | wh-word stays in place | kua komo ka? / tu iko tote wela ka? |
+| Progressive | konu + V | mi konu toko tu. |
+| Perfective | pinu + V | mi pinu toko tu. |
+| Gerund | V + na | piona（being）, titusona（teaching）|
+| Comparative | moli + adj + tanute | mi pio moli kute tanute tu. |
 | Superlative | mosi + adj | mi mosi laiko apa. |
-| Relative clause | N + ta + clause | mana ta li rano（the person who runs）|
+| Relative clause | N + ta + clause | mana ta li lano（the person who runs）|
 
 ---
 
@@ -79,10 +81,10 @@ Examples: 20 = `tu pulu` / 25 = `tu pulu li` / 2025 = `tu mipulu ni kupulu tu pu
 
 | | Singular | Plural (inclusive) | Plural (exclusive) |
 |---|---|---|---|
-| 1st | mi | mis | mip |
-| 2nd | tu | tus | — |
-| 3rd | li | lis | — |
-| Reflexive | so | — | — |
+| 1st | mi | misu | mipu |
+| 2nd | tu | tusu | — |
+| 3rd | li | lisu | — |
+| Reflexive | selu | — | — |
 
 ---
 
@@ -93,11 +95,14 @@ logi/
 ├── README.md
 ├── docs/
 │   └── grammar.md          Full grammar specification / 文法仕様書（完全版）
+├── corpus/
+│   └── examples.csv        51 example sentences by grammar feature / 機能別例文51文
 ├── dictionary/
-│   ├── final.csv           602-word validated dictionary / 検証済み辞書602語
-│   └── raw.csv             Original pre-validation entries / 変換前原典
+│   └── final.csv           616-word validated dictionary / 検証済み辞書616語
 └── tools/
-    ├── validate.py         Phonology rule checker / 音韻ルール検証
+    ├── synonyms.py         Canonical-word chooser for synonym groups / 同義語の正本選定
+    ├── gloss.py            Dictionary-based word gloss for Logi sentences / 辞書ベースの語注生成
+    ├── validate.py         Phonology rule checker (default: dictionary/final.csv) / 音韻ルール検証
     ├── regenerate.py       Auto-conversion to new phonology / 自動音韻変換
     └── resolve.py          Homophone collision resolver / 同音衝突解決
 ```
@@ -111,6 +116,9 @@ logi/
 | v0.1 | Initial release as SVO-Logi / NGSL |
 | v0.2 | Removed `r`, fixed syllable structure to (C)V |
 | v0.3 | Preposition suffix `-de` → `-te`; gerund `-ina` → `-na`; plural `-s` abolished; `ka?` question rule; 602-word dictionary, 100% rule-compliant |
+| v0.4 | Added `corpus/examples.csv` (51 sentences) and `tools/gloss.py`; fixed non-dictionary doc examples (`rano`→`lano`, `tikona`→`titusona`) |
+| v0.4 | 33 synonyms marked `deprecated` in `final.csv` (`status` / `replaced_by` columns; see `tools/synonyms.py`) |
+| v0.4 | Function words with a final consonant take `-u` (`pas`→`pasu`, `fut`→`putu`, `mor`→`moli` (existing adverb), `mis`→`misu`, `tante`→`tanute` …); reflexive `so`→`selu`, conjunction `so`→`sonu` (6 stays `so`); numerals, unit words, `mipu`, `selu` added; duplicate `komo` removed; 616 words |
 
 ---
 
