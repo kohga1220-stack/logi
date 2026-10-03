@@ -83,3 +83,9 @@ def test_gerunds_do_not_collide_with_active_words(rows):
         if r["status"] == "active" and r["pos"] == "verb" and r["word"] + "na" in active
     }
     assert collisions == {"po"}  # pona（点数）と衝突。未解決（docs/grammar.md §10）
+
+
+def test_synonym_status_matches_rules():
+    import synonyms
+
+    assert synonyms.main(["--check"]) == 0
