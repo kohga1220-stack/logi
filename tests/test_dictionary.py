@@ -20,7 +20,7 @@ def rows():
 
 
 def test_dictionary_size(rows):
-    assert len(rows) == 617
+    assert len(rows) == 616
 
 
 def test_all_words_follow_phonology_and_morphology(rows):

@@ -615,4 +615,3 @@ kupulu,kupulu,num,百（位の単位）,OK,OK,v0.4追加
 mipulu,mipulu,num,千（位の単位）,OK,OK,v0.4追加
 mipu,mipu,pronoun,私たち（排他）,OK,OK,v0.4追加
 selu,selu,pronoun,自分（再帰）,OK,OK,"v0.4追加: 英self音訳(f削除,語尾-u)"
-molu,molu,marker,比較（より〜）,OK,OK,v0.4追加: 旧mor（r廃止・語末母音）
