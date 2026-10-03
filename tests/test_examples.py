@@ -1,5 +1,6 @@
 """docs/grammar.md と README.md の Logi 例文が、辞書の語だけで書かれていることを検証する。"""
 
+import csv
 import re
 import sys
 from pathlib import Path
@@ -54,3 +55,73 @@ def test_questions_end_with_ka_question_mark(doc):
         for sentence in re.findall(r"[^.?]+[.?]", para):
             if sentence.strip().endswith("?"):
                 assert sentence.strip().endswith("ka?")
+
+
+CORPUS = ROOT / "corpus" / "examples.csv"
+
+
+@pytest.fixture(scope="module")
+def corpus():
+    with CORPUS.open(newline="", encoding="utf-8") as f:
+        return list(csv.DictReader(f))
+
+
+def test_corpus_uses_only_dictionary_words(corpus, lexicon):
+    words, verbs = lexicon
+    unknown = {
+        (row["id"], t)
+        for row in corpus
+        for t in tokens(row["logi"])
+        if not is_known(t, words, verbs)
+    }
+    assert unknown == set()
+
+
+def test_corpus_ids_are_unique_and_sentences_end_properly(corpus):
+    ids = [row["id"] for row in corpus]
+    assert len(ids) == len(set(ids))
+    for row in corpus:
+        assert row["logi"].endswith((".", "?")), row["id"]
+        assert row["ja"], row["id"]
+
+
+def test_corpus_questions_end_with_ka_question_mark(corpus):
+    for row in corpus:
+        if row["logi"].endswith("?"):
+            assert row["logi"].endswith(" ka?"), row["id"]
+
+
+def test_corpus_covers_grammar_features(corpus):
+    features = {row["feature"] for row in corpus}
+    required = {
+        "past", "future", "progressive", "perfective", "negation",
+        "question-yesno", "comparative", "superlative", "equality",
+        "relative-clause", "gerund", "causative", "subjunctive",
+        "numeral", "dative", "reflexive", "unspecified-agent",
+        "pronoun-inclusive", "pronoun-exclusive",
+    }
+    assert required <= features
+
+
+def doc_sentences(path):
+    """表・箇条書きの中の Logi 例文（代名詞・ipu で始まり . か ? で終わる）を返す。"""
+    found = []
+    for line in path.read_text(encoding="utf-8").splitlines():
+        if not line.startswith(("|", "- ")):
+            continue
+        for cell in line.lstrip("- ").split("|"):
+            cell = re.sub(r"[（(].*$", "", cell).strip()
+            if re.fullmatch(r"(mi|tu|li|ipu|tuka|kua)\b[a-z ,]*[.?]", cell):
+                found.append(cell)
+    return found
+
+
+@pytest.mark.parametrize("doc", ["README.md", "docs/grammar.md"])
+def test_doc_example_sentences_use_dictionary_words(doc, lexicon):
+    words, verbs = lexicon
+    sentences = doc_sentences(ROOT / doc)
+    assert sentences, f"{doc} に例文が見つかりません"
+    unknown = {
+        t for s in sentences for t in tokens(s) if not is_known(t, words, verbs)
+    }
+    assert unknown == set()

@@ -39,7 +39,7 @@ p, t, k, m, n, s, l, w, j
 | 形容詞 | -e | kute（良い）, nue（新しい）|
 | 副詞 | -i | mosi（最も）, naui（今）|
 | 前置詞 | **-te** | tote（〜へ）, witute（〜と） ※旧-deから変更 |
-| 動名詞 | **-na** | piona（であること）, tikona（教えること）※旧-inaから変更 |
+| 動名詞 | **-na** | piona（であること）, titusona（教えること）※旧-inaから変更 |
 
 ### 機能語の語末子音（v0.4 確定）
 マーカー・代名詞複数形・接続詞など、語形が子音で終わる機能語は語末に **-u** を付ける。
@@ -49,7 +49,7 @@ p, t, k, m, n, s, l, w, j
 - f は使えないため fut → **putu**。r は廃止のため mor は廃止し、辞書既存の副詞 **moli**（もっと）で代替
 
 ### 動名詞の作り方
-動詞（-o で終わる形）の末尾に **na** を付ける: pio → piona, tiko → tikona。
+動詞（-o で終わる形）の末尾に **na** を付ける: pio → piona, tituso → titusona。
 
 ---
 
@@ -153,7 +153,7 @@ SVO + 前置詞句で代替。
 
 ### 関係節
 マーカー **ta** を名詞の直後に置く。
-- mi sio mana ta li rano.（私は走っている人を見る）
+- mi sio mana ta li lano.（私は走っている人を見る）
 
 ### 比較
 - 比較級: moli + tanute（〜より）（moli は辞書既存の副詞「もっと」。mor の代替）
@@ -162,11 +162,11 @@ SVO + 前置詞句で代替。
 
 ### 使役
 動詞 koso（させる）+ 動名詞（-na）
-- mi koso li tote koina.（私は彼をここへ来させる）
+- mi koso li tote komona.（私は彼を来させる）
 
 ### 仮定法
 接続詞 ipu（もし）+ 仮定マーカー wutu
-- ipu mi wutu pio pata, mi wutu palaio.（もし鳥なら、飛ぶのに）
+- ipu mi wutu pio pata, mi wutu pulaio.（もし鳥なら、飛ぶのに）
 
 ---
 
@@ -246,10 +246,16 @@ mi toko tu. mi oto tu pulu ila e mi pio sutua. mi mosi laiko apa. mi wonuto pion
 | tanute | より | 比較の基準を導く（§7）|
 
 ### 10.4 未定義の接続（語の追加が必要）
-次の機能は辞書に語がない。ステップ3（例文コーパス）で必要性を確かめてから語を決める。
+次の機能は辞書に語がない。語を決める前に、必要な文が実際にどれだけあるかを確かめる。
 - 理由（〜なので／なぜなら）: 疑問詞 waia（なぜ）は辞書にあるが、理由を述べる接続詞はない
 - 内容節（〜と思う／〜ということ）
 - 時（〜するとき）: 疑問詞 wena（いつ）のみ
+
+### 10.5 例文コーパスで未検証の項目
+`corpus/examples.csv`（44文）は辞書の語だけで書かれ、`tests/test_examples.py` で検証される。次は仕様が未確定のため含めていない。
+- 疑問詞 wena・wela・waia・aua の文中の位置（wata・kua は例あり）
+- 副詞（kani・masi・mei・sati など）と法のマーカーの語順
+- 目的語の代名詞の直後に数詞句が続く文（§5 の未解決項目）
 
 ---
 

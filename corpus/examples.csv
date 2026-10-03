@@ -1,0 +1,45 @@
+id,feature,logi,ja
+1,basic,mi ito pana.,私はパンを食べる。
+2,basic,tuka liko jeta.,犬は水を飲む。
+3,adjective,mi sio lase kata.,私は大きい猫を見る。
+4,past,mi pasu ito apa.,私はリンゴを食べた。
+5,future,li putu iko tote sukula.,彼は学校へ行くだろう。
+6,progressive,tuka konu lano.,犬は走っている。
+7,perfective,li pinu ito apa.,彼はリンゴを食べてしまった。
+8,negation,mi no ito pana.,私はパンを食べない。
+9,past-negation,li pasu no komo.,彼は来なかった。
+10,past-progressive,mi pasu konu loto.,私は読んでいた。
+11,future-perfective,mi putu pinu ito apa.,私はリンゴを食べてしまうだろう。
+12,question-yesno,tu ito apa ka?,あなたはリンゴを食べますか？
+13,question-what,tu laiko wata puta ka?,あなたはどんな食べ物が好きですか？
+14,question-who,kua komo ka?,誰が来ますか？
+15,comparative,mi pio moli kute tanute tu.,私はあなたより良い。
+16,superlative,mi mosi laiko apa.,私はリンゴが最も好きだ。
+17,equality,li pio seme tote mi.,彼は私と同じだ。
+18,relative-clause,mi sio mana ta li lano.,私は走っている人を見る。
+19,relative-clause,mi sio mana ta li kipo apa tote mi.,私は私にリンゴをくれた人を見る。
+20,gerund,mi laiko lotona.,私は読むことが好きだ。
+21,gerund,mi wonuto komona.,私は来ることを望む。
+22,causative,mi koso li tote komona.,私は彼を来させる。
+23,subjunctive,"ipu mi wutu pio pata, mi wutu pulaio.",もし私が鳥なら、飛ぶだろうに。
+24,coordination-and,mi ito pana e apa.,私はパンとリンゴを食べる。
+25,coordination-or,tu laiko tuka o kata ka?,あなたは犬または猫が好きですか？
+26,contrast,"mi laiko tuka, patu mi no laiko kata.",私は犬が好きだが、猫は好きではない。
+27,consequence,"li pio kute titusa, sonu mi laiko li.",彼は良い先生だ、だから私は彼が好きだ。
+28,numeral,mi oto tu pulu ila.,私は20歳だ。
+29,numeral,mi oto tu pulu li ila.,私は25歳だ。
+30,preposition-in,tuka alo inute sukula.,犬は学校の中にいる。
+31,preposition-on,kata alo onute kala.,猫は車の上にいる。
+32,preposition-for,mi ito pana pote tu.,私はあなたのためにパンを食べる。
+33,preposition-from,li komo pulomute sukula.,彼は学校から来る。
+34,preposition-with,mi iko witute tu.,私はあなたと行く。
+35,dative,mi pasu kipo apa tote tu.,私はあなたにリンゴをあげた。
+36,adverb,li pasuti lano.,彼は速く走る。
+37,adverb,li peli pasuti lano.,彼はとても速く走る。
+38,modal,mi kani lano.,私は走れる。
+39,plural,mene tuka alo inute sukula.,多くの犬が学校にいる。
+40,possession,tu tuka pio lase.,あなたの犬は大きい。
+41,reflexive,li sio selu.,彼は自分を見る。
+42,unspecified-agent,somena ito apa.,誰かがリンゴを食べる。
+43,pronoun-inclusive,misu iko tote sukula.,私たち（聞き手を含む）は学校へ行く。
+44,pronoun-exclusive,mipu iko tote sukula.,私たち（聞き手を含まない）は学校へ行く。
