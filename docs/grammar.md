@@ -144,6 +144,21 @@ p, t, k, m, n, s, l, w, j
 ### 基本語順: 厳格 SVO
 [S] [副詞] [マーカー] [V] [形容詞+O] [前置詞句]
 
+### 疑問詞の位置（v0.4 確定案）
+疑問詞は文頭へ動かさず、答えが入る位置にそのまま置く（その場置き）。文末は §4 の `ka?`。
+
+| 疑問詞 | 位置 | 例 |
+|---|---|---|
+| wata（何）, kua（誰）| 名詞の位置（主語・目的語・修飾語）| kua komo ka?（誰が来ますか）|
+| wela（どこ）, wena（いつ）| 文末の前置詞句の位置。前置詞を付けても付けなくてもよい | tuka alo wela ka? / tu iko tote wela ka? |
+| waia（なぜ）, aua（どうやって）| 副詞の位置（主語の直後、マーカーの前）| tu waia no ito apa ka? |
+
+### 法の副詞（v0.4 確定案）
+kani（できる）, masi（ねばならない）, mei（かもしれない）, sati（べき）は副詞の位置に置き、マーカーの前に来る。
+否定 `no` は動詞にかかり、法副詞の後ろに置くと法副詞が否定の外側に立つ。
+- mi kani lano.（私は走れる）/ mi kani no lano.（私は走れない）
+- mi masi pasu ito apa.（私はリンゴを食べねばならなかった）
+
 ### 受動態: 禁止
 常に能動態で表現。能動主体不明の場合は somena（誰か）を主語に置く。
 
@@ -252,10 +267,9 @@ mi toko tu. mi oto tu pulu ila e mi pio sutua. mi mosi laiko apa. mi wonuto pion
 - 時（〜するとき）: 疑問詞 wena（いつ）のみ
 
 ### 10.5 例文コーパスで未検証の項目
-`corpus/examples.csv`（44文）は辞書の語だけで書かれ、`tests/test_examples.py` で検証される。次は仕様が未確定のため含めていない。
-- 疑問詞 wena・wela・waia・aua の文中の位置（wata・kua は例あり）
-- 副詞（kani・masi・mei・sati など）と法のマーカーの語順
+`corpus/examples.csv`（51文）は辞書の語だけで書かれ、`tests/test_examples.py` で検証される。次は仕様が未確定のため含めていない。
 - 目的語の代名詞の直後に数詞句が続く文（§5 の未解決項目）
+- 副詞 sati と、複数の法副詞・マーカーが並ぶ文
 
 ---
 
@@ -274,3 +288,4 @@ mi toko tu. mi oto tu pulu ila e mi pio sutua. mi mosi laiko apa. mi wonuto pion
 | v0.4 | 再帰代名詞 so→selu、接続詞「だから」so→sonu（数詞6の so と分離）|
 | v0.4 | 数詞0〜9・位の単位・mipu・selu を辞書に追加、重複行 komo を削除し616語。比較は mor を廃し既存の moli を使用 |
 | v0.4 | 数詞と機能語の同音（tu/li/ka）を許容し、曖昧性規則を §5 に追加 |
+| v0.4 | 疑問詞はその場置き、法副詞は副詞の位置（マーカーの前）と §7 に追記 |

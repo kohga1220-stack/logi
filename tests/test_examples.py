@@ -99,6 +99,9 @@ def test_corpus_covers_grammar_features(corpus):
         "relative-clause", "gerund", "causative", "subjunctive",
         "numeral", "dative", "reflexive", "unspecified-agent",
         "pronoun-inclusive", "pronoun-exclusive",
+        "question-what", "question-who", "question-where", "question-where-to",
+        "question-when", "question-why", "question-how",
+        "modal", "modal-negation", "modal-tense",
     }
     assert required <= features
 
@@ -125,3 +128,16 @@ def test_doc_example_sentences_use_dictionary_words(doc, lexicon):
         t for s in sentences for t in tokens(s) if not is_known(t, words, verbs)
     }
     assert unknown == set()
+
+
+def test_corpus_waia_aua_sit_between_subject_and_verb(corpus):
+    rows = load_rows(DEFAULT_DICTIONARY)
+    pos = {}
+    for r in rows:
+        pos.setdefault(r["word"], set()).add(r["pos"])
+    for row in corpus:
+        toks = tokens(row["logi"])
+        for i, t in enumerate(toks):
+            if t in {"waia", "aua"}:
+                assert pos[toks[i - 1]] & {"pronoun", "noun"}, row["id"]
+                assert pos[toks[i + 1]] & {"marker", "verb"}, row["id"]
