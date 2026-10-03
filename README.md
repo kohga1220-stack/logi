@@ -94,10 +94,9 @@ logi/
 ├── docs/
 │   └── grammar.md          Full grammar specification / 文法仕様書（完全版）
 ├── dictionary/
-│   ├── final.csv           602-word validated dictionary / 検証済み辞書602語
-│   └── raw.csv             Original pre-validation entries / 変換前原典
+│   └── final.csv           602-word validated dictionary / 検証済み辞書602語
 └── tools/
-    ├── validate.py         Phonology rule checker / 音韻ルール検証
+    ├── validate.py         Phonology rule checker (default: dictionary/final.csv) / 音韻ルール検証
     ├── regenerate.py       Auto-conversion to new phonology / 自動音韻変換
     └── resolve.py          Homophone collision resolver / 同音衝突解決
 ```

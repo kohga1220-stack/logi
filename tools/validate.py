@@ -5,11 +5,17 @@ Logi 辞書バリデータ
   - 子音: p, t, k, m, n, s, l, w, j (rは廃止)
   - 音節構造: (C)V のみ。子音連続(CCV)・音節末子音(CVC)は禁止。
   - 語末は母音必須。
-  - 形態: 品詞語尾 名詞-a 動詞-o 形容詞-e 副詞-i 前置詞-de
+  - 形態: 品詞語尾 名詞-a 動詞-o 形容詞-e 副詞-i 前置詞-te
+
+使い方:
+  python tools/validate.py [CSV]
+  CSV 省略時は dictionary/final.csv（regenerated 列を検証）。
+  word 列を持つCSV（旧 raw.csv 形式）も検証できる。
 """
 
 import csv
 import re
+import sys
 from collections import defaultdict
 from pathlib import Path
 
@@ -92,9 +98,28 @@ def check_word(word: str, pos: str):
 
     return violations
 
-def main():
-    raw = Path(__file__).resolve().parent.parent / "dictionary" / "raw.csv"
-    rows = list(csv.DictReader(raw.open()))
+DEFAULT_DICTIONARY = Path(__file__).resolve().parent.parent / "dictionary" / "final.csv"
+
+def load_rows(path):
+    """辞書CSVを読み、検証対象の語形を "word" キーに正規化して返す。
+
+    final.csv / master.csv は regenerated 列、raw 形式は word 列を使う。
+    """
+    path = Path(path)
+    if not path.exists():
+        sys.exit(f"辞書ファイルが見つかりません: {path}")
+    with path.open(newline="", encoding="utf-8") as f:
+        rows = list(csv.DictReader(f))
+    for row in rows:
+        if "word" not in row:
+            if "regenerated" not in row:
+                sys.exit(f"{path}: word または regenerated 列が必要です")
+            row["word"] = row["regenerated"]
+    return rows
+
+def main(argv=None):
+    argv = sys.argv[1:] if argv is None else argv
+    rows = load_rows(argv[0] if argv else DEFAULT_DICTIONARY)
 
     issues = defaultdict(list)        # violation_type -> [(word, pos, meaning)]
     homophones = defaultdict(list)    # base_word -> [(word, pos, meaning)]
