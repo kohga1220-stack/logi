@@ -100,6 +100,7 @@ logi/
 ├── dictionary/
 │   └── final.csv           616-word validated dictionary / 検証済み辞書616語
 └── tools/
+    ├── synonyms.py         Canonical-word chooser for synonym groups / 同義語の正本選定
     ├── gloss.py            Dictionary-based word gloss for Logi sentences / 辞書ベースの語注生成
     ├── validate.py         Phonology rule checker (default: dictionary/final.csv) / 音韻ルール検証
     ├── regenerate.py       Auto-conversion to new phonology / 自動音韻変換
@@ -116,6 +117,7 @@ logi/
 | v0.2 | Removed `r`, fixed syllable structure to (C)V |
 | v0.3 | Preposition suffix `-de` → `-te`; gerund `-ina` → `-na`; plural `-s` abolished; `ka?` question rule; 602-word dictionary, 100% rule-compliant |
 | v0.4 | Added `corpus/examples.csv` (51 sentences) and `tools/gloss.py`; fixed non-dictionary doc examples (`rano`→`lano`, `tikona`→`titusona`) |
+| v0.4 | 33 synonyms marked `deprecated` in `final.csv` (`status` / `replaced_by` columns; see `tools/synonyms.py`) |
 | v0.4 | Function words with a final consonant take `-u` (`pas`→`pasu`, `fut`→`putu`, `mor`→`moli` (existing adverb), `mis`→`misu`, `tante`→`tanute` …); reflexive `so`→`selu`, conjunction `so`→`sonu` (6 stays `so`); numerals, unit words, `mipu`, `selu` added; duplicate `komo` removed; 616 words |
 
 ---

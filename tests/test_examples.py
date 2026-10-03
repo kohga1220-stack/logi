@@ -21,6 +21,16 @@ def lexicon():
     return words, verbs
 
 
+def test_docs_and_corpus_do_not_use_deprecated_words(corpus):
+    rows = load_rows(DEFAULT_DICTIONARY)
+    deprecated = {r["word"] for r in rows if r["status"] == "deprecated"}
+    texts = [row["logi"] for row in corpus]
+    for doc in ("README.md", "docs/grammar.md"):
+        texts += doc_sentences(ROOT / doc)
+    used = {t for text in texts for t in tokens(text)}
+    assert used & deprecated == set()
+
+
 def logi_paragraphs(path):
     """'**Logi**' 見出しの直後の段落を返す。"""
     text = path.read_text(encoding="utf-8")

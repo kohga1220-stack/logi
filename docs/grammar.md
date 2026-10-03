@@ -271,6 +271,22 @@ mi toko tu. mi oto tu pulu ila e mi pio sutua. mi mosi laiko apa. mi wonuto pion
 - 目的語の代名詞の直後に数詞句が続く文（§5 の未解決項目）
 - 副詞 sati と、複数の法副詞・マーカーが並ぶ文
 
+### 10.6 同義語の整理
+辞書には同じ意味・同じ品詞の語が30グループあった。`dictionary/final.csv` の `status` 列で正本（active）と非推奨（deprecated）を区別し、
+非推奨語には `replaced_by` に正本を書く。非推奨語は削除せず残すが、例文では使わない。
+正本の選び方（`tools/synonyms.py`）:
+1. 動名詞（動詞 + na）が既存の別語と衝突する語は正本にしない
+2. 音節数が少ない語
+3. README・文法仕様書・コーパスですでに使われている語
+4. 辞書の並び順で先の語
+
+例外は `OVERRIDES` に記す（現在は naue のみ。naua「現在」・naui「今」と語族をなすため）。
+30グループ中20グループは音節数が同じで、3・4番の機械的な基準で決めた。語感による見直しを歓迎する。
+
+### 10.7 動名詞の衝突（未解決）
+動詞 + na が既存の別語と一致する例が1つ残っている: po（夢見る）→ pona は pona（点数）と同形。
+`tests/test_dictionary.py` が既知の例外として検出する。解決策は po か pona のどちらかを別の語に改めること。
+
 ---
 
 ## 11. 変更履歴
@@ -289,3 +305,4 @@ mi toko tu. mi oto tu pulu ila e mi pio sutua. mi mosi laiko apa. mi wonuto pion
 | v0.4 | 数詞0〜9・位の単位・mipu・selu を辞書に追加、重複行 komo を削除し616語。比較は mor を廃し既存の moli を使用 |
 | v0.4 | 数詞と機能語の同音（tu/li/ka）を許容し、曖昧性規則を §5 に追加 |
 | v0.4 | 疑問詞はその場置き、法副詞は副詞の位置（マーカーの前）と §7 に追記 |
+| v0.4 | 同義語33語を deprecated にし（status / replaced_by 列を追加）、正本の選び方を §10.6 に記載 |

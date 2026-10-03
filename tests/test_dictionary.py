@@ -60,3 +60,30 @@ def test_validator_detects_violations():
     assert check_word("kora", "noun")       # r は廃止
     assert check_word("toda", "noun")       # d は使用不可
     assert not check_word("toko", "verb")
+
+
+def test_one_active_word_per_meaning_and_pos(rows):
+    groups = defaultdict(list)
+    for r in rows:
+        if r["status"] == "active":
+            groups[(r["meaning_ja"], r["pos"])].append(r["word"])
+    assert {k: v for k, v in groups.items() if len(v) > 1} == {}
+
+
+def test_deprecated_words_point_to_active_words(rows):
+    active = {r["word"] for r in rows if r["status"] == "active"}
+    for r in rows:
+        if r["status"] == "deprecated":
+            assert r["replaced_by"] in active, r["word"]
+        else:
+            assert r["status"] == "active" and r["replaced_by"] == "", r["word"]
+
+
+def test_gerunds_do_not_collide_with_active_words(rows):
+    # 動詞 + na が既存の別語と衝突する例。新しい衝突を増やさないための既知リスト。
+    active = {r["word"] for r in rows if r["status"] == "active"}
+    collisions = {
+        r["word"] for r in rows
+        if r["status"] == "active" and r["pos"] == "verb" and r["word"] + "na" in active
+    }
+    assert collisions == {"po"}  # pona（点数）と衝突。未解決（docs/grammar.md §10）
