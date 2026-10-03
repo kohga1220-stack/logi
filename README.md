@@ -100,6 +100,7 @@ logi/
 ├── dictionary/
 │   └── final.csv           616-word validated dictionary / 検証済み辞書616語
 └── tools/
+    ├── make_review.py      Review tables for synonyms and the corpus / 確認表の生成
     ├── synonyms.py         Canonical-word chooser for synonym groups / 同義語の正本選定
     ├── gloss.py            Dictionary-based word gloss for Logi sentences / 辞書ベースの語注生成
     ├── validate.py         Phonology rule checker (default: dictionary/final.csv) / 音韻ルール検証
