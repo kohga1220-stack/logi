@@ -56,6 +56,13 @@
 | 49 | question-how | tu aua pasu komo ka? | あなたはどうやって来たのですか？ |
 | 50 | modal-negation | mi kani no lano. | 私は走れない。 |
 | 51 | modal-tense | mi masi pasu ito apa. | 私はリンゴを食べなければならなかった。 |
+| 52 | conj-because | pikosu li pio titusa, mi laiko li. | 彼が先生だから、私は彼が好きだ。 |
+| 53 | conj-when | wenute li komo, mi iko. | 彼が来るとき、私は行く。 |
+| 54 | conj-while | wailu li loto, mi ito. | 彼が読む間、私は食べる。 |
+| 55 | conj-before | pipolu li komo, mi ito. | 彼が来る前に、私は食べる。 |
+| 56 | conj-after | aputi li pasu komo, mi ito. | 彼が来た後で、私は食べる。 |
+| 57 | conj-until | utilu li komo, mi mato. | 彼が来るまで、私は待つ。 |
+| 58 | conj-although | oluto li pasu komo, mi pasu no iko. | 彼が来たのに、私は行かなかった。 |
 
 ## 語注（辞書から機械的に生成）
 
@@ -161,3 +168,17 @@
   mi=私(pronoun) kani=できる(adv) no=否定(marker) lano=走る(verb)
 - **51** `mi masi pasu ito apa.`  
   mi=私(pronoun) masi=ねばならない(adv) pasu=過去(marker) ito=食べる(verb) apa=リンゴ(noun)
+- **52** `pikosu li pio titusa, mi laiko li.`  
+  pikosu=なぜなら(conj) li=彼/彼女/それ(pronoun) pio=です(verb) titusa=先生(noun) mi=私(pronoun) laiko=好む(verb) li=彼/彼女/それ(pronoun)
+- **53** `wenute li komo, mi iko.`  
+  wenute=とき(conj) li=彼/彼女/それ(pronoun) komo=来る(verb) mi=私(pronoun) iko=行く(verb)
+- **54** `wailu li loto, mi ito.`  
+  wailu=間(conj) li=彼/彼女/それ(pronoun) loto=読む(verb) mi=私(pronoun) ito=食べる(verb)
+- **55** `pipolu li komo, mi ito.`  
+  pipolu=前に(conj) li=彼/彼女/それ(pronoun) komo=来る(verb) mi=私(pronoun) ito=食べる(verb)
+- **56** `aputi li pasu komo, mi ito.`  
+  aputi=後で(conj) li=彼/彼女/それ(pronoun) pasu=過去(marker) komo=来る(verb) mi=私(pronoun) ito=食べる(verb)
+- **57** `utilu li komo, mi mato.`  
+  utilu=まで(conj) li=彼/彼女/それ(pronoun) komo=来る(verb) mi=私(pronoun) mato=待つ(verb)
+- **58** `oluto li pasu komo, mi pasu no iko.`  
+  oluto=のに(conj) li=彼/彼女/それ(pronoun) pasu=過去(marker) komo=来る(verb) mi=私(pronoun) pasu=過去(marker) no=否定(marker) iko=行く(verb)

@@ -73,7 +73,7 @@
 <body>
 <main>
   <h1>Logi 翻訳機</h1>
-  <p class="lead">日本語か英語の文を入れると、下に Logi が出ます。辞書（約580語）と簡単なルールで訳す簡易版で、通信はしません。</p>
+  <p class="lead">日本語か英語の文を入れると、下に Logi が出ます。辞書（約590語）と簡単なルールで訳す簡易版で、通信はしません。</p>
 
   <section class="card" aria-labelledby="in-title">
     <div class="row">
@@ -136,7 +136,7 @@
   var lastLogi = '';
   var timer = null;
 
-  var SAMPLES = ['私はリンゴを食べる。', 'あなたは学生ですか？', 'もし彼が来れば、私は行く。', '彼が来るから、私は行く。', 'I eat an apple.', 'What is your name?', 'I like him because he is a teacher.', 'If I were a bird, I would fly.'];
+  var SAMPLES = ['私はリンゴを食べる。', 'あなたは学生ですか？', 'もし彼が来れば、私は行く。', '彼が来るとき、私は行く。', 'I eat an apple.', 'What is your name?', 'I like him because he is a teacher.', 'If I were a bird, I would fly.'];
   var samplesEl = document.getElementById('samples');
   SAMPLES.forEach(function (s) {
     var b = document.createElement('button');
