@@ -32,8 +32,8 @@
 | 25 | coordination-or | tu laiko tuka o kata ka? | あなたは犬または猫が好きですか？ |
 | 26 | contrast | mi laiko tuka, patu mi no laiko kata. | 私は犬が好きだが、猫は好きではない。 |
 | 27 | consequence | li pio kute titusa, sonu mi laiko li. | 彼は良い先生だ、だから私は彼が好きだ。 |
-| 28 | numeral | mi oto tu pulu ila. | 私は20歳だ。 |
-| 29 | numeral | mi oto tu pulu li ila. | 私は25歳だ。 |
+| 28 | numeral | mi oto to pulu ila. | 私は20歳だ。 |
+| 29 | numeral | mi oto to pulu pe ila. | 私は25歳だ。 |
 | 30 | preposition-in | tuka alo inute sukula. | 犬は学校の中にいる。 |
 | 31 | preposition-on | kata alo onute kala. | 猫は車の上にいる。 |
 | 32 | preposition-for | mi ito pana pote tu. | 私はあなたのためにパンを食べる。 |
@@ -68,79 +68,79 @@
 - **4** `mi pasu ito apa.`  
   mi=私(pronoun) pasu=過去(marker) ito=食べる(verb) apa=リンゴ(noun)
 - **5** `li putu iko tote sukula.`  
-  li=彼/彼女/それ(pronoun)/5(num) putu=未来(marker) iko=行く(verb) tote=へ(prep) sukula=学校(noun)
+  li=彼/彼女/それ(pronoun) putu=未来(marker) iko=行く(verb) tote=へ(prep) sukula=学校(noun)
 - **6** `tuka konu lano.`  
   tuka=犬(noun) konu=進行(marker) lano=走る(verb)
 - **7** `li pinu ito apa.`  
-  li=彼/彼女/それ(pronoun)/5(num) pinu=完了(marker) ito=食べる(verb) apa=リンゴ(noun)
+  li=彼/彼女/それ(pronoun) pinu=完了(marker) ito=食べる(verb) apa=リンゴ(noun)
 - **8** `mi no ito pana.`  
   mi=私(pronoun) no=否定(marker) ito=食べる(verb) pana=パン(noun)
 - **9** `li pasu no komo.`  
-  li=彼/彼女/それ(pronoun)/5(num) pasu=過去(marker) no=否定(marker) komo=来る(verb)
+  li=彼/彼女/それ(pronoun) pasu=過去(marker) no=否定(marker) komo=来る(verb)
 - **10** `mi pasu konu loto.`  
   mi=私(pronoun) pasu=過去(marker) konu=進行(marker) loto=読む(verb)
 - **11** `mi putu pinu ito apa.`  
   mi=私(pronoun) putu=未来(marker) pinu=完了(marker) ito=食べる(verb) apa=リンゴ(noun)
 - **12** `tu ito apa ka?`  
-  tu=あなた(pronoun)/2(num) ito=食べる(verb) apa=リンゴ(noun) ka=疑問(marker)/4(num)
+  tu=あなた(pronoun) ito=食べる(verb) apa=リンゴ(noun) ka=疑問(marker)
 - **13** `tu laiko wata puta ka?`  
-  tu=あなた(pronoun)/2(num) laiko=好む(verb) wata=何(wh) puta=食べ物(noun) ka=疑問(marker)/4(num)
+  tu=あなた(pronoun) laiko=好む(verb) wata=何(wh) puta=食べ物(noun) ka=疑問(marker)
 - **14** `kua komo ka?`  
-  kua=誰(wh) komo=来る(verb) ka=疑問(marker)/4(num)
+  kua=誰(wh) komo=来る(verb) ka=疑問(marker)
 - **15** `mi pio moli kute tanute tu.`  
-  mi=私(pronoun) pio=です(verb) moli=もっと(adv) kute=良い(adj) tanute=より(conj) tu=あなた(pronoun)/2(num)
+  mi=私(pronoun) pio=です(verb) moli=もっと(adv) kute=良い(adj) tanute=より(conj) tu=あなた(pronoun)
 - **16** `mi mosi laiko apa.`  
   mi=私(pronoun) mosi=最も(adv) laiko=好む(verb) apa=リンゴ(noun)
 - **17** `li pio seme tote mi.`  
-  li=彼/彼女/それ(pronoun)/5(num) pio=です(verb) seme=同じ(adj) tote=へ(prep) mi=私(pronoun)
+  li=彼/彼女/それ(pronoun) pio=です(verb) seme=同じ(adj) tote=へ(prep) mi=私(pronoun)
 - **18** `mi sio mana ta li lano.`  
-  mi=私(pronoun) sio=見る(verb) mana=人(noun) ta=関係(marker) li=彼/彼女/それ(pronoun)/5(num) lano=走る(verb)
+  mi=私(pronoun) sio=見る(verb) mana=人(noun) ta=関係(marker) li=彼/彼女/それ(pronoun) lano=走る(verb)
 - **19** `mi sio mana ta li kipo apa tote mi.`  
-  mi=私(pronoun) sio=見る(verb) mana=人(noun) ta=関係(marker) li=彼/彼女/それ(pronoun)/5(num) kipo=保つ与える(verb) apa=リンゴ(noun) tote=へ(prep) mi=私(pronoun)
+  mi=私(pronoun) sio=見る(verb) mana=人(noun) ta=関係(marker) li=彼/彼女/それ(pronoun) kipo=保つ与える(verb) apa=リンゴ(noun) tote=へ(prep) mi=私(pronoun)
 - **20** `mi laiko lotona.`  
   mi=私(pronoun) laiko=好む(verb) lotona=読む(verb)+na(動名詞)
 - **21** `mi wonuto komona.`  
   mi=私(pronoun) wonuto=欲する(verb) komona=来る(verb)+na(動名詞)
 - **22** `mi koso li tote komona.`  
-  mi=私(pronoun) koso=させる(verb) li=彼/彼女/それ(pronoun)/5(num) tote=へ(prep) komona=来る(verb)+na(動名詞)
+  mi=私(pronoun) koso=させる(verb) li=彼/彼女/それ(pronoun) tote=へ(prep) komona=来る(verb)+na(動名詞)
 - **23** `ipu mi wutu pio pata, mi wutu pulaio.`  
   ipu=もし(conj) mi=私(pronoun) wutu=仮定(marker) pio=です(verb) pata=鳥(noun) mi=私(pronoun) wutu=仮定(marker) pulaio=飛ぶ(verb)
 - **24** `mi ito pana e apa.`  
   mi=私(pronoun) ito=食べる(verb) pana=パン(noun) e=と(conj) apa=リンゴ(noun)
 - **25** `tu laiko tuka o kata ka?`  
-  tu=あなた(pronoun)/2(num) laiko=好む(verb) tuka=犬(noun) o=または(conj) kata=猫(noun) ka=疑問(marker)/4(num)
+  tu=あなた(pronoun) laiko=好む(verb) tuka=犬(noun) o=または(conj) kata=猫(noun) ka=疑問(marker)
 - **26** `mi laiko tuka, patu mi no laiko kata.`  
   mi=私(pronoun) laiko=好む(verb) tuka=犬(noun) patu=しかし(conj) mi=私(pronoun) no=否定(marker) laiko=好む(verb) kata=猫(noun)
 - **27** `li pio kute titusa, sonu mi laiko li.`  
-  li=彼/彼女/それ(pronoun)/5(num) pio=です(verb) kute=良い(adj) titusa=先生(noun) sonu=だから(conj) mi=私(pronoun) laiko=好む(verb) li=彼/彼女/それ(pronoun)/5(num)
-- **28** `mi oto tu pulu ila.`  
-  mi=私(pronoun) oto=持つ(verb) tu=あなた(pronoun)/2(num) pulu=十（位の単位）(num) ila=年(noun)
-- **29** `mi oto tu pulu li ila.`  
-  mi=私(pronoun) oto=持つ(verb) tu=あなた(pronoun)/2(num) pulu=十（位の単位）(num) li=彼/彼女/それ(pronoun)/5(num) ila=年(noun)
+  li=彼/彼女/それ(pronoun) pio=です(verb) kute=良い(adj) titusa=先生(noun) sonu=だから(conj) mi=私(pronoun) laiko=好む(verb) li=彼/彼女/それ(pronoun)
+- **28** `mi oto to pulu ila.`  
+  mi=私(pronoun) oto=持つ(verb) to=2(num) pulu=十（位の単位）(num) ila=年(noun)
+- **29** `mi oto to pulu pe ila.`  
+  mi=私(pronoun) oto=持つ(verb) to=2(num) pulu=十（位の単位）(num) pe=5(num) ila=年(noun)
 - **30** `tuka alo inute sukula.`  
   tuka=犬(noun) alo=ある(verb) inute=の中に(prep) sukula=学校(noun)
 - **31** `kata alo onute kala.`  
   kata=猫(noun) alo=ある(verb) onute=の上に(prep) kala=車(noun)
 - **32** `mi ito pana pote tu.`  
-  mi=私(pronoun) ito=食べる(verb) pana=パン(noun) pote=のために(prep) tu=あなた(pronoun)/2(num)
+  mi=私(pronoun) ito=食べる(verb) pana=パン(noun) pote=のために(prep) tu=あなた(pronoun)
 - **33** `li komo pulomute sukula.`  
-  li=彼/彼女/それ(pronoun)/5(num) komo=来る(verb) pulomute=から(prep) sukula=学校(noun)
+  li=彼/彼女/それ(pronoun) komo=来る(verb) pulomute=から(prep) sukula=学校(noun)
 - **34** `mi iko witute tu.`  
-  mi=私(pronoun) iko=行く(verb) witute=と(prep) tu=あなた(pronoun)/2(num)
+  mi=私(pronoun) iko=行く(verb) witute=と(prep) tu=あなた(pronoun)
 - **35** `mi pasu kipo apa tote tu.`  
-  mi=私(pronoun) pasu=過去(marker) kipo=保つ与える(verb) apa=リンゴ(noun) tote=へ(prep) tu=あなた(pronoun)/2(num)
+  mi=私(pronoun) pasu=過去(marker) kipo=保つ与える(verb) apa=リンゴ(noun) tote=へ(prep) tu=あなた(pronoun)
 - **36** `li pasuti lano.`  
-  li=彼/彼女/それ(pronoun)/5(num) pasuti=速く(adv) lano=走る(verb)
+  li=彼/彼女/それ(pronoun) pasuti=速く(adv) lano=走る(verb)
 - **37** `li peli pasuti lano.`  
-  li=彼/彼女/それ(pronoun)/5(num) peli=とても(adv) pasuti=速く(adv) lano=走る(verb)
+  li=彼/彼女/それ(pronoun) peli=とても(adv) pasuti=速く(adv) lano=走る(verb)
 - **38** `mi kani lano.`  
   mi=私(pronoun) kani=できる(adv) lano=走る(verb)
 - **39** `mene tuka alo inute sukula.`  
   mene=多くの(adj) tuka=犬(noun) alo=ある(verb) inute=の中に(prep) sukula=学校(noun)
 - **40** `tu tuka pio lase.`  
-  tu=あなた(pronoun)/2(num) tuka=犬(noun) pio=です(verb) lase=大きい(adj)
+  tu=あなた(pronoun) tuka=犬(noun) pio=です(verb) lase=大きい(adj)
 - **41** `li sio selu.`  
-  li=彼/彼女/それ(pronoun)/5(num) sio=見る(verb) selu=自分（再帰）(pronoun)
+  li=彼/彼女/それ(pronoun) sio=見る(verb) selu=自分（再帰）(pronoun)
 - **42** `somena ito apa.`  
   somena=誰か(pronoun) ito=食べる(verb) apa=リンゴ(noun)
 - **43** `misu iko tote sukula.`  
@@ -148,15 +148,15 @@
 - **44** `mipu iko tote sukula.`  
   mipu=私たち（排他）(pronoun) iko=行く(verb) tote=へ(prep) sukula=学校(noun)
 - **45** `tuka alo atute wela ka?`  
-  tuka=犬(noun) alo=ある(verb) atute=で(prep) wela=どこ(wh) ka=疑問(marker)/4(num)
+  tuka=犬(noun) alo=ある(verb) atute=で(prep) wela=どこ(wh) ka=疑問(marker)
 - **46** `tu iko tote wela ka?`  
-  tu=あなた(pronoun)/2(num) iko=行く(verb) tote=へ(prep) wela=どこ(wh) ka=疑問(marker)/4(num)
+  tu=あなた(pronoun) iko=行く(verb) tote=へ(prep) wela=どこ(wh) ka=疑問(marker)
 - **47** `tu putu komo atute wena ka?`  
-  tu=あなた(pronoun)/2(num) putu=未来(marker) komo=来る(verb) atute=で(prep) wena=いつ(wh) ka=疑問(marker)/4(num)
+  tu=あなた(pronoun) putu=未来(marker) komo=来る(verb) atute=で(prep) wena=いつ(wh) ka=疑問(marker)
 - **48** `tu waia no ito apa ka?`  
-  tu=あなた(pronoun)/2(num) waia=なぜ(wh) no=否定(marker) ito=食べる(verb) apa=リンゴ(noun) ka=疑問(marker)/4(num)
+  tu=あなた(pronoun) waia=なぜ(wh) no=否定(marker) ito=食べる(verb) apa=リンゴ(noun) ka=疑問(marker)
 - **49** `tu aua pasu komo ka?`  
-  tu=あなた(pronoun)/2(num) aua=どうやって(wh) pasu=過去(marker) komo=来る(verb) ka=疑問(marker)/4(num)
+  tu=あなた(pronoun) aua=どうやって(wh) pasu=過去(marker) komo=来る(verb) ka=疑問(marker)
 - **50** `mi kani no lano.`  
   mi=私(pronoun) kani=できる(adv) no=否定(marker) lano=走る(verb)
 - **51** `mi masi pasu ito apa.`  
