@@ -106,6 +106,7 @@
       forms.push([stemI + 'ます', {}], [stemI + 'ました', { past: true }],
         [stemI + 'ません', { neg: true }], [stemI + 'ませんでした', { neg: true, past: true }]);
       if (stemTe) {
+        forms.push([stemTe, { te: true }]);
         var te = stemTe;
         forms.push([te + 'いる', { prog: true }], [te + 'います', { prog: true }],
           [te + 'いた', { prog: true, past: true }], [te + 'いました', { prog: true, past: true }],
@@ -133,6 +134,15 @@
       else if (/する$/.test(ja)) potential = null;
       else if (forms.length && last === 'る' && stemI === base && stemTa === base + 'た') potential = base + 'られ';
       else if (E_ROW[last] && stemA) potential = base + E_ROW[last];
+      var ba = null;
+      if (ja === '来る') ba = '来れば';
+      else if (ja === 'ある') ba = 'あれば';
+      else if (/する$/.test(ja)) ba = ja.slice(0, -2) + 'すれば';
+      else if (forms.length && last === 'る' && stemI === base && stemTa === base + 'た') ba = base + 'れば';
+      else if (E_ROW[last] && stemA) ba = base + E_ROW[last] + 'ば';
+      if (ba) {
+        forms.push([ba, { cond: true }], [(ja === 'ある' ? 'あった' : stemTa) + 'ら', { cond: true }]);
+      }
       if (potential) {
         forms.push([potential + 'る', { modal: 'kani' }], [potential + 'ない', { modal: 'kani', neg: true }],
           [potential + 'た', { modal: 'kani', past: true }], [potential + 'なかった', { modal: 'kani', neg: true, past: true }],
@@ -159,6 +169,8 @@
             addJa(stem + 'かった', { k: 'ADJ', e: e, tags: { past: true } });
             addJa(stem + 'くない', { k: 'ADJ', e: e, tags: { neg: true } });
             addJa(stem + 'くなかった', { k: 'ADJ', e: e, tags: { neg: true, past: true } });
+            addJa(stem + 'ければ', { k: 'ADJ', e: e, tags: { cond: true } });
+            addJa(stem + 'かったら', { k: 'ADJ', e: e, tags: { cond: true } });
             if (s === '良い') {
               addJa('いい', { k: 'ADJ', e: e, tags: {} });
               addJa('よかった', { k: 'ADJ', e: e, tags: { past: true } });
@@ -192,6 +204,10 @@
       'ではありませんでした': { neg: true, past: true }
     };
     Object.keys(COPULAS).forEach(function (s) { addJa(s, { k: 'COP', tags: COPULAS[s] }); });
+    addJa('のです', { k: 'COP', tags: {}, expl: true });
+    addJa('のだ', { k: 'COP', tags: {}, expl: true });
+    addJa('のでした', { k: 'COP', tags: { past: true }, expl: true });
+    addJa('んです', { k: 'COP', tags: {}, expl: true });
     ['だろう', 'でしょう'].forEach(function (s) { addJa(s, { k: 'FUT' }); });
     addJa('こと', { k: 'KOTO' });
     addJa('どんな', { k: 'DONNA' });
@@ -199,7 +215,15 @@
       .forEach(function (s) { addJa(s, { k: 'P', p: s }); });
     addJa('しかし', { k: 'CONJ', w: 'patu' });
     addJa('だが', { k: 'CONJ', w: 'patu' });
+    addJa('でも', { k: 'CONJ', w: 'patu' });
     addJa('だから', { k: 'CONJ', w: 'sonu' });
+    ['ですから', 'そのため', 'それで', 'したがって'].forEach(function (c) { addJa(c, { k: 'CONJ', w: 'sonu' }); });
+    ['そして', 'それから', 'また'].forEach(function (c) { addJa(c, { k: 'CONJ', w: 'e' }); });
+    ['けれども', 'けれど', 'けど'].forEach(function (c) { addJa(c, { k: 'CLC', w: 'patu' }); });
+    addJa('ので', { k: 'CLC', w: 'sonu' });
+    addJa('もし', { k: 'IF' });
+    ['なら', 'ならば'].forEach(function (c) { addJa(c, { k: 'COND' }); });
+    ['だろうに', 'でしょうに'].forEach(function (c) { addJa(c, { k: 'HYP' }); });
     addJa('または', { k: 'OR' });
     addJa('あるいは', { k: 'OR' });
     addJa('か', { k: 'KA' });
@@ -338,18 +362,52 @@
       'の中に': 'inute', 'の上に': 'onute', 'について': 'paute', 'のために': 'pote'
     };
 
+    var PRED_KINDS = { V: 1, COP: 1, ADJ: 1, ANA: 1, FUT: 1 };
+    function isPredLike(t) { return !!t && !!PRED_KINDS[t.k] && !(t.k === 'ADJ' && t.attr); }
+    var COMPLEMENT_VERBS = { omo: 1, juo: 1, pipo: 1, mo: 1, kanao: 1, keso: 1, opo: 1, noto: 1 };
+
+    // 「AはBがCと思う」: 思う・言う などの前にある節を、目的語（節）にする
+    function splitComplement(toks, question, notes) {
+      var k = -1;
+      for (var j = 1; j < toks.length - 1; j++) {
+        if (toks[j].k === 'P' && toks[j].p === 'と' && isPredLike(toks[j - 1]) && toks[j + 1].k === 'V' && COMPLEMENT_VERBS[toks[j + 1].e.w]) { k = j; break; }
+      }
+      if (k < 1) return null;
+      var embedded = toks.slice(0, k);
+      var tail = toks.slice(k + 1);
+      var mainSubj = null;
+      for (var s = 0; s < embedded.length; s++) {
+        if (embedded[s].k === 'P' && (embedded[s].p === 'は' || embedded[s].p === 'が')) {
+          var later = embedded.slice(s + 1).some(function (t) { return t.k === 'P' && (t.p === 'は' || t.p === 'が'); });
+          if (later) { mainSubj = embedded.slice(0, s + 1); embedded = embedded.slice(s + 1); }
+          break;
+        }
+      }
+      var sub = parseJaClause(embedded, false, notes);
+      var main = parseJaClause(tail, question, notes);
+      main.object = generate(sub);
+      if (mainSubj) {
+        var ch = chunkJa(mainSubj, [], notes);
+        if (ch.length) main.subject = ch[0].items;
+      }
+      return main;
+    }
+
     function parseJaClause(tokens, question, notes) {
       var advs = [];
       var tense = null, aspect = null, neg = false;
       var toks = tokens.filter(function (t) { return t.k !== 'COMMA'; });
+      var comp = splitComplement(toks, question, notes);
+      if (comp) return comp;
       var pred = null;
       var last = toks[toks.length - 1];
       if (last && last.k === 'FUT') { tense = 'future'; toks.pop(); last = toks[toks.length - 1]; }
       var copTags = null;
-      if (last && last.k === 'COP') { copTags = last.tags; toks.pop(); last = toks[toks.length - 1]; }
-      if (copTags && last && last.k === 'P' && last.p === 'の') {
+      var explFlag = false;
+      if (last && last.k === 'COP') { copTags = last.tags; explFlag = !!last.expl; toks.pop(); last = toks[toks.length - 1]; }
+      if (copTags && last && ((last.k === 'P' && last.p === 'の') || explFlag)) {
         // 「食べないのです」の「の」は説明の「の」。述語は直前の語。
-        toks.pop(); last = toks[toks.length - 1];
+        if (!explFlag) { toks.pop(); last = toks[toks.length - 1]; }
         if (last && (last.k === 'V' || last.k === 'ADJ')) {
           if (copTags.past && last.k === 'V') last = { k: 'V', e: last.e, tags: Object.assign({}, last.tags, { past: true }) };
           if (last.k === 'V') toks.push(last);
@@ -475,6 +533,39 @@
       return sentences;
     }
 
+    // 文を節に分け、節どうしをつなぐ語（patu・sonu・e・ipu）を決める
+    function segmentJa(tokens) {
+      var segs = [];
+      var cur = [];
+      var connBefore = null;
+      var ifFlag = false;
+      var hyp = false;
+      function push(isCond) {
+        if (cur.length) { segs.push({ tokens: cur, conn: connBefore, cond: isCond || ifFlag }); connBefore = null; ifFlag = false; }
+        cur = [];
+      }
+      for (var i = 0; i < tokens.length; i++) {
+        var t = tokens[i];
+        if (t.k === 'COMMA') continue;
+        if (t.k === 'HYP') { hyp = true; continue; }
+        if (t.k === 'IF') { push(false); ifFlag = true; continue; }
+        if (t.k === 'CONJ') { push(false); connBefore = t.w; continue; }
+        if (t.k === 'COND') {
+          if (!isPredLike(cur[cur.length - 1])) cur.push({ k: 'COP', tags: {} });
+          push(true); continue;
+        }
+        if ((t.k === 'ADJ' || t.k === 'V') && t.tags && t.tags.cond) { cur.push(t); push(true); continue; }
+        if (t.k === 'V' && t.tags && t.tags.te && i < tokens.length - 1) { cur.push(t); push(false); connBefore = 'e'; continue; }
+        if (t.k === 'CLC' || (t.k === 'P' && (t.p === 'が' || t.p === 'から') && isPredLike(cur[cur.length - 1]))) {
+          var w = t.k === 'CLC' ? t.w : (t.p === 'が' ? 'patu' : 'sonu');
+          push(false); connBefore = w; continue;
+        }
+        cur.push(t);
+      }
+      push(false);
+      return { segs: segs, hyp: hyp };
+    }
+
     function translateJa(text) {
       var notes = [];
       var parts = [];
@@ -482,19 +573,20 @@
         var toks = s.tokens.slice();
         var q = s.q;
         if (toks.length && toks[toks.length - 1].k === 'KA') { q = true; toks.pop(); }
-        // 接続詞で節を分ける
-        var clauses = [];
-        var curTokens = [];
-        var pending = null;
-        toks.forEach(function (t) {
-          if (t.k === 'CONJ') { clauses.push({ tokens: curTokens, conj: pending }); curTokens = []; pending = t.w; }
-          else curTokens.push(t);
-        });
-        clauses.push({ tokens: curTokens, conj: pending });
-        var irs = clauses.filter(function (c) { return c.tokens.length; }).map(function (c, idx, arr) {
+        var seg = segmentJa(toks);
+        var irs = seg.segs.map(function (c, idx, arr) {
           var ir = parseJaClause(c.tokens, q && idx === arr.length - 1, notes);
-          ir.conj = c.conj;
+          ir.conn = c.conn;
+          ir.cond = c.cond;
+          if (seg.hyp) ir.hyp = true;
           return ir;
+        });
+        // 主語のない節は、前の節の主語を引き継ぐ
+        irs.forEach(function (ir, idx) {
+          if (idx > 0 && !ir.subject && ir.verb && irs[idx - 1].subject) {
+            ir.subject = irs[idx - 1].subject;
+            notes.push('主語のない節は、前の節の主語を引き継ぎました。');
+          }
         });
         if (irs.length) parts.push(irs);
       });
@@ -507,8 +599,11 @@
       if (ir.fragment) return ir.fragment;
       if (ir.subject) out = out.concat(ir.subject);
       out = out.concat(ir.advs || []);
-      if (ir.tense === 'past') out.push(item('pasu'));
-      if (ir.tense === 'future') out.push(item('putu'));
+      if (ir.hyp) out.push(item('wutu'));
+      else {
+        if (ir.tense === 'past') out.push(item('pasu'));
+        if (ir.tense === 'future') out.push(item('putu'));
+      }
       if (ir.aspect === 'prog') out.push(item('konu'));
       if (ir.aspect === 'perf') out.push(item('pinu'));
       if (ir.neg) out.push(item('no'));
@@ -550,11 +645,17 @@
         irs.forEach(function (ir, idx) {
           var items = generate(ir);
           var isLast = idx === irs.length - 1;
-          if (ir.conj) allItems.push(item(ir.conj));
+          if (ir.cond) items = [item('ipu')].concat(items);
           if (ir.question && isLast) items = items.concat([item('ka')]);
+          if (ir.conn) {
+            var um = /^\[(.*)\?\]$/.exec(ir.conn);
+            if (um) { allItems.push(unknown(um[1])); unknownList.push(um[1]); }
+            else allItems.push(item(ir.conn));
+          }
           allItems = allItems.concat(items);
           var clause = items.map(function (it) { return it.w; }).join(' ');
-          if (idx > 0) text += ', ' + (ir.conj ? ir.conj + ' ' : '');
+          if (idx > 0) text += ', ' + (ir.conn ? ir.conn + ' ' : '');
+          else if (ir.conn) text += ir.conn + ' ';
           text += clause;
           items.forEach(function (it) { if (it.unknown) unknownList.push(it.unknown); });
         });
@@ -787,9 +888,13 @@
 
     function findVerbOnly(tok) { return findVerb(tok) && !findNoun(tok) && !findAdj(tok) && !PRONOUNS[tok]; }
 
-    function translateEnSentence(raw, question, notes) {
+    function translateEnSentence(raw, question, notes, opts) {
       var text = expandContractions(raw).toLowerCase();
-      var tokens = text.match(/[a-z]+|[0-9]+/g) || [];
+      return translateEnTokens(text.match(/[a-z]+|[0-9]+/g) || [], question, notes, opts);
+    }
+
+    function translateEnTokens(tokens, question, notes, opts) {
+      opts = opts || {};
       if (!tokens.length) return null;
       var ir = { subject: null, advs: [], tense: null, aspect: null, neg: false, question: question,
         object: null, pps: [], notes: notes };
@@ -832,7 +937,8 @@
       if (!subjNP && !(cur.peek() && (AUX_START[cur.peek()] || findVerb(cur.peek())))) {
         return null;
       }
-      ir.subject = subjNP ? subjNP.items : null;
+      if (!subjNP && !opts.inheritSubject && !question) notes.push('主語が見つからない文です。');
+      ir.subject = subjNP ? subjNP.items : (opts.inheritSubject || null);
 
       // 助動詞・否定・副詞
       var verbTok = null;
@@ -845,7 +951,7 @@
         if (tk === 'do' || tk === 'does') { cur.next(); continue; }
         if (tk === 'did') { ir.tense = 'past'; cur.next(); continue; }
         if (tk === 'will') { ir.tense = 'future'; cur.next(); continue; }
-        if (tk === 'would') { notes.push('would（仮定）は未対応のため、未来として訳しました。'); ir.tense = 'future'; cur.next(); continue; }
+        if (tk === 'would') { ir.hyp = true; cur.next(); continue; }
         if (MODALS[tk]) { modal = MODALS[tk]; cur.next(); continue; }
         if (tk === 'not') { ir.neg = true; cur.next(); continue; }
         if (tk === 'never') { ir.advs.push(item('nepi')); cur.next(); continue; }
@@ -972,6 +1078,19 @@
       if (verb.form === 'past' && !ir.tense && !perfect) ir.tense = 'past';
       ir.verb = verb.e.w;
       var lemma = verb.lemma;
+      if (COMPLEMENT_EN[lemma]) {
+        var restTok = cur.t.slice(cur.i);
+        var hasThat = restTok[0] === 'that';
+        var clauseTok = hasThat ? restTok.slice(1) : restTok;
+        if (hasThat || clauseStartsAt(clauseTok, 0)) {
+          var subIr = translateEnTokens(clauseTok, false, notes, {});
+          if (subIr) {
+            ir.object = generate(subIr);
+            cur.i = cur.t.length;
+            return finishEn(ir, whWord, whMod);
+          }
+        }
+      }
       // 目的語・前置詞句・副詞
       var guard = 0;
       while (cur.more() && guard++ < 20) {
@@ -1050,6 +1169,80 @@
     var AUX_START = { do: 1, does: 1, did: 1, is: 1, are: 1, am: 1, was: 1, were: 1, will: 1, can: 1, must: 1,
       may: 1, might: 1, should: 1, have: 1, has: 1, had: 1, would: 1 };
 
+    var COMPLEMENT_EN = { think: 1, know: 1, believe: 1, say: 1, hope: 1, guess: 1, notice: 1 };
+    var UNKNOWN_CONN = { when: 1, while: 1, although: 1, though: 1, before: 1, after: 1, until: 1, unless: 1 };
+
+    // tokens[i] から主語つきの節（名詞句 + 動詞・助動詞）が始まるか
+    function clauseStartsAt(tokens, i) {
+      var cur = new Cursor(tokens.slice(i));
+      var np = parseNP(cur, { notes: [] });
+      if (!np) return false;
+      var nx = cur.peek();
+      if (!nx) return false;
+      if (AUX_START[nx] || MODALS[nx] || BE[nx] || nx === 'not') return true;
+      var v = findVerb(nx);
+      return !!(v && (v.form === 'past' || v.form === 's' || v.form === 'base') && !findNoun(nx));
+    }
+
+    // 文を節に分け、つなぐ語を決める（patu・sonu・e・o・ipu）
+    function splitEn(tokens, question) {
+      var segs = [];
+      var cur = [];
+      var conn = null;
+      var kind = 'main';
+      var unk = null;
+      function push() {
+        if (cur.length) segs.push({ tokens: cur, conn: conn, kind: kind, unk: unk });
+        cur = []; conn = null; kind = 'main'; unk = null;
+      }
+      for (var i = 0; i < tokens.length; i++) {
+        var t = tokens[i];
+        var startsClause = clauseStartsAt(tokens, i + 1);
+        if (t === ',') {
+          var nx = tokens[i + 1];
+          if (nx === 'but' || nx === 'so' || nx === 'and' || nx === 'or' || nx === 'because' || nx === 'if' || startsClause || kind === 'if' || kind === 'because') push();
+          else if (nx && startsNP(nx)) cur.push('and'); // 「A, B and C」の並べ方
+          continue;
+        }
+        if (t === 'but') { push(); conn = 'patu'; continue; }
+        if (t === 'so' && startsClause) { push(); conn = 'sonu'; continue; }
+        if (t === 'because') { push(); kind = 'because'; continue; }
+        if (t === 'if') { push(); kind = 'if'; continue; }
+        if ((t === 'and' || t === 'or') && (startsClause || (tokens[i + 1] && findVerbOnly(tokens[i + 1])))) {
+          push(); conn = t === 'and' ? 'e' : 'o'; continue;
+        }
+        if (UNKNOWN_CONN[t] && !(question && i === 0)) { push(); kind = 'unk'; unk = t; continue; }
+        cur.push(t);
+      }
+      push();
+      var list = segs.map(function (sg) {
+        var c = sg.conn;
+        if (sg.kind === 'unk') c = '[' + sg.unk + '?]';
+        return { tokens: sg.tokens, conn: c, cond: sg.kind === 'if', because: sg.kind === 'because',
+          hyp: sg.kind === 'if' && sg.tokens.indexOf('were') >= 0 };
+      });
+      // because: 「A because B」→ B sonu A、「Because A, B」→ A sonu B
+      for (var b = 0; b < list.length; b++) {
+        if (!list[b].because) continue;
+        if (b > 0) {
+          var m = list[b - 1];
+          list[b].conn = m.conn; m.conn = 'sonu';
+          list[b - 1] = list[b]; list[b] = m;
+        } else if (list[b + 1]) {
+          if (!list[b + 1].conn) list[b + 1].conn = 'sonu';
+        }
+      }
+      // if: 「B if A」→ ipu A, B
+      for (var c2 = 1; c2 < list.length; c2++) {
+        if (list[c2].cond && !list[c2 - 1].cond) {
+          var prev = list[c2 - 1];
+          list[c2].conn = prev.conn; prev.conn = null;
+          list[c2 - 1] = list[c2]; list[c2] = prev;
+        }
+      }
+      return list;
+    }
+
     function translateEn(text) {
       var notes = [];
       var parts = [];
@@ -1059,13 +1252,29 @@
         if (!trimmed) return;
         var question = /\?$/.test(trimmed);
         var body = trimmed.replace(/[.!?]+$/, '');
-        // コンマで並ぶ節は分けない（未対応）
-        var ir = translateEnSentence(body.replace(/,/g, ' '), question, notes);
-        if (!ir) {
+        var tokens = expandContractions(body).toLowerCase().match(/[a-z]+|[0-9]+|,/g) || [];
+        var segs = splitEn(tokens, question);
+        var multi = segs.length > 1;
+        if (multi && question) notes.push('接続語を含む疑問文は、語順を倒置せずにそのまま訳しています。');
+        var hyp = segs.some(function (sg) { return sg.hyp || sg.tokens.indexOf('would') >= 0; });
+        var irs = [];
+        var prevSubject = null;
+        var failed = false;
+        segs.forEach(function (sg, idx) {
+          var ir = translateEnTokens(sg.tokens, question && !multi, notes, { inheritSubject: prevSubject });
+          if (!ir) { failed = true; return; }
+          ir.conn = sg.conn;
+          ir.cond = sg.cond;
+          if (hyp) ir.hyp = true;
+          if (multi && question && idx === segs.length - 1) ir.question = true;
+          if (ir.subject) prevSubject = ir.subject;
+          irs.push(ir);
+        });
+        if (failed || !irs.length) {
           notes.push('「' + trimmed + '」は未対応の文型のため訳せませんでした。');
           return;
         }
-        parts.push([ir]);
+        parts.push(irs);
       });
       return finalize(parts, notes, 'en');
     }

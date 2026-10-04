@@ -111,7 +111,7 @@
       <summary>この翻訳機について</summary>
       <ul>
         <li>機械翻訳ではありません。<code>dictionary/final.csv</code> の語と、決まった文型のルールで変換します。</li>
-        <li>対応する文型: 時制（過去・未来）、進行・完了、否定、疑問、比較、関係節、動名詞、数字、前置詞句など。</li>
+        <li>対応する文型: 時制（過去・未来）、進行・完了、否定、疑問、比較、関係節、動名詞、数字、前置詞句、接続語（しかし・だから・もし〜なら・because・if など）。</li>
         <li>辞書にない語は <span style="color:var(--bad)">[語?]</span> のまま残し、注意書きを出します。</li>
         <li>英語の意味は <code>dictionary/glossary_en.csv</code>（未確認）にもとづきます。</li>
         <li>仕様: <code>docs/grammar.md</code></li>
@@ -136,7 +136,7 @@
   var lastLogi = '';
   var timer = null;
 
-  var SAMPLES = ['私はリンゴを食べる。', 'あなたは学生ですか？', '彼は来なかった。', 'I eat an apple.', 'What is your name?', 'He will go to school.'];
+  var SAMPLES = ['私はリンゴを食べる。', 'あなたは学生ですか？', 'もし彼が来れば、私は行く。', '彼が来るから、私は行く。', 'I eat an apple.', 'What is your name?', 'I like him because he is a teacher.', 'If I were a bird, I would fly.'];
   var samplesEl = document.getElementById('samples');
   SAMPLES.forEach(function (s) {
     var b = document.createElement('button');

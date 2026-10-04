@@ -262,6 +262,21 @@ mi toko tu. mi oto to pulu ila e mi pio sutua. mi mosi laiko apa. mi wonuto pion
 | ipu | もし | 仮定節を導く（§7）|
 | tanute | より | 比較の基準を導く（§7）|
 
+### 10.3.1 接続語の使い方（翻訳機の取り決め）
+`web/translator.js` は、辞書にある接続語だけで次のように訳す。語の追加は伴わない。節どうしは `, 接続語 節` の形でつなぐ。
+| 日本語・英語 | Logi |
+|---|---|
+| しかし／〜が・けど／but | `A, patu B.` |
+| だから／〜から・ので／so | `A, sonu B.`（「A から B」＝ A だから B）|
+| B because A（A なので B）| `A, sonu B.`（理由の節を前に出す）|
+| そして・〜て／and（節）| `A, e B.`（主語が同じなら省かず、後ろの節にも置く）|
+| または／or（節）| `A, o B.` |
+| もし A なら／if A | `ipu A, B.` |
+| もし〜なら…だろうに／if I were ~, I would ~ | `ipu A wutu …, B wutu ….`（両方の節に wutu を置き、時制は置かない）|
+| 〜と思う・言う／think (that) ~ | `mi omo [節].`（節をそのまま目的語にする。「that」に当たる語は置かない）|
+
+when・while・before・after・until・unless・although は辞書に語がなく、翻訳機は `[語?]` として残す（§10.4）。
+
 ### 10.4 未定義の接続（語の追加が必要）
 次の機能は辞書に語がない。語を決める前に、必要な文が実際にどれだけあるかを確かめる。
 - 理由（〜なので／なぜなら）: 疑問詞 waia（なぜ）は辞書にあるが、理由を述べる接続詞はない
