@@ -98,10 +98,10 @@ p, t, k, m, n, s, l, w, j
 |---|---|
 | 0 | ni |
 | 1 | pa |
-| 2 | tu |
+| 2 | to |
 | 3 | te |
-| 4 | ka |
-| 5 | li |
+| 4 | ku |
+| 5 | pe |
 | 6 | so |
 | 7 | se |
 | 8 | wa |
@@ -109,25 +109,19 @@ p, t, k, m, n, s, l, w, j
 
 10以上は位取り合成。位の単位語: pulu（〜十）、kupulu（〜百）、mipulu（〜千）
 
-### 数詞と機能語の同音（v0.4・暫定規則）
-数詞 tu(2) / li(5) / ka(4) は、代名詞 tu・li、疑問マーカー ka と同音である（辞書で唯一許容する同音）。
+### 数詞と同音語（v0.5 確定）
+数詞は辞書の他の語と同音にならない。v0.4 で代名詞 tu・li、疑問マーカー ka と同音だった数詞 2・5・4 を、
+それぞれ **to・pe・ku** に改めた（v0.5）。これにより `mi oto to ila.`（2歳）のような文は代名詞と取り違えられない。
 - 数詞列: 数詞と位の単位語（pulu kupulu mipulu）の連続は一つの数詞句として読む。
-  例: mi oto tu pulu ila.（私は20歳）の tu pulu は数詞句。
-- 疑問マーカー ka は文末の `ka?` の形でのみ現れる。数詞4で文を終える場合は直後に名詞または単位語を置く。
-- **未解決（設計上の曖昧さ）**: 次のような文は、数詞と代名詞・疑問マーカーのどちらにも読める。
-  - mi oto tu ila.（私は2歳だ／私はあなたの歳を持つ）: 数詞 tu と、所有を表す代名詞 tu + 名詞（§10.2）が同形
-  - mi oto li ila.（5歳／彼の歳）: 数詞 li と代名詞 li
-  - 数詞4 ka で文を終える文は、疑問マーカー ka? と区別できない
-  現状のコーパスは単位語 pulu を伴う数詞句（tu pulu ila）だけを含み、これらの文は避けている。
-  解決には数詞の形（例: 単独の数詞に別形を与える）か語順規則の変更が必要で、利用者の判断を待っている。
+  例: mi oto to pulu ila.（私は20歳）の to pulu は数詞句。
 
 | 数 | Logi |
 |---|---|
 | 10 | pa pulu |
-| 20 | tu pulu |
-| 25 | tu pulu li |
+| 20 | to pulu |
+| 25 | to pulu pe |
 | 100 | pa kupulu |
-| 2025 | tu mipulu ni kupulu tu pulu li |
+| 2025 | to mipulu ni kupulu to pulu pe |
 
 ---
 
@@ -220,14 +214,14 @@ SVO + 前置詞句で代替。
 こんにちは。私は20歳で、大学生です。好きな食べ物はリンゴです。私はあなたと友達になりたいと思います。あなたの名前はなんですか？好きな食べ物はなんですか？いろいろ私に教えてください。
 
 **Logi**
-mi toko tu. mi oto tu pulu ila e mi pio sutua. mi mosi laiko apa. mi wonuto piona pulena witute tu. tu nema pio wata ka? tu laiko wata puta ka? tituso mene sina tote mi.
+mi toko tu. mi oto to pulu ila e mi pio sutua. mi mosi laiko apa. mi wonuto piona pulena witute tu. tu nema pio wata ka? tu laiko wata puta ka? tituso mene sina tote mi.
 
 ### 語注
 | Logi | 意味 | 変更点 |
 |---|---|---|
 | toko | 話す | 変更なし |
 | oto | 持つ | hoto → h削除 |
-| tu pulu ila | 20歳 | iras → ila（r→l）|
+| to pulu ila | 20歳 | iras → ila（r→l）|
 | sutua | 学生 | stua → sutua（子音連続解消）|
 | mosi | 最も | mos → mosi（副詞語尾統一）|
 | laiko | 好む | raiko → laiko（r→l）|
@@ -276,7 +270,6 @@ mi toko tu. mi oto tu pulu ila e mi pio sutua. mi mosi laiko apa. mi wonuto pion
 
 ### 10.5 例文コーパスで未検証の項目
 `corpus/examples.csv`（51文）は辞書の語だけで書かれ、`tests/test_examples.py` で検証される。次は仕様が未確定のため含めていない。
-- 単位語を伴わない数詞と代名詞の曖昧な文（§5 の未解決項目）
 - 副詞 sati と、複数の法副詞・マーカーが並ぶ文
 
 ### 10.6 同義語の整理
@@ -291,9 +284,10 @@ mi toko tu. mi oto tu pulu ila e mi pio sutua. mi mosi laiko apa. mi wonuto pion
 例外は `OVERRIDES` に記す（現在は naue のみ。naua「現在」・naui「今」と語族をなすため）。
 30グループ中20グループは音節数が同じで、3・4番の機械的な基準で決めた。語感による見直しを歓迎する。
 
-### 10.7 動名詞の衝突（未解決）
-動詞 + na が既存の別語と一致する例が1つ残っている: po（夢見る）→ pona は pona（点数）と同形。
-`tests/test_dictionary.py` が既知の例外として検出する。解決策は po か pona のどちらかを別の語に改めること。
+### 10.7 動名詞の衝突（解決済み）
+動詞 + na が既存の別語と一致する例は po（夢見る）→ pona（点数と同形）だけだった。
+v0.5 で po を **tulimo**（英 dream の音訳: d→t, r→l, 子音連続を u で分割）に改めた。
+`tests/test_dictionary.py` が、新しい衝突が生まれないことを検査する。
 
 ---
 
@@ -312,5 +306,7 @@ mi toko tu. mi oto tu pulu ila e mi pio sutua. mi mosi laiko apa. mi wonuto pion
 | v0.4 | 再帰代名詞 so→selu、接続詞「だから」so→sonu（数詞6の so と分離）|
 | v0.4 | 数詞0〜9・位の単位・mipu・selu を辞書に追加、重複行 komo を削除し616語。比較は mor を廃し既存の moli を使用 |
 | v0.4 | 数詞と機能語の同音（tu/li/ka）を許容し、曖昧性規則を §5 に追加 |
+| v0.5 | 数詞 2・4・5 を tu・ka・li から to・ku・pe に変更し、数詞と機能語の同音をなくした |
+| v0.5 | 動詞 po（夢見る）を tulimo に改め、動名詞 pona と点数 pona の衝突を解消 |
 | v0.4 | 疑問詞はその場置き、法副詞は副詞の位置（マーカーの前）と §7 に追記 |
 | v0.4 | 同義語33語を deprecated にし（status / replaced_by 列を追加）、正本の選び方を §10.6 に記載 |
