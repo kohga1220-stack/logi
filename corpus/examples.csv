@@ -26,8 +26,8 @@ id,feature,logi,ja
 25,coordination-or,tu laiko tuka o kata ka?,あなたは犬または猫が好きですか？
 26,contrast,"mi laiko tuka, patu mi no laiko kata.",私は犬が好きだが、猫は好きではない。
 27,consequence,"li pio kute titusa, sonu mi laiko li.",彼は良い先生だ、だから私は彼が好きだ。
-28,numeral,mi oto tu pulu ila.,私は20歳だ。
-29,numeral,mi oto tu pulu li ila.,私は25歳だ。
+28,numeral,mi oto to pulu ila.,私は20歳だ。
+29,numeral,mi oto to pulu pe ila.,私は25歳だ。
 30,preposition-in,tuka alo inute sukula.,犬は学校の中にいる。
 31,preposition-on,kata alo onute kala.,猫は車の上にいる。
 32,preposition-for,mi ito pana pote tu.,私はあなたのためにパンを食べる。

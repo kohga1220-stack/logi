@@ -31,23 +31,10 @@ def test_pos_values_are_known(rows):
 
 
 def test_no_homophone_collisions(rows):
-    # 数詞（pos=num）と機能語の同音は仕様上許容（docs/grammar.md §5）。それ以外は禁止。
     groups = defaultdict(list)
     for r in rows:
         groups[r["word"]].append(r["pos"])
-    collisions = {
-        w: pos for w, pos in groups.items()
-        if len(pos) > 1 and "num" not in pos
-    }
-    assert collisions == {}
-
-
-def test_numeral_overlaps_are_only_with_function_words(rows):
-    groups = defaultdict(list)
-    for r in rows:
-        groups[r["word"]].append(r["pos"])
-    overlaps = {w for w, pos in groups.items() if "num" in pos and len(pos) > 1}
-    assert overlaps == {"tu", "li", "ka"}
+    assert {w: pos for w, pos in groups.items() if len(pos) > 1} == {}
 
 
 def test_validator_detects_violations():
@@ -76,10 +63,10 @@ def test_deprecated_words_point_to_active_words(rows):
 
 
 def test_gerunds_do_not_collide_with_active_words(rows):
-    # 動詞 + na が既存の別語と衝突する例。新しい衝突を増やさないための既知リスト。
+    # 動詞 + na が既存の別語と一致しないこと（動名詞の衝突回避）
     active = {r["word"] for r in rows if r["status"] == "active"}
     collisions = {
         r["word"] for r in rows
         if r["status"] == "active" and r["pos"] == "verb" and r["word"] + "na" in active
     }
-    assert collisions == {"po"}  # pona（点数）と衝突。未解決（docs/grammar.md §10）
+    assert collisions == set()
