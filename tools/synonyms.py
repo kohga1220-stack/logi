@@ -10,6 +10,7 @@ OVERRIDES に載せた語は上の規則より優先する。
 使い方:
   python tools/synonyms.py           # 提案を表示するだけ
   python tools/synonyms.py --apply   # dictionary/final.csv に status / replaced_by を書き込む
+  python tools/synonyms.py --check   # final.csv の status が規則どおりか確かめる（食い違えば終了コード1）
 """
 
 import csv
@@ -87,6 +88,7 @@ def main(argv=None):
         reader = csv.DictReader(f)
         fields = list(reader.fieldnames)
         rows = list(reader)
+    committed = {id(r): {"status": r.get("status", ""), "replaced_by": r.get("replaced_by", "")} for r in rows}
     deprecated = propose(rows)
     for r in rows:
         # 毎回ゼロから決め直す（前回の status は引き継がない）
@@ -96,6 +98,16 @@ def main(argv=None):
         if r["status"] == "deprecated":
             print(f"{r['regenerated']:<10} -> {r['replaced_by']:<10} ({r['meaning_ja']}, {r['pos']})")
     print(f"deprecated: {len(deprecated)} / {len(rows)}")
+    if "--check" in argv:
+        stale = [
+            r["regenerated"] for r in rows
+            if (r["status"], r["replaced_by"]) != (committed[id(r)]["status"], committed[id(r)]["replaced_by"])
+        ]
+        if stale:
+            print(f"final.csv の status が規則と食い違っています: {', '.join(stale)}", file=sys.stderr)
+            return 1
+        print("status OK")
+        return 0
     if "--apply" in argv:
         for extra in EXTRA_FIELDS:
             if extra not in fields:
@@ -107,4 +119,4 @@ def main(argv=None):
 
 
 if __name__ == "__main__":
-    main()
+    sys.exit(main())

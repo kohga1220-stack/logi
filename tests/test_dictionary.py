@@ -70,3 +70,9 @@ def test_gerunds_do_not_collide_with_active_words(rows):
         if r["status"] == "active" and r["pos"] == "verb" and r["word"] + "na" in active
     }
     assert collisions == set()
+
+
+def test_synonym_status_matches_rules():
+    import synonyms
+
+    assert synonyms.main(["--check"]) == 0

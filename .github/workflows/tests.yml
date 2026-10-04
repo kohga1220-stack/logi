@@ -17,3 +17,7 @@ jobs:
         run: pip install numpy scipy pytest
       - name: Run tests
         run: python -m pytest
+      - name: Validate dictionary
+        run: python tools/validate.py
+      - name: Check synonym status
+        run: python tools/synonyms.py --check

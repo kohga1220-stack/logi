@@ -102,9 +102,8 @@ logi/
 └── tools/
     ├── synonyms.py         Canonical-word chooser for synonym groups / 同義語の正本選定
     ├── gloss.py            Dictionary-based word gloss for Logi sentences / 辞書ベースの語注生成
-    ├── validate.py         Phonology rule checker (default: dictionary/final.csv) / 音韻ルール検証
-    ├── regenerate.py       Auto-conversion to new phonology / 自動音韻変換
-    └── resolve.py          Homophone collision resolver / 同音衝突解決
+    ├── legacy/             Old regenerate/resolve pipeline (needs raw.csv; see legacy/README.md) / 旧パイプライン
+    └── validate.py         Phonology rule checker (default: dictionary/final.csv) / 音韻ルール検証
 ```
 
 ---

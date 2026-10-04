@@ -10,7 +10,7 @@ import csv
 import sys
 from pathlib import Path
 
-sys.path.insert(0, str(Path(__file__).resolve().parent))
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 from validate import check_word
 
 # (original_word, current_regenerated) -> new_regenerated
@@ -63,8 +63,18 @@ RESOLUTIONS = {
     ("para", "pala"): ("patala", "英part延長(pa-ta-la)"),
 }
 
+
+def require_force():
+    """final.csv が正本になったため、旧パイプラインは明示的に許可しない限り実行しない。"""
+    if "--force" not in sys.argv:
+        sys.exit(
+            "このツールは旧パイプライン用です（raw.csv / master.csv が必要。resolve.py は final.csv を上書きします）。\n"
+            "dictionary/final.csv が正本です。詳細は tools/legacy/README.md。実行するには --force を付けてください。"
+        )
+
 def main():
-    master_path = Path(__file__).resolve().parent.parent / "dictionary" / "master.csv"
+    require_force()
+    master_path = Path(__file__).resolve().parent.parent.parent / "dictionary" / "master.csv"
     rows = list(csv.DictReader(master_path.open()))
 
     applied = []
@@ -89,7 +99,7 @@ def main():
     new_violations = [r for r in rows if r["violations_after"] != "OK"]
 
     # 出力
-    final_path = Path(__file__).resolve().parent.parent / "dictionary" / "final.csv"
+    final_path = Path(__file__).resolve().parent.parent.parent / "dictionary" / "final.csv"
     with final_path.open("w", newline="") as f:
         writer = csv.DictWriter(f, fieldnames=list(rows[0].keys()))
         writer.writeheader()

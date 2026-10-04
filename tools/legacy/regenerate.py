@@ -22,7 +22,7 @@ import sys
 from collections import defaultdict
 from pathlib import Path
 
-sys.path.insert(0, str(Path(__file__).resolve().parent))
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 from validate import (
     VOWELS, CONSONANTS_NEW, POS_SUFFIX,
     strip_disambig, check_word, syllabify,
@@ -92,9 +92,19 @@ def regenerate(word: str, pos: str) -> str:
     base = re.sub(r"([aeiou])\1+", r"\1", base)
     return base
 
+
+def require_force():
+    """final.csv が正本になったため、旧パイプラインは明示的に許可しない限り実行しない。"""
+    if "--force" not in sys.argv:
+        sys.exit(
+            "このツールは旧パイプライン用です（raw.csv / master.csv が必要。resolve.py は final.csv を上書きします）。\n"
+            "dictionary/final.csv が正本です。詳細は tools/legacy/README.md。実行するには --force を付けてください。"
+        )
+
 def main():
-    raw = Path(__file__).resolve().parent.parent / "dictionary" / "raw.csv"
-    out_path = Path(__file__).resolve().parent.parent / "dictionary" / "master.csv"
+    require_force()
+    raw = Path(__file__).resolve().parent.parent.parent / "dictionary" / "raw.csv"
+    out_path = Path(__file__).resolve().parent.parent.parent / "dictionary" / "master.csv"
     rows = list(csv.DictReader(raw.open()))
 
     # 全件を再生成
