@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Logi 翻訳機</title>
+<style>
+  :root {
+    --bg: #f6f7f9; --card: #ffffff; --text: #1c2430; --muted: #5b6676; --line: #dde2ea;
+    --accent: #1f6feb; --accent-soft: #e8f0fe; --warn: #9a5b00; --warn-bg: #fff4dd; --bad: #b42318; --bad-bg: #fdecea;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #12161c; --card: #1b212b; --text: #e8ecf2; --muted: #9aa6b6; --line: #2c3544;
+      --accent: #6aa5ff; --accent-soft: #1d2b44; --warn: #f2c27a; --warn-bg: #3a2e18; --bad: #ff9d94; --bad-bg: #3d1f1c;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #12161c; --card: #1b212b; --text: #e8ecf2; --muted: #9aa6b6; --line: #2c3544;
+    --accent: #6aa5ff; --accent-soft: #1d2b44; --warn: #f2c27a; --warn-bg: #3a2e18; --bad: #ff9d94; --bad-bg: #3d1f1c;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--bg); color: var(--text);
+    font: 16px/1.6 system-ui, -apple-system, "Segoe UI", "Hiragino Sans", "Yu Gothic UI", sans-serif;
+  }
+  main { max-width: 760px; margin: 0 auto; padding: 24px 16px 48px; }
+  h1 { font-size: 1.5rem; margin: 0 0 4px; }
+  .lead { color: var(--muted); margin: 0 0 20px; font-size: 0.95rem; }
+  .card { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 16px; }
+  .card + .card { margin-top: 16px; }
+  .row { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; margin-bottom: 8px; }
+  label.title, .title { font-weight: 600; font-size: 0.95rem; }
+  .seg { display: inline-flex; border: 1px solid var(--line); border-radius: 8px; overflow: hidden; }
+  .seg button {
+    border: 0; background: transparent; color: var(--muted); padding: 6px 12px; font: inherit; font-size: 0.9rem; cursor: pointer;
+  }
+  .seg button + button { border-left: 1px solid var(--line); }
+  .seg button[aria-pressed="true"] { background: var(--accent-soft); color: var(--accent); font-weight: 600; }
+  textarea {
+    width: 100%; min-height: 110px; resize: vertical; padding: 12px; font: inherit; color: var(--text);
+    background: var(--bg); border: 1px solid var(--line); border-radius: 8px;
+  }
+  textarea:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  .chips { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 10px; }
+  .chip {
+    border: 1px solid var(--line); background: transparent; color: var(--text); border-radius: 999px;
+    padding: 4px 12px; font: inherit; font-size: 0.85rem; cursor: pointer;
+  }
+  .chip:hover { background: var(--accent-soft); }
+  .arrow { text-align: center; color: var(--muted); font-size: 1.2rem; margin: 6px 0; }
+  .logi {
+    font: 600 1.35rem/1.5 ui-monospace, "SF Mono", Menlo, Consolas, monospace; min-height: 2.2em;
+    padding: 12px; background: var(--accent-soft); border-radius: 8px; word-break: break-word; white-space: pre-wrap;
+  }
+  .logi .unk { color: var(--bad); }
+  .logi.empty { color: var(--muted); font-weight: 400; font-size: 1rem; }
+  .badge { font-size: 0.8rem; color: var(--muted); border: 1px solid var(--line); border-radius: 999px; padding: 1px 10px; }
+  .copy { border: 1px solid var(--line); background: transparent; color: var(--text); border-radius: 8px; padding: 4px 12px; font: inherit; font-size: 0.85rem; cursor: pointer; }
+  table { width: 100%; border-collapse: collapse; margin-top: 8px; font-size: 0.92rem; }
+  th, td { text-align: left; padding: 6px 8px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  th { color: var(--muted); font-weight: 600; font-size: 0.8rem; }
+  td.w { font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace; white-space: nowrap; }
+  td.w.unk { color: var(--bad); }
+  .notes { margin: 12px 0 0; padding: 10px 12px 10px 28px; background: var(--warn-bg); color: var(--warn); border-radius: 8px; font-size: 0.9rem; }
+  .fine { color: var(--muted); font-size: 0.82rem; margin-top: 16px; }
+  .fine a { color: var(--accent); }
+  details summary { cursor: pointer; font-weight: 600; font-size: 0.95rem; }
+  details ul { margin: 8px 0 0; padding-left: 20px; color: var(--muted); font-size: 0.9rem; }
+  @media (max-width: 480px) { .logi { font-size: 1.15rem; } td.w { white-space: normal; } }
+</style>
+</head>
+<body>
+<main>
+  <h1>Logi 翻訳機</h1>
+  <p class="lead">日本語か英語の文を入れると、下に Logi が出ます。辞書（約580語）と簡単なルールで訳す簡易版で、通信はしません。</p>
+
+  <section class="card" aria-labelledby="in-title">
+    <div class="row">
+      <label class="title" for="input" id="in-title">入力（日本語 / English）</label>
+      <div class="seg" role="group" aria-label="入力言語">
+        <button type="button" data-lang="auto" aria-pressed="true">自動判定</button>
+        <button type="button" data-lang="ja" aria-pressed="false">日本語</button>
+        <button type="button" data-lang="en" aria-pressed="false">English</button>
+      </div>
+    </div>
+    <textarea id="input" placeholder="例: 私はリンゴを食べる。 / I eat an apple." autocomplete="off" spellcheck="false"></textarea>
+    <div class="chips" id="samples" aria-label="例文"></div>
+  </section>
+
+  <div class="arrow" aria-hidden="true">▼</div>
+
+  <section class="card" aria-labelledby="out-title">
+    <div class="row">
+      <span class="title" id="out-title">Logi</span>
+      <span>
+        <span class="badge" id="lang-badge" hidden></span>
+        <button type="button" class="copy" id="copy" hidden>コピー</button>
+      </span>
+    </div>
+    <div class="logi empty" id="output" aria-live="polite">ここに翻訳が表示されます</div>
+    <ul class="notes" id="notes" hidden></ul>
+    <table id="gloss" hidden>
+      <thead><tr><th>Logi</th><th>意味</th></tr></thead>
+      <tbody></tbody>
+    </table>
+  </section>
+
+  <section class="card">
+    <details>
+      <summary>この翻訳機について</summary>
+      <ul>
+        <li>機械翻訳ではありません。<code>dictionary/final.csv</code> の語と、決まった文型のルールで変換します。</li>
+        <li>対応する文型: 時制（過去・未来）、進行・完了、否定、疑問、比較、関係節、動名詞、数字、前置詞句など。</li>
+        <li>辞書にない語は <span style="color:var(--bad)">[語?]</span> のまま残し、注意書きを出します。</li>
+        <li>英語の意味は <code>dictionary/glossary_en.csv</code>（未確認）にもとづきます。</li>
+        <li>仕様: <code>docs/grammar.md</code></li>
+      </ul>
+    </details>
+  </section>
+  <p class="fine">Logi: 15音・SVO・(C)V の人工言語 / コードは MIT、辞書・仕様は CC BY 4.0</p>
+</main>
+
+<script src="lexicon.js"></script>
+<script src="translator.js"></script>
+<script>
+(function () {
+  var translator = LogiTranslator.createTranslator(LOGI_LEXICON);
+  var input = document.getElementById('input');
+  var output = document.getElementById('output');
+  var notesEl = document.getElementById('notes');
+  var glossEl = document.getElementById('gloss');
+  var badge = document.getElementById('lang-badge');
+  var copyBtn = document.getElementById('copy');
+  var lang = 'auto';
+  var lastLogi = '';
+  var timer = null;
+
+  var SAMPLES = ['私はリンゴを食べる。', 'あなたは学生ですか？', '彼は来なかった。', 'I eat an apple.', 'What is your name?', 'He will go to school.'];
+  var samplesEl = document.getElementById('samples');
+  SAMPLES.forEach(function (s) {
+    var b = document.createElement('button');
+    b.type = 'button'; b.className = 'chip'; b.textContent = s;
+    b.addEventListener('click', function () { input.value = s; render(); input.focus(); });
+    samplesEl.appendChild(b);
+  });
+
+  Array.prototype.forEach.call(document.querySelectorAll('.seg button'), function (btn) {
+    btn.addEventListener('click', function () {
+      lang = btn.getAttribute('data-lang');
+      Array.prototype.forEach.call(document.querySelectorAll('.seg button'), function (b) {
+        b.setAttribute('aria-pressed', b === btn ? 'true' : 'false');
+      });
+      render();
+    });
+  });
+
+  function render() {
+    var text = input.value;
+    output.textContent = '';
+    notesEl.hidden = true; notesEl.textContent = '';
+    glossEl.hidden = true; glossEl.querySelector('tbody').textContent = '';
+    badge.hidden = true; copyBtn.hidden = true;
+    lastLogi = '';
+    if (!text.trim()) {
+      output.className = 'logi empty';
+      output.textContent = 'ここに翻訳が表示されます';
+      return;
+    }
+    var r;
+    try { r = translator.translate(text, lang); }
+    catch (e) { r = { lang: 'ja', logi: '', items: [], notes: ['翻訳中にエラーが起きました: ' + e.message], unknown: [] }; }
+    output.className = 'logi';
+    if (!r.logi) {
+      output.className = 'logi empty';
+      output.textContent = '訳せませんでした';
+    } else {
+      lastLogi = r.logi;
+      // 未登録語を赤で示す
+      r.logi.split(/(\[[^\]]*\?\])/).forEach(function (part) {
+        if (!part) return;
+        if (/^\[.*\?\]$/.test(part)) {
+          var span = document.createElement('span'); span.className = 'unk'; span.textContent = part; output.appendChild(span);
+        } else output.appendChild(document.createTextNode(part));
+      });
+      copyBtn.hidden = false;
+    }
+    badge.hidden = false;
+    badge.textContent = (r.lang === 'en' ? 'English' : '日本語') + ' → Logi';
+    if (r.notes && r.notes.length) {
+      notesEl.hidden = false;
+      r.notes.forEach(function (n) { var li = document.createElement('li'); li.textContent = n; notesEl.appendChild(li); });
+    }
+    if (r.items && r.items.length) {
+      glossEl.hidden = false;
+      var tbody = glossEl.querySelector('tbody');
+      r.items.forEach(function (it) {
+        var tr = document.createElement('tr');
+        var td1 = document.createElement('td'); td1.className = 'w' + (it.unknown ? ' unk' : ''); td1.textContent = it.w;
+        var td2 = document.createElement('td'); td2.textContent = it.gloss;
+        tr.appendChild(td1); tr.appendChild(td2); tbody.appendChild(tr);
+      });
+    }
+  }
+
+  input.addEventListener('input', function () { clearTimeout(timer); timer = setTimeout(render, 120); });
+  copyBtn.addEventListener('click', function () {
+    if (!lastLogi) return;
+    var done = function () { copyBtn.textContent = 'コピーしました'; setTimeout(function () { copyBtn.textContent = 'コピー'; }, 1200); };
+    if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(lastLogi).then(done, function () {});
+    else { var ta = document.createElement('textarea'); ta.value = lastLogi; document.body.appendChild(ta); ta.select(); try { document.execCommand('copy'); done(); } catch (e) {} document.body.removeChild(ta); }
+  });
+  render();
+})();
+</script>
+</body>
+</html>

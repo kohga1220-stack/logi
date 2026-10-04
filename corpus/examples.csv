@@ -19,7 +19,7 @@ id,feature,logi,ja
 18,relative-clause,mi sio mana ta li lano.,私は走っている人を見る。
 19,relative-clause,mi sio mana ta li kipo apa tote mi.,私は私にリンゴをくれた人を見る。
 20,gerund,mi laiko lotona.,私は読むことが好きだ。
-21,gerund,mi wonuto komona.,私は来ることを望む。
+21,gerund,mi wonuto komona.,私は来ることを欲する。
 22,causative,mi koso li tote komona.,私は彼を来させる。
 23,subjunctive,"ipu mi wutu pio pata, mi wutu pulaio.",もし私が鳥なら、飛ぶだろうに。
 24,coordination-and,mi ito pana e apa.,私はパンとリンゴを食べる。
@@ -37,7 +37,7 @@ id,feature,logi,ja
 36,adverb,li pasuti lano.,彼は速く走る。
 37,adverb,li peli pasuti lano.,彼はとても速く走る。
 38,modal,mi kani lano.,私は走れる。
-39,plural,mene tuka alo inute sukula.,多くの犬が学校にいる。
+39,plural,mene tuka alo inute sukula.,多くの犬が学校の中にいる。
 40,possession,tu tuka pio lase.,あなたの犬は大きい。
 41,reflexive,li sio selu.,彼は自分を見る。
 42,unspecified-agent,somena ito apa.,誰かがリンゴを食べる。
@@ -45,8 +45,8 @@ id,feature,logi,ja
 44,pronoun-exclusive,mipu iko tote sukula.,私たち（聞き手を含まない）は学校へ行く。
 45,question-where,tuka alo atute wela ka?,犬はどこにいますか？
 46,question-where-to,tu iko tote wela ka?,あなたはどこへ行きますか？
-47,question-when,tu putu komo atute wena ka?,あなたはいつ来ますか？
+47,question-when,tu putu komo atute wena ka?,あなたはいつ来るでしょうか？
 48,question-why,tu waia no ito apa ka?,なぜあなたはリンゴを食べないのですか？
 49,question-how,tu aua pasu komo ka?,あなたはどうやって来たのですか？
 50,modal-negation,mi kani no lano.,私は走れない。
-51,modal-tense,mi masi pasu ito apa.,私はリンゴを食べねばならなかった。
+51,modal-tense,mi masi pasu ito apa.,私はリンゴを食べなければならなかった。

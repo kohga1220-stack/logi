@@ -88,6 +88,14 @@ Examples: 20 = `to pulu` / 25 = `to pulu pe` / 2025 = `to mipulu ni kupulu to pu
 
 ---
 
+## Translator / 翻訳機
+
+Open `web/index.html` in a browser, type Japanese or English, and the Logi translation appears below. It is a dictionary-and-rules tool for simple sentences, not machine translation; see [`web/README.md`](web/README.md) for what it can and cannot do.
+
+`web/index.html` をブラウザで開き、日本語か英語を入力すると、下に Logi の訳が出ます。辞書と簡単なルールによる簡易版です（詳しくは [`web/README.md`](web/README.md)）。
+
+---
+
 ## Repository Structure / リポジトリ構成
 
 ```
@@ -95,11 +103,15 @@ logi/
 ├── README.md
 ├── docs/
 │   └── grammar.md          Full grammar specification / 文法仕様書（完全版）
+├── web/
+│   └── index.html          Translator page (Japanese/English → Logi) / 翻訳機（see web/README.md）
 ├── corpus/
 │   └── examples.csv        51 example sentences by grammar feature / 機能別例文51文
 ├── dictionary/
-│   └── final.csv           616-word validated dictionary / 検証済み辞書616語
+│   ├── final.csv           616-word validated dictionary / 検証済み辞書616語
+│   └── glossary_en.csv     English meanings for the translator (unreviewed) / 翻訳機用の英語の意味（未確認）
 └── tools/
+    ├── build_web.py        Builds web/lexicon.js for the translator / 翻訳機の辞書データ生成
     ├── make_review.py      Review tables for synonyms and the corpus / 確認表の生成
     ├── synonyms.py         Canonical-word chooser for synonym groups / 同義語の正本選定
     ├── gloss.py            Dictionary-based word gloss for Logi sentences / 辞書ベースの語注生成
@@ -120,6 +132,7 @@ logi/
 | v0.4 | 33 synonyms marked `deprecated` in `final.csv` (`status` / `replaced_by` columns; see `tools/synonyms.py`) |
 | v0.4 | Function words with a final consonant take `-u` (`pas`→`pasu`, `fut`→`putu`, `mor`→`moli` (existing adverb), `mis`→`misu`, `tante`→`tanute` …); reflexive `so`→`selu`, conjunction `so`→`sonu` (6 stays `so`); numerals, unit words, `mipu`, `selu` added; duplicate `komo` removed; 616 words |
 | v0.5 | Numerals 2/4/5 changed `tu`/`ka`/`li` → `to`/`ku`/`pe` (no numeral/function-word homophones left); verb `po` → `tulimo` (its gerund no longer collides with `pona`) |
+| v0.5 | Added the web translator (`web/`), `tools/build_web.py` and `dictionary/glossary_en.csv` (English meanings, unreviewed) |
 
 ---
 
