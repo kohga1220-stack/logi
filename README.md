@@ -16,7 +16,7 @@
 - **Suffix-based part-of-speech** — noun `-a`, verb `-o`, adjective `-e`, adverb `-i`, preposition `-te`
 - **No passive voice** — always active SVO
 - **No plural suffix** — plurality expressed via `mene` (many)
-- **616-word core dictionary** — machine-validated; the only homophones are numerals vs. function words (`tu`, `li`, `ka`)
+- **616-word core dictionary** — machine-validated; zero homophones
 - **Function words take `-u`**: a final consonant gets `-u` (`pas`→`pasu`), a consonant cluster is split by `u` (`tante`→`tanute`)
 
 ---
@@ -58,7 +58,7 @@ No consonant clusters. No word-final consonants.
 こんにちは。私は20歳で、大学生です。好きな食べ物はリンゴです。私はあなたと友達になりたいと思います。あなたの名前はなんですか？好きな食べ物はなんですか？いろいろ私に教えてください。
 
 **Logi**
-mi toko tu. mi oto tu pulu ila e mi pio sutua. mi mosi laiko apa. mi wonuto piona pulena witute tu. tu nema pio wata ka? tu laiko wata puta ka? tituso mene sina tote mi.
+mi toko tu. mi oto to pulu ila e mi pio sutua. mi mosi laiko apa. mi wonuto piona pulena witute tu. tu nema pio wata ka? tu laiko wata puta ka? tituso mene sina tote mi.
 
 **English gloss**
 I greet you. I have 20 years and I am a student. I most like apple. I want the being-friend with you. Your name is what? You like what food? Teach many things to me.
@@ -69,11 +69,11 @@ I greet you. I have 20 years and I am a student. I most like apple. I want the b
 
 | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 |
 |---|---|---|---|---|---|---|---|---|---|
-| ni | pa | tu | te | ka | li | so | se | wa | ja |
+| ni | pa | to | te | ku | pe | so | se | wa | ja |
 
 Units: `pulu`（×10）, `kupulu`（×100）, `mipulu`（×1000）
 
-Examples: 20 = `tu pulu` / 25 = `tu pulu li` / 2025 = `tu mipulu ni kupulu tu pulu li`
+Examples: 20 = `to pulu` / 25 = `to pulu pe` / 2025 = `to mipulu ni kupulu to pulu pe`
 
 ---
 
@@ -118,6 +118,7 @@ logi/
 | v0.4 | Added `corpus/examples.csv` (51 sentences) and `tools/gloss.py`; fixed non-dictionary doc examples (`rano`→`lano`, `tikona`→`titusona`) |
 | v0.4 | 33 synonyms marked `deprecated` in `final.csv` (`status` / `replaced_by` columns; see `tools/synonyms.py`) |
 | v0.4 | Function words with a final consonant take `-u` (`pas`→`pasu`, `fut`→`putu`, `mor`→`moli` (existing adverb), `mis`→`misu`, `tante`→`tanute` …); reflexive `so`→`selu`, conjunction `so`→`sonu` (6 stays `so`); numerals, unit words, `mipu`, `selu` added; duplicate `komo` removed; 616 words |
+| v0.5 | Numerals 2/4/5 changed `tu`/`ka`/`li` → `to`/`ku`/`pe` (no numeral/function-word homophones left); verb `po` → `tulimo` (its gerund no longer collides with `pona`) |
 
 ---
 
