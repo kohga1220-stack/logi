@@ -582,6 +582,14 @@ var LOGI_LEXICON = [
 {"w":"kupulu","pos":"num","ja":["百"],"jaNote":"百（位の単位）","en":[]},
 {"w":"mipulu","pos":"num","ja":["千"],"jaNote":"千（位の単位）","en":[]},
 {"w":"mipu","pos":"pronoun","ja":["私たち"],"jaNote":"私たち（排他）","en":["we","us"]},
-{"w":"selu","pos":"pronoun","ja":["自分"],"jaNote":"自分（再帰）","en":["myself","yourself","himself","herself","itself","themselves","oneself"]}
+{"w":"selu","pos":"pronoun","ja":["自分"],"jaNote":"自分（再帰）","en":["myself","yourself","himself","herself","itself","themselves","oneself"]},
+{"w":"pikosu","pos":"conj","ja":["なぜなら"],"jaNote":"なぜなら","en":["because","since"]},
+{"w":"wenute","pos":"conj","ja":["とき"],"jaNote":"とき","en":["when"]},
+{"w":"wailu","pos":"conj","ja":["間"],"jaNote":"間","en":["while"]},
+{"w":"pipolu","pos":"conj","ja":["前に"],"jaNote":"前に","en":["before"]},
+{"w":"aputi","pos":"conj","ja":["後で"],"jaNote":"後で","en":["after"]},
+{"w":"utilu","pos":"conj","ja":["まで"],"jaNote":"まで","en":["until"]},
+{"w":"ulesu","pos":"conj","ja":["でなければ"],"jaNote":"でなければ","en":["unless"]},
+{"w":"oluto","pos":"conj","ja":["のに"],"jaNote":"のに","en":["although","though"]}
 ];
 if (typeof module !== 'undefined') { module.exports = LOGI_LEXICON; }

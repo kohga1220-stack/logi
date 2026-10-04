@@ -16,7 +16,7 @@
 - **Suffix-based part-of-speech** — noun `-a`, verb `-o`, adjective `-e`, adverb `-i`, preposition `-te`
 - **No passive voice** — always active SVO
 - **No plural suffix** — plurality expressed via `mene` (many)
-- **616-word core dictionary** — machine-validated; zero homophones
+- **624-word core dictionary** — machine-validated; zero homophones
 - **Function words take `-u`**: a final consonant gets `-u` (`pas`→`pasu`), a consonant cluster is split by `u` (`tante`→`tanute`)
 
 ---
@@ -106,9 +106,9 @@ logi/
 ├── web/
 │   └── index.html          Translator page (Japanese/English → Logi) / 翻訳機（see web/README.md）
 ├── corpus/
-│   └── examples.csv        51 example sentences by grammar feature / 機能別例文51文
+│   └── examples.csv        58 example sentences by grammar feature / 機能別例文58文
 ├── dictionary/
-│   ├── final.csv           616-word validated dictionary / 検証済み辞書616語
+│   ├── final.csv           624-word validated dictionary / 検証済み辞書624語
 │   └── glossary_en.csv     English meanings for the translator (unreviewed) / 翻訳機用の英語の意味（未確認）
 └── tools/
     ├── build_web.py        Builds web/lexicon.js for the translator / 翻訳機の辞書データ生成
@@ -133,6 +133,7 @@ logi/
 | v0.4 | Function words with a final consonant take `-u` (`pas`→`pasu`, `fut`→`putu`, `mor`→`moli` (existing adverb), `mis`→`misu`, `tante`→`tanute` …); reflexive `so`→`selu`, conjunction `so`→`sonu` (6 stays `so`); numerals, unit words, `mipu`, `selu` added; duplicate `komo` removed; 616 words |
 | v0.5 | Numerals 2/4/5 changed `tu`/`ka`/`li` → `to`/`ku`/`pe` (no numeral/function-word homophones left); verb `po` → `tulimo` (its gerund no longer collides with `pona`) |
 | v0.5 | Added the web translator (`web/`), `tools/build_web.py` and `dictionary/glossary_en.csv` (English meanings, unreviewed) |
+| v0.6 | 8 subordinating conjunctions added (`pikosu` because, `wenute` when, `wailu` while, `pipolu` before, `aputi` after, `utilu` until, `ulesu` unless, `oluto` although); they go at the start of their clause, clause order follows the source; 624 words |
 
 ---
 

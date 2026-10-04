@@ -104,7 +104,15 @@ const JA_CONJ_CASES = [
   ['もし彼が来れば、私は行く。', 'ipu li komo, mi iko.'],
   ['彼は良い先生だ、だから私は彼が好きだ。', 'li pio kute titusa, sonu mi laiko li.'],
   ['しかし私は食べない。', 'patu mi no ito.'],
-  ['彼が来るから、私は行く。', 'li komo, sonu mi iko.'],
+  ['彼が来るから、私は行く。', 'pikosu li komo, mi iko.'],
+  ['彼が先生だから、私は彼が好きだ。', 'pikosu li pio titusa, mi laiko li.'],
+  ['彼が来るとき、私は行く。', 'wenute li komo, mi iko.'],
+  ['彼が読む間、私は食べる。', 'wailu li loto, mi ito.'],
+  ['彼が来る前に、私は食べる。', 'pipolu li komo, mi ito.'],
+  ['彼が来た後で、私は食べる。', 'aputi li pasu komo, mi ito.'],
+  ['彼が来るまで、私は待つ。', 'utilu li komo, mi mato.'],
+  ['彼が来たのに、私は行かなかった。', 'oluto li pasu komo, mi pasu no iko.'],
+  ['彼が来てから、私は食べる。', 'aputi li komo, mi ito.'],
   ['私は食べるが、あなたは飲む。', 'mi ito, patu tu liko.'],
   ['私は食べて、そして寝る。', 'mi ito, e mi neo.'],
   ['私はあなたが良いと思う。', 'mi omo tu pio kute.'],
@@ -128,10 +136,19 @@ const EN_CONJ_CASES = [
   ['I eat bread or you drink water.', 'mi ito pana, o tu liko jeta.'],
   ['I eat and sleep.', 'mi ito, e mi neo.'],
   ['He is a teacher, so I like him.', 'li pio titusa, sonu mi laiko li.'],
-  ['I like him because he is a teacher.', 'li pio titusa, sonu mi laiko li.'],
-  ['Because he is a teacher, I like him.', 'li pio titusa, sonu mi laiko li.'],
+  ['I like him because he is a teacher.', 'mi laiko li, pikosu li pio titusa.'],
+  ['Because he is a teacher, I like him.', 'pikosu li pio titusa, mi laiko li.'],
+  ['When he comes, I go.', 'wenute li komo, mi iko.'],
+  ['I eat when he comes.', 'mi ito, wenute li komo.'],
+  ['I read while he eats.', 'mi loto, wailu li ito.'],
+  ['I eat before he comes.', 'mi ito, pipolu li komo.'],
+  ['I eat after he comes.', 'mi ito, aputi li komo.'],
+  ['I wait until he comes.', 'mi mato, utilu li komo.'],
+  ['I do not go unless he comes.', 'mi no iko, ulesu li komo.'],
+  ['Although he came, I did not go.', 'oluto li pasu komo, mi pasu no iko.'],
   ['If he comes, I go.', 'ipu li komo, mi iko.'],
-  ['I go if he comes.', 'ipu li komo, mi iko.'],
+  ['I go if he comes.', 'mi iko, ipu li komo.'],
+  ['When do you come?', 'tu komo atute wena ka?'],
   ['If I were a bird, I would fly.', 'ipu mi wutu pio pata, mi wutu pulaio.'],
   ['I think you are good.', 'mi omo tu pio kute.'],
   ['I think that you are good.', 'mi omo tu pio kute.'],
@@ -148,13 +165,6 @@ test('英語の接続（but・so・and・or・because・if・that）', () => {
     if (got !== want) failures.push(`${en} => ${got} (期待: ${want})`);
   });
   assert.deepStrictEqual(failures, []);
-});
-
-test('辞書にない接続語（when など）は [語?] で残し、注意書きを出す', () => {
-  const r = translator.translate('I eat when you come.', 'en');
-  assert.ok(r.logi.includes('[when?]'));
-  assert.deepStrictEqual(r.unknown, ['when']);
-  assert.ok(r.items.some((i) => i.unknown && i.w === '[when?]'));
 });
 
 test('数字は docs/grammar.md §5 の数詞になる', () => {

@@ -103,6 +103,8 @@
       } else {
         forms.push([stemTa, { past: true }]);
       }
+      if (stemI) forms.push([stemI + 'ながら', { sub: 'wailu' }]);
+      if (stemTe) forms.push([stemTe + 'から', { sub: 'aputi' }]);
       forms.push([stemI + 'ます', {}], [stemI + 'ました', { past: true }],
         [stemI + 'ません', { neg: true }], [stemI + 'ませんでした', { neg: true, past: true }]);
       if (stemTe) {
@@ -216,11 +218,19 @@
     addJa('しかし', { k: 'CONJ', w: 'patu' });
     addJa('だが', { k: 'CONJ', w: 'patu' });
     addJa('でも', { k: 'CONJ', w: 'patu' });
-    addJa('だから', { k: 'CONJ', w: 'sonu' });
-    ['ですから', 'そのため', 'それで', 'したがって'].forEach(function (c) { addJa(c, { k: 'CONJ', w: 'sonu' }); });
+    addJa('だから', { k: 'CONJ', w: 'sonu', daka: true });
+    addJa('ですから', { k: 'CONJ', w: 'sonu', daka: true });
+    ['そのため', 'それで', 'したがって'].forEach(function (c) { addJa(c, { k: 'CONJ', w: 'sonu' }); });
     ['そして', 'それから', 'また'].forEach(function (c) { addJa(c, { k: 'CONJ', w: 'e' }); });
     ['けれども', 'けれど', 'けど'].forEach(function (c) { addJa(c, { k: 'CLC', w: 'patu' }); });
-    addJa('ので', { k: 'CLC', w: 'sonu' });
+    // 従属接続語: 直前の節（述語で終わる）にかかり、その節の頭に付く
+    addJa('ので', { k: 'SUBC', w: 'pikosu' });
+    ['とき', '時'].forEach(function (c) { addJa(c, { k: 'SUBC', w: 'wenute' }); });
+    ['間', 'あいだ'].forEach(function (c) { addJa(c, { k: 'SUBC', w: 'wailu' }); });
+    addJa('前に', { k: 'SUBC', w: 'pipolu' });
+    ['後で', 'あとで', '後に', 'あとに'].forEach(function (c) { addJa(c, { k: 'SUBC', w: 'aputi' }); });
+    addJa('まで', { k: 'SUBC', w: 'utilu' });
+    addJa('のに', { k: 'SUBC', w: 'oluto' });
     addJa('もし', { k: 'IF' });
     ['なら', 'ならば'].forEach(function (c) { addJa(c, { k: 'COND' }); });
     ['だろうに', 'でしょうに'].forEach(function (c) { addJa(c, { k: 'HYP' }); });
@@ -533,38 +543,55 @@
       return sentences;
     }
 
-    // 文を節に分け、節どうしをつなぐ語（patu・sonu・e・ipu）を決める
+    // 文を節に分け、節どうしをつなぐ語（patu・sonu・e）と、節の頭に付く従属接続語（ipu・pikosu・wenute など）を決める
     function segmentJa(tokens) {
       var segs = [];
       var cur = [];
       var connBefore = null;
       var ifFlag = false;
       var hyp = false;
-      function push(isCond) {
-        if (cur.length) { segs.push({ tokens: cur, conn: connBefore, cond: isCond || ifFlag }); connBefore = null; ifFlag = false; }
+      function push(sub) {
+        if (cur.length) {
+          segs.push({ tokens: cur, conn: connBefore, sub: sub || (ifFlag ? 'ipu' : null) });
+          connBefore = null; ifFlag = false;
+        }
         cur = [];
       }
       for (var i = 0; i < tokens.length; i++) {
         var t = tokens[i];
         if (t.k === 'COMMA') continue;
         if (t.k === 'HYP') { hyp = true; continue; }
-        if (t.k === 'IF') { push(false); ifFlag = true; continue; }
-        if (t.k === 'CONJ') { push(false); connBefore = t.w; continue; }
+        if (t.k === 'IF') { push(null); ifFlag = true; continue; }
+        if (t.k === 'CONJ') {
+          // 「先生だから」のように、述語の直後の だから・ですから は理由（pikosu）。文頭や「〜だ、だから」は結果（sonu）。
+          var prevTok = cur[cur.length - 1];
+          if (t.daka && prevTok && (prevTok.k === 'N' || prevTok.k === 'PRON' || prevTok.k === 'ANA' || prevTok.k === 'UNK')) {
+            cur.push({ k: 'COP', tags: {} });
+            push('pikosu');
+            continue;
+          }
+          push(null); connBefore = t.w; continue;
+        }
         if (t.k === 'COND') {
           if (!isPredLike(cur[cur.length - 1])) cur.push({ k: 'COP', tags: {} });
-          push(true); continue;
+          push('ipu'); continue;
         }
-        if ((t.k === 'ADJ' || t.k === 'V') && t.tags && t.tags.cond) { cur.push(t); push(true); continue; }
-        if (t.k === 'V' && t.tags && t.tags.te && i < tokens.length - 1) { cur.push(t); push(false); connBefore = 'e'; continue; }
-        if (t.k === 'CLC' || (t.k === 'P' && (t.p === 'が' || t.p === 'から') && isPredLike(cur[cur.length - 1]))) {
-          var w = t.k === 'CLC' ? t.w : (t.p === 'が' ? 'patu' : 'sonu');
-          push(false); connBefore = w; continue;
+        if ((t.k === 'ADJ' || t.k === 'V') && t.tags && t.tags.cond) { cur.push(t); push('ipu'); continue; }
+        if (t.k === 'V' && t.tags && t.tags.sub) { cur.push(t); push(t.tags.sub); continue; }
+        if (t.k === 'V' && t.tags && t.tags.te && i < tokens.length - 1) { cur.push(t); push(null); connBefore = 'e'; continue; }
+        if (t.k === 'SUBC' && isPredLike(cur[cur.length - 1])) { push(t.w); continue; }
+        if (t.k === 'SUBC') { cur.push({ k: 'UNK', text: SUBC_TEXT[t.w] || t.w }); continue; }
+        if (t.k === 'P' && t.p === 'から' && isPredLike(cur[cur.length - 1])) { push('pikosu'); continue; }
+        if (t.k === 'CLC' || (t.k === 'P' && t.p === 'が' && isPredLike(cur[cur.length - 1]))) {
+          var w = t.k === 'CLC' ? t.w : 'patu';
+          push(null); connBefore = w; continue;
         }
         cur.push(t);
       }
-      push(false);
+      push(null);
       return { segs: segs, hyp: hyp };
     }
+    var SUBC_TEXT = { pikosu: 'ので', wenute: 'とき', wailu: '間', pipolu: '前に', aputi: '後で', utilu: 'まで', oluto: 'のに' };
 
     function translateJa(text) {
       var notes = [];
@@ -577,7 +604,7 @@
         var irs = seg.segs.map(function (c, idx, arr) {
           var ir = parseJaClause(c.tokens, q && idx === arr.length - 1, notes);
           ir.conn = c.conn;
-          ir.cond = c.cond;
+          ir.sub = c.sub;
           if (seg.hyp) ir.hyp = true;
           return ir;
         });
@@ -645,7 +672,7 @@
         irs.forEach(function (ir, idx) {
           var items = generate(ir);
           var isLast = idx === irs.length - 1;
-          if (ir.cond) items = [item('ipu')].concat(items);
+          if (ir.sub) items = [item(ir.sub)].concat(items);
           if (ir.question && isLast) items = items.concat([item('ka')]);
           if (ir.conn) {
             var um = /^\[(.*)\?\]$/.exec(ir.conn);
@@ -1170,7 +1197,9 @@
       may: 1, might: 1, should: 1, have: 1, has: 1, had: 1, would: 1 };
 
     var COMPLEMENT_EN = { think: 1, know: 1, believe: 1, say: 1, hope: 1, guess: 1, notice: 1 };
-    var UNKNOWN_CONN = { when: 1, while: 1, although: 1, though: 1, before: 1, after: 1, until: 1, unless: 1 };
+    // 従属接続語: その節の頭に付く（節の順序は原文のまま）
+    var SUB_EN = { if: 'ipu', because: 'pikosu', since: 'pikosu', when: 'wenute', while: 'wailu', before: 'pipolu',
+      after: 'aputi', until: 'utilu', unless: 'ulesu', although: 'oluto', though: 'oluto' };
 
     // tokens[i] から主語つきの節（名詞句 + 動詞・助動詞）が始まるか
     function clauseStartsAt(tokens, i) {
@@ -1184,63 +1213,38 @@
       return !!(v && (v.form === 'past' || v.form === 's' || v.form === 'base') && !findNoun(nx));
     }
 
-    // 文を節に分け、つなぐ語を決める（patu・sonu・e・o・ipu）
+    // 文を節に分け、つなぐ語（patu・sonu・e・o）と従属接続語（ipu・pikosu など）を決める
     function splitEn(tokens, question) {
       var segs = [];
       var cur = [];
       var conn = null;
-      var kind = 'main';
-      var unk = null;
+      var sub = null;
       function push() {
-        if (cur.length) segs.push({ tokens: cur, conn: conn, kind: kind, unk: unk });
-        cur = []; conn = null; kind = 'main'; unk = null;
+        if (cur.length) segs.push({ tokens: cur, conn: conn, sub: sub });
+        cur = []; conn = null; sub = null;
       }
       for (var i = 0; i < tokens.length; i++) {
         var t = tokens[i];
         var startsClause = clauseStartsAt(tokens, i + 1);
         if (t === ',') {
           var nx = tokens[i + 1];
-          if (nx === 'but' || nx === 'so' || nx === 'and' || nx === 'or' || nx === 'because' || nx === 'if' || startsClause || kind === 'if' || kind === 'because') push();
+          if (nx === 'but' || nx === 'so' || nx === 'and' || nx === 'or' || SUB_EN[nx] || startsClause || sub) push();
           else if (nx && startsNP(nx)) cur.push('and'); // 「A, B and C」の並べ方
           continue;
         }
         if (t === 'but') { push(); conn = 'patu'; continue; }
         if (t === 'so' && startsClause) { push(); conn = 'sonu'; continue; }
-        if (t === 'because') { push(); kind = 'because'; continue; }
-        if (t === 'if') { push(); kind = 'if'; continue; }
+        if (SUB_EN[t] && !(question && i === 0 && t === 'when')) { push(); sub = SUB_EN[t]; continue; }
         if ((t === 'and' || t === 'or') && (startsClause || (tokens[i + 1] && findVerbOnly(tokens[i + 1])))) {
           push(); conn = t === 'and' ? 'e' : 'o'; continue;
         }
-        if (UNKNOWN_CONN[t] && !(question && i === 0)) { push(); kind = 'unk'; unk = t; continue; }
         cur.push(t);
       }
       push();
-      var list = segs.map(function (sg) {
-        var c = sg.conn;
-        if (sg.kind === 'unk') c = '[' + sg.unk + '?]';
-        return { tokens: sg.tokens, conn: c, cond: sg.kind === 'if', because: sg.kind === 'because',
-          hyp: sg.kind === 'if' && sg.tokens.indexOf('were') >= 0 };
+      return segs.map(function (sg) {
+        return { tokens: sg.tokens, conn: sg.conn, sub: sg.sub,
+          hyp: sg.sub === 'ipu' && sg.tokens.indexOf('were') >= 0 };
       });
-      // because: 「A because B」→ B sonu A、「Because A, B」→ A sonu B
-      for (var b = 0; b < list.length; b++) {
-        if (!list[b].because) continue;
-        if (b > 0) {
-          var m = list[b - 1];
-          list[b].conn = m.conn; m.conn = 'sonu';
-          list[b - 1] = list[b]; list[b] = m;
-        } else if (list[b + 1]) {
-          if (!list[b + 1].conn) list[b + 1].conn = 'sonu';
-        }
-      }
-      // if: 「B if A」→ ipu A, B
-      for (var c2 = 1; c2 < list.length; c2++) {
-        if (list[c2].cond && !list[c2 - 1].cond) {
-          var prev = list[c2 - 1];
-          list[c2].conn = prev.conn; prev.conn = null;
-          list[c2 - 1] = list[c2]; list[c2] = prev;
-        }
-      }
-      return list;
     }
 
     function translateEn(text) {
@@ -1264,7 +1268,7 @@
           var ir = translateEnTokens(sg.tokens, question && !multi, notes, { inheritSubject: prevSubject });
           if (!ir) { failed = true; return; }
           ir.conn = sg.conn;
-          ir.cond = sg.cond;
+          ir.sub = sg.sub;
           if (hyp) ir.hyp = true;
           if (multi && question && idx === segs.length - 1) ir.question = true;
           if (ir.subject) prevSubject = ir.subject;

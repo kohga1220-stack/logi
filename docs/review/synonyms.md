@@ -14,7 +14,7 @@
 | 洗う | verb | waso | alao | 音節数が少ない |  |
 | 書く | verb | kako | laito | 音節数が少ない |  |
 | 結婚する | verb | malo | melo | 辞書の並び順（機械的） | 要 |
-| 待つ | verb | mato | weto | 辞書の並び順（機械的） | 要 |
+| 待つ | verb | mato | weto | 例文で使用中 |  |
 | 作る | verb | meko | tuko | 辞書の並び順（機械的） | 要 |
 | 寝る | verb | neo | sulipo | 音節数が少ない |  |
 | 覚える | verb | upo | memo | 辞書の並び順（機械的） | 要 |
@@ -35,4 +35,4 @@
 | 愚かな | adj | sije | sutue | 音節数が少ない |  |
 | 良く | adv | poni | kuti | 辞書の並び順（機械的） | 要 |
 
-機械的に決めたグループ（要確認）: 17
+機械的に決めたグループ（要確認）: 16
