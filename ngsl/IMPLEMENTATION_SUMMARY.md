@@ -1,5 +1,7 @@
 # NGSL Implementation Summary
 
+> NGSL (statistical programming language) is a separate project from the constructed language Logi; see the repository root `README.md` for Logi.
+
 ## 🎯 Project Completion Status: ✅ 100%
 
 ### Phase 1: Core Language Features ✅ COMPLETE
@@ -26,10 +28,10 @@
 - [x] LAPACK Linear Algebra (det, inv, solve)
 - [x] Vector/Matrix Arithmetic with Broadcasting
 - [x] NGSLInterpreter Implementation (~400 lines)
-- [x] 22 Comprehensive Runtime Tests
+- [x] 28 Comprehensive Runtime Tests
 - [x] Performance Benchmarks (5.4x vs Python)
 
-## 📊 Test Summary: 78/78 PASSING ✅
+## 📊 Test Summary: 89/89 PASSING ✅
 
 | Component | Tests | Status |
 |-----------|-------|--------|
@@ -37,9 +39,9 @@
 | Parser | 4 | ✅ PASS |
 | Semantics | 3 | ✅ PASS |
 | Type Inference | 11 | ✅ PASS |
-| Statistics | 35 | ✅ PASS |
-| Interpreter (Runtime) | 22 | ✅ PASS |
-| **TOTAL** | **78** | **✅ PASS** |
+| Statistics | 40 | ✅ PASS |
+| Interpreter (Runtime) | 28 | ✅ PASS |
+| **TOTAL** | **89** | **✅ PASS** |
 
 ### Performance Metrics
 
@@ -201,7 +203,7 @@ let result = outer + inner;      // ERROR: inner not in scope
 ### All Tests
 ```bash
 python3 -m pytest -v
-# Output: 78 passed in 0.84s ✅
+# Output: 89 passed ✅
 ```
 
 ### Individual Test Suites
@@ -213,10 +215,10 @@ pytest tests/test_semantics.py -v       # 3 tests
 pytest tests/test_semantics_inference.py -v  # 11 tests
 
 # Language feature tests
-pytest tests/test_statistics.py -v      # 35 tests
+pytest tests/test_statistics.py -v      # 40 tests
 
 # Runtime tests
-pytest tests/test_interpreter.py -v     # 22 tests
+pytest tests/test_interpreter.py -v     # 28 tests
 ```
 
 ### Demos & Benchmarks
@@ -269,7 +271,7 @@ python3 benchmark_blas.py
 
 - **Type System**: Null checks, bounds checking, safe operations
 - **Error Handling**: Meaningful error messages with line numbers
-- **Testing**: 78 tests covering all major components
+- **Testing**: 89 tests covering all major components
 - **Documentation**: Inline code comments and docstrings
 - **Style**: PEP 8 compliant, consistent formatting
 
@@ -279,7 +281,7 @@ python3 benchmark_blas.py
 ✅ **Ownership System** - Unique interpretation of Rust-style ownership in Python
 ✅ **Scientific Computing** - 40+ statistical functions with RStudio-like API
 ✅ **High Performance** - Direct NumPy/SciPy backend with BLAS/LAPACK
-✅ **Comprehensive Testing** - 78 tests, 100% pass rate
+✅ **Comprehensive Testing** - 89 tests, 100% pass rate
 ✅ **Production Ready** - All major features implemented and tested
 
 ## 🎯 What Comes Next?
@@ -295,7 +297,7 @@ Possible future enhancements:
 
 ## 📚 References
 
-- **NGSL Specification**: See README_FULL.md
+- **NGSL Specification**: See README.md (this directory)
 - **NumPy Documentation**: https://numpy.org/
 - **SciPy Documentation**: https://scipy.org/
 - **BLAS/LAPACK Documentation**: https://netlib.org/
