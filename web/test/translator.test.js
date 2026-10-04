@@ -17,8 +17,8 @@ function readCorpus() {
   });
 }
 
-// 日本語の入力として未対応の構文（使役・仮定法・省略された主語・くれる/あげる）
-const UNSUPPORTED_JA = new Set([19, 22, 23, 26, 35]);
+// 日本語の入力として未対応の構文（使役・目的語の対比の「は」・くれる/あげる）
+const UNSUPPORTED_JA = new Set([19, 22, 26, 35]);
 
 test('corpus: 対応する日本語の例文は例文集の Logi と一致する', () => {
   const failures = [];
@@ -97,6 +97,64 @@ test('英語の例文', () => {
     if (got !== want) failures.push(`${en} => ${got} (期待: ${want})`);
   });
   assert.deepStrictEqual(failures, []);
+});
+
+const JA_CONJ_CASES = [
+  ['もし私が鳥なら、飛ぶだろうに。', 'ipu mi wutu pio pata, mi wutu pulaio.'],
+  ['もし彼が来れば、私は行く。', 'ipu li komo, mi iko.'],
+  ['彼は良い先生だ、だから私は彼が好きだ。', 'li pio kute titusa, sonu mi laiko li.'],
+  ['しかし私は食べない。', 'patu mi no ito.'],
+  ['彼が来るから、私は行く。', 'li komo, sonu mi iko.'],
+  ['私は食べるが、あなたは飲む。', 'mi ito, patu tu liko.'],
+  ['私は食べて、そして寝る。', 'mi ito, e mi neo.'],
+  ['私はあなたが良いと思う。', 'mi omo tu pio kute.'],
+  ['彼は私が来たと言った。', 'li pasu juo mi pasu komo.'],
+  ['なぜあなたはリンゴを食べないのですか？', 'tu waia no ito apa ka?']
+];
+
+test('日本語の接続（しかし・だから・から・が・て・もし〜なら・と思う）', () => {
+  const failures = [];
+  JA_CONJ_CASES.forEach(([ja, want]) => {
+    const got = translator.translate(ja, 'ja').logi;
+    if (got !== want) failures.push(`${ja} => ${got} (期待: ${want})`);
+  });
+  assert.deepStrictEqual(failures, []);
+});
+
+const EN_CONJ_CASES = [
+  ['I eat bread, but you drink water.', 'mi ito pana, patu tu liko jeta.'],
+  ['I eat bread but you drink water.', 'mi ito pana, patu tu liko jeta.'],
+  ['I eat bread and you drink water.', 'mi ito pana, e tu liko jeta.'],
+  ['I eat bread or you drink water.', 'mi ito pana, o tu liko jeta.'],
+  ['I eat and sleep.', 'mi ito, e mi neo.'],
+  ['He is a teacher, so I like him.', 'li pio titusa, sonu mi laiko li.'],
+  ['I like him because he is a teacher.', 'li pio titusa, sonu mi laiko li.'],
+  ['Because he is a teacher, I like him.', 'li pio titusa, sonu mi laiko li.'],
+  ['If he comes, I go.', 'ipu li komo, mi iko.'],
+  ['I go if he comes.', 'ipu li komo, mi iko.'],
+  ['If I were a bird, I would fly.', 'ipu mi wutu pio pata, mi wutu pulaio.'],
+  ['I think you are good.', 'mi omo tu pio kute.'],
+  ['I think that you are good.', 'mi omo tu pio kute.'],
+  ['He said that I came.', 'li pasu juo mi pasu komo.'],
+  ['I know he is a student.', 'mi mo li pio sutua.'],
+  ['But I do not eat.', 'patu mi no ito.'],
+  ['I like apples, bread and fish.', 'mi laiko mene apa e pana e tosa.']
+];
+
+test('英語の接続（but・so・and・or・because・if・that）', () => {
+  const failures = [];
+  EN_CONJ_CASES.forEach(([en, want]) => {
+    const got = translator.translate(en, 'en').logi;
+    if (got !== want) failures.push(`${en} => ${got} (期待: ${want})`);
+  });
+  assert.deepStrictEqual(failures, []);
+});
+
+test('辞書にない接続語（when など）は [語?] で残し、注意書きを出す', () => {
+  const r = translator.translate('I eat when you come.', 'en');
+  assert.ok(r.logi.includes('[when?]'));
+  assert.deepStrictEqual(r.unknown, ['when']);
+  assert.ok(r.items.some((i) => i.unknown && i.w === '[when?]'));
 });
 
 test('数字は docs/grammar.md §5 の数詞になる', () => {
