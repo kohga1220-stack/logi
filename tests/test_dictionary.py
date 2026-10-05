@@ -76,3 +76,18 @@ def test_synonym_status_matches_rules():
     import synonyms
 
     assert synonyms.main(["--check"]) == 0
+
+
+def test_eiken3_additions_are_all_present():
+    # 英検3級レベルの追加語（dictionary/eiken3_additions.csv）が辞書と英語訳に入っている
+    import coin_words
+
+    assert coin_words.main(["--check"]) == 0
+
+
+def test_eiken3_additions_have_no_repeated_vowels(rows):
+    import re
+
+    added = [r["word"] for r in rows if r["notes"].startswith("v0.7追加")]
+    assert added
+    assert [w for w in added if re.search(r"([aeiou])\1", w)] == []

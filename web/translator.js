@@ -215,6 +215,17 @@
     addJa('どんな', { k: 'DONNA' });
     ['は', 'が', 'を', 'へ', 'に', 'で', 'と', 'の', 'も', 'から', 'より', 'の中に', 'の上に', 'について', 'のために']
       .forEach(function (s) { addJa(s, { k: 'P', p: s }); });
+    // 辞書の前置詞のうち、助詞で始まる形（の上方に・なしで など）も助詞として扱う
+    var DICT_PARTICLE_PREP = {};
+    lexicon.forEach(function (e) {
+      if (e.pos !== 'prep') return;
+      e.ja.forEach(function (s) {
+        if (/^(の|に|を|から|なし)/.test(s) && !DICT_PARTICLE_PREP[s]) {
+          DICT_PARTICLE_PREP[s] = e.w;
+          addJa(s, { k: 'P', p: s });
+        }
+      });
+    });
     addJa('しかし', { k: 'CONJ', w: 'patu' });
     addJa('だが', { k: 'CONJ', w: 'patu' });
     addJa('でも', { k: 'CONJ', w: 'patu' });
@@ -371,6 +382,7 @@
       'へ': 'tote', 'に': 'tote', 'で': 'atute', 'と': 'witute', 'から': 'pulomute',
       'の中に': 'inute', 'の上に': 'onute', 'について': 'paute', 'のために': 'pote'
     };
+    Object.keys(DICT_PARTICLE_PREP).forEach(function (s) { if (!PARTICLE_PREP[s]) PARTICLE_PREP[s] = DICT_PARTICLE_PREP[s]; });
 
     var PRED_KINDS = { V: 1, COP: 1, ADJ: 1, ANA: 1, FUT: 1 };
     function isPredLike(t) { return !!t && !!PRED_KINDS[t.k] && !(t.k === 'ADJ' && t.attr); }
@@ -723,6 +735,15 @@
     var WH = { what: 'wata', who: 'kua', whom: 'kua', where: 'wela', when: 'wena', why: 'waia', how: 'aua' };
     var PREPS = { to: 'tote', from: 'pulomute', with: 'witute', in: 'inute', inside: 'inute', on: 'onute',
       about: 'paute', for: 'pote', at: 'atute', by: 'atute' };
+    // 辞書の代名詞・前置詞（英語1語の訳）も使えるようにする
+    lexicon.forEach(function (e) {
+      if (e.pos !== 'pronoun' && e.pos !== 'prep') return;
+      var table = e.pos === 'pronoun' ? PRONOUNS : PREPS;
+      e.en.forEach(function (g) {
+        var key = g.toLowerCase();
+        if (/^[a-z]+$/.test(key) && !table[key]) table[key] = e.w;
+      });
+    });
     var MODALS = { can: 'kani', must: 'masi', may: 'mei', might: 'mei', should: 'sati' };
     var BE = { be: 1, am: 1, is: 1, are: 1, was: 1, were: 1, been: 1, being: 1 };
     var NUMWORDS = { zero: 0, one: 1, two: 2, three: 3, four: 4, five: 5, six: 6, seven: 7, eight: 8, nine: 9,
