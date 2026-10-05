@@ -197,3 +197,24 @@ test('出力の語はすべて辞書の語か、翻訳機が使う機能語・�
       });
     });
 });
+
+test('英検3級レベルの追加語（v0.7）: 動詞・副詞・前置詞・代名詞が訳せる', () => {
+  const cases = [
+    ['I buy a house.', 'mi puo usa.'],
+    ['I carefully cook an egg.', 'mi kalepi kuko eka.'],
+    ['He is under the table.', 'li alo unate tepa.'],
+    ['I go without him.', 'mi iko wipate li.'],
+    ['Everyone is happy.', 'ewa pio ape.'],
+    ['私は家の下に猫を見る。', 'mi sio kata unate usa.'],
+    ['猫は机の後ろにいる。', 'kata alo peite tesuka.'],
+    ['みんなは幸せだ。', 'ewa pio ape.'],
+  ];
+  cases.forEach(([src, logi]) => {
+    assert.strictEqual(translator.translate(src, 'auto').logi, logi, src);
+  });
+});
+
+test('英検3級レベルの追加語: 別名（aliases）でも引ける', () => {
+  assert.ok(!translator.translate('I like a fridge.', 'en').logi.includes('?'));
+  assert.ok(!translator.translate('I like a refrigerator.', 'en').logi.includes('?'));
+});

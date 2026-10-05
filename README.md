@@ -16,7 +16,7 @@
 - **Suffix-based part-of-speech** — noun `-a`, verb `-o`, adjective `-e`, adverb `-i`, preposition `-te`
 - **No passive voice** — always active SVO
 - **No plural suffix** — plurality expressed via `mene` (many)
-- **624-word core dictionary** — machine-validated; zero homophones
+- **1,111-word core dictionary** — machine-validated; zero homophones
 - **Function words take `-u`**: a final consonant gets `-u` (`pas`→`pasu`), a consonant cluster is split by `u` (`tante`→`tanute`)
 
 ---
@@ -108,9 +108,11 @@ logi/
 ├── corpus/
 │   └── examples.csv        58 example sentences by grammar feature / 機能別例文58文
 ├── dictionary/
-│   ├── final.csv           624-word validated dictionary / 検証済み辞書624語
+│   ├── final.csv           1,111-word validated dictionary / 検証済み辞書1,111語
+│   ├── eiken3_additions.csv  Eiken grade-3 level word list added in v0.7 (English, POS, Japanese meaning) / 英検3級レベルの追加語リスト
 │   └── glossary_en.csv     English meanings for the translator (unreviewed) / 翻訳機用の英語の意味（未確認）
 └── tools/
+    ├── coin_words.py       Coins Logi words for dictionary/eiken3_additions.csv / 追加語の造語
     ├── build_web.py        Builds web/lexicon.js for the translator / 翻訳機の辞書データ生成
     ├── make_review.py      Review tables for synonyms and the corpus / 確認表の生成
     ├── synonyms.py         Canonical-word chooser for synonym groups / 同義語の正本選定
@@ -134,6 +136,7 @@ logi/
 | v0.5 | Numerals 2/4/5 changed `tu`/`ka`/`li` → `to`/`ku`/`pe` (no numeral/function-word homophones left); verb `po` → `tulimo` (its gerund no longer collides with `pona`) |
 | v0.5 | Added the web translator (`web/`), `tools/build_web.py` and `dictionary/glossary_en.csv` (English meanings, unreviewed) |
 | v0.6 | 8 subordinating conjunctions added (`pikosu` because, `wenute` when, `wailu` while, `pipolu` before, `aputi` after, `utilu` until, `ulesu` unless, `oluto` although); they go at the start of their clause, clause order follows the source; 624 words |
+| v0.7 | 487 words of Eiken grade-3 level added (nouns, verbs, adjectives, adverbs, prepositions, pronouns; coined by `tools/coin_words.py` from `dictionary/eiken3_additions.csv`); translator reads prepositions and pronouns from the dictionary; 1,111 words |
 
 ---
 
