@@ -1,6 +1,6 @@
 """英検3級レベルの語彙を、音訳規則（docs/grammar.md §8）で Logi の語にして辞書へ足す。
 
-入力: dictionary/eiken3_additions.csv（英語・品詞・日本語の意味・別名）
+入力: dictionary/eiken3_additions.csv と dictionary/core_additions.csv（英語・品詞・日本語の意味・別名）
 出力: dictionary/final.csv に行を追加し、dictionary/glossary_en.csv に英語訳を追加する。
 
 語の作り方:
@@ -25,9 +25,12 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 from validate import DEFAULT_DICTIONARY, check_word
 
 ROOT = Path(__file__).resolve().parent.parent
-ADDITIONS = ROOT / "dictionary" / "eiken3_additions.csv"
 GLOSSARY = ROOT / "dictionary" / "glossary_en.csv"
-TAG = "v0.7追加: 英検3級語彙 "
+# (追加リスト, final.csv の notes に付ける印)。上から順に造語するので、順番を変えない
+SOURCES = [
+    (ROOT / "dictionary" / "eiken3_additions.csv", "v0.7追加: 英検3級語彙 "),
+    (ROOT / "dictionary" / "core_additions.csv", "v0.8追加: 日本語の基本語彙 "),
+]
 
 ENDING = {"noun": "a", "verb": "o", "adj": "e", "adv": "i", "pronoun": "a", "prep": "te"}
 VOWELS = "aeiou"
@@ -72,13 +75,26 @@ def syllables(s):
     return re.findall(r"[ptkmnslwj]?[aeiou]|[ptkmnslwj]$", s)
 
 
-def edit_distance(a, b):
-    d = list(range(len(b) + 1))
-    for i, ca in enumerate(a, 1):
-        prev, d[0] = d[:], i
-        for j, cb in enumerate(b, 1):
-            d[j] = min(prev[j] + 1, d[j - 1] + 1, prev[j - 1] + (ca != cb))
-    return d[-1]
+ALPHABET = VOWELS + CONSONANTS
+
+
+def neighbors(word):
+    """編集距離1の語形（置換・削除・挿入）をすべて返す。"""
+    out = set()
+    for i in range(len(word) + 1):
+        if i < len(word):
+            out.add(word[:i] + word[i + 1:])
+            for ch in ALPHABET:
+                out.add(word[:i] + ch + word[i + 1:])
+        for ch in ALPHABET:
+            out.add(word[:i] + ch + word[i:])
+    out.discard(word)
+    return out
+
+
+def nearest_distance(word, taken):
+    """既存の語との編集距離（1か2。2は「2以上」）。"""
+    return 1 if neighbors(word) & taken else 2
 
 
 def build_stem(english, pos):
@@ -153,7 +169,7 @@ def coin(english, pos, taken, verbs, base_word=None, base_pos=None):
         word = cand + ending
         if not acceptable(word, pos, taken, verbs):
             continue
-        dist = min(edit_distance(word, t) for t in taken)
+        dist = nearest_distance(word, taken)
         if dist >= 2:
             return word
         if best is None or dist > best[0]:
@@ -167,19 +183,26 @@ def load_dictionary():
         return reader.fieldnames, list(reader)
 
 
-def load_additions():
-    with ADDITIONS.open(newline="", encoding="utf-8") as f:
+def load_additions(path):
+    if not path.exists():
+        return []
+    with path.open(newline="", encoding="utf-8") as f:
         return list(csv.DictReader(f))
 
 
 def main(argv=None):
     argv = sys.argv[1:] if argv is None else argv
     fields, rows = load_dictionary()
-    additions = load_additions()
-    done = {r["notes"][len(TAG):].split(" ")[0]: r["regenerated"] for r in rows if r["notes"].startswith(TAG)}
-    done_keys = {(r["notes"][len(TAG):]): r["regenerated"] for r in rows if r["notes"].startswith(TAG)}
+    done_keys = {}
+    for _, tag in SOURCES:
+        for r in rows:
+            if r["notes"].startswith(tag):
+                done_keys[(tag, r["notes"][len(tag):])] = r["regenerated"]
     if "--check" in argv:
-        missing = [a["english"] for a in additions if f"{a['english']} {a['pos']}" not in done_keys]
+        missing = [
+            a["english"] for path, tag in SOURCES for a in load_additions(path)
+            if (tag, f"{a['english']} {a['pos']}") not in done_keys
+        ]
         if missing:
             print("辞書に入っていない語:", ", ".join(missing), file=sys.stderr)
             return 1
@@ -188,49 +211,45 @@ def main(argv=None):
 
     taken = {r["regenerated"] for r in rows}
     verbs = {r["regenerated"] for r in rows if r["pos"] == "verb"}
+    pos_of = {r["regenerated"]: r["pos"] for r in rows}
     english_to_word = {}
-    for r in rows:
-        if r["status"] == "active":
-            pass
     with GLOSSARY.open(newline="", encoding="utf-8") as f:
         for g in csv.DictReader(f):
             for e in g["en"].split("|"):
-                english_to_word.setdefault((e.lower(), None), g["word"])
-    pos_of = {r["regenerated"]: r["pos"] for r in rows}
-    for (e, _), w in list(english_to_word.items()):
-        english_to_word[(e, pos_of.get(w))] = w
+                english_to_word.setdefault((e.lower(), pos_of.get(g["word"])), g["word"])
 
     new_rows, new_gloss = [], []
-    for a in additions:
-        key = f"{a['english']} {a['pos']}"
-        if key in done_keys:
-            continue
-        base_word = None
-        lemma = a["english"].lower()
-        if a["pos"] == "adv" and lemma.endswith("ly"):
-            base = {"easi": "easy"}.get(lemma[:-2], lemma[:-2])
-            base_word = english_to_word.get((base, "adj"))
-        if base_word is None:
-            # 同じ英語の別品詞があれば、その語幹を使う
-            for other in ("adj", "noun", "verb", "adv"):
-                if other != a["pos"] and (lemma, other) in english_to_word:
-                    base_word = english_to_word[(lemma, other)]
-                    break
-        word = coin(a["english"], a["pos"], taken, verbs, base_word, pos_of.get(base_word))
-        if word is None:
-            print(f"語を作れませんでした: {a['english']}", file=sys.stderr)
-            return 1
-        taken.add(word)
-        pos_of[word] = a["pos"]
-        if a["pos"] == "verb":
-            verbs.add(word)
-        english_to_word[(a["english"].lower(), a["pos"])] = word
-        new_rows.append({
-            "original": a["english"], "regenerated": word, "pos": a["pos"], "meaning_ja": a["meaning_ja"],
-            "violations_before": "OK", "violations_after": "OK", "notes": TAG + key, "status": "active", "replaced_by": "",
-        })
-        en = [a["english"]] + [x for x in a["aliases"].split("|") if x]
-        new_gloss.append((word, "|".join(en)))
+    for path, tag in SOURCES:
+        for a in load_additions(path):
+            key = f"{a['english']} {a['pos']}"
+            if (tag, key) in done_keys:
+                continue
+            base_word = None
+            lemma = a["english"].lower()
+            if a["pos"] == "adv" and lemma.endswith("ly"):
+                base = {"easi": "easy"}.get(lemma[:-2], lemma[:-2])
+                base_word = english_to_word.get((base, "adj"))
+            if base_word is None:
+                # 同じ英語の別品詞があれば、その語幹を使う
+                for other in ("adj", "noun", "verb", "adv"):
+                    if other != a["pos"] and (lemma, other) in english_to_word:
+                        base_word = english_to_word[(lemma, other)]
+                        break
+            word = coin(a["english"], a["pos"], taken, verbs, base_word, pos_of.get(base_word))
+            if word is None:
+                print(f"語を作れませんでした: {a['english']}", file=sys.stderr)
+                return 1
+            taken.add(word)
+            pos_of[word] = a["pos"]
+            if a["pos"] == "verb":
+                verbs.add(word)
+            english_to_word[(lemma, a["pos"])] = word
+            new_rows.append({
+                "original": a["english"], "regenerated": word, "pos": a["pos"], "meaning_ja": a["meaning_ja"],
+                "violations_before": "OK", "violations_after": "OK", "notes": tag + key, "status": "active", "replaced_by": "",
+            })
+            en = [a["english"]] + [x for x in a["aliases"].split("|") if x]
+            new_gloss.append((word, "|".join(en)))
     if not new_rows:
         print("追加する語はありません")
         return 0
