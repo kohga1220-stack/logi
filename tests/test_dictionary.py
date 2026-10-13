@@ -85,9 +85,9 @@ def test_eiken3_additions_are_all_present():
     assert coin_words.main(["--check"]) == 0
 
 
-def test_eiken3_additions_have_no_repeated_vowels(rows):
+def test_added_words_have_no_repeated_vowels(rows):
     import re
 
-    added = [r["word"] for r in rows if r["notes"].startswith("v0.7追加")]
+    added = [r["word"] for r in rows if r["notes"].startswith(("v0.7追加", "v0.8追加"))]
     assert added
     assert [w for w in added if re.search(r"([aeiou])\1", w)] == []

@@ -924,7 +924,7 @@
       }
       // and / or
       var conj = cur.peek();
-      if ((conj === 'and' || conj === 'or') && startsNP(cur.peek(1)) && !findVerbOnly(cur.peek(1))) {
+      if ((conj === 'and' || conj === 'or') && startsNP(cur.peek(1)) && !findVerbOnly(cur.peek(1), cur.peek(2))) {
         var save = cur.i;
         cur.next();
         var more = parseNP(cur, ctx);
@@ -934,7 +934,13 @@
       return { items: items };
     }
 
-    function findVerbOnly(tok) { return findVerb(tok) && !findNoun(tok) && !findAdj(tok) && !PRONOUNS[tok]; }
+    var OBJECT_PRONOUNS = { me: 1, you: 1, him: 1, her: 1, it: 1, us: 1, them: 1 };
+    function findVerbOnly(tok, next) {
+      if (!findVerb(tok) || PRONOUNS[tok]) return false;
+      if (!findNoun(tok) && !findAdj(tok)) return true;
+      // drink・rest・play など名詞でもある語: 次が限定詞・目的語の代名詞・前置詞なら動詞とみなす
+      return !!(next && (DETERMINERS[next] || POSSESSIVES[next] || OBJECT_PRONOUNS[next] || PREPS[next]) && !findAdj(tok));
+    }
 
     function translateEnSentence(raw, question, notes, opts) {
       var text = expandContractions(raw).toLowerCase();
@@ -1082,7 +1088,8 @@
         var adjTok = cur.peek();
         var adj = adjTok ? findAdj(adjTok) : null;
         var nounAlso = adjTok ? findNoun(adjTok) : null;
-        if (adj && !nounAlso) {
+        var adjFollowedByNoun = !!(cur.peek(1) && startsNP(cur.peek(1)) && cur.peek(1) !== 'than');
+        if (adj && (!nounAlso || !adjFollowedByNoun)) {
           cur.next();
           if (adj.deg === 'comp' && !comp.length) comp.push(item('moli'));
           if (adj.deg === 'sup') comp.push(item('mosi'));
@@ -1231,7 +1238,8 @@
       if (!nx) return false;
       if (AUX_START[nx] || MODALS[nx] || BE[nx] || nx === 'not') return true;
       var v = findVerb(nx);
-      return !!(v && (v.form === 'past' || v.form === 's' || v.form === 'base') && !findNoun(nx));
+      var pronounSubject = cur.i === 1 && !!PRONOUNS[tokens[i]];
+      return !!(v && (v.form === 'past' || v.form === 's' || v.form === 'base') && (!findNoun(nx) || pronounSubject));
     }
 
     // 文を節に分け、つなぐ語（patu・sonu・e・o）と従属接続語（ipu・pikosu など）を決める
@@ -1256,7 +1264,7 @@
         if (t === 'but') { push(); conn = 'patu'; continue; }
         if (t === 'so' && startsClause) { push(); conn = 'sonu'; continue; }
         if (SUB_EN[t] && !(question && i === 0 && t === 'when')) { push(); sub = SUB_EN[t]; continue; }
-        if ((t === 'and' || t === 'or') && (startsClause || (tokens[i + 1] && findVerbOnly(tokens[i + 1])))) {
+        if ((t === 'and' || t === 'or') && (startsClause || (tokens[i + 1] && findVerbOnly(tokens[i + 1], tokens[i + 2])))) {
           push(); conn = t === 'and' ? 'e' : 'o'; continue;
         }
         cur.push(t);

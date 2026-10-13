@@ -173,12 +173,12 @@ test('数字は docs/grammar.md §5 の数詞になる', () => {
 });
 
 test('辞書にない語は [語?] で残し、notes と unknown に出す', () => {
-  const ja = translator.translate('私は鉛筆を食べる。', 'ja');
-  assert.ok(ja.logi.includes('[鉛筆?]'));
-  assert.deepStrictEqual(ja.unknown, ['鉛筆']);
+  const ja = translator.translate('私はシマウマを食べる。', 'ja');
+  assert.ok(ja.logi.includes('[シマウマ?]'));
+  assert.deepStrictEqual(ja.unknown, ['シマウマ']);
   assert.ok(ja.notes.length > 0);
-  const en = translator.translate('I eat a pencil.', 'en');
-  assert.ok(en.logi.includes('[pencil?]'));
+  const en = translator.translate('I eat a zebra.', 'en');
+  assert.ok(en.logi.includes('[zebra?]'));
 });
 
 test('言語の自動判定と空入力', () => {
@@ -217,4 +217,18 @@ test('英検3級レベルの追加語（v0.7）: 動詞・副詞・前置詞・�
 test('英検3級レベルの追加語: 別名（aliases）でも引ける', () => {
   assert.ok(!translator.translate('I like a fridge.', 'en').logi.includes('?'));
   assert.ok(!translator.translate('I like a refrigerator.', 'en').logi.includes('?'));
+});
+
+test('日本語の基本語彙（v0.8）: 夢・赤・する などが訳せる', () => {
+  const cases = [
+    ['私は夢を見る。', 'mi sio tulima.'],
+    ['I have a dream.', 'mi oto tulima.'],
+    ['人生は夢だ。', 'lipeta pio tulima.'],
+    ['私はテニスをする。', 'mi topo tenisa.'],
+    ['The apple is red.', 'apa pio lete.'],
+    ['I eat bread and you drink water.', 'mi ito pana, e tu liko jeta.'],
+  ];
+  cases.forEach(([src, logi]) => {
+    assert.strictEqual(translator.translate(src, 'auto').logi, logi, src);
+  });
 });

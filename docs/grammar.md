@@ -215,6 +215,14 @@ SVO + 前置詞句で代替。
 - 意味（日本語・英語）は Claude が書いた案で、人の確認を受けていない。造語した音も提案であり、気に入らない語は `final.csv` で直してよい（その後 `python tools/build_web.py`）。
 - 語彙の元にした見出し語は、公開されている英検3級の単語リスト2件（edule.jp、step.saitama.jp）の見出し語のみ。例文や解説は使っていない。
 
+### 8.2 日本語の基本語彙の追加（v0.8）
+英検3級は英語学習者向けの範囲で、「夢」や「人生」のような日常語が抜けていた。そこで日本語の基本語彙を基準にし直した。
+
+- 基準: 国立国語研究所の「日本語教育基本語彙データベース」（CC BY 4.0。`dictionary/sources/`）で、6つのリストのうち5つ以上に採用され、国語研教育基本語彙で◎の語。候補は `python tools/core_candidates.py` で出せる。
+- 英語・品詞・日本語の意味を付けた `dictionary/core_additions.csv` から、§8.1 と同じ方法（`tools/coin_words.py`）で549語を造語した。
+- 数詞・日付の数え方・敬語・指示詞（これ・あれ）・はい／いいえは入れていない。複合語で言えるものと、文法に枠が無いものは、設計が決まってから足す（出典 README に一覧）。
+- 英語と日本語の意味は Claude が書いた案で、人の確認を受けていない。
+
 ---
 
 ## 9. 確定例文
@@ -245,7 +253,7 @@ mi toko tu. mi oto to pulu ila e mi pio sutua. mi mosi laiko apa. mi wonuto pion
 
 ## 10. 派生・複合語と接続詞（v0.4 草案・未確定）
 
-辞書 `dictionary/final.csv`（1,111語）を調べた結果に基づく草案。例文コーパスで検証してから確定する。
+辞書 `dictionary/final.csv`（1,660語）を調べた結果に基づく草案。例文コーパスで検証してから確定する。
 
 ### 10.1 派生語
 - 確定済みの規則は動名詞 **動詞 + na**（pio → piona）のみ。
@@ -358,5 +366,6 @@ v0.5 で po を **tulimo**（英 dream の音訳: d→t, r→l, 子音連続を 
 | v0.5 | 動詞 po（夢見る）を tulimo に改め、動名詞 pona と点数 pona の衝突を解消 |
 | v0.6 | 従属接続語を8語追加（pikosu 〜なので・wenute 〜とき・wailu 〜間・pipolu 〜前に・aputi 〜後で・utilu 〜まで・ulesu 〜でなければ・oluto 〜のに）し、624語。従属接続語は節の直前に置き、節の順序は原文のままとする（§10.3.1）|
 | v0.7 | 英検3級レベルの語を487語追加し、1,111語（§8.1）。名詞・動詞・形容詞・副詞・前置詞・代名詞。前置詞は above/across/against/among/around/behind/between/during/into/near/off/over/through/under/without/onto/beside |
+| v0.8 | 日本語の基本語彙を549語追加し、1,660語（§8.2）。夢 `tulima`（動詞 `tulimo` と同じ語幹）・人生 `lipeta`・する `topo` など |
 | v0.4 | 疑問詞はその場置き、法副詞は副詞の位置（マーカーの前）と §7 に追記 |
 | v0.4 | 同義語33語を deprecated にし（status / replaced_by 列を追加）、正本の選び方を §10.6 に記載 |
