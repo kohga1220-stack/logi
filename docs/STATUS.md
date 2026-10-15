@@ -29,11 +29,12 @@
 
 - **Claude**: 短い語の空き形が少ない問題（2音節は114個）への対応を提案する。感動詞（ありがとう・こんにちは など）を造るかの提案を書く。
 - **Antigravity**: 内容語（名詞・動詞・形容詞・副詞）の増量。`dictionary/anti_additions.csv` に追記する（`docs/WORKFLOW.md` §2）。`dictionary/word_review.csv` で `fix` になった語の修正。
-- **M1ko**: 提案001の選択。確認表の確認。PRのマージ。
+- **M1ko**: 追加語の確認表の確認。PRのマージ。
 
 ## 最近の主な変更
 
-- v0.10: 指示詞 `iliu`・`teliu`、はい `jesu`（いいえは `no`）、数量の疑問 `aua mene`、年齢の疑問 `wata ila`（提案001の決定を実装）。翻訳機の英語・日本語の対応と、例文7文。
+- v0.10: 指示詞 `iliu`・`teliu`、はい `jesu`（いいえは `no`）、数量の疑問 `aua mene`、年齢の疑問 `wata ila`（提案001の決定を実装）。翻訳機の英語・日本語の対応と、例文7文（PR #23）。
+- `coin_words.py`: すでにある語と同じ意味になる追加行を止める（PR #22）。
 - 分担と進め方（`docs/WORKFLOW.md`）、整合性と担当範囲の検査をCIに追加（PR #19）。
 - 翻訳機: 動詞の名詞化に対応（「食べるのが好き」・Reading books is fun.。PR #18）。
 - 追加語の確認表（`docs/review/new_words.md`、`dictionary/word_review.csv`。PR #17）。
