@@ -244,3 +244,30 @@ test('現代・IT語彙（v0.9）: プログラム（名詞）とプログラム
     assert.strictEqual(translator.translate(src, 'auto').logi, logi, src);
   });
 });
+
+test('動詞の名詞化: 日本語の「Vのが」「Vこと」と英語の動名詞の主語', () => {
+  const cases = [
+    ['私は食べるのが好きです。', 'mi laiko itona.'],
+    ['私は食べることが好きです。', 'mi laiko itona.'],
+    ['私はリンゴを食べることが好きです。', 'mi laiko itona apa.'],
+    ['私は本を読むのが好きです。', 'mi laiko lotona pupa.'],
+    ['私は公園で走るのが好きです。', 'mi laiko lanona atute paka.'],
+    ['食べるのは楽しい。', 'itona pio enuke.'],
+    ['私は泳ぐのを見る。', 'mi sio suwimona.'],
+    ['Running is fun.', 'lanona pio enuke.'],
+    ['Eating apples is good.', 'itona mene apa pio kute.'],
+    ['Swimming in the sea is fun.', 'suwimona inute sia pio enuke.'],
+    ['I enjoy running.', 'mi enuso lanona.'],
+    ['I like eating apples.', 'mi laiko itona mene apa.'],
+    ['He is running.', 'li konu lano.'],
+  ];
+  cases.forEach(([src, logi]) => {
+    assert.strictEqual(translator.translate(src, 'auto').logi, logi, src);
+  });
+});
+
+test('動詞の名詞化: 否定・過去は省略して注意書きを出す', () => {
+  const r = translator.translate('私は食べないのが好きです。', 'ja');
+  assert.strictEqual(r.logi, 'mi laiko itona.');
+  assert.ok(r.notes.some((n) => n.includes('否定・過去は表せない')));
+});

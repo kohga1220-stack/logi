@@ -313,6 +313,20 @@
         if (extra) for (var k in extra) c[k] = extra[k];
         chunks.push(c);
       }
+      // 動名詞句に取り込む直前の文節: を（目的語）と、前置詞になる助詞（に・で・へ など）の文節
+      function takeClauseChunks() {
+        var obj = [];
+        var pps = [];
+        while (chunks.length) {
+          var last = chunks[chunks.length - 1];
+          if (last.particle === 'を') obj = last.items.concat(obj);
+          else if (last.particle && last.particle !== 'は' && last.particle !== 'が' && last.particle !== 'も' &&
+            !last.counter && PARTICLE_PREP[last.particle]) pps = [item(PARTICLE_PREP[last.particle])].concat(last.items, pps);
+          else break;
+          chunks.pop();
+        }
+        return obj.concat(pps);
+      }
       while (i < n) {
         var t = tokens[i];
         if (t.k === 'ADV') { advs.push(item(t.e.w)); i++; continue; }
@@ -330,10 +344,16 @@
         if (t.k === 'ADJ' && (t.attr || isNpStart(tokens[i + 1])) && isNpStart(tokens[i + 1])) { mods.push(item(t.e.w)); i++; continue; }
         if (t.k === 'ANA' && isNpStart(tokens[i + 1])) { mods.push(item(t.e.w)); i++; continue; }
         if (t.k === 'V') {
-          if (tokens[i + 1] && tokens[i + 1].k === 'KOTO') {
+          // 「Vこと」「Vのが／のは／のを」: 動詞を動名詞（V + na）にして、直前の目的語・前置詞句を取り込む
+          var nominal = 0;
+          if (tokens[i + 1] && tokens[i + 1].k === 'KOTO') nominal = 2;
+          else if (tokens[i + 1] && tokens[i + 1].k === 'P' && tokens[i + 1].p === 'の' &&
+            tokens[i + 2] && tokens[i + 2].k === 'P' && NOMINAL_PARTICLES[tokens[i + 2].p]) nominal = 2;
+          if (nominal) {
+            if (t.tags && (t.tags.neg || t.tags.past)) notes.push('「' + t.e.jaNote + '」を名詞にするときの否定・過去は表せないため、省略しました。');
             var gerund = item(t.e.w + 'na', { gerund: t.e.w });
-            i += 2;
-            finish([gerund]);
+            i += nominal;
+            finish([gerund].concat(takeClauseChunks()));
             continue;
           }
           if (isNpStart(tokens[i + 1])) {
@@ -384,6 +404,7 @@
     };
     Object.keys(DICT_PARTICLE_PREP).forEach(function (s) { if (!PARTICLE_PREP[s]) PARTICLE_PREP[s] = DICT_PARTICLE_PREP[s]; });
 
+    var NOMINAL_PARTICLES = { 'が': 1, 'は': 1, 'を': 1, 'も': 1 };
     var PRED_KINDS = { V: 1, COP: 1, ADJ: 1, ANA: 1, FUT: 1 };
     function isPredLike(t) { return !!t && !!PRED_KINDS[t.k] && !(t.k === 'ADJ' && t.attr); }
     var COMPLEMENT_VERBS = { omo: 1, juo: 1, pipo: 1, mo: 1, kanao: 1, keso: 1, opo: 1, noto: 1 };
@@ -769,7 +790,8 @@
       'won', 'left', 'led', 'threw', 'shook', 'held', 'understood'].forEach(function (w) { IRREGULAR_PAST[w] = 1; });
     var IRREGULAR_ADJ = { better: 'good', best: 'good', worse: 'bad', worst: 'bad' };
     var IRREGULAR_NOUN = { people: 'person', children: 'child', men: 'man', women: 'woman', feet: 'foot' };
-    var VERB_WANTS_GERUND = { want: 1, like: 1, love: 1, hope: 1, wish: 1, try: 1, start: 1, begin: 1 };
+    var VERB_WANTS_GERUND = { want: 1, like: 1, love: 1, hope: 1, wish: 1, try: 1, start: 1, begin: 1,
+      enjoy: 1, stop: 1, finish: 1, keep: 1, avoid: 1, practice: 1, quit: 1, continue: 1, hate: 1 };
 
     // 英語の表層形 → [{lemma, form}] の候補
     function verbCandidates(tok) {
@@ -942,6 +964,31 @@
       return !!(next && (DETERMINERS[next] || POSSESSIVES[next] || OBJECT_PRONOUNS[next] || PREPS[next]) && !findAdj(tok));
     }
 
+    // 「Reading books is fun.」: 動名詞（-ing）で始まる主語。あとに be 動詞か助動詞が続くときだけ主語にする
+    function parseGerundSubject(cur, ctx) {
+      var first = cur.peek();
+      var gv = first ? findVerb(first) : null;
+      // 名詞でもある語（swimming など）は、あとに前置詞句が続くときだけ動名詞として読む
+      if (!gv || gv.form !== 'ing' || (findNoun(first) && !PREPS[cur.peek(1)])) return null;
+      var save = cur.i;
+      cur.next();
+      var items = [item(gv.e.w + 'na', { gerund: gv.e.w })];
+      var next = cur.peek();
+      if (next && startsNP(next) && !BE[next] && !AUX_START[next]) {
+        var objNP = parseNP(cur, ctx);
+        if (objNP) items = items.concat(objNP.items);
+      }
+      while (cur.more() && PREPS[cur.peek()]) {
+        var prep = PREPS[cur.next()];
+        var pnp = parseNP(cur, ctx);
+        if (!pnp) break;
+        items = items.concat([item(prep)], pnp.items);
+      }
+      if (cur.peek() && (BE[cur.peek()] || AUX_START[cur.peek()])) return { items: items };
+      cur.i = save;
+      return null;
+    }
+
     function translateEnSentence(raw, question, notes, opts) {
       var text = expandContractions(raw).toLowerCase();
       return translateEnTokens(text.match(/[a-z]+|[0-9]+/g) || [], question, notes, opts);
@@ -986,7 +1033,7 @@
         subjNP = { items: [item(WH[whWord])] };
         whWord = null;
       } else {
-        subjNP = parseNP(cur, ctx);
+        subjNP = parseGerundSubject(cur, ctx) || parseNP(cur, ctx);
       }
       if (!subjNP && !(cur.peek() && (AUX_START[cur.peek()] || findVerb(cur.peek())))) {
         return null;
