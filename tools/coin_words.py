@@ -1,6 +1,6 @@
 """英検3級レベルの語彙を、音訳規則（docs/grammar.md §8）で Logi の語にして辞書へ足す。
 
-入力: dictionary/eiken3_additions.csv と dictionary/core_additions.csv（英語・品詞・日本語の意味・別名）
+入力: dictionary/ の eiken3_additions.csv・core_additions.csv・modern_tech_additions.csv（英語・品詞・日本語の意味・別名）
 出力: dictionary/final.csv に行を追加し、dictionary/glossary_en.csv に英語訳を追加する。
 
 語の作り方:
@@ -30,6 +30,7 @@ GLOSSARY = ROOT / "dictionary" / "glossary_en.csv"
 SOURCES = [
     (ROOT / "dictionary" / "eiken3_additions.csv", "v0.7追加: 英検3級語彙 "),
     (ROOT / "dictionary" / "core_additions.csv", "v0.8追加: 日本語の基本語彙 "),
+    (ROOT / "dictionary" / "modern_tech_additions.csv", "v0.9追加: 現代・IT語彙 "),
 ]
 
 ENDING = {"noun": "a", "verb": "o", "adj": "e", "adv": "i", "pronoun": "a", "prep": "te"}
@@ -156,12 +157,14 @@ def coin(english, pos, taken, verbs, base_word=None, base_pos=None):
     """base_word: 同じ語幹を共有する語（同じ英語の別品詞、または -ly 副詞の元の形容詞）。"""
     ending = ENDING[pos]
     if base_word:
-        # 語幹を共有し、語尾だけを変える（pasute / pasuti と同じ型）。この組だけは1文字違いを許す。
+        # 語幹を共有し、語尾だけを変える（pasute / pasuti と同じ型）。共有する相手とだけは1文字違いを許し、
+        # それ以外の語とは編集距離2以上を保つ。守れないときは、語幹を共有せずに造語する。
         base_ending = ENDING.get(base_pos, base_word[-1])
         if base_word.endswith(base_ending):
             word = base_word[: len(base_word) - len(base_ending)] + ending
             # 母音が連続する形（olaa など）は避ける
-            if not re.search(r"([aeiou])\1", word) and acceptable(word, pos, taken, verbs):
+            if (not re.search(r"([aeiou])\1", word) and acceptable(word, pos, taken, verbs)
+                    and nearest_distance(word, taken - {base_word}) >= 2):
                 return word
     stem = build_stem(english, pos)
     best = None

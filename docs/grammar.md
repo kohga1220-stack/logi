@@ -210,7 +210,7 @@ SVO + 前置詞句で代替。
 
 - 英語の綴りを上の音訳ルールで Logi の音にし、子音連続は `u` で割る。同じ母音が続く形（`awaa` など）は避ける。
 - 語幹は3音節以下（代名詞は2音節以下）、語尾は品詞ごとに -a・-o・-e・-i、前置詞は先頭2音節＋`te`。
-- 既存のどの語とも編集距離2以上になる形を探す。同じ英語の別品詞（cook の `kuka`/`kuko`）と、形容詞から作る -ly 副詞（`aluke`/`aluki`）は語幹を共有し、この組だけは1文字違いを許す。
+- 既存のどの語とも編集距離2以上になる形を探す。同じ英語の別品詞（cook の `kuka`/`kuko`）と、形容詞から作る -ly 副詞（`aluke`/`aluki`）は語幹を共有し、この組の相手とだけは1文字違いを許す（v0.9.1。相手以外の語と1文字違いになるときは、語幹を共有せずに造語する）。
 - 動詞に `na` を付けた動名詞が別の語と衝突する形は使わない。
 - 意味（日本語・英語）は Claude が書いた案で、人の確認を受けていない。造語した音も提案であり、気に入らない語は `final.csv` で直してよい（その後 `python tools/build_web.py`）。
 - 語彙の元にした見出し語は、公開されている英検3級の単語リスト2件（edule.jp、step.saitama.jp）の見出し語のみ。例文や解説は使っていない。
@@ -253,7 +253,7 @@ mi toko tu. mi oto to pulu ila e mi pio sutua. mi mosi laiko apa. mi wonuto pion
 
 ## 10. 派生・複合語と接続詞（v0.4 草案・未確定）
 
-辞書 `dictionary/final.csv`（1,660語）を調べた結果に基づく草案。例文コーパスで検証してから確定する。
+辞書 `dictionary/final.csv`（1,671語）を調べた結果に基づく草案。例文コーパスで検証してから確定する。
 
 ### 10.1 派生語
 - 確定済みの規則は動名詞 **動詞 + na**（pio → piona）のみ。
@@ -367,5 +367,7 @@ v0.5 で po を **tulimo**（英 dream の音訳: d→t, r→l, 子音連続を 
 | v0.6 | 従属接続語を8語追加（pikosu 〜なので・wenute 〜とき・wailu 〜間・pipolu 〜前に・aputi 〜後で・utilu 〜まで・ulesu 〜でなければ・oluto 〜のに）し、624語。従属接続語は節の直前に置き、節の順序は原文のままとする（§10.3.1）|
 | v0.7 | 英検3級レベルの語を487語追加し、1,111語（§8.1）。名詞・動詞・形容詞・副詞・前置詞・代名詞。前置詞は above/across/against/among/around/behind/between/during/into/near/off/over/through/under/without/onto/beside |
 | v0.8 | 日本語の基本語彙を549語追加し、1,660語（§8.2）。夢 `tulima`（動詞 `tulimo` と同じ語幹）・人生 `lipeta`・する `topo` など |
+| v0.9 | 現代・IT語彙を10語追加し、1,670語（人工知能 `alutipa`・ネットワーク `netuwa`・スマートフォン `sumawa`・プログラムする `pupoko` など。`dictionary/modern_tech_additions.csv`）|
+| v0.9.1 | 名詞 `puwoja`（プログラム）を追加し、1,671語。語幹を共有する組（`kuka`/`kuko` など）も、相手以外の語とは編集距離2以上を保つ規則に改めた（§8.1）。`modern_tech_additions.csv` を `tools/coin_words.py` の対象に登録 |
 | v0.4 | 疑問詞はその場置き、法副詞は副詞の位置（マーカーの前）と §7 に追記 |
 | v0.4 | 同義語33語を deprecated にし（status / replaced_by 列を追加）、正本の選び方を §10.6 に記載 |

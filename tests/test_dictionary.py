@@ -88,6 +88,19 @@ def test_eiken3_additions_are_all_present():
 def test_added_words_have_no_repeated_vowels(rows):
     import re
 
-    added = [r["word"] for r in rows if r["notes"].startswith(("v0.7追加", "v0.8追加"))]
+    added = [r["word"] for r in rows if r["notes"].startswith(("v0.7追加", "v0.8追加", "v0.9追加"))]
     assert added
     assert [w for w in added if re.search(r"([aeiou])\1", w)] == []
+
+
+def test_shared_stem_pairs_stay_two_edits_from_other_words(rows):
+    # v0.9 の追加語が、既存のどの語とも1文字違いにならない
+    import coin_words
+
+    words = {r["word"] for r in rows}
+    # v0.9 の追加語（手作業で造語した10語と、v0.9.1 の program 名詞）で確かめる
+    modern = [r["word"] for r in rows if r["notes"].startswith("v0.9追加")]
+    assert modern
+    for w in modern:
+        near = coin_words.neighbors(w) & words
+        assert not near, (w, near)
