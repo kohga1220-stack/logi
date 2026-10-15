@@ -7,7 +7,7 @@
 - 語幹が同じ: 語尾の1文字だけが違う、別の品詞の語（例: `kuka` 名詞と `kuko` 動詞）。同じ英語の別品詞なら意図した組です。そうでなければ偶然の一致なので、見分けにくくないか見てください
 - 同じ英語の語: 同じ英語の訳を持つ、別の語（同義語の候補）
 
-確認済み(ok): 0 / 要修正(fix): 0 / 未確認(draft): 1050
+確認済み(ok): 0 / 要修正(fix): 0 / 未確認(draft): 1075
 
 ## v0.7 英検3級レベルの語（487語）
 
@@ -1131,6 +1131,48 @@
 | Logi | 日本語 | 英語 | 手がかり | 状況 |
 |---|---|---|---|---|
 | onapi | オンラインで | online |  |  |
+
+## Antigravity の追加語（dictionary/anti_additions.csv）（25語）
+
+### noun（11語）
+
+| Logi | 日本語 | 英語 | 手がかり | 状況 |
+|---|---|---|---|---|
+| kaloma | 庭 | garden / yard |  |  |
+| puwela | 葬式 | funeral |  |  |
+| tunana | 商売 | trade / commerce |  |  |
+| lekika | 授業 | lecture |  |  |
+| malapa | 玉 | marble / bead |  |  |
+| oleja | 注文 | order | 同じ英語の語: olo |  |
+| kikua | 酒 | liquor / sake |  |  |
+| lokoma | 汽車 | locomotive |  |  |
+| kueja | 案内 | guidance |  |  |
+| mekula | 規則 | regulation |  |  |
+| telewa | 電報 | telegram |  |  |
+
+### verb（11語）
+
+| Logi | 日本語 | 英語 | 手がかり | 状況 |
+|---|---|---|---|---|
+| sunito | 嗅ぐ | sniff |  |  |
+| komipo | 争う | compete / contend |  |  |
+| simelo | 煮る | simmer |  |  |
+| tumupo | 転ぶ | tumble |  |  |
+| kukamo | 騒ぐ | clamor |  |  |
+| pukulo | 茂る | flourish |  |  |
+| pateno | 太る | fatten |  |  |
+| sulemo | 痩せる | slim |  |  |
+| tisepo | 困る | distress |  |  |
+| oajo | 覚める | awaken |  |  |
+| tisolo | 溶ける | dissolve |  |  |
+
+### adj（3語）
+
+| Logi | 日本語 | 英語 | 手がかり | 状況 |
+|---|---|---|---|---|
+| tenuse | 濃い | dense |  |  |
+| ipume | 親しい | intimate |  |  |
+| sukate | 少ない | scarce |  |  |
 
 ## v0.10 機能語（指示詞・はい／いいえ）（3語）
 
