@@ -11,7 +11,7 @@ sys.path.insert(0, str(TOOLS))
 
 from validate import DEFAULT_DICTIONARY, POS_SUFFIX, check_word, load_rows  # noqa: E402
 
-KNOWN_POS = set(POS_SUFFIX) | {"pronoun", "marker", "wh", "conj", "num"}
+KNOWN_POS = set(POS_SUFFIX) | {"pronoun", "marker", "wh", "conj", "num", "interj"}
 
 
 @pytest.fixture(scope="module")

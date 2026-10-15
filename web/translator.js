@@ -198,6 +198,18 @@
     verbForms('いる').forEach(function (f) { addJa(f[0], { k: 'V', e: byW.alo, tags: f[1] }); });
 
     addJa('私たち（聞き手を含む）', { k: 'PRON', e: byW.misu });
+    // 指示詞・場所・はい／いいえ・いくつ（docs/proposals/001）。これ・あれ は辞書の代名詞（iliu・teliu）から入る。それ は前の文を受ける li のまま
+    if (byW.iliu && byW.teliu) {
+      addJa('この', { k: 'DET', e: byW.iliu });
+      ['その', 'あの'].forEach(function (s) { addJa(s, { k: 'DET', e: byW.teliu }); });
+    }
+    if (byW.ili && byW.teli) {
+      addJa('ここ', { k: 'N', e: byW.ili });
+      ['そこ', 'あそこ'].forEach(function (s) { addJa(s, { k: 'N', e: byW.teli }); });
+    }
+    if (byW.jesu) addJa('はい', { k: 'YESNO', w: 'jesu' });
+    addJa('いいえ', { k: 'YESNO', w: 'no' });
+    ['いくつ', 'いくら'].forEach(function (s) { addJa(s, { k: 'QTY' }); });
     addJa('私たち（聞き手を含まない）', { k: 'PRON', e: byW.mipu });
     var COPULAS = {
       'です': {}, 'だ': {}, 'でした': { past: true }, 'だった': { past: true },
@@ -274,6 +286,8 @@
         var found = null;
         for (var len = Math.min(jaMax, text.length - i); len >= 1; len--) {
           var cand = jaMap[text.substr(i, len)];
+          // 「はい」「いいえ」は文頭か句読点のあとだけ（「これはいくら」の「はい」を拾わない）
+          if (cand && cand.k === 'YESNO' && i > 0 && !/[、，,。．.！？!?\s]/.test(text.charAt(i - 1))) cand = null;
           if (cand) { found = { tok: cand, len: len }; break; }
         }
         if (found) { flush(); tokens.push(found.tok); i += found.len; }
@@ -286,7 +300,7 @@
     // ---------------------------------------------------------------- 日本語の構文
     function isNpStart(t) {
       return !!t && (t.k === 'N' || t.k === 'PRON' || t.k === 'WH' || t.k === 'NUM' || t.k === 'UNK' ||
-        t.k === 'DONNA' || (t.k === 'ADJ' && t.attr) || t.k === 'ANA' || (t.k === 'ADJ' && !t.tags.past && !t.tags.neg));
+        t.k === 'DONNA' || t.k === 'DET' || (t.k === 'ADJ' && t.attr) || t.k === 'ANA' || (t.k === 'ADJ' && !t.tags.past && !t.tags.neg));
     }
 
     function verbItems(t) {
@@ -341,6 +355,29 @@
           continue;
         }
         if (t.k === 'DONNA') { mods.push(item('wata')); i++; continue; }
+        if (t.k === 'DET') { mods.push(item(t.e.w)); i++; continue; }
+        // 「何歳」: 年齢の疑問（tu oto wata ila ka?）
+        if (t.k === 'WH' && t.e.w === 'wata' && tokens[i + 1] && tokens[i + 1].k === 'CTR') {
+          var wctr = tokens[i + 1];
+          i += 2;
+          finish([item('wata'), item(wctr.w)], { counter: true });
+          continue;
+        }
+        // 「いくつ」「いくら」: aua mene。「リンゴをいくつ」は直前の名詞句の前に置く（aua mene apa）
+        if (t.k === 'QTY') {
+          var qty = [item('aua'), item('mene')];
+          var prevChunk = chunks[chunks.length - 1];
+          var after = tokens[i + 1];
+          if (after && after.k === 'P' && after.p === 'の' && isNpStart(tokens[i + 2])) { mods = mods.concat(qty); i += 2; continue; }
+          if (prevChunk && (prevChunk.particle === 'を' || prevChunk.particle === 'が') && !prevChunk.counter) {
+            prevChunk.items = qty.concat(prevChunk.items);
+            i++;
+            continue;
+          }
+          i++;
+          finish(qty);
+          continue;
+        }
         if (t.k === 'ADJ' && (t.attr || isNpStart(tokens[i + 1])) && isNpStart(tokens[i + 1])) { mods.push(item(t.e.w)); i++; continue; }
         if (t.k === 'ANA' && isNpStart(tokens[i + 1])) { mods.push(item(t.e.w)); i++; continue; }
         if (t.k === 'V') {
@@ -632,6 +669,13 @@
       splitJa(text).forEach(function (s) {
         var toks = s.tokens.slice();
         var q = s.q;
+        // 文頭の「はい」「いいえ」: jesu / no を先頭に置く（コンマで区切る）
+        var answer = null;
+        if (toks.length && toks[0].k === 'YESNO') {
+          answer = toks.shift().w;
+          while (toks.length && toks[0].k === 'COMMA') toks.shift();
+          if (!toks.length) { parts.push([{ fragment: [item(answer)], notes: notes }]); return; }
+        }
         if (toks.length && toks[toks.length - 1].k === 'KA') { q = true; toks.pop(); }
         var seg = segmentJa(toks);
         var irs = seg.segs.map(function (c, idx, arr) {
@@ -648,6 +692,7 @@
             notes.push('主語のない節は、前の節の主語を引き継ぎました。');
           }
         });
+        if (answer && irs.length) irs[0].answer = answer;
         if (irs.length) parts.push(irs);
       });
       return finalize(parts, notes, 'ja');
@@ -705,6 +750,7 @@
         irs.forEach(function (ir, idx) {
           var items = generate(ir);
           var isLast = idx === irs.length - 1;
+          if (ir.answer) { allItems.push(item(ir.answer)); text += ir.answer + ', '; }
           if (ir.sub) items = [item(ir.sub)].concat(items);
           if (ir.question && isLast) items = items.concat([item('ka')]);
           if (ir.conn) {
@@ -751,6 +797,7 @@
       they: 'lisu', them: 'lisu', myself: 'selu', yourself: 'selu', himself: 'selu', herself: 'selu',
       itself: 'selu', themselves: 'selu', oneself: 'selu', someone: 'somena', somebody: 'somena'
     };
+    var DEMONSTRATIVES = { this: 'iliu', these: 'iliu', that: 'teliu', those: 'teliu' };
     var POSSESSIVES = { my: 'mi', your: 'tu', his: 'li', her: 'li', its: 'li', our: 'misu', their: 'lisu' };
     var DETERMINERS = { a: 1, an: 1, the: 1, this: 1, that: 1, these: 1, those: 1 };
     var WH = { what: 'wata', who: 'kua', whom: 'kua', where: 'wela', when: 'wena', why: 'waia', how: 'aua' };
@@ -894,6 +941,25 @@
       var sawDet = false;
       while (cur.more()) {
         var tok = cur.peek();
+        // this / that / these / those: 名詞や形容詞が続けば限定詞、続かなければ代名詞（iliu・teliu）
+        if (DEMONSTRATIVES[tok] && byW[DEMONSTRATIVES[tok]]) {
+          var dn = cur.peek(1);
+          var isDet = !!(dn && !BE[dn] && !AUX_START[dn] && (findNoun(dn) || findAdj(dn) || NUMWORDS[dn] !== undefined || /^[0-9]+$/.test(dn)));
+          items.push(item(DEMONSTRATIVES[tok]));
+          cur.next();
+          if (isDet) { sawDet = true; continue; }
+          sawHead = true;
+          break;
+        }
+        // 前置詞のあとの here / there（to here → tote ili）
+        if ((tok === 'here' || tok === 'there') && cur.i > 0 && PREPS[cur.t[cur.i - 1]] && byW[tok === 'here' ? 'ili' : 'teli']) {
+          items.push(item(tok === 'here' ? 'ili' : 'teli'));
+          cur.next();
+          sawHead = true;
+          break;
+        }
+        // 「how much」を一つの名詞句にまとめた語（aua mene）。translateEnTokens が作る
+        if (tok === 'howmuch__') { items.push(item('aua'), item('mene')); cur.next(); sawHead = true; break; }
         if (DETERMINERS[tok]) { cur.next(); sawDet = true; continue; }
         if (POSSESSIVES[tok]) { items.push(item(POSSESSIVES[tok])); cur.next(); continue; }
         var num = numberFrom(cur);
@@ -1003,19 +1069,40 @@
 
       var whWord = null;
       var whMod = false;
+      var whPrefix = [item('wata')];
+      if (question && tokens[0] === 'how') {
+        // how old are you? → what year do you have（tu oto wata ila ka?）
+        if (tokens[1] === 'old' && BE[tokens[2]] && tokens.length > 3) {
+          var oldAux = (tokens[2] === 'was' || tokens[2] === 'were') ? 'did' : (tokens[2] === 'is' ? 'does' : 'do');
+          tokens = ['what', 'year', oldAux].concat(tokens.slice(3), ['have']);
+        // how many apples do you have? → aua mene apa
+        } else if ((tokens[1] === 'many' || tokens[1] === 'much') && tokens[2] && AUX_START[tokens[3]] && findNoun(tokens[2]) && tokens.length > 4) {
+          tokens = ['what'].concat(tokens.slice(2));
+          whPrefix = [item('aua'), item('mene')];
+        // how much is it? → it is (aua mene)
+        } else if (tokens[1] === 'much' && BE[tokens[2]] && tokens.length > 3) {
+          tokens = tokens.slice(3).concat([tokens[2], 'howmuch__']);
+        }
+      }
       if (question && WH[tokens[0]]) {
         whWord = tokens[0];
         tokens = tokens.slice(1);
         if (whWord === 'what' && tokens[0] && !AUX_START[tokens[0]] && !BE[tokens[0]] && findNoun(tokens[0])) {
           whMod = true;
           var cur0 = new Cursor(tokens);
-          var np0 = parseNP(cur0, ctx);
-          if (np0) { whMod = [item('wata')].concat(np0.items); tokens = tokens.slice(cur0.i); }
+          var hasQty = whPrefix.length === 2;
+          var np0 = parseNP(cur0, hasQty ? { notes: [] } : ctx);
+          if (np0) {
+            // how many のあとの名詞は、複数の mene を重ねない
+            var npItems = hasQty ? np0.items.filter(function (it) { return it.w !== 'mene'; }) : np0.items;
+            whMod = whPrefix.concat(npItems);
+            tokens = tokens.slice(cur0.i);
+          }
         }
       }
       // 倒置を戻す: aux/be + 主語 + 残り → 主語 + aux + 残り
       var wasInverted = false;
-      if (question && AUX_START[tokens[0]] && tokens.length > 2) {
+      if (question && AUX_START[tokens[0]] && tokens.length > 1) {
         var skip = tokens[1] === 'not' ? 2 : 1;
         var cur1 = new Cursor(tokens.slice(skip));
         var subj = parseNP(cur1, ctx);
@@ -1333,6 +1420,13 @@
         var question = /\?$/.test(trimmed);
         var body = trimmed.replace(/[.!?]+$/, '');
         var tokens = expandContractions(body).toLowerCase().match(/[a-z]+|[0-9]+|,/g) || [];
+        // 文頭の Yes / No: jesu / no を先頭に置く
+        var answer = null;
+        if ((tokens[0] === 'yes' || tokens[0] === 'no') && (tokens.length === 1 || tokens[1] === ',')) {
+          answer = tokens[0] === 'yes' ? 'jesu' : 'no';
+          tokens = tokens.slice(tokens[1] === ',' ? 2 : 1);
+          if (!tokens.length) { parts.push([{ fragment: [item(answer)], notes: notes }]); return; }
+        }
         var segs = splitEn(tokens, question);
         var multi = segs.length > 1;
         if (multi && question) notes.push('接続語を含む疑問文は、語順を倒置せずにそのまま訳しています。');
@@ -1354,6 +1448,7 @@
           notes.push('「' + trimmed + '」は未対応の文型のため訳せませんでした。');
           return;
         }
+        if (answer) irs[0].answer = answer;
         parts.push(irs);
       });
       return finalize(parts, notes, 'en');

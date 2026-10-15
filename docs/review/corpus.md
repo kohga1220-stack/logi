@@ -63,6 +63,13 @@
 | 56 | conj-after | aputi li pasu komo, mi ito. | 彼が来た後で、私は食べる。 |
 | 57 | conj-until | utilu li komo, mi mato. | 彼が来るまで、私は待つ。 |
 | 58 | conj-although | oluto li pasu komo, mi pasu no iko. | 彼が来たのに、私は行かなかった。 |
+| 59 | demonstrative | iliu apa pio kute. | このリンゴは良い。 |
+| 60 | demonstrative | mi laiko teliu. | 私はあれが好きだ。 |
+| 61 | place-deixis | mi iko tote ili. | 私はここへ行く。 |
+| 62 | answer-yes | jesu, mi laiko apa. | はい、私はリンゴが好きです。 |
+| 63 | answer-no | no, mi no laiko apa. | いいえ、私はリンゴが好きではありません。 |
+| 64 | how-many | tu pasu ito aua mene apa ka? | あなたはリンゴをいくつ食べましたか？ |
+| 65 | how-old | tu oto wata ila ka? | あなたは何歳ですか？ |
 
 ## 語注（辞書から機械的に生成）
 
@@ -182,3 +189,17 @@
   utilu=まで(conj) li=彼/彼女/それ(pronoun) komo=来る(verb) mi=私(pronoun) mato=待つ(verb)
 - **58** `oluto li pasu komo, mi pasu no iko.`  
   oluto=のに(conj) li=彼/彼女/それ(pronoun) pasu=過去(marker) komo=来る(verb) mi=私(pronoun) pasu=過去(marker) no=否定(marker) iko=行く(verb)
+- **59** `iliu apa pio kute.`  
+  iliu=これ（この）(pronoun) apa=リンゴ(noun) pio=です(verb) kute=良い(adj)
+- **60** `mi laiko teliu.`  
+  mi=私(pronoun) laiko=好む(verb) teliu=あれ（あの・その）(pronoun)
+- **61** `mi iko tote ili.`  
+  mi=私(pronoun) iko=行く(verb) tote=へ(prep) ili=ここで(adv)
+- **62** `jesu, mi laiko apa.`  
+  jesu=はい(interj) mi=私(pronoun) laiko=好む(verb) apa=リンゴ(noun)
+- **63** `no, mi no laiko apa.`  
+  no=否定(marker) mi=私(pronoun) no=否定(marker) laiko=好む(verb) apa=リンゴ(noun)
+- **64** `tu pasu ito aua mene apa ka?`  
+  tu=あなた(pronoun) pasu=過去(marker) ito=食べる(verb) aua=どうやって(wh) mene=多くの(adj) apa=リンゴ(noun) ka=疑問(marker)
+- **65** `tu oto wata ila ka?`  
+  tu=あなた(pronoun) oto=持つ(verb) wata=何(wh) ila=年(noun) ka=疑問(marker)

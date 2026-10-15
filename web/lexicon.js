@@ -1637,6 +1637,9 @@ var LOGI_LEXICON = [
 {"w":"tonuko","pos":"verb","ja":["ダウンロードする"],"jaNote":"ダウンロードする","en":["download"]},
 {"w":"pasiwa","pos":"noun","ja":["パスワード"],"jaNote":"パスワード","en":["password"]},
 {"w":"senasa","pos":"noun","ja":["センサー"],"jaNote":"センサー","en":["sensor"]},
-{"w":"puwoja","pos":"noun","ja":["プログラム"],"jaNote":"プログラム","en":["program"]}
+{"w":"puwoja","pos":"noun","ja":["プログラム"],"jaNote":"プログラム","en":["program"]},
+{"w":"iliu","pos":"pronoun","ja":["これ"],"jaNote":"これ（この）","en":["this","these"]},
+{"w":"teliu","pos":"pronoun","ja":["あれ"],"jaNote":"あれ（あの・その）","en":["that","those"]},
+{"w":"jesu","pos":"interj","ja":["はい"],"jaNote":"はい","en":["yes"]}
 ];
 if (typeof module !== 'undefined') { module.exports = LOGI_LEXICON; }

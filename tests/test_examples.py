@@ -135,6 +135,8 @@ def test_corpus_waia_aua_sit_between_subject_and_verb(corpus, pos):
         for i, t in enumerate(toks):
             if t not in {"waia", "aua"}:
                 continue
+            if t == "aua" and toks[i + 1:i + 2] == ["mene"]:
+                continue  # 「aua mene」（いくつ・いくら）は数量の疑問（提案001 Q4）。副詞の位置の規則とは別
             assert 0 < i < len(toks) - 1, f"{row['id']}: {t} は文頭・文末に置けない"
             assert pos.get(toks[i - 1], set()) & {"pronoun", "noun"}, row["id"]
             assert pos.get(toks[i + 1], set()) & {"marker", "verb"}, row["id"]

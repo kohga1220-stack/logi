@@ -57,3 +57,10 @@ id,feature,logi,ja
 56,conj-after,"aputi li pasu komo, mi ito.",彼が来た後で、私は食べる。
 57,conj-until,"utilu li komo, mi mato.",彼が来るまで、私は待つ。
 58,conj-although,"oluto li pasu komo, mi pasu no iko.",彼が来たのに、私は行かなかった。
+59,demonstrative,iliu apa pio kute.,このリンゴは良い。
+60,demonstrative,mi laiko teliu.,私はあれが好きだ。
+61,place-deixis,mi iko tote ili.,私はここへ行く。
+62,answer-yes,"jesu, mi laiko apa.",はい、私はリンゴが好きです。
+63,answer-no,"no, mi no laiko apa.",いいえ、私はリンゴが好きではありません。
+64,how-many,tu pasu ito aua mene apa ka?,あなたはリンゴをいくつ食べましたか？
+65,how-old,tu oto wata ila ka?,あなたは何歳ですか？

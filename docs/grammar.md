@@ -73,6 +73,23 @@ p, t, k, m, n, s, l, w, j
 - 過去否定: mi pasu no toko tu.
 - 未来完了: mi putu pinu toko tu.
 
+### 返事（はい／いいえ）（v0.10 確定）
+
+| Logi | 意味 |
+|---|---|
+| `jesu` | はい（yes。品詞は感動詞 `interj`）|
+| `no` | いいえ（否定マーカーをそのまま使う）|
+
+返事は文頭に置き、コンマで本文と区切る。
+
+```
+tu laiko apa ka?
+jesu, mi laiko apa.     （はい、私はリンゴが好きです）
+no, mi no laiko apa.    （いいえ、私はリンゴが好きではありません）
+```
+
+日本語の「はい／いいえ」は、否定の質問への答えが英語と逆になる（「食べないの？」「はい、食べません」）。翻訳機は、この逆転を扱わず、文の意味で訳す。
+
 ### 疑問文のルール（新規確定）
 - 文末に **ka ?** を置く。
 - ka は疑問マーカー、? は書記上の疑問符。両方必須。
@@ -137,6 +154,27 @@ p, t, k, m, n, s, l, w, j
 ※ 包括（inclusive）: 聞き手を含む「私たち」
 ※ 排他（exclusive）: 聞き手を含まない「私たち」
 
+### 6.1 指示詞（this / that）と場所（v0.10 確定）
+
+| Logi | 意味 | 作り方 |
+|---|---|---|
+| `iliu` | これ・この（this）| `ili`（ここで）+ 機能語の `-u` |
+| `teliu` | あれ・あの・その（that）| `teli`（そこで）+ 機能語の `-u` |
+
+- **使い方は1つ**: 名詞の前に置けば限定詞、単独なら代名詞。語尾は変わらない。複数形は作らない（these / those も `iliu` / `teliu`）。
+- 日本語の3分類（これ／それ／あれ）は、英語と同じ2分類にまとめる: これ → `iliu`、あれ・あの・その → `teliu`。ただし、前の文を受ける「それ」は `li` のまま。
+- **場所（ここ・そこ・あそこ）**は新しい語を作らず、`ili`・`teli` を前置詞の目的語にも使う。
+
+```
+iliu apa pio kute.      （このリンゴは良い）
+iliu pio kute.          （これは良い）
+mi laiko teliu.         （私はあれが好きだ）
+mi iko tote ili.        （私はここへ行く）
+li komo pulomute teli.  （彼はそこから来る）
+```
+
+`iliu` は `ili`、`teliu` は `teli` とだけ編集距離1で、それ以外の語とは2以上（§8.1 の規則を守っている。語の登録は `dictionary/function_additions.csv` の `partner` 列で相手を明示する）。
+
 ---
 
 ## 7. 構文規則
@@ -152,6 +190,16 @@ p, t, k, m, n, s, l, w, j
 | wata（何）, kua（誰）| 名詞の位置（主語・目的語・修飾語）| kua komo ka?（誰が来ますか）|
 | wela（どこ）, wena（いつ）| 文末の前置詞句の位置。前置詞の目的語として必ず前置詞を伴う（場所・時の一般形は atute）| tuka alo atute wela ka? / tu iko tote wela ka? |
 | waia（なぜ）, aua（どうやって）| 副詞の位置（主語の直後、マーカーの前）| tu waia no ito apa ka? |
+
+### 数量・年齢の疑問（v0.10 確定）
+
+新しい語は作らず、`aua`（どうやって）と `mene`（多くの）を並べる（副詞が形容詞を修飾するときは形容詞の直前に置く規則のまま）。
+
+```
+tu pasu ito aua mene apa ka?   （あなたはリンゴをいくつ食べましたか）
+iliu pio aua mene ka?          （これはいくらですか）
+tu oto wata ila ka?            （あなたは何歳ですか。年齢は §5 の `mi oto to ila` と同じ形）
+```
 
 ### 法の副詞（v0.4 確定案）
 kani（できる）, masi（ねばならない）, mei（かもしれない）, sati（べき）は副詞の位置に置き、マーカーの前に来る。
@@ -325,7 +373,7 @@ v0.6 で理由（pikosu）と時（wenute など）の語を追加した。次�
 - 目的（〜ために＋節）、方法・様態（〜ように）、同時の対比（〜一方）
 
 ### 10.5 例文コーパスで未検証の項目
-`corpus/examples.csv`（58文）は辞書の語だけで書かれ、`tests/test_examples.py` で検証される。次は仕様が未確定のため含めていない。
+`corpus/examples.csv`（65文）は辞書の語だけで書かれ、`tests/test_examples.py` で検証される。次は仕様が未確定のため含めていない。
 - 副詞 sati と、複数の法副詞・マーカーが並ぶ文
 
 ### 10.6 同義語の整理
@@ -369,5 +417,6 @@ v0.5 で po を **tulimo**（英 dream の音訳: d→t, r→l, 子音連続を 
 | v0.8 | 日本語の基本語彙を549語追加し、1,660語（§8.2）。夢 `tulima`（動詞 `tulimo` と同じ語幹）・人生 `lipeta`・する `topo` など |
 | v0.9 | 現代・IT語彙を10語追加し、1,670語（人工知能 `alutipa`・ネットワーク `netuwa`・スマートフォン `sumawa`・プログラムする `pupoko` など。`dictionary/modern_tech_additions.csv`）|
 | v0.9.1 | 名詞 `puwoja`（プログラム）を追加し、1,671語。語幹を共有する組（`kuka`/`kuko` など）も、相手以外の語とは編集距離2以上を保つ規則に改めた（§8.1）。`modern_tech_additions.csv` を `tools/coin_words.py` の対象に登録 |
+| v0.10 | 指示詞 `iliu`（これ）・`teliu`（あれ）、はい `jesu`（いいえは `no`）、数量の疑問 `aua mene`、年齢の疑問 `wata ila` を追加（提案001、§4・§6.1・§7）。1,674語。例文を7文足して65文 |
 | v0.4 | 疑問詞はその場置き、法副詞は副詞の位置（マーカーの前）と §7 に追記 |
 | v0.4 | 同義語33語を deprecated にし（status / replaced_by 列を追加）、正本の選び方を §10.6 に記載 |

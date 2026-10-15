@@ -20,7 +20,8 @@ Logi は、**あなた（M1ko）・Claude・Antigravity** の3者で作ってい
 | `docs/grammar.md`、`docs/proposals/` | ○ | ×（読むだけ） |
 | `web/translator.js`、`web/index.html`、`web/test/` | ○ | ×（`web/index.html` と `web/README.md` は語数の数字だけ可） |
 | `tools/`、`tests/`、`corpus/`、`.github/` | ○ | × |
-| `dictionary/*_additions.csv`、`dictionary/final.csv`、`dictionary/glossary_en.csv` | 造語の規則を変えるときだけ | ○ |
+| `dictionary/anti_additions.csv`、`dictionary/final.csv`、`dictionary/glossary_en.csv` | ○ | ○（`anti_additions.csv` は内容語だけ。`coin_words.py` が造語して反映する）|
+| `dictionary/function_additions.csv`（機能語）、その他の `*_additions.csv` | ○ | ×（機能語は M1ko が決めてから Claude が入れる）|
 | `dictionary/word_review.csv`、`docs/review/` | ○（ツールの更新）| ○（`make_review.py` の再生成）|
 | `web/lexicon.js` | ○ | ○（`build_web.py` で再生成するだけ。手で書かない）|
 | `README.md`（変更履歴・構成）、`docs/STATUS.md` | ○ | ○ |
