@@ -232,3 +232,15 @@ test('日本語の基本語彙（v0.8）: 夢・赤・する などが訳せる'
     assert.strictEqual(translator.translate(src, 'auto').logi, logi, src);
   });
 });
+
+test('現代・IT語彙（v0.9）: プログラム（名詞）とプログラムする（動詞）を区別する', () => {
+  const cases = [
+    ['私はプログラムを書く。', 'mi kako puwoja.'],
+    ['I write a program.', 'mi kako puwoja.'],
+    ['彼は人工知能を使う。', 'li juso alutipa.'],
+    ['I upload a password.', 'mi upujo pasiwa.'],
+  ];
+  cases.forEach(([src, logi]) => {
+    assert.strictEqual(translator.translate(src, 'auto').logi, logi, src);
+  });
+});
