@@ -203,6 +203,7 @@ def duplicate_problems(rows, english_to_word):
     """これから追加する行のうち、すでにある語と同じ意味になるものを探す。
 
     - 同じ英語（別名を含む）・同じ品詞の語がすでにある
+    - 追加する行の別名（aliases）が、同じ品詞の別の語の英語と重なっている
     - 同じ日本語の意味・同じ品詞の語（active）がすでにある
     - 追加リストの中で、同じ英語・品詞や同じ日本語の意味・品詞が重なっている
     同じ英語でも品詞が違えば、語幹を共有する組として追加できる（kuka / kuko）。
@@ -226,6 +227,9 @@ def duplicate_problems(rows, english_to_word):
                 problems.append(f"{label} → 同じ日本語の意味・品詞の語がすでにあります: {used_ja[ja_key]}")
             elif ja_key in seen_ja:
                 problems.append(f"{label} → 追加リストの中で同じ日本語の意味・品詞が重なっています: {seen_ja[ja_key]}")
+            for alias in (x.strip().lower() for x in (a.get("aliases") or "").split("|") if x.strip()):
+                if (alias, a["pos"]) in english_to_word:
+                    problems.append(f"{label} → 別名 {alias} は、同じ品詞の語がすでに持っています: {english_to_word[(alias, a['pos'])]}")
             seen_en.setdefault(en_key, a["english"])
             seen_ja.setdefault(ja_key, a["english"])
     return problems
