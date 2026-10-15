@@ -1,6 +1,6 @@
 """英検3級レベルの語彙を、音訳規則（docs/grammar.md §8）で Logi の語にして辞書へ足す。
 
-入力: dictionary/ の eiken3_additions.csv・core_additions.csv・modern_tech_additions.csv（英語・品詞・日本語の意味・別名）
+入力: dictionary/ の eiken3_additions.csv・core_additions.csv・modern_tech_additions.csv・anti_additions.csv（英語・品詞・日本語の意味・別名）
 出力: dictionary/final.csv に行を追加し、dictionary/glossary_en.csv に英語訳を追加する。
 
 語の作り方:
@@ -31,6 +31,8 @@ SOURCES = [
     (ROOT / "dictionary" / "eiken3_additions.csv", "v0.7追加: 英検3級語彙 "),
     (ROOT / "dictionary" / "core_additions.csv", "v0.8追加: 日本語の基本語彙 "),
     (ROOT / "dictionary" / "modern_tech_additions.csv", "v0.9追加: 現代・IT語彙 "),
+    # Antigravity が語を足すための専用リスト。tools/ を変えずに追記できるよう、あらかじめ登録してある
+    (ROOT / "dictionary" / "anti_additions.csv", "ANTI追加: "),
 ]
 
 ENDING = {"noun": "a", "verb": "o", "adj": "e", "adv": "i", "pronoun": "a", "prep": "te"}

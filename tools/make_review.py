@@ -31,6 +31,7 @@ BATCHES = [
     ("v0.7追加", "v0.7 英検3級レベルの語"),
     ("v0.8追加", "v0.8 日本語の基本語彙"),
     ("v0.9追加", "v0.9 現代・IT語彙"),
+    ("ANTI追加", "Antigravity の追加語（dictionary/anti_additions.csv）"),
 ]
 POS_ORDER = ["noun", "verb", "adj", "adv", "prep", "pronoun"]
 

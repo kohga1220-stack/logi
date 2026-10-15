@@ -44,3 +44,14 @@ def test_anti_branch_may_change_only_the_numbers_in_count_files():
 def test_other_branches_are_not_restricted():
     assert check_scope.violations("claude/anything", ["docs/grammar.md"], lambda p: None, lambda p: None) == []
     assert check_scope.violations("user/hand-edit", ["web/translator.js"], lambda p: None, lambda p: None) == []
+
+
+def test_anti_additions_list_is_registered_and_in_anti_scope():
+    # Antigravity が tools/ を変えずに追記できる専用リスト
+    import coin_words
+
+    path = check_consistency.ROOT / "dictionary" / "anti_additions.csv"
+    assert path.exists()
+    assert path.read_text(encoding="utf-8").splitlines()[0] == "english,pos,meaning_ja,aliases,source"
+    assert path.resolve() in {Path(p).resolve() for p, _ in coin_words.SOURCES}
+    assert check_scope.violations("anti/x", ["dictionary/anti_additions.csv"], lambda p: None, lambda p: None) == []
