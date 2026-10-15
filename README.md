@@ -102,7 +102,9 @@ Open `web/index.html` in a browser, type Japanese or English, and the Logi trans
 logi/
 ├── README.md
 ├── docs/
-│   └── grammar.md          Full grammar specification / 文法仕様書（完全版）
+│   ├── grammar.md          Full grammar specification / 文法仕様書（完全版）
+│   ├── WORKFLOW.md         Roles, scopes and procedures for M1ko / Claude / Antigravity / 3者の分担と進め方
+│   └── STATUS.md           Current state, pending decisions, handoff / いまの状態と引き継ぎ
 ├── web/
 │   └── index.html          Translator page (Japanese/English → Logi) / 翻訳機（see web/README.md）
 ├── corpus/
@@ -116,6 +118,8 @@ logi/
 │   ├── sources/            Source word lists (NINJAL, CC BY 4.0) / 語彙の出典データ
 │   └── glossary_en.csv     English meanings for the translator (unreviewed) / 翻訳機用の英語の意味（未確認）
 └── tools/
+    ├── check_consistency.py  Checks docs vs. dictionary (word counts, version, registered lists) / 文書と辞書の整合性検査
+    ├── check_scope.py      Checks that anti/* branches stay in their scope / 担当範囲の検査
     ├── coin_words.py       Coins Logi words for the addition lists / 追加語の造語
     ├── core_candidates.py  Lists basic words missing from the dictionary / 辞書に無い基本語の候補
     ├── build_web.py        Builds web/lexicon.js for the translator / 翻訳機の辞書データ生成
@@ -151,8 +155,8 @@ logi/
 ## Contributors / 共同開発
 
 - **M1ko** ([@kohga1220-stack](https://github.com/kohga1220-stack)) — Project Owner & Designer
-- **Claude** ([claude.ai](https://claude.ai) / Anthropic) — Co-developed phonology, grammar specification (v0.1–v0.8), core dictionary (1,660 words), corpus & web translator
-- **Antigravity** (Google DeepMind) — Co-developed modern vocabulary (v0.9), dictionary validation & workspace integration
+- **Claude** ([claude.ai](https://claude.ai) / Anthropic) — Grammar design: phonology, grammar specification, corpus, web translator, checking tools (see `docs/WORKFLOW.md`)
+- **Antigravity** (Google DeepMind) — Vocabulary expansion: content words (nouns, verbs, adjectives, adverbs) under the rules Claude designs
 
 ---
 
