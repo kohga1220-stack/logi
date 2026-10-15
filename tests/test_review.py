@@ -26,3 +26,19 @@ def test_review_tables_are_up_to_date():
     corpus, _ = make_review.corpus_table(rows)
     assert synonyms == make_review.synonyms_table(rows)
     assert (make_review.REVIEW_DIR / "corpus.md").read_text(encoding="utf-8") == corpus
+
+
+def test_word_review_matches_added_words():
+    rows = load_rows(DEFAULT_DICTIONARY)
+    with make_review.WORD_REVIEW.open(newline="", encoding="utf-8") as f:
+        review = list(csv.DictReader(f))
+    expected = [w["word"] for w in make_review.added_words(rows)]
+    assert [r["word"] for r in review] == expected
+    assert {r["status"] for r in review} <= set(make_review.WORD_STATUSES)
+
+
+def test_new_words_table_is_up_to_date():
+    rows = load_rows(DEFAULT_DICTIONARY)
+    entries = make_review.sync_word_review(rows)
+    table = (make_review.REVIEW_DIR / "new_words.md").read_text(encoding="utf-8")
+    assert table == make_review.new_words_table(entries, rows)
