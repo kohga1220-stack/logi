@@ -55,3 +55,29 @@ def test_anti_additions_list_is_registered_and_in_anti_scope():
     assert path.read_text(encoding="utf-8").splitlines()[0] == "english,pos,meaning_ja,aliases,source"
     assert path.resolve() in {Path(p).resolve() for p, _ in coin_words.SOURCES}
     assert check_scope.violations("anti/x", ["dictionary/anti_additions.csv"], lambda p: None, lambda p: None) == []
+
+
+def test_coin_words_refuses_words_that_duplicate_existing_ones(tmp_path, monkeypatch):
+    import coin_words
+
+    extra = tmp_path / "extra_additions.csv"
+    extra.write_text(
+        "english,pos,meaning_ja,aliases,source\n"
+        "shine,verb,光る,,t\n"           # 同じ英語・品詞の語がすでにある
+        "umbrella,noun,傘のような,,t\n"   # 新しい語
+        "umbrella,noun,別の傘,,t\n",      # リストの中で重なる
+        encoding="utf-8",
+    )
+    monkeypatch.setattr(coin_words, "SOURCES", [(extra, "T追加: ")])
+    fields, rows = coin_words.load_dictionary()
+    english_to_word = {}
+    import csv
+    pos_of = {r["regenerated"]: r["pos"] for r in rows}
+    with coin_words.GLOSSARY.open(newline="", encoding="utf-8") as f:
+        for g in csv.DictReader(f):
+            for e in g["en"].split("|"):
+                english_to_word.setdefault((e.lower(), pos_of.get(g["word"])), g["word"])
+    problems = coin_words.duplicate_problems(rows, english_to_word)
+    assert any("shine" in p and "sipo" in p for p in problems)
+    assert any("umbrella" in p and "追加リストの中" in p for p in problems)
+    assert len(problems) >= 2
