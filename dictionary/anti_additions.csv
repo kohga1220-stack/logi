@@ -1,1 +1,26 @@
 english,pos,meaning_ja,aliases,source
+garden,noun,庭,yard,core_candidates.py の候補 90
+funeral,noun,葬式,,core_candidates.py の候補 327
+trade,noun,商売,commerce,core_candidates.py の候補 303
+lecture,noun,授業,,core_candidates.py の候補 307
+marble,noun,玉,bead,core_candidates.py の候補 347
+order,noun,注文,,core_candidates.py の候補 357
+liquor,noun,酒,sake,core_candidates.py の候補 288
+locomotive,noun,汽車,,core_candidates.py の候補 28
+guidance,noun,案内,,core_candidates.py の候補 168
+regulation,noun,規則,,core_candidates.py の候補 242
+telegram,noun,電報,,core_candidates.py の候補 378
+sniff,verb,嗅ぐ,,core_candidates.py の候補 222
+compete,verb,争う,contend,core_candidates.py の候補 164
+simmer,verb,煮る,,core_candidates.py の候補 414
+tumble,verb,転ぶ,,core_candidates.py の候補 280
+clamor,verb,騒ぐ,,core_candidates.py の候補 294
+flourish,verb,茂る,,core_candidates.py の候補 297
+fatten,verb,太る,,core_candidates.py の候補 445
+slim,verb,痩せる,,core_candidates.py の候補 490
+distress,verb,困る,,core_candidates.py の候補 277
+awaken,verb,覚める,,core_candidates.py の候補 293
+dissolve,verb,溶ける,,core_candidates.py の候補 386
+dense,adj,濃い,,core_candidates.py の候補 268
+intimate,adj,親しい,,core_candidates.py の候補 534
+scarce,adj,少ない,,core_candidates.py の候補 314

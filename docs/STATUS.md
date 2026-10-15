@@ -15,7 +15,7 @@
 
 | PR | 担当 | 内容 | 状態 |
 |---|---|---|---|
-| （開いているPRはありません）| | | |
+| （ドラフト作成予定: anti/words-batch-1） | Antigravity | 内容語25語の追加（国立国語研究所 教育基本語彙） | ドラフト作成中 |
 
 ## 文法への依頼（Antigravity → Claude）
 
@@ -28,7 +28,7 @@
 ## 担当ごとの次の作業
 
 - **Claude**: 提案002（空き形と感動詞）が決まったら実装する。
-- **Antigravity**: 内容語（名詞・動詞・形容詞・副詞）の増量。`dictionary/anti_additions.csv` に追記する（`docs/WORKFLOW.md` §2）。`dictionary/word_review.csv` で `fix` になった語の修正。
+- **Antigravity**: 内容語第1弾（25語）のドラフトPR作成と検証完了報告。
 - **M1ko**: 提案002のQ1・Q2の選択。追加語の確認表の確認。PRのマージ。
 
 ## 最近の主な変更
