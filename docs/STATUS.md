@@ -8,7 +8,7 @@
 
 | 内容 | 場所 | 状態 |
 |---|---|---|
-| （決定待ちはありません）| | |
+| 提案002: 短い語の造り方（Q1）とあいさつ3語（Q2）| `docs/proposals/002-short-forms-and-interjections.md` | 決定待ち |
 | 追加語（約1,050語）の音と意味の確認 | `docs/review/new_words.md`、`dictionary/word_review.csv` | 未確認 |
 
 ## 進行中のPR
@@ -27,9 +27,9 @@
 
 ## 担当ごとの次の作業
 
-- **Claude**: 短い語の空き形が少ない問題（2音節は114個）への対応を提案する。感動詞（ありがとう・こんにちは など）を造るかの提案を書く。
+- **Claude**: 提案002（空き形と感動詞）が決まったら実装する。
 - **Antigravity**: 内容語（名詞・動詞・形容詞・副詞）の増量。`dictionary/anti_additions.csv` に追記する（`docs/WORKFLOW.md` §2）。`dictionary/word_review.csv` で `fix` になった語の修正。
-- **M1ko**: 追加語の確認表の確認。PRのマージ。
+- **M1ko**: 提案002のQ1・Q2の選択。追加語の確認表の確認。PRのマージ。
 
 ## 最近の主な変更
 
