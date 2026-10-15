@@ -7,7 +7,7 @@
 - 語幹が同じ: 語尾の1文字だけが違う、別の品詞の語（例: `kuka` 名詞と `kuko` 動詞）。同じ英語の別品詞なら意図した組です。そうでなければ偶然の一致なので、見分けにくくないか見てください
 - 同じ英語の語: 同じ英語の訳を持つ、別の語（同義語の候補）
 
-確認済み(ok): 1077 / 要修正(fix): 0 / 未確認(draft): 26
+確認済み(ok): 1077 / 要修正(fix): 0 / 未確認(draft): 23
 
 ## v0.7 英検3級レベルの語（487語）
 
@@ -1132,9 +1132,9 @@
 |---|---|---|---|---|
 | onapi | オンラインで | online |  | ok |
 
-## Antigravity の追加語（dictionary/anti_additions.csv）（50語）
+## Antigravity の追加語（dictionary/anti_additions.csv）（47語）
 
-### noun（24語）
+### noun（21語）
 
 | Logi | 日本語 | 英語 | 手がかり | 状況 |
 |---|---|---|---|---|
@@ -1148,20 +1148,17 @@
 | lokoma | 汽車 | locomotive |  | ok |
 | kueja | 案内 | guidance |  | ok |
 | telewa | 電報 | telegram |  | ok |
-| posota | 格好 | posture |  |  |
+| posota | 格好 | style |  |  |
 | tonuwa | 工夫 | contrivance |  |  |
-| lunata | 往復 | roundtrip |  |  |
-| ukena | 勘定 | accounting |  |  |
+| ukena | 勘定 | account |  |  |
 | pewuta | 玄関 | vestibule |  |  |
 | kataka | 片仮名 | katakana |  |  |
 | iwaja | 平仮名 | hiragana |  |  |
 | pipita | 見舞い | visitation |  |  |
-| losuta | 忘れ物 | lostproperty |  |  |
 | setata | 身長 | stature |  |  |
-| nujipa | 新年 | newyear |  |  |
 | pikima | 用心 | vigilance |  |  |
 | tesana | 下り | descent |  |  |
-| katewa | 調子 | cadence |  |  |
+| katewa | 調子 | tone |  |  |
 
 ### verb（18語）
 
@@ -1180,7 +1177,7 @@
 | tisolo | 溶ける | dissolve |  | ok |
 | paluno | 乾く | parch |  |  |
 | lulumo | 隠れる | lurk |  |  |
-| emepo | 現れる | emerge |  |  |
+| emepo | 現れる | appear |  |  |
 | ajato | 諦める | abandon |  |  |
 | enipo | 誘う | entice |  |  |
 | tutulo | 離れる | stray |  |  |
