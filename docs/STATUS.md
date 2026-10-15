@@ -28,7 +28,7 @@
 ## 担当ごとの次の作業
 
 - **Claude**: 提案001が決まったら、指示詞・はい／いいえを辞書・文法書・翻訳機に実装する。短い語の空き形が少ない問題（2音節は114個）への対応を提案する。
-- **Antigravity**: 内容語（名詞・動詞・形容詞・副詞）の増量。`dictionary/word_review.csv` で `fix` になった語の修正。
+- **Antigravity**: 内容語（名詞・動詞・形容詞・副詞）の増量。`dictionary/anti_additions.csv` に追記する（`docs/WORKFLOW.md` §2）。`dictionary/word_review.csv` で `fix` になった語の修正。
 - **M1ko**: 提案001の選択。確認表の確認。PRのマージ。
 
 ## 最近の主な変更

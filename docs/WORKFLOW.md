@@ -27,6 +27,16 @@ Logi は、**あなた（M1ko）・Claude・Antigravity** の3者で作ってい
 
 Antigravity のブランチ（`anti/*`）は、CI が上の表のとおりか自動で確かめます（`tools/check_scope.py`）。
 
+### Antigravity の追加リスト
+
+Antigravity は、語を足すときに **`dictionary/anti_additions.csv`** に行を追記します（列: `english,pos,meaning_ja,aliases,source`）。このファイルは `tools/coin_words.py` に登録済みなので、`tools/` を変えずに使えます。新しいリストを作る必要はありません。
+
+- `pos` は `noun` / `verb` / `adj` / `adv` のどれかです。機能語（`pronoun` `prep` など）は足しません。
+- `english` は、辞書にない自然な英語1語（見出し語）にします。同じ英語を持つ語がすでにあるときは、足さずに STATUS の「文法への依頼」に書きます。
+- `source` には、語の選び方（例: `core_candidates.py の候補 123`、`テーマ: 感情`）を書きます。
+- Logi の語形は **`coin_words.py` に作らせます**（手で作りません）。2音節の空き形は114個しか残っていないので、新しい語はほとんど3音節になります（`python tools/free_forms.py`）。
+- 語の選び方の例: `python tools/core_candidates.py` が出す、日本語の基本語彙で辞書にまだ無い語。
+
 ### 内容語と機能語
 
 - **内容語**（名詞・動詞・形容詞・副詞）は、Antigravity が既存の規則で増やせます。
