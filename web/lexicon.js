@@ -1644,7 +1644,7 @@ var LOGI_LEXICON = [
 {"w":"kaloma","pos":"noun","ja":["庭"],"jaNote":"庭","en":["garden","yard"]},
 {"w":"puwela","pos":"noun","ja":["葬式"],"jaNote":"葬式","en":["funeral"]},
 {"w":"tunana","pos":"noun","ja":["商売"],"jaNote":"商売","en":["trade","commerce"]},
-{"w":"lekika","pos":"noun","ja":["授業"],"jaNote":"授業","en":["lecture","lesson","class"]},
+{"w":"lekika","pos":"noun","ja":["授業"],"jaNote":"授業","en":["lecture"]},
 {"w":"malapa","pos":"noun","ja":["玉"],"jaNote":"玉","en":["marble","bead"]},
 {"w":"oleja","pos":"noun","ja":["注文"],"jaNote":"注文","en":["order"]},
 {"w":"kikua","pos":"noun","ja":["酒"],"jaNote":"酒","en":["liquor","sake"]},
@@ -1664,7 +1664,7 @@ var LOGI_LEXICON = [
 {"w":"tisolo","pos":"verb","ja":["溶ける"],"jaNote":"溶ける","en":["dissolve"]},
 {"w":"tenuse","pos":"adj","ja":["濃い"],"jaNote":"濃い","en":["dense"]},
 {"w":"ipume","pos":"adj","ja":["親しい"],"jaNote":"親しい","en":["intimate"]},
-{"w":"sukate","pos":"adj","ja":["少ない"],"jaNote":"少ない","en":["scarce","few","little"]},
+{"w":"sukate","pos":"adj","ja":["少ない"],"jaNote":"少ない","en":["scarce"]},
 {"w":"kelosu","pos":"interj","ja":["こんにちは"],"jaNote":"こんにちは","en":["hello","hi"]},
 {"w":"kupaju","pos":"interj","ja":["さようなら"],"jaNote":"さようなら","en":["goodbye","bye"]},
 {"w":"pilisu","pos":"interj","ja":["どうぞ"],"jaNote":"どうぞ","en":["please"]}

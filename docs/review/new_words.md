@@ -1072,7 +1072,7 @@
 
 | Logi | 日本語 | 英語 | 手がかり | 状況 |
 |---|---|---|---|---|
-| sumoli | 少し | little / a little | 語幹が同じ: sumole; 同じ英語の語: sukate |  |
+| sumoli | 少し | little / a little | 語幹が同じ: sumole |  |
 | kili | はっきり | clearly | 語幹が同じ: kila, kile, kilo |  |
 | tiliki | 一生懸命 | diligently |  |  |
 | someti | いつか | someday |  |  |
@@ -1141,7 +1141,7 @@
 | kaloma | 庭 | garden / yard |  |  |
 | puwela | 葬式 | funeral |  |  |
 | tunana | 商売 | trade / commerce |  |  |
-| lekika | 授業 | lecture / lesson / class | 同じ英語の語: kulasa, lesa |  |
+| lekika | 授業 | lecture |  |  |
 | malapa | 玉 | marble / bead |  |  |
 | oleja | 注文 | order | 同じ英語の語: olo |  |
 | kikua | 酒 | liquor / sake |  |  |
@@ -1171,7 +1171,7 @@
 |---|---|---|---|---|
 | tenuse | 濃い | dense |  |  |
 | ipume | 親しい | intimate |  |  |
-| sukate | 少ない | scarce / few / little | 同じ英語の語: piue, sumole, sumoli |  |
+| sukate | 少ない | scarce |  |  |
 
 ## v0.10 機能語（指示詞・はい／いいえ）（3語）
 
