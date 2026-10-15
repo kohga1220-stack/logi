@@ -29,10 +29,12 @@
 
 - **Claude**: 命令・依頼の文型（「〜してください」）の提案を書く。
 - **Antigravity**: 新しい追加語のPRは、M1ko が追加語の確認表の確認を終えてから（`docs/WORKFLOW.md` §2「語を選ぶときの決まり」）。
-- **M1ko**: 追加語の確認表の確認。PRのマージ。
+- **M1ko**: 追加語の確認表の確認。自動マージされないPR（`docs/WORKFLOW.md` §9 の対象外）のマージ。
 
 ## 最近の主な変更
 
+- 自動マージの決まり（`docs/WORKFLOW.md` §9。M1ko が了承、2026-10-15）: 条件（CI成功・衝突なし・未対応のコメントなし ほか）を満たすPRは、Claude と Antigravity がマージする。決まりの変更・CI・`CLAUDE.md`・`AGENTS.md`・既存の語の削除や書き換え・未決定の文法の実装は、M1ko がマージする。
+- `.github/workflows/antigravity-agent.yml` は、M1ko が公式のものと確認済み。
 - 25語（PR #26）の見直し（Antigravity。PR #30）: `mekula`（規則）を削除して既存の `lula`（ルール）に統一し、`lula` に別名 `regulation` を追加。`anti_additions.csv` の `source` を日本語の見出し語に。辞書は1,701語（active 1,668語）。
 - `coin_words.py`: 追加する行の別名（aliases）が、同じ品詞の別の語の英語と重なるときも止める。WORKFLOW §2 の別名の例（lesson・class・few・little は、すでに別の語が持っている）を直した。
 - v0.11: あいさつ `kelosu`（こんにちは）・`kupaju`（さようなら）・`pilisu`（どうぞ）（提案002の決定を実装）。翻訳機の日本語・英語の対応と、例文3文。辞書は1,702語（active 1,669語）。
