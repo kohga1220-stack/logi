@@ -64,8 +64,8 @@ def test_coin_words_refuses_words_that_duplicate_existing_ones(tmp_path, monkeyp
     extra.write_text(
         "english,pos,meaning_ja,aliases,source\n"
         "shine,verb,光る,,t\n"           # 同じ英語・品詞の語がすでにある
-        "umbrella,noun,傘のような,,t\n"   # 新しい語
-        "umbrella,noun,別の傘,,t\n",      # リストの中で重なる
+        "gizmo,noun,小道具,,t\n"          # 新しい語
+        "gizmo,noun,別の小道具,,t\n",     # リストの中で重なる
         encoding="utf-8",
     )
     monkeypatch.setattr(coin_words, "SOURCES", [(extra, "T追加: ")])
@@ -79,5 +79,5 @@ def test_coin_words_refuses_words_that_duplicate_existing_ones(tmp_path, monkeyp
                 english_to_word.setdefault((e.lower(), pos_of.get(g["word"])), g["word"])
     problems = coin_words.duplicate_problems(rows, english_to_word)
     assert any("shine" in p and "sipo" in p for p in problems)
-    assert any("umbrella" in p and "追加リストの中" in p for p in problems)
+    assert any("gizmo" in p and "追加リストの中" in p for p in problems)
     assert len(problems) >= 2
