@@ -313,3 +313,24 @@ test('提案001: 指示詞・ここ／そこ・はい／いいえ・いくつ／
 test('提案001: 「これはいくら」の「はい」を、答えの「はい」と取り違えない', () => {
   assert.ok(!translator.translate('これはいくらですか？', 'ja').logi.includes('jesu'));
 });
+
+test('提案002: あいさつ（こんにちは・さようなら・どうぞ）を文頭に置く', () => {
+  const cases = [
+    ['こんにちは。', 'kelosu.'],
+    ['こんにちは、私はリンゴが好きです。', 'kelosu, mi laiko apa.'],
+    ['さようなら。', 'kupaju.'],
+    ['どうぞ、これは良いです。', 'pilisu, iliu pio kute.'],
+    ['Hello.', 'kelosu.'],
+    ['Hi, I like apples.', 'kelosu, mi laiko mene apa.'],
+    ['Goodbye.', 'kupaju.'],
+    ['Please.', 'pilisu.'],
+    ['This is good, please.', 'pilisu, iliu pio kute.'],
+  ];
+  cases.forEach(([src, logi]) => {
+    assert.strictEqual(translator.translate(src, 'auto').logi, logi, src);
+  });
+});
+
+test('提案002: 文の途中の「どうぞ」は、あいさつと取り違えない', () => {
+  assert.ok(!translator.translate('私はどうぞを知らない。', 'ja').logi.includes('pilisu'));
+});

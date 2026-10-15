@@ -102,3 +102,25 @@ def test_function_words_use_the_fixed_form_and_keep_distance(monkeypatch):
     for a in additions:
         others = taken - {a["word"]}
         assert coin_words.fixed_word_problem(a["word"], a, others) is None, a["word"]
+
+
+def test_greeting_interjections_use_the_fixed_form_and_keep_distance():
+    # 提案002 Q2: あいさつ3語（kelosu・kupaju・pilisu）が、規則を満たしている
+    import csv
+    import coin_words
+
+    fields, rows = coin_words.load_dictionary()
+    taken = {r["regenerated"] for r in rows}
+    path = check_consistency.ROOT / "dictionary" / "interjection_additions.csv"
+    with path.open(newline="", encoding="utf-8") as f:
+        additions = list(csv.DictReader(f))
+    assert {a["word"] for a in additions} == {"kelosu", "kupaju", "pilisu"}
+    assert all(a["pos"] == "interj" for a in additions)
+    for a in additions:
+        others = taken - {a["word"]}
+        assert coin_words.fixed_word_problem(a["word"], a, others) is None, a["word"]
+
+
+def test_anti_branch_may_not_change_interjection_list():
+    problems = check_scope.violations("anti/x", ["dictionary/interjection_additions.csv"], lambda p: None, lambda p: None)
+    assert len(problems) == 1

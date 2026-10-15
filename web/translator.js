@@ -209,6 +209,10 @@
     }
     if (byW.jesu) addJa('はい', { k: 'YESNO', w: 'jesu' });
     addJa('いいえ', { k: 'YESNO', w: 'no' });
+    // あいさつ（docs/proposals/002）。文頭の「はい」と同じく、文頭か句読点のあとだけ拾う
+    if (byW.kelosu) addJa('こんにちは', { k: 'YESNO', w: 'kelosu' });
+    if (byW.kupaju) addJa('さようなら', { k: 'YESNO', w: 'kupaju' });
+    if (byW.pilisu) addJa('どうぞ', { k: 'YESNO', w: 'pilisu' });
     ['いくつ', 'いくら'].forEach(function (s) { addJa(s, { k: 'QTY' }); });
     addJa('私たち（聞き手を含まない）', { k: 'PRON', e: byW.mipu });
     var COPULAS = {
@@ -798,6 +802,8 @@
       itself: 'selu', themselves: 'selu', oneself: 'selu', someone: 'somena', somebody: 'somena'
     };
     var DEMONSTRATIVES = { this: 'iliu', these: 'iliu', that: 'teliu', those: 'teliu' };
+    // 文頭に置く感動詞（返事・あいさつ）
+    var EN_INTERJ = { yes: 'jesu', no: 'no', hello: 'kelosu', hi: 'kelosu', goodbye: 'kupaju', bye: 'kupaju', please: 'pilisu' };
     var POSSESSIVES = { my: 'mi', your: 'tu', his: 'li', her: 'li', its: 'li', our: 'misu', their: 'lisu' };
     var DETERMINERS = { a: 1, an: 1, the: 1, this: 1, that: 1, these: 1, those: 1 };
     var WH = { what: 'wata', who: 'kua', whom: 'kua', where: 'wela', when: 'wena', why: 'waia', how: 'aua' };
@@ -1420,13 +1426,17 @@
         var question = /\?$/.test(trimmed);
         var body = trimmed.replace(/[.!?]+$/, '');
         var tokens = expandContractions(body).toLowerCase().match(/[a-z]+|[0-9]+|,/g) || [];
-        // 文頭の Yes / No: jesu / no を先頭に置く
+        // 文頭の Yes / No / Hello / Goodbye / Please: jesu / no / kelosu / kupaju / pilisu を先頭に置く
         var answer = null;
-        if ((tokens[0] === 'yes' || tokens[0] === 'no') && (tokens.length === 1 || tokens[1] === ',')) {
-          answer = tokens[0] === 'yes' ? 'jesu' : 'no';
+        var lead = EN_INTERJ[tokens[0]];
+        if (lead && (tokens.length === 1 || tokens[1] === ',' || tokens[0] === 'please')) {
+          answer = lead;
           tokens = tokens.slice(tokens[1] === ',' ? 2 : 1);
-          if (!tokens.length) { parts.push([{ fragment: [item(answer)], notes: notes }]); return; }
+        } else if (tokens.length > 2 && tokens[tokens.length - 1] === 'please' && tokens[tokens.length - 2] === ',') {
+          answer = EN_INTERJ.please;   // 文末の ", please" も文頭に置く
+          tokens = tokens.slice(0, -2);
         }
+        if (answer && !tokens.length) { parts.push([{ fragment: [item(answer)], notes: notes }]); return; }
         var segs = splitEn(tokens, question);
         var multi = segs.length > 1;
         if (multi && question) notes.push('接続語を含む疑問文は、語順を倒置せずにそのまま訳しています。');
