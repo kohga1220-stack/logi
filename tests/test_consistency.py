@@ -23,7 +23,7 @@ def test_every_count_spot_exists():
 
 
 def test_anti_branch_may_change_vocabulary_files():
-    changed = ["dictionary/core_additions.csv", "dictionary/final.csv", "dictionary/glossary_en.csv",
+    changed = ["dictionary/anti_additions.csv", "dictionary/final.csv", "dictionary/glossary_en.csv",
                "web/lexicon.js", "docs/review/new_words.md", "docs/STATUS.md", "README.md"]
     assert check_scope.violations("anti/food-words", changed, lambda p: None, lambda p: None) == []
 
@@ -55,3 +55,24 @@ def test_anti_additions_list_is_registered_and_in_anti_scope():
     assert path.read_text(encoding="utf-8").splitlines()[0] == "english,pos,meaning_ja,aliases,source"
     assert path.resolve() in {Path(p).resolve() for p, _ in coin_words.SOURCES}
     assert check_scope.violations("anti/x", ["dictionary/anti_additions.csv"], lambda p: None, lambda p: None) == []
+
+
+def test_anti_branch_may_not_change_function_word_list():
+    problems = check_scope.violations("anti/x", ["dictionary/function_additions.csv"], lambda p: None, lambda p: None)
+    assert len(problems) == 1
+
+
+def test_function_words_use_the_fixed_form_and_keep_distance(monkeypatch):
+    # 形を指定した機能語（iliu・teliu・jesu）が、規則を満たしている
+    import csv
+    import coin_words
+
+    fields, rows = coin_words.load_dictionary()
+    taken = {r["regenerated"] for r in rows}
+    path = check_consistency.ROOT / "dictionary" / "function_additions.csv"
+    with path.open(newline="", encoding="utf-8") as f:
+        additions = list(csv.DictReader(f))
+    assert {a["word"] for a in additions} == {"iliu", "teliu", "jesu"}
+    for a in additions:
+        others = taken - {a["word"]}
+        assert coin_words.fixed_word_problem(a["word"], a, others) is None, a["word"]

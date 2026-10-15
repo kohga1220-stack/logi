@@ -22,7 +22,7 @@ import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from validate import DEFAULT_DICTIONARY, check_word
+from validate import DEFAULT_DICTIONARY, POS_SUFFIX, check_word
 
 ROOT = Path(__file__).resolve().parent.parent
 GLOSSARY = ROOT / "dictionary" / "glossary_en.csv"
@@ -33,8 +33,11 @@ SOURCES = [
     (ROOT / "dictionary" / "modern_tech_additions.csv", "v0.9追加: 現代・IT語彙 "),
     # Antigravity が語を足すための専用リスト。tools/ を変えずに追記できるよう、あらかじめ登録してある
     (ROOT / "dictionary" / "anti_additions.csv", "ANTI追加: "),
+    # 機能語（指示詞・はい／いいえ など）。Claude が設計して M1ko が決めた語を、word 列の形のまま登録する
+    (ROOT / "dictionary" / "function_additions.csv", "v0.10追加: 機能語 "),
 ]
 
+CONTENT_POS = {"noun", "verb", "adj", "adv"}   # Antigravity が足してよい品詞
 ENDING = {"noun": "a", "verb": "o", "adj": "e", "adv": "i", "pronoun": "a", "prep": "te"}
 VOWELS = "aeiou"
 CONSONANTS = "ptkmnslwj"
@@ -195,6 +198,21 @@ def load_additions(path):
         return list(csv.DictReader(f))
 
 
+def fixed_word_problem(word, addition, taken):
+    """形を指定された語が、音韻の規則と、編集距離2以上の規則（partner 列の相手は除く）を満たすか。"""
+    if word in taken:
+        return "すでに辞書にある形です"
+    pos = addition["pos"] if addition["pos"] in POS_SUFFIX else "pronoun"   # 語尾の決まりが無い品詞は「母音で終わる」だけ確かめる
+    violations = check_word(word, pos)
+    if violations:
+        return "音韻の規則に反します: " + ", ".join(violations)
+    partners = {x.strip() for x in (addition.get("partner") or "").split(",") if x.strip()}
+    near = (neighbors(word) & taken) - partners
+    if near:
+        return "編集距離1の語があります: " + ", ".join(sorted(near)) + "（相手として許すなら partner 列に書く）"
+    return None
+
+
 def main(argv=None):
     argv = sys.argv[1:] if argv is None else argv
     fields, rows = load_dictionary()
@@ -229,21 +247,34 @@ def main(argv=None):
             key = f"{a['english']} {a['pos']}"
             if (tag, key) in done_keys:
                 continue
-            base_word = None
-            lemma = a["english"].lower()
-            if a["pos"] == "adv" and lemma.endswith("ly"):
-                base = {"easi": "easy"}.get(lemma[:-2], lemma[:-2])
-                base_word = english_to_word.get((base, "adj"))
-            if base_word is None:
-                # 同じ英語の別品詞があれば、その語幹を使う
-                for other in ("adj", "noun", "verb", "adv"):
-                    if other != a["pos"] and (lemma, other) in english_to_word:
-                        base_word = english_to_word[(lemma, other)]
-                        break
-            word = coin(a["english"], a["pos"], taken, verbs, base_word, pos_of.get(base_word))
-            if word is None:
-                print(f"語を作れませんでした: {a['english']}", file=sys.stderr)
+            if path.name == "anti_additions.csv" and a["pos"] not in CONTENT_POS:
+                print(f"{a['english']} ({a['pos']}): Antigravity の追加リストには内容語（{', '.join(sorted(CONTENT_POS))}）しか書けません。"
+                      "機能語は docs/proposals で M1ko が決めてから、Claude が入れます。", file=sys.stderr)
                 return 1
+            lemma = a["english"].lower()
+            fixed = (a.get("word") or "").strip()
+            if fixed:
+                # 形を指定された語（機能語）。規則を満たすか確かめて、そのまま使う
+                problem = fixed_word_problem(fixed, a, taken)
+                if problem:
+                    print(f"{a['english']} → {fixed}: {problem}", file=sys.stderr)
+                    return 1
+                word = fixed
+            else:
+                base_word = None
+                if a["pos"] == "adv" and lemma.endswith("ly"):
+                    base = {"easi": "easy"}.get(lemma[:-2], lemma[:-2])
+                    base_word = english_to_word.get((base, "adj"))
+                if base_word is None:
+                    # 同じ英語の別品詞があれば、その語幹を使う
+                    for other in ("adj", "noun", "verb", "adv"):
+                        if other != a["pos"] and (lemma, other) in english_to_word:
+                            base_word = english_to_word[(lemma, other)]
+                            break
+                word = coin(a["english"], a["pos"], taken, verbs, base_word, pos_of.get(base_word))
+                if word is None:
+                    print(f"語を作れませんでした: {a['english']}", file=sys.stderr)
+                    return 1
             taken.add(word)
             pos_of[word] = a["pos"]
             if a["pos"] == "verb":

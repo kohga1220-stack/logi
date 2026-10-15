@@ -1670,3 +1670,6 @@ download,tonuko,verb,ダウンロードする,OK,OK,v0.9追加: 現代・IT語�
 password,pasiwa,noun,パスワード,OK,OK,v0.9追加: 現代・IT語彙 password noun,active,
 sensor,senasa,noun,センサー,OK,OK,v0.9追加: 現代・IT語彙 sensor noun,active,
 program,puwoja,noun,プログラム,OK,OK,v0.9追加: 現代・IT語彙 program noun,active,
+this,iliu,pronoun,これ（この）,OK,OK,v0.10追加: 機能語 this pronoun,active,
+that,teliu,pronoun,あれ（あの・その）,OK,OK,v0.10追加: 機能語 that pronoun,active,
+yes,jesu,interj,はい,OK,OK,v0.10追加: 機能語 yes interj,active,

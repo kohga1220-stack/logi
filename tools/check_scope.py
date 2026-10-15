@@ -17,7 +17,7 @@ ROOT = Path(__file__).resolve().parent.parent
 
 # anti/* が丸ごと変更してよいパス
 ANTI_ALLOWED = [
-    "dictionary/*_additions.csv",
+    "dictionary/anti_additions.csv",   # 機能語のリスト（function_additions.csv）は Claude の担当
     "dictionary/final.csv",
     "dictionary/glossary_en.csv",
     "dictionary/word_review.csv",

@@ -32,8 +32,9 @@ BATCHES = [
     ("v0.8追加", "v0.8 日本語の基本語彙"),
     ("v0.9追加", "v0.9 現代・IT語彙"),
     ("ANTI追加", "Antigravity の追加語（dictionary/anti_additions.csv）"),
+    ("v0.10追加", "v0.10 機能語（指示詞・はい／いいえ）"),
 ]
-POS_ORDER = ["noun", "verb", "adj", "adv", "prep", "pronoun"]
+POS_ORDER = ["noun", "verb", "adj", "adv", "prep", "pronoun", "interj"]
 
 
 def reason(group, canonical, all_words, used):
