@@ -73,6 +73,13 @@
 | 66 | greeting-hello | kelosu, mi laiko apa. | こんにちは、私はリンゴが好きです。 |
 | 67 | greeting-goodbye | kupaju. | さようなら。 |
 | 68 | greeting-please | pilisu, iliu pio kute. | どうぞ、これは良いです。 |
+| 69 | imperative | ito apa! | リンゴを食べなさい。 |
+| 70 | imperative-polite | pilisu, ito apa! | リンゴを食べてください。 |
+| 71 | imperative-go | iko tote ili! | ここへ行きなさい。 |
+| 72 | prohibition | no ito apa! | リンゴを食べるな。 |
+| 73 | prohibition-polite | pilisu, no ito apa! | リンゴを食べないでください。 |
+| 74 | hortative | misu ito apa! | リンゴを食べましょう。 |
+| 75 | hortative-go | misu iko tote ili! | ここへ行きましょう。 |
 
 ## 語注（辞書から機械的に生成）
 
@@ -212,3 +219,17 @@
   kupaju=さようなら(interj)
 - **68** `pilisu, iliu pio kute.`  
   pilisu=どうぞ(interj) iliu=これ（この）(pronoun) pio=です(verb) kute=良い(adj)
+- **69** `ito apa!`  
+  ito=食べる(verb) apa=リンゴ(noun)
+- **70** `pilisu, ito apa!`  
+  pilisu=どうぞ(interj) ito=食べる(verb) apa=リンゴ(noun)
+- **71** `iko tote ili!`  
+  iko=行く(verb) tote=へ(prep) ili=ここで(adv)
+- **72** `no ito apa!`  
+  no=否定(marker) ito=食べる(verb) apa=リンゴ(noun)
+- **73** `pilisu, no ito apa!`  
+  pilisu=どうぞ(interj) no=否定(marker) ito=食べる(verb) apa=リンゴ(noun)
+- **74** `misu ito apa!`  
+  misu=私たち（包括）(pronoun) ito=食べる(verb) apa=リンゴ(noun)
+- **75** `misu iko tote ili!`  
+  misu=私たち（包括）(pronoun) iko=行く(verb) tote=へ(prep) ili=ここで(adv)

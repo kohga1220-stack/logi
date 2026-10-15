@@ -108,7 +108,7 @@ logi/
 ├── web/
 │   └── index.html          Translator page (Japanese/English → Logi) / 翻訳機（see web/README.md）
 ├── corpus/
-│   └── examples.csv        68 example sentences by grammar feature / 機能別例文68文
+│   └── examples.csv        75 example sentences by grammar feature / 機能別例文75文
 ├── dictionary/
 │   ├── final.csv           1,701-word validated dictionary / 検証済み辞書1,701語
 │   ├── eiken3_additions.csv  Eiken grade-3 level word list added in v0.7 / 英検3級レベルの追加語リスト
@@ -151,6 +151,7 @@ logi/
 | v0.9.1 | Noun `puwoja` (program) added; `modern_tech_additions.csv` registered in `tools/coin_words.py`; shared-stem pairs now keep edit distance 2 from every word except their partner; word counts synced; 1,671 words |
 | v0.10 | Demonstratives `iliu` (this) / `teliu` (that), answer `jesu` (yes; `no` is reused for no), `aua mene` (how many / how much), `wata ila` (how old) — decided in `docs/proposals/001`; the translator handles them (also verb nominalization); 1,674 words |
 | v0.11 | Greetings `kelosu` (hello) / `kupaju` (goodbye) / `pilisu` (please) as interjections — decided in `docs/proposals/002`; short function words are coined as fixed 3-syllable forms (`dictionary/interjection_additions.csv`); the translator handles them; 1,702 words |
+| v0.12 | Imperatives, requests, prohibitions and invitations marked by a final `!` — decided in `docs/proposals/003`: imperative = verb sentence without a subject, request = leading `pilisu,`, prohibition = `no`, invitation = subject `misu`; no new words; the translator handles them; 1,701 words |
 
 ---
 

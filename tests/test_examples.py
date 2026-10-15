@@ -103,7 +103,7 @@ def test_corpus_ids_are_unique_and_sentences_end_properly(corpus):
     ids = [row["id"] for row in corpus]
     assert len(ids) == len(set(ids))
     for row in corpus:
-        assert row["logi"].endswith((".", "?")), row["id"]
+        assert row["logi"].endswith((".", "?", "!")), row["id"]
         assert row["ja"], row["id"]
 
 
@@ -149,3 +149,18 @@ def test_corpus_wela_wena_follow_a_preposition(corpus, pos):
         for i, t in enumerate(toks):
             if t in {"wela", "wena"}:
                 assert i > 0 and "prep" in pos.get(toks[i - 1], set()), row["id"]
+
+
+def test_corpus_imperatives_end_with_exclamation_and_have_no_subject_except_misu(corpus):
+    """提案003: 命令・禁止は主語を省き、勧誘は主語を misu にして、文末を ! にする。主語のある平叙文は ! で終えない。"""
+    subjects = {"mi", "tu", "li", "lisu", "mipu", "misu"}
+    for row in corpus:
+        toks = tokenize(row["logi"])
+        if toks[:1] == ["pilisu"]:
+            toks = toks[1:]
+        if row["logi"].endswith("!"):
+            assert not (toks and toks[0] in subjects - {"misu"}), row["id"]
+        else:
+            assert row["feature"] not in {"imperative", "imperative-polite", "imperative-go", "prohibition",
+                                          "prohibition-polite", "hortative", "hortative-go"}, row["id"]
+
