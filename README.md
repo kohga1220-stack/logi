@@ -110,6 +110,7 @@ logi/
 ├── dictionary/
 │   ├── final.csv           1,671-word validated dictionary / 検証済み辞書1,671語
 │   ├── eiken3_additions.csv  Eiken grade-3 level word list added in v0.7 / 英検3級レベルの追加語リスト
+│   ├── word_review.csv     Review status of the added words (draft / ok / fix) / 追加語の確認状況
 │   ├── core_additions.csv  Everyday Japanese word list added in v0.8 / 日本語の基本語彙の追加語リスト
 │   ├── modern_tech_additions.csv Modern tech & digital word list added in v0.9 / 現代・IT語彙の追加語リスト
 │   ├── sources/            Source word lists (NINJAL, CC BY 4.0) / 語彙の出典データ
@@ -118,7 +119,7 @@ logi/
     ├── coin_words.py       Coins Logi words for the addition lists / 追加語の造語
     ├── core_candidates.py  Lists basic words missing from the dictionary / 辞書に無い基本語の候補
     ├── build_web.py        Builds web/lexicon.js for the translator / 翻訳機の辞書データ生成
-    ├── make_review.py      Review tables for synonyms and the corpus / 確認表の生成
+    ├── make_review.py      Review tables for synonyms, the corpus and the added words / 確認表の生成
     ├── synonyms.py         Canonical-word chooser for synonym groups / 同義語の正本選定
     ├── gloss.py            Dictionary-based word gloss for Logi sentences / 辞書ベースの語注生成
     ├── legacy/             Old regenerate/resolve pipeline (needs raw.csv; see legacy/README.md) / 旧パイプライン
