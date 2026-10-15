@@ -7,7 +7,7 @@
 - 語幹が同じ: 語尾の1文字だけが違う、別の品詞の語（例: `kuka` 名詞と `kuko` 動詞）。同じ英語の別品詞なら意図した組です。そうでなければ偶然の一致なので、見分けにくくないか見てください
 - 同じ英語の語: 同じ英語の訳を持つ、別の語（同義語の候補）
 
-確認済み(ok): 1077 / 要修正(fix): 0 / 未確認(draft): 23
+確認済み(ok): 1100 / 要修正(fix): 0 / 未確認(draft): 0
 
 ## v0.7 英検3級レベルの語（487語）
 
@@ -1148,17 +1148,17 @@
 | lokoma | 汽車 | locomotive |  | ok |
 | kueja | 案内 | guidance |  | ok |
 | telewa | 電報 | telegram |  | ok |
-| posota | 格好 | style |  |  |
-| tonuwa | 工夫 | contrivance |  |  |
-| ukena | 勘定 | account |  |  |
-| pewuta | 玄関 | vestibule |  |  |
-| kataka | 片仮名 | katakana |  |  |
-| iwaja | 平仮名 | hiragana |  |  |
-| pipita | 見舞い | visitation |  |  |
-| setata | 身長 | stature |  |  |
-| pikima | 用心 | vigilance |  |  |
-| tesana | 下り | descent |  |  |
-| katewa | 調子 | tone |  |  |
+| posota | 格好 | style |  | ok |
+| tonuwa | 工夫 | contrivance |  | ok |
+| ukena | 勘定 | account |  | ok |
+| pewuta | 玄関 | vestibule |  | ok |
+| kataka | 片仮名 | katakana |  | ok |
+| iwaja | 平仮名 | hiragana |  | ok |
+| pipita | 見舞い | visitation |  | ok |
+| setata | 身長 | stature |  | ok |
+| pikima | 用心 | vigilance |  | ok |
+| tesana | 下り | descent |  | ok |
+| katewa | 調子 | tone |  | ok |
 
 ### verb（18語）
 
@@ -1175,13 +1175,13 @@
 | tisepo | 困る | distress |  | ok |
 | oajo | 覚める | awaken |  | ok |
 | tisolo | 溶ける | dissolve |  | ok |
-| paluno | 乾く | parch |  |  |
-| lulumo | 隠れる | lurk |  |  |
-| emepo | 現れる | appear |  |  |
-| ajato | 諦める | abandon |  |  |
-| enipo | 誘う | entice |  |  |
-| tutulo | 離れる | stray |  |  |
-| omupo | 嵌める | embed |  |  |
+| paluno | 乾く | parch |  | ok |
+| lulumo | 隠れる | lurk |  | ok |
+| emepo | 現れる | appear |  | ok |
+| ajato | 諦める | abandon |  | ok |
+| enipo | 誘う | entice |  | ok |
+| tutulo | 離れる | stray |  | ok |
+| omupo | 嵌める | embed |  | ok |
 
 ### adj（5語）
 
@@ -1190,16 +1190,16 @@
 | tenuse | 濃い | dense |  | ok |
 | ipume | 親しい | intimate |  | ok |
 | sukate | 少ない | scarce |  | ok |
-| akane | 苦しい | agonizing |  |  |
-| asepe | 渋い | astringent |  |  |
+| akane | 苦しい | agonizing |  | ok |
+| asepe | 渋い | astringent |  | ok |
 
 ### adv（3語）
 
 | Logi | 日本語 | 英語 | 手がかり | 状況 |
 |---|---|---|---|---|
-| lepipi | たびたび | repeatedly |  |  |
-| initi | ますます | increasingly |  |  |
-| ituti | なるほど | indeed |  |  |
+| lepipi | たびたび | repeatedly |  | ok |
+| initi | ますます | increasingly |  | ok |
+| ituti | なるほど | indeed |  | ok |
 
 ## v0.10 機能語（指示詞・はい／いいえ）（3語）
 
