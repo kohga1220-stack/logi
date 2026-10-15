@@ -1,26 +1,25 @@
 english,pos,meaning_ja,aliases,source
-garden,noun,庭,yard,core_candidates.py の候補 90
-funeral,noun,葬式,,core_candidates.py の候補 327
-trade,noun,商売,commerce,core_candidates.py の候補 303
-lecture,noun,授業,,core_candidates.py の候補 307
-marble,noun,玉,bead,core_candidates.py の候補 347
-order,noun,注文,,core_candidates.py の候補 357
-liquor,noun,酒,sake,core_candidates.py の候補 288
-locomotive,noun,汽車,,core_candidates.py の候補 28
-guidance,noun,案内,,core_candidates.py の候補 168
-regulation,noun,規則,,core_candidates.py の候補 242
-telegram,noun,電報,,core_candidates.py の候補 378
-sniff,verb,嗅ぐ,,core_candidates.py の候補 222
-compete,verb,争う,contend,core_candidates.py の候補 164
-simmer,verb,煮る,,core_candidates.py の候補 414
-tumble,verb,転ぶ,,core_candidates.py の候補 280
-clamor,verb,騒ぐ,,core_candidates.py の候補 294
-flourish,verb,茂る,,core_candidates.py の候補 297
-fatten,verb,太る,,core_candidates.py の候補 445
-slim,verb,痩せる,,core_candidates.py の候補 490
-distress,verb,困る,,core_candidates.py の候補 277
-awaken,verb,覚める,,core_candidates.py の候補 293
-dissolve,verb,溶ける,,core_candidates.py の候補 386
-dense,adj,濃い,,core_candidates.py の候補 268
-intimate,adj,親しい,,core_candidates.py の候補 534
-scarce,adj,少ない,,core_candidates.py の候補 314
+garden,noun,庭,yard,国語研教育基本語彙: 庭
+funeral,noun,葬式,,国語研教育基本語彙: 葬式
+trade,noun,商売,commerce,国語研教育基本語彙: 商売
+lecture,noun,授業,lesson|class,国語研教育基本語彙: 授業
+marble,noun,玉,bead,国語研教育基本語彙: 玉
+order,noun,注文,,国語研教育基本語彙: 注文
+liquor,noun,酒,sake,国語研教育基本語彙: 酒
+locomotive,noun,汽車,,国語研教育基本語彙: 汽車
+guidance,noun,案内,,国語研教育基本語彙: 案内
+telegram,noun,電報,,国語研教育基本語彙: 電報
+sniff,verb,嗅ぐ,,国語研教育基本語彙: 嗅ぐ
+compete,verb,争う,contend,国語研教育基本語彙: 争う
+simmer,verb,煮る,,国語研教育基本語彙: 煮る
+tumble,verb,転ぶ,,国語研教育基本語彙: 転ぶ
+clamor,verb,騒ぐ,,国語研教育基本語彙: 騒ぐ
+flourish,verb,茂る,,国語研教育基本語彙: 茂る
+fatten,verb,太る,,国語研教育基本語彙: 太る
+slim,verb,痩せる,,国語研教育基本語彙: 痩せる
+distress,verb,困る,,国語研教育基本語彙: 困る
+awaken,verb,覚める,,国語研教育基本語彙: 覚める
+dissolve,verb,溶ける,,国語研教育基本語彙: 溶ける
+dense,adj,濃い,,国語研教育基本語彙: 濃い
+intimate,adj,親しい,,国語研教育基本語彙: 親しい
+scarce,adj,少ない,few|little,国語研教育基本語彙: 少ない

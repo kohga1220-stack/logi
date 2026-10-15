@@ -122,7 +122,7 @@ lisa,reason
 losa,danger
 loa,law
 lopa,love
-lula,rule
+lula,rule|regulation
 lumupa,report
 saia,science
 sapa,safety
@@ -1622,13 +1622,12 @@ jesu,yes
 kaloma,garden|yard
 puwela,funeral
 tunana,trade|commerce
-lekika,lecture
+lekika,lecture|lesson|class
 malapa,marble|bead
 oleja,order
 kikua,liquor|sake
 lokoma,locomotive
 kueja,guidance
-mekula,regulation
 telewa,telegram
 sunito,sniff
 komipo,compete|contend
@@ -1643,7 +1642,7 @@ oajo,awaken
 tisolo,dissolve
 tenuse,dense
 ipume,intimate
-sukate,scarce
+sukate,scarce|few|little
 kelosu,hello|hi
 kupaju,goodbye|bye
 pilisu,please
