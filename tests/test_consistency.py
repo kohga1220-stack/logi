@@ -124,3 +124,29 @@ def test_greeting_interjections_use_the_fixed_form_and_keep_distance():
 def test_anti_branch_may_not_change_interjection_list():
     problems = check_scope.violations("anti/x", ["dictionary/interjection_additions.csv"], lambda p: None, lambda p: None)
     assert len(problems) == 1
+
+
+def test_coin_words_refuses_aliases_that_other_words_already_have(tmp_path, monkeypatch):
+    # PR #30 の見直しで、lesson・class・few・little が、すでに別の語の英語だった
+    import csv
+    import coin_words
+
+    extra = tmp_path / "extra_additions.csv"
+    extra.write_text(
+        "english,pos,meaning_ja,aliases,source\n"
+        "gizmo,noun,小道具,class|lesson,t\n"      # kulasa・lesa がすでに持つ
+        "widget,noun,部品,sprocket,t\n",          # 新しい別名
+        encoding="utf-8",
+    )
+    monkeypatch.setattr(coin_words, "SOURCES", [(extra, "T追加: ")])
+    fields, rows = coin_words.load_dictionary()
+    pos_of = {r["regenerated"]: r["pos"] for r in rows}
+    english_to_word = {}
+    with coin_words.GLOSSARY.open(newline="", encoding="utf-8") as f:
+        for g in csv.DictReader(f):
+            for e in g["en"].split("|"):
+                english_to_word.setdefault((e.lower(), pos_of.get(g["word"])), g["word"])
+    problems = coin_words.duplicate_problems(rows, english_to_word)
+    assert any("gizmo" in p and "class" in p and "kulasa" in p for p in problems)
+    assert any("gizmo" in p and "lesson" in p and "lesa" in p for p in problems)
+    assert not any("widget" in p for p in problems)
