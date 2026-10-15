@@ -66,28 +66,32 @@
       'る': { i: 'り', a: 'ら', ta: 'っ' }
     };
 
+    // 五段動詞の「お段」（意向形 行こう の こ）
+    var O_ROW = { 'う': 'お', 'く': 'こ', 'ぐ': 'ご', 'す': 'そ', 'つ': 'と', 'ぬ': 'の', 'ぶ': 'ぼ', 'む': 'も', 'る': 'ろ' };
+
     // 動詞の活用形（表層形 → タグ）を作る
     function verbForms(ja) {
       var forms = [];
-      var stemI, stemA, stemTa, stemTe, plain = ja;
+      var stemI, stemA, stemTa, stemTe, vol = null, plain = ja;
       var last = ja.slice(-1);
       var base = ja.slice(0, -1);
       if (ja === 'ある') {
         stemI = 'あり'; stemA = null; stemTa = 'あっ'; stemTe = 'あって';
         forms.push([ja, {}]);
       } else if (ja === '来る') {
-        stemI = '来'; stemA = '来'; stemTa = '来た'; stemTe = '来て';
+        stemI = '来'; stemA = '来'; stemTa = '来た'; stemTe = '来て'; vol = '来よう';
       } else if (/する$/.test(ja)) {
         var sb = ja.slice(0, -2);
-        stemI = sb + 'し'; stemA = sb + 'し'; stemTa = sb + 'した'; stemTe = sb + 'して';
+        stemI = sb + 'し'; stemA = sb + 'し'; stemTa = sb + 'した'; stemTe = sb + 'して'; vol = sb + 'しよう';
         forms.push([ja, {}], [sb + 'しない', { neg: true }], [sb + 'しなかった', { neg: true, past: true }]);
       } else if (last === 'る' && (/[いきぎしじちぢにひびぴみりえけげせぜてでねへべぺめれ]る$/.test(ja) || ICHIDAN_KANJI[ja.charAt(ja.length - 2)])) {
-        stemI = base; stemA = base; stemTa = base + 'た'; stemTe = base + 'て';
+        stemI = base; stemA = base; stemTa = base + 'た'; stemTe = base + 'て'; vol = base + 'よう';
         forms.push([ja, {}], [base + 'ない', { neg: true }], [base + 'なかった', { neg: true, past: true }]);
       } else if (GODAN[last]) {
         var g = GODAN[last];
         stemI = base + g.i;
         stemA = base + g.a;
+        vol = base + O_ROW[last] + 'う';
         if (ja === '行く') { stemTa = '行っ'; stemTe = '行って'; stemTa = '行った'; }
         else if (g.plainTa) { stemTa = base + 'した'; stemTe = base + 'して'; }
         else if (g.nasal) { stemTa = base + 'んだ'; stemTe = base + 'んで'; }
@@ -107,6 +111,12 @@
       if (stemTe) forms.push([stemTe + 'から', { sub: 'aputi' }]);
       forms.push([stemI + 'ます', {}], [stemI + 'ました', { past: true }],
         [stemI + 'ません', { neg: true }], [stemI + 'ませんでした', { neg: true, past: true }]);
+      // 命令・依頼・禁止・勧誘（docs/proposals/003）。文末だけで使う（endOnly）
+      forms.push([stemI + 'なさい', { imp: true, endOnly: true }], [stemI + 'ましょう', { hort: true, endOnly: true }],
+        [ja + 'な', { imp: true, neg: true, endOnly: true }]);
+      if (vol) forms.push([vol, { hort: true, endOnly: true }]);
+      if (stemTe) forms.push([stemTe + 'ください', { imp: true, polite: true, endOnly: true }]);
+      if (stemA) forms.push([stemA + 'ないでください', { imp: true, polite: true, neg: true, endOnly: true }]);
       if (stemTe) {
         forms.push([stemTe, { te: true }]);
         var te = stemTe;
@@ -292,6 +302,11 @@
           var cand = jaMap[text.substr(i, len)];
           // 「はい」「いいえ」は文頭か句読点のあとだけ（「これはいくら」の「はい」を拾わない）
           if (cand && cand.k === 'YESNO' && i > 0 && !/[、，,。．.！？!?\s]/.test(text.charAt(i - 1))) cand = null;
+          // 命令・勧誘の形（食べなさい・食べるな・食べましょう など）は文末だけ（「食べるなら」「食べようと」を壊さない）
+          if (cand && cand.k === 'V' && cand.tags && cand.tags.endOnly) {
+            var nx = text.charAt(i + len);
+            if (nx && !/[、，,。．.！？!?\s]/.test(nx)) cand = null;
+          }
           if (cand) { found = { tok: cand, len: len }; break; }
         }
         if (found) { flush(); tokens.push(found.tok); i += found.len; }
@@ -499,7 +514,7 @@
         }
       }
       if (last && last.k === 'V' && !copTags) {
-        pred = { kind: 'verb', e: last.e };
+        pred = { kind: 'verb', e: last.e, imp: !!last.tags.imp, polite: !!last.tags.polite, hort: !!last.tags.hort };
         if (last.tags.past) tense = 'past';
         if (last.tags.neg) neg = true;
         if (last.tags.prog) aspect = 'prog';
@@ -533,6 +548,9 @@
 
       if (pred && pred.kind === 'verb') {
         ir.verb = pred.e.w;
+        if (pred.imp || pred.hort) ir.imperative = true;
+        if (pred.polite) ir.polite = true;
+        if (pred.hort && !ir.subject) ir.subject = [item('misu')];
         var isExist = pred.e.w === 'alo' || pred.e.w === 'lipo';
         withP.forEach(function (c) {
           if (c.particle === 'を' || (c.particle === 'が' && !ir.object)) ir.object = c.items;
@@ -696,6 +714,14 @@
             notes.push('主語のない節は、前の節の主語を引き継ぎました。');
           }
         });
+        if (irs.length) {
+          // 文末の「食べて」も依頼（命令）。命令の文は、文末が ! になる
+          var finalTok = toks[toks.length - 1];
+          if (finalTok && finalTok.k === 'V' && finalTok.tags && finalTok.tags.te) irs[irs.length - 1].imperative = true;
+          if (irs.some(function (x) { return x.imperative; })) irs[irs.length - 1].imperative = true;
+          // 「〜てください」「〜ないでください」は、文頭に pilisu を置く
+          if (!answer && irs.some(function (x) { return x.polite; }) && byW.pilisu) answer = 'pilisu';
+        }
         if (answer && irs.length) irs[0].answer = answer;
         if (irs.length) parts.push(irs);
       });
@@ -770,7 +796,7 @@
           items.forEach(function (it) { if (it.unknown) unknownList.push(it.unknown); });
         });
         var last = irs[irs.length - 1];
-        sentenceStrings.push(text.trim() + (last.question ? '?' : '.'));
+        sentenceStrings.push(text.trim() + (last.question ? '?' : last.imperative ? '!' : '.'));
       });
       var seen = {};
       var uniqueItems = [];
@@ -1437,6 +1463,11 @@
           tokens = tokens.slice(0, -2);
         }
         if (answer && !tokens.length) { parts.push([{ fragment: [item(answer)], notes: notes }]); return; }
+        // 勧誘 Let's … / Let us … は、we を主語にした命令の形。Thank you は I thank you（命令ではない）
+        var hort = false;
+        var notesBefore = notes.length;
+        if (tokens[0] === 'let' && (tokens[1] === 'us' || tokens[1] === 's')) { hort = true; tokens = ['we'].concat(tokens.slice(2)); }
+        else if (tokens[0] === 'thank' && tokens[1] === 'you') tokens = ['i'].concat(tokens);
         var segs = splitEn(tokens, question);
         var multi = segs.length > 1;
         if (multi && question) notes.push('接続語を含む疑問文は、語順を倒置せずにそのまま訳しています。');
@@ -1457,6 +1488,12 @@
         if (failed || !irs.length) {
           notes.push('「' + trimmed + '」は未対応の文型のため訳せませんでした。');
           return;
+        }
+        // 主語のない動詞文は命令（docs/proposals/003）。文末は ! にする
+        var NO_SUBJECT = '主語が見つからない文です。';
+        if (hort || (!question && irs[0].verb && !irs[0].subject)) {
+          irs[irs.length - 1].imperative = true;
+          for (var ni = notes.length - 1; ni >= notesBefore; ni--) if (notes[ni] === NO_SUBJECT) notes.splice(ni, 1);
         }
         if (answer) irs[0].answer = answer;
         parts.push(irs);

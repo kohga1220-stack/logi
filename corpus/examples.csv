@@ -67,3 +67,10 @@ id,feature,logi,ja
 66,greeting-hello,"kelosu, mi laiko apa.",こんにちは、私はリンゴが好きです。
 67,greeting-goodbye,kupaju.,さようなら。
 68,greeting-please,"pilisu, iliu pio kute.",どうぞ、これは良いです。
+69,imperative,ito apa!,リンゴを食べなさい。
+70,imperative-polite,"pilisu, ito apa!",リンゴを食べてください。
+71,imperative-go,iko tote ili!,ここへ行きなさい。
+72,prohibition,no ito apa!,リンゴを食べるな。
+73,prohibition-polite,"pilisu, no ito apa!",リンゴを食べないでください。
+74,hortative,misu ito apa!,リンゴを食べましょう。
+75,hortative-go,misu iko tote ili!,ここへ行きましょう。

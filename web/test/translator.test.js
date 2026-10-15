@@ -334,3 +334,41 @@ test('提案002: あいさつ（こんにちは・さようなら・どうぞ）
 test('提案002: 文の途中の「どうぞ」は、あいさつと取り違えない', () => {
   assert.ok(!translator.translate('私はどうぞを知らない。', 'ja').logi.includes('pilisu'));
 });
+
+test('提案003: 命令・依頼・禁止・勧誘は、文末を ! にする', () => {
+  const cases = [
+    ['リンゴを食べなさい。', 'ito apa!'],
+    ['リンゴを食べてください。', 'pilisu, ito apa!'],
+    ['リンゴを食べて。', 'ito apa!'],
+    ['ここへ行きなさい。', 'iko tote ili!'],
+    ['リンゴを食べるな。', 'no ito apa!'],
+    ['リンゴを食べないでください。', 'pilisu, no ito apa!'],
+    ['リンゴを食べましょう。', 'misu ito apa!'],
+    ['リンゴを食べよう。', 'misu ito apa!'],
+    ['ここへ行きましょう。', 'misu iko tote ili!'],
+    ['どうぞ、リンゴを食べなさい。', 'pilisu, ito apa!'],
+    ['Eat an apple.', 'ito apa!'],
+    ['Eat an apple!', 'ito apa!'],
+    ['Do not eat the apple.', 'no ito apa!'],
+    ['Please eat an apple.', 'pilisu, ito apa!'],
+    ['Eat an apple, please.', 'pilisu, ito apa!'],
+    ['Let us eat an apple.', 'misu ito apa!'],
+    ["Let's go to here.", 'misu iko tote ili!'],
+  ];
+  cases.forEach(([src, logi]) => {
+    assert.strictEqual(translator.translate(src, 'auto').logi, logi, src);
+  });
+});
+
+test('提案003: 命令の文は、「主語が見つからない」という注意を出さない', () => {
+  assert.ok(!translator.translate('Eat an apple.', 'en').notes.some((n) => n.includes('主語が見つかりません') || n.includes('主語が見つからない')));
+});
+
+test('提案003: 主語のある平叙文や、Thank you は、命令にしない', () => {
+  assert.strictEqual(translator.translate('I eat an apple.', 'en').logi, 'mi ito apa.');
+  assert.strictEqual(translator.translate('Thank you.', 'en').logi, 'mi tanako tu.');
+  // 文の途中の「食べるなら」「食べようと」は、命令・勧誘の形にしない
+  assert.ok(!translator.translate('私はリンゴを食べるなら行く。', 'ja').logi.includes('!'));
+  assert.ok(!translator.translate('私はリンゴを食べようと思う。', 'ja').logi.includes('misu'));
+});
+
