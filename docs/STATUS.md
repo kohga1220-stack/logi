@@ -9,13 +9,13 @@
 | 内容 | 場所 | 状態 |
 |---|---|---|
 | （提案の決定待ちはありません）| | |
-| 追加語（約1,075語）の音と意味の確認。`mekula` は `lula` への統一が決定済み（PR #30 で対応） | `docs/review/new_words.md`、`dictionary/word_review.csv` | 未確認 |
+| 追加語（約1,075語）の音と意味の確認 | `docs/review/new_words.md`、`dictionary/word_review.csv` | 未確認 |
 
 ## 進行中のPR
 
 | PR | 担当 | 内容 | 状態 |
 |---|---|---|---|
-| #30 | Antigravity | 内容語見直し（`mekula` を `lula` に統一、英語別名の拡充、sourceの正規化） | ドラフト（確認待ち） |
+| （開いているPRはありません）| | | |
 
 ## 文法への依頼（Antigravity → Claude）
 
@@ -28,11 +28,12 @@
 ## 担当ごとの次の作業
 
 - **Claude**: 命令・依頼の文型（「〜してください」）の提案を書く。
-- **Antigravity**: ドラフトPR #30 のCI確認。M1koのレビュー・マージ待ち。
-- **M1ko**: Antigravityの見直しPR #30 の確認・マージ。追加語の確認表の確認。
+- **Antigravity**: 新しい追加語のPRは、M1ko が追加語の確認表の確認を終えてから（`docs/WORKFLOW.md` §2「語を選ぶときの決まり」）。
+- **M1ko**: 追加語の確認表の確認。PRのマージ。
 
 ## 最近の主な変更
 
+- 25語（PR #26）の見直し（Antigravity。PR #30）: `mekula`（規則）を削除して既存の `lula`（ルール）に統一し、`lula` に別名 `regulation` を追加。`anti_additions.csv` の `source` を日本語の見出し語に。辞書は1,701語（active 1,668語）。
 - `coin_words.py`: 追加する行の別名（aliases）が、同じ品詞の別の語の英語と重なるときも止める。WORKFLOW §2 の別名の例（lesson・class・few・little は、すでに別の語が持っている）を直した。
 - v0.11: あいさつ `kelosu`（こんにちは）・`kupaju`（さようなら）・`pilisu`（どうぞ）（提案002の決定を実装）。翻訳機の日本語・英語の対応と、例文3文。辞書は1,702語（active 1,669語）。
 - `docs/WORKFLOW.md` に「語を選ぶときの決まり」（意味の重なりの事前確認、英語の見出し語の選び方、新しいバッチは前の確認が終わってから）と、コミットの作者を上書きしない決まりを追加。
