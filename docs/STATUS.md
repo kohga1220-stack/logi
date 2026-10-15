@@ -8,15 +8,14 @@
 
 | 内容 | 場所 | 状態 |
 |---|---|---|
-| 指示詞・はい／いいえ・「いくつ／いくら」の設計（Q1〜Q4）| `docs/proposals/001-deixis-yes-no-howmany.md`（PR #16）| 未決。おすすめはすべて A |
+| 指示詞・はい／いいえ・「いくつ／いくら」の設計（Q1〜Q4）| `docs/proposals/001-deixis-yes-no-howmany.md`（文書は main に入っている）| **未決**。選ぶまで実装しない。おすすめはすべて A |
 | 追加語（約1,050語）の音と意味の確認 | `docs/review/new_words.md`、`dictionary/word_review.csv` | 未確認 |
 
 ## 進行中のPR
 
 | PR | 担当 | 内容 | 状態 |
 |---|---|---|---|
-| #16 | Claude | 提案001（指示詞など）| ドラフト。決定待ち |
-| #18 | Claude | 翻訳機: 動詞の名詞化 | ドラフト。CI成功、マージ待ち |
+| （開いているPRはありません）| | | |
 
 ## 文法への依頼（Antigravity → Claude）
 
@@ -33,6 +32,11 @@
 - **M1ko**: 提案001の選択。確認表の確認。PRのマージ。
 
 ## 最近の主な変更
+
+- 分担と進め方（`docs/WORKFLOW.md`）、整合性と担当範囲の検査をCIに追加（PR #19）。
+- 翻訳機: 動詞の名詞化に対応（「食べるのが好き」・Reading books is fun.。PR #18）。
+- 追加語の確認表（`docs/review/new_words.md`、`dictionary/word_review.csv`。PR #17）。
+- 設計案 001（指示詞・はい／いいえ・いくつ／いくら。PR #16）。
 
 - v0.9.1: 名詞 `puwoja`（プログラム）を追加（1,671語）。
 - v0.9: 現代・IT語彙10語（Antigravity）。
