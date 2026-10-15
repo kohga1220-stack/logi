@@ -115,7 +115,8 @@
       forms.push([stemI + 'なさい', { imp: true, endOnly: true }], [stemI + 'ましょう', { hort: true, endOnly: true }],
         [ja + 'な', { imp: true, neg: true, endOnly: true }]);
       if (vol) forms.push([vol, { hort: true, endOnly: true }]);
-      if (stemTe) forms.push([stemTe + 'ください', { imp: true, polite: true, endOnly: true }]);
+      if (stemTe) forms.push([stemTe + 'ください', { imp: true, polite: true, endOnly: true }],
+        [stemTe + 'いただけます', { req: true, pol: true, endOnly: true }], [stemTe + 'いただけません', { req: true, pol: true, endOnly: true }]);
       if (stemA) forms.push([stemA + 'ないでください', { imp: true, polite: true, neg: true, endOnly: true }]);
       if (stemTe) {
         forms.push([stemTe, { te: true }]);
@@ -219,6 +220,11 @@
     }
     if (byW.jesu) addJa('はい', { k: 'YESNO', w: 'jesu' });
     addJa('いいえ', { k: 'YESNO', w: 'no' });
+    // 疑問での依頼（docs/proposals/004）。〜てくれませんか など。文末だけ。pol: 文頭に pilisu を置く
+    [['くれません', false], ['くれます', false], ['くれない', false], ['もらえません', true], ['もらえます', true], ['もらえない', true],
+      ['くださいません', true], ['くださいます', true], ['いただけません', true], ['いただけます', true]].forEach(function (r) {
+      addJa(r[0], { k: 'REQ', pol: r[1] });
+    });
     // あいさつ（docs/proposals/002）。文頭の「はい」と同じく、文頭か句読点のあとだけ拾う
     if (byW.kelosu) addJa('こんにちは', { k: 'YESNO', w: 'kelosu' });
     if (byW.kupaju) addJa('さようなら', { k: 'YESNO', w: 'kupaju' });
@@ -305,7 +311,12 @@
           // 命令・勧誘の形（食べなさい・食べるな・食べましょう など）は文末だけ（「食べるなら」「食べようと」を壊さない）
           if (cand && cand.k === 'V' && cand.tags && cand.tags.endOnly) {
             var nx = text.charAt(i + len);
-            if (nx && !/[、，,。．.！？!?\s]/.test(nx)) cand = null;
+            // 勧誘の形のあとの「か」は、申し出（食べましょうか）
+            if (nx && !/[、，,。．.！？!?\s]/.test(nx) && !((cand.tags.hort || cand.tags.req) && nx === 'か')) cand = null;
+          }
+          if (cand && cand.k === 'REQ') {
+            var nr = text.charAt(i + len);
+            if (nr && !/[、，,。．.！？!?\sか]/.test(nr)) cand = null;
           }
           if (cand) { found = { tok: cand, len: len }; break; }
         }
@@ -551,6 +562,12 @@
         if (pred.imp || pred.hort) ir.imperative = true;
         if (pred.polite) ir.polite = true;
         if (pred.hort && !ir.subject) ir.subject = [item('misu')];
+        // 食べましょうか（申し出）: mi sati … ka?（docs/proposals/004）。命令の ! にはしない
+        if (pred.hort && question) {
+          ir.imperative = false;
+          if (!subjectChunk) ir.subject = [item('mi')];
+          ir.advs.unshift(item('sati'));
+        }
         var isExist = pred.e.w === 'alo' || pred.e.w === 'lipo';
         withP.forEach(function (c) {
           if (c.particle === 'を' || (c.particle === 'が' && !ir.object)) ir.object = c.items;
@@ -699,6 +716,30 @@
           if (!toks.length) { parts.push([{ fragment: [item(answer)], notes: notes }]); return; }
         }
         if (toks.length && toks[toks.length - 1].k === 'KA') { q = true; toks.pop(); }
+        // 疑問での許可・依頼（docs/proposals/004）: 食べてもいいですか → mi kani …、食べてくれませんか → tu kani …
+        var defaultSubj = null, politeReq = false;
+        if (q) {
+          var n = toks.length;
+          var tail = toks.slice(n - 4);
+          // 〜て + も + いい（+ です）
+          var m = n;
+          if (m && toks[m - 1].k === 'COP') m--;
+          var okTok = m >= 3 && toks[m - 1].k === 'ADJ' && toks[m - 1].e && toks[m - 1].e.w === 'kute' && !(toks[m - 1].tags && (toks[m - 1].tags.neg || toks[m - 1].tags.past));
+          var moTok = okTok && toks[m - 2].k === 'P' && toks[m - 2].p === 'も';
+          var teTok = moTok && toks[m - 3].k === 'V' && toks[m - 3].tags && toks[m - 3].tags.te;
+          if (teTok) {
+            toks = toks.slice(0, m - 3).concat([{ k: 'V', e: toks[m - 3].e, tags: { modal: 'kani' } }]);
+            defaultSubj = 'mi';
+          } else if (n >= 1 && toks[n - 1].k === 'V' && toks[n - 1].tags && toks[n - 1].tags.req) {
+            politeReq = !!toks[n - 1].tags.pol;
+            toks = toks.slice(0, n - 1).concat([{ k: 'V', e: toks[n - 1].e, tags: { modal: 'kani' } }]);
+            defaultSubj = 'tu';
+          } else if (n >= 2 && toks[n - 1].k === 'REQ' && toks[n - 2].k === 'V' && toks[n - 2].tags && toks[n - 2].tags.te) {
+            politeReq = !!toks[n - 1].pol;
+            toks = toks.slice(0, n - 2).concat([{ k: 'V', e: toks[n - 2].e, tags: { modal: 'kani' } }]);
+            defaultSubj = 'tu';
+          }
+        }
         var seg = segmentJa(toks);
         var irs = seg.segs.map(function (c, idx, arr) {
           var ir = parseJaClause(c.tokens, q && idx === arr.length - 1, notes);
@@ -714,6 +755,11 @@
             notes.push('主語のない節は、前の節の主語を引き継ぎました。');
           }
         });
+        if (irs.length && defaultSubj) {
+          var lastIr = irs[irs.length - 1];
+          if (!lastIr.subject) lastIr.subject = [item(defaultSubj)];
+          if (politeReq && !answer && byW.pilisu) answer = 'pilisu';
+        }
         if (irs.length) {
           // 文末の「食べて」も依頼（命令）。命令の文は、文末が ! になる
           var finalTok = toks[toks.length - 1];
@@ -1463,6 +1509,19 @@
           tokens = tokens.slice(0, -2);
         }
         if (answer && !tokens.length) { parts.push([{ fragment: [item(answer)], notes: notes }]); return; }
+        // 疑問での許可・依頼・申し出（docs/proposals/004）: May I / Could I / Could you / Shall I
+        if (question) {
+          var t0 = tokens[0], t1 = tokens[1];
+          if (t0 === 'may' && (t1 === 'i' || t1 === 'we')) tokens = ['can'].concat(tokens.slice(1));
+          else if (t0 === 'could' && (t1 === 'i' || t1 === 'you' || t1 === 'we')) tokens = ['can'].concat(tokens.slice(1));
+          else if (t0 === 'would' && t1 === 'you' && tokens[2] === 'please') tokens = ['can'].concat(tokens.slice(1));
+          else if (t0 === 'shall' && (t1 === 'i' || t1 === 'we')) tokens = ['should'].concat(tokens.slice(1));
+          // Can you please … / Could you please … は、文頭に pilisu
+          if (tokens[0] === 'can' && tokens[1] === 'you' && tokens[2] === 'please') {
+            tokens = tokens.slice(0, 2).concat(tokens.slice(3));
+            if (!answer) answer = EN_INTERJ.please;
+          }
+        }
         // 勧誘 Let's … / Let us … は、we を主語にした命令の形。Thank you は I thank you（命令ではない）
         var hort = false;
         var notesBefore = notes.length;
