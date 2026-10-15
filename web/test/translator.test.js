@@ -271,3 +271,45 @@ test('動詞の名詞化: 否定・過去は省略して注意書きを出す', 
   assert.strictEqual(r.logi, 'mi laiko itona.');
   assert.ok(r.notes.some((n) => n.includes('否定・過去は表せない')));
 });
+
+test('提案001: 指示詞・ここ／そこ・はい／いいえ・いくつ／いくら', () => {
+  const cases = [
+    // 指示詞（日本語）
+    ['これは良い。', 'iliu pio kute.'],
+    ['このリンゴは赤い。', 'iliu apa pio lete.'],
+    ['あの人は先生です。', 'teliu mana pio titusa.'],
+    ['あれが好きです。', 'teliu pio suke.'],
+    // 場所
+    ['私はここへ行く。', 'mi iko tote ili.'],
+    ['彼はそこから来る。', 'li komo pulomute teli.'],
+    ['ここにリンゴがあります。', 'apa alo atute ili.'],
+    // はい／いいえ
+    ['はい。', 'jesu.'],
+    ['いいえ。', 'no.'],
+    ['はい、私はリンゴが好きです。', 'jesu, mi laiko apa.'],
+    ['いいえ、私はリンゴが好きではありません。', 'no, mi no laiko apa.'],
+    ['これはいくらですか？', 'iliu pio aua mene ka?'],
+    // いくつ・何歳
+    ['あなたはリンゴをいくつ食べましたか？', 'tu pasu ito aua mene apa ka?'],
+    ['あなたは何歳ですか？', 'tu oto wata ila ka?'],
+    // 英語
+    ['This is good.', 'iliu pio kute.'],
+    ['I like that apple.', 'mi laiko teliu apa.'],
+    ['What is that?', 'teliu pio wata ka?'],
+    ['I go to here.', 'mi iko tote ili.'],
+    ['He comes from there.', 'li komo pulomute teli.'],
+    ['Yes.', 'jesu.'],
+    ['No, I do not like apples.', 'no, mi no laiko mene apa.'],
+    ['How old are you?', 'tu oto wata ila ka?'],
+    ['How many apples do you have?', 'tu oto aua mene apa ka?'],
+    ['How much is it?', 'li pio aua mene ka?'],
+    ['Where is he?', 'li alo atute wela ka?'],
+  ];
+  cases.forEach(([src, logi]) => {
+    assert.strictEqual(translator.translate(src, 'auto').logi, logi, src);
+  });
+});
+
+test('提案001: 「これはいくら」の「はい」を、答えの「はい」と取り違えない', () => {
+  assert.ok(!translator.translate('これはいくらですか？', 'ja').logi.includes('jesu'));
+});
