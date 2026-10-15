@@ -35,6 +35,7 @@ SOURCES = [
     (ROOT / "dictionary" / "anti_additions.csv", "ANTI追加: "),
     # 機能語（指示詞・はい／いいえ など）。Claude が設計して M1ko が決めた語を、word 列の形のまま登録する
     (ROOT / "dictionary" / "function_additions.csv", "v0.10追加: 機能語 "),
+    (ROOT / "dictionary" / "interjection_additions.csv", "v0.11追加: 感動詞 "),
 ]
 
 CONTENT_POS = {"noun", "verb", "adj", "adv"}   # Antigravity が足してよい品詞

@@ -70,6 +70,9 @@
 | 63 | answer-no | no, mi no laiko apa. | いいえ、私はリンゴが好きではありません。 |
 | 64 | how-many | tu pasu ito aua mene apa ka? | あなたはリンゴをいくつ食べましたか？ |
 | 65 | how-old | tu oto wata ila ka? | あなたは何歳ですか？ |
+| 66 | greeting-hello | kelosu, mi laiko apa. | こんにちは、私はリンゴが好きです。 |
+| 67 | greeting-goodbye | kupaju. | さようなら。 |
+| 68 | greeting-please | pilisu, iliu pio kute. | どうぞ、これは良いです。 |
 
 ## 語注（辞書から機械的に生成）
 
@@ -203,3 +206,9 @@
   tu=あなた(pronoun) pasu=過去(marker) ito=食べる(verb) aua=どうやって(wh) mene=多くの(adj) apa=リンゴ(noun) ka=疑問(marker)
 - **65** `tu oto wata ila ka?`  
   tu=あなた(pronoun) oto=持つ(verb) wata=何(wh) ila=年(noun) ka=疑問(marker)
+- **66** `kelosu, mi laiko apa.`  
+  kelosu=こんにちは(interj) mi=私(pronoun) laiko=好む(verb) apa=リンゴ(noun)
+- **67** `kupaju.`  
+  kupaju=さようなら(interj)
+- **68** `pilisu, iliu pio kute.`  
+  pilisu=どうぞ(interj) iliu=これ（この）(pronoun) pio=です(verb) kute=良い(adj)

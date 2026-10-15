@@ -64,3 +64,6 @@ id,feature,logi,ja
 63,answer-no,"no, mi no laiko apa.",いいえ、私はリンゴが好きではありません。
 64,how-many,tu pasu ito aua mene apa ka?,あなたはリンゴをいくつ食べましたか？
 65,how-old,tu oto wata ila ka?,あなたは何歳ですか？
+66,greeting-hello,"kelosu, mi laiko apa.",こんにちは、私はリンゴが好きです。
+67,greeting-goodbye,kupaju.,さようなら。
+68,greeting-please,"pilisu, iliu pio kute.",どうぞ、これは良いです。

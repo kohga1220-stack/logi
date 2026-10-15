@@ -1665,6 +1665,9 @@ var LOGI_LEXICON = [
 {"w":"tisolo","pos":"verb","ja":["溶ける"],"jaNote":"溶ける","en":["dissolve"]},
 {"w":"tenuse","pos":"adj","ja":["濃い"],"jaNote":"濃い","en":["dense"]},
 {"w":"ipume","pos":"adj","ja":["親しい"],"jaNote":"親しい","en":["intimate"]},
-{"w":"sukate","pos":"adj","ja":["少ない"],"jaNote":"少ない","en":["scarce"]}
+{"w":"sukate","pos":"adj","ja":["少ない"],"jaNote":"少ない","en":["scarce"]},
+{"w":"kelosu","pos":"interj","ja":["こんにちは"],"jaNote":"こんにちは","en":["hello","hi"]},
+{"w":"kupaju","pos":"interj","ja":["さようなら"],"jaNote":"さようなら","en":["goodbye","bye"]},
+{"w":"pilisu","pos":"interj","ja":["どうぞ"],"jaNote":"どうぞ","en":["please"]}
 ];
 if (typeof module !== 'undefined') { module.exports = LOGI_LEXICON; }
