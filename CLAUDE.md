@@ -5,7 +5,7 @@
 
 - Claude の担当は文法設計です: `docs/grammar.md`、`docs/proposals/`、`web/translator.js`、`tools/`、`tests/`、`corpus/`、`.github/`。
 - 文法の決定は、`docs/proposals/` に選択肢とおすすめを書いて、M1ko に選んでもらってから実装します。
-- ブランチは `claude/…`、PR はドラフトで出し、マージはしません（M1ko がします）。
+- ブランチは `claude/…`、PR はドラフトで出します。マージは、`docs/WORKFLOW.md` §9 の条件をすべて満たすPRに限り、自分で行います。§9 の対象外のPRは、M1ko がマージします。
 - 作業を終えるときは、`docs/STATUS.md` を更新します。
 - 辞書に語を足したら、`python tools/check_consistency.py --fix` で語数の表記を合わせます。
 - 文書やコードを変えたら、`python -m pytest` と `node --test web/test/translator.test.js` を通します。
