@@ -8,13 +8,14 @@
 
 | 内容 | 場所 | 状態 |
 |---|---|---|
-| （決定待ちはありません）| | |
+| 提案005: おはよう・おやすみ（Q1）・すみません・ありがとう（Q2）・文化固有の定型句（Q3）| `docs/proposals/005-greetings.md` | 決定待ち |
+| 提案006: 平叙文での許可（Q1）・禁止（Q2）・不要（Q3）| `docs/proposals/006-declarative-permission.md` | 決定待ち |
 
 ## 進行中のPR
 
 | PR | 担当 | 内容 | 状態 |
 |---|---|---|---|
-| （このPR）| Claude | v0.13: 疑問文での許可・依頼・申し出（提案004の決定を実装） | ドラフト（CI成功後、WORKFLOW §9 を確かめて Claude がマージ） |
+| （このPR）| Claude | 提案005・006の追加 | ドラフト（CI成功後、WORKFLOW §9 を確かめて Claude がマージ） |
 
 ## 文法への依頼（Antigravity → Claude）
 
@@ -26,15 +27,16 @@
 
 ## 担当ごとの次の作業
 
-- **Claude**: 次の文法の提案（感動詞 おはよう・おやすみ・すみません、「〜してもいい」の平叙文 など）を、必要になったら書く。
+- **Claude**: 提案005・006が決まったら、実装する（v0.14・v0.15）。
 - **Antigravity**: 内容語の次のバッチ（20〜30語）。`docs/WORKFLOW.md` §2「語を選ぶときの決まり」と §9（自動マージ）を守る。
-- **M1ko**: 自動マージされないPR（`docs/WORKFLOW.md` §9 の対象外）のマージ。新しい追加語ができたら、確認表の確認。
+- **M1ko**: 提案005・006の決定。自動マージされないPR（`docs/WORKFLOW.md` §9 の対象外）のマージ。新しい追加語ができたら、確認表の確認。
 
 ## 最近の主な変更
 
-- 第2弾の見直し後の23語を、M1ko が確認し、すべて `ok` にした（2026-10-16。`dictionary/word_review.csv`、`docs/review/new_words.md`）。確認済み1,100語、未確認0語。ANTI の次のバッチを始められる。
+- 提案005（あいさつ）・提案006（平叙文の許可・禁止・不要）を追加（決定待ち）。
+- 第2弾の見直し後の23語を、M1ko が確認し、すべて `ok` にした（Antigravity が確認表に反映。PR #43）。ANTI は、次のバッチを始められる。
 - v0.13: 疑問文での許可・依頼・申し出（許可と依頼は `kani`、申し出は `sati`、丁寧な依頼は文頭に `pilisu,`。提案004の決定を、M1ko の「すべて A」で実装）。May I が `mei` になっていた誤訳を直した。翻訳機の日本語・英語の対応と、例文5文（80文）。辞書は1,724語（変わらず）。
-- 第2弾の見直し（Antigravity。PR #40。マージ済み）: `lunata`（往復）・`losuta`（忘れ物）・`nujipa`（新年）を外し、見出し語を `emepo` appear・`ukena` account・`katewa` tone・`posota` style に直した。辞書は1,724語（active 1,691語）。23語は draft のまま。
+- 第2弾の見直し（Antigravity。PR #40。マージ済み）: `lunata`（往復）・`losuta`（忘れ物）・`nujipa`（新年）を外し、見出し語を `emepo` appear・`ukena` account・`katewa` tone・`posota` style に直した。辞書は1,724語（active 1,691語）。
 - 第2弾の26語（PR #37）の英語の見出し語に問題（`roundtrip`・`lostproperty`・`newyear` は英語の1語でない、まれな英語が多い）があり、M1ko が見直しを ANTI に指示（2026-10-15）。
 - 内容語26語の追加（Antigravity。第2弾。PR #37。自動マージ）。辞書は1,727語（active 1,694語）。
 - 追加語の確認表（1,077語）を、M1ko が確認し、すべて `ok` にした（`dictionary/word_review.csv`、`docs/review/new_words.md`）。ANTI の次のバッチを始められる。
