@@ -198,6 +198,38 @@ def load_additions(path):
         return list(csv.DictReader(f))
 
 
+def duplicate_problems(rows, english_to_word):
+    """これから追加する行のうち、すでにある語と同じ意味になるものを探す。
+
+    - 同じ英語（別名を含む）・同じ品詞の語がすでにある
+    - 同じ日本語の意味・同じ品詞の語（active）がすでにある
+    - 追加リストの中で、同じ英語・品詞や同じ日本語の意味・品詞が重なっている
+    同じ英語でも品詞が違えば、語幹を共有する組として追加できる（kuka / kuko）。
+    """
+    done = {(tag, r["notes"][len(tag):]) for _, tag in SOURCES for r in rows if r["notes"].startswith(tag)}
+    used_ja = {(r["meaning_ja"], r["pos"]): r["regenerated"] for r in rows if r["status"] == "active"}
+    seen_en, seen_ja = {}, {}
+    problems = []
+    for path, tag in SOURCES:
+        for a in load_additions(path):
+            if (tag, f"{a['english']} {a['pos']}") in done:
+                continue
+            label = f"{path.name}: {a['english']} ({a['pos']}, {a['meaning_ja']})"
+            en_key = (a["english"].lower(), a["pos"])
+            ja_key = (a["meaning_ja"], a["pos"])
+            if en_key in english_to_word:
+                problems.append(f"{label} → 同じ英語・品詞の語がすでにあります: {english_to_word[en_key]}")
+            elif en_key in seen_en:
+                problems.append(f"{label} → 追加リストの中で同じ英語・品詞が重なっています: {seen_en[en_key]}")
+            elif ja_key in used_ja:
+                problems.append(f"{label} → 同じ日本語の意味・品詞の語がすでにあります: {used_ja[ja_key]}")
+            elif ja_key in seen_ja:
+                problems.append(f"{label} → 追加リストの中で同じ日本語の意味・品詞が重なっています: {seen_ja[ja_key]}")
+            seen_en.setdefault(en_key, a["english"])
+            seen_ja.setdefault(ja_key, a["english"])
+    return problems
+
+
 def fixed_word_problem(word, addition, taken):
     """形を指定された語が、音韻の規則と、編集距離2以上の規則（partner 列の相手は除く）を満たすか。"""
     if word in taken:
@@ -240,6 +272,14 @@ def main(argv=None):
         for g in csv.DictReader(f):
             for e in g["en"].split("|"):
                 english_to_word.setdefault((e.lower(), pos_of.get(g["word"])), g["word"])
+
+    problems = duplicate_problems(rows, english_to_word)
+    if problems:
+        print("すでにある語と重なる行があるため、何も追加しませんでした:", file=sys.stderr)
+        for line in problems:
+            print("  - " + line, file=sys.stderr)
+        print("追加リストから、その行を消してください（同じ意味の語を増やさないため）。", file=sys.stderr)
+        return 1
 
     new_rows, new_gloss = [], []
     for path, tag in SOURCES:
