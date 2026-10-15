@@ -253,7 +253,7 @@ mi toko tu. mi oto to pulu ila e mi pio sutua. mi mosi laiko apa. mi wonuto pion
 
 ## 10. 派生・複合語と接続詞（v0.4 草案・未確定）
 
-辞書 `dictionary/final.csv`（1,671語）を調べた結果に基づく草案。例文コーパスで検証してから確定する。
+辞書 `dictionary/final.csv` を調べた結果に基づく草案。例文コーパスで検証してから確定する。
 
 ### 10.1 派生語
 - 確定済みの規則は動名詞 **動詞 + na**（pio → piona）のみ。
