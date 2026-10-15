@@ -2,19 +2,19 @@
 
 作業を始めるときに読み、終えるときに更新します。ルールは [docs/WORKFLOW.md](WORKFLOW.md)。
 
-現在のバージョン: v0.12
+現在のバージョン: v0.13
 
 ## 決定してほしいこと（M1ko）
 
 | 内容 | 場所 | 状態 |
 |---|---|---|
-| 提案004: 許可（Q1）・疑問での依頼（Q2）・申し出（Q3）| `docs/proposals/004-permission-and-requests.md` | 決定待ち |
+| 第2弾の見直し後の23語の確認（確認表。`dictionary/word_review.csv` で `draft` の語）| `docs/review/new_words.md` | 確認待ち（終わるまで、ANTI の次のバッチは出さない。WORKFLOW §2）|
 
 ## 進行中のPR
 
 | PR | 担当 | 内容 | 状態 |
 |---|---|---|---|
-| （このPR）| Antigravity | 第2弾26語の見直し（3語を外す・見出し語4語を直す） | ドラフト（M1ko のマージ待ち。自動マージしない） |
+| （このPR）| Claude | v0.13: 疑問文での許可・依頼・申し出（提案004の決定を実装） | ドラフト（CI成功後、WORKFLOW §9 を確かめて Claude がマージ） |
 
 ## 文法への依頼（Antigravity → Claude）
 
@@ -26,13 +26,14 @@
 
 ## 担当ごとの次の作業
 
-- **Claude**: 次の文法の提案（疑問文での依頼・許可「〜してもいいですか」、感動詞 おはよう・おやすみ など）を、必要になったら書く。
-- **Antigravity**: 第2弾の見直しPRを出した。M1ko のマージを待つ。マージされるまで、次のバッチは出さない。
-- **M1ko**: 自動マージされないPR（`docs/WORKFLOW.md` §9 の対象外）のマージ。第2弾の26語の見直しPRのマージ。見直したあとの26語の、確認表の確認。
+- **Claude**: 次の文法の提案（感動詞 おはよう・おやすみ・すみません、「〜してもいい」の平叙文 など）を、必要になったら書く。
+- **Antigravity**: 第2弾の見直しPR（#40）はマージ済み。M1ko が23語の確認を終えるまで、次のバッチは出さない。
+- **M1ko**: 自動マージされないPR（`docs/WORKFLOW.md` §9 の対象外）のマージ。見直したあとの23語の、確認表の確認。
 
 ## 最近の主な変更
 
-- 第2弾の見直し（Antigravity。ドラフトPR）: `lunata`（往復）・`losuta`（忘れ物）・`nujipa`（新年）を外し、見出し語を `emepo` appear・`ukena` account・`katewa` tone・`posota` style に直した。辞書は1,724語（active 1,691語）。23語は draft のまま。
+- v0.13: 疑問文での許可・依頼・申し出（許可と依頼は `kani`、申し出は `sati`、丁寧な依頼は文頭に `pilisu,`。提案004の決定を、M1ko の「すべて A」で実装）。May I が `mei` になっていた誤訳を直した。翻訳機の日本語・英語の対応と、例文5文（80文）。辞書は1,724語（変わらず）。
+- 第2弾の見直し（Antigravity。PR #40。マージ済み）: `lunata`（往復）・`losuta`（忘れ物）・`nujipa`（新年）を外し、見出し語を `emepo` appear・`ukena` account・`katewa` tone・`posota` style に直した。辞書は1,724語（active 1,691語）。23語は draft のまま。
 - 第2弾の26語（PR #37）の英語の見出し語に問題（`roundtrip`・`lostproperty`・`newyear` は英語の1語でない、まれな英語が多い）があり、M1ko が見直しを ANTI に指示（2026-10-15）。
 - 内容語26語の追加（Antigravity。第2弾。PR #37。自動マージ）。辞書は1,727語（active 1,694語）。
 - 追加語の確認表（1,077語）を、M1ko が確認し、すべて `ok` にした（`dictionary/word_review.csv`、`docs/review/new_words.md`）。ANTI の次のバッチを始められる。

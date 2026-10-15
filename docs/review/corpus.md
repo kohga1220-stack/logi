@@ -80,6 +80,11 @@
 | 73 | prohibition-polite | pilisu, no ito apa! | リンゴを食べないでください。 |
 | 74 | hortative | misu ito apa! | リンゴを食べましょう。 |
 | 75 | hortative-go | misu iko tote ili! | ここへ行きましょう。 |
+| 76 | permission | mi kani ito apa ka? | リンゴを食べてもいいですか？ |
+| 77 | permission-go | mi kani iko tote ili ka? | ここへ行ってもいいですか？ |
+| 78 | request-question | tu kani ito apa ka? | リンゴを食べてくれませんか？ |
+| 79 | request-question-polite | pilisu, tu kani ito apa ka? | リンゴを食べてもらえませんか？ |
+| 80 | offer | mi sati ito apa ka? | リンゴを食べましょうか？ |
 
 ## 語注（辞書から機械的に生成）
 
@@ -233,3 +238,13 @@
   misu=私たち（包括）(pronoun) ito=食べる(verb) apa=リンゴ(noun)
 - **75** `misu iko tote ili!`  
   misu=私たち（包括）(pronoun) iko=行く(verb) tote=へ(prep) ili=ここで(adv)
+- **76** `mi kani ito apa ka?`  
+  mi=私(pronoun) kani=できる(adv) ito=食べる(verb) apa=リンゴ(noun) ka=疑問(marker)
+- **77** `mi kani iko tote ili ka?`  
+  mi=私(pronoun) kani=できる(adv) iko=行く(verb) tote=へ(prep) ili=ここで(adv) ka=疑問(marker)
+- **78** `tu kani ito apa ka?`  
+  tu=あなた(pronoun) kani=できる(adv) ito=食べる(verb) apa=リンゴ(noun) ka=疑問(marker)
+- **79** `pilisu, tu kani ito apa ka?`  
+  pilisu=どうぞ(interj) tu=あなた(pronoun) kani=できる(adv) ito=食べる(verb) apa=リンゴ(noun) ka=疑問(marker)
+- **80** `mi sati ito apa ka?`  
+  mi=私(pronoun) sati=べき(adv) ito=食べる(verb) apa=リンゴ(noun) ka=疑問(marker)

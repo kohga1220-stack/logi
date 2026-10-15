@@ -372,3 +372,29 @@ test('提案003: 主語のある平叙文や、Thank you は、命令にしな�
   assert.ok(!translator.translate('私はリンゴを食べようと思う。', 'ja').logi.includes('misu'));
 });
 
+test('提案004: 疑問での許可・依頼・申し出は、kani・sati を使う', () => {
+  const cases = [
+    ['リンゴを食べてもいいですか？', 'mi kani ito apa ka?'],
+    ['ここへ行ってもいいですか？', 'mi kani iko tote ili ka?'],
+    ['リンゴを食べてくれませんか？', 'tu kani ito apa ka?'],
+    ['リンゴを食べてもらえませんか？', 'pilisu, tu kani ito apa ka?'],
+    ['リンゴを食べていただけますか？', 'pilisu, tu kani ito apa ka?'],
+    ['リンゴを食べてくださいませんか？', 'pilisu, tu kani ito apa ka?'],
+    ['リンゴを食べましょうか？', 'mi sati ito apa ka?'],
+    ['May I eat an apple?', 'mi kani ito apa ka?'],
+    ['Could I eat an apple?', 'mi kani ito apa ka?'],
+    ['Could you eat an apple?', 'tu kani ito apa ka?'],
+    ['Could you please eat an apple?', 'pilisu, tu kani ito apa ka?'],
+    ['Shall I eat an apple?', 'mi sati ito apa ka?'],
+  ];
+  cases.forEach(([src, logi]) => {
+    assert.strictEqual(translator.translate(src, 'auto').logi, logi, src);
+  });
+});
+
+test('提案004: 可能性の may・平叙文の勧誘・Would you は、変えない', () => {
+  assert.strictEqual(translator.translate('He may come.', 'en').logi, 'li mei komo.');
+  assert.strictEqual(translator.translate('リンゴを食べましょう。', 'ja').logi, 'misu ito apa!');
+  assert.strictEqual(translator.translate('Would you eat an apple?', 'en').logi, 'tu wutu ito apa ka?');
+});
+
