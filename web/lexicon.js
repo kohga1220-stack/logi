@@ -1626,6 +1626,16 @@ var LOGI_LEXICON = [
 {"w":"nekuta","pos":"noun","ja":["ネクタイ"],"jaNote":"ネクタイ","en":["necktie"]},
 {"w":"pumuka","pos":"noun","ja":["基礎"],"jaNote":"基礎","en":["foundation"]},
 {"w":"inuta","pos":"noun","ja":["興味"],"jaNote":"興味","en":["interest"]},
-{"w":"lana","pos":"noun","ja":["範囲"],"jaNote":"範囲","en":["range"]}
+{"w":"lana","pos":"noun","ja":["範囲"],"jaNote":"範囲","en":["range"]},
+{"w":"alutipa","pos":"noun","ja":["人工知能"],"jaNote":"人工知能","en":["ai","artificial intelligence"]},
+{"w":"netuwa","pos":"noun","ja":["ネットワーク"],"jaNote":"ネットワーク","en":["network","net"]},
+{"w":"sumawa","pos":"noun","ja":["スマートフォン"],"jaNote":"スマートフォン","en":["smartphone","smart phone","phone"]},
+{"w":"pupoko","pos":"verb","ja":["プログラムする"],"jaNote":"プログラムする","en":["program","code"]},
+{"w":"tikite","pos":"adj","ja":["デジタルの"],"jaNote":"デジタルの","en":["digital","electronic"]},
+{"w":"onapi","pos":"adv","ja":["オンラインで"],"jaNote":"オンラインで","en":["online"]},
+{"w":"upujo","pos":"verb","ja":["アップロードする"],"jaNote":"アップロードする","en":["upload"]},
+{"w":"tonuko","pos":"verb","ja":["ダウンロードする"],"jaNote":"ダウンロードする","en":["download"]},
+{"w":"pasiwa","pos":"noun","ja":["パスワード"],"jaNote":"パスワード","en":["password"]},
+{"w":"senasa","pos":"noun","ja":["センサー"],"jaNote":"センサー","en":["sensor"]}
 ];
 if (typeof module !== 'undefined') { module.exports = LOGI_LEXICON; }

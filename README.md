@@ -16,7 +16,7 @@
 - **Suffix-based part-of-speech** — noun `-a`, verb `-o`, adjective `-e`, adverb `-i`, preposition `-te`
 - **No passive voice** — always active SVO
 - **No plural suffix** — plurality expressed via `mene` (many)
-- **1,660-word core dictionary** — machine-validated; zero homophones
+- **1,670-word core dictionary** — machine-validated; zero homophones
 - **Function words take `-u`**: a final consonant gets `-u` (`pas`→`pasu`), a consonant cluster is split by `u` (`tante`→`tanute`)
 
 ---
@@ -108,9 +108,10 @@ logi/
 ├── corpus/
 │   └── examples.csv        58 example sentences by grammar feature / 機能別例文58文
 ├── dictionary/
-│   ├── final.csv           1,660-word validated dictionary / 検証済み辞書1,660語
-│   ├── eiken3_additions.csv  Eiken grade-3 level word list added in v0.7 (English, POS, Japanese meaning) / 英検3級レベルの追加語リスト
+│   ├── final.csv           1,670-word validated dictionary / 検証済み辞書1,670語
+│   ├── eiken3_additions.csv  Eiken grade-3 level word list added in v0.7 / 英検3級レベルの追加語リスト
 │   ├── core_additions.csv  Everyday Japanese word list added in v0.8 / 日本語の基本語彙の追加語リスト
+│   ├── modern_tech_additions.csv Modern tech & digital word list added in v0.9 / 現代・IT語彙の追加語リスト
 │   ├── sources/            Source word lists (NINJAL, CC BY 4.0) / 語彙の出典データ
 │   └── glossary_en.csv     English meanings for the translator (unreviewed) / 翻訳機用の英語の意味（未確認）
 └── tools/
@@ -141,6 +142,15 @@ logi/
 | v0.6 | 8 subordinating conjunctions added (`pikosu` because, `wenute` when, `wailu` while, `pipolu` before, `aputi` after, `utilu` until, `ulesu` unless, `oluto` although); they go at the start of their clause, clause order follows the source; 624 words |
 | v0.7 | 487 words of Eiken grade-3 level added (nouns, verbs, adjectives, adverbs, prepositions, pronouns; coined by `tools/coin_words.py` from `dictionary/eiken3_additions.csv`); translator reads prepositions and pronouns from the dictionary; 1,111 words |
 | v0.8 | 549 everyday Japanese words added (nouns, verbs, adjectives, adverbs such as `tulima` dream, `lipeta` lifetime, `topo` do); chosen from the NINJAL basic-vocabulary lists (CC BY 4.0, see `dictionary/sources/`) with `tools/core_candidates.py`, coined by `tools/coin_words.py` from `dictionary/core_additions.csv`; 1,660 words |
+| v0.9 | 10 modern tech & digital words added (`alutipa` AI, `netuwa` network, `sumawa` smartphone, `pupoko` program, etc.); 1,670 words |
+
+---
+
+## Contributors / 共同開発
+
+- **M1ko** ([@kohga1220-stack](https://github.com/kohga1220-stack)) — Project Owner & Designer
+- **Claude** ([@claude](https://github.com/claude) / Anthropic) — Co-developed phonology, grammar specification (v0.1–v0.8), core dictionary (1,660 words), corpus & web translator
+- **Antigravity** (Google DeepMind) — Co-developed modern vocabulary (v0.9), dictionary validation & workspace integration
 
 ---
 
@@ -157,4 +167,4 @@ logi/
 
 ---
 
-*Designed and developed by [@kohga1220-stack](https://github.com/kohga1220-stack)*
+*Designed and developed by [@kohga1220-stack](https://github.com/kohga1220-stack) with Claude & Antigravity*
