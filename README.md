@@ -108,7 +108,7 @@ logi/
 ├── web/
 │   └── index.html          Translator page (Japanese/English → Logi) / 翻訳機（see web/README.md）
 ├── corpus/
-│   └── examples.csv        80 example sentences by grammar feature / 機能別例文80文
+│   └── examples.csv        87 example sentences by grammar feature / 機能別例文87文
 ├── dictionary/
 │   ├── final.csv           1,744-word validated dictionary / 検証済み辞書1,744語
 │   ├── eiken3_additions.csv  Eiken grade-3 level word list added in v0.7 / 英検3級レベルの追加語リスト
@@ -153,6 +153,8 @@ logi/
 | v0.11 | Greetings `kelosu` (hello) / `kupaju` (goodbye) / `pilisu` (please) as interjections — decided in `docs/proposals/002`; short function words are coined as fixed 3-syllable forms (`dictionary/interjection_additions.csv`); the translator handles them; 1,702 words |
 | v0.12 | Imperatives, requests, prohibitions and invitations marked by a final `!` — decided in `docs/proposals/003`: imperative = verb sentence without a subject, request = leading `pilisu,`, prohibition = `no`, invitation = subject `misu`; no new words; the translator handles them; 1,701 words |
 | v0.13 | Permission, requests and offers as questions, expressed with the modal adverbs — decided in `docs/proposals/004`: permission and request = `kani`, offer = `sati`, polite request = leading `pilisu,`; fixes the mistranslation of *May I* (`mei` = *might*); no new words; the translator handles them; 1,724 words |
+| v0.14 | Everyday greetings built from existing words — decided in `docs/proposals/005`: good morning `kute mola.`, good night `kute naita.`, sorry `mi pio moke.`, thanks `mi tanako tu.`; no new words; the translator handles them; 1,724 words |
+| v0.15 | Permission, prohibition and not-necessary as statements — decided in `docs/proposals/006`: `tu kani ito apa.` (may), `tu masi no ito apa.` (must not), `tu kani no ito apa.` (need not); *You may* now maps to `kani` (possibility *may* stays `mei`); no new words; the translator handles them; 1,724 words |
 
 ---
 

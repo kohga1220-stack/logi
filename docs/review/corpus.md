@@ -85,6 +85,13 @@
 | 78 | request-question | tu kani ito apa ka? | リンゴを食べてくれませんか？ |
 | 79 | request-question-polite | pilisu, tu kani ito apa ka? | リンゴを食べてもらえませんか？ |
 | 80 | offer | mi sati ito apa ka? | リンゴを食べましょうか？ |
+| 81 | greeting-morning | kute mola. | おはようございます。 |
+| 82 | greeting-night | kute naita. | おやすみなさい。 |
+| 83 | apology | mi pio moke. | すみません。 |
+| 84 | thanks | mi tanako tu. | ありがとうございます。 |
+| 85 | permission-statement | tu kani ito apa. | リンゴを食べてもいい。 |
+| 86 | prohibition-statement | tu masi no ito apa. | リンゴを食べてはいけない。 |
+| 87 | not-necessary | tu kani no ito apa. | リンゴを食べなくてもいい。 |
 
 ## 語注（辞書から機械的に生成）
 
@@ -248,3 +255,17 @@
   pilisu=どうぞ(interj) tu=あなた(pronoun) kani=できる(adv) ito=食べる(verb) apa=リンゴ(noun) ka=疑問(marker)
 - **80** `mi sati ito apa ka?`  
   mi=私(pronoun) sati=べき(adv) ito=食べる(verb) apa=リンゴ(noun) ka=疑問(marker)
+- **81** `kute mola.`  
+  kute=良い(adj) mola=朝(noun)
+- **82** `kute naita.`  
+  kute=良い(adj) naita=夜(noun)
+- **83** `mi pio moke.`  
+  mi=私(pronoun) pio=です(verb) moke=申し訳ない(adj)
+- **84** `mi tanako tu.`  
+  mi=私(pronoun) tanako=感謝する(verb) tu=あなた(pronoun)
+- **85** `tu kani ito apa.`  
+  tu=あなた(pronoun) kani=できる(adv) ito=食べる(verb) apa=リンゴ(noun)
+- **86** `tu masi no ito apa.`  
+  tu=あなた(pronoun) masi=ねばならない(adv) no=否定(marker) ito=食べる(verb) apa=リンゴ(noun)
+- **87** `tu kani no ito apa.`  
+  tu=あなた(pronoun) kani=できる(adv) no=否定(marker) ito=食べる(verb) apa=リンゴ(noun)

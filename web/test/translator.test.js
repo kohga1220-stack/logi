@@ -398,3 +398,56 @@ test('提案004: 可能性の may・平叙文の勧誘・Would you は、変え�
   assert.strictEqual(translator.translate('Would you eat an apple?', 'en').logi, 'tu wutu ito apa ka?');
 });
 
+test('提案005: 日常のあいさつは、既存の語で言う', () => {
+  const cases = [
+    ['おはよう', 'kute mola.'],
+    ['おはようございます。', 'kute mola.'],
+    ['おやすみなさい！', 'kute naita.'],
+    ['すみません。', 'mi pio moke.'],
+    ['ごめんなさい', 'mi pio moke.'],
+    ['ありがとうございました。', 'mi tanako tu.'],
+    ['Good morning.', 'kute mola.'],
+    ['Good night!', 'kute naita.'],
+    ['Sorry.', 'mi pio moke.'],
+    ['Excuse me.', 'mi pio moke.'],
+    ['Thanks.', 'mi tanako tu.'],
+    ['Thank you.', 'mi tanako tu.'],
+  ];
+  cases.forEach(([src, logi]) => {
+    assert.strictEqual(translator.translate(src, 'auto').logi, logi, src);
+  });
+  assert.strictEqual(translator.translate('おはよう。ありがとう。', 'ja').logi, 'kute mola. mi tanako tu.');
+});
+
+test('提案005: 文の一部のあいさつ語や、疑問文は、あいさつにしない', () => {
+  assert.notStrictEqual(translator.translate('すみませんか？', 'ja').logi, 'mi pio moke.');
+  assert.strictEqual(translator.translate('リンゴを食べる。', 'ja').logi, 'ito apa.');
+});
+
+test('提案006: 平叙文の許可・禁止・不要は、kani・masi no・kani no を使う', () => {
+  const cases = [
+    ['リンゴを食べてもいい。', 'tu kani ito apa.'],
+    ['リンゴを食べてもいいよ。', 'tu kani ito apa.'],
+    ['リンゴを食べてもよい。', 'tu kani ito apa.'],
+    ['私はリンゴを食べてもいい。', 'mi kani ito apa.'],
+    ['リンゴを食べてはいけない。', 'tu masi no ito apa.'],
+    ['リンゴを食べてはならない。', 'tu masi no ito apa.'],
+    ['リンゴを食べなくてもいい。', 'tu kani no ito apa.'],
+    ['リンゴを食べなくてもよいです。', 'tu kani no ito apa.'],
+    ['You may eat an apple.', 'tu kani ito apa.'],
+    ['You may not eat an apple.', 'tu masi no ito apa.'],
+    ['You do not have to eat an apple.', 'tu kani no ito apa.'],
+    ['You need not eat an apple.', 'tu kani no ito apa.'],
+    ['He does not have to eat an apple.', 'li kani no ito apa.'],
+  ];
+  cases.forEach(([src, logi]) => {
+    assert.strictEqual(translator.translate(src, 'auto').logi, logi, src);
+  });
+});
+
+test('提案006: 可能性の may・疑問の許可・義務は、変えない', () => {
+  assert.strictEqual(translator.translate('He may come.', 'en').logi, 'li mei komo.');
+  assert.strictEqual(translator.translate('I may go.', 'en').logi, 'mi mei iko.');
+  assert.strictEqual(translator.translate('リンゴを食べてもいいですか？', 'ja').logi, 'mi kani ito apa ka?');
+  assert.strictEqual(translator.translate('リンゴを食べなければならない。', 'ja').logi, 'masi ito apa.');
+});
