@@ -7,7 +7,7 @@
 - 語幹が同じ: 語尾の1文字だけが違う、別の品詞の語（例: `kuka` 名詞と `kuko` 動詞）。同じ英語の別品詞なら意図した組です。そうでなければ偶然の一致なので、見分けにくくないか見てください
 - 同じ英語の語: 同じ英語の訳を持つ、別の語（同義語の候補）
 
-確認済み(ok): 1100 / 要修正(fix): 0 / 未確認(draft): 0
+確認済み(ok): 1100 / 要修正(fix): 0 / 未確認(draft): 20
 
 ## v0.7 英検3級レベルの語（487語）
 
@@ -1132,9 +1132,9 @@
 |---|---|---|---|---|
 | onapi | オンラインで | online |  | ok |
 
-## Antigravity の追加語（dictionary/anti_additions.csv）（47語）
+## Antigravity の追加語（dictionary/anti_additions.csv）（67語）
 
-### noun（21語）
+### noun（25語）
 
 | Logi | 日本語 | 英語 | 手がかり | 状況 |
 |---|---|---|---|---|
@@ -1159,8 +1159,12 @@
 | pikima | 用心 | vigilance |  | ok |
 | tesana | 下り | descent |  | ok |
 | katewa | 調子 | tone |  | ok |
+| tekasa | 文章 | text |  |  |
+| telaka | 跡 | trace |  |  |
+| momeka | 勢い | momentum |  |  |
+| tonita | 今夜 | tonight |  |  |
 
-### verb（18語）
+### verb（27語）
 
 | Logi | 日本語 | 英語 | 手がかり | 状況 |
 |---|---|---|---|---|
@@ -1182,8 +1186,17 @@
 | enipo | 誘う | entice |  | ok |
 | tutulo | 離れる | stray |  | ok |
 | omupo | 嵌める | embed |  | ok |
+| kupuso | 潰す | crush |  |  |
+| ekino | 抜く | extract |  |  |
+| iwuto | 示す | indicate |  |  |
+| teposo | 預ける | deposit |  |  |
+| limito | 限る | limit |  |  |
+| sunupo | 頑張る | strive |  |  |
+| atijo | 慣れる | adapt |  |  |
+| otumo | 感心する | admire |  |  |
+| suwuno | 揺れる | swing |  |  |
 
-### adj（5語）
+### adj（10語）
 
 | Logi | 日本語 | 英語 | 手がかり | 状況 |
 |---|---|---|---|---|
@@ -1192,14 +1205,21 @@
 | sukate | 少ない | scarce |  | ok |
 | akane | 苦しい | agonizing |  | ok |
 | asepe | 渋い | astringent |  | ok |
+| lunute | 丸い | round |  |  |
+| sulane | 細い | slender |  |  |
+| kumute | 曇った | cloudy |  |  |
+| pelume | 縦の | vertical |  |  |
+| tisape | がっかりした | disappointed |  |  |
 
-### adv（3語）
+### adv（5語）
 
 | Logi | 日本語 | 英語 | 手がかり | 状況 |
 |---|---|---|---|---|
 | lepipi | たびたび | repeatedly |  | ok |
 | initi | ますます | increasingly |  | ok |
 | ituti | なるほど | indeed |  | ok |
+| kalali | うっかり | carelessly |  |  |
+| pulemi | なるべく | preferably |  |  |
 
 ## v0.10 機能語（指示詞・はい／いいえ）（3語）
 

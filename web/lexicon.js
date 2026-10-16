@@ -1690,6 +1690,26 @@ var LOGI_LEXICON = [
 {"w":"asepe","pos":"adj","ja":["渋い"],"jaNote":"渋い","en":["astringent"]},
 {"w":"lepipi","pos":"adv","ja":["たびたび"],"jaNote":"たびたび","en":["repeatedly"]},
 {"w":"initi","pos":"adv","ja":["ますます"],"jaNote":"ますます","en":["increasingly"]},
-{"w":"ituti","pos":"adv","ja":["なるほど"],"jaNote":"なるほど","en":["indeed"]}
+{"w":"ituti","pos":"adv","ja":["なるほど"],"jaNote":"なるほど","en":["indeed"]},
+{"w":"tekasa","pos":"noun","ja":["文章"],"jaNote":"文章","en":["text"]},
+{"w":"telaka","pos":"noun","ja":["跡"],"jaNote":"跡","en":["trace"]},
+{"w":"momeka","pos":"noun","ja":["勢い"],"jaNote":"勢い","en":["momentum"]},
+{"w":"tonita","pos":"noun","ja":["今夜"],"jaNote":"今夜","en":["tonight"]},
+{"w":"kupuso","pos":"verb","ja":["潰す"],"jaNote":"潰す","en":["crush"]},
+{"w":"ekino","pos":"verb","ja":["抜く"],"jaNote":"抜く","en":["extract"]},
+{"w":"iwuto","pos":"verb","ja":["示す"],"jaNote":"示す","en":["indicate"]},
+{"w":"teposo","pos":"verb","ja":["預ける"],"jaNote":"預ける","en":["deposit"]},
+{"w":"limito","pos":"verb","ja":["限る"],"jaNote":"限る","en":["limit"]},
+{"w":"sunupo","pos":"verb","ja":["頑張る"],"jaNote":"頑張る","en":["strive"]},
+{"w":"atijo","pos":"verb","ja":["慣れる"],"jaNote":"慣れる","en":["adapt"]},
+{"w":"otumo","pos":"verb","ja":["感心する"],"jaNote":"感心する","en":["admire"]},
+{"w":"suwuno","pos":"verb","ja":["揺れる"],"jaNote":"揺れる","en":["swing"]},
+{"w":"lunute","pos":"adj","ja":["丸い"],"jaNote":"丸い","en":["round"]},
+{"w":"sulane","pos":"adj","ja":["細い"],"jaNote":"細い","en":["slender"]},
+{"w":"kumute","pos":"adj","ja":["曇った"],"jaNote":"曇った","en":["cloudy"]},
+{"w":"pelume","pos":"adj","ja":["縦の"],"jaNote":"縦の","en":["vertical"]},
+{"w":"tisape","pos":"adj","ja":["がっかりした"],"jaNote":"がっかりした","en":["disappointed"]},
+{"w":"kalali","pos":"adv","ja":["うっかり"],"jaNote":"うっかり","en":["carelessly"]},
+{"w":"pulemi","pos":"adv","ja":["なるべく"],"jaNote":"なるべく","en":["preferably"]}
 ];
 if (typeof module !== 'undefined') { module.exports = LOGI_LEXICON; }
