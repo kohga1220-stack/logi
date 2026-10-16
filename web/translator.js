@@ -138,6 +138,8 @@
       }
       // ～なければならない（masi）・可能形（kani）
       if (stemA) {
+        // 〜なくてもいい（docs/proposals/006）の「〜なくて」
+        forms.push([stemA + 'なくて', { te: true, neg: true }]);
         forms.push([stemA + 'なければならない', { modal: 'masi' }], [stemA + 'なければならなかった', { modal: 'masi', past: true }],
           [stemA + 'なくてはならない', { modal: 'masi' }]);
       }
@@ -186,6 +188,7 @@
             addJa(stem + 'かったら', { k: 'ADJ', e: e, tags: { cond: true } });
             if (s === '良い') {
               addJa('いい', { k: 'ADJ', e: e, tags: {} });
+              addJa('よい', { k: 'ADJ', e: e, tags: {} });
               addJa('よかった', { k: 'ADJ', e: e, tags: { past: true } });
               addJa('よくない', { k: 'ADJ', e: e, tags: { neg: true } });
             }
@@ -225,6 +228,8 @@
       ['くださいません', true], ['くださいます', true], ['いただけません', true], ['いただけます', true]].forEach(function (r) {
       addJa(r[0], { k: 'REQ', pol: r[1] });
     });
+    // 禁止の言い方（〜てはいけない・〜てはならない。docs/proposals/006）。「て＋は」のあとだけ拾う
+    ['いけない', 'いけません', 'ならない', 'なりません'].forEach(function (x) { addJa(x, { k: 'PROHIB' }); });
     // あいさつ（docs/proposals/002）。文頭の「はい」と同じく、文頭か句読点のあとだけ拾う
     if (byW.kelosu) addJa('こんにちは', { k: 'YESNO', w: 'kelosu' });
     if (byW.kupaju) addJa('さようなら', { k: 'YESNO', w: 'kupaju' });
@@ -313,6 +318,10 @@
             var nx = text.charAt(i + len);
             // 勧誘の形のあとの「か」は、申し出（食べましょうか）
             if (nx && !/[、，,。．.！？!?\s]/.test(nx) && !((cand.tags.hort || cand.tags.req) && nx === 'か')) cand = null;
+          }
+          if (cand && cand.k === 'PROHIB') {
+            var lastTok = tokens[tokens.length - 1];
+            if (unk || !lastTok || lastTok.k !== 'P' || lastTok.p !== 'は') cand = null;
           }
           if (cand && cand.k === 'REQ') {
             var nr = text.charAt(i + len);
@@ -722,6 +731,7 @@
       // 文の全体があいさつなら、決まった語列にする（疑問の「？」が付く文は対象外）
       var sentenceList = [];
       (text.match(/[^。！？!?]+[。！？!?]*|[。！？!?]+/g) || [text]).forEach(function (piece) {
+        piece = piece.replace(/((?:いい|よい|いけない|いけません|ならない|なりません)(?:です|だ)?)[よね]+(?=[。！!]*$)/, '$1');
         var key = piece.replace(/[。！!、，,\s]/g, '');
         if (JA_GREETING[key] && !/[？?]/.test(piece)) sentenceList.push({ greeting: JA_GREETING[key] });
         else splitJa(piece).forEach(function (sg) { sentenceList.push(sg); });
@@ -738,21 +748,29 @@
           if (!toks.length) { parts.push([{ fragment: [item(answer)], notes: notes }]); return; }
         }
         if (toks.length && toks[toks.length - 1].k === 'KA') { q = true; toks.pop(); }
-        // 疑問での許可・依頼（docs/proposals/004）: 食べてもいいですか → mi kani …、食べてくれませんか → tu kani …
+        // 許可・禁止・不要（docs/proposals/004・006）
+        //   食べてもいい → kani、食べてはいけない → masi no、食べなくてもいい → kani no。主語がなければ、疑問は mi、平叙は tu を補う
+        //   食べてくれませんか → tu kani …
         var defaultSubj = null, politeReq = false;
-        if (q) {
-          var n = toks.length;
-          var tail = toks.slice(n - 4);
-          // 〜て + も + いい（+ です）
-          var m = n;
-          if (m && toks[m - 1].k === 'COP') m--;
-          var okTok = m >= 3 && toks[m - 1].k === 'ADJ' && toks[m - 1].e && toks[m - 1].e.w === 'kute' && !(toks[m - 1].tags && (toks[m - 1].tags.neg || toks[m - 1].tags.past));
-          var moTok = okTok && toks[m - 2].k === 'P' && toks[m - 2].p === 'も';
-          var teTok = moTok && toks[m - 3].k === 'V' && toks[m - 3].tags && toks[m - 3].tags.te;
-          if (teTok) {
-            toks = toks.slice(0, m - 3).concat([{ k: 'V', e: toks[m - 3].e, tags: { modal: 'kani' } }]);
-            defaultSubj = 'mi';
-          } else if (n >= 1 && toks[n - 1].k === 'V' && toks[n - 1].tags && toks[n - 1].tags.req) {
+        var n = toks.length;
+        // 文末の「だ・です」を除いた末尾
+        var m = n;
+        if (m && toks[m - 1].k === 'COP') m--;
+        var okTok = m >= 3 && toks[m - 1].k === 'ADJ' && toks[m - 1].e && toks[m - 1].e.w === 'kute' && !(toks[m - 1].tags && (toks[m - 1].tags.neg || toks[m - 1].tags.past));
+        var moTok = okTok && toks[m - 2].k === 'P' && toks[m - 2].p === 'も';
+        var teTok = moTok && toks[m - 3].k === 'V' && toks[m - 3].tags && toks[m - 3].tags.te && !toks[m - 3].tags.past;
+        var prohib = n >= 3 && toks[n - 1].k === 'PROHIB' && toks[n - 2].k === 'P' && toks[n - 2].p === 'は' &&
+          toks[n - 3].k === 'V' && toks[n - 3].tags && toks[n - 3].tags.te && !toks[n - 3].tags.neg;
+        if (teTok) {
+          var permTags = { modal: 'kani' };
+          if (toks[m - 3].tags.neg) permTags.neg = true;
+          toks = toks.slice(0, m - 3).concat([{ k: 'V', e: toks[m - 3].e, tags: permTags }]);
+          defaultSubj = q ? 'mi' : 'tu';
+        } else if (prohib) {
+          toks = toks.slice(0, n - 3).concat([{ k: 'V', e: toks[n - 3].e, tags: { modal: 'masi', neg: true } }]);
+          defaultSubj = 'tu';
+        } else if (q) {
+          if (n >= 1 && toks[n - 1].k === 'V' && toks[n - 1].tags && toks[n - 1].tags.req) {
             politeReq = !!toks[n - 1].tags.pol;
             toks = toks.slice(0, n - 1).concat([{ k: 'V', e: toks[n - 1].e, tags: { modal: 'kani' } }]);
             defaultSubj = 'tu';
@@ -1534,6 +1552,20 @@
           tokens = tokens.slice(0, -2);
         }
         if (answer && !tokens.length) { parts.push([{ fragment: [item(answer)], notes: notes }]); return; }
+        // 平叙文の許可・禁止・不要（docs/proposals/006）: You may → can、You may not → must not、do not have to / need not → can not
+        if (!question) {
+          var enOut = [];
+          for (var ti = 0; ti < tokens.length; ti++) {
+            var w0 = tokens[ti], w1 = tokens[ti + 1], w2 = tokens[ti + 2], w3 = tokens[ti + 3];
+            if (w0 === 'you' && w1 === 'may' && w2 === 'not') { enOut.push('you', 'must', 'not'); ti += 2; }
+            else if (w0 === 'you' && w1 === 'may') { enOut.push('you', 'can'); ti += 1; }
+            else if ((w0 === 'do' || w0 === 'does') && w1 === 'not' && w2 === 'have' && w3 === 'to') { enOut.push('can', 'not'); ti += 3; }
+            else if ((w0 === 'do' || w0 === 'does') && w1 === 'not' && w2 === 'need' && w3 === 'to') { enOut.push('can', 'not'); ti += 3; }
+            else if (w0 === 'need' && w1 === 'not') { enOut.push('can', 'not'); ti += 1; }
+            else enOut.push(w0);
+          }
+          tokens = enOut;
+        }
         // 疑問での許可・依頼・申し出（docs/proposals/004）: May I / Could I / Could you / Shall I
         if (question) {
           var t0 = tokens[0], t1 = tokens[1];
