@@ -702,10 +702,32 @@
     }
     var SUBC_TEXT = { pikosu: 'ので', wenute: 'とき', wailu: '間', pipolu: '前に', aputi: '後で', utilu: 'まで', oluto: 'のに' };
 
+    // 日常のあいさつ（docs/proposals/005）。文の全体がこの言い方のときだけ、決まった語列にする
+    var GREETINGS = [
+      { ja: ['おはよう', 'おはようございます'], en: ['good morning'], w: ['kute', 'mola'] },
+      { ja: ['おやすみ', 'おやすみなさい'], en: ['good night'], w: ['kute', 'naita'] },
+      { ja: ['すみません', 'すいません', 'ごめん', 'ごめんなさい'], en: ['sorry', 'excuse me'], w: ['mi', 'pio', 'moke'] },
+      { ja: ['ありがとう', 'ありがとうございます', 'ありがとうございました'], en: ['thanks'], w: ['mi', 'tanako', 'tu'] }
+    ];
+    var JA_GREETING = {}, EN_GREETING = {};
+    GREETINGS.forEach(function (g) {
+      if (!g.w.every(function (w) { return byW[w]; })) return;
+      g.ja.forEach(function (k) { JA_GREETING[k] = g.w; });
+      g.en.forEach(function (k) { EN_GREETING[k] = g.w; });
+    });
+
     function translateJa(text) {
       var notes = [];
       var parts = [];
-      splitJa(text).forEach(function (s) {
+      // 文の全体があいさつなら、決まった語列にする（疑問の「？」が付く文は対象外）
+      var sentenceList = [];
+      (text.match(/[^。！？!?]+[。！？!?]*|[。！？!?]+/g) || [text]).forEach(function (piece) {
+        var key = piece.replace(/[。！!、，,\s]/g, '');
+        if (JA_GREETING[key] && !/[？?]/.test(piece)) sentenceList.push({ greeting: JA_GREETING[key] });
+        else splitJa(piece).forEach(function (sg) { sentenceList.push(sg); });
+      });
+      sentenceList.forEach(function (s) {
+        if (s.greeting) { parts.push([{ fragment: s.greeting.map(function (w) { return item(w); }), notes: notes }]); return; }
         var toks = s.tokens.slice();
         var q = s.q;
         // 文頭の「はい」「いいえ」: jesu / no を先頭に置く（コンマで区切る）
@@ -1498,6 +1520,9 @@
         var question = /\?$/.test(trimmed);
         var body = trimmed.replace(/[.!?]+$/, '');
         var tokens = expandContractions(body).toLowerCase().match(/[a-z]+|[0-9]+|,/g) || [];
+        // 日常のあいさつ（docs/proposals/005）: Good morning / Good night / Sorry / Excuse me / Thanks
+        var greet = !question && EN_GREETING[tokens.join(' ')];
+        if (greet) { parts.push([{ fragment: greet.map(function (w) { return item(w); }), notes: notes }]); return; }
         // 文頭の Yes / No / Hello / Goodbye / Please: jesu / no / kelosu / kupaju / pilisu を先頭に置く
         var answer = null;
         var lead = EN_INTERJ[tokens[0]];

@@ -79,3 +79,7 @@ id,feature,logi,ja
 78,request-question,tu kani ito apa ka?,リンゴを食べてくれませんか？
 79,request-question-polite,"pilisu, tu kani ito apa ka?",リンゴを食べてもらえませんか？
 80,offer,mi sati ito apa ka?,リンゴを食べましょうか？
+81,greeting-morning,kute mola.,おはようございます。
+82,greeting-night,kute naita.,おやすみなさい。
+83,apology,mi pio moke.,すみません。
+84,thanks,mi tanako tu.,ありがとうございます。
