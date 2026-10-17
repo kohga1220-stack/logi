@@ -712,6 +712,10 @@
         if ((t.k === 'ADJ' || t.k === 'V') && t.tags && t.tags.cond) { cur.push(t); push('ipu'); continue; }
         if (t.k === 'V' && t.tags && t.tags.sub) { cur.push(t); push(t.tags.sub); continue; }
         if (t.k === 'V' && t.tags && t.tags.te && i < tokens.length - 1) { cur.push(t); push(null); connBefore = 'e'; continue; }
+        // 「食べるように言った」（間接命令）の ように は、様態（kasolu）ではない。docs/proposals/009 で決めるまで訳さず、そのまま残す
+        if (t.k === 'SUBC' && t.w === 'kasolu' && tokens[i + 1] && tokens[i + 1].k === 'V' && COMMAND_VERBS[tokens[i + 1].e.w]) {
+          cur.push({ k: 'UNK', text: SUBC_TEXT[t.w] }); continue;
+        }
         if (t.k === 'SUBC' && isPredLike(cur[cur.length - 1])) { push(t.w); continue; }
         if (t.k === 'SUBC') { cur.push({ k: 'UNK', text: SUBC_TEXT[t.w] || t.w }); continue; }
         if (t.k === 'P' && t.p === 'から' && isPredLike(cur[cur.length - 1])) { push('pikosu'); continue; }
@@ -724,6 +728,7 @@
       push(null);
       return { segs: segs, hyp: hyp };
     }
+    var COMMAND_VERBS = { juo: 1, tano: 1, olo: 1 };   // 言う・頼む・命じる
     var SUBC_TEXT = { kasolu: 'ように', pikosu: 'ので', wenute: 'とき', wailu: '間', pipolu: '前に', aputi: '後で', utilu: 'まで', oluto: 'のに' };
 
     // 日常のあいさつ（docs/proposals/005）。文の全体がこの言い方のときだけ、決まった語列にする
