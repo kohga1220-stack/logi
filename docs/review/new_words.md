@@ -7,7 +7,7 @@
 - 語幹が同じ: 語尾の1文字だけが違う、別の品詞の語（例: `kuka` 名詞と `kuko` 動詞）。同じ英語の別品詞なら意図した組です。そうでなければ偶然の一致なので、見分けにくくないか見てください
 - 同じ英語の語: 同じ英語の訳を持つ、別の語（同義語の候補）
 
-確認済み(ok): 1164 / 要修正(fix): 0 / 未確認(draft): 847
+確認済み(ok): 1164 / 要修正(fix): 0 / 未確認(draft): 897
 
 ## v0.7 英検3級レベルの語（487語）
 
@@ -386,7 +386,7 @@
 |---|---|---|---|---|
 | apupe | 怖い | afraid |  | ok |
 | kalepe | 注意深い | careful | 語幹が同じ: kalepi | ok |
-| ekuse | 興奮した | excited |  | ok |
+| ekuse | 興奮した | excited | 語幹が同じ: ekuso | ok |
 | pulime | 親しみやすい | friendly |  | ok |
 | miwe | 元気な | fine |  | ok |
 | june | おかしい | funny | 同じ英語の語: inime | ok |
@@ -1132,7 +1132,7 @@
 |---|---|---|---|---|
 | onapi | オンラインで | online |  | ok |
 
-## Antigravity の追加語（dictionary/anti_additions.csv）（958語）
+## Antigravity の追加語（dictionary/anti_additions.csv）（1008語）
 
 ### noun（690語）
 
@@ -1829,7 +1829,7 @@
 | wojuta | 文脈 | context |  |  |
 | nuoja | ニュアンス | nuance |  |  |
 
-### verb（205語）
+### verb（239語）
 
 | Logi | 日本語 | 英語 | 手がかり | 状況 |
 |---|---|---|---|---|
@@ -2038,8 +2038,42 @@
 | waleno | 警告する | warn |  |  |
 | putoto | 抗議する | protest |  |  |
 | julujo | 購入する | purchase |  |  |
+| ekuso | 誇張する | exaggerate | 語幹が同じ: ekuse |  |
+| awoto | 採用する | adopt |  |  |
+| ajono | 収容する | accommodate |  |  |
+| sapono | 主催する | sponsor |  |  |
+| ikepo | 侵略する | invade |  |  |
+| ewopo | 実施する | enforce |  |  |
+| tetuko | 推理する | deduce |  |  |
+| tekiko | 設計する | design |  |  |
+| ipeso | 設置する | install |  |  |
+| esoto | 設立する | establish |  |  |
+| nekulo | 宣言する | declare |  |  |
+| isopo | 捜査する | investigate |  |  |
+| pukopo | 促進する | promote |  |  |
+| pusono | 提案する | propose |  |  |
+| tisino | 派遣する | dispatch |  |  |
+| lapulo | 反映する | reflect |  |  |
+| letamo | 反撃する | retaliate |  |  |
+| kelito | 非難する | criticize |  |  |
+| epowo | 評価する | evaluate |  |  |
+| tepino | 描写する | depict |  |  |
+| anajo | 分析する | analyze |  |  |
+| anino | 予期する | anticipate |  |  |
+| ososo | 連想する | associate |  |  |
+| tumiko | 垂れる | drip |  |  |
+| linuso | 濯ぐ | rinse |  |  |
+| tikumo | 擽る | tickle |  |  |
+| kilino | しがみつく | cling |  |  |
+| pukato | 靡く | flutter |  |  |
+| pusaso | 弾ける | burst |  |  |
+| sunajo | よろける | stagger |  |  |
+| sepupo | 挫く | sprain |  |  |
+| telelo | 脱線する | derail |  |  |
+| tanilo | 縺れる | tangle |  |  |
+| komomo | 弁償する | compensate |  |  |
 
-### adj（47語）
+### adj（63語）
 
 | Logi | 日本語 | 英語 | 手がかり | 状況 |
 |---|---|---|---|---|
@@ -2090,6 +2124,22 @@
 | tutane | 長閑な | tranquil / idyllic / peaceful |  |  |
 | imule | 待ち遠しい | impatient |  | Claude【任意】待ち遠しい は eagerly awaited。impatient は「いらいらして待てない」で、否定的な響き |
 | tuleme | 物凄い | tremendous / terrific / horrendous |  |  |
+| ekoe | 等しい | equal |  |  |
+| akipe | 素早い | agile |  |  |
+| sameme | みっともない | shameful |  |  |
+| tilipe | 勤勉な | diligent |  |  |
+| polute | 正式な | formal |  |  |
+| kalile | そそっかしい | careless |  |  |
+| sukope | 巧みな | skillful |  |  |
+| ikose | 無邪気な | innocent |  |  |
+| tukupe | 面倒臭い | troublesome |  |  |
+| pilule | 猛烈な | fierce |  |  |
+| alame | 有害な | harmful |  |  |
+| isune | 有力な | influential |  |  |
+| silote | 幼稚な | childish |  |  |
+| lasune | 合理的な | rational |  |  |
+| pasape | 消極的な | passive |  |  |
+| puwute | 慎重な | prudent |  |  |
 
 ### adv（16語）
 
