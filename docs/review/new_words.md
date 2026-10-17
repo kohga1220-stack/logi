@@ -7,7 +7,7 @@
 - 語幹が同じ: 語尾の1文字だけが違う、別の品詞の語（例: `kuka` 名詞と `kuko` 動詞）。同じ英語の別品詞なら意図した組です。そうでなければ偶然の一致なので、見分けにくくないか見てください
 - 同じ英語の語: 同じ英語の訳を持つ、別の語（同義語の候補）
 
-確認済み(ok): 1120 / 要修正(fix): 0 / 未確認(draft): 0
+確認済み(ok): 1120 / 要修正(fix): 0 / 未確認(draft): 50
 
 ## v0.7 英検3級レベルの語（487語）
 
@@ -1132,9 +1132,9 @@
 |---|---|---|---|---|
 | onapi | オンラインで | online |  | ok |
 
-## Antigravity の追加語（dictionary/anti_additions.csv）（67語）
+## Antigravity の追加語（dictionary/anti_additions.csv）（117語）
 
-### noun（25語）
+### noun（43語）
 
 | Logi | 日本語 | 英語 | 手がかり | 状況 |
 |---|---|---|---|---|
@@ -1163,8 +1163,26 @@
 | telaka | 跡 | trace |  | ok |
 | momeka | 勢い | momentum |  | ok |
 | tonita | 今夜 | tonight |  | ok |
+| tikika | 茶碗 | teacup |  |  |
+| owopa | 相手 | opponent / rival |  |  |
+| pujuma | 岩 | boulder / crag |  |  |
+| losuta | 遠慮 | restraint / modesty / reserve |  |  |
+| simapa | 気の毒 | sympathy / compassion |  |  |
+| kusoma | 下駄 | clogs / clog |  |  |
+| wonuja | 承知 | consent / assent |  |  |
+| wateta | 水道 | waterworks / plumbing / tap / faucet |  |  |
+| tuneta | 性質 | trait / property / quality |  |  |
+| omoma | ついで | opportunity |  |  |
+| monosa | 梅雨 | monsoon |  |  |
+| peloma | 得 | profit / gain / benefit / advantage |  |  |
+| aseja | 上り | ascent / uphill |  |  |
+| sulaja | 周り | surroundings / perimeter / circumference |  |  |
+| ejisa | 以外 | exception |  |  |
+| powula | 乗車 | boarding |  |  |
+| pawusa | ボールペン | ballpoint |  |  |
+| jikia | 億 | billion |  |  |
 
-### verb（27語）
+### verb（51語）
 
 | Logi | 日本語 | 英語 | 手がかり | 状況 |
 |---|---|---|---|---|
@@ -1195,8 +1213,32 @@
 | atijo | 慣れる | adapt |  | ok Claude: 英語の見出し語は get used to に近く adapt は適応するに寄る（任意） |
 | otumo | 感心する | admire |  | ok |
 | suwuno | 揺れる | swing |  | ok Claude: 英語の見出し語は sway か shake のほうが近い（任意） |
+| kunano | 与える | grant / bestow / provide |  |  |
+| tukano | 移す | transfer / shift |  |  |
+| pupito | 飼う | breed |  |  |
+| onelo | 重なる | overlap |  |  |
+| satako | 重ねる | stack / layer |  |  |
+| ejumo | 切れる | expire / snap |  |  |
+| talupo | 暮れる | darken |  |  |
+| ewuno | 越える | exceed / surpass |  |  |
+| sanelo | 壊れる | shatter / crumble / malfunction |  |  |
+| temulo | 下がる | decline |  |  |
+| pakako | 空く | vacate |  |  |
+| kopumo | 済む | conclude |  |  |
+| amiko | 揃える | align |  |  |
+| kinumo | 焚く | kindle |  |  |
+| tepato | 出掛ける | depart |  |  |
+| piluko | 通す | pierce / penetrate |  |  |
+| uneko | 解く | untie / unravel / unfasten |  |  |
+| alujo | 止める | halt / detain |  |  |
+| pilito | 晴れる | brighten |  |  |
+| tuwako | 引っ張る | drag / tug / haul |  |  |
+| etuwo | 広がる | expand / widen |  |  |
+| minuko | 交じる | mingle / blend |  |  |
+| sukino | 回る | spin / revolve |  |  |
+| suseno | 汚れる | stain |  |  |
 
-### adj（10語）
+### adj（16語）
 
 | Logi | 日本語 | 英語 | 手がかり | 状況 |
 |---|---|---|---|---|
@@ -1210,8 +1252,14 @@
 | kumute | 曇った | cloudy |  | ok |
 | pelume | 縦の | vertical |  | ok |
 | tisape | がっかりした | disappointed |  | ok |
+| elie | 勇ましい | heroic / gallant / valiant |  |  |
+| atome | 偉い | admirable / noble / distinguished |  |  |
+| lekule | 惜しい | regrettable |  |  |
+| ateke | 憎い | hateful / odious / detestable |  |  |
+| soiwe | めでたい | joyful / joyous / auspicious |  |  |
+| unele | 無理な | unreasonable / excessive |  |  |
 
-### adv（5語）
+### adv（7語）
 
 | Logi | 日本語 | 英語 | 手がかり | 状況 |
 |---|---|---|---|---|
@@ -1220,6 +1268,8 @@
 | ituti | なるほど | indeed |  | ok |
 | kalali | うっかり | carelessly |  | ok |
 | pulemi | なるべく | preferably |  | ok |
+| puluni | なお | furthermore |  |  |
+| nameli | つまり | namely / briefly / shortly |  |  |
 
 ## v0.10 機能語（指示詞・はい／いいえ）（3語）
 
