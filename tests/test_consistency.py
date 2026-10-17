@@ -150,3 +150,25 @@ def test_coin_words_refuses_aliases_that_other_words_already_have(tmp_path, monk
     assert any("gizmo" in p and "class" in p and "kulasa" in p for p in problems)
     assert any("gizmo" in p and "lesson" in p and "lesa" in p for p in problems)
     assert not any("widget" in p for p in problems)
+
+
+def test_connective_uses_the_fixed_form_and_keeps_distance():
+    # 提案007 Q2: 様態の接続語 kasolu が、規則を満たしている
+    import csv
+    import coin_words
+
+    fields, rows = coin_words.load_dictionary()
+    taken = {r["regenerated"] for r in rows}
+    path = check_consistency.ROOT / "dictionary" / "connective_additions.csv"
+    with path.open(newline="", encoding="utf-8") as f:
+        additions = list(csv.DictReader(f))
+    assert {a["word"] for a in additions} == {"kasolu"}
+    assert all(a["pos"] == "conj" for a in additions)
+    for a in additions:
+        others = taken - {a["word"]}
+        assert coin_words.fixed_word_problem(a["word"], a, others) is None, a["word"]
+
+
+def test_anti_branch_may_not_change_connective_list():
+    problems = check_scope.violations("anti/x", ["dictionary/connective_additions.csv"], lambda p: None, lambda p: None)
+    assert len(problems) == 1

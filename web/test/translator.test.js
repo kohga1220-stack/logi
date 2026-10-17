@@ -451,3 +451,28 @@ test('提案006: 可能性の may・疑問の許可・義務は、変えない',
   assert.strictEqual(translator.translate('リンゴを食べてもいいですか？', 'ja').logi, 'mi kani ito apa ka?');
   assert.strictEqual(translator.translate('リンゴを食べなければならない。', 'ja').logi, 'masi ito apa.');
 });
+
+test('提案007: 目的・様態・対比の接続は、pote + 動名詞・kasolu・patu で言う', () => {
+  const cases = [
+    ['私はリンゴを食べるために学校へ行く。', 'mi iko tote sukula pote itona apa.'],
+    ['リンゴを食べるために学校へ行く。', 'iko tote sukula pote itona apa.'],
+    ['彼が言うように、私は行く。', 'kasolu li juo, mi iko.'],
+    ['私は食べる一方で、彼は寝る。', 'mi ito, patu li neo.'],
+    ['私は食べるが、彼は寝る。', 'mi ito, patu li neo.'],
+    ['I go to school to eat an apple.', 'mi iko tote sukula pote itona apa.'],
+    ['I go to school in order to eat an apple.', 'mi iko tote sukula pote itona apa.'],
+    ['I go to the park to run.', 'mi iko tote paka pote lanona.'],
+    ['He left as I said.', 'li pasu lepo, kasolu mi pasu juo.'],
+    ['He eats whereas she sleeps.', 'li ito, patu li neo.'],
+    ['He eats; on the other hand, she sleeps.', 'li ito, patu li neo.'],
+  ];
+  cases.forEach(([src, logi]) => {
+    assert.strictEqual(translator.translate(src, 'auto').logi, logi, src);
+  });
+});
+
+test('提案007: 補語の to + 動詞・名詞の「ために」・場所の to は、目的にしない', () => {
+  assert.strictEqual(translator.translate('I want to eat an apple.', 'en').logi, 'mi wonuto itona apa.');
+  assert.strictEqual(translator.translate('I go to school.', 'en').logi, 'mi iko tote sukula.');
+  assert.strictEqual(translator.translate('本のために行く。', 'ja').logi, 'iko pote pupa.');
+});

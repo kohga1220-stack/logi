@@ -16,7 +16,7 @@
 - **Suffix-based part-of-speech** — noun `-a`, verb `-o`, adjective `-e`, adverb `-i`, preposition `-te`
 - **No passive voice** — always active SVO
 - **No plural suffix** — plurality expressed via `mene` (many)
-- **1,744-word core dictionary** — machine-validated; zero homophones
+- **1,745-word core dictionary** — machine-validated; zero homophones
 - **Function words take `-u`**: a final consonant gets `-u` (`pas`→`pasu`), a consonant cluster is split by `u` (`tante`→`tanute`)
 
 ---
@@ -108,9 +108,9 @@ logi/
 ├── web/
 │   └── index.html          Translator page (Japanese/English → Logi) / 翻訳機（see web/README.md）
 ├── corpus/
-│   └── examples.csv        87 example sentences by grammar feature / 機能別例文87文
+│   └── examples.csv        90 example sentences by grammar feature / 機能別例文90文
 ├── dictionary/
-│   ├── final.csv           1,744-word validated dictionary / 検証済み辞書1,744語
+│   ├── final.csv           1,745-word validated dictionary / 検証済み辞書1,745語
 │   ├── eiken3_additions.csv  Eiken grade-3 level word list added in v0.7 / 英検3級レベルの追加語リスト
 │   ├── word_review.csv     Review status of the added words (draft / ok / fix) / 追加語の確認状況
 │   ├── core_additions.csv  Everyday Japanese word list added in v0.8 / 日本語の基本語彙の追加語リスト
@@ -155,6 +155,7 @@ logi/
 | v0.13 | Permission, requests and offers as questions, expressed with the modal adverbs — decided in `docs/proposals/004`: permission and request = `kani`, offer = `sati`, polite request = leading `pilisu,`; fixes the mistranslation of *May I* (`mei` = *might*); no new words; the translator handles them; 1,724 words |
 | v0.14 | Everyday greetings built from existing words — decided in `docs/proposals/005`: good morning `kute mola.`, good night `kute naita.`, sorry `mi pio moke.`, thanks `mi tanako tu.`; no new words; the translator handles them; 1,724 words |
 | v0.15 | Permission, prohibition and not-necessary as statements — decided in `docs/proposals/006`: `tu kani ito apa.` (may), `tu masi no ito apa.` (must not), `tu kani no ito apa.` (need not); *You may* now maps to `kani` (possibility *may* stays `mei`); no new words; the translator handles them; 1,724 words |
+| v0.16 | Purpose, manner and contrast — decided in `docs/proposals/007`: purpose = `pote` + gerund (`mi iko tote sukula pote itona apa.`), manner = new conjunction `kasolu` (*as*), contrast = `patu`; the translator handles them; 1,745 words |
 
 ---
 
