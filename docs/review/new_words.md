@@ -7,7 +7,7 @@
 - 語幹が同じ: 語尾の1文字だけが違う、別の品詞の語（例: `kuka` 名詞と `kuko` 動詞）。同じ英語の別品詞なら意図した組です。そうでなければ偶然の一致なので、見分けにくくないか見てください
 - 同じ英語の語: 同じ英語の訳を持つ、別の語（同義語の候補）
 
-確認済み(ok): 1164 / 要修正(fix): 0 / 未確認(draft): 597
+確認済み(ok): 1164 / 要修正(fix): 0 / 未確認(draft): 647
 
 ## v0.7 英検3級レベルの語（487語）
 
@@ -1132,9 +1132,9 @@
 |---|---|---|---|---|
 | onapi | オンラインで | online |  | ok |
 
-## Antigravity の追加語（dictionary/anti_additions.csv）（708語）
+## Antigravity の追加語（dictionary/anti_additions.csv）（758語）
 
-### noun（503語）
+### noun（553語）
 
 | Logi | 日本語 | 英語 | 手がかり | 状況 |
 |---|---|---|---|---|
@@ -1641,6 +1641,56 @@
 | loketa | ロッカー | locker |  |  |
 | kaseka | 電卓 | calculator |  |  |
 | lajuta | 筏 | raft |  |  |
+| mepupa | 石ころ | pebble |  |  |
+| telota | 体温計 | thermometer |  |  |
+| kepea | クレヨン | crayon |  |  |
+| tetola | 洗剤 | detergent |  |  |
+| nusama | 枠 | frame |  |  |
+| naloka | チョーク | chalk |  |  |
+| wupima | スピーカー | speaker |  |  |
+| jalena | 毛糸 | yarn |  |  |
+| satoma | ストーブ | stove |  |  |
+| pojela | 陶器 | pottery |  |  |
+| powasa | 磁器 | porcelain |  |  |
+| sokasa | 文房具 | stationery |  |  |
+| nilona | ナイロン | nylon |  |  |
+| setewa | ステレオ | stereo |  |  |
+| mikala | マイク | microphone |  |  |
+| toaja | ダイヤル | dial |  |  |
+| nolopa | ゴルフ | golf |  |  |
+| sowupa | サッカー | soccer |  |  |
+| powewa | バレーボール | volleyball |  |  |
+| pajeja | バレエ | ballet |  |  |
+| wipopa | 武器 | weapon |  |  |
+| luteta | 貨物 | freight |  |  |
+| sisewa | 鑿 | chisel |  |  |
+| kesia | 馬車 | carriage |  |  |
+| nenupa | 振り子 | pendulum |  |  |
+| sopawa | 箆 | spatula |  |  |
+| tewesa | 望遠鏡 | telescope |  |  |
+| wupapa | 砂利 | gravel |  |  |
+| janula | 水筒 | canteen |  |  |
+| soseta | 橇 | sled |  |  |
+| jinua | 薪 | firewood |  |  |
+| malewa | 樽 | barrel |  |  |
+| lanoma | 提灯 | lantern |  |  |
+| nunoma | 雪達磨 | snowman |  |  |
+| wakuja | 蝋 | wax |  |  |
+| siwusa | サーカス | circus |  |  |
+| tanema | タンク | tank |  |  |
+| pawaja | パラシュート | parachute |  |  |
+| nukopa | プロペラ | propeller |  |  |
+| jasuka | ヨット | yacht |  |  |
+| lukesa | リュックサック | rucksack |  |  |
+| lakima | 漆 | lacquer |  |  |
+| pesasa | 真鍮 | brass |  |  |
+| mewuka | 水銀 | mercury |  |  |
+| uwuja | 砂時計 | hourglass |  |  |
+| pipesa | 暖炉 | fireplace |  |  |
+| wumopa | 地球儀 | globe |  |  |
+| wetasa | 砥石 | whetstone |  |  |
+| soteja | 雨戸 | shutter |  |  |
+| tewipa | 装置 | device |  |  |
 
 ### verb（142語）
 
