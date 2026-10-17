@@ -16,7 +16,7 @@
 - **Suffix-based part-of-speech** — noun `-a`, verb `-o`, adjective `-e`, adverb `-i`, preposition `-te`
 - **No passive voice** — always active SVO
 - **No plural suffix** — plurality expressed via `mene` (many)
-- **2,336-word core dictionary** — machine-validated; zero homophones
+- **2,386-word core dictionary** — machine-validated; zero homophones
 - **Function words take `-u`**: a final consonant gets `-u` (`pas`→`pasu`), a consonant cluster is split by `u` (`tante`→`tanute`)
 
 ---
@@ -110,7 +110,7 @@ logi/
 ├── corpus/
 │   └── examples.csv        114 example sentences by grammar feature / 機能別例文114文
 ├── dictionary/
-│   ├── final.csv           2,336-word validated dictionary / 検証済み辞書2,336語
+│   ├── final.csv           2,386-word validated dictionary / 検証済み辞書2,386語
 │   ├── eiken3_additions.csv  Eiken grade-3 level word list added in v0.7 / 英検3級レベルの追加語リスト
 │   ├── word_review.csv     Review status of the added words (draft / ok / fix) / 追加語の確認状況
 │   ├── core_additions.csv  Everyday Japanese word list added in v0.8 / 日本語の基本語彙の追加語リスト

@@ -7,7 +7,7 @@
 - 語幹が同じ: 語尾の1文字だけが違う、別の品詞の語（例: `kuka` 名詞と `kuko` 動詞）。同じ英語の別品詞なら意図した組です。そうでなければ偶然の一致なので、見分けにくくないか見てください
 - 同じ英語の語: 同じ英語の訳を持つ、別の語（同義語の候補）
 
-確認済み(ok): 1164 / 要修正(fix): 0 / 未確認(draft): 547
+確認済み(ok): 1164 / 要修正(fix): 0 / 未確認(draft): 597
 
 ## v0.7 英検3級レベルの語（487語）
 
@@ -1132,9 +1132,9 @@
 |---|---|---|---|---|
 | onapi | オンラインで | online |  | ok |
 
-## Antigravity の追加語（dictionary/anti_additions.csv）（658語）
+## Antigravity の追加語（dictionary/anti_additions.csv）（708語）
 
-### noun（453語）
+### noun（503語）
 
 | Logi | 日本語 | 英語 | 手がかり | 状況 |
 |---|---|---|---|---|
@@ -1591,6 +1591,56 @@
 | nalama | キャラメル | caramel |  |  |
 | tolila | ゴリラ | gorilla |  |  |
 | tawia | ダリア | dahlia |  |  |
+| akola | 団栗 | acorn |  |  |
+| menua | ペンギン | penguin |  |  |
+| mawula | 楓 | maple |  |  |
+| piwuja | 甲虫 | beetle |  |  |
+| mujuta | 芥子 | mustard |  |  |
+| saneka | 鮫 | shark |  |  |
+| kinema | 生薑 | ginger |  |  |
+| kawuja | 鯰 | catfish |  |  |
+| lisuja | 手首 | wrist |  |  |
+| tumema | 親指 | thumb |  |  |
+| pinoma | 小指 | pinky |  |  |
+| tipaja | 爪先 | tiptoe |  |  |
+| timita | 靨 | dimple |  |  |
+| piwena | 脳 | brain |  |  |
+| lipila | 肝臓 | liver |  |  |
+| joana | 関節 | joint |  |  |
+| kapowa | 虫歯 | cavity |  |  |
+| tujela | 結核 | tuberculosis |  |  |
+| nanuka | 癌 | cancer |  |  |
+| lalala | 麻痺 | paralysis |  |  |
+| kopopa | 死体 | corpse |  |  |
+| limesa | 寿命 | lifespan |  |  |
+| piwisa | 体格 | physique |  |  |
+| nutawa | 体力 | stamina |  |  |
+| tejusa | 入れ歯 | denture |  |  |
+| napeka | 臍 | navel |  |  |
+| mukela | 骸骨 | skeleton |  |  |
+| simipa | 症状 | symptom |  |  |
+| oluka | 内臓 | organ |  |  |
+| wutaja | 杭 | stake |  |  |
+| wumuma | ポンプ | pump |  |  |
+| makona | 磁石 | magnet |  |  |
+| ujepa | 制服 | uniform |  |  |
+| leweta | 梃子 | lever |  |  |
+| sanina | サンダル | sandal |  |  |
+| wotula | 担架 | stretcher |  |  |
+| litoka | ライター | lighter |  |  |
+| sapoka | 炭 | charcoal |  |  |
+| tolepa | 罠 | trap |  |  |
+| lipowa | リボン | ribbon |  |  |
+| mikuma | 顕微鏡 | microscope |  |  |
+| kawona | 大砲 | cannon |  |  |
+| sopema | シャベル | shovel |  |  |
+| pepama | ベランダ | veranda |  |  |
+| kakopa | 絨毯 | carpet |  |  |
+| memapa | 膜 | membrane |  |  |
+| pawusa | パスポート | passport |  |  |
+| loketa | ロッカー | locker |  |  |
+| kaseka | 電卓 | calculator |  |  |
+| lajuta | 筏 | raft |  |  |
 
 ### verb（142語）
 
