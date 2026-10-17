@@ -7,7 +7,7 @@
 - 語幹が同じ: 語尾の1文字だけが違う、別の品詞の語（例: `kuka` 名詞と `kuko` 動詞）。同じ英語の別品詞なら意図した組です。そうでなければ偶然の一致なので、見分けにくくないか見てください
 - 同じ英語の語: 同じ英語の訳を持つ、別の語（同義語の候補）
 
-確認済み(ok): 1164 / 要修正(fix): 6 / 未確認(draft): 450
+確認済み(ok): 1164 / 要修正(fix): 6 / 未確認(draft): 500
 
 ## v0.7 英検3級レベルの語（487語）
 
@@ -1132,9 +1132,9 @@
 |---|---|---|---|---|
 | onapi | オンラインで | online |  | ok |
 
-## Antigravity の追加語（dictionary/anti_additions.csv）（567語）
+## Antigravity の追加語（dictionary/anti_additions.csv）（617語）
 
-### noun（358語）
+### noun（408語）
 
 | Logi | 日本語 | 英語 | 手がかり | 状況 |
 |---|---|---|---|---|
@@ -1496,6 +1496,56 @@
 | tasisa | 根拠 | basis / grounds |  |  |
 | samuja | 見本 | sample / specimen |  |  |
 | mesena | 仕組み | mechanism |  |  |
+| pajosa | 過程 | process |  |  |
+| mutosa | 手順 | procedure |  |  |
+| mutama | 統計 | statistics |  |  |
+| lokipa | 論理 | logic |  |  |
+| molaka | 道徳 | morality / ethics / morals |  |  |
+| sosuka | 正義 | justice / righteousness |  |  |
+| wujita | 誇り | pride |  |  |
+| umeja | 謙遜 | humility |  |  |
+| newula | 油断 | negligence / carelessness |  |  |
+| lopuma | 反省 | reflection / introspection / remorse |  |  |
+| tiwapa | 失望 | disappointment / despair |  |  |
+| limula | 謎 | riddle / enigma / mystery |  |  |
+| topima | 話題 | topic / theme |  |  |
+| nekoka | 交渉 | negotiation / bargaining |  |  |
+| losela | 予約 | reservation / booking |  |  |
+| munota | 登山 | mountaineering / alpinism |  |  |
+| nisina | 釣り | fishing / angling |  |  |
+| mukia | スキー | skiing / ski |  |  |
+| mukata | スケート | skating / skate |  |  |
+| tepuwa | 夜明け | daybreak / dawn |  |  |
+| tumisa | 小雨 | drizzle / sprinkle |  |  |
+| kilesa | 三日月 | crescent |  |  |
+| pejuna | 肥料 | fertilizer / manure / compost |  |  |
+| misela | 漁業 | fishery |  |  |
+| ponena | 林業 | forestry |  |  |
+| sepiwa | 紡績 | spinning / textiles |  |  |
+| tekeka | 通信 | telecommunication / correspondence |  |  |
+| tuwaja | 輸送 | transportation / transport / transit |  |  |
+| pamesa | 小包 | parcel / package |  |  |
+| nonisa | 領事館 | consulate |  |  |
+| lusuwa | 税関 | customs |  |  |
+| sinana | 財政 | finance / finances |  |  |
+| metana | 少女 | maiden / schoolgirl |  |  |
+| sujoja | 成績 | scores / marks |  |  |
+| metopa | 都会 | metropolis |  |  |
+| kilija | 垢 | grime / filth |  |  |
+| kakusa | 嗽 | gargle / gargling |  |  |
+| uwowa | 団扇 | uchiwa |  |  |
+| wosuna | 延期 | postponement / adjournment |  |  |
+| pemana | 雌 | female |  |  |
+| tomuma | 顔色 | complexion |  |  |
+| semesa | 学期 | semester / term / trimester |  |  |
+| tosula | 乾杯 | toast / cheers |  |  |
+| lotema | 籖 | lottery / raffle / lot |  |  |
+| sesisa | クリスマス | christmas / xmas |  |  |
+| litita | 現実 | reality / actuality |  |  |
+| sijeta | サイレン | siren / alarm |  |  |
+| sasija | 刺身 | sashimi |  |  |
+| nosuwa | 姿勢 | posture / stance |  |  |
+| kelena | 地面 | ground |  |  |
 
 ### verb（145語）
 
