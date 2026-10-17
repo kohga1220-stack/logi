@@ -7,7 +7,7 @@
 - 語幹が同じ: 語尾の1文字だけが違う、別の品詞の語（例: `kuka` 名詞と `kuko` 動詞）。同じ英語の別品詞なら意図した組です。そうでなければ偶然の一致なので、見分けにくくないか見てください
 - 同じ英語の語: 同じ英語の訳を持つ、別の語（同義語の候補）
 
-確認済み(ok): 1164 / 要修正(fix): 6 / 未確認(draft): 250
+確認済み(ok): 1164 / 要修正(fix): 6 / 未確認(draft): 300
 
 ## v0.7 英検3級レベルの語（487語）
 
@@ -1132,9 +1132,9 @@
 |---|---|---|---|---|
 | onapi | オンラインで | online |  | ok |
 
-## Antigravity の追加語（dictionary/anti_additions.csv）（367語）
+## Antigravity の追加語（dictionary/anti_additions.csv）（417語）
 
-### noun（219語）
+### noun（249語）
 
 | Logi | 日本語 | 英語 | 手がかり | 状況 |
 |---|---|---|---|---|
@@ -1357,6 +1357,36 @@
 | kopasa | 良心 | conscience |  |  |
 | teoja | 理論 | theory |  |  |
 | tesosa | 論文 | thesis / treatise / dissertation |  |  |
+| meluta | 黴 | mold / mildew |  |  |
+| pemuwa | カボチャ | pumpkin / squash |  |  |
+| nukuma | 胡瓜 | cucumber |  |  |
+| kewupa | 昆布 | kelp / seaweed |  |  |
+| wakama | 若布 | wakame |  |  |
+| sawuta | 鮭 | salmon |  |  |
+| meawa | マヨネーズ | mayonnaise |  |  |
+| kuwisa | クリーム | cream |  |  |
+| nupita | 蜘蛛 | spider |  |  |
+| milepa | 蛍 | firefly / glowworm |  |  |
+| musika | 筋肉 | muscle |  |  |
+| siloma | 絹 | silk |  |  |
+| lipupa | 口紅 | lipstick / rouge |  |  |
+| jelupa | 香水 | perfume / fragrance / cologne |  |  |
+| mupala | マフラー | muffler / scarf |  |  |
+| sipepa | ファスナー | zipper / fastener |  |  |
+| tatuma | バッジ | badge |  |  |
+| masoka | マスク | mask |  |  |
+| walula | 風船 | balloon |  |  |
+| nipua | 花火 | firework / fireworks |  |  |
+| melosa | メロディー | melody / tune |  |  |
+| lituma | リズム | rhythm |  |  |
+| posama | ポスター | poster / placard |  |  |
+| wuisa | クイズ | quiz |  |  |
+| lakeka | ラケット | racket / racquet |  |  |
+| pisema | ピストル | pistol / handgun / revolver |  |  |
+| pomepa | 爆弾 | bomb |  |  |
+| ujika | ヘリコプター | helicopter / chopper |  |  |
+| kosita | 容器 | container / receptacle / vessel |  |  |
+| pikasa | プラスチック | plastic / plastics |  |  |
 
 ### verb（104語）
 
@@ -1467,7 +1497,7 @@
 | jilato | 譲る | yield / cede |  |  |
 | luseko | 緩む | loosen / slacken |  |  |
 
-### adj（37語）
+### adj（47語）
 
 | Logi | 日本語 | 英語 | 手がかり | 状況 |
 |---|---|---|---|---|
@@ -1507,9 +1537,19 @@
 | koake | 臆病な | cowardly / timid |  |  |
 | penote | 幽かな | faint / dim / vague |  |  |
 | lopete | 可愛らしい | lovely / adorable |  |  |
-| katue | 気軽な | casual / lighthearted |  |  |
+| katue | 気軽な | casual / lighthearted | 語幹が同じ: katui |  |
+| kutame | 窮屈な | cramped |  |  |
+| putuke | 下品な | vulgar / coarse / indecent |  |  |
+| samoke | 煙い | smoky |  |  |
+| sutine | 険しい | steep / rugged / grim |  |  |
+| salape | 塩辛い | salty / briny |  |  |
+| pelase | しつこい | persistent / insistent / tenacious |  |  |
+| lenone | 名高い | renowned / celebrated |  |  |
+| tutane | 長閑な | tranquil / idyllic / peaceful |  |  |
+| imule | 待ち遠しい | impatient |  |  |
+| tuleme | 物凄い | tremendous / terrific / horrendous |  |  |
 
-### adv（7語）
+### adv（17語）
 
 | Logi | 日本語 | 英語 | 手がかり | 状況 |
 |---|---|---|---|---|
@@ -1520,6 +1560,16 @@
 | pulemi | なるべく | preferably |  | ok |
 | puluni | なお | furthermore |  | ok Claude【任意】なお は接続詞に近い（furthermore）。接続詞は機能語のため Claude/M1ko の設計 |
 | nameli | つまり | namely / briefly / shortly |  | ok Claude【任意】つまり は接続詞に近い（namely）。接続詞は機能語のため Claude/M1ko の設計 |
+| menuli | 主に | mainly / chiefly / primarily / mostly |  |  |
+| pupomi | 早速 | promptly / forthwith |  |  |
+| oiti | 暫く | awhile / temporarily |  |  |
+| akasi | 偶然 | accidentally / coincidentally |  |  |
+| sekuli | こっそり | secretly / stealthily / sneakily |  |  |
+| inesi | 忽ち | instantly |  |  |
+| katui | たまたま | casually / unexpectedly | 語幹が同じ: katue |  |
+| konuki | 絶えず | constantly / continually / ceaselessly |  |  |
+| otomi | 独りでに | automatically / spontaneously |  |  |
+| laleti | 滅多に | rarely / seldom |  |  |
 
 ## v0.10 機能語（指示詞・はい／いいえ）（3語）
 
