@@ -7,7 +7,7 @@
 - 語幹が同じ: 語尾の1文字だけが違う、別の品詞の語（例: `kuka` 名詞と `kuko` 動詞）。同じ英語の別品詞なら意図した組です。そうでなければ偶然の一致なので、見分けにくくないか見てください
 - 同じ英語の語: 同じ英語の訳を持つ、別の語（同義語の候補）
 
-確認済み(ok): 1164 / 要修正(fix): 0 / 未確認(draft): 797
+確認済み(ok): 1164 / 要修正(fix): 0 / 未確認(draft): 847
 
 ## v0.7 英検3級レベルの語（487語）
 
@@ -1132,7 +1132,7 @@
 |---|---|---|---|---|
 | onapi | オンラインで | online |  | ok |
 
-## Antigravity の追加語（dictionary/anti_additions.csv）（908語）
+## Antigravity の追加語（dictionary/anti_additions.csv）（958語）
 
 ### noun（690語）
 
@@ -1829,7 +1829,7 @@
 | wojuta | 文脈 | context |  |  |
 | nuoja | ニュアンス | nuance |  |  |
 
-### verb（155語）
+### verb（205語）
 
 | Logi | 日本語 | 英語 | 手がかり | 状況 |
 |---|---|---|---|---|
@@ -1988,6 +1988,56 @@
 | sowilo | 誓う | swear |  |  |
 | amopo | 廃止する | abolish |  |  |
 | ameso | 慎む | abstain |  |  |
+| sopio | 甘やかす | spoil |  |  |
+| kotuno | 打ち明ける | confess |  |  |
+| nalato | 物語る | narrate |  |  |
+| iwelo | 受け継ぐ | inherit |  |  |
+| niolo | 犯す | violate |  |  |
+| ponuso | 集中する | concentrate |  |  |
+| wuluwo | 生存する | survive |  |  |
+| titopo | 背く | disobey |  |  |
+| pelono | 属する | belong |  |  |
+| kowulo | 対立する | confront |  |  |
+| paliso | 説く | preach |  |  |
+| malaso | 行進する | march |  |  |
+| imoto | 向上する | improve |  |  |
+| kamupo | 作曲する | compose |  |  |
+| ijulo | 視察する | inspect |  |  |
+| pisupo | 処分する | dispose |  |  |
+| epamo | 蒸発する | evaporate |  |  |
+| lesiko | 制限する | restrict |  |  |
+| isujo | 遮る | interrupt |  |  |
+| piloso | 栄える | prosper |  |  |
+| teloko | 仕立てる | tailor |  |  |
+| tesimo | 指定する | designate |  |  |
+| nulito | 出血する | bleed |  |  |
+| emoso | 探検する | explore |  |  |
+| uwito | 団結する | unite |  |  |
+| uwuso | 陳列する | exhibit |  |  |
+| notipo | 告げる | notify |  |  |
+| akeno | 遂げる | accomplish |  |  |
+| ewiko | 同封する | enclose |  |  |
+| tukito | 繁盛する | thrive |  |  |
+| kokuwo | 反する | contradict |  |  |
+| peawo | 振舞う | behave |  |  |
+| puwuwo | 満たす | fulfill |  |  |
+| osuwo | 催す | host |  |  |
+| poseto | 養成する | foster |  |  |
+| letipo | 蘇る | revive |  |  |
+| owuko | 圧迫する | oppress |  |  |
+| asawo | 暗殺する | assassinate |  |  |
+| ijito | 暗示する | hint |  |  |
+| kuojo | 引用する | quote |  |  |
+| sekujo | 確保する | secure |  |  |
+| kenulo | 換算する | convert |  |  |
+| umulo | 鑑賞する | appreciate |  |  |
+| tutamo | 脚色する | dramatize |  |  |
+| emawo | 強調する | emphasize |  |  |
+| talito | 脅迫する | threaten |  |  |
+| peseko | 拒否する | reject |  |  |
+| waleno | 警告する | warn |  |  |
+| putoto | 抗議する | protest |  |  |
+| julujo | 購入する | purchase |  |  |
 
 ### adj（47語）
 
