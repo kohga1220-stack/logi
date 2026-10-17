@@ -17,8 +17,8 @@ function readCorpus() {
   });
 }
 
-// 日本語の入力として未対応の構文（使役・目的語の対比の「は」・くれる/あげる）
-const UNSUPPORTED_JA = new Set([19, 22, 26, 35]);
+// 日本語の入力として未対応の構文（使役・目的語の対比の「は」・くれる/あげる）と、英語から入れる願いの言葉（112〜114）
+const UNSUPPORTED_JA = new Set([19, 22, 26, 35, 112, 113, 114]);
 
 test('corpus: 対応する日本語の例文は例文集の Logi と一致する', () => {
   const failures = [];
@@ -581,4 +581,29 @@ test('提案010: 敬語は意味だけ訳す', () => {
   });
   // 食事のあいさつは訳さない（提案005 Q3）
   assert.strictEqual(translator.translate('いただきます。', 'ja').logi, '[いただきます?].');
+});
+
+test('提案011: 日常のあいさつの続きと願いの言葉', () => {
+  const ja = [
+    ['こんばんは。', 'kute ipa.'],
+    ['お元気ですか？', 'tu pio miwe ka?'],
+    ['元気です。', 'mi pio miwe.'],
+  ];
+  ja.forEach(([src, logi]) => {
+    assert.strictEqual(translator.translate(src, 'ja').logi, logi, src);
+  });
+  const en = [
+    ['Good evening.', 'kute ipa.'],
+    ['Good afternoon.', 'kute apuja.'],
+    ['How are you?', 'tu pio miwe ka?'],
+    ['I am fine.', 'mi pio miwe.'],
+    ['Good luck.', 'kute luna!'],
+    ['Have a nice day.', 'kute teia!'],
+    ['See you tomorrow.', 'mi putu sio tu moloa.'],
+  ];
+  en.forEach(([src, logi]) => {
+    assert.strictEqual(translator.translate(src, 'en').logi, logi, src);
+  });
+  // 一般の形容詞だけの文には主語を補わない
+  assert.strictEqual(translator.translate('寒いです。', 'ja').logi, 'pio kole.');
 });

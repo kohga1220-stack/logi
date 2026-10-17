@@ -940,13 +940,26 @@
       // 敬語の定型句（docs/proposals/010）
       { ja: ['いらっしゃいませ'], en: [], w: ['weluko'], imp: true },
       { ja: ['ごちそうさま', 'ごちそうさまでした'], en: [], w: ['mi', 'tanako', 'tu'] },
-      { ja: ['お願いします', 'お願いいたします'], en: [], w: ['pilisu'] }
+      { ja: ['お願いします', 'お願いいたします'], en: [], w: ['pilisu'] },
+      // 日常のあいさつの続き（docs/proposals/011）
+      { ja: ['こんばんは'], en: ['good evening'], w: ['kute', 'ipa'] },
+      { ja: [], en: ['good afternoon'], w: ['kute', 'apuja'] },
+      { ja: [], en: ['good luck'], w: ['kute', 'luna'], imp: true },
+      { ja: [], en: ['have a nice day', 'have a good day'], w: ['kute', 'teia'], imp: true },
+      { ja: [], en: ['see you tomorrow'], w: ['mi', 'putu', 'sio', 'tu', 'moloa'] },
+      // 形容詞だけの文に主語を補うのは、この 2 つに限る（提案011 Q2）
+      { ja: ['元気です'], en: [], w: ['mi', 'pio', 'miwe'] },
+      { ja: ['お元気ですか', '元気ですか'], en: ['how are you'], w: ['tu', 'pio', 'miwe'], q: true }
     ];
-    var JA_GREETING = {}, EN_GREETING = {}, JA_GREETING_IMP = {};
+    var JA_GREETING = {}, EN_GREETING = {}, JA_GREETING_IMP = {}, EN_GREETING_IMP = {}, GREETING_Q = {};
     GREETINGS.forEach(function (g) {
       if (!g.w.every(function (w) { return byW[w]; })) return;
+      if (g.q) {
+        g.ja.concat(g.en).forEach(function (k) { GREETING_Q[k] = g.w; });
+        return;
+      }
       g.ja.forEach(function (k) { JA_GREETING[k] = g.w; JA_GREETING_IMP[k] = !!g.imp; });
-      g.en.forEach(function (k) { EN_GREETING[k] = g.w; });
+      g.en.forEach(function (k) { EN_GREETING[k] = g.w; EN_GREETING_IMP[k] = !!g.imp; });
     });
 
     function translateJa(text) {
@@ -957,13 +970,15 @@
       (text.match(/[^。！？!?]+[。！？!?]*|[。！？!?]+/g) || [text]).forEach(function (piece) {
         piece = piece.replace(/((?:いい|よい|いけない|いけません|ならない|なりません)(?:です|だ)?)[よね]+(?=[。！!]*$)/, '$1');
         var key = piece.replace(/[。！!、，,\s]/g, '');
-        if (key === 'いただきます') sentenceList.push({ raw: key });   // 提案005 Q3・010: 食事のあいさつは訳さない
+        var keyQ = key.replace(/[？?]/g, '');
+        if (GREETING_Q[keyQ]) sentenceList.push({ greeting: GREETING_Q[keyQ], question: true });
+        else if (key === 'いただきます') sentenceList.push({ raw: key });   // 提案005 Q3・010: 食事のあいさつは訳さない
         else if (JA_GREETING[key] && !/[？?]/.test(piece)) sentenceList.push({ greeting: JA_GREETING[key], imp: JA_GREETING_IMP[key] });
         else splitJa(piece).forEach(function (sg) { sentenceList.push(sg); });
       });
       sentenceList.forEach(function (s) {
         if (s.raw) { parts.push([{ fragment: [unknown(s.raw)], notes: notes }]); return; }
-        if (s.greeting) { parts.push([{ fragment: s.greeting.map(function (w) { return item(w); }), notes: notes, imperative: !!s.imp }]); return; }
+        if (s.greeting) { parts.push([{ fragment: s.greeting.map(function (w) { return item(w); }), notes: notes, imperative: !!s.imp, question: !!s.question }]); return; }
         var toks = s.tokens.slice();
         var q = s.q;
         // 文頭の「はい」「いいえ」: jesu / no を先頭に置く（コンマで区切る）
@@ -1894,8 +1909,10 @@
         var body = trimmed.replace(/[.!?]+$/, '');
         var tokens = rewriteEnCalendar(expandContractions(body).toLowerCase().match(/[a-z]+|[0-9]+|,/g) || []);
         // 日常のあいさつ（docs/proposals/005）: Good morning / Good night / Sorry / Excuse me / Thanks
-        var greet = !question && EN_GREETING[tokens.join(' ')];
-        if (greet) { parts.push([{ fragment: greet.map(function (w) { return item(w); }), notes: notes }]); return; }
+        var greetKey = tokens.join(' ');
+        var greet = !question && EN_GREETING[greetKey];
+        if (greet) { parts.push([{ fragment: greet.map(function (w) { return item(w); }), notes: notes, imperative: !!EN_GREETING_IMP[greetKey] }]); return; }
+        if (GREETING_Q[greetKey]) { parts.push([{ fragment: GREETING_Q[greetKey].map(function (w) { return item(w); }), notes: notes, question: true }]); return; }
         // 文頭の Yes / No / Hello / Goodbye / Please: jesu / no / kelosu / kupaju / pilisu を先頭に置く
         var answer = null;
         var lead = EN_INTERJ[tokens[0]];

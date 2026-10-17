@@ -113,6 +113,12 @@
 | 106 | honorific-request | pilisu, mato! | お待ちください。 |
 | 107 | honorific-phrase | weluko! | いらっしゃいませ。 |
 | 108 | honorific-phrase | mi tanako tu. | ごちそうさまでした。 |
+| 109 | greeting-evening | kute ipa. | こんばんは。 |
+| 110 | greeting-how-are-you | tu pio miwe ka? | お元気ですか？ |
+| 111 | greeting-fine | mi pio miwe. | 元気です。 |
+| 112 | wish-luck | kute luna! | 幸運を。 |
+| 113 | wish-day | kute teia! | よい一日を。 |
+| 114 | farewell-tomorrow | mi putu sio tu moloa. | また明日会いましょう。 |
 
 ## 語注（辞書から機械的に生成）
 
@@ -332,3 +338,15 @@
   weluko=迎える(verb)
 - **108** `mi tanako tu.`  
   mi=私(pronoun) tanako=感謝する(verb) tu=あなた(pronoun)
+- **109** `kute ipa.`  
+  kute=良い(adj) ipa=夕方(noun)
+- **110** `tu pio miwe ka?`  
+  tu=あなた(pronoun) pio=です(verb) miwe=元気な(adj) ka=疑問(marker)
+- **111** `mi pio miwe.`  
+  mi=私(pronoun) pio=です(verb) miwe=元気な(adj)
+- **112** `kute luna!`  
+  kute=良い(adj) luna=運(noun)
+- **113** `kute teia!`  
+  kute=良い(adj) teia=日(noun)
+- **114** `mi putu sio tu moloa.`  
+  mi=私(pronoun) putu=未来(marker) sio=見る(verb) tu=あなた(pronoun) moloa=明日(noun)

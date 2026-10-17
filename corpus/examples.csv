@@ -107,3 +107,9 @@ id,feature,logi,ja
 106,honorific-request,"pilisu, mato!",お待ちください。
 107,honorific-phrase,weluko!,いらっしゃいませ。
 108,honorific-phrase,mi tanako tu.,ごちそうさまでした。
+109,greeting-evening,kute ipa.,こんばんは。
+110,greeting-how-are-you,tu pio miwe ka?,お元気ですか？
+111,greeting-fine,mi pio miwe.,元気です。
+112,wish-luck,kute luna!,幸運を。
+113,wish-day,kute teia!,よい一日を。
+114,farewell-tomorrow,mi putu sio tu moloa.,また明日会いましょう。
