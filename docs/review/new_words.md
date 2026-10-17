@@ -7,7 +7,7 @@
 - 語幹が同じ: 語尾の1文字だけが違う、別の品詞の語（例: `kuka` 名詞と `kuko` 動詞）。同じ英語の別品詞なら意図した組です。そうでなければ偶然の一致なので、見分けにくくないか見てください
 - 同じ英語の語: 同じ英語の訳を持つ、別の語（同義語の候補）
 
-確認済み(ok): 1164 / 要修正(fix): 0 / 未確認(draft): 947
+確認済み(ok): 1164 / 要修正(fix): 0 / 未確認(draft): 997
 
 ## v0.7 英検3級レベルの語（487語）
 
@@ -1132,9 +1132,9 @@
 |---|---|---|---|---|
 | onapi | オンラインで | online |  | ok |
 
-## Antigravity の追加語（dictionary/anti_additions.csv）（1058語）
+## Antigravity の追加語（dictionary/anti_additions.csv）（1108語）
 
-### noun（700語）
+### noun（749語）
 
 | Logi | 日本語 | 英語 | 手がかり | 状況 |
 |---|---|---|---|---|
@@ -1838,8 +1838,57 @@
 | lotopa | 蓮 | lotus |  |  |
 | wioja | 菫 | violet |  |  |
 | koseja | コスモス | cosmos |  |  |
+| kamoja | 椿 | camellia |  |  |
+| kakiwa | 仙人掌 | cactus |  |  |
+| ponawa | 鰹 | bonito |  |  |
+| nelima | 水母 | jellyfish |  |  |
+| jatuna | 狸 | badger |  |  |
+| leaja | 豹 | leopard |  |  |
+| piwowa | 孔雀 | peacock |  |  |
+| pijala | 雉 | pheasant |  |  |
+| wuteka | 啄木鳥 | woodpecker |  |  |
+| sikota | 鴎 | seagull |  |  |
+| pewiwa | ペリカン | pelican |  |  |
+| sotowa | 鸛 | stork |  |  |
+| nukika | 蟋蟀 | cricket |  |  |
+| matuwa | 蟷螂 | mantis |  |  |
+| sijuwa | 蚕 | silkworm |  |  |
+| jokuna | 繭 | cocoon |  |  |
+| wunela | 蝸牛 | snail |  |  |
+| siposa | スポンジ | sponge |  |  |
+| sinoka | 亜鉛 | zinc |  |  |
+| nitala | 窒素 | nitrogen |  |  |
+| numala | 澱粉 | starch |  |  |
+| nometa | 彗星 | comet |  |  |
+| sawema | 衛星 | satellite |  |  |
+| lomuja | コンパス | compass |  |  |
+| mutepa | 聴診器 | stethoscope |  |  |
+| jusela | パズル | puzzle |  |  |
+| mewala | メダル | medal |  |  |
+| sosila | 槍 | spear |  |  |
+| nekiwa | ネックレス | necklace |  |  |
+| wemuta | チョッキ | vest |  |  |
+| napapa | ナプキン | napkin |  |  |
+| tutoma | 楊枝 | toothpick |  |  |
+| kijuka | 栓抜き | corkscrew |  |  |
+| tewuja | 魔法瓶 | thermos |  |  |
+| sikiwa | 鎌 | sickle |  |  |
+| nukaja | 案山子 | scarecrow |  |  |
+| kisila | 木琴 | xylophone |  |  |
+| mejuwa | メトロノーム | metronome |  |  |
+| matata | マラソン | marathon |  |  |
+| tamama | トランポリン | trampoline |  |  |
+| sepoja | スポットライト | spotlight |  |  |
+| pamowa | パンフレット | pamphlet |  |  |
+| naleja | パレット | palette |  |  |
+| jukewa | スケッチ | sketch |  |  |
+| noseka | モザイク | mosaic |  |  |
+| tamuna | ニス | varnish |  |  |
+| mumasa | 石膏 | plaster |  |  |
+| kiteja | 樋 | gutter |  |  |
+| tejapa | テラス | terrace |  |  |
 
-### verb（239語）
+### verb（240語）
 
 | Logi | 日本語 | 英語 | 手がかり | 状況 |
 |---|---|---|---|---|
@@ -2082,6 +2131,7 @@
 | telelo | 脱線する | derail |  |  |
 | tanilo | 縺れる | tangle |  |  |
 | komomo | 弁償する | compensate |  |  |
+| wisuko | 囁く | whisper |  |  |
 
 ### adj（103語）
 
