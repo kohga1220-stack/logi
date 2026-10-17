@@ -9,16 +9,22 @@ sys.path.insert(0, str(ROOT / "tools"))
 import screen_words  # noqa: E402
 
 
-def make_items():
-    return screen_words.load_items(ROOT / "dictionary" / "word_review.csv", "ANTI追加")
+REVIEW_CSV = (
+    "word,pos,meaning_ja,english,batch,status,note\n"
+    "aaaa,noun,庭,garden|yard|lawn,ANTI追加,draft,\n"
+    "bbbb,noun,気の毒,pity|compassion,ANTI追加,fix,Claude【修正推奨】見出し語が違う\n"
+    "cccc,noun,犬,dog,v0.8追加,ok,\n"
+)
 
 
-def test_load_items_reads_review_table_batch():
-    items = make_items()
-    assert len(items) >= 100
+def test_load_items_reads_review_table_batch(tmp_path):
+    path = tmp_path / "word_review.csv"
+    path.write_text(REVIEW_CSV, encoding="utf-8")
+    items = screen_words.load_items(path, "ANTI追加")
+    assert [i["english"] for i in items] == ["garden", "pity"]
     by_english = {i["english"]: i for i in items}
-    assert by_english["sympathy"]["aliases"] == "compassion"
-    assert "【修正推奨】" in by_english["sympathy"]["note"]
+    assert by_english["garden"]["aliases"] == "yard, lawn"
+    assert "【修正推奨】" in by_english["pity"]["note"]
 
 
 def test_parse_response_keeps_only_requested_and_valid():
