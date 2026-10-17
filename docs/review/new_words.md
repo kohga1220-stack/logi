@@ -7,7 +7,7 @@
 - 語幹が同じ: 語尾の1文字だけが違う、別の品詞の語（例: `kuka` 名詞と `kuko` 動詞）。同じ英語の別品詞なら意図した組です。そうでなければ偶然の一致なので、見分けにくくないか見てください
 - 同じ英語の語: 同じ英語の訳を持つ、別の語（同義語の候補）
 
-確認済み(ok): 1164 / 要修正(fix): 6 / 未確認(draft): 50
+確認済み(ok): 1164 / 要修正(fix): 6 / 未確認(draft): 100
 
 ## v0.7 英検3級レベルの語（487語）
 
@@ -1132,9 +1132,9 @@
 |---|---|---|---|---|
 | onapi | オンラインで | online |  | ok |
 
-## Antigravity の追加語（dictionary/anti_additions.csv）（167語）
+## Antigravity の追加語（dictionary/anti_additions.csv）（217語）
 
-### noun（93語）
+### noun（143語）
 
 | Logi | 日本語 | 英語 | 手がかり | 状況 |
 |---|---|---|---|---|
@@ -1231,6 +1231,56 @@
 | lulona | 霜 | frost |  |  |
 | tusopa | 雫 | droplet |  |  |
 | pipuwa | 泡 | bubble / foam / froth |  |  |
+| susiwa | 湯気 | steam / vapor |  |  |
+| jusuna | 津波 | tsunami |  |  |
+| luluja | 洪水 | flood / deluge |  |  |
+| tisasa | 災害 | disaster / calamity / catastrophe |  |  |
+| tolusa | 公害 | pollution / contamination |  |  |
+| kopila | 銅 | copper / bronze |  |  |
+| mineka | 鉱物 | mineral / ore |  |  |
+| jolea | 額 | forehead / brow |  |  |
+| patoka | 尻 | buttocks / hip |  |  |
+| linuka | 皺 | wrinkle / crease |  |  |
+| salopa | 唾 | saliva / spit |  |  |
+| sinita | 嚔 | sneeze |  |  |
+| ikeka | しゃっくり | hiccup |  |  |
+| tisipa | 目眩 | dizziness / vertigo |  |  |
+| tiuwa | 下痢 | diarrhea |  |  |
+| muwusa | 脈 | pulse |  |  |
+| nelepa | 神経 | nerve |  |  |
+| tikosa | 消化 | digestion |  |  |
+| eseta | 食欲 | appetite |  |  |
+| papika | 疲労 | fatigue / exhaustion / weariness |  |  |
+| ikisa | 衛生 | hygiene / sanitation |  |  |
+| tinina | 消毒 | disinfection / sterilization |  |  |
+| pumewa | 予防 | prevention / precaution |  |  |
+| nulema | 看病 | nursing |  |  |
+| osewa | 入院 | hospitalization |  |  |
+| timala | 退院 | discharge |  |  |
+| panuja | 包帯 | bandage / dressing |  |  |
+| peketa | バケツ | bucket / pail |  |  |
+| mupuma | 箒 | broom |  |  |
+| wasata | 洗面器 | washbasin / basin |  |  |
+| totupa | 歯ブラシ | toothbrush |  |  |
+| lasota | 剃刀 | razor |  |  |
+| paweka | 電池 | battery |  |  |
+| sukeja | 螺子 | screw / bolt |  |  |
+| siwina | 筒 | cylinder / tube |  |  |
+| sitopa | 栓 | stopper / plug / cork |  |  |
+| sujasa | 秤 | scale / balance |  |  |
+| lulela | 物差し | ruler |  |  |
+| ketuja | 薬缶 | kettle / teapot |  |  |
+| molula | 釜 | cauldron |  |  |
+| kuseta | 座布団 | cushion |  |  |
+| petosa | シーツ | bedsheet / sheet |  |  |
+| kuwula | カーテン | curtain / drape |  |  |
+| pinuna | 家具 | furniture |  |  |
+| etawa | 垣根 | hedge |  |  |
+| nimuna | 煙突 | chimney / smokestack |  |  |
+| wamea | 倉庫 | warehouse / storehouse |  |  |
+| tolama | 寮 | dormitory / dorm |  |  |
+| pajuwa | 床屋 | barbershop / barber |  |  |
+| muleka | 運動場 | playground |  |  |
 
 ### verb（51語）
 
