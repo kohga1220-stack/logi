@@ -7,7 +7,7 @@
 - 語幹が同じ: 語尾の1文字だけが違う、別の品詞の語（例: `kuka` 名詞と `kuko` 動詞）。同じ英語の別品詞なら意図した組です。そうでなければ偶然の一致なので、見分けにくくないか見てください
 - 同じ英語の語: 同じ英語の訳を持つ、別の語（同義語の候補）
 
-確認済み(ok): 1164 / 要修正(fix): 0 / 未確認(draft): 747
+確認済み(ok): 1164 / 要修正(fix): 0 / 未確認(draft): 797
 
 ## v0.7 英検3級レベルの語（487語）
 
@@ -1132,9 +1132,9 @@
 |---|---|---|---|---|
 | onapi | オンラインで | online |  | ok |
 
-## Antigravity の追加語（dictionary/anti_additions.csv）（858語）
+## Antigravity の追加語（dictionary/anti_additions.csv）（908語）
 
-### noun（653語）
+### noun（690語）
 
 | Logi | 日本語 | 英語 | 手がかり | 状況 |
 |---|---|---|---|---|
@@ -1791,8 +1791,45 @@
 | samota | 章 | chapter |  |  |
 | tajita | 条約 | treaty |  |  |
 | jutota | 地位 | status |  |  |
+| wusaka | 分数 | fraction |  |  |
+| miaja | 方言 | dialect |  |  |
+| niowa | 暴力 | violence |  |  |
+| kajaja | 目録 | catalog |  |  |
+| lenala | 家賃 | rent |  |  |
+| pesewa | 連合 | federation |  |  |
+| simasa | 音節 | syllable |  |  |
+| tasoma | 課題 | task |  |  |
+| nutoka | 株式 | stock |  |  |
+| mumena | 貨幣 | currency |  |  |
+| nakala | 学部 | faculty |  |  |
+| wusesa | 権威 | prestige |  |  |
+| misosa | 使命 | mission |  |  |
+| motika | 修飾語 | modifier |  |  |
+| namuta | 助詞 | particle |  |  |
+| lewina | 体制 | regime |  |  |
+| pomona | 代名詞 | pronoun |  |  |
+| jikuta | 独裁 | dictatorship |  |  |
+| welata | 福祉 | welfare |  |  |
+| masepa | 傑作 | masterpiece |  |  |
+| wupewa | 光景 | spectacle |  |  |
+| muowa | 定員 | quota |  |  |
+| lawoa | 半径 | radius |  |  |
+| tewona | 分母 | denominator |  |  |
+| losapa | 名簿 | roster |  |  |
+| mopipa | 動機 | motive |  |  |
+| takipa | 関税 | tariff |  |  |
+| jukisa | 危機 | crisis |  |  |
+| pejawa | 刑 | penalty |  |  |
+| kawila | 経歴 | career |  |  |
+| pokana | 語彙 | vocabulary |  |  |
+| numota | 詐欺 | fraud |  |  |
+| pesona | 情熱 | passion |  |  |
+| tinula | 題名 | title |  |  |
+| lutina | 日課 | routine |  |  |
+| wojuta | 文脈 | context |  |  |
+| nuoja | ニュアンス | nuance |  |  |
 
-### verb（142語）
+### verb（155語）
 
 | Logi | 日本語 | 英語 | 手がかり | 状況 |
 |---|---|---|---|---|
@@ -1938,6 +1975,19 @@
 | tipupo | 乱す | disturb / disrupt |  |  |
 | awalo | 申し込む | apply / subscribe |  |  |
 | talano | 訳す | translate |  |  |
+| wolumo | 拝む | worship |  |  |
+| solito | 縮める | shorten |  |  |
+| punujo | 跳ねる | bounce |  |  |
+| leteko | 減らす | reduce |  |  |
+| nesuto | 戻す | restore |  |  |
+| ejeto | 堪える | endure |  |  |
+| tilulo | 傾ける | tilt |  |  |
+| punoso | 殴る | punch |  |  |
+| nutuno | もがく | struggle |  |  |
+| tutipo | 漂う | drift |  |  |
+| sowilo | 誓う | swear |  |  |
+| amopo | 廃止する | abolish |  |  |
+| ameso | 慎む | abstain |  |  |
 
 ### adj（47語）
 
