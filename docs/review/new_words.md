@@ -7,7 +7,7 @@
 - 語幹が同じ: 語尾の1文字だけが違う、別の品詞の語（例: `kuka` 名詞と `kuko` 動詞）。同じ英語の別品詞なら意図した組です。そうでなければ偶然の一致なので、見分けにくくないか見てください
 - 同じ英語の語: 同じ英語の訳を持つ、別の語（同義語の候補）
 
-確認済み(ok): 1164 / 要修正(fix): 6 / 未確認(draft): 400
+確認済み(ok): 1164 / 要修正(fix): 6 / 未確認(draft): 450
 
 ## v0.7 英検3級レベルの語（487語）
 
@@ -1132,9 +1132,9 @@
 |---|---|---|---|---|
 | onapi | オンラインで | online |  | ok |
 
-## Antigravity の追加語（dictionary/anti_additions.csv）（517語）
+## Antigravity の追加語（dictionary/anti_additions.csv）（567語）
 
-### noun（308語）
+### noun（358語）
 
 | Logi | 日本語 | 英語 | 手がかり | 状況 |
 |---|---|---|---|---|
@@ -1446,6 +1446,56 @@
 | kunona | 冠 | crown / coronet / tiara |  |  |
 | sapuwa | 供給 | supply / provision |  |  |
 | kipapa | グラフ | graph |  |  |
+| tuseka | 訓練 | training / drill |  |  |
+| manipa | 経営 | management / administration |  |  |
+| sonota | 軽蔑 | contempt / scorn / disdain |  |  |
+| kinika | 結論 | conclusion |  |  |
+| kokosa | 憲法 | constitution |  |  |
+| onia | 航空 | aviation / aeronautics |  |  |
+| sokika | 固体 | solid |  |  |
+| tuija | 裁縫 | sewing / needlework |  |  |
+| papola | 座敷 | parlor |  |  |
+| momana | 瞬間 | moment / instant |  |  |
+| kinasa | 消費 | consumption |  |  |
+| pimeka | 消防 | firefighting |  |  |
+| pipana | 振動 | vibration / oscillation |  |  |
+| likusa | 長方形 | rectangle / oblong |  |  |
+| umiwa | 単位 | unit / credit |  |  |
+| sitama | 段階 | stage / phase |  |  |
+| wukuwa | 彫刻 | sculpture / carving |  |  |
+| samika | 頂上 | summit / peak / top |  |  |
+| kumesa | 墜落 | crash |  |  |
+| pimosa | 哲学 | philosophy |  |  |
+| naluwa | パーティー | party / banquet |  |  |
+| ijona | ハイキング | hiking / hike |  |  |
+| wikuna | ピクニック | picnic |  |  |
+| sinuma | 日焼け | sunburn / suntan / tan |  |  |
+| satana | 標準 | standard / norm / criterion |  |  |
+| wusuta | 襖 | fusuma |  |  |
+| nutisa | 仏教 | buddhism |  |  |
+| jupuwa | 物質 | substance / matter |  |  |
+| joipa | 沸騰 | boiling |  |  |
+| kisata | 不満 | dissatisfaction / discontent / displeasure |  |  |
+| wupuja | 付録 | supplement / appendix |  |  |
+| sipima | 文明 | civilization / civilisation |  |  |
+| talosa | 的 | target / bullseye |  |  |
+| keliwa | 迎え | greeting |  |  |
+| sepeka | 目上 | superior / senior / elder |  |  |
+| wupola | 目下 | subordinate / junior / inferior |  |  |
+| susota | 物置 | storeroom / shed |  |  |
+| wopia | 紅葉 | foliage |  |  |
+| nomuka | 文句 | complaint / grumble / objection |  |  |
+| munuja | 夕焼け | sunset / afterglow |  |  |
+| petita | 嫁 | bride |  |  |
+| towuta | 連続 | continuation / succession / series |  |  |
+| jaluja | 別れ | parting / farewell / separation |  |  |
+| tiwuka | 割引 | discount / rebate |  |  |
+| makupa | 背景 | background / backdrop |  |  |
+| pokesa | 焦点 | focus |  |  |
+| kisusa | 要点 | gist / essentials |  |  |
+| tasisa | 根拠 | basis / grounds |  |  |
+| samuja | 見本 | sample / specimen |  |  |
+| mesena | 仕組み | mechanism |  |  |
 
 ### verb（145語）
 
