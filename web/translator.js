@@ -289,6 +289,7 @@
     addJa('または', { k: 'OR' });
     addJa('あるいは', { k: 'OR' });
     addJa('か', { k: 'KA' });
+    addJa('かどうか', { k: 'KA', whether: true });
     addJa('、', { k: 'COMMA' });
     addJa(',', { k: 'COMMA' });
     ['。', '.', '！', '!', '？', '?'].forEach(function (s) {
@@ -327,6 +328,14 @@
       var unk = '';
       function flush() { if (unk) { tokens.push({ k: 'UNK', text: unk }); unk = ''; } }
       while (i < text.length) {
+        // 「行くなと言った」: 動詞の辞書形 + なと + 言う・頼む・命じる は間接の禁止（docs/proposals/009）
+        var lastT = tokens[tokens.length - 1];
+        if (!unk && lastT && lastT.k === 'V' && !(lastT.tags && (lastT.tags.past || lastT.tags.neg || lastT.tags.te)) &&
+          /^なと(?=言|頼|命)/.test(text.slice(i))) {
+          tokens.push({ k: 'NATO' });
+          i += 2;
+          continue;
+        }
         var rel = TIME_REL.exec(text.slice(i));
         if (rel && rel[1] && TIME_REL_OK[rel[1]].indexOf(rel[2]) < 0) rel = null;
         if (rel) {
@@ -577,7 +586,16 @@
           break;
         }
       }
+      // 「彼は来ると言った」: 言った人（は）を主節の主語にし、中身の主語は同じ人なので selu（docs/proposals/009 Q3）
+      var reflexive = false;
+      if (!mainSubj && toks[k + 1].e.w === 'juo') {
+        for (var s2 = 0; s2 < embedded.length; s2++) {
+          if (embedded[s2].k === 'P' && embedded[s2].p === 'は') { mainSubj = embedded.slice(0, s2 + 1); embedded = embedded.slice(s2 + 1); reflexive = true; }
+          if (embedded[s2] && embedded[s2].k === 'P') break;
+        }
+      }
       var sub = parseJaClause(embedded, false, notes);
+      if (reflexive && !sub.subject && sub.verb) sub.subject = [item('selu')];
       var main = parseJaClause(tail, question, notes);
       main.object = generate(sub);
       if (mainSubj) {
@@ -587,11 +605,75 @@
       return main;
     }
 
+    // 間接疑問と間接命令（docs/proposals/009）
+    //   何を食べたか聞いた → li pasu asuko mi pasu ito wata ka.（節 + ka。? は付けない）
+    //   食べるように言った → li pasu juo mi sati ito apa.（言い換え: 私が食べるべきだと言った）
+    var QUESTION_VERBS = { asuko: 1, mo: 1, upo: 1, oo: 1 };
+    function splitIndirect(toks, question, notes) {
+      var k = -1;
+      var kind = null;
+      for (var j = 1; j < toks.length - 1; j++) {
+        var nx = toks[j + 1];
+        if (toks[j].k === 'KA' && nx.k === 'V' && QUESTION_VERBS[nx.e.w] && (nx.e.w !== 'oo' || true)) { k = j; kind = 'question'; break; }
+        if (toks[j].k === 'KA' && nx.k === 'P' && (nx.p === 'は' || nx.p === 'を') && toks[j + 2] && toks[j + 2].k === 'V' && QUESTION_VERBS[toks[j + 2].e.w]) { k = j; kind = 'question'; break; }
+        if ((toks[j].k === 'YOUNI' || toks[j].k === 'NATO') && nx.k === 'V' && COMMAND_VERBS[nx.e.w] && toks[j - 1].k === 'V') { k = j; kind = 'command'; break; }
+      }
+      if (k < 1) return null;
+      var embedded = toks.slice(0, k);
+      var tail = toks.slice(k + 1);
+      if (kind === 'question' && tail[0].k === 'P') tail = tail.slice(1);
+      var verbE = tail[tail.length - 1].e;
+      if (!verbE) return null;
+      if (kind === 'question' && verbE.w === 'oo') {
+        var lastTail = tail[tail.length - 1];
+        tail = tail.slice(0, -1).concat([{ k: 'V', e: byW.asuko, tags: lastTail.tags }]);
+        verbE = byW.asuko;
+      }
+      // 主語: 聞く・命じる などは最初の「は」が主節の主語。知る・覚える は「は」も中身の主語
+      var mainSubj = null;
+      var topicIsMain = verbE.w !== 'mo' && verbE.w !== 'upo';
+      for (var s = 0; s < embedded.length; s++) {
+        if (embedded[s].k === 'P' && (embedded[s].p === 'は' || embedded[s].p === 'が')) {
+          var laterSubj = embedded.slice(s + 1).some(function (t) { return t.k === 'P' && (t.p === 'は' || t.p === 'が'); });
+          if ((embedded[s].p === 'は' && topicIsMain) || laterSubj) { mainSubj = embedded.slice(0, s + 1); embedded = embedded.slice(s + 1); }
+          break;
+        }
+      }
+      var recipient = null;
+      if (embedded.length > 2 && (embedded[0].k === 'N' || embedded[0].k === 'PRON') && embedded[1].k === 'P' && embedded[1].p === 'に') {
+        recipient = embedded[0];
+        embedded = embedded.slice(2);
+        if (kind === 'command') embedded = [recipient, { k: 'P', p: 'は' }].concat(embedded);
+      }
+      if (kind === 'question') {
+        if (embedded.length && embedded[embedded.length - 1].k === 'P' && embedded[embedded.length - 1].p === 'の') embedded = embedded.slice(0, -1);
+      } else {
+        var pv = embedded[embedded.length - 1];
+        var negated = toks[k].k === 'NATO' || (pv.tags && pv.tags.neg);
+        embedded = embedded.slice(0, -1).concat([{ k: 'V', e: pv.e, tags: { modal: 'sati', neg: !!negated } }]);
+      }
+      var sub = parseJaClause(embedded, false, notes);
+      if (kind === 'question' && !sub.subject && sub.verb && !sub.imperative) notes.push('中身の主語が文にないため、省いています。');
+      var main = parseJaClause(tail, question, notes);
+      main.object = generate(sub).concat(kind === 'question' ? [item('ka')] : []);
+      if (kind === 'question') {
+        if (recipient && !main.pps.length) main.pps.push([item('tote'), item(recipient.e ? recipient.e.w : 'mi')]);
+        if (verbE.w === 'upo' && main.aspect === 'prog') main.aspect = null;
+      }
+      if (mainSubj) {
+        var ch = chunkJa(mainSubj, [], notes);
+        if (ch.length) main.subject = ch[0].items;
+      }
+      if (!main.subject && (verbE.w === 'mo' || verbE.w === 'upo')) main.subject = [item('mi')];
+      if (kind === 'command' && !recipient) notes.push('命じられた相手が文にないため、中身の主語を省いています。');
+      return main;
+    }
+
     function parseJaClause(tokens, question, notes) {
       var advs = [];
       var tense = null, aspect = null, neg = false;
       var toks = tokens.filter(function (t) { return t.k !== 'COMMA'; });
-      var comp = splitComplement(toks, question, notes);
+      var comp = splitComplement(toks, question, notes) || splitIndirect(toks, question, notes);
       if (comp) return comp;
       var pred = null;
       var last = toks[toks.length - 1];
@@ -614,7 +696,7 @@
         if (last.tags.neg) neg = true;
         if (last.tags.prog) aspect = 'prog';
         if (last.tags.perf) aspect = 'perf';
-        if (last.tags.modal) advs.unshift(item(last.tags.modal === 'kani' ? 'kani' : 'masi'));
+        if (last.tags.modal) advs.unshift(item(last.tags.modal));
         toks.pop();
       } else if (last && (last.k === 'ADJ' || last.k === 'ANA') && !last.attr) {
         pred = { kind: 'adj', e: last.e };
@@ -780,9 +862,9 @@
         if ((t.k === 'ADJ' || t.k === 'V') && t.tags && t.tags.cond) { cur.push(t); push('ipu'); continue; }
         if (t.k === 'V' && t.tags && t.tags.sub) { cur.push(t); push(t.tags.sub); continue; }
         if (t.k === 'V' && t.tags && t.tags.te && i < tokens.length - 1) { cur.push(t); push(null); connBefore = 'e'; continue; }
-        // 「食べるように言った」（間接命令）の ように は、様態（kasolu）ではない。docs/proposals/009 で決めるまで訳さず、そのまま残す
+        // 「食べるように言った」（間接命令）の ように は、様態（kasolu）ではない。間接命令として splitIndirect が読む（docs/proposals/009）
         if (t.k === 'SUBC' && t.w === 'kasolu' && tokens[i + 1] && tokens[i + 1].k === 'V' && COMMAND_VERBS[tokens[i + 1].e.w]) {
-          cur.push({ k: 'UNK', text: SUBC_TEXT[t.w] }); continue;
+          cur.push({ k: 'YOUNI' }); continue;
         }
         if (t.k === 'SUBC' && isPredLike(cur[cur.length - 1])) { push(t.w); continue; }
         if (t.k === 'SUBC') { cur.push({ k: 'UNK', text: SUBC_TEXT[t.w] || t.w }); continue; }
@@ -1479,6 +1561,42 @@
       if (verb.form === 'past' && !ir.tense && !perfect) ir.tense = 'past';
       ir.verb = verb.e.w;
       var lemma = verb.lemma;
+      // 間接疑問（docs/proposals/009）: asked what I ate / know whether he comes → 節 + ka
+      var qWord = cur.peek();
+      var qRecipient = null;
+      if (QUESTION_EN[lemma] && OBJ_NOM[qWord] && cur.peek(1) && (cur.peek(1) === 'whether' || (WH[cur.peek(1)] && cur.peek(1) !== 'when'))) {
+        qRecipient = PRONOUNS[OBJ_NOM[qWord]];
+        cur.next();
+        qWord = cur.peek();
+      }
+      if (QUESTION_EN[lemma] && qWord && (qWord === 'whether' || (WH[qWord] && qWord !== 'when' && qWord !== 'which'))) {
+        var qRest = cur.t.slice(cur.i + 1);
+        var qSub = null;
+        if (qWord === 'whether') qSub = translateEnTokens(qRest, false, notes, {});
+        else if (clauseStartsAt(qRest, 0)) qSub = translateEnTokens(whFront(qWord, qRest), true, notes, {});
+        else qSub = translateEnTokens([qWord].concat(qRest), true, notes, {});
+        if (qSub) {
+          ir.object = generate(qSub).concat([item('ka')]);
+          if (qRecipient) ir.pps.push([item('tote'), item(qRecipient)]);
+          cur.i = cur.t.length;
+          return finishEn(ir, whWord, whMod);
+        }
+      }
+      // 間接命令・依頼（docs/proposals/009）: told me to V → juo mi sati V、asked me to V → tano、ordered me to V → olo
+      var cmdVerb = TELL_EN[lemma];
+      if (cmdVerb && byW[cmdVerb] && OBJ_NOM[cur.peek()]) {
+        var cmdNeg = cur.peek(1) === 'not';
+        if (cur.peek(cmdNeg ? 2 : 1) === 'to' && cur.peek(cmdNeg ? 3 : 2)) {
+          var cmdRest = cur.t.slice(cur.i + (cmdNeg ? 3 : 2));
+          var cmdSub = translateEnTokens([OBJ_NOM[cur.peek()], 'should'].concat(cmdNeg ? ['not'] : [], cmdRest), false, notes, {});
+          if (cmdSub) {
+            ir.verb = cmdVerb;
+            ir.object = generate(cmdSub);
+            cur.i = cur.t.length;
+            return finishEn(ir, whWord, whMod);
+          }
+        }
+      }
       if (COMPLEMENT_EN[lemma]) {
         var restTok = cur.t.slice(cur.i);
         var hasThat = restTok[0] === 'that';
@@ -1595,6 +1713,23 @@
 
     var AUX_START = { do: 1, does: 1, did: 1, is: 1, are: 1, am: 1, was: 1, were: 1, will: 1, can: 1, must: 1,
       may: 1, might: 1, should: 1, have: 1, has: 1, had: 1, would: 1 };
+
+    var QUESTION_EN = { ask: 1, know: 1, wonder: 1, remember: 1, forget: 1 };
+    var TELL_EN = { tell: 'juo', ask: 'tano', order: 'olo' };
+    var OBJ_NOM = { me: 'i', you: 'you', him: 'he', her: 'she', us: 'we', them: 'they' };
+    // 間接疑問の節（what he ate）を、直接疑問の語順（what did he eat）に直す
+    function whFront(wh, tokens) {
+      var cur = new Cursor(tokens);
+      var np = parseNP(cur, { notes: [] });
+      if (!np) return [wh].concat(tokens);
+      var subjTok = tokens.slice(0, cur.i);
+      var nx = cur.peek();
+      var rest = tokens.slice(cur.i + 1);
+      if (AUX_START[nx] || MODALS[nx] || BE[nx]) return [wh, nx].concat(subjTok, rest);
+      var v = nx ? findVerb(nx) : null;
+      if (!v) return [wh].concat(tokens);
+      return [wh, v.form === 'past' ? 'did' : (v.form === 's' ? 'does' : 'do')].concat(subjTok, [v.lemma], rest);
+    }
 
     var COMPLEMENT_EN = { think: 1, know: 1, believe: 1, say: 1, hope: 1, guess: 1, notice: 1 };
     // 従属接続語: その節の頭に付く（節の順序は原文のまま）
@@ -1716,6 +1851,10 @@
           tokens = tokens.slice(0, -2);
         }
         if (answer && !tokens.length) { parts.push([{ fragment: [item(answer)], notes: notes }]); return; }
+        // 間接疑問の if は「かどうか」（条件の if ではない）: ask/know/wonder/remember/forget のあとの if → whether
+        tokens = tokens.map(function (w, ti) {
+          return w === 'if' && ti > 0 && /^(asks?|asked|knows?|knew|wonders?|wondered|remembers?|remembered|forgets?|forgot)$/.test(tokens[ti - 1]) ? 'whether' : w;
+        });
         // 平叙文の許可・禁止・不要（docs/proposals/006）: You may → can、You may not → must not、do not have to / need not → can not
         if (!question) {
           var enOut = [];

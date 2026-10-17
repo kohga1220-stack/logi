@@ -101,6 +101,12 @@
 | 94 | calendar-month | mi iko inute monata te. | 私は3月に行く。 |
 | 95 | time-every | mi lano epule wika. | 私は毎週走る。 |
 | 96 | time-next | mi iko nete ila. | 私は来年行く。 |
+| 97 | indirect-question | li pasu asuko mi pasu ito wata ka. | 彼は私が何を食べたか聞いた。 |
+| 98 | indirect-question | mi no mo li komo ka. | 私は彼が来るかどうか知らない。 |
+| 99 | indirect-command | li pasu juo mi sati ito apa. | 彼は私にリンゴを食べるように言った。 |
+| 100 | indirect-command | li pasu juo mi sati no iko. | 彼は私に行くなと言った。 |
+| 101 | quote-subject | li pasu juo selu komo. | 彼は来ると言った。 |
+| 102 | indirect-request | li pasu tano mi sati ito apa. | 彼は私にリンゴを食べるように頼んだ。 |
 
 ## 語注（辞書から機械的に生成）
 
@@ -296,3 +302,15 @@
   mi=私(pronoun) lano=走る(verb) epule=すべての(adj) wika=週(noun)
 - **96** `mi iko nete ila.`  
   mi=私(pronoun) iko=行く(verb) nete=次の(adj) ila=年(noun)
+- **97** `li pasu asuko mi pasu ito wata ka.`  
+  li=彼/彼女/それ(pronoun) pasu=過去(marker) asuko=尋ねる(verb) mi=私(pronoun) pasu=過去(marker) ito=食べる(verb) wata=何(wh) ka=疑問(marker)
+- **98** `mi no mo li komo ka.`  
+  mi=私(pronoun) no=否定(marker) mo=知る(verb) li=彼/彼女/それ(pronoun) komo=来る(verb) ka=疑問(marker)
+- **99** `li pasu juo mi sati ito apa.`  
+  li=彼/彼女/それ(pronoun) pasu=過去(marker) juo=言う(verb) mi=私(pronoun) sati=べき(adv) ito=食べる(verb) apa=リンゴ(noun)
+- **100** `li pasu juo mi sati no iko.`  
+  li=彼/彼女/それ(pronoun) pasu=過去(marker) juo=言う(verb) mi=私(pronoun) sati=べき(adv) no=否定(marker) iko=行く(verb)
+- **101** `li pasu juo selu komo.`  
+  li=彼/彼女/それ(pronoun) pasu=過去(marker) juo=言う(verb) selu=自分（再帰）(pronoun) komo=来る(verb)
+- **102** `li pasu tano mi sati ito apa.`  
+  li=彼/彼女/それ(pronoun) pasu=過去(marker) tano=頼む(verb) mi=私(pronoun) sati=べき(adv) ito=食べる(verb) apa=リンゴ(noun)

@@ -523,3 +523,38 @@ test('提案008: 暦と時刻（英語）', () => {
     assert.strictEqual(translator.translate(src, 'en').logi, logi, src);
   });
 });
+
+test('提案009: 間接疑問（節 + ka）', () => {
+  const cases = [
+    ['彼は私が何を食べたか聞いた。', 'ja', 'li pasu asuko mi pasu ito wata ka.'],
+    ['私は彼が来るかどうか知らない。', 'ja', 'mi no mo li komo ka.'],
+    ['何を食べたか覚えていない。', 'ja', 'mi no upo pasu ito wata ka.'],
+    ['He asked what I ate.', 'en', 'li pasu asuko mi pasu ito wata ka.'],
+    ['I do not know whether he comes.', 'en', 'mi no mo li komo ka.'],
+    ['I know who ate an apple.', 'en', 'mi mo kua pasu ito apa ka.'],
+  ];
+  cases.forEach(([src, lang, logi]) => {
+    assert.strictEqual(translator.translate(src, lang).logi, logi, src);
+  });
+  // 「聞く」は、か の節がないときは聞こえる・聞く（oo）のまま
+  assert.strictEqual(translator.translate('先生に聞く。', 'ja').logi, 'oo tote titusa.');
+});
+
+test('提案009: 間接命令（sati）と引用の主語（selu）', () => {
+  const cases = [
+    ['彼は私にリンゴを食べるように言った。', 'ja', 'li pasu juo mi sati ito apa.'],
+    ['彼は私にリンゴを食べるように頼んだ。', 'ja', 'li pasu tano mi sati ito apa.'],
+    ['彼は私に行くなと言った。', 'ja', 'li pasu juo mi sati no iko.'],
+    ['彼は私に行かないように命じた。', 'ja', 'li pasu olo mi sati no iko.'],
+    ['彼は来ると言った。', 'ja', 'li pasu juo selu komo.'],
+    ['彼は私が来ると言った。', 'ja', 'li pasu juo mi komo.'],
+    ['He told me to eat an apple.', 'en', 'li pasu juo mi sati ito apa.'],
+    ['He told me not to go.', 'en', 'li pasu juo mi sati no iko.'],
+    ['He asked me to eat an apple.', 'en', 'li pasu tano mi sati ito apa.'],
+  ];
+  cases.forEach(([src, lang, logi]) => {
+    assert.strictEqual(translator.translate(src, lang).logi, logi, src);
+  });
+  // 様態の「ように」は kasolu のまま
+  assert.strictEqual(translator.translate('彼が言うように、私は行く。', 'ja').logi, 'kasolu li juo, mi iko.');
+});
