@@ -10,6 +10,7 @@
 |---|---|---|
 | 提案008: 年月日（Q1）・時刻（Q2）・時の前置詞と毎来先（Q3）| `docs/proposals/008-dates-and-times.md` | 決定待ち |
 | 提案009: 間接疑問（Q1）・間接命令（Q2）・引用の主語（Q3）| `docs/proposals/009-indirect-questions-and-commands.md` | 決定待ち |
+| 提案010: 敬語の方針（Q1）・敬語の動詞とお／ご・さん／様（Q2）・定型句（Q3）| `docs/proposals/010-honorifics.md` | 決定待ち |
 | 第4弾の50語の確認（確認表。`dictionary/word_review.csv` で `draft` の語。Claude の確認の note つき）| `docs/review/new_words.md` | 確認待ち（終わるまで、ANTI の次のバッチは出さない。WORKFLOW §2）|
 
 ## 進行中のPR
@@ -17,7 +18,7 @@
 | PR | 担当 | 内容 | 状態 |
 |---|---|---|---|
 | #54 | Antigravity | 内容語50語の追加（第4弾） | マージ済み |
-| （このPR）| Claude | 第4弾50語の Claude の確認を、確認表の note に記録 | ドラフト（CI成功後、WORKFLOW §9 を確かめて Claude がマージ） |
+| （このPR）| Claude | 提案010（敬語）の追加 | ドラフト（CI成功後、WORKFLOW §9 を確かめて Claude がマージ） |
 
 ## 文法への依頼（Antigravity → Claude）
 
@@ -29,12 +30,13 @@
 
 ## 担当ごとの次の作業
 
-- **Claude**: 提案008・009が決まったら実装する（v0.17・v0.18）。次の提案（動詞の丁寧さ・敬語の扱い）を書く。ANTI の追加語を、PR ごとに確認し（意味の重なり・英語の見出し語・別名）、気づいた点を確認表の note に書く（M1ko の依頼、2026-10-17）。毎回の報告に、次の文法の提案を含める（同）。残りの候補: 動詞の丁寧さ・敬語の扱い、時刻によるあいさつ、追加語の事前スクリーニング（LLM）。
+- **Claude**: 提案008・009・010が決まったら実装する（v0.17〜v0.19）。次の提案（時刻によるあいさつ・追加語の事前スクリーニング）を書く。ANTI の追加語を、PR ごとに確認し（意味の重なり・英語の見出し語・別名）、気づいた点を確認表の note に書く（M1ko の依頼、2026-10-17）。毎回の報告に、次の文法の提案を含める（同）。残りの候補: 時刻によるあいさつ（Good afternoon など）、追加語の事前スクリーニング（LLM）、そのほか M1ko が決めてほしい分野。
 - **Antigravity**: 第4弾（#54）はマージ済み。M1ko の確認（`docs/review/new_words.md` / `dictionary/word_review.csv`）が終わるまで次のバッチは出さない。
-- **M1ko**: 提案008・009の決定。自動マージされないPR（`docs/WORKFLOW.md` §9 の対象外）のマージ。第4弾50語の確認表（`docs/review/new_words.md`）の確認。
+- **M1ko**: 提案008・009・010の決定。自動マージされないPR（`docs/WORKFLOW.md` §9 の対象外）のマージ。第4弾50語の確認表（`docs/review/new_words.md`）の確認。
 
 ## 最近の主な変更
 
+- 提案010（敬語）を追加（決定待ち）。
 - 第4弾50語の Claude の確認（M1ko の依頼）: 意味の重なり・同じ品詞の英語の重なりはなし。ただし、修正推奨が6語（`jikia` 億 = billion は誤り［億は100 million］、`pawusa` ボールペンは `pena` と重なる、`ejisa` 以外は前置詞に近い、`simapa` 気の毒の sympathy、`pupito` 飼う = breed → rear、`pakako` 空く = vacate → empty）、任意が13語。確認表の note に記録（status は `draft` のまま。M1ko が `ok` / `fix` を決める）。修正推奨は6/50で12%（WORKFLOW §2 の5: 1割超のため、次のバッチは50語のまま）。
 - 第4弾: 内容語50語の追加（Antigravity。PR #54。自動マージ）。辞書は1,795語（active 1,762語）。
 - 内容語50語の追加（Antigravity。第4弾。茶碗・相手・与える・勇ましい・つまり など）。辞書は1,795語（active 1,762語）。
