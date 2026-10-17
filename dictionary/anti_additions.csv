@@ -295,7 +295,6 @@ scratch,verb,掻く,scrape,国語研教育基本語彙: 掻く
 blame,verb,責める,condemn|reproach,国語研教育基本語彙: 責める
 elapse,verb,経つ,,国語研教育基本語彙: 経つ
 pluck,verb,弾く,strum,国語研教育基本語彙: 弾く
-dumbfound,verb,呆れる,appall,国語研教育基本語彙: 呆れる
 yearn,verb,憧れる,aspire,国語研教育基本語彙: 憧れる
 overflow,verb,溢れる,brim,国語研教育基本語彙: 溢れる
 resent,verb,恨む,grudge,国語研教育基本語彙: 恨む
@@ -322,7 +321,6 @@ shrink,verb,縮む,,国語研教育基本語彙: 縮む
 communicate,verb,通じる,,国語研教育基本語彙: 通じる
 devote,verb,尽くす,dedicate,国語研教育基本語彙: 尽くす
 stumble,verb,躓く,,国語研教育基本語彙: 躓く
-pinch,verb,摘む,,国語研教育基本語彙: 摘む
 angle,verb,釣る,,国語研教育基本語彙: 釣る
 bind,verb,綴じる,staple,国語研教育基本語彙: 綴じる
 console,verb,慰める,comfort|soothe,国語研教育基本語彙: 慰める
@@ -336,7 +334,6 @@ multiply,verb,殖やす,,国語研教育基本語彙: 殖やす
 tremble,verb,震える,shiver|shudder|quiver,国語研教育基本語彙: 震える
 entrust,verb,任せる,delegate,国語研教育基本語彙: 任せる
 imitate,verb,真似る,mimic,国語研教育基本語彙: 真似る
-dishevel,verb,乱れる,,国語研教育基本語彙: 乱れる
 ripen,verb,実る,fructify,国語研教育基本語彙: 実る
 warp,verb,歪む,distort,国語研教育基本語彙: 歪む
 yield,verb,譲る,cede,国語研教育基本語彙: 譲る
@@ -378,7 +375,6 @@ awhile,adv,暫く,temporarily,国語研教育基本語彙: 暫く
 accidentally,adv,偶然,coincidentally,国語研教育基本語彙: 偶然
 secretly,adv,こっそり,stealthily|sneakily,国語研教育基本語彙: こっそり
 instantly,adv,忽ち,,国語研教育基本語彙: 忽ち
-casually,adv,たまたま,unexpectedly,国語研教育基本語彙: たまたま
 constantly,adv,絶えず,continually|ceaselessly,国語研教育基本語彙: 絶えず
 automatically,adv,独りでに,spontaneously,国語研教育基本語彙: 独りでに
 rarely,adv,滅多に,seldom,国語研教育基本語彙: 滅多に
@@ -396,7 +392,7 @@ muscle,noun,筋肉,,国語研教育基本語彙: 筋肉
 silk,noun,絹,,国語研教育基本語彙: 絹
 lipstick,noun,口紅,rouge,国語研教育基本語彙: 口紅
 perfume,noun,香水,fragrance|cologne,国語研教育基本語彙: 香水
-muffler,noun,マフラー,scarf,国語研教育基本語彙: マフラー
+scarf,noun,マフラー,muffler,国語研教育基本語彙: マフラー
 zipper,noun,ファスナー,fastener,国語研教育基本語彙: ファスナー
 badge,noun,バッジ,,国語研教育基本語彙: バッジ
 mask,noun,マスク,,国語研教育基本語彙: マスク
@@ -545,7 +541,6 @@ dissatisfaction,noun,不満,discontent|displeasure,国語研教育基本語彙: 
 supplement,noun,付録,appendix,国語研教育基本語彙: 付録
 civilization,noun,文明,civilisation,国語研教育基本語彙: 文明
 target,noun,的,bullseye,国語研教育基本語彙: 的
-greeting,noun,迎え,,国語研教育基本語彙: 迎え
 superior,noun,目上,senior|elder,国語研教育基本語彙: 目上
 subordinate,noun,目下,junior|inferior,国語研教育基本語彙: 目下
 storeroom,noun,物置,shed,国語研教育基本語彙: 物置
@@ -594,7 +589,7 @@ parcel,noun,小包,package,国語研教育基本語彙: 小包
 consulate,noun,領事館,,国語研教育基本語彙: 領事館
 customs,noun,税関,,テーマ: 社会
 finance,noun,財政,finances,国語研教育基本語彙: 財政
-maiden,noun,少女,schoolgirl,国語研教育基本語彙: 少女
+girl,noun,少女,,国語研教育基本語彙: 少女
 scores,noun,成績,marks,国語研教育基本語彙: 成績
 metropolis,noun,都会,,国語研教育基本語彙: 都会
 grime,noun,垢,filth,国語研教育基本語彙: 垢

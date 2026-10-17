@@ -7,7 +7,7 @@
 - 語幹が同じ: 語尾の1文字だけが違う、別の品詞の語（例: `kuka` 名詞と `kuko` 動詞）。同じ英語の別品詞なら意図した組です。そうでなければ偶然の一致なので、見分けにくくないか見てください
 - 同じ英語の語: 同じ英語の訳を持つ、別の語（同義語の候補）
 
-確認済み(ok): 1164 / 要修正(fix): 0 / 未確認(draft): 502
+確認済み(ok): 1164 / 要修正(fix): 0 / 未確認(draft): 497
 
 ## v0.7 英検3級レベルの語（487語）
 
@@ -1132,9 +1132,9 @@
 |---|---|---|---|---|
 | onapi | オンラインで | online |  | ok |
 
-## Antigravity の追加語（dictionary/anti_additions.csv）（613語）
+## Antigravity の追加語（dictionary/anti_additions.csv）（608語）
 
-### noun（404語）
+### noun（403語）
 
 | Logi | 日本語 | 英語 | 手がかり | 状況 |
 |---|---|---|---|---|
@@ -1367,7 +1367,7 @@
 | siloma | 絹 | silk |  |  |
 | lipupa | 口紅 | lipstick / rouge |  |  |
 | jelupa | 香水 | perfume / fragrance / cologne |  |  |
-| mupala | マフラー | muffler / scarf |  | Claude【修正推奨】マフラー の muffler は、英語では車の消音器が主。scarf を見出し語に、muffler を別名に入れ替える |
+| mupala | マフラー | scarf / muffler |  |  |
 | sipepa | ファスナー | zipper / fastener |  |  |
 | tatuma | バッジ | badge |  |  |
 | masoka | マスク | mask |  |  |
@@ -1475,7 +1475,6 @@
 | wupuja | 付録 | supplement / appendix |  |  |
 | sipima | 文明 | civilization / civilisation |  |  |
 | talosa | 的 | target / bullseye |  |  |
-| keliwa | 迎え | greeting |  | Claude【修正推奨】迎え は weluko（迎える）の名詞形で、見出し語 greeting は「挨拶」の意味でずれる。welukona（動名詞）で言えるので、削除がよい |
 | sepeka | 目上 | superior / senior / elder |  |  |
 | wupola | 目下 | subordinate / junior / inferior |  | Claude【任意】inferior は 劣った。別名から外す |
 | susota | 物置 | storeroom / shed |  |  |
@@ -1524,7 +1523,7 @@
 | nonisa | 領事館 | consulate |  |  |
 | lusuwa | 税関 | customs |  |  |
 | sinana | 財政 | finance / finances |  |  |
-| metana | 少女 | maiden / schoolgirl |  | Claude【修正推奨】少女 の maiden は古風。girl は辞書で未使用なので、見出し語を girl に（maiden は別名か外す） |
+| metana | 少女 | girl |  |  |
 | sujoja | 成績 | scores / marks |  | Claude【任意】scores/marks（複数形）。成績 は grade か result が自然 |
 | metopa | 都会 | metropolis |  | Claude【任意】都会 は city が近いが、使用中なら metropolis で可 |
 | kilija | 垢 | grime / filth |  |  |
@@ -1543,7 +1542,7 @@
 | nosuwa | 姿勢 | posture / stance |  |  |
 | kelena | 地面 | ground |  |  |
 
-### verb（145語）
+### verb（142語）
 
 | Logi | 日本語 | 英語 | 手がかり | 状況 |
 |---|---|---|---|---|
@@ -1605,7 +1604,6 @@
 | pumamo | 責める | blame / condemn / reproach |  |  |
 | ejapo | 経つ | elapse |  | Claude【任意】elapse はまれ（時が経つ）。pass が自然だが使用中かもしれない。現状維持でもよい |
 | pusuko | 弾く | pluck / strum |  | Claude【任意】弾く は楽器を弾く（play）が主。strum/pluck は弦楽器に限る |
-| tumato | 呆れる | dumbfound / appall |  | Claude【修正推奨】呆れる（自動詞）に対し dumbfound は他動詞（人を唖然とさせる）で、まれな語。削除か再検討 |
 | jilupo | 憧れる | yearn / aspire |  |  |
 | opato | 溢れる | overflow / brim |  |  |
 | lesepo | 恨む | resent / grudge |  |  |
@@ -1632,7 +1630,6 @@
 | komano | 通じる | communicate |  | Claude【任意】通じる は「意味が伝わる・つながる」。communicate は他動詞でもあり、ずれる |
 | tetoto | 尽くす | devote / dedicate |  |  |
 | sususo | 躓く | stumble |  |  |
-| pinulo | 摘む | pinch |  | Claude【修正推奨】摘む（花・茶を摘む）は pick/pluck。pinch は 摘まむ（指でつまむ）で別の語。pick=piko、pluck=pusuko が使用中のため、削除か意味の整理 |
 | anepo | 釣る | angle |  | Claude【任意】見出し語 angle は幾何の角度と混同しやすい。fish（動詞）が自然だが tosa（魚）が使用中のため、現状維持でもよい |
 | pinato | 綴じる | bind / staple |  |  |
 | koluso | 慰める | console / comfort / soothe |  |  |
@@ -1646,7 +1643,6 @@
 | tuleto | 震える | tremble / shiver / shudder / quiver |  |  |
 | eneno | 任せる | entrust / delegate |  |  |
 | imipo | 真似る | imitate / mimic |  |  |
-| tisimo | 乱れる | dishevel |  | Claude【修正推奨】乱れる（自動詞）に対し dishevel は他動詞でまれ。削除か、tangle など自然な語に |
 | lipeno | 実る | ripen / fructify |  |  |
 | waluto | 歪む | warp / distort |  |  |
 | jilato | 譲る | yield / cede |  |  |
@@ -1733,7 +1729,7 @@
 | koake | 臆病な | cowardly / timid |  |  |
 | penote | 幽かな | faint / dim / vague |  |  |
 | lopete | 可愛らしい | lovely / adorable |  |  |
-| katue | 気軽な | casual / lighthearted | 語幹が同じ: katui |  |
+| katue | 気軽な | casual / lighthearted |  |  |
 | kutame | 窮屈な | cramped |  |  |
 | putuke | 下品な | vulgar / coarse / indecent |  |  |
 | samoke | 煙い | smoky |  |  |
@@ -1745,7 +1741,7 @@
 | imule | 待ち遠しい | impatient |  | Claude【任意】待ち遠しい は eagerly awaited。impatient は「いらいらして待てない」で、否定的な響き |
 | tuleme | 物凄い | tremendous / terrific / horrendous |  |  |
 
-### adv（17語）
+### adv（16語）
 
 | Logi | 日本語 | 英語 | 手がかり | 状況 |
 |---|---|---|---|---|
@@ -1762,7 +1758,6 @@
 | akasi | 偶然 | accidentally / coincidentally |  |  |
 | sekuli | こっそり | secretly / stealthily / sneakily |  |  |
 | inesi | 忽ち | instantly |  |  |
-| katui | たまたま | casually / unexpectedly | 語幹が同じ: katue | Claude【修正推奨】たまたま の casually は誤り（casually は「気軽に」）。akasi（偶然）と意味も重なるため、削除 |
 | konuki | 絶えず | constantly / continually / ceaselessly |  |  |
 | otomi | 独りでに | automatically / spontaneously |  |  |
 | laleti | 滅多に | rarely / seldom |  |  |
