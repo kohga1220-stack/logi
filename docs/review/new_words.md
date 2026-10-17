@@ -7,7 +7,7 @@
 - 語幹が同じ: 語尾の1文字だけが違う、別の品詞の語（例: `kuka` 名詞と `kuko` 動詞）。同じ英語の別品詞なら意図した組です。そうでなければ偶然の一致なので、見分けにくくないか見てください
 - 同じ英語の語: 同じ英語の訳を持つ、別の語（同義語の候補）
 
-確認済み(ok): 1164 / 要修正(fix): 0 / 未確認(draft): 497
+確認済み(ok): 1164 / 要修正(fix): 0 / 未確認(draft): 547
 
 ## v0.7 英検3級レベルの語（487語）
 
@@ -924,7 +924,7 @@
 | titeno | 締める | tighten |  | ok |
 | sato | 喋る | chat | 語幹が同じ: sata, sati | ok |
 | iniko | 知らせる | inform |  | ok |
-| okuso | 調べる | examine |  | ok |
+| okuso | 調べる | examine | 語幹が同じ: okusa | ok |
 | inolo | 吸う | inhale |  | ok |
 | atapo | 進む | advance |  | ok |
 | lekopo | 勧める | recommend |  | ok |
@@ -1132,9 +1132,9 @@
 |---|---|---|---|---|
 | onapi | オンラインで | online |  | ok |
 
-## Antigravity の追加語（dictionary/anti_additions.csv）（608語）
+## Antigravity の追加語（dictionary/anti_additions.csv）（658語）
 
-### noun（403語）
+### noun（453語）
 
 | Logi | 日本語 | 英語 | 手がかり | 状況 |
 |---|---|---|---|---|
@@ -1541,6 +1541,56 @@
 | sasija | 刺身 | sashimi |  |  |
 | nosuwa | 姿勢 | posture / stance |  |  |
 | kelena | 地面 | ground |  |  |
+| sesepa | 栗 | chestnut |  |  |
+| tilawa | 蜻蛉 | dragonfly |  |  |
+| sikapa | 蝉 | cicada |  |  |
+| sajusa | 鰯 | sardine |  |  |
+| noima | 大豆 | soybean |  |  |
+| kimaka | 麒麟 | giraffe |  |  |
+| kamisa | 駱駝 | camel |  |  |
+| kasala | カンガルー | kangaroo |  |  |
+| laowa | ライオン | lion |  |  |
+| malota | 鸚鵡 | parrot |  |  |
+| wolika | 狼 | wolf |  |  |
+| tatesa | お玉杓子 | tadpole |  |  |
+| katipa | 青虫 | caterpillar |  |  |
+| lalipa | 雲雀 | lark |  |  |
+| nitika | 鴬 | nightingale |  |  |
+| mepona | メロン | melon |  |  |
+| tunika | チューリップ | tulip |  |  |
+| ketala | 杉 | cedar |  |  |
+| tojuna | 刺 | thorn |  |  |
+| petena | 花びら | petal |  |  |
+| pepota | 胡椒 | pepper |  |  |
+| omija | オムレツ | omelet |  |  |
+| kesoka | ケチャップ | ketchup |  |  |
+| wisula | ウイスキー | whisky |  |  |
+| pitawa | ビタミン | vitamin |  |  |
+| pitota | 蛋白質 | protein |  |  |
+| okusa | 酸素 | oxygen | 語幹が同じ: okuso |  |
+| kajula | 炭素 | carbon |  |  |
+| ujoma | 原子 | atom |  |  |
+| molena | 分子 | molecule |  |  |
+| kepuma | 黴菌 | germ |  |  |
+| sewana | 白鳥 | swan |  |  |
+| nuketa | 花束 | bouquet |  |  |
+| nupasa | 飛蝗 | grasshopper |  |  |
+| sonepa | 向日葵 | sunflower |  |  |
+| juwuta | 瓢箪 | gourd |  |  |
+| tanota | 蒲公英 | dandelion |  |  |
+| osuta | 駝鳥 | ostrich |  |  |
+| ujala | 躑躅 | azalea |  |  |
+| latosa | 天道虫 | ladybug |  |  |
+| kotina | 玉蜀黍 | corn |  |  |
+| lisaka | 蜥蜴 | lizard |  |  |
+| wukea | 栗鼠 | squirrel |  |  |
+| titaka | 竜 | dragon |  |  |
+| toneka | 驢馬 | donkey |  |  |
+| kujowa | 鰐 | crocodile |  |  |
+| kanima | カナリヤ | canary |  |  |
+| nalama | キャラメル | caramel |  |  |
+| tolila | ゴリラ | gorilla |  |  |
+| tawia | ダリア | dahlia |  |  |
 
 ### verb（142語）
 
