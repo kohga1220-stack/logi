@@ -7,7 +7,7 @@
 - 語幹が同じ: 語尾の1文字だけが違う、別の品詞の語（例: `kuka` 名詞と `kuko` 動詞）。同じ英語の別品詞なら意図した組です。そうでなければ偶然の一致なので、見分けにくくないか見てください
 - 同じ英語の語: 同じ英語の訳を持つ、別の語（同義語の候補）
 
-確認済み(ok): 1100 / 要修正(fix): 0 / 未確認(draft): 20
+確認済み(ok): 1120 / 要修正(fix): 0 / 未確認(draft): 0
 
 ## v0.7 英検3級レベルの語（487語）
 
@@ -1159,10 +1159,10 @@
 | pikima | 用心 | vigilance |  | ok |
 | tesana | 下り | descent |  | ok |
 | katewa | 調子 | tone |  | ok |
-| tekasa | 文章 | text |  |  |
-| telaka | 跡 | trace |  |  |
-| momeka | 勢い | momentum |  |  |
-| tonita | 今夜 | tonight |  |  |
+| tekasa | 文章 | text |  | ok |
+| telaka | 跡 | trace |  | ok |
+| momeka | 勢い | momentum |  | ok |
+| tonita | 今夜 | tonight |  | ok |
 
 ### verb（27語）
 
@@ -1186,15 +1186,15 @@
 | enipo | 誘う | entice |  | ok |
 | tutulo | 離れる | stray |  | ok |
 | omupo | 嵌める | embed |  | ok |
-| kupuso | 潰す | crush |  |  |
-| ekino | 抜く | extract |  |  |
-| iwuto | 示す | indicate |  |  |
-| teposo | 預ける | deposit |  |  |
-| limito | 限る | limit |  |  |
-| sunupo | 頑張る | strive |  |  |
-| atijo | 慣れる | adapt |  |  |
-| otumo | 感心する | admire |  |  |
-| suwuno | 揺れる | swing |  |  |
+| kupuso | 潰す | crush |  | ok |
+| ekino | 抜く | extract |  | ok |
+| iwuto | 示す | indicate |  | ok |
+| teposo | 預ける | deposit |  | ok |
+| limito | 限る | limit |  | ok |
+| sunupo | 頑張る | strive |  | ok |
+| atijo | 慣れる | adapt |  | ok Claude: 英語の見出し語は get used to に近く adapt は適応するに寄る（任意） |
+| otumo | 感心する | admire |  | ok |
+| suwuno | 揺れる | swing |  | ok Claude: 英語の見出し語は sway か shake のほうが近い（任意） |
 
 ### adj（10語）
 
@@ -1205,11 +1205,11 @@
 | sukate | 少ない | scarce |  | ok |
 | akane | 苦しい | agonizing |  | ok |
 | asepe | 渋い | astringent |  | ok |
-| lunute | 丸い | round |  |  |
-| sulane | 細い | slender |  |  |
-| kumute | 曇った | cloudy |  |  |
-| pelume | 縦の | vertical |  |  |
-| tisape | がっかりした | disappointed |  |  |
+| lunute | 丸い | round |  | ok |
+| sulane | 細い | slender |  | ok |
+| kumute | 曇った | cloudy |  | ok |
+| pelume | 縦の | vertical |  | ok |
+| tisape | がっかりした | disappointed |  | ok |
 
 ### adv（5語）
 
@@ -1218,8 +1218,8 @@
 | lepipi | たびたび | repeatedly |  | ok |
 | initi | ますます | increasingly |  | ok |
 | ituti | なるほど | indeed |  | ok |
-| kalali | うっかり | carelessly |  |  |
-| pulemi | なるべく | preferably |  |  |
+| kalali | うっかり | carelessly |  | ok |
+| pulemi | なるべく | preferably |  | ok |
 
 ## v0.10 機能語（指示詞・はい／いいえ）（3語）
 
