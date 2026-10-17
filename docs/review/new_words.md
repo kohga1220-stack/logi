@@ -7,7 +7,7 @@
 - 語幹が同じ: 語尾の1文字だけが違う、別の品詞の語（例: `kuka` 名詞と `kuko` 動詞）。同じ英語の別品詞なら意図した組です。そうでなければ偶然の一致なので、見分けにくくないか見てください
 - 同じ英語の語: 同じ英語の訳を持つ、別の語（同義語の候補）
 
-確認済み(ok): 1164 / 要修正(fix): 6 / 未確認(draft): 350
+確認済み(ok): 1164 / 要修正(fix): 6 / 未確認(draft): 400
 
 ## v0.7 英検3級レベルの語（487語）
 
@@ -1132,9 +1132,9 @@
 |---|---|---|---|---|
 | onapi | オンラインで | online |  | ok |
 
-## Antigravity の追加語（dictionary/anti_additions.csv）（467語）
+## Antigravity の追加語（dictionary/anti_additions.csv）（517語）
 
-### noun（290語）
+### noun（308語）
 
 | Logi | 日本語 | 英語 | 手がかり | 状況 |
 |---|---|---|---|---|
@@ -1428,8 +1428,26 @@
 | pisola | 漁師 | fisherman / angler |  |  |
 | kenota | 車掌 | conductor |  |  |
 | kumuwa | 犯人 | culprit / criminal / offender |  |  |
+| wilina | 応援 | cheering / backing |  |  |
+| temoma | 鬼 | demon / ogre / fiend |  |  |
+| tepika | 悪魔 | devil / satan |  |  |
+| letoma | 回復 | recovery / recuperation |  |  |
+| sotapa | 学者 | scholar |  |  |
+| lilena | 学習 | learning |  |  |
+| leposa | 革命 | revolution |  |  |
+| lumata | 固まり | lump / clump / mass / cluster |  |  |
+| kakata | 空手 | karate |  |  |
+| kenila | 剣道 | kendo |  |  |
+| lapuka | 歌舞伎 | kabuki |  |  |
+| lakuna | 落語 | rakugo |  |  |
+| iwewa | 生け花 | ikebana |  |  |
+| kakena | カレンダー | calendar |  |  |
+| senoma | 感覚 | sensation / sense |  |  |
+| kunona | 冠 | crown / coronet / tiara |  |  |
+| sapuwa | 供給 | supply / provision |  |  |
+| kipapa | グラフ | graph |  |  |
 
-### verb（113語）
+### verb（145語）
 
 | Logi | 日本語 | 英語 | 手がかり | 状況 |
 |---|---|---|---|---|
@@ -1546,6 +1564,38 @@
 | kopelo | 治める | govern / reign |  |  |
 | pekuwo | 惜しむ | begrudge |  |  |
 | asolo | 襲う | assault / raid / ambush |  |  |
+| sujiwo | 掻き回す | stir / churn |  |  |
+| siluso | 囀る | chirp / tweet / warble |  |  |
+| numuto | 痺れる | numb / tingle |  |  |
+| kukuko | しゃがむ | crouch / squat |  |  |
+| menupo | 保つ | maintain / preserve |  |  |
+| sujeto | 千切る | shred |  |  |
+| pikalo | 漬ける | pickle / marinate |  |  |
+| mulamo | 呟く | murmur / mutter |  |  |
+| sotupo | 強める | strengthen / intensify / reinforce |  |  |
+| salumo | 研ぐ | sharpen / whet / grind / polish |  |  |
+| pumolo | 長引く | prolong / linger |  |  |
+| mutupo | 撫でる | stroke / pat / caress |  |  |
+| pujupo | 滲む | blur / ooze / smudge |  |  |
+| kuwalo | 睨む | glare / scowl |  |  |
+| suwawo | 飲み込む | swallow / gulp |  |  |
+| papuko | 吠える | bark / howl |  |  |
+| onuno | 祭る | enshrine / deify |  |  |
+| wututo | 跨ぐ | straddle |  |  |
+| sotalo | 見詰める | stare |  |  |
+| seluno | 見渡す | survey / overlook / scan |  |  |
+| pumipo | 捲る | flip |  |  |
+| ileno | 儲ける | earn / profiteer |  |  |
+| wikeno | 弱める | weaken / attenuate |  |  |
+| sileto | 庇う | shield / defend |  |  |
+| okapo | 占める | occupy |  |  |
+| lepano | 弾む | rebound |  |  |
+| omimo | 省く | omit / exclude / abbreviate |  |  |
+| unono | 引き受ける | undertake |  |  |
+| pelilo | 滅びる | perish |  |  |
+| tipupo | 乱す | disturb / disrupt |  |  |
+| awalo | 申し込む | apply / subscribe |  |  |
+| talano | 訳す | translate |  |  |
 
 ### adj（47語）
 
