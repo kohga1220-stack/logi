@@ -7,7 +7,7 @@
 - 語幹が同じ: 語尾の1文字だけが違う、別の品詞の語（例: `kuka` 名詞と `kuko` 動詞）。同じ英語の別品詞なら意図した組です。そうでなければ偶然の一致なので、見分けにくくないか見てください
 - 同じ英語の語: 同じ英語の訳を持つ、別の語（同義語の候補）
 
-確認済み(ok): 1164 / 要修正(fix): 0 / 未確認(draft): 647
+確認済み(ok): 1164 / 要修正(fix): 0 / 未確認(draft): 697
 
 ## v0.7 英検3級レベルの語（487語）
 
@@ -1132,9 +1132,9 @@
 |---|---|---|---|---|
 | onapi | オンラインで | online |  | ok |
 
-## Antigravity の追加語（dictionary/anti_additions.csv）（758語）
+## Antigravity の追加語（dictionary/anti_additions.csv）（808語）
 
-### noun（553語）
+### noun（603語）
 
 | Logi | 日本語 | 英語 | 手がかり | 状況 |
 |---|---|---|---|---|
@@ -1691,6 +1691,56 @@
 | wetasa | 砥石 | whetstone |  |  |
 | soteja | 雨戸 | shutter |  |  |
 | tewipa | 装置 | device |  |  |
+| monema | 碑 | monument |  |  |
+| wujama | 炎 | flame |  |  |
+| pomaka | 火山 | volcano |  |  |
+| pawoma | 薬局 | pharmacy |  |  |
+| nunata | 泉 | fountain |  |  |
+| keliwa | 崖 | cliff |  |  |
+| lotusa | 灯台 | lighthouse |  |  |
+| sawapa | 沼 | swamp |  |  |
+| manowa | 屋敷 | mansion |  |  |
+| wiwupa | 渦 | whirlpool |  |  |
+| misita | 霞 | mist |  |  |
+| sanosa | 砂場 | sandbox |  |  |
+| tetaja | 寄り道 | detour |  |  |
+| nuwuna | 保育園 | nursery |  |  |
+| jupema | スーパー | supermarket |  |  |
+| telija | 領土 | territory |  |  |
+| wowuka | 職場 | workplace |  |  |
+| ojema | 故郷 | homeland |  |  |
+| kawawa | 運河 | canal |  |  |
+| tejeja | 地形 | terrain |  |  |
+| sejita | 霙 | sleet |  |  |
+| mupisa | 微風 | breeze |  |  |
+| walaja | 宮殿 | palace |  |  |
+| jakua | 真空 | vacuum |  |  |
+| womusa | 星座 | constellation |  |  |
+| tolowa | 竜巻 | tornado |  |  |
+| lejema | 貯水池 | reservoir |  |  |
+| mepia | 流れ星 | meteor |  |  |
+| napuma | 農地 | farmland |  |  |
+| waputa | 病室 | ward |  |  |
+| monina | 坊さん | monk |  |  |
+| tapula | 船長 | captain |  |  |
+| kekoa | 天才 | genius |  |  |
+| piwata | 農民 | peasant |  |  |
+| selowa | 議長 | chairperson |  |  |
+| amata | 素人 | amateur |  |  |
+| pikewa | 掏摸 | pickpocket |  |  |
+| wenula | 画家 | painter |  |  |
+| lopola | 記者 | reporter |  |  |
+| lanila | 家主 | landlord |  |  |
+| mamuma | 人類 | mankind |  |  |
+| popiwa | 政治家 | politician |  |  |
+| kekuwa | 講師 | lecturer |  |  |
+| sejuma | 秘書 | secretary |  |  |
+| lujuna | ジャーナリスト | journalist |  |  |
+| memita | メンバー | member |  |  |
+| nupena | 観客 | spectator |  |  |
+| keteka | 刑事 | detective |  |  |
+| wanuwa | 候補 | candidate |  |  |
+| lopesa | 強盗 | robber |  |  |
 
 ### verb（142語）
 
