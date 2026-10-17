@@ -1275,7 +1275,7 @@ musika,noun,筋肉,muscle,ANTI追加,draft,
 siloma,noun,絹,silk,ANTI追加,draft,
 lipupa,noun,口紅,lipstick|rouge,ANTI追加,draft,
 jelupa,noun,香水,perfume|fragrance|cologne,ANTI追加,draft,
-mupala,noun,マフラー,muffler|scarf,ANTI追加,draft,Claude【修正推奨】マフラー の muffler は、英語では車の消音器が主。scarf を見出し語に、muffler を別名に入れ替える
+mupala,noun,マフラー,scarf|muffler,ANTI追加,draft,
 sipepa,noun,ファスナー,zipper|fastener,ANTI追加,draft,
 tatuma,noun,バッジ,badge,ANTI追加,draft,
 masoka,noun,マスク,mask,ANTI追加,draft,
@@ -1383,7 +1383,6 @@ kisata,noun,不満,dissatisfaction|discontent|displeasure,ANTI追加,draft,
 wupuja,noun,付録,supplement|appendix,ANTI追加,draft,
 sipima,noun,文明,civilization|civilisation,ANTI追加,draft,
 talosa,noun,的,target|bullseye,ANTI追加,draft,
-keliwa,noun,迎え,greeting,ANTI追加,draft,Claude【修正推奨】迎え は weluko（迎える）の名詞形で、見出し語 greeting は「挨拶」の意味でずれる。welukona（動名詞）で言えるので、削除がよい
 sepeka,noun,目上,superior|senior|elder,ANTI追加,draft,
 wupola,noun,目下,subordinate|junior|inferior,ANTI追加,draft,Claude【任意】inferior は 劣った。別名から外す
 susota,noun,物置,storeroom|shed,ANTI追加,draft,
@@ -1432,7 +1431,7 @@ pamesa,noun,小包,parcel|package,ANTI追加,draft,
 nonisa,noun,領事館,consulate,ANTI追加,draft,
 lusuwa,noun,税関,customs,ANTI追加,draft,
 sinana,noun,財政,finance|finances,ANTI追加,draft,
-metana,noun,少女,maiden|schoolgirl,ANTI追加,draft,Claude【修正推奨】少女 の maiden は古風。girl は辞書で未使用なので、見出し語を girl に（maiden は別名か外す）
+metana,noun,少女,girl,ANTI追加,draft,
 sujoja,noun,成績,scores|marks,ANTI追加,draft,Claude【任意】scores/marks（複数形）。成績 は grade か result が自然
 metopa,noun,都会,metropolis,ANTI追加,draft,Claude【任意】都会 は city が近いが、使用中なら metropolis で可
 kilija,noun,垢,grime|filth,ANTI追加,draft,
@@ -1508,7 +1507,6 @@ sukumo,verb,掻く,scratch|scrape,ANTI追加,draft,
 pumamo,verb,責める,blame|condemn|reproach,ANTI追加,draft,
 ejapo,verb,経つ,elapse,ANTI追加,draft,Claude【任意】elapse はまれ（時が経つ）。pass が自然だが使用中かもしれない。現状維持でもよい
 pusuko,verb,弾く,pluck|strum,ANTI追加,draft,Claude【任意】弾く は楽器を弾く（play）が主。strum/pluck は弦楽器に限る
-tumato,verb,呆れる,dumbfound|appall,ANTI追加,draft,Claude【修正推奨】呆れる（自動詞）に対し dumbfound は他動詞（人を唖然とさせる）で、まれな語。削除か再検討
 jilupo,verb,憧れる,yearn|aspire,ANTI追加,draft,
 opato,verb,溢れる,overflow|brim,ANTI追加,draft,
 lesepo,verb,恨む,resent|grudge,ANTI追加,draft,
@@ -1535,7 +1533,6 @@ salino,verb,縮む,shrink,ANTI追加,draft,
 komano,verb,通じる,communicate,ANTI追加,draft,Claude【任意】通じる は「意味が伝わる・つながる」。communicate は他動詞でもあり、ずれる
 tetoto,verb,尽くす,devote|dedicate,ANTI追加,draft,
 sususo,verb,躓く,stumble,ANTI追加,draft,
-pinulo,verb,摘む,pinch,ANTI追加,draft,Claude【修正推奨】摘む（花・茶を摘む）は pick/pluck。pinch は 摘まむ（指でつまむ）で別の語。pick=piko、pluck=pusuko が使用中のため、削除か意味の整理
 anepo,verb,釣る,angle,ANTI追加,draft,Claude【任意】見出し語 angle は幾何の角度と混同しやすい。fish（動詞）が自然だが tosa（魚）が使用中のため、現状維持でもよい
 pinato,verb,綴じる,bind|staple,ANTI追加,draft,
 koluso,verb,慰める,console|comfort|soothe,ANTI追加,draft,
@@ -1549,7 +1546,6 @@ mululo,verb,殖やす,multiply,ANTI追加,draft,
 tuleto,verb,震える,tremble|shiver|shudder|quiver,ANTI追加,draft,
 eneno,verb,任せる,entrust|delegate,ANTI追加,draft,
 imipo,verb,真似る,imitate|mimic,ANTI追加,draft,
-tisimo,verb,乱れる,dishevel,ANTI追加,draft,Claude【修正推奨】乱れる（自動詞）に対し dishevel は他動詞でまれ。削除か、tangle など自然な語に
 lipeno,verb,実る,ripen|fructify,ANTI追加,draft,
 waluto,verb,歪む,warp|distort,ANTI追加,draft,
 jilato,verb,譲る,yield|cede,ANTI追加,draft,
@@ -1655,7 +1651,6 @@ oiti,adv,暫く,awhile|temporarily,ANTI追加,draft,Claude【任意】暫く は
 akasi,adv,偶然,accidentally|coincidentally,ANTI追加,draft,
 sekuli,adv,こっそり,secretly|stealthily|sneakily,ANTI追加,draft,
 inesi,adv,忽ち,instantly,ANTI追加,draft,
-katui,adv,たまたま,casually|unexpectedly,ANTI追加,draft,Claude【修正推奨】たまたま の casually は誤り（casually は「気軽に」）。akasi（偶然）と意味も重なるため、削除
 konuki,adv,絶えず,constantly|continually|ceaselessly,ANTI追加,draft,
 otomi,adv,独りでに,automatically|spontaneously,ANTI追加,draft,
 laleti,adv,滅多に,rarely|seldom,ANTI追加,draft,
