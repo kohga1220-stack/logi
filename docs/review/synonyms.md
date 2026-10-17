@@ -23,7 +23,7 @@
 | 行く | verb | iko | ko | 動名詞の衝突回避 |  |
 | 立つ | verb | tato | sutano | 音節数が少ない |  |
 | 聞く | verb | oo | koko, lilo | 辞書の並び順（機械的） | 要 |
-| 言う | verb | juo | seo | 辞書の並び順（機械的） | 要 |
+| 言う | verb | juo | seo | 例文で使用中 |  |
 | 見る | verb | sio | mio, wato | 例文で使用中 |  |
 | 思う | verb | omo | siko | 辞書の並び順（機械的） | 要 |
 | 主な | adj | kape | pae | 辞書の並び順（機械的） | 要 |
@@ -35,4 +35,4 @@
 | 愚かな | adj | sije | sutue | 音節数が少ない |  |
 | 良く | adv | poni | kuti | 辞書の並び順（機械的） | 要 |
 
-機械的に決めたグループ（要確認）: 16
+機械的に決めたグループ（要確認）: 15

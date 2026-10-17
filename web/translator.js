@@ -279,6 +279,10 @@
     ['後で', 'あとで', '後に', 'あとに'].forEach(function (c) { addJa(c, { k: 'SUBC', w: 'aputi' }); });
     addJa('まで', { k: 'SUBC', w: 'utilu' });
     addJa('のに', { k: 'SUBC', w: 'oluto' });
+    // 様態（〜ように）・目的（〜ために）・対比（〜一方）（docs/proposals/007）
+    if (byW.kasolu) addJa('ように', { k: 'SUBC', w: 'kasolu' });
+    addJa('ために', { k: 'TAMENI' });
+    ['一方で', '一方'].forEach(function (c) { addJa(c, { k: 'CLC', w: 'patu' }); });
     addJa('もし', { k: 'IF' });
     ['なら', 'ならば'].forEach(function (c) { addJa(c, { k: 'COND' }); });
     ['だろうに', 'でしょうに'].forEach(function (c) { addJa(c, { k: 'HYP' }); });
@@ -425,6 +429,14 @@
           if (tokens[i + 1] && tokens[i + 1].k === 'KOTO') nominal = 2;
           else if (tokens[i + 1] && tokens[i + 1].k === 'P' && tokens[i + 1].p === 'の' &&
             tokens[i + 2] && tokens[i + 2].k === 'P' && NOMINAL_PARTICLES[tokens[i + 2].p]) nominal = 2;
+          // 「Vために」（目的）: pote + 動名詞（docs/proposals/007）。目的語・前置詞句を取り込み、文の最後に置く
+          if (tokens[i + 1] && tokens[i + 1].k === 'TAMENI') {
+            if (t.tags && (t.tags.neg || t.tags.past || t.tags.te)) notes.push('「' + t.e.jaNote + '」を名詞にするときの否定・過去は表せないため、省略しました。');
+            var pgerund = item(t.e.w + 'na', { gerund: t.e.w });
+            i += 2;
+            finish([pgerund].concat(takeClauseChunks()), { particle: 'のために', purpose: true });
+            continue;
+          }
           if (nominal) {
             if (t.tags && (t.tags.neg || t.tags.past)) notes.push('「' + t.e.jaNote + '」を名詞にするときの否定・過去は表せないため、省略しました。');
             var gerund = item(t.e.w + 'na', { gerund: t.e.w });
@@ -578,12 +590,15 @@
           ir.advs.unshift(item('sati'));
         }
         var isExist = pred.e.w === 'alo' || pred.e.w === 'lipo';
+        var purposePps = [];
         withP.forEach(function (c) {
-          if (c.particle === 'を' || (c.particle === 'が' && !ir.object)) ir.object = c.items;
+          if (c.purpose) purposePps.push([item('pote')].concat(c.items));
+          else if (c.particle === 'を' || (c.particle === 'が' && !ir.object)) ir.object = c.items;
           else if (c.particle === 'に' && isExist) ir.pps.push([item('atute')].concat(c.items));
           else if (PARTICLE_PREP[c.particle]) ir.pps.push([item(PARTICLE_PREP[c.particle])].concat(c.items));
           else notes.push('助詞「' + c.particle + '」は未対応です。');
         });
+        ir.pps = ir.pps.concat(purposePps);
         var bareLeft = [];
         bare.forEach(function (c) {
           var w0 = c.items.length === 1 ? c.items[0].w : null;
@@ -709,7 +724,7 @@
       push(null);
       return { segs: segs, hyp: hyp };
     }
-    var SUBC_TEXT = { pikosu: 'ので', wenute: 'とき', wailu: '間', pipolu: '前に', aputi: '後で', utilu: 'まで', oluto: 'のに' };
+    var SUBC_TEXT = { kasolu: 'ように', pikosu: 'ので', wenute: 'とき', wailu: '間', pipolu: '前に', aputi: '後で', utilu: 'まで', oluto: 'のに' };
 
     // 日常のあいさつ（docs/proposals/005）。文の全体がこの言い方のときだけ、決まった語列にする
     var GREETINGS = [
@@ -955,6 +970,11 @@
       'won', 'left', 'led', 'threw', 'shook', 'held', 'understood'].forEach(function (w) { IRREGULAR_PAST[w] = 1; });
     var IRREGULAR_ADJ = { better: 'good', best: 'good', worse: 'bad', worst: 'bad' };
     var IRREGULAR_NOUN = { people: 'person', children: 'child', men: 'man', women: 'woman', feet: 'foot' };
+    // to + 動詞が目的ではなく補語になる動詞（need to eat・ask him to go など）と、目的語がなくても目的を取る移動の動詞
+    var TO_COMPLEMENT = { need: 1, have: 1, decide: 1, plan: 1, learn: 1, promise: 1, expect: 1, agree: 1, refuse: 1, manage: 1,
+      offer: 1, prepare: 1, continue: 1, forget: 1, remember: 1, seem: 1, ask: 1, tell: 1, allow: 1, help: 1, advise: 1, order: 1,
+      force: 1, teach: 1, invite: 1, encourage: 1, enable: 1, persuade: 1, remind: 1, require: 1, ought: 1, use: 1 };
+    var MOTION_VERB = { go: 1, come: 1, leave: 1, return: 1, run: 1, walk: 1, travel: 1, hurry: 1, stop: 1 };
     var VERB_WANTS_GERUND = { want: 1, like: 1, love: 1, hope: 1, wish: 1, try: 1, start: 1, begin: 1,
       enjoy: 1, stop: 1, finish: 1, keep: 1, avoid: 1, practice: 1, quit: 1, continue: 1, hate: 1 };
 
@@ -1402,6 +1422,32 @@
       var guard = 0;
       while (cur.more() && guard++ < 20) {
         var t2 = cur.peek();
+        // 目的 in order to V / so as to V / to V（docs/proposals/007）: pote + 動名詞（目的語・前置詞句つき）
+        var purposeSkip = 0;
+        if (t2 === 'in' && cur.peek(1) === 'order' && cur.peek(2) === 'to') purposeSkip = 3;
+        else if (t2 === 'so' && cur.peek(1) === 'as' && cur.peek(2) === 'to') purposeSkip = 3;
+        else if (t2 === 'to' && !VERB_WANTS_GERUND[lemma] && !TO_COMPLEMENT[lemma] && (ir.object || ir.pps.length > 0 || MOTION_VERB[lemma])) purposeSkip = 1;
+        if (purposeSkip && byW.pote) {
+          var pv = cur.peek(purposeSkip) ? findVerb(cur.peek(purposeSkip)) : null;
+          var plain = !!pv && pv.form === 'base' && (purposeSkip === 3 || !findNoun(cur.peek(purposeSkip)) || ir.pps.length > 0 || !!ir.object);
+          if (plain) {
+            for (var sk = 0; sk < purposeSkip; sk++) cur.next();
+            cur.next();
+            var pitems = [item('pote'), item(pv.e.w + 'na', { gerund: pv.e.w })];
+            if (cur.peek() && startsNP(cur.peek()) && !PREPS[cur.peek()]) {
+              var pobj = parseNP(cur, ctx);
+              if (pobj) pitems = pitems.concat(pobj.items);
+            }
+            while (cur.more() && PREPS[cur.peek()]) {
+              var pprep = PREPS[cur.next()];
+              var ppnp = parseNP(cur, ctx);
+              if (!ppnp) break;
+              pitems = pitems.concat([item(pprep)], ppnp.items);
+            }
+            ir.pps.push(pitems);
+            continue;
+          }
+        }
         if (t2 === 'to' && VERB_WANTS_GERUND[lemma] && cur.peek(1) && findVerb(cur.peek(1))) {
           cur.next();
           var gv = findVerb(cur.next());
@@ -1513,7 +1559,13 @@
           else if (nx && startsNP(nx)) cur.push('and'); // 「A, B and C」の並べ方
           continue;
         }
-        if (t === 'but') { push(); conn = 'patu'; continue; }
+        if (t === 'but' || t === 'whereas') { push(); conn = 'patu'; continue; }
+        // 対比 on the other hand（docs/proposals/007）。あとのコンマは読み飛ばす
+        if (t === 'on' && tokens[i + 1] === 'the' && tokens[i + 2] === 'other' && tokens[i + 3] === 'hand') {
+          push(); conn = 'patu'; i += (tokens[i + 4] === ',' ? 4 : 3); continue;
+        }
+        // 様態 as（docs/proposals/007）: あとに節が続くときだけ
+        if (t === 'as' && startsClause && byW.kasolu) { push(); sub = 'kasolu'; continue; }
         if (t === 'so' && startsClause) { push(); conn = 'sonu'; continue; }
         if (SUB_EN[t] && !(question && i === 0 && t === 'when')) { push(); sub = SUB_EN[t]; continue; }
         if ((t === 'and' || t === 'or') && (startsClause || (tokens[i + 1] && findVerbOnly(tokens[i + 1], tokens[i + 2])))) {

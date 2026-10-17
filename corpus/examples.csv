@@ -86,3 +86,6 @@ id,feature,logi,ja
 85,permission-statement,tu kani ito apa.,リンゴを食べてもいい。
 86,prohibition-statement,tu masi no ito apa.,リンゴを食べてはいけない。
 87,not-necessary,tu kani no ito apa.,リンゴを食べなくてもいい。
+88,purpose,mi iko tote sukula pote itona apa.,私はリンゴを食べるために学校へ行く。
+89,manner,"kasolu li juo, mi iko.",彼が言うように、私は行く。
+90,contrast,"mi ito, patu li neo.",私は食べる一方で、彼は寝る。

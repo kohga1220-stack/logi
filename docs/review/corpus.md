@@ -92,6 +92,9 @@
 | 85 | permission-statement | tu kani ito apa. | リンゴを食べてもいい。 |
 | 86 | prohibition-statement | tu masi no ito apa. | リンゴを食べてはいけない。 |
 | 87 | not-necessary | tu kani no ito apa. | リンゴを食べなくてもいい。 |
+| 88 | purpose | mi iko tote sukula pote itona apa. | 私はリンゴを食べるために学校へ行く。 |
+| 89 | manner | kasolu li juo, mi iko. | 彼が言うように、私は行く。 |
+| 90 | contrast | mi ito, patu li neo. | 私は食べる一方で、彼は寝る。 |
 
 ## 語注（辞書から機械的に生成）
 
@@ -269,3 +272,9 @@
   tu=あなた(pronoun) masi=ねばならない(adv) no=否定(marker) ito=食べる(verb) apa=リンゴ(noun)
 - **87** `tu kani no ito apa.`  
   tu=あなた(pronoun) kani=できる(adv) no=否定(marker) ito=食べる(verb) apa=リンゴ(noun)
+- **88** `mi iko tote sukula pote itona apa.`  
+  mi=私(pronoun) iko=行く(verb) tote=へ(prep) sukula=学校(noun) pote=のために(prep) itona=食べる(verb)+na(動名詞) apa=リンゴ(noun)
+- **89** `kasolu li juo, mi iko.`  
+  kasolu=ように（様態）(conj) li=彼/彼女/それ(pronoun) juo=言う(verb) mi=私(pronoun) iko=行く(verb)
+- **90** `mi ito, patu li neo.`  
+  mi=私(pronoun) ito=食べる(verb) patu=しかし(conj) li=彼/彼女/それ(pronoun) neo=寝る(verb)

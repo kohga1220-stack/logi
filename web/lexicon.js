@@ -1710,6 +1710,7 @@ var LOGI_LEXICON = [
 {"w":"pelume","pos":"adj","ja":["縦の"],"jaNote":"縦の","en":["vertical"]},
 {"w":"tisape","pos":"adj","ja":["がっかりした"],"jaNote":"がっかりした","en":["disappointed"]},
 {"w":"kalali","pos":"adv","ja":["うっかり"],"jaNote":"うっかり","en":["carelessly"]},
-{"w":"pulemi","pos":"adv","ja":["なるべく"],"jaNote":"なるべく","en":["preferably"]}
+{"w":"pulemi","pos":"adv","ja":["なるべく"],"jaNote":"なるべく","en":["preferably"]},
+{"w":"kasolu","pos":"conj","ja":["ように"],"jaNote":"ように（様態）","en":["as","like"]}
 ];
 if (typeof module !== 'undefined') { module.exports = LOGI_LEXICON; }
