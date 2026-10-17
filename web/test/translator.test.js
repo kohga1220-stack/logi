@@ -476,3 +476,10 @@ test('提案007: 補語の to + 動詞・名詞の「ために」・場所の to
   assert.strictEqual(translator.translate('I go to school.', 'en').logi, 'mi iko tote sukula.');
   assert.strictEqual(translator.translate('本のために行く。', 'ja').logi, 'iko pote pupa.');
 });
+
+test('間接命令の「〜ように言った」は、様態の kasolu にしない', () => {
+  ['彼は私にリンゴを食べるように言った。', '彼は私にリンゴを食べるように頼んだ。'].forEach((src) => {
+    assert.ok(!/kasolu/.test(translator.translate(src, 'ja').logi), src);
+  });
+  assert.strictEqual(translator.translate('彼が言うように、私は行く。', 'ja').logi, 'kasolu li juo, mi iko.');
+});
