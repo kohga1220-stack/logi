@@ -7,7 +7,7 @@
 - 語幹が同じ: 語尾の1文字だけが違う、別の品詞の語（例: `kuka` 名詞と `kuko` 動詞）。同じ英語の別品詞なら意図した組です。そうでなければ偶然の一致なので、見分けにくくないか見てください
 - 同じ英語の語: 同じ英語の訳を持つ、別の語（同義語の候補）
 
-確認済み(ok): 1164 / 要修正(fix): 0 / 未確認(draft): 697
+確認済み(ok): 1164 / 要修正(fix): 0 / 未確認(draft): 747
 
 ## v0.7 英検3級レベルの語（487語）
 
@@ -1132,9 +1132,9 @@
 |---|---|---|---|---|
 | onapi | オンラインで | online |  | ok |
 
-## Antigravity の追加語（dictionary/anti_additions.csv）（808語）
+## Antigravity の追加語（dictionary/anti_additions.csv）（858語）
 
-### noun（603語）
+### noun（653語）
 
 | Logi | 日本語 | 英語 | 手がかり | 状況 |
 |---|---|---|---|---|
@@ -1741,6 +1741,56 @@
 | keteka | 刑事 | detective |  |  |
 | wanuwa | 候補 | candidate |  |  |
 | lopesa | 強盗 | robber |  |  |
+| munapa | 職人 | craftsman |  |  |
+| kenawa | 紳士 | gentleman |  |  |
+| kojewa | 知事 | governor |  |  |
+| tiwima | 弟子 | disciple |  |  |
+| totota | 幼児 | toddler |  |  |
+| tasena | 旅客 | passenger |  |  |
+| wetota | ウェートレス | waitress |  |  |
+| wukosa | 検事 | prosecutor |  |  |
+| masama | 仲人 | matchmaker |  |  |
+| luwuma | 婿 | groom |  |  |
+| kotama | 女神 | goddess |  |  |
+| mojusa | 怪物 | monster |  |  |
+| melipa | 人魚 | mermaid |  |  |
+| pejepa | ベテラン | veteran |  |  |
+| wolasa | 問屋 | wholesaler |  |  |
+| tusila | 宝 | treasure |  |  |
+| wisota | 知恵 | wisdom |  |  |
+| popoka | 群れ | flock |  |  |
+| lupiwa | 速度 | speed |  |  |
+| kitosa | 艶 | gloss |  |  |
+| semila | 化学 | chemistry |  |  |
+| simema | 同情 | sympathy |  |  |
+| somuwa | 合唱 | chorus |  |  |
+| makita | 魔法 | magic |  |  |
+| luawa | 褒美 | reward |  |  |
+| kosowa | 衣装 | costume |  |  |
+| liweka | 家畜 | livestock |  |  |
+| tukiwa | 観光 | tourism |  |  |
+| jopula | 生地 | fabric |  |  |
+| juosa | 月謝 | tuition |  |  |
+| nuapa | 資格 | qualification |  |  |
+| tokema | 書類 | document |  |  |
+| timewa | 時間割り | timetable |  |  |
+| timona | 寸法 | dimension |  |  |
+| pipoja | 繊維 | fiber |  |  |
+| wiasa | 直径 | diameter |  |  |
+| nekena | 伝説 | legend |  |  |
+| kajina | 内閣 | cabinet |  |  |
+| tosesa | ダース | dozen |  |  |
+| tokapa | ドル | dollar |  |  |
+| tijana | 障害 | disability |  |  |
+| jusipa | 心理 | psychology |  |  |
+| munesa | 圧力 | pressure |  |  |
+| temina | 気質 | temperament |  |  |
+| sakawa | 犠牲 | sacrifice |  |  |
+| kipisa | 結晶 | crystal |  |  |
+| jujapa | 工芸 | craft |  |  |
+| samota | 章 | chapter |  |  |
+| tajita | 条約 | treaty |  |  |
+| jutota | 地位 | status |  |  |
 
 ### verb（142語）
 
