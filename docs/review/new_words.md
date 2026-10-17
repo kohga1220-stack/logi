@@ -7,7 +7,7 @@
 - 語幹が同じ: 語尾の1文字だけが違う、別の品詞の語（例: `kuka` 名詞と `kuko` 動詞）。同じ英語の別品詞なら意図した組です。そうでなければ偶然の一致なので、見分けにくくないか見てください
 - 同じ英語の語: 同じ英語の訳を持つ、別の語（同義語の候補）
 
-確認済み(ok): 1164 / 要修正(fix): 0 / 未確認(draft): 897
+確認済み(ok): 1164 / 要修正(fix): 0 / 未確認(draft): 947
 
 ## v0.7 英検3級レベルの語（487語）
 
@@ -1132,9 +1132,9 @@
 |---|---|---|---|---|
 | onapi | オンラインで | online |  | ok |
 
-## Antigravity の追加語（dictionary/anti_additions.csv）（1008語）
+## Antigravity の追加語（dictionary/anti_additions.csv）（1058語）
 
-### noun（690語）
+### noun（700語）
 
 | Logi | 日本語 | 英語 | 手がかり | 状況 |
 |---|---|---|---|---|
@@ -1828,6 +1828,16 @@
 | lutina | 日課 | routine |  |  |
 | wojuta | 文脈 | context |  |  |
 | nuoja | ニュアンス | nuance |  |  |
+| jupia | 官僚 | bureaucrat |  |  |
+| topuja | 海豚 | dolphin |  |  |
+| wiseka | 鼬 | weasel |  |  |
+| mesota | 農薬 | pesticide |  |  |
+| wolona | 花粉 | pollen |  |  |
+| nekapa | 蜜 | nectar |  |  |
+| jetuka | レタス | lettuce |  |  |
+| lotopa | 蓮 | lotus |  |  |
+| wioja | 菫 | violet |  |  |
+| koseja | コスモス | cosmos |  |  |
 
 ### verb（239語）
 
@@ -2073,7 +2083,7 @@
 | tanilo | 縺れる | tangle |  |  |
 | komomo | 弁償する | compensate |  |  |
 
-### adj（63語）
+### adj（103語）
 
 | Logi | 日本語 | 英語 | 手がかり | 状況 |
 |---|---|---|---|---|
@@ -2140,6 +2150,46 @@
 | lasune | 合理的な | rational |  |  |
 | pasape | 消極的な | passive |  |  |
 | puwute | 慎重な | prudent |  |  |
+| sinuse | 誠実な | sincere |  |  |
+| sulome | だらしない | sloppy |  |  |
+| senese | 敏感な | sensitive |  |  |
+| palipe | 有効な | valid |  |  |
+| atale | 有利な | advantageous |  |  |
+| lemale | 著しい | remarkable |  |  |
+| esume | 甚だしい | extreme |  |  |
+| misepe | 惨めな | miserable |  |  |
+| tokuse | 有毒な | toxic |  |  |
+| tupase | 急激な | drastic |  |  |
+| kukule | 残酷な | cruel |  |  |
+| pekuke | 独特な | peculiar |  |  |
+| kutupe | 頑固な | stubborn |  |  |
+| opuke | 客観的な | objective |  |  |
+| wolese | 健全な | wholesome |  |  |
+| kukase | 淑やかな | graceful |  |  |
+| suwuse | 主観的な | subjective |  |  |
+| polope | 大胆な | bold |  |  |
+| petepe | 忠実な | faithful |  |  |
+| kupume | 無器用な | clumsy |  |  |
+| metie | 平凡な | mediocre |  |  |
+| peneme | 有益な | beneficial |  |  |
+| ulume | 緊急な | urgent |  |  |
+| polise | 軽快な | brisk |  |  |
+| ikene | 巧妙な | ingenious |  |  |
+| lukuse | 豪華な | luxurious |  |  |
+| supale | しなやかな | supple |  |  |
+| ikake | 先天的な | innate |  |  |
+| monote | 単調な | monotonous |  |  |
+| anule | 適切な | appropriate |  |  |
+| tulike | 悲惨な | tragic |  |  |
+| supone | 微妙な | subtle |  |  |
+| okie | 明白な | obvious |  |  |
+| komeke | 有能な | competent |  |  |
+| ikuwe | 冷淡な | indifferent |  |  |
+| lokike | 論理的な | logical |  |  |
+| komime | 滑稽な | comical |  |  |
+| muluke | だるい | sluggish |  |  |
+| ilele | 不規則な | irregular |  |  |
+| nimuke | すばしっこい | nimble |  |  |
 
 ### adv（16語）
 
