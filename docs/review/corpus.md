@@ -107,6 +107,12 @@
 | 100 | indirect-command | li pasu juo mi sati no iko. | 彼は私に行くなと言った。 |
 | 101 | quote-subject | li pasu juo selu komo. | 彼は来ると言った。 |
 | 102 | indirect-request | li pasu tano mi sati ito apa. | 彼は私にリンゴを食べるように頼んだ。 |
+| 103 | honorific-verb | titusa pasu juo. | 先生がおっしゃった。 |
+| 104 | honorific-verb | kesuta alo. | お客様がいらっしゃいます。 |
+| 105 | honorific-request | pilisu, ito! | 召し上がってください。 |
+| 106 | honorific-request | pilisu, mato! | お待ちください。 |
+| 107 | honorific-phrase | weluko! | いらっしゃいませ。 |
+| 108 | honorific-phrase | mi tanako tu. | ごちそうさまでした。 |
 
 ## 語注（辞書から機械的に生成）
 
@@ -314,3 +320,15 @@
   li=彼/彼女/それ(pronoun) pasu=過去(marker) juo=言う(verb) selu=自分（再帰）(pronoun) komo=来る(verb)
 - **102** `li pasu tano mi sati ito apa.`  
   li=彼/彼女/それ(pronoun) pasu=過去(marker) tano=頼む(verb) mi=私(pronoun) sati=べき(adv) ito=食べる(verb) apa=リンゴ(noun)
+- **103** `titusa pasu juo.`  
+  titusa=先生(noun) pasu=過去(marker) juo=言う(verb)
+- **104** `kesuta alo.`  
+  kesuta=客(noun) alo=ある(verb)
+- **105** `pilisu, ito!`  
+  pilisu=どうぞ(interj) ito=食べる(verb)
+- **106** `pilisu, mato!`  
+  pilisu=どうぞ(interj) mato=待つ(verb)
+- **107** `weluko!`  
+  weluko=迎える(verb)
+- **108** `mi tanako tu.`  
+  mi=私(pronoun) tanako=感謝する(verb) tu=あなた(pronoun)

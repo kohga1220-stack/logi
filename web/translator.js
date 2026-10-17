@@ -211,6 +211,23 @@
     // いる（存在）は ある と同じ alo に対応させる
     verbForms('いる').forEach(function (f) { addJa(f[0], { k: 'V', e: byW.alo, tags: f[1] }); });
 
+    // 敬語の動詞（docs/proposals/010）: 敬意は落として、ふつうの動詞に直す。いらっしゃる・参る は助詞で行く・来る・いるを選ぶ（ambig は助詞がないときの訳）
+    [['おっしゃる', 'juo'], ['申す', 'juo'], ['申し上げる', 'juo'], ['召し上がる', 'ito'], ['いただく', 'ito'],
+      ['ご覧になる', 'sio'], ['拝見する', 'sio'], ['なさる', 'topo'], ['いたす', 'topo'],
+      ['いらっしゃる', 'iko', 'alo'], ['参る', 'iko', 'iko']].forEach(function (h) {
+      if (!byW[h[1]]) return;
+      var extra = h[2] ? { ambig: h[2] } : {};
+      var forms = verbForms(h[0]);
+      // おっしゃる・いらっしゃる・なさる は ます形が「い」（おっしゃいます）
+      if (/(おっしゃ|いらっしゃ|なさ)る$/.test(h[0])) {
+        var hb = h[0].slice(0, -1) + 'い';
+        forms.push([hb + 'ます', {}], [hb + 'ました', { past: true }], [hb + 'ません', { neg: true }],
+          [hb + 'ませんでした', { neg: true, past: true }], [hb + 'なさい', { imp: true, endOnly: true }]);
+      }
+      if (h[0] === 'ご覧になる') forms.push(['ご覧ください', { imp: true, polite: true, endOnly: true }]);
+      forms.forEach(function (f) { addJa(f[0], { k: 'V', e: byW[h[1]], tags: Object.assign({}, f[1], extra) }); });
+    });
+
     addJa('私たち（聞き手を含む）', { k: 'PRON', e: byW.misu });
     // 指示詞・場所・はい／いいえ・いくつ（docs/proposals/001）。これ・あれ は辞書の代名詞（iliu・teliu）から入る。それ は前の文を受ける li のまま
     if (byW.iliu && byW.teliu) {
@@ -321,6 +338,15 @@
       return null;
     }
 
+    // text[i] から、名詞・動詞・形容詞の語が始まるか（接頭辞の お・ご の判定）
+    function startsContentWord(text, i) {
+      for (var len = Math.min(jaMax, text.length - i); len >= 1; len--) {
+        var cand = jaMap[text.substr(i, len)];
+        if (cand && (cand.k === 'N' || cand.k === 'V' || cand.k === 'ADJ' || cand.k === 'ANA')) return true;
+      }
+      return false;
+    }
+
     function tokenizeJa(text) {
       text = toHalfWidth(text.replace(/\s+/g, ''));
       var tokens = [];
@@ -335,6 +361,23 @@
           tokens.push({ k: 'NATO' });
           i += 2;
           continue;
+        }
+        // 敬称「さん・様」は落とす（docs/proposals/010）。名前（未登録語）か名詞のあとだけ
+        var hs = /^(さん|さま|様)(?![一-鿿])/.exec(text.slice(i));
+        if (hs && (unk || (lastT && (lastT.k === 'N' || lastT.k === 'PRON')))) { flush(); i += hs[0].length; continue; }
+        // 「お待ちください」「ご確認ください」: お・ご + 動詞の連用形 + ください は依頼（待ってください と同じ）
+        if (!unk && (text.charAt(i) === 'お' || text.charAt(i) === 'ご')) {
+          var pleaseAt = text.indexOf('ください', i + 1);
+          var afterPlease = pleaseAt >= 0 ? text.charAt(pleaseAt + 4) : '';
+          if (pleaseAt > i + 1 && (!afterPlease || /[、，,。．.！？!?]/.test(afterPlease))) {
+            var stemPart = text.slice(i + 1, pleaseAt);
+            var hv = jaMap[stemPart + 'ます'] || jaMap[stemPart + 'します'];
+            if (hv && hv.k === 'V' && !hv.tags.neg && !hv.tags.past) {
+              tokens.push({ k: 'V', e: hv.e, tags: { imp: true, polite: true, endOnly: true } });
+              i = pleaseAt + 4;
+              continue;
+            }
+          }
         }
         var rel = TIME_REL.exec(text.slice(i));
         if (rel && rel[1] && TIME_REL_OK[rel[1]].indexOf(rel[2]) < 0) rel = null;
@@ -383,6 +426,7 @@
           if (cand) { found = { tok: cand, len: len }; break; }
         }
         if (found) { flush(); tokens.push(found.tok); i += found.len; }
+        else if (!unk && (text.charAt(i) === 'お' || text.charAt(i) === 'ご') && startsContentWord(text, i + 1)) { i++; }   // 接頭辞のお・ごは落とす（docs/proposals/010）
         else { unk += text.charAt(i); i++; }
       }
       flush();
@@ -691,7 +735,7 @@
         }
       }
       if (last && last.k === 'V' && !copTags) {
-        pred = { kind: 'verb', e: last.e, imp: !!last.tags.imp, polite: !!last.tags.polite, hort: !!last.tags.hort };
+        pred = { kind: 'verb', e: last.e, imp: !!last.tags.imp, polite: !!last.tags.polite, hort: !!last.tags.hort, ambig: last.tags.ambig };
         if (last.tags.past) tense = 'past';
         if (last.tags.neg) neg = true;
         if (last.tags.prog) aspect = 'prog';
@@ -724,6 +768,12 @@
       var withP = rest.filter(function (c) { return c.particle; });
 
       if (pred && pred.kind === 'verb') {
+        // いらっしゃる・参る（docs/proposals/010）: へ・に があれば行く、から があれば来る、なければ既定
+        if (pred.ambig) {
+          var hasTo = withP.some(function (c) { return c.particle === 'へ' || c.particle === 'に'; });
+          var hasFrom = withP.some(function (c) { return c.particle === 'から'; });
+          pred.e = byW[hasTo ? 'iko' : hasFrom ? 'komo' : pred.ambig];
+        }
         ir.verb = pred.e.w;
         if (pred.imp || pred.hort) ir.imperative = true;
         if (pred.polite) ir.polite = true;
@@ -886,12 +936,16 @@
       { ja: ['おはよう', 'おはようございます'], en: ['good morning'], w: ['kute', 'mola'] },
       { ja: ['おやすみ', 'おやすみなさい'], en: ['good night'], w: ['kute', 'naita'] },
       { ja: ['すみません', 'すいません', 'ごめん', 'ごめんなさい'], en: ['sorry', 'excuse me'], w: ['mi', 'pio', 'moke'] },
-      { ja: ['ありがとう', 'ありがとうございます', 'ありがとうございました'], en: ['thanks'], w: ['mi', 'tanako', 'tu'] }
+      { ja: ['ありがとう', 'ありがとうございます', 'ありがとうございました'], en: ['thanks'], w: ['mi', 'tanako', 'tu'] },
+      // 敬語の定型句（docs/proposals/010）
+      { ja: ['いらっしゃいませ'], en: [], w: ['weluko'], imp: true },
+      { ja: ['ごちそうさま', 'ごちそうさまでした'], en: [], w: ['mi', 'tanako', 'tu'] },
+      { ja: ['お願いします', 'お願いいたします'], en: [], w: ['pilisu'] }
     ];
-    var JA_GREETING = {}, EN_GREETING = {};
+    var JA_GREETING = {}, EN_GREETING = {}, JA_GREETING_IMP = {};
     GREETINGS.forEach(function (g) {
       if (!g.w.every(function (w) { return byW[w]; })) return;
-      g.ja.forEach(function (k) { JA_GREETING[k] = g.w; });
+      g.ja.forEach(function (k) { JA_GREETING[k] = g.w; JA_GREETING_IMP[k] = !!g.imp; });
       g.en.forEach(function (k) { EN_GREETING[k] = g.w; });
     });
 
@@ -903,11 +957,13 @@
       (text.match(/[^。！？!?]+[。！？!?]*|[。！？!?]+/g) || [text]).forEach(function (piece) {
         piece = piece.replace(/((?:いい|よい|いけない|いけません|ならない|なりません)(?:です|だ)?)[よね]+(?=[。！!]*$)/, '$1');
         var key = piece.replace(/[。！!、，,\s]/g, '');
-        if (JA_GREETING[key] && !/[？?]/.test(piece)) sentenceList.push({ greeting: JA_GREETING[key] });
+        if (key === 'いただきます') sentenceList.push({ raw: key });   // 提案005 Q3・010: 食事のあいさつは訳さない
+        else if (JA_GREETING[key] && !/[？?]/.test(piece)) sentenceList.push({ greeting: JA_GREETING[key], imp: JA_GREETING_IMP[key] });
         else splitJa(piece).forEach(function (sg) { sentenceList.push(sg); });
       });
       sentenceList.forEach(function (s) {
-        if (s.greeting) { parts.push([{ fragment: s.greeting.map(function (w) { return item(w); }), notes: notes }]); return; }
+        if (s.raw) { parts.push([{ fragment: [unknown(s.raw)], notes: notes }]); return; }
+        if (s.greeting) { parts.push([{ fragment: s.greeting.map(function (w) { return item(w); }), notes: notes, imperative: !!s.imp }]); return; }
         var toks = s.tokens.slice();
         var q = s.q;
         // 文頭の「はい」「いいえ」: jesu / no を先頭に置く（コンマで区切る）

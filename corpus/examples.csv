@@ -101,3 +101,9 @@ id,feature,logi,ja
 100,indirect-command,li pasu juo mi sati no iko.,彼は私に行くなと言った。
 101,quote-subject,li pasu juo selu komo.,彼は来ると言った。
 102,indirect-request,li pasu tano mi sati ito apa.,彼は私にリンゴを食べるように頼んだ。
+103,honorific-verb,titusa pasu juo.,先生がおっしゃった。
+104,honorific-verb,kesuta alo.,お客様がいらっしゃいます。
+105,honorific-request,"pilisu, ito!",召し上がってください。
+106,honorific-request,"pilisu, mato!",お待ちください。
+107,honorific-phrase,weluko!,いらっしゃいませ。
+108,honorific-phrase,mi tanako tu.,ごちそうさまでした。

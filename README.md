@@ -108,7 +108,7 @@ logi/
 ├── web/
 │   └── index.html          Translator page (Japanese/English → Logi) / 翻訳機（see web/README.md）
 ├── corpus/
-│   └── examples.csv        102 example sentences by grammar feature / 機能別例文102文
+│   └── examples.csv        108 example sentences by grammar feature / 機能別例文108文
 ├── dictionary/
 │   ├── final.csv           1,795-word validated dictionary / 検証済み辞書1,795語
 │   ├── eiken3_additions.csv  Eiken grade-3 level word list added in v0.7 / 英検3級レベルの追加語リスト
@@ -158,6 +158,7 @@ logi/
 | v0.16 | Purpose, manner and contrast — decided in `docs/proposals/007`: purpose = `pote` + gerund (`mi iko tote sukula pote itona apa.`), manner = new conjunction `kasolu` (*as*), contrast = `patu`; the translator handles them; 1,745 words |
 | v0.17 | Dates and times — decided in `docs/proposals/008`: unit + number = calendar/clock (`monata te teia pe` = March 5, `ula te` = 3 o'clock), number + unit = quantity; prepositions by kind (`atute` clock, `onute` weekday/date, `inute` month/year); every/next/last/this + unit = `epule`/`nete`/`sese`/`iliu`; the translator handles them; no new words, 1,745 words |
 | v0.18 | Indirect questions and commands — decided in `docs/proposals/009`: clause + `ka` (`li pasu asuko mi pasu ito wata ka.`), commands via `sati` (`li pasu juo mi sati ito apa.`), same-person subject `selu`; the translator handles them; no new words, 1,745 words |
+| v0.19 | Honorifics — decided in `docs/proposals/010`: no levels of politeness; honorific verbs map to the plain verb (*おっしゃる* = `juo`), お/ご/さん/様 are dropped, *お待ちください* = `pilisu, mato!`, *いらっしゃいませ* = `weluko!`; the translator handles Japanese honorifics; no new words, 1,745 words |
 
 ---
 

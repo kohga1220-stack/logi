@@ -558,3 +558,27 @@ test('提案009: 間接命令（sati）と引用の主語（selu）', () => {
   // 様態の「ように」は kasolu のまま
   assert.strictEqual(translator.translate('彼が言うように、私は行く。', 'ja').logi, 'kasolu li juo, mi iko.');
 });
+
+test('提案010: 敬語は意味だけ訳す', () => {
+  const cases = [
+    ['先生がおっしゃった。', 'titusa pasu juo.'],
+    ['お客様がいらっしゃいます。', 'kesuta alo.'],
+    ['召し上がってください。', 'pilisu, ito!'],
+    ['ご覧ください。', 'pilisu, sio!'],
+    ['お待ちください。', 'pilisu, mato!'],
+    ['ご確認ください。', 'pilisu, jejo!'],
+    ['私が参ります。', 'mi iko.'],
+    ['学校へいらっしゃいます。', 'iko tote sukula.'],
+    ['拝見しました。', 'pasu sio.'],
+    ['先生がなさった。', 'titusa pasu topo.'],
+    ['いらっしゃいませ。', 'weluko!'],
+    ['ごちそうさまでした。', 'mi tanako tu.'],
+    ['お願いします。', 'pilisu.'],
+    ['ジョンさんが来ます。', '[ジョン?] komo.'],
+  ];
+  cases.forEach(([src, logi]) => {
+    assert.strictEqual(translator.translate(src, 'ja').logi, logi, src);
+  });
+  // 食事のあいさつは訳さない（提案005 Q3）
+  assert.strictEqual(translator.translate('いただきます。', 'ja').logi, '[いただきます?].');
+});
