@@ -8,6 +8,7 @@
 
 | 内容 | 場所 | 状態 |
 |---|---|---|
+| 提案013: 助数詞（Q1）・順序数と回数（Q2）・単位の語（Q3）| `docs/proposals/013-counters-and-units.md` | 決定待ち |
 | 提案012の試験運用に使う、モデルの鍵（環境変数 `SCREEN_API_KEY`・`SCREEN_API_BASE`・`SCREEN_MODEL`）| `docs/proposals/012-word-screening.md`、`tools/screen_words.py` | 鍵待ち（鍵がないと、第4弾50語での測定ができない。Claude は鍵を持っていない）|
 | 第4弾で `fix` にした6語の直し（jikia・pawusa・ejisa・simapa・pupito・pakako）| `dictionary/word_review.csv`（note に理由）| ANTI の直しを待つ。既存語の変更なので、そのPRは M1ko がマージ |
 
