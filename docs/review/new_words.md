@@ -7,7 +7,7 @@
 - 語幹が同じ: 語尾の1文字だけが違う、別の品詞の語（例: `kuka` 名詞と `kuko` 動詞）。同じ英語の別品詞なら意図した組です。そうでなければ偶然の一致なので、見分けにくくないか見てください
 - 同じ英語の語: 同じ英語の訳を持つ、別の語（同義語の候補）
 
-確認済み(ok): 1164 / 要修正(fix): 6 / 未確認(draft): 300
+確認済み(ok): 1164 / 要修正(fix): 6 / 未確認(draft): 350
 
 ## v0.7 英検3級レベルの語（487語）
 
@@ -1132,9 +1132,9 @@
 |---|---|---|---|---|
 | onapi | オンラインで | online |  | ok |
 
-## Antigravity の追加語（dictionary/anti_additions.csv）（417語）
+## Antigravity の追加語（dictionary/anti_additions.csv）（467語）
 
-### noun（249語）
+### noun（290語）
 
 | Logi | 日本語 | 英語 | 手がかり | 状況 |
 |---|---|---|---|---|
@@ -1387,8 +1387,49 @@
 | ujika | ヘリコプター | helicopter / chopper |  |  |
 | kosita | 容器 | container / receptacle / vessel |  |  |
 | pikasa | プラスチック | plastic / plastics |  |  |
+| piniwa | ビニール | vinyl |  |  |
+| ulewa | 元素 | element |  |  |
+| pamata | 高原 | plateau / highland |  |  |
+| penima | 半島 | peninsula |  |  |
+| pitila | 麓 | foothill / base |  |  |
+| lanasa | 牧場 | ranch / pasture |  |  |
+| pepisa | 吹雪 | blizzard / snowstorm |  |  |
+| moija | 湿気 | moisture / humidity / dampness |  |  |
+| sipaka | 火花 | spark |  |  |
+| ponika | 摩擦 | friction / chafing |  |  |
+| penola | 現象 | phenomenon |  |  |
+| kutila | 構造 | structure |  |  |
+| pakisa | 要素 | factor / component |  |  |
+| jesula | 資源 | resource / resources |  |  |
+| nunula | 資金 | fund / funds |  |  |
+| ponopa | ボーナス | bonus |  |  |
+| solewa | 奨学金 | scholarship |  |  |
+| tonasa | 寄付 | donation / contribution |  |  |
+| lejuja | 履歴書 | resume |  |  |
+| mapusa | 原稿 | manuscript / draft |  |  |
+| pemopa | 諺 | proverb / saying / maxim |  |  |
+| onowa | 敬語 | honorific / honorifics |  |  |
+| mupeta | 述語 | predicate |  |  |
+| kimeta | 喜劇 | comedy / farce |  |  |
+| kukija | 批評 | criticism / review / critique |  |  |
+| sapeta | 迷信 | superstition |  |  |
+| panona | 空想 | fantasy / daydream |  |  |
+| somita | 孤独 | solitude / loneliness |  |  |
+| ajoka | 苦しみ | agony / suffering / anguish |  |  |
+| mukuna | 悲鳴 | scream / shriek |  |  |
+| onaja | 婚約 | engagement / betrothal |  |  |
+| luwita | 恋人 | sweetheart / lover |  |  |
+| uwia | 主婦 | housewife / homemaker |  |  |
+| tenena | 子孫 | descendant / offspring / posterity |  |  |
+| pemema | 首相 | premier / chancellor |  |  |
+| nalia | 議会 | parliament / congress |  |  |
+| mupopa | 教授 | professor |  |  |
+| memusa | 商人 | merchant / trader / dealer |  |  |
+| pisola | 漁師 | fisherman / angler |  |  |
+| kenota | 車掌 | conductor |  |  |
+| kumuwa | 犯人 | culprit / criminal / offender |  |  |
 
-### verb（104語）
+### verb（113語）
 
 | Logi | 日本語 | 英語 | 手がかり | 状況 |
 |---|---|---|---|---|
@@ -1496,6 +1537,15 @@
 | waluto | 歪む | warp / distort |  |  |
 | jilato | 譲る | yield / cede |  |  |
 | luseko | 緩む | loosen / slacken |  |  |
+| lamumo | 暴れる | rampage |  |  |
+| tetaso | 荒らす | devastate / ravage |  |  |
+| putilo | 炒める | stirfry / saute |  |  |
+| posumo | 威張る | boast / brag / swagger |  |  |
+| kutono | 唸る | groan / moan / growl / roar |  |  |
+| opono | 追い越す | overtake / outstrip |  |  |
+| kopelo | 治める | govern / reign |  |  |
+| pekuwo | 惜しむ | begrudge |  |  |
+| asolo | 襲う | assault / raid / ambush |  |  |
 
 ### adj（47語）
 
