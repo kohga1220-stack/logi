@@ -483,3 +483,43 @@ test('間接命令の「〜ように言った」は、様態の kasolu にしな
   });
   assert.strictEqual(translator.translate('彼が言うように、私は行く。', 'ja').logi, 'kasolu li juo, mi iko.');
 });
+
+test('提案008: 暦と時刻（日本語）', () => {
+  const cases = [
+    ['3月5日です。', 'li pio monata te teia pe.'],
+    ['私は3時に起きる。', 'mi oko atute ula te.'],
+    ['午後2時30分に会う。', 'mito atute apuja ula to minuta te pulu.'],
+    ['水曜日に会う。', 'mito onute wetuna.'],
+    ['3月に行く。', 'iko inute monata te.'],
+    ['2026年3月5日に生まれた。', 'pasu poleno onute ila to mipulu ni kupulu to pulu so monata te teia pe.'],
+    ['私は毎週走る。', 'mi lano epule wika.'],
+    ['私は来年行く。', 'mi iko nete ila.'],
+    ['先週リンゴを食べた。', 'pasu ito apa sese wika.'],
+    ['毎週リンゴを食べる。', 'ito apa epule wika.'],
+  ];
+  cases.forEach(([src, logi]) => {
+    assert.strictEqual(translator.translate(src, 'ja').logi, logi, src);
+  });
+});
+
+test('提案008: 数 + 単位は数量のまま（3か月・3時間・5日・2年）', () => {
+  assert.strictEqual(translator.translate('3か月走る。', 'ja').logi, 'lano te muna.');
+  assert.strictEqual(translator.translate('3時間走る。', 'ja').logi, 'lano te taima.');
+  assert.strictEqual(translator.translate('2年走る。', 'ja').logi, 'lano to ila.');
+  assert.strictEqual(translator.translate('私は20歳です。', 'ja').logi, 'mi oto to pulu ila.');
+});
+
+test('提案008: 暦と時刻（英語）', () => {
+  const cases = [
+    ['I go in March.', 'mi iko inute monata te.'],
+    ["It is 3 o'clock.", 'li pio ula te.'],
+    ['It is March 5.', 'li pio monata te teia pe.'],
+    ['We meet on Wednesday.', 'misu mito onute wetuna.'],
+    ['I run every week.', 'mi lano epule wika.'],
+    ['I will go next year.', 'mi putu iko nete ila.'],
+    ['You may eat an apple.', 'tu kani ito apa.'],
+  ];
+  cases.forEach(([src, logi]) => {
+    assert.strictEqual(translator.translate(src, 'en').logi, logi, src);
+  });
+});

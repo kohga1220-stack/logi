@@ -7,7 +7,7 @@
 - 語幹が同じ: 語尾の1文字だけが違う、別の品詞の語（例: `kuka` 名詞と `kuko` 動詞）。同じ英語の別品詞なら意図した組です。そうでなければ偶然の一致なので、見分けにくくないか見てください
 - 同じ英語の語: 同じ英語の訳を持つ、別の語（同義語の候補）
 
-確認済み(ok): 1120 / 要修正(fix): 0 / 未確認(draft): 50
+確認済み(ok): 1164 / 要修正(fix): 6 / 未確認(draft): 0
 
 ## v0.7 英検3級レベルの語（487語）
 
@@ -1163,24 +1163,24 @@
 | telaka | 跡 | trace |  | ok |
 | momeka | 勢い | momentum |  | ok |
 | tonita | 今夜 | tonight |  | ok |
-| tikika | 茶碗 | teacup |  |  |
-| owopa | 相手 | opponent / rival |  |  |
-| pujuma | 岩 | boulder / crag |  |  |
-| losuta | 遠慮 | restraint / modesty / reserve |  |  |
-| simapa | 気の毒 | sympathy / compassion |  | Claude【修正推奨】気の毒は pity/unfortunate に近く sympathy（同情）は違う。pity は wita（残念）が使用中。見出し語の再検討か削除 |
-| kusoma | 下駄 | clogs / clog |  | Claude【任意】見出し語は単数 clog が自然（clogs は別名に） |
-| wonuja | 承知 | consent / assent |  |  |
-| wateta | 水道 | waterworks / plumbing / tap / faucet |  | Claude【任意】waterworks はまれ。水道 = tap/water supply。見出し語は tap が自然 |
-| tuneta | 性質 | trait / property / quality |  |  |
-| omoma | ついで | opportunity |  | Claude【任意】ついで = incidentally/occasion。opportunity は tana（チャンス）と近い |
-| monosa | 梅雨 | monsoon |  | Claude【任意】梅雨 = rainy season。monsoon はより広い意味 |
-| peloma | 得 | profit / gain / benefit / advantage |  |  |
-| aseja | 上り | ascent / uphill |  |  |
-| sulaja | 周り | surroundings / perimeter / circumference |  |  |
-| ejisa | 以外 | exception |  | Claude【修正推奨】以外は「〜のほかに・〜を除いて」（except/besides）で、exception（例外）とは違う。前置詞に近く機能語のため、削除か Claude/M1ko の設計に回す |
-| powula | 乗車 | boarding |  |  |
-| pawusa | ボールペン | ballpoint |  | Claude【修正推奨】既存の pena（ペン）と意味が重なる（ボールペンはペンの一種）。削除して pena で言うのがよい（WORKFLOW §2 の手順1） |
-| jikia | 億 | billion |  | Claude【修正推奨】億は10の8乗（100 million）。billion は10の9乗で意味が違う。英語に1語がないため、削除して kupulu mimia（100×百万）で言うのがよい |
+| tikika | 茶碗 | teacup |  | ok |
+| owopa | 相手 | opponent / rival |  | ok |
+| pujuma | 岩 | boulder / crag |  | ok |
+| losuta | 遠慮 | restraint / modesty / reserve |  | ok |
+| simapa | 気の毒 | sympathy / compassion |  | 要修正 Claude【修正推奨】気の毒は pity/unfortunate に近く sympathy（同情）は違う。pity は wita（残念）が使用中。見出し語の再検討か削除 |
+| kusoma | 下駄 | clogs / clog |  | ok Claude【任意】見出し語は単数 clog が自然（clogs は別名に） |
+| wonuja | 承知 | consent / assent |  | ok |
+| wateta | 水道 | waterworks / plumbing / tap / faucet |  | ok Claude【任意】waterworks はまれ。水道 = tap/water supply。見出し語は tap が自然 |
+| tuneta | 性質 | trait / property / quality |  | ok |
+| omoma | ついで | opportunity |  | ok Claude【任意】ついで = incidentally/occasion。opportunity は tana（チャンス）と近い |
+| monosa | 梅雨 | monsoon |  | ok Claude【任意】梅雨 = rainy season。monsoon はより広い意味 |
+| peloma | 得 | profit / gain / benefit / advantage |  | ok |
+| aseja | 上り | ascent / uphill |  | ok |
+| sulaja | 周り | surroundings / perimeter / circumference |  | ok |
+| ejisa | 以外 | exception |  | 要修正 Claude【修正推奨】以外は「〜のほかに・〜を除いて」（except/besides）で、exception（例外）とは違う。前置詞に近く機能語のため、削除か Claude/M1ko の設計に回す |
+| powula | 乗車 | boarding |  | ok |
+| pawusa | ボールペン | ballpoint |  | 要修正 Claude【修正推奨】既存の pena（ペン）と意味が重なる（ボールペンはペンの一種）。削除して pena で言うのがよい（WORKFLOW §2 の手順1） |
+| jikia | 億 | billion |  | 要修正 Claude【修正推奨】億は10の8乗（100 million）。billion は10の9乗で意味が違う。英語に1語がないため、削除して kupulu mimia（100×百万）で言うのがよい |
 
 ### verb（51語）
 
@@ -1213,30 +1213,30 @@
 | atijo | 慣れる | adapt |  | ok Claude: 英語の見出し語は get used to に近く adapt は適応するに寄る（任意） |
 | otumo | 感心する | admire |  | ok |
 | suwuno | 揺れる | swing |  | ok Claude: 英語の見出し語は sway か shake のほうが近い（任意） |
-| kunano | 与える | grant / bestow / provide |  | Claude【任意】既存の kipo（give/keep。保つ与える）と近い。与える = give/grant の整理は M1ko の判断 |
-| tukano | 移す | transfer / shift |  |  |
-| pupito | 飼う | breed |  | Claude【修正推奨】飼うは keep/raise の意味。breed は繁殖させる。見出し語は rear が近い（rear は未使用） |
-| onelo | 重なる | overlap |  |  |
-| satako | 重ねる | stack / layer |  |  |
-| ejumo | 切れる | expire / snap |  |  |
-| talupo | 暮れる | darken |  |  |
-| ewuno | 越える | exceed / surpass |  |  |
-| sanelo | 壊れる | shatter / crumble / malfunction |  | Claude【任意】壊れるに shatter は強すぎる（粉々になる）。break は puleko が使用中。crumble か malfunction を見出し語に |
-| temulo | 下がる | decline |  |  |
-| pakako | 空く | vacate |  | Claude【修正推奨】空くは become empty/free。vacate は他動詞（空にする）で意味がずれる。見出し語は empty（動詞は未使用）が近い |
-| kopumo | 済む | conclude |  |  |
-| amiko | 揃える | align |  |  |
-| kinumo | 焚く | kindle |  |  |
-| tepato | 出掛ける | depart |  |  |
-| piluko | 通す | pierce / penetrate |  | Claude【任意】通すの主な意味は let pass/see through。pierce（突き通す）は一部の意味だけ |
-| uneko | 解く | untie / unravel / unfasten |  |  |
-| alujo | 止める | halt / detain |  |  |
-| pilito | 晴れる | brighten |  | Claude【任意】晴れる = clear up（天気）。brighten より clear（動詞は未使用）が近い |
-| tuwako | 引っ張る | drag / tug / haul |  |  |
-| etuwo | 広がる | expand / widen |  |  |
-| minuko | 交じる | mingle / blend |  |  |
-| sukino | 回る | spin / revolve |  |  |
-| suseno | 汚れる | stain |  | Claude【任意】汚れる = get dirty。stain は印をつける意味に寄る。soil（動詞は未使用）が近い |
+| kunano | 与える | grant / bestow / provide |  | ok Claude【任意】既存の kipo（give/keep。保つ与える）と近い。与える = give/grant の整理は M1ko の判断 |
+| tukano | 移す | transfer / shift |  | ok |
+| pupito | 飼う | breed |  | 要修正 Claude【修正推奨】飼うは keep/raise の意味。breed は繁殖させる。見出し語は rear が近い（rear は未使用） |
+| onelo | 重なる | overlap |  | ok |
+| satako | 重ねる | stack / layer |  | ok |
+| ejumo | 切れる | expire / snap |  | ok |
+| talupo | 暮れる | darken |  | ok |
+| ewuno | 越える | exceed / surpass |  | ok |
+| sanelo | 壊れる | shatter / crumble / malfunction |  | ok Claude【任意】壊れるに shatter は強すぎる（粉々になる）。break は puleko が使用中。crumble か malfunction を見出し語に |
+| temulo | 下がる | decline |  | ok |
+| pakako | 空く | vacate |  | 要修正 Claude【修正推奨】空くは become empty/free。vacate は他動詞（空にする）で意味がずれる。見出し語は empty（動詞は未使用）が近い |
+| kopumo | 済む | conclude |  | ok |
+| amiko | 揃える | align |  | ok |
+| kinumo | 焚く | kindle |  | ok |
+| tepato | 出掛ける | depart |  | ok |
+| piluko | 通す | pierce / penetrate |  | ok Claude【任意】通すの主な意味は let pass/see through。pierce（突き通す）は一部の意味だけ |
+| uneko | 解く | untie / unravel / unfasten |  | ok |
+| alujo | 止める | halt / detain |  | ok |
+| pilito | 晴れる | brighten |  | ok Claude【任意】晴れる = clear up（天気）。brighten より clear（動詞は未使用）が近い |
+| tuwako | 引っ張る | drag / tug / haul |  | ok |
+| etuwo | 広がる | expand / widen |  | ok |
+| minuko | 交じる | mingle / blend |  | ok |
+| sukino | 回る | spin / revolve |  | ok |
+| suseno | 汚れる | stain |  | ok Claude【任意】汚れる = get dirty。stain は印をつける意味に寄る。soil（動詞は未使用）が近い |
 
 ### adj（16語）
 
@@ -1252,12 +1252,12 @@
 | kumute | 曇った | cloudy |  | ok |
 | pelume | 縦の | vertical |  | ok |
 | tisape | がっかりした | disappointed |  | ok |
-| elie | 勇ましい | heroic / gallant / valiant |  | Claude【任意】勇敢な pulepe と意味が近い（勇ましい≒勇敢） |
-| atome | 偉い | admirable / noble / distinguished |  |  |
-| lekule | 惜しい | regrettable |  | Claude【任意】残念 wita（pity）と意味が近い |
-| ateke | 憎い | hateful / odious / detestable |  |  |
-| soiwe | めでたい | joyful / joyous / auspicious |  |  |
-| unele | 無理な | unreasonable / excessive |  |  |
+| elie | 勇ましい | heroic / gallant / valiant |  | ok Claude【任意】勇敢な pulepe と意味が近い（勇ましい≒勇敢） |
+| atome | 偉い | admirable / noble / distinguished |  | ok |
+| lekule | 惜しい | regrettable |  | ok Claude【任意】残念 wita（pity）と意味が近い |
+| ateke | 憎い | hateful / odious / detestable |  | ok |
+| soiwe | めでたい | joyful / joyous / auspicious |  | ok |
+| unele | 無理な | unreasonable / excessive |  | ok |
 
 ### adv（7語）
 
@@ -1268,8 +1268,8 @@
 | ituti | なるほど | indeed |  | ok |
 | kalali | うっかり | carelessly |  | ok |
 | pulemi | なるべく | preferably |  | ok |
-| puluni | なお | furthermore |  | Claude【任意】なお は接続詞に近い（furthermore）。接続詞は機能語のため Claude/M1ko の設計 |
-| nameli | つまり | namely / briefly / shortly |  | Claude【任意】つまり は接続詞に近い（namely）。接続詞は機能語のため Claude/M1ko の設計 |
+| puluni | なお | furthermore |  | ok Claude【任意】なお は接続詞に近い（furthermore）。接続詞は機能語のため Claude/M1ko の設計 |
+| nameli | つまり | namely / briefly / shortly |  | ok Claude【任意】つまり は接続詞に近い（namely）。接続詞は機能語のため Claude/M1ko の設計 |
 
 ## v0.10 機能語（指示詞・はい／いいえ）（3語）
 

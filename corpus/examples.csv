@@ -89,3 +89,9 @@ id,feature,logi,ja
 88,purpose,mi iko tote sukula pote itona apa.,私はリンゴを食べるために学校へ行く。
 89,manner,"kasolu li juo, mi iko.",彼が言うように、私は行く。
 90,contrast,"mi ito, patu li neo.",私は食べる一方で、彼は寝る。
+91,calendar-date,li pio monata te teia pe.,3月5日です。
+92,calendar-clock,mi oko atute ula te.,私は3時に起きる。
+93,calendar-weekday,mito onute wetuna.,水曜日に会う。
+94,calendar-month,mi iko inute monata te.,私は3月に行く。
+95,time-every,mi lano epule wika.,私は毎週走る。
+96,time-next,mi iko nete ila.,私は来年行く。

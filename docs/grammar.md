@@ -228,6 +228,23 @@ misu iko tote ili!        （ここへ行きましょう）
 | 100 | pa kupulu |
 | 2025 | to mipulu ni kupulu to pulu pe |
 
+### 暦と時刻（v0.17 確定、提案008）
+「単位の語 + 数」は暦の番号・時刻、「数 + 単位の語」は数量（期間）。大きい単位から小さい単位の順に並べる。
+
+| 意味 | Logi | 数量の形（比較）|
+|---|---|---|
+| 3月 | `monata te` | 3か月 `te monata` |
+| 3月5日 | `monata te teia pe` | 5日間 `pe teia` |
+| 2026年3月5日 | `ila to mipulu ni kupulu to pulu so monata te teia pe` | 2年 `to ila` |
+| 3時 | `ula te` | 3時間 `te ula` |
+| 午後2時30分 | `apuja ula to minuta te pulu` | 30分 `te pulu minuta` |
+
+- 英語の月の名前（January〜December）は `monata` + 月の数に直す（March = `monata te`）。
+- 前置詞は、時の種類で決める: 時刻 `atute`、曜日・日付 `onute`、月・年 `inute`。日本語の「に」は前の語の種類で選ぶ（`mi oko atute ula te.` = 3時に起きる、`mito onute wetuna.` = 水曜日に会う、`iko inute monata te.` = 3月に行く）。
+- 毎〜は `epule`、来〜は `nete`、先〜・去年・昨年は `sese`、今〜は `iliu` を単位の語の前に置く。前置詞は付けない（`lano epule wika.` = 毎週走る、`iko nete ila.` = 来年行く）。
+- 時刻・日付だけの文の主語は `li`（`li pio ula te.` = 3時です。It is 3 o'clock.）。
+- 翻訳機は、日本語の「N月」「N年（100以上）」「N時」「N月M日」「N時M分」を暦・時刻に、「N日」「N年（100未満）」「N分」「Nか月」「N時間」「N年間」を数量として扱う。
+
 ---
 
 ## 6. 代名詞（確定）
@@ -356,7 +373,7 @@ SVO + 前置詞句で代替。
 
 - 基準: 国立国語研究所の「日本語教育基本語彙データベース」（CC BY 4.0。`dictionary/sources/`）で、6つのリストのうち5つ以上に採用され、国語研教育基本語彙で◎の語。候補は `python tools/core_candidates.py` で出せる。
 - 英語・品詞・日本語の意味を付けた `dictionary/core_additions.csv` から、§8.1 と同じ方法（`tools/coin_words.py`）で549語を造語した。
-- 数詞・日付の数え方・敬語・指示詞（これ・あれ）・はい／いいえは入れていない。複合語で言えるものと、文法に枠が無いものは、設計が決まってから足す（出典 README に一覧）。
+- 数詞・日付の数え方（v0.17 で決定、§5）・敬語・指示詞（これ・あれ）・はい／いいえは入れていない。複合語で言えるものと、文法に枠が無いものは、設計が決まってから足す（出典 README に一覧）。
 - 英語と日本語の意味は Claude が書いた案で、人の確認を受けていない。
 
 ---
@@ -524,5 +541,6 @@ v0.5 で po を **tulimo**（英 dream の音訳: d→t, r→l, 子音連続を 
 | v0.14 | 日常のあいさつを、既存の語の決まった言い方で表す（おはよう `kute mola.`、おやすみ `kute naita.`、すみません `mi pio moke.`、ありがとう `mi tanako tu.`。提案005、§4）。新しい語はなし。翻訳機が日本語・英語に対応。例文を4文足して84文 |
 | v0.15 | 平叙文の許可・禁止・不要を、法副詞で表す（許可 `kani`、禁止 `masi no`、不要 `kani no`。日本語で主語がなければ `tu`。提案006、§4）。英語の `You may` を `kani` にした（可能性の `may` は `mei` のまま）。新しい語はなし。例文を3文足して87文 |
 | v0.16 | 目的・様態・対比を表す（目的 `pote` + 動名詞、様態 `kasolu`（新語・接続詞）、対比 `patu`。提案007、§10.4）。翻訳機が日本語（〜ために・〜ように・〜一方）と英語（in order to・to + 動詞・as・whereas・on the other hand）に対応。例文を3文足して90文。1,745語 |
+| v0.17 | 暦と時刻を表す（単位 + 数 = 暦・時刻、数 + 単位 = 数量。前置詞は時刻 `atute`・曜日と日付 `onute`・月と年 `inute`。毎〜 `epule`・来〜 `nete`・先〜 `sese`・今〜 `iliu`。提案008、§5）。翻訳機が日本語（N月M日・N年・N時M分・毎〜・来〜・先〜・今〜）と英語（月の名前・o'clock）に対応。新語なし。1,745語 |
 | v0.4 | 疑問詞はその場置き、法副詞は副詞の位置（マーカーの前）と §7 に追記 |
 | v0.4 | 同義語33語を deprecated にし（status / replaced_by 列を追加）、正本の選び方を §10.6 に記載 |

@@ -303,6 +303,23 @@
       return s.replace(/[０-９]/g, function (c) { return String.fromCharCode(c.charCodeAt(0) - 0xFEE0); });
     }
 
+    // 暦と時刻（docs/proposals/008）: 単位 + 数 = 暦の番号・時刻。数 + 単位（3か月・3時間・3日）は数量のまま
+    var TIME_PREFIX = { '毎': 'epule', '来': 'nete', '先': 'sese', '今': 'iliu' };
+    var TIME_UNIT = { '週': 'wika', '年': 'ila', '月': 'monata', '日': 'teia', '朝': 'mola', '晩': 'naita' };
+    var TIME_REL = /^(?:([毎来先今])(週|年|月|日|朝|晩)|去年|昨年)/;
+    var TIME_REL_OK = { '毎': '週年月日朝晩', '来': '週年月', '先': '週月', '今': '週年月朝晩' };
+    function calendarUnit(n, rest, prev) {
+      var c = rest.charAt(0);
+      var noSpan = rest.charAt(1) !== '間';
+      var last = prev && prev.k === 'CAL' ? prev : null;
+      if (c === '月') return { unit: 'monata', kind: 'month', merge: !!(last && last.kind === 'year') };
+      if (c === '年' && noSpan && n >= 100) return { unit: 'ila', kind: 'year' };
+      if (c === '時' && noSpan) return { unit: 'ula', kind: 'clock' };
+      if (c === '日' && noSpan && last && last.kind === 'month') return { unit: 'teia', kind: 'date', merge: true };
+      if (c === '分' && noSpan && last && last.kind === 'clock') return { unit: 'minuta', kind: 'clock', merge: true };
+      return null;
+    }
+
     function tokenizeJa(text) {
       text = toHalfWidth(text.replace(/\s+/g, ''));
       var tokens = [];
@@ -310,8 +327,31 @@
       var unk = '';
       function flush() { if (unk) { tokens.push({ k: 'UNK', text: unk }); unk = ''; } }
       while (i < text.length) {
+        var rel = TIME_REL.exec(text.slice(i));
+        if (rel && rel[1] && TIME_REL_OK[rel[1]].indexOf(rel[2]) < 0) rel = null;
+        if (rel) {
+          flush();
+          tokens.push({ k: 'TIME', items: rel[1] ? [TIME_PREFIX[rel[1]], TIME_UNIT[rel[2]]] : ['sese', 'ila'] });
+          i += rel[0].length;
+          continue;
+        }
         var m = /^[0-9]+/.exec(text.slice(i));
-        if (m) { flush(); tokens.push({ k: 'NUM', n: parseInt(m[0], 10) }); i += m[0].length; continue; }
+        if (m) {
+          flush();
+          var num = parseInt(m[0], 10);
+          var calRest = text.slice(i + m[0].length);
+          var cal = calendarUnit(num, calRest, tokens[tokens.length - 1]);
+          if (cal) {
+            var prevTok = tokens[tokens.length - 1];
+            if (cal.merge) { prevTok.items = prevTok.items.concat([cal.unit], numberToLogi(num)); prevTok.kind = cal.kind; }
+            else tokens.push({ k: 'CAL', kind: cal.kind, items: [cal.unit].concat(numberToLogi(num)) });
+            i += m[0].length + 1;
+            continue;
+          }
+          tokens.push({ k: 'NUM', n: num });
+          i += m[0].length;
+          continue;
+        }
         var found = null;
         for (var len = Math.min(jaMax, text.length - i); len >= 1; len--) {
           var cand = jaMap[text.substr(i, len)];
@@ -378,7 +418,7 @@
           var last = chunks[chunks.length - 1];
           if (last.particle === 'を') obj = last.items.concat(obj);
           else if (last.particle && last.particle !== 'は' && last.particle !== 'が' && last.particle !== 'も' &&
-            !last.counter && PARTICLE_PREP[last.particle]) pps = [item(PARTICLE_PREP[last.particle])].concat(last.items, pps);
+            !last.counter && prepItems(last)) pps = prepItems(last).concat(pps);
           else break;
           chunks.pop();
         }
@@ -395,6 +435,11 @@
             i += 2;
             finish(nums.concat(item(ctr.w)), { counter: true });
           } else { mods = mods.concat(nums); i++; }
+          continue;
+        }
+        if (t.k === 'CAL' || t.k === 'TIME') {
+          i++;
+          finish(words(t.items), { timeKind: t.k === 'TIME' ? 'rel' : t.kind });
           continue;
         }
         if (t.k === 'DONNA') { mods.push(item('wata')); i++; continue; }
@@ -463,6 +508,10 @@
           var head = headItemsOf(t);
           i++;
           var nxt = tokens[i];
+          // 午後2時・朝7時: 時間帯の語は時刻の前に付ける
+          if (nxt && nxt.k === 'CAL' && nxt.kind === 'clock' && head.length === 1 && DAYPARTS[head[0].w]) {
+            prefix = prefix.concat(head); continue;
+          }
           if (nxt && nxt.k === 'P' && nxt.p === 'の' && isNpStart(tokens[i + 1])) {
             prefix = prefix.concat(mods, head); mods = []; i++; continue;
           }
@@ -484,6 +533,20 @@
       if (t.k === 'UNK') return [unknown(t.text)];
       if (t.k === 'ADJ' || t.k === 'ANA') return [item(t.e.w)];
       return [item(t.e.w)];
+    }
+
+    var DAYPARTS = { mola: 1, apuja: 1, ipa: 1, naita: 1 };
+    var WEEKDAYS = { moputa: 1, tusuma: 1, wetuna: 1, tupusa: 1, pukipa: 1, satuka: 1, sunuta: 1 };
+    // 時を表す語の前置詞（docs/proposals/008）: 時刻 atute、曜日・日付 onute、月・年 inute。毎〜・来〜・先〜は前置詞なし
+    var TIME_PREP = { clock: 'atute', date: 'onute', weekday: 'onute', month: 'inute', year: 'inute', rel: null };
+    // 文節の助詞から前置詞句の語列を作る。前置詞にならない助詞は null
+    function prepItems(c) {
+      var tk = c.timeKind;
+      if (!tk && c.particle === 'に' && c.items.length === 1 && WEEKDAYS[c.items[0].w]) tk = 'weekday';
+      if (tk && (c.particle === 'に' || !c.particle)) {
+        return TIME_PREP[tk] ? [item(TIME_PREP[tk])].concat(c.items) : c.items;
+      }
+      return c.particle && PARTICLE_PREP[c.particle] ? [item(PARTICLE_PREP[c.particle])].concat(c.items) : null;
     }
 
     var PARTICLE_PREP = {
@@ -594,8 +657,9 @@
         withP.forEach(function (c) {
           if (c.purpose) purposePps.push([item('pote')].concat(c.items));
           else if (c.particle === 'を' || (c.particle === 'が' && !ir.object)) ir.object = c.items;
+          else if (c.timeKind && prepItems(c)) ir.pps.push(prepItems(c));
           else if (c.particle === 'に' && isExist) ir.pps.push([item('atute')].concat(c.items));
-          else if (PARTICLE_PREP[c.particle]) ir.pps.push([item(PARTICLE_PREP[c.particle])].concat(c.items));
+          else if (prepItems(c)) ir.pps.push(prepItems(c));
           else notes.push('助詞「' + c.particle + '」は未対応です。');
         });
         ir.pps = ir.pps.concat(purposePps);
@@ -603,6 +667,7 @@
         bare.forEach(function (c) {
           var w0 = c.items.length === 1 ? c.items[0].w : null;
           if (w0 === 'wela' || w0 === 'wena') ir.pps.push([item('atute')].concat(c.items));
+          else if (c.timeKind) ir.pps.push(prepItems(c));
           else if (!ir.object) ir.object = c.items;
           else bareLeft.push(c);
         });
@@ -630,8 +695,9 @@
         ir.verb = 'pio';
         ir.complement = comp;
         withP.filter(function (c) { return c !== yori && c !== to && c !== ga; }).forEach(function (c) {
-          if (PARTICLE_PREP[c.particle]) ir.pps.push([item(PARTICLE_PREP[c.particle])].concat(c.items));
+          if (prepItems(c)) ir.pps.push(prepItems(c));
         });
+        bare.filter(function (c) { return c.timeKind; }).forEach(function (c) { ir.pps.push(prepItems(c)); });
         return ir;
       }
       if (pred && pred.kind === 'cop') {
@@ -647,6 +713,8 @@
         }
         ir.verb = 'pio';
         ir.complement = compChunk ? compChunk.items : null;
+        // 「3時です」: 時刻・日付の文の主語は li（It is 3 o'clock.）
+        if (compChunk && !subjectChunk && (compChunk.timeKind === 'clock' || compChunk.timeKind === 'date')) ir.subject = [item('li')];
         if (!compChunk && subjectChunk) { ir.complement = subjectChunk.items; ir.subject = null; }
         return ir;
       }
@@ -1070,7 +1138,7 @@
 
     function startsNP(tok) {
       if (!tok) return false;
-      return !!(DETERMINERS[tok] || PRONOUNS[tok] || POSSESSIVES[tok] || /^[0-9]+$/.test(tok) || NUMWORDS[tok] !== undefined ||
+      return !!(/^cal__/.test(tok) || DETERMINERS[tok] || PRONOUNS[tok] || POSSESSIVES[tok] || /^[0-9]+$/.test(tok) || NUMWORDS[tok] !== undefined ||
         WH[tok] === 'wata' || tok === 'many' || tok === 'some' || findNoun(tok) || findAdj(tok) || tok === 'most');
     }
 
@@ -1102,6 +1170,7 @@
           break;
         }
         // 「how much」を一つの名詞句にまとめた語（aua mene）。translateEnTokens が作る
+        if (/^cal__/.test(tok)) { items = items.concat(words(tok.slice(5).split('_'))); cur.next(); sawHead = true; break; }
         if (tok === 'howmuch__') { items.push(item('aua'), item('mene')); cur.next(); sawHead = true; break; }
         if (DETERMINERS[tok]) { cur.next(); sawDet = true; continue; }
         if (POSSESSIVES[tok]) { items.push(item(POSSESSIVES[tok])); cur.next(); continue; }
@@ -1585,6 +1654,44 @@
       });
     }
 
+    // 暦と時刻（docs/proposals/008）: 月の名前・o'clock・年を、Logi の語列を持つ 1 語（cal__ で始まる）にまとめる
+    var MONTHS = { january: 1, february: 2, march: 3, april: 4, may: 5, june: 6, july: 7, august: 8, september: 9,
+      october: 10, november: 11, december: 12 };
+    var CAL_PREPS = { in: 1, on: 1, of: 1, since: 1, until: 1, from: 1, during: 1, by: 1, before: 1, after: 1 };
+    function calToken(list) { return 'cal__' + list.join('_'); }
+    function rewriteEnCalendar(tokens) {
+      var out = [];
+      var isNum = function (t) { return t !== undefined && /^[0-9]+$/.test(t); };
+      for (var ti = 0; ti < tokens.length; ti++) {
+        var w0 = tokens[ti], w1 = tokens[ti + 1], w2 = tokens[ti + 2];
+        var prev = out[out.length - 1];
+        if (isNum(w0) && w1 === 'o' && w2 === 'clock') {
+          out.push(calToken(['ula'].concat(numberToLogi(parseInt(w0, 10))))); ti += 2; continue;
+        }
+        if (MONTHS[w0] && (w0 !== 'may' || CAL_PREPS[prev] || (ti === 0 && isNum(w1)))) {
+          var list = ['monata'].concat(numberToLogi(MONTHS[w0]));
+          var j = ti + 1;
+          var yearNum = null;
+          if (isNum(tokens[j]) && parseInt(tokens[j], 10) <= 31) {
+            list = list.concat(['teia'], numberToLogi(parseInt(tokens[j], 10)));
+            j++;
+            if (/^(st|nd|rd|th)$/.test(tokens[j] || '')) j++;
+            if (tokens[j] === ',' && isNum(tokens[j + 1]) && parseInt(tokens[j + 1], 10) >= 100) j++;
+          }
+          if (isNum(tokens[j]) && parseInt(tokens[j], 10) >= 100) { yearNum = parseInt(tokens[j], 10); j++; }
+          if (yearNum !== null) list = ['ila'].concat(numberToLogi(yearNum), list);
+          out.push(calToken(list));
+          ti = j - 1;
+          continue;
+        }
+        if (isNum(w0) && parseInt(w0, 10) >= 1000 && (prev === 'in' || prev === 'since' || prev === 'until' || prev === 'by')) {
+          out.push(calToken(['ila'].concat(numberToLogi(parseInt(w0, 10))))); continue;
+        }
+        out.push(w0);
+      }
+      return out;
+    }
+
     function translateEn(text) {
       var notes = [];
       var parts = [];
@@ -1594,7 +1701,7 @@
         if (!trimmed) return;
         var question = /\?$/.test(trimmed);
         var body = trimmed.replace(/[.!?]+$/, '');
-        var tokens = expandContractions(body).toLowerCase().match(/[a-z]+|[0-9]+|,/g) || [];
+        var tokens = rewriteEnCalendar(expandContractions(body).toLowerCase().match(/[a-z]+|[0-9]+|,/g) || []);
         // 日常のあいさつ（docs/proposals/005）: Good morning / Good night / Sorry / Excuse me / Thanks
         var greet = !question && EN_GREETING[tokens.join(' ')];
         if (greet) { parts.push([{ fragment: greet.map(function (w) { return item(w); }), notes: notes }]); return; }

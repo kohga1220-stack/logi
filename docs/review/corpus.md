@@ -95,6 +95,12 @@
 | 88 | purpose | mi iko tote sukula pote itona apa. | 私はリンゴを食べるために学校へ行く。 |
 | 89 | manner | kasolu li juo, mi iko. | 彼が言うように、私は行く。 |
 | 90 | contrast | mi ito, patu li neo. | 私は食べる一方で、彼は寝る。 |
+| 91 | calendar-date | li pio monata te teia pe. | 3月5日です。 |
+| 92 | calendar-clock | mi oko atute ula te. | 私は3時に起きる。 |
+| 93 | calendar-weekday | mito onute wetuna. | 水曜日に会う。 |
+| 94 | calendar-month | mi iko inute monata te. | 私は3月に行く。 |
+| 95 | time-every | mi lano epule wika. | 私は毎週走る。 |
+| 96 | time-next | mi iko nete ila. | 私は来年行く。 |
 
 ## 語注（辞書から機械的に生成）
 
@@ -278,3 +284,15 @@
   kasolu=ように（様態）(conj) li=彼/彼女/それ(pronoun) juo=言う(verb) mi=私(pronoun) iko=行く(verb)
 - **90** `mi ito, patu li neo.`  
   mi=私(pronoun) ito=食べる(verb) patu=しかし(conj) li=彼/彼女/それ(pronoun) neo=寝る(verb)
+- **91** `li pio monata te teia pe.`  
+  li=彼/彼女/それ(pronoun) pio=です(verb) monata=月（暦）(noun) te=3(num) teia=日(noun) pe=5(num)
+- **92** `mi oko atute ula te.`  
+  mi=私(pronoun) oko=起きる(verb) atute=で(prep) ula=時間（60分）(noun) te=3(num)
+- **93** `mito onute wetuna.`  
+  mito=会う(verb) onute=の上に(prep) wetuna=水曜日(noun)
+- **94** `mi iko inute monata te.`  
+  mi=私(pronoun) iko=行く(verb) inute=の中に(prep) monata=月（暦）(noun) te=3(num)
+- **95** `mi lano epule wika.`  
+  mi=私(pronoun) lano=走る(verb) epule=すべての(adj) wika=週(noun)
+- **96** `mi iko nete ila.`  
+  mi=私(pronoun) iko=行く(verb) nete=次の(adj) ila=年(noun)
