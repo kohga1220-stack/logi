@@ -211,6 +211,23 @@
     // いる（存在）は ある と同じ alo に対応させる
     verbForms('いる').forEach(function (f) { addJa(f[0], { k: 'V', e: byW.alo, tags: f[1] }); });
 
+    // 敬語の動詞（docs/proposals/010）: 敬意は落として、ふつうの動詞に直す。いらっしゃる・参る は助詞で行く・来る・いるを選ぶ（ambig は助詞がないときの訳）
+    [['おっしゃる', 'juo'], ['申す', 'juo'], ['申し上げる', 'juo'], ['召し上がる', 'ito'], ['いただく', 'ito'],
+      ['ご覧になる', 'sio'], ['拝見する', 'sio'], ['なさる', 'topo'], ['いたす', 'topo'],
+      ['いらっしゃる', 'iko', 'alo'], ['参る', 'iko', 'iko']].forEach(function (h) {
+      if (!byW[h[1]]) return;
+      var extra = h[2] ? { ambig: h[2] } : {};
+      var forms = verbForms(h[0]);
+      // おっしゃる・いらっしゃる・なさる は ます形が「い」（おっしゃいます）
+      if (/(おっしゃ|いらっしゃ|なさ)る$/.test(h[0])) {
+        var hb = h[0].slice(0, -1) + 'い';
+        forms.push([hb + 'ます', {}], [hb + 'ました', { past: true }], [hb + 'ません', { neg: true }],
+          [hb + 'ませんでした', { neg: true, past: true }], [hb + 'なさい', { imp: true, endOnly: true }]);
+      }
+      if (h[0] === 'ご覧になる') forms.push(['ご覧ください', { imp: true, polite: true, endOnly: true }]);
+      forms.forEach(function (f) { addJa(f[0], { k: 'V', e: byW[h[1]], tags: Object.assign({}, f[1], extra) }); });
+    });
+
     addJa('私たち（聞き手を含む）', { k: 'PRON', e: byW.misu });
     // 指示詞・場所・はい／いいえ・いくつ（docs/proposals/001）。これ・あれ は辞書の代名詞（iliu・teliu）から入る。それ は前の文を受ける li のまま
     if (byW.iliu && byW.teliu) {
@@ -289,6 +306,7 @@
     addJa('または', { k: 'OR' });
     addJa('あるいは', { k: 'OR' });
     addJa('か', { k: 'KA' });
+    addJa('かどうか', { k: 'KA', whether: true });
     addJa('、', { k: 'COMMA' });
     addJa(',', { k: 'COMMA' });
     ['。', '.', '！', '!', '？', '?'].forEach(function (s) {
@@ -303,6 +321,32 @@
       return s.replace(/[０-９]/g, function (c) { return String.fromCharCode(c.charCodeAt(0) - 0xFEE0); });
     }
 
+    // 暦と時刻（docs/proposals/008）: 単位 + 数 = 暦の番号・時刻。数 + 単位（3か月・3時間・3日）は数量のまま
+    var TIME_PREFIX = { '毎': 'epule', '来': 'nete', '先': 'sese', '今': 'iliu' };
+    var TIME_UNIT = { '週': 'wika', '年': 'ila', '月': 'monata', '日': 'teia', '朝': 'mola', '晩': 'naita' };
+    var TIME_REL = /^(?:([毎来先今])(週|年|月|日|朝|晩)|去年|昨年)/;
+    var TIME_REL_OK = { '毎': '週年月日朝晩', '来': '週年月', '先': '週月', '今': '週年月朝晩' };
+    function calendarUnit(n, rest, prev) {
+      var c = rest.charAt(0);
+      var noSpan = rest.charAt(1) !== '間';
+      var last = prev && prev.k === 'CAL' ? prev : null;
+      if (c === '月') return { unit: 'monata', kind: 'month', merge: !!(last && last.kind === 'year') };
+      if (c === '年' && noSpan && n >= 100) return { unit: 'ila', kind: 'year' };
+      if (c === '時' && noSpan) return { unit: 'ula', kind: 'clock' };
+      if (c === '日' && noSpan && last && last.kind === 'month') return { unit: 'teia', kind: 'date', merge: true };
+      if (c === '分' && noSpan && last && last.kind === 'clock') return { unit: 'minuta', kind: 'clock', merge: true };
+      return null;
+    }
+
+    // text[i] から、名詞・動詞・形容詞の語が始まるか（接頭辞の お・ご の判定）
+    function startsContentWord(text, i) {
+      for (var len = Math.min(jaMax, text.length - i); len >= 1; len--) {
+        var cand = jaMap[text.substr(i, len)];
+        if (cand && (cand.k === 'N' || cand.k === 'V' || cand.k === 'ADJ' || cand.k === 'ANA')) return true;
+      }
+      return false;
+    }
+
     function tokenizeJa(text) {
       text = toHalfWidth(text.replace(/\s+/g, ''));
       var tokens = [];
@@ -310,8 +354,56 @@
       var unk = '';
       function flush() { if (unk) { tokens.push({ k: 'UNK', text: unk }); unk = ''; } }
       while (i < text.length) {
+        // 「行くなと言った」: 動詞の辞書形 + なと + 言う・頼む・命じる は間接の禁止（docs/proposals/009）
+        var lastT = tokens[tokens.length - 1];
+        if (!unk && lastT && lastT.k === 'V' && !(lastT.tags && (lastT.tags.past || lastT.tags.neg || lastT.tags.te)) &&
+          /^なと(?=言|頼|命)/.test(text.slice(i))) {
+          tokens.push({ k: 'NATO' });
+          i += 2;
+          continue;
+        }
+        // 敬称「さん・様」は落とす（docs/proposals/010）。名前（未登録語）か名詞のあとだけ
+        var hs = /^(さん|さま|様)(?![一-鿿])/.exec(text.slice(i));
+        if (hs && (unk || (lastT && (lastT.k === 'N' || lastT.k === 'PRON')))) { flush(); i += hs[0].length; continue; }
+        // 「お待ちください」「ご確認ください」: お・ご + 動詞の連用形 + ください は依頼（待ってください と同じ）
+        if (!unk && (text.charAt(i) === 'お' || text.charAt(i) === 'ご')) {
+          var pleaseAt = text.indexOf('ください', i + 1);
+          var afterPlease = pleaseAt >= 0 ? text.charAt(pleaseAt + 4) : '';
+          if (pleaseAt > i + 1 && (!afterPlease || /[、，,。．.！？!?]/.test(afterPlease))) {
+            var stemPart = text.slice(i + 1, pleaseAt);
+            var hv = jaMap[stemPart + 'ます'] || jaMap[stemPart + 'します'];
+            if (hv && hv.k === 'V' && !hv.tags.neg && !hv.tags.past) {
+              tokens.push({ k: 'V', e: hv.e, tags: { imp: true, polite: true, endOnly: true } });
+              i = pleaseAt + 4;
+              continue;
+            }
+          }
+        }
+        var rel = TIME_REL.exec(text.slice(i));
+        if (rel && rel[1] && TIME_REL_OK[rel[1]].indexOf(rel[2]) < 0) rel = null;
+        if (rel) {
+          flush();
+          tokens.push({ k: 'TIME', items: rel[1] ? [TIME_PREFIX[rel[1]], TIME_UNIT[rel[2]]] : ['sese', 'ila'] });
+          i += rel[0].length;
+          continue;
+        }
         var m = /^[0-9]+/.exec(text.slice(i));
-        if (m) { flush(); tokens.push({ k: 'NUM', n: parseInt(m[0], 10) }); i += m[0].length; continue; }
+        if (m) {
+          flush();
+          var num = parseInt(m[0], 10);
+          var calRest = text.slice(i + m[0].length);
+          var cal = calendarUnit(num, calRest, tokens[tokens.length - 1]);
+          if (cal) {
+            var prevTok = tokens[tokens.length - 1];
+            if (cal.merge) { prevTok.items = prevTok.items.concat([cal.unit], numberToLogi(num)); prevTok.kind = cal.kind; }
+            else tokens.push({ k: 'CAL', kind: cal.kind, items: [cal.unit].concat(numberToLogi(num)) });
+            i += m[0].length + 1;
+            continue;
+          }
+          tokens.push({ k: 'NUM', n: num });
+          i += m[0].length;
+          continue;
+        }
         var found = null;
         for (var len = Math.min(jaMax, text.length - i); len >= 1; len--) {
           var cand = jaMap[text.substr(i, len)];
@@ -334,6 +426,7 @@
           if (cand) { found = { tok: cand, len: len }; break; }
         }
         if (found) { flush(); tokens.push(found.tok); i += found.len; }
+        else if (!unk && (text.charAt(i) === 'お' || text.charAt(i) === 'ご') && startsContentWord(text, i + 1)) { i++; }   // 接頭辞のお・ごは落とす（docs/proposals/010）
         else { unk += text.charAt(i); i++; }
       }
       flush();
@@ -378,7 +471,7 @@
           var last = chunks[chunks.length - 1];
           if (last.particle === 'を') obj = last.items.concat(obj);
           else if (last.particle && last.particle !== 'は' && last.particle !== 'が' && last.particle !== 'も' &&
-            !last.counter && PARTICLE_PREP[last.particle]) pps = [item(PARTICLE_PREP[last.particle])].concat(last.items, pps);
+            !last.counter && prepItems(last)) pps = prepItems(last).concat(pps);
           else break;
           chunks.pop();
         }
@@ -395,6 +488,11 @@
             i += 2;
             finish(nums.concat(item(ctr.w)), { counter: true });
           } else { mods = mods.concat(nums); i++; }
+          continue;
+        }
+        if (t.k === 'CAL' || t.k === 'TIME') {
+          i++;
+          finish(words(t.items), { timeKind: t.k === 'TIME' ? 'rel' : t.kind });
           continue;
         }
         if (t.k === 'DONNA') { mods.push(item('wata')); i++; continue; }
@@ -463,6 +561,10 @@
           var head = headItemsOf(t);
           i++;
           var nxt = tokens[i];
+          // 午後2時・朝7時: 時間帯の語は時刻の前に付ける
+          if (nxt && nxt.k === 'CAL' && nxt.kind === 'clock' && head.length === 1 && DAYPARTS[head[0].w]) {
+            prefix = prefix.concat(head); continue;
+          }
           if (nxt && nxt.k === 'P' && nxt.p === 'の' && isNpStart(tokens[i + 1])) {
             prefix = prefix.concat(mods, head); mods = []; i++; continue;
           }
@@ -484,6 +586,20 @@
       if (t.k === 'UNK') return [unknown(t.text)];
       if (t.k === 'ADJ' || t.k === 'ANA') return [item(t.e.w)];
       return [item(t.e.w)];
+    }
+
+    var DAYPARTS = { mola: 1, apuja: 1, ipa: 1, naita: 1 };
+    var WEEKDAYS = { moputa: 1, tusuma: 1, wetuna: 1, tupusa: 1, pukipa: 1, satuka: 1, sunuta: 1 };
+    // 時を表す語の前置詞（docs/proposals/008）: 時刻 atute、曜日・日付 onute、月・年 inute。毎〜・来〜・先〜は前置詞なし
+    var TIME_PREP = { clock: 'atute', date: 'onute', weekday: 'onute', month: 'inute', year: 'inute', rel: null };
+    // 文節の助詞から前置詞句の語列を作る。前置詞にならない助詞は null
+    function prepItems(c) {
+      var tk = c.timeKind;
+      if (!tk && c.particle === 'に' && c.items.length === 1 && WEEKDAYS[c.items[0].w]) tk = 'weekday';
+      if (tk && (c.particle === 'に' || !c.particle)) {
+        return TIME_PREP[tk] ? [item(TIME_PREP[tk])].concat(c.items) : c.items;
+      }
+      return c.particle && PARTICLE_PREP[c.particle] ? [item(PARTICLE_PREP[c.particle])].concat(c.items) : null;
     }
 
     var PARTICLE_PREP = {
@@ -514,7 +630,16 @@
           break;
         }
       }
+      // 「彼は来ると言った」: 言った人（は）を主節の主語にし、中身の主語は同じ人なので selu（docs/proposals/009 Q3）
+      var reflexive = false;
+      if (!mainSubj && toks[k + 1].e.w === 'juo') {
+        for (var s2 = 0; s2 < embedded.length; s2++) {
+          if (embedded[s2].k === 'P' && embedded[s2].p === 'は') { mainSubj = embedded.slice(0, s2 + 1); embedded = embedded.slice(s2 + 1); reflexive = true; }
+          if (embedded[s2] && embedded[s2].k === 'P') break;
+        }
+      }
       var sub = parseJaClause(embedded, false, notes);
+      if (reflexive && !sub.subject && sub.verb) sub.subject = [item('selu')];
       var main = parseJaClause(tail, question, notes);
       main.object = generate(sub);
       if (mainSubj) {
@@ -524,11 +649,75 @@
       return main;
     }
 
+    // 間接疑問と間接命令（docs/proposals/009）
+    //   何を食べたか聞いた → li pasu asuko mi pasu ito wata ka.（節 + ka。? は付けない）
+    //   食べるように言った → li pasu juo mi sati ito apa.（言い換え: 私が食べるべきだと言った）
+    var QUESTION_VERBS = { asuko: 1, mo: 1, upo: 1, oo: 1 };
+    function splitIndirect(toks, question, notes) {
+      var k = -1;
+      var kind = null;
+      for (var j = 1; j < toks.length - 1; j++) {
+        var nx = toks[j + 1];
+        if (toks[j].k === 'KA' && nx.k === 'V' && QUESTION_VERBS[nx.e.w] && (nx.e.w !== 'oo' || true)) { k = j; kind = 'question'; break; }
+        if (toks[j].k === 'KA' && nx.k === 'P' && (nx.p === 'は' || nx.p === 'を') && toks[j + 2] && toks[j + 2].k === 'V' && QUESTION_VERBS[toks[j + 2].e.w]) { k = j; kind = 'question'; break; }
+        if ((toks[j].k === 'YOUNI' || toks[j].k === 'NATO') && nx.k === 'V' && COMMAND_VERBS[nx.e.w] && toks[j - 1].k === 'V') { k = j; kind = 'command'; break; }
+      }
+      if (k < 1) return null;
+      var embedded = toks.slice(0, k);
+      var tail = toks.slice(k + 1);
+      if (kind === 'question' && tail[0].k === 'P') tail = tail.slice(1);
+      var verbE = tail[tail.length - 1].e;
+      if (!verbE) return null;
+      if (kind === 'question' && verbE.w === 'oo') {
+        var lastTail = tail[tail.length - 1];
+        tail = tail.slice(0, -1).concat([{ k: 'V', e: byW.asuko, tags: lastTail.tags }]);
+        verbE = byW.asuko;
+      }
+      // 主語: 聞く・命じる などは最初の「は」が主節の主語。知る・覚える は「は」も中身の主語
+      var mainSubj = null;
+      var topicIsMain = verbE.w !== 'mo' && verbE.w !== 'upo';
+      for (var s = 0; s < embedded.length; s++) {
+        if (embedded[s].k === 'P' && (embedded[s].p === 'は' || embedded[s].p === 'が')) {
+          var laterSubj = embedded.slice(s + 1).some(function (t) { return t.k === 'P' && (t.p === 'は' || t.p === 'が'); });
+          if ((embedded[s].p === 'は' && topicIsMain) || laterSubj) { mainSubj = embedded.slice(0, s + 1); embedded = embedded.slice(s + 1); }
+          break;
+        }
+      }
+      var recipient = null;
+      if (embedded.length > 2 && (embedded[0].k === 'N' || embedded[0].k === 'PRON') && embedded[1].k === 'P' && embedded[1].p === 'に') {
+        recipient = embedded[0];
+        embedded = embedded.slice(2);
+        if (kind === 'command') embedded = [recipient, { k: 'P', p: 'は' }].concat(embedded);
+      }
+      if (kind === 'question') {
+        if (embedded.length && embedded[embedded.length - 1].k === 'P' && embedded[embedded.length - 1].p === 'の') embedded = embedded.slice(0, -1);
+      } else {
+        var pv = embedded[embedded.length - 1];
+        var negated = toks[k].k === 'NATO' || (pv.tags && pv.tags.neg);
+        embedded = embedded.slice(0, -1).concat([{ k: 'V', e: pv.e, tags: { modal: 'sati', neg: !!negated } }]);
+      }
+      var sub = parseJaClause(embedded, false, notes);
+      if (kind === 'question' && !sub.subject && sub.verb && !sub.imperative) notes.push('中身の主語が文にないため、省いています。');
+      var main = parseJaClause(tail, question, notes);
+      main.object = generate(sub).concat(kind === 'question' ? [item('ka')] : []);
+      if (kind === 'question') {
+        if (recipient && !main.pps.length) main.pps.push([item('tote'), item(recipient.e ? recipient.e.w : 'mi')]);
+        if (verbE.w === 'upo' && main.aspect === 'prog') main.aspect = null;
+      }
+      if (mainSubj) {
+        var ch = chunkJa(mainSubj, [], notes);
+        if (ch.length) main.subject = ch[0].items;
+      }
+      if (!main.subject && (verbE.w === 'mo' || verbE.w === 'upo')) main.subject = [item('mi')];
+      if (kind === 'command' && !recipient) notes.push('命じられた相手が文にないため、中身の主語を省いています。');
+      return main;
+    }
+
     function parseJaClause(tokens, question, notes) {
       var advs = [];
       var tense = null, aspect = null, neg = false;
       var toks = tokens.filter(function (t) { return t.k !== 'COMMA'; });
-      var comp = splitComplement(toks, question, notes);
+      var comp = splitComplement(toks, question, notes) || splitIndirect(toks, question, notes);
       if (comp) return comp;
       var pred = null;
       var last = toks[toks.length - 1];
@@ -546,12 +735,12 @@
         }
       }
       if (last && last.k === 'V' && !copTags) {
-        pred = { kind: 'verb', e: last.e, imp: !!last.tags.imp, polite: !!last.tags.polite, hort: !!last.tags.hort };
+        pred = { kind: 'verb', e: last.e, imp: !!last.tags.imp, polite: !!last.tags.polite, hort: !!last.tags.hort, ambig: last.tags.ambig };
         if (last.tags.past) tense = 'past';
         if (last.tags.neg) neg = true;
         if (last.tags.prog) aspect = 'prog';
         if (last.tags.perf) aspect = 'perf';
-        if (last.tags.modal) advs.unshift(item(last.tags.modal === 'kani' ? 'kani' : 'masi'));
+        if (last.tags.modal) advs.unshift(item(last.tags.modal));
         toks.pop();
       } else if (last && (last.k === 'ADJ' || last.k === 'ANA') && !last.attr) {
         pred = { kind: 'adj', e: last.e };
@@ -579,6 +768,12 @@
       var withP = rest.filter(function (c) { return c.particle; });
 
       if (pred && pred.kind === 'verb') {
+        // いらっしゃる・参る（docs/proposals/010）: へ・に があれば行く、から があれば来る、なければ既定
+        if (pred.ambig) {
+          var hasTo = withP.some(function (c) { return c.particle === 'へ' || c.particle === 'に'; });
+          var hasFrom = withP.some(function (c) { return c.particle === 'から'; });
+          pred.e = byW[hasTo ? 'iko' : hasFrom ? 'komo' : pred.ambig];
+        }
         ir.verb = pred.e.w;
         if (pred.imp || pred.hort) ir.imperative = true;
         if (pred.polite) ir.polite = true;
@@ -594,8 +789,9 @@
         withP.forEach(function (c) {
           if (c.purpose) purposePps.push([item('pote')].concat(c.items));
           else if (c.particle === 'を' || (c.particle === 'が' && !ir.object)) ir.object = c.items;
+          else if (c.timeKind && prepItems(c)) ir.pps.push(prepItems(c));
           else if (c.particle === 'に' && isExist) ir.pps.push([item('atute')].concat(c.items));
-          else if (PARTICLE_PREP[c.particle]) ir.pps.push([item(PARTICLE_PREP[c.particle])].concat(c.items));
+          else if (prepItems(c)) ir.pps.push(prepItems(c));
           else notes.push('助詞「' + c.particle + '」は未対応です。');
         });
         ir.pps = ir.pps.concat(purposePps);
@@ -603,6 +799,7 @@
         bare.forEach(function (c) {
           var w0 = c.items.length === 1 ? c.items[0].w : null;
           if (w0 === 'wela' || w0 === 'wena') ir.pps.push([item('atute')].concat(c.items));
+          else if (c.timeKind) ir.pps.push(prepItems(c));
           else if (!ir.object) ir.object = c.items;
           else bareLeft.push(c);
         });
@@ -630,8 +827,9 @@
         ir.verb = 'pio';
         ir.complement = comp;
         withP.filter(function (c) { return c !== yori && c !== to && c !== ga; }).forEach(function (c) {
-          if (PARTICLE_PREP[c.particle]) ir.pps.push([item(PARTICLE_PREP[c.particle])].concat(c.items));
+          if (prepItems(c)) ir.pps.push(prepItems(c));
         });
+        bare.filter(function (c) { return c.timeKind; }).forEach(function (c) { ir.pps.push(prepItems(c)); });
         return ir;
       }
       if (pred && pred.kind === 'cop') {
@@ -647,6 +845,8 @@
         }
         ir.verb = 'pio';
         ir.complement = compChunk ? compChunk.items : null;
+        // 「3時です」: 時刻・日付の文の主語は li（It is 3 o'clock.）
+        if (compChunk && !subjectChunk && (compChunk.timeKind === 'clock' || compChunk.timeKind === 'date')) ir.subject = [item('li')];
         if (!compChunk && subjectChunk) { ir.complement = subjectChunk.items; ir.subject = null; }
         return ir;
       }
@@ -712,9 +912,9 @@
         if ((t.k === 'ADJ' || t.k === 'V') && t.tags && t.tags.cond) { cur.push(t); push('ipu'); continue; }
         if (t.k === 'V' && t.tags && t.tags.sub) { cur.push(t); push(t.tags.sub); continue; }
         if (t.k === 'V' && t.tags && t.tags.te && i < tokens.length - 1) { cur.push(t); push(null); connBefore = 'e'; continue; }
-        // 「食べるように言った」（間接命令）の ように は、様態（kasolu）ではない。docs/proposals/009 で決めるまで訳さず、そのまま残す
+        // 「食べるように言った」（間接命令）の ように は、様態（kasolu）ではない。間接命令として splitIndirect が読む（docs/proposals/009）
         if (t.k === 'SUBC' && t.w === 'kasolu' && tokens[i + 1] && tokens[i + 1].k === 'V' && COMMAND_VERBS[tokens[i + 1].e.w]) {
-          cur.push({ k: 'UNK', text: SUBC_TEXT[t.w] }); continue;
+          cur.push({ k: 'YOUNI' }); continue;
         }
         if (t.k === 'SUBC' && isPredLike(cur[cur.length - 1])) { push(t.w); continue; }
         if (t.k === 'SUBC') { cur.push({ k: 'UNK', text: SUBC_TEXT[t.w] || t.w }); continue; }
@@ -736,13 +936,30 @@
       { ja: ['おはよう', 'おはようございます'], en: ['good morning'], w: ['kute', 'mola'] },
       { ja: ['おやすみ', 'おやすみなさい'], en: ['good night'], w: ['kute', 'naita'] },
       { ja: ['すみません', 'すいません', 'ごめん', 'ごめんなさい'], en: ['sorry', 'excuse me'], w: ['mi', 'pio', 'moke'] },
-      { ja: ['ありがとう', 'ありがとうございます', 'ありがとうございました'], en: ['thanks'], w: ['mi', 'tanako', 'tu'] }
+      { ja: ['ありがとう', 'ありがとうございます', 'ありがとうございました'], en: ['thanks'], w: ['mi', 'tanako', 'tu'] },
+      // 敬語の定型句（docs/proposals/010）
+      { ja: ['いらっしゃいませ'], en: [], w: ['weluko'], imp: true },
+      { ja: ['ごちそうさま', 'ごちそうさまでした'], en: [], w: ['mi', 'tanako', 'tu'] },
+      { ja: ['お願いします', 'お願いいたします'], en: [], w: ['pilisu'] },
+      // 日常のあいさつの続き（docs/proposals/011）
+      { ja: ['こんばんは'], en: ['good evening'], w: ['kute', 'ipa'] },
+      { ja: [], en: ['good afternoon'], w: ['kute', 'apuja'] },
+      { ja: [], en: ['good luck'], w: ['kute', 'luna'], imp: true },
+      { ja: [], en: ['have a nice day', 'have a good day'], w: ['kute', 'teia'], imp: true },
+      { ja: [], en: ['see you tomorrow'], w: ['mi', 'putu', 'sio', 'tu', 'moloa'] },
+      // 形容詞だけの文に主語を補うのは、この 2 つに限る（提案011 Q2）
+      { ja: ['元気です'], en: [], w: ['mi', 'pio', 'miwe'] },
+      { ja: ['お元気ですか', '元気ですか'], en: ['how are you'], w: ['tu', 'pio', 'miwe'], q: true }
     ];
-    var JA_GREETING = {}, EN_GREETING = {};
+    var JA_GREETING = {}, EN_GREETING = {}, JA_GREETING_IMP = {}, EN_GREETING_IMP = {}, GREETING_Q = {};
     GREETINGS.forEach(function (g) {
       if (!g.w.every(function (w) { return byW[w]; })) return;
-      g.ja.forEach(function (k) { JA_GREETING[k] = g.w; });
-      g.en.forEach(function (k) { EN_GREETING[k] = g.w; });
+      if (g.q) {
+        g.ja.concat(g.en).forEach(function (k) { GREETING_Q[k] = g.w; });
+        return;
+      }
+      g.ja.forEach(function (k) { JA_GREETING[k] = g.w; JA_GREETING_IMP[k] = !!g.imp; });
+      g.en.forEach(function (k) { EN_GREETING[k] = g.w; EN_GREETING_IMP[k] = !!g.imp; });
     });
 
     function translateJa(text) {
@@ -753,11 +970,15 @@
       (text.match(/[^。！？!?]+[。！？!?]*|[。！？!?]+/g) || [text]).forEach(function (piece) {
         piece = piece.replace(/((?:いい|よい|いけない|いけません|ならない|なりません)(?:です|だ)?)[よね]+(?=[。！!]*$)/, '$1');
         var key = piece.replace(/[。！!、，,\s]/g, '');
-        if (JA_GREETING[key] && !/[？?]/.test(piece)) sentenceList.push({ greeting: JA_GREETING[key] });
+        var keyQ = key.replace(/[？?]/g, '');
+        if (GREETING_Q[keyQ]) sentenceList.push({ greeting: GREETING_Q[keyQ], question: true });
+        else if (key === 'いただきます') sentenceList.push({ raw: key });   // 提案005 Q3・010: 食事のあいさつは訳さない
+        else if (JA_GREETING[key] && !/[？?]/.test(piece)) sentenceList.push({ greeting: JA_GREETING[key], imp: JA_GREETING_IMP[key] });
         else splitJa(piece).forEach(function (sg) { sentenceList.push(sg); });
       });
       sentenceList.forEach(function (s) {
-        if (s.greeting) { parts.push([{ fragment: s.greeting.map(function (w) { return item(w); }), notes: notes }]); return; }
+        if (s.raw) { parts.push([{ fragment: [unknown(s.raw)], notes: notes }]); return; }
+        if (s.greeting) { parts.push([{ fragment: s.greeting.map(function (w) { return item(w); }), notes: notes, imperative: !!s.imp, question: !!s.question }]); return; }
         var toks = s.tokens.slice();
         var q = s.q;
         // 文頭の「はい」「いいえ」: jesu / no を先頭に置く（コンマで区切る）
@@ -1070,7 +1291,7 @@
 
     function startsNP(tok) {
       if (!tok) return false;
-      return !!(DETERMINERS[tok] || PRONOUNS[tok] || POSSESSIVES[tok] || /^[0-9]+$/.test(tok) || NUMWORDS[tok] !== undefined ||
+      return !!(/^cal__/.test(tok) || DETERMINERS[tok] || PRONOUNS[tok] || POSSESSIVES[tok] || /^[0-9]+$/.test(tok) || NUMWORDS[tok] !== undefined ||
         WH[tok] === 'wata' || tok === 'many' || tok === 'some' || findNoun(tok) || findAdj(tok) || tok === 'most');
     }
 
@@ -1102,6 +1323,7 @@
           break;
         }
         // 「how much」を一つの名詞句にまとめた語（aua mene）。translateEnTokens が作る
+        if (/^cal__/.test(tok)) { items = items.concat(words(tok.slice(5).split('_'))); cur.next(); sawHead = true; break; }
         if (tok === 'howmuch__') { items.push(item('aua'), item('mene')); cur.next(); sawHead = true; break; }
         if (DETERMINERS[tok]) { cur.next(); sawDet = true; continue; }
         if (POSSESSIVES[tok]) { items.push(item(POSSESSIVES[tok])); cur.next(); continue; }
@@ -1410,6 +1632,42 @@
       if (verb.form === 'past' && !ir.tense && !perfect) ir.tense = 'past';
       ir.verb = verb.e.w;
       var lemma = verb.lemma;
+      // 間接疑問（docs/proposals/009）: asked what I ate / know whether he comes → 節 + ka
+      var qWord = cur.peek();
+      var qRecipient = null;
+      if (QUESTION_EN[lemma] && OBJ_NOM[qWord] && cur.peek(1) && (cur.peek(1) === 'whether' || (WH[cur.peek(1)] && cur.peek(1) !== 'when'))) {
+        qRecipient = PRONOUNS[OBJ_NOM[qWord]];
+        cur.next();
+        qWord = cur.peek();
+      }
+      if (QUESTION_EN[lemma] && qWord && (qWord === 'whether' || (WH[qWord] && qWord !== 'when' && qWord !== 'which'))) {
+        var qRest = cur.t.slice(cur.i + 1);
+        var qSub = null;
+        if (qWord === 'whether') qSub = translateEnTokens(qRest, false, notes, {});
+        else if (clauseStartsAt(qRest, 0)) qSub = translateEnTokens(whFront(qWord, qRest), true, notes, {});
+        else qSub = translateEnTokens([qWord].concat(qRest), true, notes, {});
+        if (qSub) {
+          ir.object = generate(qSub).concat([item('ka')]);
+          if (qRecipient) ir.pps.push([item('tote'), item(qRecipient)]);
+          cur.i = cur.t.length;
+          return finishEn(ir, whWord, whMod);
+        }
+      }
+      // 間接命令・依頼（docs/proposals/009）: told me to V → juo mi sati V、asked me to V → tano、ordered me to V → olo
+      var cmdVerb = TELL_EN[lemma];
+      if (cmdVerb && byW[cmdVerb] && OBJ_NOM[cur.peek()]) {
+        var cmdNeg = cur.peek(1) === 'not';
+        if (cur.peek(cmdNeg ? 2 : 1) === 'to' && cur.peek(cmdNeg ? 3 : 2)) {
+          var cmdRest = cur.t.slice(cur.i + (cmdNeg ? 3 : 2));
+          var cmdSub = translateEnTokens([OBJ_NOM[cur.peek()], 'should'].concat(cmdNeg ? ['not'] : [], cmdRest), false, notes, {});
+          if (cmdSub) {
+            ir.verb = cmdVerb;
+            ir.object = generate(cmdSub);
+            cur.i = cur.t.length;
+            return finishEn(ir, whWord, whMod);
+          }
+        }
+      }
       if (COMPLEMENT_EN[lemma]) {
         var restTok = cur.t.slice(cur.i);
         var hasThat = restTok[0] === 'that';
@@ -1527,6 +1785,23 @@
     var AUX_START = { do: 1, does: 1, did: 1, is: 1, are: 1, am: 1, was: 1, were: 1, will: 1, can: 1, must: 1,
       may: 1, might: 1, should: 1, have: 1, has: 1, had: 1, would: 1 };
 
+    var QUESTION_EN = { ask: 1, know: 1, wonder: 1, remember: 1, forget: 1 };
+    var TELL_EN = { tell: 'juo', ask: 'tano', order: 'olo' };
+    var OBJ_NOM = { me: 'i', you: 'you', him: 'he', her: 'she', us: 'we', them: 'they' };
+    // 間接疑問の節（what he ate）を、直接疑問の語順（what did he eat）に直す
+    function whFront(wh, tokens) {
+      var cur = new Cursor(tokens);
+      var np = parseNP(cur, { notes: [] });
+      if (!np) return [wh].concat(tokens);
+      var subjTok = tokens.slice(0, cur.i);
+      var nx = cur.peek();
+      var rest = tokens.slice(cur.i + 1);
+      if (AUX_START[nx] || MODALS[nx] || BE[nx]) return [wh, nx].concat(subjTok, rest);
+      var v = nx ? findVerb(nx) : null;
+      if (!v) return [wh].concat(tokens);
+      return [wh, v.form === 'past' ? 'did' : (v.form === 's' ? 'does' : 'do')].concat(subjTok, [v.lemma], rest);
+    }
+
     var COMPLEMENT_EN = { think: 1, know: 1, believe: 1, say: 1, hope: 1, guess: 1, notice: 1 };
     // 従属接続語: その節の頭に付く（節の順序は原文のまま）
     var SUB_EN = { if: 'ipu', because: 'pikosu', since: 'pikosu', when: 'wenute', while: 'wailu', before: 'pipolu',
@@ -1585,6 +1860,44 @@
       });
     }
 
+    // 暦と時刻（docs/proposals/008）: 月の名前・o'clock・年を、Logi の語列を持つ 1 語（cal__ で始まる）にまとめる
+    var MONTHS = { january: 1, february: 2, march: 3, april: 4, may: 5, june: 6, july: 7, august: 8, september: 9,
+      october: 10, november: 11, december: 12 };
+    var CAL_PREPS = { in: 1, on: 1, of: 1, since: 1, until: 1, from: 1, during: 1, by: 1, before: 1, after: 1 };
+    function calToken(list) { return 'cal__' + list.join('_'); }
+    function rewriteEnCalendar(tokens) {
+      var out = [];
+      var isNum = function (t) { return t !== undefined && /^[0-9]+$/.test(t); };
+      for (var ti = 0; ti < tokens.length; ti++) {
+        var w0 = tokens[ti], w1 = tokens[ti + 1], w2 = tokens[ti + 2];
+        var prev = out[out.length - 1];
+        if (isNum(w0) && w1 === 'o' && w2 === 'clock') {
+          out.push(calToken(['ula'].concat(numberToLogi(parseInt(w0, 10))))); ti += 2; continue;
+        }
+        if (MONTHS[w0] && (w0 !== 'may' || CAL_PREPS[prev] || (ti === 0 && isNum(w1)))) {
+          var list = ['monata'].concat(numberToLogi(MONTHS[w0]));
+          var j = ti + 1;
+          var yearNum = null;
+          if (isNum(tokens[j]) && parseInt(tokens[j], 10) <= 31) {
+            list = list.concat(['teia'], numberToLogi(parseInt(tokens[j], 10)));
+            j++;
+            if (/^(st|nd|rd|th)$/.test(tokens[j] || '')) j++;
+            if (tokens[j] === ',' && isNum(tokens[j + 1]) && parseInt(tokens[j + 1], 10) >= 100) j++;
+          }
+          if (isNum(tokens[j]) && parseInt(tokens[j], 10) >= 100) { yearNum = parseInt(tokens[j], 10); j++; }
+          if (yearNum !== null) list = ['ila'].concat(numberToLogi(yearNum), list);
+          out.push(calToken(list));
+          ti = j - 1;
+          continue;
+        }
+        if (isNum(w0) && parseInt(w0, 10) >= 1000 && (prev === 'in' || prev === 'since' || prev === 'until' || prev === 'by')) {
+          out.push(calToken(['ila'].concat(numberToLogi(parseInt(w0, 10))))); continue;
+        }
+        out.push(w0);
+      }
+      return out;
+    }
+
     function translateEn(text) {
       var notes = [];
       var parts = [];
@@ -1594,10 +1907,12 @@
         if (!trimmed) return;
         var question = /\?$/.test(trimmed);
         var body = trimmed.replace(/[.!?]+$/, '');
-        var tokens = expandContractions(body).toLowerCase().match(/[a-z]+|[0-9]+|,/g) || [];
+        var tokens = rewriteEnCalendar(expandContractions(body).toLowerCase().match(/[a-z]+|[0-9]+|,/g) || []);
         // 日常のあいさつ（docs/proposals/005）: Good morning / Good night / Sorry / Excuse me / Thanks
-        var greet = !question && EN_GREETING[tokens.join(' ')];
-        if (greet) { parts.push([{ fragment: greet.map(function (w) { return item(w); }), notes: notes }]); return; }
+        var greetKey = tokens.join(' ');
+        var greet = !question && EN_GREETING[greetKey];
+        if (greet) { parts.push([{ fragment: greet.map(function (w) { return item(w); }), notes: notes, imperative: !!EN_GREETING_IMP[greetKey] }]); return; }
+        if (GREETING_Q[greetKey]) { parts.push([{ fragment: GREETING_Q[greetKey].map(function (w) { return item(w); }), notes: notes, question: true }]); return; }
         // 文頭の Yes / No / Hello / Goodbye / Please: jesu / no / kelosu / kupaju / pilisu を先頭に置く
         var answer = null;
         var lead = EN_INTERJ[tokens[0]];
@@ -1609,6 +1924,10 @@
           tokens = tokens.slice(0, -2);
         }
         if (answer && !tokens.length) { parts.push([{ fragment: [item(answer)], notes: notes }]); return; }
+        // 間接疑問の if は「かどうか」（条件の if ではない）: ask/know/wonder/remember/forget のあとの if → whether
+        tokens = tokens.map(function (w, ti) {
+          return w === 'if' && ti > 0 && /^(asks?|asked|knows?|knew|wonders?|wondered|remembers?|remembered|forgets?|forgot)$/.test(tokens[ti - 1]) ? 'whether' : w;
+        });
         // 平叙文の許可・禁止・不要（docs/proposals/006）: You may → can、You may not → must not、do not have to / need not → can not
         if (!question) {
           var enOut = [];

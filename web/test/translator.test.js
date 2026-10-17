@@ -17,8 +17,8 @@ function readCorpus() {
   });
 }
 
-// 日本語の入力として未対応の構文（使役・目的語の対比の「は」・くれる/あげる）
-const UNSUPPORTED_JA = new Set([19, 22, 26, 35]);
+// 日本語の入力として未対応の構文（使役・目的語の対比の「は」・くれる/あげる）と、英語から入れる願いの言葉（112〜114）
+const UNSUPPORTED_JA = new Set([19, 22, 26, 35, 112, 113, 114]);
 
 test('corpus: 対応する日本語の例文は例文集の Logi と一致する', () => {
   const failures = [];
@@ -482,4 +482,128 @@ test('間接命令の「〜ように言った」は、様態の kasolu にしな
     assert.ok(!/kasolu/.test(translator.translate(src, 'ja').logi), src);
   });
   assert.strictEqual(translator.translate('彼が言うように、私は行く。', 'ja').logi, 'kasolu li juo, mi iko.');
+});
+
+test('提案008: 暦と時刻（日本語）', () => {
+  const cases = [
+    ['3月5日です。', 'li pio monata te teia pe.'],
+    ['私は3時に起きる。', 'mi oko atute ula te.'],
+    ['午後2時30分に会う。', 'mito atute apuja ula to minuta te pulu.'],
+    ['水曜日に会う。', 'mito onute wetuna.'],
+    ['3月に行く。', 'iko inute monata te.'],
+    ['2026年3月5日に生まれた。', 'pasu poleno onute ila to mipulu ni kupulu to pulu so monata te teia pe.'],
+    ['私は毎週走る。', 'mi lano epule wika.'],
+    ['私は来年行く。', 'mi iko nete ila.'],
+    ['先週リンゴを食べた。', 'pasu ito apa sese wika.'],
+    ['毎週リンゴを食べる。', 'ito apa epule wika.'],
+  ];
+  cases.forEach(([src, logi]) => {
+    assert.strictEqual(translator.translate(src, 'ja').logi, logi, src);
+  });
+});
+
+test('提案008: 数 + 単位は数量のまま（3か月・3時間・5日・2年）', () => {
+  assert.strictEqual(translator.translate('3か月走る。', 'ja').logi, 'lano te muna.');
+  assert.strictEqual(translator.translate('3時間走る。', 'ja').logi, 'lano te taima.');
+  assert.strictEqual(translator.translate('2年走る。', 'ja').logi, 'lano to ila.');
+  assert.strictEqual(translator.translate('私は20歳です。', 'ja').logi, 'mi oto to pulu ila.');
+});
+
+test('提案008: 暦と時刻（英語）', () => {
+  const cases = [
+    ['I go in March.', 'mi iko inute monata te.'],
+    ["It is 3 o'clock.", 'li pio ula te.'],
+    ['It is March 5.', 'li pio monata te teia pe.'],
+    ['We meet on Wednesday.', 'misu mito onute wetuna.'],
+    ['I run every week.', 'mi lano epule wika.'],
+    ['I will go next year.', 'mi putu iko nete ila.'],
+    ['You may eat an apple.', 'tu kani ito apa.'],
+  ];
+  cases.forEach(([src, logi]) => {
+    assert.strictEqual(translator.translate(src, 'en').logi, logi, src);
+  });
+});
+
+test('提案009: 間接疑問（節 + ka）', () => {
+  const cases = [
+    ['彼は私が何を食べたか聞いた。', 'ja', 'li pasu asuko mi pasu ito wata ka.'],
+    ['私は彼が来るかどうか知らない。', 'ja', 'mi no mo li komo ka.'],
+    ['何を食べたか覚えていない。', 'ja', 'mi no upo pasu ito wata ka.'],
+    ['He asked what I ate.', 'en', 'li pasu asuko mi pasu ito wata ka.'],
+    ['I do not know whether he comes.', 'en', 'mi no mo li komo ka.'],
+    ['I know who ate an apple.', 'en', 'mi mo kua pasu ito apa ka.'],
+  ];
+  cases.forEach(([src, lang, logi]) => {
+    assert.strictEqual(translator.translate(src, lang).logi, logi, src);
+  });
+  // 「聞く」は、か の節がないときは聞こえる・聞く（oo）のまま
+  assert.strictEqual(translator.translate('先生に聞く。', 'ja').logi, 'oo tote titusa.');
+});
+
+test('提案009: 間接命令（sati）と引用の主語（selu）', () => {
+  const cases = [
+    ['彼は私にリンゴを食べるように言った。', 'ja', 'li pasu juo mi sati ito apa.'],
+    ['彼は私にリンゴを食べるように頼んだ。', 'ja', 'li pasu tano mi sati ito apa.'],
+    ['彼は私に行くなと言った。', 'ja', 'li pasu juo mi sati no iko.'],
+    ['彼は私に行かないように命じた。', 'ja', 'li pasu olo mi sati no iko.'],
+    ['彼は来ると言った。', 'ja', 'li pasu juo selu komo.'],
+    ['彼は私が来ると言った。', 'ja', 'li pasu juo mi komo.'],
+    ['He told me to eat an apple.', 'en', 'li pasu juo mi sati ito apa.'],
+    ['He told me not to go.', 'en', 'li pasu juo mi sati no iko.'],
+    ['He asked me to eat an apple.', 'en', 'li pasu tano mi sati ito apa.'],
+  ];
+  cases.forEach(([src, lang, logi]) => {
+    assert.strictEqual(translator.translate(src, lang).logi, logi, src);
+  });
+  // 様態の「ように」は kasolu のまま
+  assert.strictEqual(translator.translate('彼が言うように、私は行く。', 'ja').logi, 'kasolu li juo, mi iko.');
+});
+
+test('提案010: 敬語は意味だけ訳す', () => {
+  const cases = [
+    ['先生がおっしゃった。', 'titusa pasu juo.'],
+    ['お客様がいらっしゃいます。', 'kesuta alo.'],
+    ['召し上がってください。', 'pilisu, ito!'],
+    ['ご覧ください。', 'pilisu, sio!'],
+    ['お待ちください。', 'pilisu, mato!'],
+    ['ご確認ください。', 'pilisu, jejo!'],
+    ['私が参ります。', 'mi iko.'],
+    ['学校へいらっしゃいます。', 'iko tote sukula.'],
+    ['拝見しました。', 'pasu sio.'],
+    ['先生がなさった。', 'titusa pasu topo.'],
+    ['いらっしゃいませ。', 'weluko!'],
+    ['ごちそうさまでした。', 'mi tanako tu.'],
+    ['お願いします。', 'pilisu.'],
+    ['ジョンさんが来ます。', '[ジョン?] komo.'],
+  ];
+  cases.forEach(([src, logi]) => {
+    assert.strictEqual(translator.translate(src, 'ja').logi, logi, src);
+  });
+  // 食事のあいさつは訳さない（提案005 Q3）
+  assert.strictEqual(translator.translate('いただきます。', 'ja').logi, '[いただきます?].');
+});
+
+test('提案011: 日常のあいさつの続きと願いの言葉', () => {
+  const ja = [
+    ['こんばんは。', 'kute ipa.'],
+    ['お元気ですか？', 'tu pio miwe ka?'],
+    ['元気です。', 'mi pio miwe.'],
+  ];
+  ja.forEach(([src, logi]) => {
+    assert.strictEqual(translator.translate(src, 'ja').logi, logi, src);
+  });
+  const en = [
+    ['Good evening.', 'kute ipa.'],
+    ['Good afternoon.', 'kute apuja.'],
+    ['How are you?', 'tu pio miwe ka?'],
+    ['I am fine.', 'mi pio miwe.'],
+    ['Good luck.', 'kute luna!'],
+    ['Have a nice day.', 'kute teia!'],
+    ['See you tomorrow.', 'mi putu sio tu moloa.'],
+  ];
+  en.forEach(([src, logi]) => {
+    assert.strictEqual(translator.translate(src, 'en').logi, logi, src);
+  });
+  // 一般の形容詞だけの文には主語を補わない
+  assert.strictEqual(translator.translate('寒いです。', 'ja').logi, 'pio kole.');
 });

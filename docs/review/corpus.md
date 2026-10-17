@@ -95,6 +95,30 @@
 | 88 | purpose | mi iko tote sukula pote itona apa. | 私はリンゴを食べるために学校へ行く。 |
 | 89 | manner | kasolu li juo, mi iko. | 彼が言うように、私は行く。 |
 | 90 | contrast | mi ito, patu li neo. | 私は食べる一方で、彼は寝る。 |
+| 91 | calendar-date | li pio monata te teia pe. | 3月5日です。 |
+| 92 | calendar-clock | mi oko atute ula te. | 私は3時に起きる。 |
+| 93 | calendar-weekday | mito onute wetuna. | 水曜日に会う。 |
+| 94 | calendar-month | mi iko inute monata te. | 私は3月に行く。 |
+| 95 | time-every | mi lano epule wika. | 私は毎週走る。 |
+| 96 | time-next | mi iko nete ila. | 私は来年行く。 |
+| 97 | indirect-question | li pasu asuko mi pasu ito wata ka. | 彼は私が何を食べたか聞いた。 |
+| 98 | indirect-question | mi no mo li komo ka. | 私は彼が来るかどうか知らない。 |
+| 99 | indirect-command | li pasu juo mi sati ito apa. | 彼は私にリンゴを食べるように言った。 |
+| 100 | indirect-command | li pasu juo mi sati no iko. | 彼は私に行くなと言った。 |
+| 101 | quote-subject | li pasu juo selu komo. | 彼は来ると言った。 |
+| 102 | indirect-request | li pasu tano mi sati ito apa. | 彼は私にリンゴを食べるように頼んだ。 |
+| 103 | honorific-verb | titusa pasu juo. | 先生がおっしゃった。 |
+| 104 | honorific-verb | kesuta alo. | お客様がいらっしゃいます。 |
+| 105 | honorific-request | pilisu, ito! | 召し上がってください。 |
+| 106 | honorific-request | pilisu, mato! | お待ちください。 |
+| 107 | honorific-phrase | weluko! | いらっしゃいませ。 |
+| 108 | honorific-phrase | mi tanako tu. | ごちそうさまでした。 |
+| 109 | greeting-evening | kute ipa. | こんばんは。 |
+| 110 | greeting-how-are-you | tu pio miwe ka? | お元気ですか？ |
+| 111 | greeting-fine | mi pio miwe. | 元気です。 |
+| 112 | wish-luck | kute luna! | 幸運を。 |
+| 113 | wish-day | kute teia! | よい一日を。 |
+| 114 | farewell-tomorrow | mi putu sio tu moloa. | また明日会いましょう。 |
 
 ## 語注（辞書から機械的に生成）
 
@@ -278,3 +302,51 @@
   kasolu=ように（様態）(conj) li=彼/彼女/それ(pronoun) juo=言う(verb) mi=私(pronoun) iko=行く(verb)
 - **90** `mi ito, patu li neo.`  
   mi=私(pronoun) ito=食べる(verb) patu=しかし(conj) li=彼/彼女/それ(pronoun) neo=寝る(verb)
+- **91** `li pio monata te teia pe.`  
+  li=彼/彼女/それ(pronoun) pio=です(verb) monata=月（暦）(noun) te=3(num) teia=日(noun) pe=5(num)
+- **92** `mi oko atute ula te.`  
+  mi=私(pronoun) oko=起きる(verb) atute=で(prep) ula=時間（60分）(noun) te=3(num)
+- **93** `mito onute wetuna.`  
+  mito=会う(verb) onute=の上に(prep) wetuna=水曜日(noun)
+- **94** `mi iko inute monata te.`  
+  mi=私(pronoun) iko=行く(verb) inute=の中に(prep) monata=月（暦）(noun) te=3(num)
+- **95** `mi lano epule wika.`  
+  mi=私(pronoun) lano=走る(verb) epule=すべての(adj) wika=週(noun)
+- **96** `mi iko nete ila.`  
+  mi=私(pronoun) iko=行く(verb) nete=次の(adj) ila=年(noun)
+- **97** `li pasu asuko mi pasu ito wata ka.`  
+  li=彼/彼女/それ(pronoun) pasu=過去(marker) asuko=尋ねる(verb) mi=私(pronoun) pasu=過去(marker) ito=食べる(verb) wata=何(wh) ka=疑問(marker)
+- **98** `mi no mo li komo ka.`  
+  mi=私(pronoun) no=否定(marker) mo=知る(verb) li=彼/彼女/それ(pronoun) komo=来る(verb) ka=疑問(marker)
+- **99** `li pasu juo mi sati ito apa.`  
+  li=彼/彼女/それ(pronoun) pasu=過去(marker) juo=言う(verb) mi=私(pronoun) sati=べき(adv) ito=食べる(verb) apa=リンゴ(noun)
+- **100** `li pasu juo mi sati no iko.`  
+  li=彼/彼女/それ(pronoun) pasu=過去(marker) juo=言う(verb) mi=私(pronoun) sati=べき(adv) no=否定(marker) iko=行く(verb)
+- **101** `li pasu juo selu komo.`  
+  li=彼/彼女/それ(pronoun) pasu=過去(marker) juo=言う(verb) selu=自分（再帰）(pronoun) komo=来る(verb)
+- **102** `li pasu tano mi sati ito apa.`  
+  li=彼/彼女/それ(pronoun) pasu=過去(marker) tano=頼む(verb) mi=私(pronoun) sati=べき(adv) ito=食べる(verb) apa=リンゴ(noun)
+- **103** `titusa pasu juo.`  
+  titusa=先生(noun) pasu=過去(marker) juo=言う(verb)
+- **104** `kesuta alo.`  
+  kesuta=客(noun) alo=ある(verb)
+- **105** `pilisu, ito!`  
+  pilisu=どうぞ(interj) ito=食べる(verb)
+- **106** `pilisu, mato!`  
+  pilisu=どうぞ(interj) mato=待つ(verb)
+- **107** `weluko!`  
+  weluko=迎える(verb)
+- **108** `mi tanako tu.`  
+  mi=私(pronoun) tanako=感謝する(verb) tu=あなた(pronoun)
+- **109** `kute ipa.`  
+  kute=良い(adj) ipa=夕方(noun)
+- **110** `tu pio miwe ka?`  
+  tu=あなた(pronoun) pio=です(verb) miwe=元気な(adj) ka=疑問(marker)
+- **111** `mi pio miwe.`  
+  mi=私(pronoun) pio=です(verb) miwe=元気な(adj)
+- **112** `kute luna!`  
+  kute=良い(adj) luna=運(noun)
+- **113** `kute teia!`  
+  kute=良い(adj) teia=日(noun)
+- **114** `mi putu sio tu moloa.`  
+  mi=私(pronoun) putu=未来(marker) sio=見る(verb) tu=あなた(pronoun) moloa=明日(noun)
