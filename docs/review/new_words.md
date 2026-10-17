@@ -7,7 +7,7 @@
 - 語幹が同じ: 語尾の1文字だけが違う、別の品詞の語（例: `kuka` 名詞と `kuko` 動詞）。同じ英語の別品詞なら意図した組です。そうでなければ偶然の一致なので、見分けにくくないか見てください
 - 同じ英語の語: 同じ英語の訳を持つ、別の語（同義語の候補）
 
-確認済み(ok): 1164 / 要修正(fix): 6 / 未確認(draft): 0
+確認済み(ok): 1164 / 要修正(fix): 6 / 未確認(draft): 50
 
 ## v0.7 英検3級レベルの語（487語）
 
@@ -1132,9 +1132,9 @@
 |---|---|---|---|---|
 | onapi | オンラインで | online |  | ok |
 
-## Antigravity の追加語（dictionary/anti_additions.csv）（117語）
+## Antigravity の追加語（dictionary/anti_additions.csv）（167語）
 
-### noun（43語）
+### noun（93語）
 
 | Logi | 日本語 | 英語 | 手がかり | 状況 |
 |---|---|---|---|---|
@@ -1181,6 +1181,56 @@
 | powula | 乗車 | boarding |  | ok |
 | pawusa | ボールペン | ballpoint |  | 要修正 Claude【修正推奨】既存の pena（ペン）と意味が重なる（ボールペンはペンの一種）。削除して pena で言うのがよい（WORKFLOW §2 の手順1） |
 | jikia | 億 | billion |  | 要修正 Claude【修正推奨】億は10の8乗（100 million）。billion は10の9乗で意味が違う。英語に1語がないため、削除して kupulu mimia（100×百万）で言うのがよい |
+| kipoma | キロメートル | kilometer / kilometre |  |  |
+| milima | ミリメートル | millimeter / millimetre |  |  |
+| kikoka | キログラム | kilogram / kilo |  |  |
+| litapa | リットル | liter / litre |  |  |
+| pepuka | パーセント | percent / percentage |  |  |
+| pokuwa | 狐 | fox |  |  |
+| sunaka | 蛇 | snake / serpent |  |  |
+| muloma | 蛙 | frog / toad |  |  |
+| tujuka | 亀 | turtle / tortoise |  |  |
+| kusawa | 蟹 | crab |  |  |
+| salima | 蝦 | shrimp / prawn / lobster |  |  |
+| okiwa | 蛸 | octopus |  |  |
+| sujia | 烏賊 | squid / cuttlefish |  |  |
+| selapa | 貝 | shellfish / clam / seashell |  |  |
+| kapuna | 鯉 | carp |  |  |
+| kilula | 金魚 | goldfish |  |  |
+| sapala | 雀 | sparrow |  |  |
+| jipea | 鳩 | pigeon / dove |  |  |
+| wulala | 鶴 | crane |  |  |
+| nutela | 蝶 | butterfly |  |  |
+| mosuma | 蚊 | mosquito |  |  |
+| sotuma | 苺 | strawberry |  |  |
+| julawa | 葡萄 | grape / grapes |  |  |
+| pekuma | 柿 | persimmon |  |  |
+| julula | 梅 | plum / apricot |  |  |
+| watila | 西瓜 | watermelon |  |  |
+| lemona | レモン | lemon |  |  |
+| panama | バナナ | banana |  |  |
+| katota | 人参 | carrot |  |  |
+| latika | 大根 | radish |  |  |
+| kapama | キャベツ | cabbage |  |  |
+| tukala | 葱 | scallion / leek / onion |  |  |
+| musula | 茸 | mushroom / fungus |  |  |
+| umona | 饂飩 | udon / noodle |  |  |
+| sokola | チョコレート | chocolate |  |  |
+| nisuka | ビスケット | biscuit / cookie / cracker |  |  |
+| muima | ジュース | juice |  |  |
+| pinaka | 酢 | vinegar |  |  |
+| silisa | 菊 | chrysanthemum |  |  |
+| pimupa | 竹 | bamboo |  |  |
+| susema | 茎 | stem / stalk |  |  |
+| tumula | 幹 | trunk |  |  |
+| mutuka | 藁 | straw / hay |  |  |
+| wapela | 滝 | waterfall / cascade |  |  |
+| pukeka | 平野 | plain / prairie |  |  |
+| ojuka | 沖 | offshore / offing |  |  |
+| lenopa | 虹 | rainbow |  |  |
+| lulona | 霜 | frost |  |  |
+| tusopa | 雫 | droplet |  |  |
+| pipuwa | 泡 | bubble / foam / froth |  |  |
 
 ### verb（51語）
 
