@@ -7,7 +7,7 @@
 - 語幹が同じ: 語尾の1文字だけが違う、別の品詞の語（例: `kuka` 名詞と `kuko` 動詞）。同じ英語の別品詞なら意図した組です。そうでなければ偶然の一致なので、見分けにくくないか見てください
 - 同じ英語の語: 同じ英語の訳を持つ、別の語（同義語の候補）
 
-確認済み(ok): 1164 / 要修正(fix): 6 / 未確認(draft): 150
+確認済み(ok): 1164 / 要修正(fix): 6 / 未確認(draft): 200
 
 ## v0.7 英検3級レベルの語（487語）
 
@@ -1132,9 +1132,9 @@
 |---|---|---|---|---|
 | onapi | オンラインで | online |  | ok |
 
-## Antigravity の追加語（dictionary/anti_additions.csv）（267語）
+## Antigravity の追加語（dictionary/anti_additions.csv）（317語）
 
-### noun（193語）
+### noun（219語）
 
 | Logi | 日本語 | 英語 | 手がかり | 状況 |
 |---|---|---|---|---|
@@ -1331,8 +1331,34 @@
 | lelana | 親戚 | relative / kin / kinsfolk |  |  |
 | lekama | 推薦 | recommendation / endorsement |  |  |
 | nolita | 政治 | politics |  |  |
+| manuna | 製造 | manufacture |  |  |
+| pesila | 設備 | facility / equipment |  |  |
+| sujeka | 専門 | specialty |  |  |
+| oweka | 組織 | organization |  |  |
+| nolesa | 知識 | knowledge |  |  |
+| nulowa | 地方 | province / region / district |  |  |
+| weopa | 地理 | geography |  |  |
+| kotesa | 訂正 | correction / revision |  |  |
+| wuloja | 発音 | pronunciation |  |  |
+| jutuma | 判断 | judgment / judgement |  |  |
+| pajima | 病人 | patient / invalid |  |  |
+| soloka | 不足 | shortage / deficiency / scarcity |  |  |
+| pisapa | 物理 | physics |  |  |
+| kukema | 文法 | grammar / syntax |  |  |
+| pomisa | 方針 | policy / guideline |  |  |
+| mekula | 募集 | recruitment |  |  |
+| puseja | 保存 | preservation / conservation / storage |  |  |
+| tujawa | 翻訳 | translation |  |  |
+| salesa | 魅力 | charm / appeal / attraction |  |  |
+| pijina | 友情 | friendship |  |  |
+| imoja | 輸入 | import |  |  |
+| temawa | 要求 | demand / claim |  |  |
+| lutaka | 予算 | budget |  |  |
+| kopasa | 良心 | conscience |  |  |
+| teoja | 理論 | theory |  |  |
+| tesosa | 論文 | thesis / treatise / dissertation |  |  |
 
-### verb（51語）
+### verb（75語）
 
 | Logi | 日本語 | 英語 | 手がかり | 状況 |
 |---|---|---|---|---|
@@ -1387,6 +1413,30 @@
 | minuko | 交じる | mingle / blend |  | ok |
 | sukino | 回る | spin / revolve |  | ok |
 | suseno | 汚れる | stain |  | ok Claude【任意】汚れる = get dirty。stain は印をつける意味に寄る。soil（動詞は未使用）が近い |
+| unilo | 降ろす | unload |  |  |
+| pekano | 招く | beckon / summon |  |  |
+| lapiso | 改める | revise / reform / amend |  |  |
+| sukumo | 掻く | scratch / scrape |  |  |
+| pumamo | 責める | blame / condemn / reproach |  |  |
+| ejapo | 経つ | elapse |  |  |
+| pusuko | 弾く | pluck / strum |  |  |
+| tumato | 呆れる | dumbfound / appall |  |  |
+| jilupo | 憧れる | yearn / aspire |  |  |
+| opato | 溢れる | overflow / brim |  |  |
+| lesepo | 恨む | resent / grudge |  |  |
+| ukupo | 追い出す | expel / oust / evict |  |  |
+| setuto | 落ち着く | settle |  |  |
+| tupono | 溺れる | drown |  |  |
+| alowo | 固まる | harden / solidify / congeal |  |  |
+| minapo | 刻む | mince / chop / carve |  |  |
+| temopo | 崩す | demolish |  |  |
+| sumuwo | 砕く | smash / pulverize |  |  |
+| aseto | 組み立てる | assemble |  |  |
+| sakupo | 汲む | scoop / ladle / dip |  |  |
+| sunolo | 焦げる | scorch / char |  |  |
+| sipilo | 零す | spill / slop |  |  |
+| lusuto | 錆びる | rust / corrode / tarnish |  |  |
+| sujuo | 絞る | squeeze / wring |  |  |
 
 ### adj（16語）
 
