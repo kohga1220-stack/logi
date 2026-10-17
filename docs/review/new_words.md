@@ -7,7 +7,7 @@
 - 語幹が同じ: 語尾の1文字だけが違う、別の品詞の語（例: `kuka` 名詞と `kuko` 動詞）。同じ英語の別品詞なら意図した組です。そうでなければ偶然の一致なので、見分けにくくないか見てください
 - 同じ英語の語: 同じ英語の訳を持つ、別の語（同義語の候補）
 
-確認済み(ok): 1164 / 要修正(fix): 6 / 未確認(draft): 200
+確認済み(ok): 1164 / 要修正(fix): 6 / 未確認(draft): 250
 
 ## v0.7 英検3級レベルの語（487語）
 
@@ -1132,7 +1132,7 @@
 |---|---|---|---|---|
 | onapi | オンラインで | online |  | ok |
 
-## Antigravity の追加語（dictionary/anti_additions.csv）（317語）
+## Antigravity の追加語（dictionary/anti_additions.csv）（367語）
 
 ### noun（219語）
 
@@ -1358,7 +1358,7 @@
 | teoja | 理論 | theory |  |  |
 | tesosa | 論文 | thesis / treatise / dissertation |  |  |
 
-### verb（75語）
+### verb（104語）
 
 | Logi | 日本語 | 英語 | 手がかり | 状況 |
 |---|---|---|---|---|
@@ -1437,8 +1437,37 @@
 | sipilo | 零す | spill / slop |  |  |
 | lusuto | 錆びる | rust / corrode / tarnish |  |  |
 | sujuo | 絞る | squeeze / wring |  |  |
+| pelamo | 染みる | permeate / seep |  |  |
+| tamuko | 湿る | dampen / moisten |  |  |
+| ikuno | 優れる | excel |  |  |
+| imuso | 迫る | impend / loom |  |  |
+| epeo | 備える | equip / furnish |  |  |
+| kuwuto | 耕す | cultivate / plow / till |  |  |
+| salino | 縮む | shrink |  |  |
+| komano | 通じる | communicate |  |  |
+| tetoto | 尽くす | devote / dedicate |  |  |
+| sususo | 躓く | stumble |  |  |
+| pinulo | 摘む | pinch |  |  |
+| anepo | 釣る | angle |  |  |
+| pinato | 綴じる | bind / staple |  |  |
+| koluso | 慰める | console / comfort / soothe |  |  |
+| susalo | 怠ける | slack / shirk / laze |  |  |
+| kupolo | 這う | crawl / creep |  |  |
+| pomito | 吐く | vomit / exhale |  |  |
+| enomo | 励ます | encourage |  |  |
+| sewelo | 膨れる | swell / bulge / inflate |  |  |
+| paloko | 塞ぐ | block / obstruct |  |  |
+| mululo | 殖やす | multiply |  |  |
+| tuleto | 震える | tremble / shiver / shudder / quiver |  |  |
+| eneno | 任せる | entrust / delegate |  |  |
+| imipo | 真似る | imitate / mimic |  |  |
+| tisimo | 乱れる | dishevel |  |  |
+| lipeno | 実る | ripen / fructify |  |  |
+| waluto | 歪む | warp / distort |  |  |
+| jilato | 譲る | yield / cede |  |  |
+| luseko | 緩む | loosen / slacken |  |  |
 
-### adj（16語）
+### adj（37語）
 
 | Logi | 日本語 | 英語 | 手がかり | 状況 |
 |---|---|---|---|---|
@@ -1458,6 +1487,27 @@
 | ateke | 憎い | hateful / odious / detestable |  | ok |
 | soiwe | めでたい | joyful / joyous / auspicious |  | ok |
 | unele | 無理な | unreasonable / excessive |  | ok |
+| nosute | 懐かしい | nostalgic |  |  |
+| pumase | 派手な | flashy / gaudy / showy |  |  |
+| sopepe | 地味な | sober / subdued |  |  |
+| tikule | くすぐったい | ticklish |  |  |
+| opeme | 素直な | obedient |  |  |
+| pukane | 率直な | frank / candid / straightforward |  |  |
+| kalote | 暢気な | carefree / easygoing |  |  |
+| silune | 朗らかな | cheerful / merry / sunny |  |  |
+| tasule | 眩しい | dazzling / glaring |  |  |
+| ukune | 醜い | ugly / unsightly / hideous |  |  |
+| wasuke | 勿体ない | wasteful |  |  |
+| pukite | 脆い | brittle / fragile / frail |  |  |
+| apone | 豊かな | abundant / plentiful / affluent |  |  |
+| susume | 怪しい | suspicious / dubious / fishy |  |  |
+| ewute | 慌ただしい | hectic / hurried |  |  |
+| unoke | 意外な | unexpected / surprising |  |  |
+| amune | 異常な | abnormal / unusual |  |  |
+| koake | 臆病な | cowardly / timid |  |  |
+| penote | 幽かな | faint / dim / vague |  |  |
+| lopete | 可愛らしい | lovely / adorable |  |  |
+| katue | 気軽な | casual / lighthearted |  |  |
 
 ### adv（7語）
 
