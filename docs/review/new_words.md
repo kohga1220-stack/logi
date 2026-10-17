@@ -1167,20 +1167,20 @@
 | owopa | 相手 | opponent / rival |  |  |
 | pujuma | 岩 | boulder / crag |  |  |
 | losuta | 遠慮 | restraint / modesty / reserve |  |  |
-| simapa | 気の毒 | sympathy / compassion |  |  |
-| kusoma | 下駄 | clogs / clog |  |  |
+| simapa | 気の毒 | sympathy / compassion |  | Claude【修正推奨】気の毒は pity/unfortunate に近く sympathy（同情）は違う。pity は wita（残念）が使用中。見出し語の再検討か削除 |
+| kusoma | 下駄 | clogs / clog |  | Claude【任意】見出し語は単数 clog が自然（clogs は別名に） |
 | wonuja | 承知 | consent / assent |  |  |
-| wateta | 水道 | waterworks / plumbing / tap / faucet |  |  |
+| wateta | 水道 | waterworks / plumbing / tap / faucet |  | Claude【任意】waterworks はまれ。水道 = tap/water supply。見出し語は tap が自然 |
 | tuneta | 性質 | trait / property / quality |  |  |
-| omoma | ついで | opportunity |  |  |
-| monosa | 梅雨 | monsoon |  |  |
+| omoma | ついで | opportunity |  | Claude【任意】ついで = incidentally/occasion。opportunity は tana（チャンス）と近い |
+| monosa | 梅雨 | monsoon |  | Claude【任意】梅雨 = rainy season。monsoon はより広い意味 |
 | peloma | 得 | profit / gain / benefit / advantage |  |  |
 | aseja | 上り | ascent / uphill |  |  |
 | sulaja | 周り | surroundings / perimeter / circumference |  |  |
-| ejisa | 以外 | exception |  |  |
+| ejisa | 以外 | exception |  | Claude【修正推奨】以外は「〜のほかに・〜を除いて」（except/besides）で、exception（例外）とは違う。前置詞に近く機能語のため、削除か Claude/M1ko の設計に回す |
 | powula | 乗車 | boarding |  |  |
-| pawusa | ボールペン | ballpoint |  |  |
-| jikia | 億 | billion |  |  |
+| pawusa | ボールペン | ballpoint |  | Claude【修正推奨】既存の pena（ペン）と意味が重なる（ボールペンはペンの一種）。削除して pena で言うのがよい（WORKFLOW §2 の手順1） |
+| jikia | 億 | billion |  | Claude【修正推奨】億は10の8乗（100 million）。billion は10の9乗で意味が違う。英語に1語がないため、削除して kupulu mimia（100×百万）で言うのがよい |
 
 ### verb（51語）
 
@@ -1213,30 +1213,30 @@
 | atijo | 慣れる | adapt |  | ok Claude: 英語の見出し語は get used to に近く adapt は適応するに寄る（任意） |
 | otumo | 感心する | admire |  | ok |
 | suwuno | 揺れる | swing |  | ok Claude: 英語の見出し語は sway か shake のほうが近い（任意） |
-| kunano | 与える | grant / bestow / provide |  |  |
+| kunano | 与える | grant / bestow / provide |  | Claude【任意】既存の kipo（give/keep。保つ与える）と近い。与える = give/grant の整理は M1ko の判断 |
 | tukano | 移す | transfer / shift |  |  |
-| pupito | 飼う | breed |  |  |
+| pupito | 飼う | breed |  | Claude【修正推奨】飼うは keep/raise の意味。breed は繁殖させる。見出し語は rear が近い（rear は未使用） |
 | onelo | 重なる | overlap |  |  |
 | satako | 重ねる | stack / layer |  |  |
 | ejumo | 切れる | expire / snap |  |  |
 | talupo | 暮れる | darken |  |  |
 | ewuno | 越える | exceed / surpass |  |  |
-| sanelo | 壊れる | shatter / crumble / malfunction |  |  |
+| sanelo | 壊れる | shatter / crumble / malfunction |  | Claude【任意】壊れるに shatter は強すぎる（粉々になる）。break は puleko が使用中。crumble か malfunction を見出し語に |
 | temulo | 下がる | decline |  |  |
-| pakako | 空く | vacate |  |  |
+| pakako | 空く | vacate |  | Claude【修正推奨】空くは become empty/free。vacate は他動詞（空にする）で意味がずれる。見出し語は empty（動詞は未使用）が近い |
 | kopumo | 済む | conclude |  |  |
 | amiko | 揃える | align |  |  |
 | kinumo | 焚く | kindle |  |  |
 | tepato | 出掛ける | depart |  |  |
-| piluko | 通す | pierce / penetrate |  |  |
+| piluko | 通す | pierce / penetrate |  | Claude【任意】通すの主な意味は let pass/see through。pierce（突き通す）は一部の意味だけ |
 | uneko | 解く | untie / unravel / unfasten |  |  |
 | alujo | 止める | halt / detain |  |  |
-| pilito | 晴れる | brighten |  |  |
+| pilito | 晴れる | brighten |  | Claude【任意】晴れる = clear up（天気）。brighten より clear（動詞は未使用）が近い |
 | tuwako | 引っ張る | drag / tug / haul |  |  |
 | etuwo | 広がる | expand / widen |  |  |
 | minuko | 交じる | mingle / blend |  |  |
 | sukino | 回る | spin / revolve |  |  |
-| suseno | 汚れる | stain |  |  |
+| suseno | 汚れる | stain |  | Claude【任意】汚れる = get dirty。stain は印をつける意味に寄る。soil（動詞は未使用）が近い |
 
 ### adj（16語）
 
@@ -1252,9 +1252,9 @@
 | kumute | 曇った | cloudy |  | ok |
 | pelume | 縦の | vertical |  | ok |
 | tisape | がっかりした | disappointed |  | ok |
-| elie | 勇ましい | heroic / gallant / valiant |  |  |
+| elie | 勇ましい | heroic / gallant / valiant |  | Claude【任意】勇敢な pulepe と意味が近い（勇ましい≒勇敢） |
 | atome | 偉い | admirable / noble / distinguished |  |  |
-| lekule | 惜しい | regrettable |  |  |
+| lekule | 惜しい | regrettable |  | Claude【任意】残念 wita（pity）と意味が近い |
 | ateke | 憎い | hateful / odious / detestable |  |  |
 | soiwe | めでたい | joyful / joyous / auspicious |  |  |
 | unele | 無理な | unreasonable / excessive |  |  |
@@ -1268,8 +1268,8 @@
 | ituti | なるほど | indeed |  | ok |
 | kalali | うっかり | carelessly |  | ok |
 | pulemi | なるべく | preferably |  | ok |
-| puluni | なお | furthermore |  |  |
-| nameli | つまり | namely / briefly / shortly |  |  |
+| puluni | なお | furthermore |  | Claude【任意】なお は接続詞に近い（furthermore）。接続詞は機能語のため Claude/M1ko の設計 |
+| nameli | つまり | namely / briefly / shortly |  | Claude【任意】つまり は接続詞に近い（namely）。接続詞は機能語のため Claude/M1ko の設計 |
 
 ## v0.10 機能語（指示詞・はい／いいえ）（3語）
 
