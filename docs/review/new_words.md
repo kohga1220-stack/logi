@@ -7,7 +7,7 @@
 - 語幹が同じ: 語尾の1文字だけが違う、別の品詞の語（例: `kuka` 名詞と `kuko` 動詞）。同じ英語の別品詞なら意図した組です。そうでなければ偶然の一致なので、見分けにくくないか見てください
 - 同じ英語の語: 同じ英語の訳を持つ、別の語（同義語の候補）
 
-確認済み(ok): 1164 / 要修正(fix): 6 / 未確認(draft): 100
+確認済み(ok): 1164 / 要修正(fix): 6 / 未確認(draft): 150
 
 ## v0.7 英検3級レベルの語（487語）
 
@@ -1132,9 +1132,9 @@
 |---|---|---|---|---|
 | onapi | オンラインで | online |  | ok |
 
-## Antigravity の追加語（dictionary/anti_additions.csv）（217語）
+## Antigravity の追加語（dictionary/anti_additions.csv）（267語）
 
-### noun（143語）
+### noun（193語）
 
 | Logi | 日本語 | 英語 | 手がかり | 状況 |
 |---|---|---|---|---|
@@ -1281,6 +1281,56 @@
 | tolama | 寮 | dormitory / dorm |  |  |
 | pajuwa | 床屋 | barbershop / barber |  |  |
 | muleka | 運動場 | playground |  |  |
+| lalusa | 駐車場 | parking |  |  |
+| papasa | 広場 | plaza / piazza |  |  |
+| setoa | 歩道 | sidewalk / pavement / footpath |  |  |
+| leloka | 線路 | railroad / track |  |  |
+| tunola | トンネル | tunnel |  |  |
+| emena | エレベーター | elevator / lift |  |  |
+| kowala | 襟 | collar / lapel |  |  |
+| solipa | 袖 | sleeve |  |  |
+| sewima | 水着 | swimsuit / swimwear |  |  |
+| wujusa | ブラウス | blouse |  |  |
+| wulipa | スリッパ | slipper / slippers |  |  |
+| mekea | 化粧 | makeup / cosmetics |  |  |
+| kanoka | 蝋燭 | candle |  |  |
+| julija | 煉瓦 | brick |  |  |
+| kuneka | コンクリート | concrete / cement |  |  |
+| kasosa | ガソリン | gasoline / petrol |  |  |
+| etija | エンジン | engine / motor |  |  |
+| pekaka | ブレーキ | brake / brakes |  |  |
+| lenesa | レンズ | lens |  |  |
+| tenoka | テント | tent |  |  |
+| tiluja | 太鼓 | drum / tambourine |  |  |
+| luputa | 笛 | flute / whistle / fife |  |  |
+| jiopa | バイオリン | violin / fiddle |  |  |
+| suwosa | 刀 | sword / katana |  |  |
+| wiluma | 意志 | willpower / volition |  |  |
+| mioma | 違反 | violation / infringement / breach |  |  |
+| tipola | 外交 | diplomacy |  |  |
+| utapa | 外出 | outing / excursion |  |  |
+| kokepa | 会話 | conversation / dialogue |  |  |
+| ajapa | 学問 | academics |  |  |
+| woleta | 価値 | worth / merit |  |  |
+| solala | 給料 | salary / wage |  |  |
+| nupoa | 禁止 | prohibition / ban |  |  |
+| tenama | 傾向 | tendency / trend / inclination |  |  |
+| letila | 研究 | research / investigation |  |  |
+| iwosa | 検査 | inspection |  |  |
+| ejewa | 効果 | effect / effectiveness / efficacy |  |  |
+| sipula | 郊外 | suburb / suburbs / outskirts |  |  |
+| misana | 誤解 | misunderstanding |  |  |
+| nasusa | 国籍 | nationality / citizenship |  |  |
+| talela | 才能 | talent / aptitude |  |  |
+| sotisa | 刺激 | stimulus / stimulation |  |  |
+| uwema | 失業 | unemployment |  |  |
+| lilika | 宗教 | religion / faith |  |  |
+| tokuka | 主義 | doctrine / principle |  |  |
+| nupuka | 出版 | publishing / publication |  |  |
+| jukupa | 証明 | proof / certification |  |  |
+| lelana | 親戚 | relative / kin / kinsfolk |  |  |
+| lekama | 推薦 | recommendation / endorsement |  |  |
+| nolita | 政治 | politics |  |  |
 
 ### verb（51語）
 
