@@ -108,7 +108,7 @@ logi/
 ├── web/
 │   └── index.html          Translator page (Japanese/English → Logi) / 翻訳機（see web/README.md）
 ├── corpus/
-│   └── examples.csv        114 example sentences by grammar feature / 機能別例文114文
+│   └── examples.csv        123 example sentences by grammar feature / 機能別例文123文
 ├── dictionary/
 │   ├── final.csv           2,780-word validated dictionary / 検証済み辞書2,780語
 │   ├── eiken3_additions.csv  Eiken grade-3 level word list added in v0.7 / 英検3級レベルの追加語リスト
@@ -160,6 +160,8 @@ logi/
 | v0.18 | Indirect questions and commands — decided in `docs/proposals/009`: clause + `ka` (`li pasu asuko mi pasu ito wata ka.`), commands via `sati` (`li pasu juo mi sati ito apa.`), same-person subject `selu`; the translator handles them; no new words, 1,745 words |
 | v0.19 | Honorifics — decided in `docs/proposals/010`: no levels of politeness; honorific verbs map to the plain verb (*おっしゃる* = `juo`), お/ご/さん/様 are dropped, *お待ちください* = `pilisu, mato!`, *いらっしゃいませ* = `weluko!`; the translator handles Japanese honorifics; no new words, 1,745 words |
 | v0.20 | Daily phrases — decided in `docs/proposals/011`: *Good evening* = `kute ipa.`, *How are you?* = `tu pio miwe ka?`, *Good luck* = `kute luna!`, *See you tomorrow* = `mi putu sio tu moloa.`; the translator handles them; no new words, 1,745 words |
+| v0.21 | Counters, ordinals and units — decided in `docs/proposals/013` (M1ko left it to Claude; option A): counters are dropped (`mi ito te apa.`), ordinals = noun + `semuna` + number (`usa semuna te.`), times = `te taima`, units = number + unit word (`to litapa jeta.`); the translator handles them; no new words |
+| v0.22 | Comparison, continued — decided in `docs/proposals/014` (option A): equal = `pio seme ADJ tote X`, verb comparison = `moli ADV tanute X` after the verb, superlative range = `inute`; the translator handles them; no new words |
 
 ---
 
