@@ -1897,10 +1897,10 @@
 | mutiwa | ステーキ | steak |  |  |
 | sijika | ステッカー | sticker |  |  |
 | lutowa | ストップウォッチ | stopwatch |  |  |
-| lumika | スパイク | spike |  |  |
+| lumika | スパイク | spike |  | Claude【任意】スパイク は spike（釘）と 靴の spikes の2つの意味。文脈で決まる |
 | somopa | スモッグ | smog |  |  |
 | tamila | スリル | thrill |  |  |
-| sejela | セルロイド | celluloid |  |  |
+| sejela | セルロイド | celluloid |  | Claude【任意】celluloid はまれ。セルロイド は日本語でも限られた語（日用品の素材）。現状維持でもよい |
 | sewota | セロハン | cellophane |  |  |
 | sosaja | ソーセージ | sausage |  |  |
 | sowesa | ソケット | socket |  |  |
@@ -1919,7 +1919,7 @@
 | ninipa | パイナップル | pineapple |  |  |
 | jasea | バザー | bazaar |  |  |
 | watusa | バドミントン | badminton |  |  |
-| wanita | バンド | band |  |  |
+| wanita | バンド | band |  | Claude【任意】バンド は band が近いが、英語の band は 楽団・帯・ゴム輪 の複数の意味（ベルト・紐 とも近い）。文脈で決まる |
 | miketa | ビーカー | beaker |  |  |
 | ninuwa | ピーナッツ | peanut |  |  |
 | nanepa | ファンファーレ | fanfare |  |  |
@@ -1949,15 +1949,15 @@
 | sesama | 胡麻 | sesame |  |  |
 | tinowa | 恐竜 | dinosaur |  |  |
 | mewoa | 隕石 | meteorite |  |  |
-| wumeta | 操り人形 | puppet |  |  |
+| wumeta | 操り人形 | puppet |  | Claude【任意】操り人形 は marionette が近い。puppet は人形全般（toma 人形 と近い） |
 | kinola | 銀杏 | ginkgo |  |  |
 | winima | 風車 | windmill |  |  |
 | potija | 粥 | porridge |  |  |
 | lasana | 木苺 | raspberry |  |  |
 | mujipa | 桑 | mulberry |  |  |
 | linosa | 犀 | rhinoceros |  |  |
-| pekowa | 蕎麦 | buckwheat |  |  |
-| numuja | 団子 | dumpling |  |  |
+| pekowa | 蕎麦 | buckwheat |  | Claude【任意】蕎麦 は buckwheat（植物）と soba（麺）の両方。buckwheat は麺の意味を含まない |
+| numuja | 団子 | dumpling |  | Claude【任意】団子 は dango。dumpling は餃子や小麦の団子も指し、意味が広い |
 | jeoma | 牡丹 | peony |  |  |
 | kiwipa | めだか | killifish |  |  |
 | wamapa | 山葵 | wasabi |  |  |
@@ -2330,7 +2330,7 @@
 | anake | 古代の | ancient |  |  |
 | oline | 水平な | horizontal |  |  |
 | metape | 中世の | medieval |  |  |
-| pakupe | 照れ臭い | bashful |  |  |
+| pakupe | 照れ臭い | bashful |  | Claude【任意】照れ臭い は embarrassed/shy が近い。bashful は「恥ずかしがりの」性質 |
 | motele | 近代の | modern |  |  |
 | temute | 臨時の | temporary |  |  |
 | pelete | 永久の | permanent |  |  |
