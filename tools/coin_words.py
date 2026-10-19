@@ -148,6 +148,27 @@ def variants(stem):
                             yield cand
 
 
+def deeper_variants(stem):
+    """stem の3か所を変えた候補（variants で足りないときだけ使う）。"""
+    seen = {stem}
+    n = len(stem)
+    for p1 in range(n - 1, -1, -1):
+        for p2 in range(p1 - 1, -1, -1):
+            for p3 in range(p2 - 1, -1, -1):
+                pools = [VOWELS if stem[p] in VOWELS else CONSONANTS for p in (p1, p2, p3)]
+                for a1 in pools[0]:
+                    for a2 in pools[1]:
+                        for a3 in pools[2]:
+                            if a1 == stem[p1] or a2 == stem[p2] or a3 == stem[p3]:
+                                continue
+                            cand = list(stem)
+                            cand[p1], cand[p2], cand[p3] = a1, a2, a3
+                            cand = "".join(cand)
+                            if cand not in seen:
+                                seen.add(cand)
+                                yield cand
+
+
 def acceptable(word, pos, taken, verbs):
     if word in taken or re.search(r"([aeiou])\1", word):  # 同じ母音の連続（awaa など）は避ける
         return False
@@ -184,6 +205,11 @@ def coin(english, pos, taken, verbs, base_word=None, base_pos=None):
             return word
         if best is None or dist > best[0]:
             best = (dist, word)
+    # 2か所までの変更で編集距離2以上の形が見つからないときは、3か所の変更まで探す（距離1の形を返す前に）
+    for cand in deeper_variants(stem):
+        word = cand + ending
+        if acceptable(word, pos, taken, verbs) and nearest_distance(word, taken) >= 2:
+            return word
     return best[1] if best else None
 
 
