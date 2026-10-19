@@ -279,6 +279,14 @@ misu iko tote ili!        （ここへ行きましょう）
 - **単位**: ふつうの名詞（`metela` メートル・`kipoma` キロメートル・`milima` ミリメートル・`lulama` グラム・`kikoka` キログラム・`litapa` リットル・`pepuka` パーセント）。数 + 単位の語（`pa pulu kipoma` = 10キロメートル）。「水を2リットル」「two liters of water」は、数 + 単位の語を名詞の前に置く（`to litapa jeta`。英語の of は訳さない）。
 - 日本語の本・頭は、助詞（を・が・は・も）のあとの数のときだけ助数詞として読む（名詞の「本」を壊さない）。
 
+### 倍・半分・分数・割合（v0.25 確定、提案017）
+新しい語は造らない。
+- **倍**: 同等の比較（`seme`、提案014）の前に、回数（`数 taima`）を置く。`iliu pio to taima seme lase tote teliu.`（これはあれの2倍大きい。It is twice as big as that.）。直訳は「あれと同じくらい大きい、が2回」。英語の twice as ~ as・N times as ~ as・N times ADJer than も同じ形。
+- **半分**: `alema`（半分）を、名詞の前に置く。`mi ito alema apa.`（リンゴを半分食べる。I ate half of the apple.）。英語の of は訳さない。
+- **分数**: 分子 + `semuna` + 分母。名詞の前に置く。`pa semuna te`（3分の1。one third）、`to semuna te apa`（リンゴの3分の2。two thirds of the apple）。`semuna` は順序数（名詞のあとに置く。`usa semuna te` = 3番目の家）と同じ語だが、分数は数が先なので区別できる。
+- **割合**: 数 + `pepuka`（パーセント）。`to pulu pepuka`（20パーセント。20%）。日本語の「%」「パーセント」、英語の percent・% を同じ形にする。
+- 小数（0.5）、計算の言い方、「倍額」「倍増」などの慣用は含めない。
+
 ### 暦と時刻（v0.17 確定、提案008）
 「単位の語 + 数」は暦の番号・時刻、「数 + 単位の語」は数量（期間）。大きい単位から小さい単位の順に並べる。
 
@@ -624,5 +632,6 @@ v0.5 で po を **tulimo**（英 dream の音訳: d→t, r→l, 子音連続を 
 | v0.22 | 比較の続きを決めた（同じくらい `pio seme 形容詞 tote 基準`、動詞の比較 `moli 副詞 tanute 基準`、最上級の範囲 `inute`。提案014、§7）。翻訳機が日本語（〜と同じくらい・〜ほど…ない・〜より（動詞文）・〜の中で一番）と英語（as ~ as・better than・the + 最上級・of / in + 範囲）に対応。新語なし。M1ko は「お任せ」と返事をし、Claude がおすすめの A を採った。2,780語 |
 | v0.23 | 変化を決めた（〜になる `pekomo` + 補語、だんだん `kulapi`、ますます `initi`、〜にする `koso` + 目的語 + 補語。提案015、§7）。翻訳機が日本語（〜になる・〜くなる・〜になってきた・〜にする・〜くする・だんだん・ますます）と英語（become・get・turn・grow + 形容詞、make + 目的語 + 形容詞、gradually、more and more）に対応。新語なし。M1ko は「お任せ」と返事をし、Claude がおすすめの A を採った（ますますは、辞書の `initi` を使った）。2,880語 |
 | v0.24 | 形容詞から作る副詞を決めた（語尾 `-e` → `-i`、派生は辞書に登録しない。辞書に同じ形の語があれば派生しない。提案016、§3）。翻訳機が日本語（〜く・〜に）と英語（-ly）に対応。M1ko は「お任せ」と返事をし、Claude がおすすめの A を採った（Q2 は、別の副詞を足す語を 6 語から 2 語に絞った）。2,880語 |
+| v0.25 | 倍・半分・分数・割合を決めた（倍 `N taima seme 形容詞 tote 基準`、半分 `alema` + 名詞、分数 `分子 semuna 分母`、割合 `数 pepuka`。提案017、§5）。翻訳機が日本語（N倍・半分・N分のM・%）と英語（twice as ~ as・N times as ~ as・half of・two thirds of・percent・%）に対応。新語なし。M1ko は「お任せ」と返事をし、Claude がおすすめの A を採った。2,979語 |
 | v0.4 | 疑問詞はその場置き、法副詞は副詞の位置（マーカーの前）と §7 に追記 |
 | v0.4 | 同義語33語を deprecated にし（status / replaced_by 列を追加）、正本の選び方を §10.6 に記載 |

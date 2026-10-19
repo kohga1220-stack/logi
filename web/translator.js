@@ -337,6 +337,7 @@
     ['。', '.', '！', '!', '？', '?'].forEach(function (s) {
       addJa(s, { k: 'END', q: s === '？' || s === '?' });
     });
+    if (byW.pepuka) { addJa('%', { k: 'N', e: byW.pepuka }); addJa('％', { k: 'N', e: byW.pepuka }); }
     var COUNTERS = { '歳': 'ila', '年': 'ila', '日': 'teia', '分': 'minuta', '週': 'wika', '回': 'taima', '度': 'taima' };
     Object.keys(COUNTERS).forEach(function (s) {
       if (!jaMap[s]) addJa(s, { k: 'CTR', w: COUNTERS[s] });
@@ -430,6 +431,9 @@
         }
         var ordPre = /^第([0-9]+)/.exec(text.slice(i));
         if (ordPre) { flush(); tokens.push({ k: 'ORD', n: parseInt(ordPre[1], 10) }); i += ordPre[0].length; continue; }
+        // N分のM（分数）: 3分の1 → FRAC（docs/proposals/017）。3分（3 minutes）とは「の」で区別する
+        var fracM = /^([0-9]+)分の([0-9]+)/.exec(text.slice(i));
+        if (fracM) { flush(); tokens.push({ k: 'FRAC', d: parseInt(fracM[1], 10), n: parseInt(fracM[2], 10) }); i += fracM[0].length; continue; }
         var m = /^[0-9]+/.exec(text.slice(i));
         if (m) {
           flush();
@@ -445,6 +449,8 @@
           }
           // 助数詞（個・匹・冊・枚・台・羽・杯。本・頭は、助詞のあとだけ）は落とす。N番目 は順序数（docs/proposals/013）
           var restAfter = text.slice(i + m[0].length);
+          // N倍（docs/proposals/017）: 直前の文節（〜の・〜より）に付ける
+          if (/^倍/.test(restAfter)) { tokens.push({ k: 'MULT', n: num }); i += m[0].length + 1; continue; }
           var ctrM = /^(個(?!人|性|別|室|体)|匹(?!敵)|冊(?!子)|枚(?!挙)|台(?!風|所|詞|本)|羽(?!根|織)|杯|本(?!日|当|気|物|人|来|質|屋|棚|社|店|音|文|格)|頭(?!痛|脳|部))/.exec(restAfter);
           var prevT = tokens[tokens.length - 1];
           if (ctrM && (ctrM[1] !== '本' && ctrM[1] !== '頭' || (prevT && prevT.k === 'P' && /^[をがはも]$/.test(prevT.p)))) {
@@ -545,6 +551,26 @@
           if (pc && !pc.counter && /^[をがはも]$/.test(pc.particle || '')) { pc.items = qn.concat(pc.items); i++; continue; }
           mods = mods.concat(qn); i++; continue;
         }
+        // 倍（docs/proposals/017）: 直前の文節（あれの・彼より）に付ける。形容詞文で seme + 形容詞 + tote の前に置く
+        if (t.k === 'MULT') {
+          var lastC = chunks[chunks.length - 1];
+          if (lastC) lastC.mult = t.n; else notes.push('「' + t.n + '倍」の比べる相手が見つからないため、省いています。');
+          i++;
+          continue;
+        }
+        // 分数 3分の1 → pa semuna te。「3分の1のリンゴ」は分数を名詞の前に置く
+        if (t.k === 'FRAC') {
+          var fracItems = words(numberToLogi(t.n)).concat([item('semuna')], words(numberToLogi(t.d)));
+          i++;
+          if (tokens[i] && tokens[i].k === 'P' && tokens[i].p === 'の' && tokens[i + 1] && tokens[i + 1].k === 'N') {
+            var fracHead = headItemsOf(tokens[i + 1]);
+            i += 2;
+            finish(fracItems.concat(fracHead));
+            continue;
+          }
+          finish(fracItems);
+          continue;
+        }
         if (t.k === 'ORD') {
           var ordItems = [item('semuna')].concat(words(numberToLogi(t.n)));
           var ordHead = null;
@@ -643,6 +669,20 @@
           var head = headItemsOf(t);
           i++;
           var nxt = tokens[i];
+          // 「リンゴの3分の1」: 分数を名詞の前に置く（docs/proposals/017）
+          if (nxt && nxt.k === 'P' && nxt.p === 'の' && tokens[i + 1] && tokens[i + 1].k === 'FRAC') {
+            var fq = tokens[i + 1];
+            i += 2;
+            finish(words(numberToLogi(fq.n)).concat([item('semuna')], words(numberToLogi(fq.d)), head));
+            continue;
+          }
+          // 「リンゴを半分食べる」: 半分（alema）は直前の「〜を・〜が」の名詞の前に置く
+          var halfPc = chunks[chunks.length - 1];
+          if (head.length === 1 && head[0].w === 'alema' && halfPc && !halfPc.counter && /^[をが]$/.test(halfPc.particle || '') &&
+            !prefix.length && !mods.length && !(nxt && nxt.k === 'P')) {
+            halfPc.items = head.concat(halfPc.items);
+            continue;
+          }
           // 午後2時・朝7時: 時間帯の語は時刻の前に付ける
           if (nxt && nxt.k === 'CAL' && nxt.kind === 'clock' && head.length === 1 && DAYPARTS[head[0].w]) {
             prefix = prefix.concat(head); continue;
@@ -671,7 +711,7 @@
     }
 
     var NON_DEGREE_ADV = { kani: 1, masi: 1, sati: 1, mei: 1, olusi: 1, kuni: 1, no: 1, mosi: 1, moli: 1 };
-    var UNIT_WORDS = { metela: 1, kipoma: 1, milima: 1, lulama: 1, kikoka: 1, litapa: 1 };
+    var UNIT_WORDS = { metela: 1, kipoma: 1, milima: 1, lulama: 1, kikoka: 1, litapa: 1, pepuka: 1 };
     var DAYPARTS = { mola: 1, apuja: 1, ipa: 1, naita: 1 };
     var WEEKDAYS = { moputa: 1, tusuma: 1, wetuna: 1, tupusa: 1, pukipa: 1, satuka: 1, sunuta: 1 };
     // 時を表す語の前置詞（docs/proposals/008）: 時刻 atute、曜日・日付 onute、月・年 inute。毎〜・来〜・先〜は前置詞なし
@@ -978,10 +1018,14 @@
           return ir;
         }
         var comp = [];
+        var multC = rest.filter(function (c) { return c.mult; })[0];
         var yori = withP.filter(function (c) { return c.particle === 'より'; })[0];
         var to = withP.filter(function (c) { return c.particle === 'と'; })[0];
         var hodo = withP.filter(function (c) { return c.particle === 'ほど'; })[0];
-        if (adjW === 'seme' && to) {
+        if (multC) {
+          // これはあれの2倍大きい: pio to taima seme lase tote teliu（docs/proposals/017）
+          comp = words(numberToLogi(multC.mult)).concat([item('taima'), item('seme'), item(adjW), item('tote')], multC.items);
+        } else if (adjW === 'seme' && to) {
           comp = [item('seme'), item('tote')].concat(to.items);
         } else if (hodo) {
           // 彼ほど速くない: 同じくらい（seme）の否定（docs/proposals/014）
@@ -995,13 +1039,13 @@
         }
         // 一番・最も・もっと は形容詞の直前（mosi 大きい）
         for (var ai = ir.advs.length - 1; ai >= 0; ai--) {
-          if ((ir.advs[ai].w === 'mosi' || ir.advs[ai].w === 'moli') && comp.length && !yori) {
+          if ((ir.advs[ai].w === 'mosi' || ir.advs[ai].w === 'moli') && comp.length && !yori && !multC) {
             comp.splice(comp.map(function (x) { return x.w; }).indexOf(adjW), 0, ir.advs.splice(ai, 1)[0]);
           }
         }
         ir.verb = 'pio';
         ir.complement = comp;
-        withP.filter(function (c) { return c !== yori && c !== to && c !== ga && c !== hodo; }).forEach(function (c) {
+        withP.filter(function (c) { return c !== yori && c !== to && c !== ga && c !== hodo && c !== multC; }).forEach(function (c) {
           if (prepItems(c)) ir.pps.push(prepItems(c));
         });
         bare.filter(function (c) { return c.timeKind; }).forEach(function (c) { ir.pps.push(prepItems(c)); });
@@ -1484,7 +1528,7 @@
 
     function startsNP(tok) {
       if (!tok) return false;
-      return !!(/^cal__/.test(tok) || DETERMINERS[tok] || PRONOUNS[tok] || POSSESSIVES[tok] || /^[0-9]+$/.test(tok) || NUMWORDS[tok] !== undefined ||
+      return !!(/^cal__/.test(tok) || /^frac__/.test(tok) || DETERMINERS[tok] || PRONOUNS[tok] || POSSESSIVES[tok] || /^[0-9]+$/.test(tok) || NUMWORDS[tok] !== undefined ||
         WH[tok] === 'wata' || tok === 'many' || tok === 'some' || findNoun(tok) || findAdj(tok) || tok === 'most');
     }
 
@@ -1497,6 +1541,7 @@
       var hasQuant = false;
       var ordinalNum = null;
       var sawDet = false;
+      var sawFrac = false;
       while (cur.more()) {
         var tok = cur.peek();
         // this / that / these / those: 名詞や形容詞が続けば限定詞、続かなければ代名詞（iliu・teliu）
@@ -1518,6 +1563,14 @@
         }
         // 「how much」を一つの名詞句にまとめた語（aua mene）。translateEnTokens が作る
         if (/^cal__/.test(tok)) { items = items.concat(words(tok.slice(5).split('_'))); cur.next(); sawHead = true; break; }
+        // 分数（docs/proposals/017）: two thirds of the apple → frac__to_semuna_te + 名詞句。続く名詞句の前に置く
+        if (/^frac__/.test(tok)) { items = items.concat(words(tok.slice(6).split('_'))); sawFrac = true; cur.next(); continue; }
+        // half of the apple・half an hour → alema + 名詞句（名詞が続くときだけ。単独の half は名詞 alema）
+        if (tok === 'half' && byW.alema && (cur.peek(1) === 'of' || DETERMINERS[cur.peek(1)] || (cur.peek(1) && findNoun(cur.peek(1)) && !BE[cur.peek(1)] && !AUX_START[cur.peek(1)]))) {
+          items.push(item('alema')); cur.next();
+          if (cur.peek() === 'of') cur.next();
+          continue;
+        }
         if (tok === 'howmuch__') { items.push(item('aua'), item('mene')); cur.next(); sawHead = true; break; }
         if (DETERMINERS[tok]) { cur.next(); sawDet = true; continue; }
         if (POSSESSIVES[tok]) { items.push(item(POSSESSIVES[tok])); cur.next(); continue; }
@@ -1567,6 +1620,7 @@
         break;
       }
       if (!sawHead && !items.length) { cur.i = start; return null; }
+      if (!sawHead && sawFrac) sawHead = true;
       if (!sawHead) { cur.i = start; return null; }
       if (plural && !hasQuant) { items.unshift(item('mene')); ctx.notes.push('複数形は mene（多くの）で表しています。'); }
       // 関係節（主語の関係節のみ）
@@ -2196,6 +2250,33 @@
       for (var ti = 0; ti < tokens.length; ti++) {
         var w0 = tokens[ti], w1 = tokens[ti + 1], w2 = tokens[ti + 2];
         var prev = out[out.length - 1];
+        // 倍（docs/proposals/017）: twice as big as NP・three times as big as NP・three times bigger than NP → N taima seme ADJ tote NP
+        var multN = null, multLen = 0;
+        if (w0 === 'twice') { multN = 2; multLen = 1; }
+        else if ((/^[0-9]+$/.test(w0 || '') || NUMWORDS[w0] !== undefined) && (w1 === 'times' || w1 === 'time')) { multN = /^[0-9]+$/.test(w0) ? parseInt(w0, 10) : NUMWORDS[w0]; multLen = 2; }
+        if (multN !== null && byW.taima && byW.seme) {
+          var ma = tokens[ti + multLen], mb = tokens[ti + multLen + 1], mc = tokens[ti + multLen + 2];
+          var mAdj = null, mAfter = 0;
+          if (ma === 'as' && mb && findAdj(mb) && !findAdj(mb).deg && mc === 'as') { mAdj = findAdj(mb); mAfter = multLen + 3; }
+          else if (ma && findAdj(ma) && findAdj(ma).deg === 'comp' && mb === 'than') { mAdj = findAdj(ma); mAfter = multLen + 2; }
+          if (mAdj) {
+            var mAdjW = mAdj.e.w;
+            if (mAdj.deg === 'comp' && IRREGULAR_ADJ[ma] === undefined) { /* bigger → big の辞書項目 */ }
+            var mTarget = tokens[ti + mAfter];
+            var mWords = null, mUsed = 0;
+            if (mTarget && OBJ_TO_PRON[mTarget]) { mWords = [OBJ_TO_PRON[mTarget]]; mUsed = 1; }
+            else if (mTarget) {
+              var mCur = new Cursor(tokens.slice(ti + mAfter));
+              var mNp = parseNP(mCur, { notes: [] });
+              if (mNp) { mWords = mNp.items.map(function (it) { return it.w; }); mUsed = mCur.i; }
+            }
+            if (mWords) {
+              out.push(calToken(numberToLogi(multN).concat(['taima', 'seme', mAdjW, 'tote'], mWords)));
+              ti += mAfter + mUsed - 1;
+              continue;
+            }
+          }
+        }
         // as ADJ as NP → seme ADJ tote NP
         if (w0 === 'as' && w2 === 'as' && w1 && findAdj(w1)) {
           var adjE = findAdj(w1);
@@ -2230,6 +2311,26 @@
       return out;
     }
 
+    // 分数（docs/proposals/017）: two thirds of → frac__to_semuna_te（of は落とす）。a third・one third・a quarter も
+    var FRAC_DEN = { third: 3, fourth: 4, fifth: 5, sixth: 6, seventh: 7, eighth: 8, ninth: 9, tenth: 10, quarter: 4 };
+    function rewriteEnFraction(tokens) {
+      if (!byW.semuna) return tokens;
+      var out = [];
+      for (var ti = 0; ti < tokens.length; ti++) {
+        var w0 = tokens[ti], w1 = tokens[ti + 1];
+        var num = (w0 === 'a' || w0 === 'one') ? 1 : (/^[0-9]+$/.test(w0 || '') ? parseInt(w0, 10) : NUMWORDS[w0]);
+        var den = w1 ? (FRAC_DEN[w1] || (/s$/.test(w1) ? FRAC_DEN[w1.slice(0, -1)] : undefined)) : undefined;
+        if (num !== undefined && den !== undefined && num >= 1 && (num === 1 || /s$/.test(w1))) {
+          out.push('frac__' + numberToLogi(num).concat(['semuna'], numberToLogi(den)).join('_'));
+          ti += 1;
+          if (tokens[ti + 1] === 'of') ti += 1;
+          continue;
+        }
+        out.push(w0);
+      }
+      return out;
+    }
+
     // 「だんだん・ますます」の英語（docs/proposals/015）: more and more ADJ・ADJer and ADJer → increasingly ADJ
     function rewriteEnChange(tokens) {
       if (!byW.initi) return tokens;
@@ -2256,7 +2357,7 @@
         if (!trimmed) return;
         var question = /\?$/.test(trimmed);
         var body = trimmed.replace(/[.!?]+$/, '');
-        var tokens = rewriteEnChange(rewriteEnComparison(rewriteEnCalendar(expandContractions(body).toLowerCase().match(/[a-z]+|[0-9]+|,/g) || [])));
+        var tokens = rewriteEnChange(rewriteEnFraction(rewriteEnComparison(rewriteEnCalendar(expandContractions(body).replace(/%/g, ' percent').toLowerCase().match(/[a-z]+|[0-9]+|,/g) || []))));
         // 日常のあいさつ（docs/proposals/005）: Good morning / Good night / Sorry / Excuse me / Thanks
         var greetKey = tokens.join(' ');
         var greet = !question && EN_GREETING[greetKey];

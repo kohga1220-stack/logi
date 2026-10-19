@@ -1,6 +1,6 @@
 # 提案 017: 倍・半分・分数（2倍・半分・3分の1）
 
-状態: **決定待ち**。M1ko が Q1〜Q3 を選んだら、Claude が実装します（「お任せ」でも進められます）。
+状態: **決定済み（2026-10-19）**。M1ko が「お任せ」と返事をしたので、Claude がおすすめの A（Q1〜Q3 すべて）を選んで実装した（v0.25）。仕様は docs/grammar.md §5 を参照。例は、翻訳機で出力を確かめた（`iliu pio to taima seme lase tote teliu.`、`pa semuna te`、`to semuna te apa`、`to pulu pepuka`）。
 
 ## 1. 何が足りないか
 
