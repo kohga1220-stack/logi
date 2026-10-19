@@ -698,3 +698,28 @@ test('提案015: 変化（〜になる・だんだん・ますます・〜にす
     assert.strictEqual(translator.translate(src, 'en').logi, logi, src);
   });
 });
+
+test('提案016: 形容詞から作る副詞（-e → -i）', () => {
+  const ja = [
+    ['彼女は美しく歌う。', 'li pieti sino.'],
+    ['彼女は幸せに笑った。', 'li api pasu lapo.'],
+    ['彼は礼儀正しく話す。', 'li poli toko.'],
+    ['彼は速く走る。', 'li pasuti lano.'],   // 辞書の副詞が先
+    ['静かに歩く。', 'sili wako.'],
+  ];
+  ja.forEach(([src, logi]) => {
+    assert.strictEqual(translator.translate(src, 'ja').logi, logi, src);
+  });
+  const en = [
+    ['She smiled happily.', 'li api pasu sumilo.'],
+    ['He speaks politely.', 'li poli toko.'],
+    ['She sings beautifully.', 'li pieti sino.'],
+    ['He runs quickly.', 'li pasuti lano.'],
+    ['He speaks clearly.', 'li kili toko.'],
+  ];
+  en.forEach(([src, logi]) => {
+    assert.strictEqual(translator.translate(src, 'en').logi, logi, src);
+  });
+  // 辞書にその形の語がある形容詞（ile の ili = ここで）は、派生しない
+  assert.ok(translator.translate('高く飛ぶ。', 'ja').unknown.length > 0);
+});

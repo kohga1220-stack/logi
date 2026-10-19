@@ -7,7 +7,7 @@
 - 語幹が同じ: 語尾の1文字だけが違う、別の品詞の語（例: `kuka` 名詞と `kuko` 動詞）。同じ英語の別品詞なら意図した組です。そうでなければ偶然の一致なので、見分けにくくないか見てください
 - 同じ英語の語: 同じ英語の訳を持つ、別の語（同義語の候補）
 
-確認済み(ok): 2155 / 要修正(fix): 0 / 未確認(draft): 100
+確認済み(ok): 2255 / 要修正(fix): 0 / 未確認(draft): 0
 
 ## v0.7 英検3級レベルの語（487語）
 
@@ -1884,84 +1884,84 @@
 | mumasa | 石膏 | plaster |  | ok |
 | kiteja | 樋 | gutter |  | ok |
 | tejapa | テラス | terrace |  | ok |
-| jemuma | テンポ | tempo |  |  |
-| jekuja | レクリエーション | recreation |  |  |
-| kiwuna | カーニバル | carnival |  |  |
-| wawuna | カーネーション | carnation |  |  |
-| kajema | カセット | cassette |  |  |
-| kikita | グライダー | glider |  |  |
-| junopa | クローバー | clover |  |  |
-| jupoka | コロッケ | croquette |  |  |
-| samewa | シャンプー | shampoo |  |  |
-| lukila | スクリーン | screen |  |  |
-| mutiwa | ステーキ | steak |  |  |
-| sijika | ステッカー | sticker |  |  |
-| lutowa | ストップウォッチ | stopwatch |  |  |
-| lumika | スパイク | spike |  | Claude【任意】スパイク は spike（釘）と 靴の spikes の2つの意味。文脈で決まる |
-| somopa | スモッグ | smog |  |  |
-| tamila | スリル | thrill |  |  |
-| sejela | セルロイド | celluloid |  | Claude【任意】celluloid はまれ。セルロイド は日本語でも限られた語（日用品の素材）。現状維持でもよい |
-| sewota | セロハン | cellophane |  |  |
-| sosaja | ソーセージ | sausage |  |  |
-| sowesa | ソケット | socket |  |  |
-| minama | ダイナマイト | dynamite |  |  |
-| tijesa | タイプライター | typewriter |  |  |
-| weama | ダイヤモンド | diamond |  |  |
-| tanawa | タンカー | tanker |  |  |
-| sajena | チャンネル | channel |  |  |
-| jamusa | チャンピオン | champion |  |  |
-| simola | チンパンジー | chimpanzee |  |  |
-| jisuma | ディスク | disk |  |  |
-| kesema | デザート | dessert |  |  |
-| nepuna | デフレ | deflation |  |  |
-| tujona | トランジスタ | transistor |  |  |
-| nawupa | バーベキュー | barbecue |  |  |
-| ninipa | パイナップル | pineapple |  |  |
-| jasea | バザー | bazaar |  |  |
-| watusa | バドミントン | badminton |  |  |
-| wanita | バンド | band |  | Claude【任意】バンド は band が近いが、英語の band は 楽団・帯・ゴム輪 の複数の意味（ベルト・紐 とも近い）。文脈で決まる |
-| miketa | ビーカー | beaker |  |  |
-| ninuwa | ピーナッツ | peanut |  |  |
-| nanepa | ファンファーレ | fanfare |  |  |
-| lusena | ブザー | buzzer |  |  |
-| wumana | プラネタリウム | planetarium |  |  |
-| nenosa | ベンチ | bench |  |  |
-| nopupa | ポップコーン | popcorn |  |  |
-| pimaja | ポマード | pomade |  |  |
-| malisa | マーガリン | margarine |  |  |
-| mamala | マカロニ | macaroni |  |  |
-| majuja | マスコット | mascot |  |  |
-| mapana | マッサージ | massage |  |  |
-| matola | マンホール | manhole |  |  |
-| mamopa | マンモス | mammoth |  |  |
-| motona | モーターボート | motorboat |  |  |
-| mosola | モノレール | monorail |  |  |
-| jokala | ヨーグルト | yogurt |  |  |
-| lasema | レーザー | laser |  |  |
-| latawa | レーダー | radar |  |  |
-| leniwa | レーンコート | raincoat |  |  |
-| lemasa | レモネード | lemonade |  |  |
-| lowua | ロープウェイ | ropeway |  |  |
-| lokaka | ロケット | rocket |  |  |
-| wakoka | ワゴン | wagon |  |  |
-| kojona | 椰子 | coconut |  |  |
-| waliwa | 胡桃 | walnut |  |  |
-| sesama | 胡麻 | sesame |  |  |
-| tinowa | 恐竜 | dinosaur |  |  |
-| mewoa | 隕石 | meteorite |  |  |
-| wumeta | 操り人形 | puppet |  | Claude【任意】操り人形 は marionette が近い。puppet は人形全般（toma 人形 と近い） |
-| kinola | 銀杏 | ginkgo |  |  |
-| winima | 風車 | windmill |  |  |
-| potija | 粥 | porridge |  |  |
-| lasana | 木苺 | raspberry |  |  |
-| mujipa | 桑 | mulberry |  |  |
-| linosa | 犀 | rhinoceros |  |  |
-| pekowa | 蕎麦 | buckwheat |  | Claude【任意】蕎麦 は buckwheat（植物）と soba（麺）の両方。buckwheat は麺の意味を含まない |
-| numuja | 団子 | dumpling |  | Claude【任意】団子 は dango。dumpling は餃子や小麦の団子も指し、意味が広い |
-| jeoma | 牡丹 | peony |  |  |
-| kiwipa | めだか | killifish |  |  |
-| wamapa | 山葵 | wasabi |  |  |
-| muwaka | 蕨 | bracken |  |  |
+| jemuma | テンポ | tempo |  | ok |
+| jekuja | レクリエーション | recreation |  | ok |
+| kiwuna | カーニバル | carnival |  | ok |
+| wawuna | カーネーション | carnation |  | ok |
+| kajema | カセット | cassette |  | ok |
+| kikita | グライダー | glider |  | ok |
+| junopa | クローバー | clover |  | ok |
+| jupoka | コロッケ | croquette |  | ok |
+| samewa | シャンプー | shampoo |  | ok |
+| lukila | スクリーン | screen |  | ok |
+| mutiwa | ステーキ | steak |  | ok |
+| sijika | ステッカー | sticker |  | ok |
+| lutowa | ストップウォッチ | stopwatch |  | ok |
+| lumika | スパイク | spike |  | ok Claude【任意】スパイク は spike（釘）と 靴の spikes の2つの意味。文脈で決まる |
+| somopa | スモッグ | smog |  | ok |
+| tamila | スリル | thrill |  | ok |
+| sejela | セルロイド | celluloid |  | ok Claude【任意】celluloid はまれ。セルロイド は日本語でも限られた語（日用品の素材）。現状維持でもよい |
+| sewota | セロハン | cellophane |  | ok |
+| sosaja | ソーセージ | sausage |  | ok |
+| sowesa | ソケット | socket |  | ok |
+| minama | ダイナマイト | dynamite |  | ok |
+| tijesa | タイプライター | typewriter |  | ok |
+| weama | ダイヤモンド | diamond |  | ok |
+| tanawa | タンカー | tanker |  | ok |
+| sajena | チャンネル | channel |  | ok |
+| jamusa | チャンピオン | champion |  | ok |
+| simola | チンパンジー | chimpanzee |  | ok |
+| jisuma | ディスク | disk |  | ok |
+| kesema | デザート | dessert |  | ok |
+| nepuna | デフレ | deflation |  | ok |
+| tujona | トランジスタ | transistor |  | ok |
+| nawupa | バーベキュー | barbecue |  | ok |
+| ninipa | パイナップル | pineapple |  | ok |
+| jasea | バザー | bazaar |  | ok |
+| watusa | バドミントン | badminton |  | ok |
+| wanita | バンド | band |  | ok Claude【任意】バンド は band が近いが、英語の band は 楽団・帯・ゴム輪 の複数の意味（ベルト・紐 とも近い）。文脈で決まる |
+| miketa | ビーカー | beaker |  | ok |
+| ninuwa | ピーナッツ | peanut |  | ok |
+| nanepa | ファンファーレ | fanfare |  | ok |
+| lusena | ブザー | buzzer |  | ok |
+| wumana | プラネタリウム | planetarium |  | ok |
+| nenosa | ベンチ | bench |  | ok |
+| nopupa | ポップコーン | popcorn |  | ok |
+| pimaja | ポマード | pomade |  | ok |
+| malisa | マーガリン | margarine |  | ok |
+| mamala | マカロニ | macaroni |  | ok |
+| majuja | マスコット | mascot |  | ok |
+| mapana | マッサージ | massage |  | ok |
+| matola | マンホール | manhole |  | ok |
+| mamopa | マンモス | mammoth |  | ok |
+| motona | モーターボート | motorboat |  | ok |
+| mosola | モノレール | monorail |  | ok |
+| jokala | ヨーグルト | yogurt |  | ok |
+| lasema | レーザー | laser |  | ok |
+| latawa | レーダー | radar |  | ok |
+| leniwa | レーンコート | raincoat |  | ok |
+| lemasa | レモネード | lemonade |  | ok |
+| lowua | ロープウェイ | ropeway |  | ok |
+| lokaka | ロケット | rocket |  | ok |
+| wakoka | ワゴン | wagon |  | ok |
+| kojona | 椰子 | coconut |  | ok |
+| waliwa | 胡桃 | walnut |  | ok |
+| sesama | 胡麻 | sesame |  | ok |
+| tinowa | 恐竜 | dinosaur |  | ok |
+| mewoa | 隕石 | meteorite |  | ok |
+| wumeta | 操り人形 | puppet |  | ok Claude【任意】操り人形 は marionette が近い。puppet は人形全般（toma 人形 と近い） |
+| kinola | 銀杏 | ginkgo |  | ok |
+| winima | 風車 | windmill |  | ok |
+| potija | 粥 | porridge |  | ok |
+| lasana | 木苺 | raspberry |  | ok |
+| mujipa | 桑 | mulberry |  | ok |
+| linosa | 犀 | rhinoceros |  | ok |
+| pekowa | 蕎麦 | buckwheat |  | ok Claude【任意】蕎麦 は buckwheat（植物）と soba（麺）の両方。buckwheat は麺の意味を含まない |
+| numuja | 団子 | dumpling |  | ok Claude【任意】団子 は dango。dumpling は餃子や小麦の団子も指し、意味が広い |
+| jeoma | 牡丹 | peony |  | ok |
+| kiwipa | めだか | killifish |  | ok |
+| wamapa | 山葵 | wasabi |  | ok |
+| muwaka | 蕨 | bracken |  | ok |
 
 ### verb（251語）
 
@@ -2205,19 +2205,19 @@
 | tanilo | 縺れる | tangle |  | ok |
 | komomo | 弁償する | compensate |  | ok |
 | wisuko | 囁く | whisper |  | ok |
-| tiloto | 薄める | dilute |  |  |
-| petupo | 裏切る | betray |  |  |
-| lulato | 煽てる | flatter |  |  |
-| wilujo | 萎びる | wilt |  |  |
-| tijuko | 蒸留する | distill |  |  |
-| tiajo | 診断する | diagnose |  |  |
-| etono | 節約する | economize |  |  |
-| kemuto | 妥協する | compromise |  |  |
-| ipawo | 冬眠する | hibernate |  |  |
-| elewo | 噴火する | erupt |  |  |
-| tipoko | 離婚する | divorce |  |  |
-| piputo | 濾す | filter |  |  |
-| siwalo | 群がる | swarm |  |  |
+| tiloto | 薄める | dilute |  | ok |
+| petupo | 裏切る | betray |  | ok |
+| lulato | 煽てる | flatter |  | ok |
+| wilujo | 萎びる | wilt |  | ok |
+| tijuko | 蒸留する | distill |  | ok |
+| tiajo | 診断する | diagnose |  | ok |
+| etono | 節約する | economize |  | ok |
+| kemuto | 妥協する | compromise |  | ok |
+| ipawo | 冬眠する | hibernate |  | ok |
+| elewo | 噴火する | erupt |  | ok |
+| tipoko | 離婚する | divorce |  | ok |
+| piputo | 濾す | filter |  | ok |
+| siwalo | 群がる | swarm |  | ok |
 
 ### adj（111語）
 
@@ -2325,15 +2325,15 @@
 | muluke | だるい | sluggish |  | ok |
 | ilele | 不規則な | irregular |  | ok |
 | nimuke | すばしっこい | nimble |  | ok Claude【任意】すばしっこい は、akipe（素早い）と意味が近い。nimble と agile の差は小さい |
-| solene | 厳かな | solemn |  |  |
-| sumime | けちな | stingy |  |  |
-| anake | 古代の | ancient |  |  |
-| oline | 水平な | horizontal |  |  |
-| metape | 中世の | medieval |  |  |
-| pakupe | 照れ臭い | bashful |  | Claude【任意】照れ臭い は embarrassed/shy が近い。bashful は「恥ずかしがりの」性質 |
-| motele | 近代の | modern |  |  |
-| temute | 臨時の | temporary |  |  |
-| pelete | 永久の | permanent |  |  |
+| solene | 厳かな | solemn |  | ok |
+| sumime | けちな | stingy |  | ok |
+| anake | 古代の | ancient |  | ok |
+| oline | 水平な | horizontal |  | ok |
+| metape | 中世の | medieval |  | ok |
+| pakupe | 照れ臭い | bashful |  | ok Claude【任意】照れ臭い は embarrassed/shy が近い。bashful は「恥ずかしがりの」性質 |
+| motele | 近代の | modern |  | ok |
+| temute | 臨時の | temporary |  | ok |
+| pelete | 永久の | permanent |  | ok |
 
 ### adv（16語）
 

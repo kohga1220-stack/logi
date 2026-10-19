@@ -10,7 +10,7 @@ import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from logi_common import gerund_stem, tokenize
+from logi_common import derived_adverb_stem, gerund_stem, tokenize
 from validate import DEFAULT_DICTIONARY, load_rows
 
 CORPUS = Path(__file__).resolve().parent.parent / "corpus" / "examples.csv"
@@ -32,6 +32,9 @@ def gloss_token(token, lexicon, verbs):
     stem = gerund_stem(token, verbs)
     if stem is not None:
         return f"{lexicon[stem][0]}+na(動名詞)"
+    adjective = derived_adverb_stem(token, {w for w, entries in lexicon.items() if any(e.endswith("(adj)") for e in entries)})
+    if adjective is not None:
+        return f"{lexicon[adjective][0]}+i(派生の副詞)"
     return None
 
 

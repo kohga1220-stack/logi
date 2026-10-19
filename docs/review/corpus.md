@@ -135,6 +135,10 @@
 | 128 | make-adj | mi koso luma lase. | 私は部屋を大きくする。 |
 | 129 | make-noun | mi koso li titusa. | 私は彼を先生にする。 |
 | 130 | change-comparative | li pekomo moli kole. | もっと寒くなる。 |
+| 131 | adverb-derived | li pieti sino. | 彼女は美しく歌う。 |
+| 132 | adverb-derived | li api pasu lapo. | 彼女は幸せに笑った。 |
+| 133 | adverb-derived | li poli toko. | 彼は礼儀正しく話す。 |
+| 134 | adverb-dictionary | li pasuti lano. | 彼は速く走る。 |
 
 ## 語注（辞書から機械的に生成）
 
@@ -398,3 +402,11 @@
   mi=私(pronoun) koso=させる(verb) li=彼/彼女/それ(pronoun) titusa=先生(noun)
 - **130** `li pekomo moli kole.`  
   li=彼/彼女/それ(pronoun) pekomo=成る(verb) moli=もっと(adv) kole=寒い(adj)
+- **131** `li pieti sino.`  
+  li=彼/彼女/それ(pronoun) pieti=美しい(adj)+i(派生の副詞) sino=歌う(verb)
+- **132** `li api pasu lapo.`  
+  li=彼/彼女/それ(pronoun) api=幸せな(adj)+i(派生の副詞) pasu=過去(marker) lapo=笑う(verb)
+- **133** `li poli toko.`  
+  li=彼/彼女/それ(pronoun) poli=礼儀正しい(adj)+i(派生の副詞) toko=話す(verb)
+- **134** `li pasuti lano.`  
+  li=彼/彼女/それ(pronoun) pasuti=速く(adv) lano=走る(verb)

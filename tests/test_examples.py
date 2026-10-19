@@ -26,7 +26,8 @@ def dictionary():
 def lexicon(dictionary):
     words = {r["word"] for r in dictionary}
     verbs = {r["word"] for r in dictionary if r["pos"] == "verb"}
-    return words, verbs
+    adjectives = {r["word"] for r in dictionary if r["pos"] == "adj"}
+    return words, verbs, adjectives
 
 
 @pytest.fixture(scope="module")
@@ -51,11 +52,11 @@ def logi_paragraphs(path):
 
 @pytest.mark.parametrize("doc", DOCS)
 def test_sample_text_uses_dictionary_words(doc, lexicon):
-    words, verbs = lexicon
+    words, verbs, adjectives = lexicon
     paragraphs = logi_paragraphs(ROOT / doc)
     assert paragraphs, f"{doc} に Logi 例文が見つかりません"
     unknown = {
-        t for para in paragraphs for t in tokenize(para) if not is_known(t, words, verbs)
+        t for para in paragraphs for t in tokenize(para) if not is_known(t, words, verbs, adjectives)
     }
     assert unknown == set()
 
@@ -70,11 +71,11 @@ def test_questions_end_with_ka_question_mark(doc):
 
 @pytest.mark.parametrize("doc", DOCS)
 def test_doc_example_sentences_use_dictionary_words(doc, lexicon):
-    words, verbs = lexicon
+    words, verbs, adjectives = lexicon
     sentences = logi_sentences_in_doc((ROOT / doc).read_text(encoding="utf-8"))
     assert sentences, f"{doc} に例文が見つかりません"
     unknown = {
-        t for s in sentences for t in tokenize(s) if not is_known(t, words, verbs)
+        t for s in sentences for t in tokenize(s) if not is_known(t, words, verbs, adjectives)
     }
     assert unknown == set()
 
@@ -89,12 +90,12 @@ def test_docs_and_corpus_do_not_use_deprecated_words(dictionary, corpus):
 
 
 def test_corpus_uses_only_dictionary_words(corpus, lexicon):
-    words, verbs = lexicon
+    words, verbs, adjectives = lexicon
     unknown = {
         (row["id"], t)
         for row in corpus
         for t in tokenize(row["logi"])
-        if not is_known(t, words, verbs)
+        if not is_known(t, words, verbs, adjectives)
     }
     assert unknown == set()
 

@@ -108,7 +108,7 @@ logi/
 ├── web/
 │   └── index.html          Translator page (Japanese/English → Logi) / 翻訳機（see web/README.md）
 ├── corpus/
-│   └── examples.csv        130 example sentences by grammar feature / 機能別例文130文
+│   └── examples.csv        134 example sentences by grammar feature / 機能別例文134文
 ├── dictionary/
 │   ├── final.csv           2,880-word validated dictionary / 検証済み辞書2,880語
 │   ├── eiken3_additions.csv  Eiken grade-3 level word list added in v0.7 / 英検3級レベルの追加語リスト
@@ -163,6 +163,7 @@ logi/
 | v0.21 | Counters, ordinals and units — decided in `docs/proposals/013` (M1ko left it to Claude; option A): counters are dropped (`mi ito te apa.`), ordinals = noun + `semuna` + number (`usa semuna te.`), times = `te taima`, units = number + unit word (`to litapa jeta.`); the translator handles them; no new words |
 | v0.22 | Comparison, continued — decided in `docs/proposals/014` (option A): equal = `pio seme ADJ tote X`, verb comparison = `moli ADV tanute X` after the verb, superlative range = `inute`; the translator handles them; no new words |
 | v0.23 | Change of state — decided in `docs/proposals/015` (M1ko left it to Claude; option A, with `initi` for *ますます*): become = `pekomo` + noun/adjective (`li pekomo kole.`), gradually = `kulapi`, increasingly = `initi`, make X Y = `koso` + object + complement (`mi koso luma lase.`); the translator handles them; no new words |
+| v0.24 | Adverbs from adjectives — decided in `docs/proposals/016` (M1ko left it to Claude; option A): adjective ending `-e` → `-i` (`ape` → `api`, `piete` → `pieti`), derived adverbs are not stored in the dictionary, a dictionary word with the same form wins; the translator handles Japanese 〜く/〜に and English -ly; no new words |
 
 ---
 
