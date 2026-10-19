@@ -720,6 +720,8 @@ test('提案016: 形容詞から作る副詞（-e → -i）', () => {
   en.forEach(([src, logi]) => {
     assert.strictEqual(translator.translate(src, 'en').logi, logi, src);
   });
-  // 辞書にその形の語がある形容詞（ile の ili = ここで）は、派生しない
-  assert.ok(translator.translate('高く飛ぶ。', 'ja').unknown.length > 0);
+  // 辞書にその形の語がある形容詞（lete 赤い の leti = 遅く）は、派生しない
+  assert.ok(translator.translate('赤く光る。', 'ja').unknown.indexOf('く') >= 0);
+  // ile（高い）の副詞は、派生ではなく辞書の別の語 uji（第26弾で追加）
+  assert.strictEqual(translator.translate('高く飛ぶ。', 'ja').logi, 'uji pulaio.');
 });
