@@ -1601,8 +1601,8 @@
 | kawuja | 鯰 | catfish |  |  |
 | lisuja | 手首 | wrist |  |  |
 | tumema | 親指 | thumb |  |  |
-| pinoma | 小指 | pinky |  |  |
-| tipaja | 爪先 | tiptoe |  |  |
+| pinoma | 小指 | pinky |  | Claude【任意】pinky は米国の口語。little finger は2語のため使えず、現状維持でもよい |
+| tipaja | 爪先 | tiptoe |  | Claude【任意】tiptoe は動詞・副詞が主。爪先 は toe（足の指）に近いが、未使用か要確認 |
 | timita | 靨 | dimple |  |  |
 | piwena | 脳 | brain |  |  |
 | lipila | 肝臓 | liver |  |  |
@@ -1619,7 +1619,7 @@
 | napeka | 臍 | navel |  |  |
 | mukela | 骸骨 | skeleton |  |  |
 | simipa | 症状 | symptom |  |  |
-| oluka | 内臓 | organ |  |  |
+| oluka | 内臓 | organ |  | Claude【任意】organ は楽器（オルガン）の意味もある。内臓 は viscera/internal organ |
 | wutaja | 杭 | stake |  |  |
 | wumuma | ポンプ | pump |  |  |
 | makona | 磁石 | magnet |  |  |
@@ -1695,20 +1695,20 @@
 | wujama | 炎 | flame |  |  |
 | pomaka | 火山 | volcano |  |  |
 | pawoma | 薬局 | pharmacy |  |  |
-| nunata | 泉 | fountain |  |  |
+| nunata | 泉 | fountain |  | Claude【任意】泉 は spring が近いが、spring は 春（supila）が使用中。fountain は噴水（人工）で近似。現状維持でもよい |
 | keliwa | 崖 | cliff |  |  |
 | lotusa | 灯台 | lighthouse |  |  |
 | sawapa | 沼 | swamp |  |  |
 | manowa | 屋敷 | mansion |  |  |
 | wiwupa | 渦 | whirlpool |  |  |
-| misita | 霞 | mist |  |  |
+| misita | 霞 | mist |  | Claude【任意】霞 は haze が近い（mist は 霧 powa=fog との区別が薄い）。現状維持でもよい |
 | sanosa | 砂場 | sandbox |  |  |
 | tetaja | 寄り道 | detour |  |  |
 | nuwuna | 保育園 | nursery |  |  |
 | jupema | スーパー | supermarket |  |  |
 | telija | 領土 | territory |  |  |
 | wowuka | 職場 | workplace |  |  |
-| ojema | 故郷 | homeland |  |  |
+| ojema | 故郷 | homeland |  | Claude【任意】故郷 は hometown が自然（未使用）。homeland は 祖国 |
 | kawawa | 運河 | canal |  |  |
 | tejeja | 地形 | terrain |  |  |
 | sejita | 霙 | sleet |  |  |
@@ -1724,7 +1724,7 @@
 | monina | 坊さん | monk |  |  |
 | tapula | 船長 | captain |  |  |
 | kekoa | 天才 | genius |  |  |
-| piwata | 農民 | peasant |  |  |
+| piwata | 農民 | peasant |  | Claude【修正推奨】農民 は、既存の palita（農家、farmer）と意味が重なる。peasant は歴史的・差別的な響きもある。削除 |
 | selowa | 議長 | chairperson |  |  |
 | amata | 素人 | amateur |  |  |
 | pikewa | 掏摸 | pickpocket |  |  |
@@ -1735,7 +1735,7 @@
 | popiwa | 政治家 | politician |  |  |
 | kekuwa | 講師 | lecturer |  |  |
 | sejuma | 秘書 | secretary |  |  |
-| lujuna | ジャーナリスト | journalist |  |  |
+| lujuna | ジャーナリスト | journalist |  | Claude【修正推奨】ジャーナリスト は、既存の lopola（記者、reporter）と意味が重なる。削除（journalist を lopola の別名にする案もあるが、既存語の変更なので M1ko が決める） |
 | memita | メンバー | member |  |  |
 | nupena | 観客 | spectator |  |  |
 | keteka | 刑事 | detective |  |  |
@@ -1750,7 +1750,7 @@
 | wetota | ウェートレス | waitress |  |  |
 | wukosa | 検事 | prosecutor |  |  |
 | masama | 仲人 | matchmaker |  |  |
-| luwuma | 婿 | groom |  |  |
+| luwuma | 婿 | groom |  | Claude【修正推奨】婿 は son-in-law（英語1語がない）。groom は 新郎 で別の意味。削除 |
 | kotama | 女神 | goddess |  |  |
 | mojusa | 怪物 | monster |  |  |
 | melipa | 人魚 | mermaid |  |  |
@@ -1781,8 +1781,8 @@
 | kajina | 内閣 | cabinet |  |  |
 | tosesa | ダース | dozen |  |  |
 | tokapa | ドル | dollar |  |  |
-| tijana | 障害 | disability |  |  |
-| jusipa | 心理 | psychology |  |  |
+| tijana | 障害 | disability |  | Claude【任意】障害 は obstacle/disorder の意味が主。disability は 身体の障害に限る |
+| jusipa | 心理 | psychology |  | Claude【任意】心理 は mentality/psychological state。psychology は 心理学 |
 | munesa | 圧力 | pressure |  |  |
 | temina | 気質 | temperament |  |  |
 | sakawa | 犠牲 | sacrifice |  |  |
@@ -1796,13 +1796,13 @@
 | niowa | 暴力 | violence |  |  |
 | kajaja | 目録 | catalog |  |  |
 | lenala | 家賃 | rent |  |  |
-| pesewa | 連合 | federation |  |  |
+| pesewa | 連合 | federation |  | Claude【任意】連合 は union/alliance が近い。federation は 連邦に限る |
 | simasa | 音節 | syllable |  |  |
 | tasoma | 課題 | task |  |  |
 | nutoka | 株式 | stock |  |  |
 | mumena | 貨幣 | currency |  |  |
 | nakala | 学部 | faculty |  |  |
-| wusesa | 権威 | prestige |  |  |
+| wusesa | 権威 | prestige |  | Claude【任意】権威 は authority が近い（未使用）。prestige は 威信 |
 | misosa | 使命 | mission |  |  |
 | motika | 修飾語 | modifier |  |  |
 | namuta | 助詞 | particle |  |  |
@@ -2034,19 +2034,19 @@
 | tipupo | 乱す | disturb / disrupt |  |  |
 | awalo | 申し込む | apply / subscribe |  |  |
 | talano | 訳す | translate |  |  |
-| wolumo | 拝む | worship |  |  |
+| wolumo | 拝む | worship |  | Claude【任意】拝む は pray/worship。worship は 崇拝する の含み |
 | solito | 縮める | shorten |  |  |
-| punujo | 跳ねる | bounce |  |  |
+| punujo | 跳ねる | bounce |  | Claude【任意】跳ねる は bounce と jump の両方に近い。bounce は 弾む と重なる可能性がある（弾む = lepano、見出し語 rebound） |
 | leteko | 減らす | reduce |  |  |
-| nesuto | 戻す | restore |  |  |
+| nesuto | 戻す | restore |  | Claude【任意】戻す は put back/return が近い。restore は 復元する |
 | ejeto | 堪える | endure |  |  |
 | tilulo | 傾ける | tilt |  |  |
 | punoso | 殴る | punch |  |  |
 | nutuno | もがく | struggle |  |  |
 | tutipo | 漂う | drift |  |  |
-| sowilo | 誓う | swear |  |  |
+| sowilo | 誓う | swear |  | Claude【任意】誓う の swear は「ののしる」の意味もある。vow が近い（未使用なら） |
 | amopo | 廃止する | abolish |  |  |
-| ameso | 慎む | abstain |  |  |
+| ameso | 慎む | abstain |  | Claude【任意】慎む は refrain/be careful が近い。abstain は 断つ・棄権する |
 | sopio | 甘やかす | spoil |  |  |
 | kotuno | 打ち明ける | confess |  |  |
 | nalato | 物語る | narrate |  |  |
@@ -2056,7 +2056,7 @@
 | wuluwo | 生存する | survive |  |  |
 | titopo | 背く | disobey |  |  |
 | pelono | 属する | belong |  |  |
-| kowulo | 対立する | confront |  |  |
+| kowulo | 対立する | confront |  | Claude【任意】対立する は oppose/conflict が近い。confront は 立ち向かう |
 | paliso | 説く | preach |  |  |
 | malaso | 行進する | march |  |  |
 | imoto | 向上する | improve |  |  |
@@ -2081,28 +2081,28 @@
 | peawo | 振舞う | behave |  |  |
 | puwuwo | 満たす | fulfill |  |  |
 | osuwo | 催す | host |  |  |
-| poseto | 養成する | foster |  |  |
+| poseto | 養成する | foster |  | Claude【任意】養成する は train が近い（未使用なら）。foster は 育む・助長する |
 | letipo | 蘇る | revive |  |  |
-| owuko | 圧迫する | oppress |  |  |
+| owuko | 圧迫する | oppress |  | Claude【任意】圧迫する は press/compress が近い。oppress は 抑圧する（政治的） |
 | asawo | 暗殺する | assassinate |  |  |
 | ijito | 暗示する | hint |  |  |
 | kuojo | 引用する | quote |  |  |
 | sekujo | 確保する | secure |  |  |
 | kenulo | 換算する | convert |  |  |
-| umulo | 鑑賞する | appreciate |  |  |
+| umulo | 鑑賞する | appreciate |  | Claude【任意】鑑賞する の appreciate は 感謝する・評価する の意味もある。見出し語は enjoy/view に近い |
 | tutamo | 脚色する | dramatize |  |  |
 | emawo | 強調する | emphasize |  |  |
 | talito | 脅迫する | threaten |  |  |
 | peseko | 拒否する | reject |  |  |
 | waleno | 警告する | warn |  |  |
 | putoto | 抗議する | protest |  |  |
-| julujo | 購入する | purchase |  |  |
+| julujo | 購入する | purchase |  | Claude【修正推奨】購入する は、既存の puo（買う、buy）と意味が重なる。削除 |
 | ekuso | 誇張する | exaggerate | 語幹が同じ: ekuse |  |
 | awoto | 採用する | adopt |  |  |
 | ajono | 収容する | accommodate |  |  |
-| sapono | 主催する | sponsor |  |  |
+| sapono | 主催する | sponsor |  | Claude【修正推奨】主催する は、既存の osuwo（催す、host）と意味が重なる。sponsor は「後援する」で意味も違う。削除 |
 | ikepo | 侵略する | invade |  |  |
-| ewopo | 実施する | enforce |  |  |
+| ewopo | 実施する | enforce |  | Claude【任意】実施する は implement/carry out が近い。enforce は 法を執行する |
 | tetuko | 推理する | deduce |  |  |
 | tekiko | 設計する | design |  |  |
 | ipeso | 設置する | install |  |  |
@@ -2113,18 +2113,18 @@
 | pusono | 提案する | propose |  |  |
 | tisino | 派遣する | dispatch |  |  |
 | lapulo | 反映する | reflect |  |  |
-| letamo | 反撃する | retaliate |  |  |
+| letamo | 反撃する | retaliate |  | Claude【任意】反撃する は counterattack が近い。retaliate は 報復する |
 | kelito | 非難する | criticize |  |  |
 | epowo | 評価する | evaluate |  |  |
 | tepino | 描写する | depict |  |  |
 | anajo | 分析する | analyze |  |  |
 | anino | 予期する | anticipate |  |  |
 | ososo | 連想する | associate |  |  |
-| tumiko | 垂れる | drip |  |  |
+| tumiko | 垂れる | drip |  | Claude【任意】垂れる は hang down/drip の2つの意味。drip は しずくが落ちる のみ |
 | linuso | 濯ぐ | rinse |  |  |
 | tikumo | 擽る | tickle |  |  |
 | kilino | しがみつく | cling |  |  |
-| pukato | 靡く | flutter |  |  |
+| pukato | 靡く | flutter |  | Claude【任意】靡く は sway/bend が近い。flutter は ひらひらする |
 | pusaso | 弾ける | burst |  |  |
 | sunajo | よろける | stagger |  |  |
 | sepupo | 挫く | sprain |  |  |
@@ -2185,20 +2185,20 @@
 | imule | 待ち遠しい | impatient |  | Claude【任意】待ち遠しい は eagerly awaited。impatient は「いらいらして待てない」で、否定的な響き |
 | tuleme | 物凄い | tremendous / terrific / horrendous |  |  |
 | ekoe | 等しい | equal |  |  |
-| akipe | 素早い | agile |  |  |
-| sameme | みっともない | shameful |  |  |
+| akipe | 素早い | agile |  | Claude【任意】素早い は、既存の pasute（速い、fast|quick）と近い。agile は 敏捷。現状維持でもよい |
+| sameme | みっともない | shameful |  | Claude【任意】みっともない は unseemly/unsightly が近い。shameful は 恥ずべき |
 | tilipe | 勤勉な | diligent |  |  |
 | polute | 正式な | formal |  |  |
-| kalile | そそっかしい | careless |  |  |
-| sukope | 巧みな | skillful |  |  |
+| kalile | そそっかしい | careless |  | Claude【任意】そそっかしい は hasty/rash が近い。careless は 不注意な |
+| sukope | 巧みな | skillful |  | Claude【修正推奨】巧みな は、既存の sukile（上手な、skilled）と意味が重なる。削除 |
 | ikose | 無邪気な | innocent |  |  |
 | tukupe | 面倒臭い | troublesome |  |  |
 | pilule | 猛烈な | fierce |  |  |
 | alame | 有害な | harmful |  |  |
 | isune | 有力な | influential |  |  |
 | silote | 幼稚な | childish |  |  |
-| lasune | 合理的な | rational |  |  |
-| pasape | 消極的な | passive |  |  |
+| lasune | 合理的な | rational |  | Claude【任意】合理的な と lokike（論理的な、logical）は近い。rational と logical は区別が薄い |
+| pasape | 消極的な | passive |  | Claude【任意】消極的な は negative/reluctant が近い。passive は 受け身の |
 | puwute | 慎重な | prudent |  |  |
 | sinuse | 誠実な | sincere |  |  |
 | sulome | だらしない | sloppy |  |  |
@@ -2211,26 +2211,26 @@
 | tokuse | 有毒な | toxic |  |  |
 | tupase | 急激な | drastic |  |  |
 | kukule | 残酷な | cruel |  |  |
-| pekuke | 独特な | peculiar |  |  |
+| pekuke | 独特な | peculiar |  | Claude【任意】独特な は unique が近い。peculiar は「変な」の含み |
 | kutupe | 頑固な | stubborn |  |  |
 | opuke | 客観的な | objective |  |  |
 | wolese | 健全な | wholesome |  |  |
-| kukase | 淑やかな | graceful |  |  |
+| kukase | 淑やかな | graceful |  | Claude【任意】淑やかな は demure が近い。graceful は 優雅な |
 | suwuse | 主観的な | subjective |  |  |
 | polope | 大胆な | bold |  |  |
 | petepe | 忠実な | faithful |  |  |
 | kupume | 無器用な | clumsy |  |  |
-| metie | 平凡な | mediocre |  |  |
+| metie | 平凡な | mediocre |  | Claude【任意】平凡な は ordinary（nome が使用中）。mediocre は「並以下」の含み |
 | peneme | 有益な | beneficial |  |  |
 | ulume | 緊急な | urgent |  |  |
-| polise | 軽快な | brisk |  |  |
+| polise | 軽快な | brisk |  | Claude【任意】軽快な は light/nimble が近い。brisk は「きびきびした・活発な」 |
 | ikene | 巧妙な | ingenious |  |  |
 | lukuse | 豪華な | luxurious |  |  |
 | supale | しなやかな | supple |  |  |
 | ikake | 先天的な | innate |  |  |
 | monote | 単調な | monotonous |  |  |
 | anule | 適切な | appropriate |  |  |
-| tulike | 悲惨な | tragic |  |  |
+| tulike | 悲惨な | tragic |  | Claude【任意】悲惨な は、misepe（惨めな、miserable）と意味が近い。tragic は 悲劇的な |
 | supone | 微妙な | subtle |  |  |
 | okie | 明白な | obvious |  |  |
 | komeke | 有能な | competent |  |  |
@@ -2239,7 +2239,7 @@
 | komime | 滑稽な | comical |  |  |
 | muluke | だるい | sluggish |  |  |
 | ilele | 不規則な | irregular |  |  |
-| nimuke | すばしっこい | nimble |  |  |
+| nimuke | すばしっこい | nimble |  | Claude【任意】すばしっこい は、akipe（素早い）と意味が近い。nimble と agile の差は小さい |
 
 ### adv（16語）
 
