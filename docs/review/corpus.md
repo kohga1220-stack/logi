@@ -389,11 +389,11 @@
 - **123** `li pio mosi jowe inute misu.`  
   li=彼/彼女/それ(pronoun) pio=です(verb) mosi=最も(adv) jowe=若い(adj) inute=の中に(prep) misu=私たち（包括）(pronoun)
 - **124** `li pekomo kole.`  
-  li=彼/彼女/それ(pronoun) pekomo=成る(verb) kole=寒い(adj)
+  li=彼/彼女/それ(pronoun) pekomo=成る(verb) kole=寒い/冷たい(adj)
 - **125** `li pasu pekomo titusa.`  
   li=彼/彼女/それ(pronoun) pasu=過去(marker) pekomo=成る(verb) titusa=先生(noun)
 - **126** `li kulapi pekomo kole.`  
-  li=彼/彼女/それ(pronoun) kulapi=だんだん(adv) pekomo=成る(verb) kole=寒い(adj)
+  li=彼/彼女/それ(pronoun) kulapi=だんだん(adv) pekomo=成る(verb) kole=寒い/冷たい(adj)
 - **127** `li initi pekomo wuje.`  
   li=彼/彼女/それ(pronoun) initi=ますます(adv) pekomo=成る(verb) wuje=忙しい(adj)
 - **128** `mi koso luma lase.`  
@@ -401,7 +401,7 @@
 - **129** `mi koso li titusa.`  
   mi=私(pronoun) koso=させる(verb) li=彼/彼女/それ(pronoun) titusa=先生(noun)
 - **130** `li pekomo moli kole.`  
-  li=彼/彼女/それ(pronoun) pekomo=成る(verb) moli=もっと(adv) kole=寒い(adj)
+  li=彼/彼女/それ(pronoun) pekomo=成る(verb) moli=もっと(adv) kole=寒い/冷たい(adj)
 - **131** `li pieti sino.`  
   li=彼/彼女/それ(pronoun) pieti=美しい(adj)+i(派生の副詞) sino=歌う(verb)
 - **132** `li api pasu lapo.`  
