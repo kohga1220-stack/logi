@@ -11,7 +11,7 @@
 | 提案013: 助数詞（Q1）・順序数と回数（Q2）・単位の語（Q3）| `docs/proposals/013-counters-and-units.md` | 決定待ち（Q3の単位5語 `kilometer`・`millimeter`・`kilogram`・`liter`・`percent` は第5弾 PR #60 で先行追加済み）|
 | 提案014: 同じくらい（Q1）・動詞の比較と最上級の範囲（Q2）・「より」と the + 最上級（Q3）| `docs/proposals/014-comparison.md` | 決定待ち |
 | 提案012の試験運用に使う、モデルの鍵（環境変数 `SCREEN_API_KEY`・`SCREEN_API_BASE`・`SCREEN_MODEL`）| `docs/proposals/012-word-screening.md`、`tools/screen_words.py` | 鍵待ち（Claude は鍵を持っていない）|
-| 第5弾〜第24弾の追加語（第5〜14弾495語 + 第15〜24弾500語）の確認 | `docs/review/new_words.md`、`dictionary/word_review.csv` | 第5〜14弾は Claude の確認済み（【修正推奨】7語は #73 で直し済み、残り【任意】61語）。第15〜24弾（PR #76〜#85、計500語）は Antigravity が上限まで完了。Claude・M1ko の確認待ち（`draft` → `ok` / `fix`）|
+| 第5弾〜第24弾の追加語（第5〜14弾495語 + 第15〜24弾494語）の確認 | `docs/review/new_words.md`、`dictionary/word_review.csv` | Claude の確認は済み（第5〜14弾: 【修正推奨】7語は #73、第15〜24弾: 【修正推奨】6語は #87 で直し済み。残りの note は【任意】61語 + 34語）。M1ko の確認待ち（`draft` → `ok` / `fix`）|
 
 ## 進行中のPR
 
