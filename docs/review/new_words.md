@@ -7,7 +7,7 @@
 - 語幹が同じ: 語尾の1文字だけが違う、別の品詞の語（例: `kuka` 名詞と `kuko` 動詞）。同じ英語の別品詞なら意図した組です。そうでなければ偶然の一致なので、見分けにくくないか見てください
 - 同じ英語の語: 同じ英語の訳を持つ、別の語（同義語の候補）
 
-確認済み(ok): 2354 / 要修正(fix): 0 / 未確認(draft): 0
+確認済み(ok): 2354 / 要修正(fix): 0 / 未確認(draft): 100
 
 ## v0.7 英検3級レベルの語（487語）
 
@@ -258,7 +258,7 @@
 | pepela | 発熱 | fever |  | ok |
 | pulomisa | 約束 | promise | 語幹が同じ: pulomiso | ok |
 | nopela | 小説 | novel |  | ok |
-| puposa | 企画 | project |  | ok |
+| puposa | 企画 | project | 同じ英語の語: pololo | ok |
 | ola | 穴 | hole | 語幹が同じ: ole, olo | ok |
 | mesaka | 伝言 | message |  | ok |
 | potoma | 底 | bottom |  | ok |
@@ -1132,9 +1132,9 @@
 |---|---|---|---|---|
 | onapi | オンラインで | online |  | ok |
 
-## Antigravity の追加語（dictionary/anti_additions.csv）（1301語）
+## Antigravity の追加語（dictionary/anti_additions.csv）（1401語）
 
-### noun（861語）
+### noun（881語）
 
 | Logi | 日本語 | 英語 | 手がかり | 状況 |
 |---|---|---|---|---|
@@ -1291,7 +1291,7 @@
 | mekea | 化粧 | makeup / cosmetics |  | ok |
 | kanoka | 蝋燭 | candle |  | ok |
 | julija | 煉瓦 | brick |  | ok |
-| kuneka | コンクリート | concrete / cement |  | ok Claude【任意】cement は セメント（別の語）。別名から外す |
+| kuneka | コンクリート | concrete / cement | 同じ英語の語: konune | ok Claude【任意】cement は セメント（別の語）。別名から外す |
 | kasosa | ガソリン | gasoline / petrol |  | ok |
 | etija | エンジン | engine / motor |  | ok |
 | pekaka | ブレーキ | brake / brakes |  | ok |
@@ -1999,8 +1999,28 @@
 | tonona | 稲妻 | lightning / thunderbolt |  | ok |
 | pojowa | 桐 | paulownia |  | ok |
 | notaka | 炬燵 | kotatsu |  | ok |
+| piwata | 勝利 | victory |  |  |
+| melaja | 商品 | merchandise |  |  |
+| peweja | 飲料 | beverage |  |  |
+| kewita | 生物 | creature |  |  |
+| lawuma | 風景 | landscape |  |  |
+| sosoma | 腹痛 | stomachache |  |  |
+| tajasa | 歯痛 | toothache |  |  |
+| mojala | 君主 | monarch |  |  |
+| lujuna | 足音 | footstep |  |  |
+| netesa | 歩行者 | pedestrian |  |  |
+| wemepa | 墓地 | cemetery |  |  |
+| lusasa | 氷河 | glacier |  |  |
+| nanaja | 渓谷 | canyon |  |  |
+| lupoma | 潜水艦 | submarine |  |  |
+| mapoma | 気圧計 | barometer |  |  |
+| kieka | 伝記 | biography |  |  |
+| lapopa | 寓話 | fable |  |  |
+| mimuwa | 交響曲 | symphony |  |  |
+| lolota | 肖像画 | portrait |  |  |
+| kewela | 画廊 | gallery |  |  |
 
-### verb（303語）
+### verb（338語）
 
 | Logi | 日本語 | 英語 | 手がかり | 状況 |
 |---|---|---|---|---|
@@ -2307,8 +2327,43 @@
 | kuawo | 保証する | guarantee |  | ok |
 | ikiwo | 無視する | ignore |  | ok |
 | lekuko | 見なす | regard |  | ok |
+| sapono | 産む | spawn |  |  |
+| tuwelo | 暮らす | dwell |  |  |
+| lotuko | 泊まる | lodge |  |  |
+| julujo | 眠る | slumber |  |  |
+| isewo | 上る | ascend |  |  |
+| kunuwo | 潤す | quench |  |  |
+| matulo | 育つ | mature |  |  |
+| saputo | 抑える | suppress |  |  |
+| pujowo | 動かす | propel |  |  |
+| pololo | 映す | project | 同じ英語の語: puposa |  |
+| mumuno | 悲しむ | mourn |  |  |
+| kumimo | 煌めく | glimmer |  |  |
+| wanumo | 彷徨う | wander |  |  |
+| lutuso | 散策する | stroll |  |  |
+| puwiko | 瞬く | blink |  |  |
+| kusajo | 擦り下ろす | grate |  |  |
+| kalulo | 計算する | calculate |  |  |
+| pujio | 禁じる | prohibit |  |  |
+| kiluto | 調整する | coordinate |  |  |
+| kopapo | 協力する | collaborate |  |  |
+| potuto | 延期する | postpone |  |  |
+| tolemo | 我慢する | tolerate |  |  |
+| sitimo | 刺激する | stimulate |  |  |
+| etajo | 消火する | extinguish |  |  |
+| lenoko | 改修する | renovate |  |  |
+| nulaso | 養う | nourish |  |  |
+| pasipo | 魅了する | fascinate |  |  |
+| monulo | 集う | congregate |  |  |
+| lewono | 和解する | reconcile |  |  |
+| sepoko | 窒息する | suffocate |  |  |
+| lepojo | 反響する | reverberate |  |  |
+| tiwujo | 散開する | disperse |  |  |
+| nupumo | 水没する | submerge |  |  |
+| siniso | 同調する | synchronize |  |  |
+| kotemo | 記念する | commemorate |  |  |
 
-### adj（119語）
+### adj（159語）
 
 | Logi | 日本語 | 英語 | 手がかり | 状況 |
 |---|---|---|---|---|
@@ -2431,8 +2486,48 @@
 | imope | 図図しい | impudent |  | ok |
 | lekite | 正当な | legitimate |  | ok |
 | lelue | 頼もしい | reliable |  | ok |
+| komone | 当たり前の | commonplace |  |  |
+| tolite | 恐ろしい | dreadful |  |  |
+| ijuje | 間接的な | indirect |  |  |
+| sukene | 急な | sudden |  |  |
+| ujute | 不幸な | unfortunate |  |  |
+| kelame | 喧しい | clamorous |  |  |
+| pipime | 鮮やかな | vivid |  |  |
+| peline | 危うい | perilous |  |  |
+| kunuke | 鬱陶しい | gloomy |  |  |
+| sanite | 衛生的な | sanitary |  |  |
+| itepe | 幼い | infantile |  |  |
+| manupe | 男らしい | manly |  |  |
+| womane | 女らしい | womanly |  |  |
+| pikole | 活発な | vigorous |  |  |
+| sukope | 器用な | skillful |  |  |
+| konune | 具体的な | concrete | 同じ英語の語: kuneka |  |
+| esone | 経済的な | economic |  |  |
+| papote | 好調な | favorable |  |  |
+| elowe | 心細い | helpless |  |  |
+| polame | 幸いな | fortunate |  |  |
+| pumupe | 質素な | frugal |  |  |
+| tamupe | 湿っぽい | damp |  |  |
+| akese | 積極的な | active |  |  |
+| iwote | 知的な | intellectual |  |  |
+| apawe | 抽象的な | abstract |  |  |
+| aneme | 手軽な | handy |  |  |
+| alene | 和やかな | harmonious |  |  |
+| kopute | 情け深い | compassionate |  |  |
+| sepite | 憎らしい | spiteful |  |  |
+| punune | 鈍い | blunt |  |  |
+| awuwe | 馬鹿げた | absurd |  |  |
+| umuse | 不公平な | unfair |  |  |
+| upuwe | 不自由な | uncomfortable |  |  |
+| isase | 不十分な | insufficient |  |  |
+| utuje | 不親切な | unkind |  |  |
+| uwape | 不愉快な | unpleasant |  |  |
+| minine | 無意味な | meaningless |  |  |
+| iwipe | 無限の | infinite |  |  |
+| lekape | 無茶な | reckless |  |  |
+| jutune | 若々しい | youthful |  |  |
 
-### adv（18語）
+### adv（23語）
 
 | Logi | 日本語 | 英語 | 手がかり | 状況 |
 |---|---|---|---|---|
@@ -2454,6 +2549,11 @@
 | laleti | 滅多に | rarely / seldom |  | ok |
 | sulili | ずる賢く | slyly |  | ok |
 | uji | 高く | high / highly | 同じ英語の語: ile | ok |
+| tonesi | 階下で | downstairs |  |  |
+| inami | 屋内で | indoors |  |  |
+| asiti | 脇に | aside |  |  |
+| polepi | 永遠に | forever |  |  |
+| sopei | 何とかして | somehow |  |  |
 
 ## v0.10 機能語（指示詞・はい／いいえ）（3語）
 
