@@ -725,3 +725,30 @@ test('提案016: 形容詞から作る副詞（-e → -i）', () => {
   // ile（高い）の副詞は、派生ではなく辞書の別の語 uji（第26弾で追加）
   assert.strictEqual(translator.translate('高く飛ぶ。', 'ja').logi, 'uji pulaio.');
 });
+
+test('提案017: 倍・半分・分数・割合', () => {
+  const ja = [
+    ['これはあれの2倍大きい。', 'iliu pio to taima seme lase tote teliu.'],
+    ['彼は私の3倍速い。', 'li pio te taima seme pasute tote mi.'],
+    ['リンゴを半分食べる。', 'ito alema apa.'],
+    ['リンゴの3分の1を食べる。', 'ito pa semuna te apa.'],
+    ['3分の2のリンゴを食べる。', 'ito to semuna te apa.'],
+    ['リンゴを20パーセント食べた。', 'pasu ito to pulu pepuka apa.'],
+    ['3分待つ。', 'mato te minuta.'],   // 3分（3 minutes）は分数ではない
+  ];
+  ja.forEach(([src, logi]) => {
+    assert.strictEqual(translator.translate(src, 'ja').logi, logi, src);
+  });
+  const en = [
+    ['It is twice as big as that.', 'li pio to taima seme lase tote teliu.'],
+    ['It is three times as big as that.', 'li pio te taima seme lase tote teliu.'],
+    ['I ate half of the apple.', 'mi pasu ito alema apa.'],
+    ['I ate two thirds of the apple.', 'mi pasu ito to semuna te apa.'],
+    ['I ate a third of the apple.', 'mi pasu ito pa semuna te apa.'],
+    ['I ate 20% of the apples.', 'mi pasu ito to pulu pepuka mene apa.'],
+    ['I waited half an hour.', 'mi pasu mato alema ula.'],
+  ];
+  en.forEach(([src, logi]) => {
+    assert.strictEqual(translator.translate(src, 'en').logi, logi, src);
+  });
+});

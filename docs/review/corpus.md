@@ -139,6 +139,11 @@
 | 132 | adverb-derived | li api pasu lapo. | 彼女は幸せに笑った。 |
 | 133 | adverb-derived | li poli toko. | 彼は礼儀正しく話す。 |
 | 134 | adverb-dictionary | li pasuti lano. | 彼は速く走る。 |
+| 135 | multiple | iliu pio to taima seme lase tote teliu. | これはあれの2倍大きい。 |
+| 136 | multiple | li pio te taima seme pasute tote mi. | 彼は私の3倍速い。 |
+| 137 | half | mi ito alema apa. | 私はリンゴを半分食べる。 |
+| 138 | fraction | mi ito pa semuna te apa. | 私はリンゴの3分の1を食べる。 |
+| 139 | percent | mi pasu ito to pulu pepuka apa. | 私はリンゴを20パーセント食べた。 |
 
 ## 語注（辞書から機械的に生成）
 
@@ -410,3 +415,13 @@
   li=彼/彼女/それ(pronoun) poli=礼儀正しい(adj)+i(派生の副詞) toko=話す(verb)
 - **134** `li pasuti lano.`  
   li=彼/彼女/それ(pronoun) pasuti=速く(adv) lano=走る(verb)
+- **135** `iliu pio to taima seme lase tote teliu.`  
+  iliu=これ（この）(pronoun) pio=です(verb) to=2(num) taima=時間(noun) seme=同じ(adj) lase=大きい(adj) tote=へ(prep) teliu=あれ（あの・その）(pronoun)
+- **136** `li pio te taima seme pasute tote mi.`  
+  li=彼/彼女/それ(pronoun) pio=です(verb) te=3(num) taima=時間(noun) seme=同じ(adj) pasute=速い(adj) tote=へ(prep) mi=私(pronoun)
+- **137** `mi ito alema apa.`  
+  mi=私(pronoun) ito=食べる(verb) alema=半分(noun) apa=リンゴ(noun)
+- **138** `mi ito pa semuna te apa.`  
+  mi=私(pronoun) ito=食べる(verb) pa=1(num) semuna=順序(noun) te=3(num) apa=リンゴ(noun)
+- **139** `mi pasu ito to pulu pepuka apa.`  
+  mi=私(pronoun) pasu=過去(marker) ito=食べる(verb) to=2(num) pulu=十（位の単位）(num) pepuka=パーセント(noun) apa=リンゴ(noun)

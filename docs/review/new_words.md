@@ -7,7 +7,7 @@
 - 語幹が同じ: 語尾の1文字だけが違う、別の品詞の語（例: `kuka` 名詞と `kuko` 動詞）。同じ英語の別品詞なら意図した組です。そうでなければ偶然の一致なので、見分けにくくないか見てください
 - 同じ英語の語: 同じ英語の訳を持つ、別の語（同義語の候補）
 
-確認済み(ok): 2255 / 要修正(fix): 0 / 未確認(draft): 99
+確認済み(ok): 2354 / 要修正(fix): 0 / 未確認(draft): 0
 
 ## v0.7 英検3級レベルの語（487語）
 
@@ -1962,43 +1962,43 @@
 | kiwipa | めだか | killifish |  | ok |
 | wamapa | 山葵 | wasabi |  | ok |
 | muwaka | 蕨 | bracken |  | ok |
-| owama | アルミニウム | aluminum |  |  |
-| ojawa | オーケストラ | orchestra |  |  |
-| juteja | スタジオ | studio |  |  |
-| jekata | 浴衣 | yukata |  |  |
-| tamepa | テンプラ | tempura |  |  |
-| wukina | すき焼き | sukiyaki |  |  |
-| ijea | 赤道 | equator |  |  |
-| wajuka | 皮肉 | sarcasm |  |  |
-| semaka | 脚本 | script / screenplay |  |  |
-| wawasa | 軍艦 | warship |  |  |
-| kekana | 乞食 | beggar |  |  |
-| kokima | 子音 | consonant |  |  |
-| pewoka | 動詞 | verb |  |  |
-| kokawa | 接続詞 | conjunction |  |  |
-| junina | ほうれんそう | spinach |  |  |
-| jajupa | 大工 | carpenter |  |  |
-| tawuwa | 短歌 | tanka |  |  |
-| jalila | カーディガン | cardigan |  |  |
-| sonama | ジャングル | jungle |  |  |
-| sewea | スパゲッティー | spaghetti |  |  |
-| tuwewa | ドーナツ | doughnut |  |  |
-| jasita | カスタネット | castanet |  |  |
-| kisoja | カステラ | castella |  |  |
-| jalowa | カルタ | karuta |  |  |
-| nikuja | ジグザグ | zigzag |  |  |
-| naniwa | タラップ | gangway |  |  |
-| wipusa | ビフテキ | beefsteak |  |  |
-| jeleta | ベレー | beret |  |  |
-| janika | ホットケーキ | pancake |  |  |
-| musona | マージャン | mahjong |  |  |
-| mukoka | マント | cloak |  |  |
-| lamena | ラーメン | ramen |  |  |
-| sasola | ランドセル | satchel |  |  |
-| limota | リンパ | lymph |  |  |
-| tonona | 稲妻 | lightning / thunderbolt |  |  |
-| pojowa | 桐 | paulownia |  |  |
-| notaka | 炬燵 | kotatsu |  |  |
+| owama | アルミニウム | aluminum |  | ok |
+| ojawa | オーケストラ | orchestra |  | ok |
+| juteja | スタジオ | studio |  | ok |
+| jekata | 浴衣 | yukata |  | ok |
+| tamepa | テンプラ | tempura |  | ok |
+| wukina | すき焼き | sukiyaki |  | ok |
+| ijea | 赤道 | equator |  | ok |
+| wajuka | 皮肉 | sarcasm |  | ok |
+| semaka | 脚本 | script / screenplay |  | ok |
+| wawasa | 軍艦 | warship |  | ok |
+| kekana | 乞食 | beggar |  | ok |
+| kokima | 子音 | consonant |  | ok |
+| pewoka | 動詞 | verb |  | ok |
+| kokawa | 接続詞 | conjunction |  | ok |
+| junina | ほうれんそう | spinach |  | ok |
+| jajupa | 大工 | carpenter |  | ok |
+| tawuwa | 短歌 | tanka |  | ok |
+| jalila | カーディガン | cardigan |  | ok |
+| sonama | ジャングル | jungle |  | ok |
+| sewea | スパゲッティー | spaghetti |  | ok |
+| tuwewa | ドーナツ | doughnut |  | ok |
+| jasita | カスタネット | castanet |  | ok |
+| kisoja | カステラ | castella |  | ok |
+| jalowa | カルタ | karuta |  | ok |
+| nikuja | ジグザグ | zigzag |  | ok |
+| naniwa | タラップ | gangway |  | ok |
+| wipusa | ビフテキ | beefsteak |  | ok |
+| jeleta | ベレー | beret |  | ok |
+| janika | ホットケーキ | pancake |  | ok |
+| musona | マージャン | mahjong |  | ok |
+| mukoka | マント | cloak |  | ok |
+| lamena | ラーメン | ramen |  | ok |
+| sasola | ランドセル | satchel |  | ok |
+| limota | リンパ | lymph |  | ok |
+| tonona | 稲妻 | lightning / thunderbolt |  | ok |
+| pojowa | 桐 | paulownia |  | ok |
+| notaka | 炬燵 | kotatsu |  | ok |
 
 ### verb（303語）
 
@@ -2255,58 +2255,58 @@
 | tipoko | 離婚する | divorce |  | ok |
 | piputo | 濾す | filter |  | ok |
 | siwalo | 群がる | swarm |  | ok |
-| ejoko | 爆発する | explode |  |  |
-| esemo | 輸出する | export |  |  |
-| timuno | 貶す | disparage |  |  |
-| likeko | 譬える | liken |  |  |
-| pepulo | 控える | refrain |  |  |
-| lesaso | 響く | resound |  |  |
-| siliko | めぐる | circulate |  |  |
-| onito | 持て成す | entertain |  |  |
-| tinuwo | 装う | disguise |  |  |
-| tepepo | 因る | result / depend | 同じ英語の語: leta |  |
-| tepumo | 奪う | seize / deprive / snatch |  |  |
-| tetemo | 衰える | deteriorate |  |  |
-| imako | 解釈する | interpret |  |  |
-| tiono | 開拓する | pioneer |  |  |
-| oewo | 掲げる | hoist |  |  |
-| lunuko | 区切る | segment / punctuate |  |  |
-| toluwo | 苦しめる | torment |  |  |
-| napiko | 航海する | sail / navigate / voyage |  |  |
-| ijeko | 交差する | intersect |  |  |
-| sinepo | 合成する | synthesize |  |  |
-| awewo | 交替する | alternate |  |  |
-| ejilo | 肯定する | affirm |  |  |
-| ujuko | 催促する | urge |  |  |
-| itamo | 総合する | integrate |  |  |
-| okemo | 操作する | operate |  |  |
-| upemo | 添える | append |  |  |
-| seseto | 脱退する | withdraw / secede |  |  |
-| omaso | 蓄積する | amass |  |  |
-| lipalo | 解放する | liberate |  |  |
-| taseko | 解剖する | dissect |  |  |
-| ojujo | 観測する | observe |  |  |
-| itiso | 指導する | instruct |  |  |
-| iwimo | 干渉する | interfere |  |  |
-| neupo | 中和する | neutralize |  |  |
-| silano | 中傷する | slander |  |  |
-| ototo | 調節する | adjust |  |  |
-| ulawo | 調和する | harmonize |  |  |
-| peniso | 追放する | banish |  |  |
-| lisiso | 抵抗する | resist |  |  |
-| sipumo | 提出する | submit |  |  |
-| ujipo | 統一する | unify |  |  |
-| ijomo | 投資する | invest |  |  |
-| lekimo | 登録する | register |  |  |
-| mupelo | 取り締まる | regulate / supervise |  |  |
-| oteno | 乗り越える | overcome |  |  |
-| tewuto | 配置する | deploy |  |  |
-| temano | 発揮する | exert / display / demonstrate |  |  |
-| kujaso | 分類する | classify |  |  |
-| etimo | 編集する | edit |  |  |
-| kuawo | 保証する | guarantee |  |  |
-| ikiwo | 無視する | ignore |  |  |
-| lekuko | 見なす | regard |  |  |
+| ejoko | 爆発する | explode |  | ok |
+| esemo | 輸出する | export |  | ok |
+| timuno | 貶す | disparage |  | ok |
+| likeko | 譬える | liken |  | ok |
+| pepulo | 控える | refrain |  | ok |
+| lesaso | 響く | resound |  | ok |
+| siliko | めぐる | circulate |  | ok |
+| onito | 持て成す | entertain |  | ok |
+| tinuwo | 装う | disguise |  | ok |
+| tepepo | 因る | result / depend | 同じ英語の語: leta | ok |
+| tepumo | 奪う | seize / deprive / snatch |  | ok |
+| tetemo | 衰える | deteriorate |  | ok |
+| imako | 解釈する | interpret |  | ok |
+| tiono | 開拓する | pioneer |  | ok |
+| oewo | 掲げる | hoist |  | ok |
+| lunuko | 区切る | segment / punctuate |  | ok |
+| toluwo | 苦しめる | torment |  | ok |
+| napiko | 航海する | sail / navigate / voyage |  | ok |
+| ijeko | 交差する | intersect |  | ok |
+| sinepo | 合成する | synthesize |  | ok |
+| awewo | 交替する | alternate |  | ok |
+| ejilo | 肯定する | affirm |  | ok |
+| ujuko | 催促する | urge |  | ok |
+| itamo | 総合する | integrate |  | ok |
+| okemo | 操作する | operate |  | ok |
+| upemo | 添える | append |  | ok |
+| seseto | 脱退する | withdraw / secede |  | ok |
+| omaso | 蓄積する | amass |  | ok |
+| lipalo | 解放する | liberate |  | ok |
+| taseko | 解剖する | dissect |  | ok |
+| ojujo | 観測する | observe |  | ok |
+| itiso | 指導する | instruct |  | ok |
+| iwimo | 干渉する | interfere |  | ok |
+| neupo | 中和する | neutralize |  | ok |
+| silano | 中傷する | slander |  | ok |
+| ototo | 調節する | adjust |  | ok |
+| ulawo | 調和する | harmonize |  | ok |
+| peniso | 追放する | banish |  | ok |
+| lisiso | 抵抗する | resist |  | ok |
+| sipumo | 提出する | submit |  | ok |
+| ujipo | 統一する | unify |  | ok |
+| ijomo | 投資する | invest |  | ok |
+| lekimo | 登録する | register |  | ok |
+| mupelo | 取り締まる | regulate / supervise |  | ok |
+| oteno | 乗り越える | overcome |  | ok |
+| tewuto | 配置する | deploy |  | ok |
+| temano | 発揮する | exert / display / demonstrate |  | ok |
+| kujaso | 分類する | classify |  | ok |
+| etimo | 編集する | edit |  | ok |
+| kuawo | 保証する | guarantee |  | ok |
+| ikiwo | 無視する | ignore |  | ok |
+| lekuko | 見なす | regard |  | ok |
 
 ### adj（119語）
 
@@ -2423,14 +2423,14 @@
 | motele | 近代の | modern |  | ok |
 | temute | 臨時の | temporary |  | ok |
 | pelete | 永久の | permanent |  | ok |
-| malike | 意地悪な | nasty / malicious |  |  |
-| nekume | 疎かな | negligent |  |  |
-| koluke | 強引な | forceful / pushy / coercive |  |  |
-| tesile | 好ましい | desirable |  |  |
-| kelute | 粗末な | shabby |  |  |
-| imope | 図図しい | impudent |  |  |
-| lekite | 正当な | legitimate |  |  |
-| lelue | 頼もしい | reliable |  |  |
+| malike | 意地悪な | nasty / malicious |  | ok |
+| nekume | 疎かな | negligent |  | ok |
+| koluke | 強引な | forceful / pushy / coercive |  | ok |
+| tesile | 好ましい | desirable |  | ok |
+| kelute | 粗末な | shabby |  | ok |
+| imope | 図図しい | impudent |  | ok |
+| lekite | 正当な | legitimate |  | ok |
+| lelue | 頼もしい | reliable |  | ok |
 
 ### adv（18語）
 
@@ -2452,8 +2452,8 @@
 | konuki | 絶えず | constantly / continually / ceaselessly |  | ok |
 | otomi | 独りでに | automatically / spontaneously |  | ok |
 | laleti | 滅多に | rarely / seldom |  | ok |
-| sulili | ずる賢く | slyly |  |  |
-| uji | 高く | high / highly | 同じ英語の語: ile |  |
+| sulili | ずる賢く | slyly |  | ok |
+| uji | 高く | high / highly | 同じ英語の語: ile | ok |
 
 ## v0.10 機能語（指示詞・はい／いいえ）（3語）
 
