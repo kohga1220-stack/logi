@@ -7,7 +7,7 @@
 - 語幹が同じ: 語尾の1文字だけが違う、別の品詞の語（例: `kuka` 名詞と `kuko` 動詞）。同じ英語の別品詞なら意図した組です。そうでなければ偶然の一致なので、見分けにくくないか見てください
 - 同じ英語の語: 同じ英語の訳を持つ、別の語（同義語の候補）
 
-確認済み(ok): 2255 / 要修正(fix): 0 / 未確認(draft): 101
+確認済み(ok): 2255 / 要修正(fix): 0 / 未確認(draft): 100
 
 ## v0.7 英検3級レベルの語（487語）
 
@@ -1132,9 +1132,9 @@
 |---|---|---|---|---|
 | onapi | オンラインで | online |  | ok |
 
-## Antigravity の追加語（dictionary/anti_additions.csv）（1303語）
+## Antigravity の追加語（dictionary/anti_additions.csv）（1302語）
 
-### noun（862語）
+### noun（861語）
 
 | Logi | 日本語 | 英語 | 手がかり | 状況 |
 |---|---|---|---|---|
@@ -1970,7 +1970,7 @@
 | wukina | すき焼き | sukiyaki |  |  |
 | ijea | 赤道 | equator |  |  |
 | wajuka | 皮肉 | sarcasm |  |  |
-| semaka | 脚本 | scenario |  | Claude【修正推奨】脚本 に対し scenario は「筋書き・想定」でずれる（脚本 は script / screenplay）。script は未使用なので、見出し語を script に、screenplay を別名に |
+| semaka | 脚本 | script / screenplay |  |  |
 | wawasa | 軍艦 | warship |  |  |
 | kekana | 乞食 | beggar |  |  |
 | kokima | 子音 | consonant |  |  |
@@ -1987,7 +1987,6 @@
 | kisoja | カステラ | castella |  |  |
 | jalowa | カルタ | karuta |  |  |
 | nikuja | ジグザグ | zigzag |  |  |
-| tupoja | スコップ | trowel |  | Claude【修正推奨】スコップ は既存の sopema（シャベル / shovel）と同じ道具で、意味が重なる。trowel は小さな園芸用のこて。削除がよい |
 | naniwa | タラップ | gangway |  |  |
 | wipusa | ビフテキ | beefsteak |  |  |
 | jeleta | ベレー | beret |  |  |
@@ -2429,7 +2428,7 @@
 | nekume | 疎かな | negligent |  |  |
 | koluke | 強引な | coercive |  | Claude【任意】強引な は forceful / pushy。coercive は硬い語で「強制的な」 |
 | tesile | 好ましい | desirable |  |  |
-| kelute | 粗末な | crude |  | Claude【修正推奨】粗末な に対し crude は「粗雑な・下品な・生の」でずれる（粗末な は poor / shabby）。既存の lute（rude）とも近い。見出し語を shabby に、crude は外す |
+| kelute | 粗末な | shabby |  |  |
 | imope | 図図しい | impudent |  |  |
 | lekite | 正当な | legitimate |  |  |
 | lelue | 頼もしい | reliable |  |  |

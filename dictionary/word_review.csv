@@ -1878,7 +1878,7 @@ tamepa,noun,テンプラ,tempura,ANTI追加,draft,
 wukina,noun,すき焼き,sukiyaki,ANTI追加,draft,
 ijea,noun,赤道,equator,ANTI追加,draft,
 wajuka,noun,皮肉,sarcasm,ANTI追加,draft,
-semaka,noun,脚本,scenario,ANTI追加,draft,Claude【修正推奨】脚本 に対し scenario は「筋書き・想定」でずれる（脚本 は script / screenplay）。script は未使用なので、見出し語を script に、screenplay を別名に
+semaka,noun,脚本,script|screenplay,ANTI追加,draft,
 wawasa,noun,軍艦,warship,ANTI追加,draft,
 kekana,noun,乞食,beggar,ANTI追加,draft,
 kokima,noun,子音,consonant,ANTI追加,draft,
@@ -1895,7 +1895,6 @@ jasita,noun,カスタネット,castanet,ANTI追加,draft,
 kisoja,noun,カステラ,castella,ANTI追加,draft,
 jalowa,noun,カルタ,karuta,ANTI追加,draft,
 nikuja,noun,ジグザグ,zigzag,ANTI追加,draft,
-tupoja,noun,スコップ,trowel,ANTI追加,draft,Claude【修正推奨】スコップ は既存の sopema（シャベル / shovel）と同じ道具で、意味が重なる。trowel は小さな園芸用のこて。削除がよい
 naniwa,noun,タラップ,gangway,ANTI追加,draft,
 wipusa,noun,ビフテキ,beefsteak,ANTI追加,draft,
 jeleta,noun,ベレー,beret,ANTI追加,draft,
@@ -2327,7 +2326,7 @@ malike,adj,意地悪な,malicious,ANTI追加,draft,Claude【任意】意地悪�
 nekume,adj,疎かな,negligent,ANTI追加,draft,
 koluke,adj,強引な,coercive,ANTI追加,draft,Claude【任意】強引な は forceful / pushy。coercive は硬い語で「強制的な」
 tesile,adj,好ましい,desirable,ANTI追加,draft,
-kelute,adj,粗末な,crude,ANTI追加,draft,Claude【修正推奨】粗末な に対し crude は「粗雑な・下品な・生の」でずれる（粗末な は poor / shabby）。既存の lute（rude）とも近い。見出し語を shabby に、crude は外す
+kelute,adj,粗末な,shabby,ANTI追加,draft,
 imope,adj,図図しい,impudent,ANTI追加,draft,
 lekite,adj,正当な,legitimate,ANTI追加,draft,
 lelue,adj,頼もしい,reliable,ANTI追加,draft,
