@@ -2946,6 +2946,7 @@ var LOGI_LEXICON = [
 {"w":"kelute","pos":"adj","ja":["粗末な"],"jaNote":"粗末な","en":["crude"]},
 {"w":"imope","pos":"adj","ja":["図図しい"],"jaNote":"図図しい","en":["impudent"]},
 {"w":"lekite","pos":"adj","ja":["正当な"],"jaNote":"正当な","en":["legitimate"]},
-{"w":"lelue","pos":"adj","ja":["頼もしい"],"jaNote":"頼もしい","en":["reliable"]}
+{"w":"lelue","pos":"adj","ja":["頼もしい"],"jaNote":"頼もしい","en":["reliable"]},
+{"w":"uji","pos":"adv","ja":["高く"],"jaNote":"高く","en":["highly"]}
 ];
 if (typeof module !== 'undefined') { module.exports = LOGI_LEXICON; }

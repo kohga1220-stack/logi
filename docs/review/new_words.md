@@ -7,7 +7,7 @@
 - 語幹が同じ: 語尾の1文字だけが違う、別の品詞の語（例: `kuka` 名詞と `kuko` 動詞）。同じ英語の別品詞なら意図した組です。そうでなければ偶然の一致なので、見分けにくくないか見てください
 - 同じ英語の語: 同じ英語の訳を持つ、別の語（同義語の候補）
 
-確認済み(ok): 2255 / 要修正(fix): 0 / 未確認(draft): 100
+確認済み(ok): 2255 / 要修正(fix): 0 / 未確認(draft): 101
 
 ## v0.7 英検3級レベルの語（487語）
 
@@ -1132,7 +1132,7 @@
 |---|---|---|---|---|
 | onapi | オンラインで | online |  | ok |
 
-## Antigravity の追加語（dictionary/anti_additions.csv）（1302語）
+## Antigravity の追加語（dictionary/anti_additions.csv）（1303語）
 
 ### noun（862語）
 
@@ -1970,7 +1970,7 @@
 | wukina | すき焼き | sukiyaki |  |  |
 | ijea | 赤道 | equator |  |  |
 | wajuka | 皮肉 | sarcasm |  |  |
-| semaka | 脚本 | scenario |  |  |
+| semaka | 脚本 | scenario |  | Claude【修正推奨】脚本 に対し scenario は「筋書き・想定」でずれる（脚本 は script / screenplay）。script は未使用なので、見出し語を script に、screenplay を別名に |
 | wawasa | 軍艦 | warship |  |  |
 | kekana | 乞食 | beggar |  |  |
 | kokima | 子音 | consonant |  |  |
@@ -1987,7 +1987,7 @@
 | kisoja | カステラ | castella |  |  |
 | jalowa | カルタ | karuta |  |  |
 | nikuja | ジグザグ | zigzag |  |  |
-| tupoja | スコップ | trowel |  |  |
+| tupoja | スコップ | trowel |  | Claude【修正推奨】スコップ は既存の sopema（シャベル / shovel）と同じ道具で、意味が重なる。trowel は小さな園芸用のこて。削除がよい |
 | naniwa | タラップ | gangway |  |  |
 | wipusa | ビフテキ | beefsteak |  |  |
 | jeleta | ベレー | beret |  |  |
@@ -1997,7 +1997,7 @@
 | lamena | ラーメン | ramen |  |  |
 | sasola | ランドセル | satchel |  |  |
 | limota | リンパ | lymph |  |  |
-| tonona | 稲妻 | thunderbolt |  |  |
+| tonona | 稲妻 | thunderbolt |  | Claude【任意】稲妻 は lightning。thunderbolt は落雷の意味が強い。lightning は未使用なので、別名に入れるとよい |
 | pojowa | 桐 | paulownia |  |  |
 | notaka | 炬燵 | kotatsu |  |  |
 
@@ -2258,7 +2258,7 @@
 | siwalo | 群がる | swarm |  | ok |
 | ejoko | 爆発する | explode |  |  |
 | esemo | 輸出する | export |  |  |
-| lutuso | 俯く | stoop |  |  |
+| lutuso | 俯く | stoop |  | Claude【任意】俯く（うつむく）に対し stoop は「身をかがめる」で少しずれる |
 | timuno | 貶す | disparage |  |  |
 | likeko | 譬える | liken |  |  |
 | pepulo | 控える | refrain |  |  |
@@ -2266,15 +2266,15 @@
 | siliko | めぐる | circulate |  |  |
 | onito | 持て成す | entertain |  |  |
 | tinuwo | 装う | disguise |  |  |
-| tepepo | 因る | depend |  |  |
-| tepumo | 奪う | deprive |  |  |
+| tepepo | 因る | depend |  | Claude【任意】因る（原因による）に対し depend は「頼る・次第である」が主。原因は be due to / result from |
+| tepumo | 奪う | deprive |  | Claude【任意】奪う に対し deprive は deprive A of B の形が主で、取り上げる意味とは少しずれる |
 | tetemo | 衰える | deteriorate |  |  |
 | imako | 解釈する | interpret |  |  |
 | tiono | 開拓する | pioneer |  |  |
 | oewo | 掲げる | hoist |  |  |
-| lunuko | 区切る | punctuate |  |  |
+| lunuko | 区切る | punctuate |  | Claude【任意】区切る は divide / separate。punctuate は句読点を打つ意味が主 |
 | toluwo | 苦しめる | torment |  |  |
-| napiko | 航海する | navigate |  |  |
+| napiko | 航海する | navigate |  | Claude【任意】航海する は sail。navigate は「進路をとる・操縦する」で少しずれる（sail は未使用） |
 | ijeko | 交差する | intersect |  |  |
 | sinepo | 合成する | synthesize |  |  |
 | awewo | 交替する | alternate |  |  |
@@ -2283,7 +2283,7 @@
 | itamo | 総合する | integrate |  |  |
 | okemo | 操作する | operate |  |  |
 | upemo | 添える | append |  |  |
-| seseto | 脱退する | secede |  |  |
+| seseto | 脱退する | secede |  | Claude【任意】脱退する に対し secede は国・州の分離独立が主。組織を抜ける意味は withdraw / quit（withdraw は未使用） |
 | omaso | 蓄積する | amass |  |  |
 | lipalo | 解放する | liberate |  |  |
 | taseko | 解剖する | dissect |  |  |
@@ -2300,10 +2300,10 @@
 | ujipo | 統一する | unify |  |  |
 | ijomo | 投資する | invest |  |  |
 | lekimo | 登録する | register |  |  |
-| mupelo | 取り締まる | supervise |  |  |
+| mupelo | 取り締まる | supervise |  | Claude【任意】取り締まる は crack down / control。supervise は「監督する」で少しずれる |
 | oteno | 乗り越える | overcome |  |  |
 | tewuto | 配置する | deploy |  |  |
-| temano | 発揮する | demonstrate |  |  |
+| temano | 発揮する | demonstrate |  | Claude【任意】発揮する（能力を出す）に対し demonstrate は「実演する・示す」が主。exert / display に近い |
 | kujaso | 分類する | classify |  |  |
 | etimo | 編集する | edit |  |  |
 | kuawo | 保証する | guarantee |  |  |
@@ -2425,16 +2425,16 @@
 | motele | 近代の | modern |  | ok |
 | temute | 臨時の | temporary |  | ok |
 | pelete | 永久の | permanent |  | ok |
-| malike | 意地悪な | malicious |  |  |
+| malike | 意地悪な | malicious |  | Claude【任意】意地悪な は mean / nasty。malicious は悪意の強い語で、程度がずれる |
 | nekume | 疎かな | negligent |  |  |
-| koluke | 強引な | coercive |  |  |
+| koluke | 強引な | coercive |  | Claude【任意】強引な は forceful / pushy。coercive は硬い語で「強制的な」 |
 | tesile | 好ましい | desirable |  |  |
-| kelute | 粗末な | crude |  |  |
+| kelute | 粗末な | crude |  | Claude【修正推奨】粗末な に対し crude は「粗雑な・下品な・生の」でずれる（粗末な は poor / shabby）。既存の lute（rude）とも近い。見出し語を shabby に、crude は外す |
 | imope | 図図しい | impudent |  |  |
 | lekite | 正当な | legitimate |  |  |
 | lelue | 頼もしい | reliable |  |  |
 
-### adv（17語）
+### adv（18語）
 
 | Logi | 日本語 | 英語 | 手がかり | 状況 |
 |---|---|---|---|---|
@@ -2455,6 +2455,7 @@
 | otomi | 独りでに | automatically / spontaneously |  | ok |
 | laleti | 滅多に | rarely / seldom |  | ok |
 | sulili | ずる賢く | slyly |  |  |
+| uji | 高く | highly |  | Claude【任意】highly は「大いに・高く評価して」の意味が主。位置の「高く」は high（副詞）。見出し語を high に、highly を別名にする手もある |
 
 ## v0.10 機能語（指示詞・はい／いいえ）（3語）
 
