@@ -1632,7 +1632,6 @@ waputa,noun,病室,ward,ANTI追加,draft,
 monina,noun,坊さん,monk,ANTI追加,draft,
 tapula,noun,船長,captain,ANTI追加,draft,
 kekoa,noun,天才,genius,ANTI追加,draft,
-piwata,noun,農民,peasant,ANTI追加,draft,Claude【修正推奨】農民 は、既存の palita（農家、farmer）と意味が重なる。peasant は歴史的・差別的な響きもある。削除
 selowa,noun,議長,chairperson,ANTI追加,draft,
 amata,noun,素人,amateur,ANTI追加,draft,
 pikewa,noun,掏摸,pickpocket,ANTI追加,draft,
@@ -1643,7 +1642,6 @@ mamuma,noun,人類,mankind,ANTI追加,draft,
 popiwa,noun,政治家,politician,ANTI追加,draft,
 kekuwa,noun,講師,lecturer,ANTI追加,draft,
 sejuma,noun,秘書,secretary,ANTI追加,draft,
-lujuna,noun,ジャーナリスト,journalist,ANTI追加,draft,Claude【修正推奨】ジャーナリスト は、既存の lopola（記者、reporter）と意味が重なる。削除（journalist を lopola の別名にする案もあるが、既存語の変更なので M1ko が決める）
 memita,noun,メンバー,member,ANTI追加,draft,
 nupena,noun,観客,spectator,ANTI追加,draft,
 keteka,noun,刑事,detective,ANTI追加,draft,
@@ -1658,7 +1656,6 @@ tasena,noun,旅客,passenger,ANTI追加,draft,
 wetota,noun,ウェートレス,waitress,ANTI追加,draft,
 wukosa,noun,検事,prosecutor,ANTI追加,draft,
 masama,noun,仲人,matchmaker,ANTI追加,draft,
-luwuma,noun,婿,groom,ANTI追加,draft,Claude【修正推奨】婿 は son-in-law（英語1語がない）。groom は 新郎 で別の意味。削除
 kotama,noun,女神,goddess,ANTI追加,draft,
 mojusa,noun,怪物,monster,ANTI追加,draft,
 melipa,noun,人魚,mermaid,ANTI追加,draft,
@@ -1999,11 +1996,9 @@ talito,verb,脅迫する,threaten,ANTI追加,draft,
 peseko,verb,拒否する,reject,ANTI追加,draft,
 waleno,verb,警告する,warn,ANTI追加,draft,
 putoto,verb,抗議する,protest,ANTI追加,draft,
-julujo,verb,購入する,purchase,ANTI追加,draft,Claude【修正推奨】購入する は、既存の puo（買う、buy）と意味が重なる。削除
 ekuso,verb,誇張する,exaggerate,ANTI追加,draft,
 awoto,verb,採用する,adopt,ANTI追加,draft,
 ajono,verb,収容する,accommodate,ANTI追加,draft,
-sapono,verb,主催する,sponsor,ANTI追加,draft,Claude【修正推奨】主催する は、既存の osuwo（催す、host）と意味が重なる。sponsor は「後援する」で意味も違う。削除
 ikepo,verb,侵略する,invade,ANTI追加,draft,
 ewopo,verb,実施する,enforce,ANTI追加,draft,Claude【任意】実施する は implement/carry out が近い。enforce は 法を執行する
 tetuko,verb,推理する,deduce,ANTI追加,draft,
@@ -2088,7 +2083,6 @@ sameme,adj,みっともない,shameful,ANTI追加,draft,Claude【任意】みっ
 tilipe,adj,勤勉な,diligent,ANTI追加,draft,
 polute,adj,正式な,formal,ANTI追加,draft,
 kalile,adj,そそっかしい,careless,ANTI追加,draft,Claude【任意】そそっかしい は hasty/rash が近い。careless は 不注意な
-sukope,adj,巧みな,skillful,ANTI追加,draft,Claude【修正推奨】巧みな は、既存の sukile（上手な、skilled）と意味が重なる。削除
 ikose,adj,無邪気な,innocent,ANTI追加,draft,
 tukupe,adj,面倒臭い,troublesome,ANTI追加,draft,
 pilule,adj,猛烈な,fierce,ANTI追加,draft,
