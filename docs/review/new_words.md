@@ -7,7 +7,7 @@
 - 語幹が同じ: 語尾の1文字だけが違う、別の品詞の語（例: `kuka` 名詞と `kuko` 動詞）。同じ英語の別品詞なら意図した組です。そうでなければ偶然の一致なので、見分けにくくないか見てください
 - 同じ英語の語: 同じ英語の訳を持つ、別の語（同義語の候補）
 
-確認済み(ok): 2155 / 要修正(fix): 0 / 未確認(draft): 0
+確認済み(ok): 2155 / 要修正(fix): 0 / 未確認(draft): 100
 
 ## v0.7 英検3級レベルの語（487語）
 
@@ -1132,9 +1132,9 @@
 |---|---|---|---|---|
 | onapi | オンラインで | online |  | ok |
 
-## Antigravity の追加語（dictionary/anti_additions.csv）（1102語）
+## Antigravity の追加語（dictionary/anti_additions.csv）（1202語）
 
-### noun（746語）
+### noun（824語）
 
 | Logi | 日本語 | 英語 | 手がかり | 状況 |
 |---|---|---|---|---|
@@ -1884,8 +1884,86 @@
 | mumasa | 石膏 | plaster |  | ok |
 | kiteja | 樋 | gutter |  | ok |
 | tejapa | テラス | terrace |  | ok |
+| jemuma | テンポ | tempo |  |  |
+| jekuja | レクリエーション | recreation |  |  |
+| kiwuna | カーニバル | carnival |  |  |
+| wawuna | カーネーション | carnation |  |  |
+| kajema | カセット | cassette |  |  |
+| kikita | グライダー | glider |  |  |
+| junopa | クローバー | clover |  |  |
+| jupoka | コロッケ | croquette |  |  |
+| samewa | シャンプー | shampoo |  |  |
+| lukila | スクリーン | screen |  |  |
+| mutiwa | ステーキ | steak |  |  |
+| sijika | ステッカー | sticker |  |  |
+| lutowa | ストップウォッチ | stopwatch |  |  |
+| lumika | スパイク | spike |  |  |
+| somopa | スモッグ | smog |  |  |
+| tamila | スリル | thrill |  |  |
+| sejela | セルロイド | celluloid |  |  |
+| sewota | セロハン | cellophane |  |  |
+| sosaja | ソーセージ | sausage |  |  |
+| sowesa | ソケット | socket |  |  |
+| minama | ダイナマイト | dynamite |  |  |
+| tijesa | タイプライター | typewriter |  |  |
+| weama | ダイヤモンド | diamond |  |  |
+| tanawa | タンカー | tanker |  |  |
+| sajena | チャンネル | channel |  |  |
+| jamusa | チャンピオン | champion |  |  |
+| simola | チンパンジー | chimpanzee |  |  |
+| jisuma | ディスク | disk |  |  |
+| kesema | デザート | dessert |  |  |
+| nepuna | デフレ | deflation |  |  |
+| tujona | トランジスタ | transistor |  |  |
+| nawupa | バーベキュー | barbecue |  |  |
+| ninipa | パイナップル | pineapple |  |  |
+| jasea | バザー | bazaar |  |  |
+| watusa | バドミントン | badminton |  |  |
+| wanita | バンド | band |  |  |
+| miketa | ビーカー | beaker |  |  |
+| ninuwa | ピーナッツ | peanut |  |  |
+| nanepa | ファンファーレ | fanfare |  |  |
+| lusena | ブザー | buzzer |  |  |
+| wumana | プラネタリウム | planetarium |  |  |
+| nenosa | ベンチ | bench |  |  |
+| nopupa | ポップコーン | popcorn |  |  |
+| pimaja | ポマード | pomade |  |  |
+| malisa | マーガリン | margarine |  |  |
+| mamala | マカロニ | macaroni |  |  |
+| majuja | マスコット | mascot |  |  |
+| mapana | マッサージ | massage |  |  |
+| matola | マンホール | manhole |  |  |
+| mamopa | マンモス | mammoth |  |  |
+| motona | モーターボート | motorboat |  |  |
+| mosola | モノレール | monorail |  |  |
+| jokala | ヨーグルト | yogurt |  |  |
+| lasema | レーザー | laser |  |  |
+| latawa | レーダー | radar |  |  |
+| leniwa | レーンコート | raincoat |  |  |
+| lemasa | レモネード | lemonade |  |  |
+| lowua | ロープウェイ | ropeway |  |  |
+| lokaka | ロケット | rocket |  |  |
+| wakoka | ワゴン | wagon |  |  |
+| kojona | 椰子 | coconut |  |  |
+| waliwa | 胡桃 | walnut |  |  |
+| sesama | 胡麻 | sesame |  |  |
+| tinowa | 恐竜 | dinosaur |  |  |
+| mewoa | 隕石 | meteorite |  |  |
+| wumeta | 操り人形 | puppet |  |  |
+| kinola | 銀杏 | ginkgo |  |  |
+| winima | 風車 | windmill |  |  |
+| potija | 粥 | porridge |  |  |
+| lasana | 木苺 | raspberry |  |  |
+| mujipa | 桑 | mulberry |  |  |
+| linosa | 犀 | rhinoceros |  |  |
+| pekowa | 蕎麦 | buckwheat |  |  |
+| numuja | 団子 | dumpling |  |  |
+| jeoma | 牡丹 | peony |  |  |
+| kiwipa | めだか | killifish |  |  |
+| wamapa | 山葵 | wasabi |  |  |
+| muwaka | 蕨 | bracken |  |  |
 
-### verb（238語）
+### verb（251語）
 
 | Logi | 日本語 | 英語 | 手がかり | 状況 |
 |---|---|---|---|---|
@@ -2127,8 +2205,21 @@
 | tanilo | 縺れる | tangle |  | ok |
 | komomo | 弁償する | compensate |  | ok |
 | wisuko | 囁く | whisper |  | ok |
+| tiloto | 薄める | dilute |  |  |
+| petupo | 裏切る | betray |  |  |
+| lulato | 煽てる | flatter |  |  |
+| wilujo | 萎びる | wilt |  |  |
+| tijuko | 蒸留する | distill |  |  |
+| tiajo | 診断する | diagnose |  |  |
+| etono | 節約する | economize |  |  |
+| kemuto | 妥協する | compromise |  |  |
+| ipawo | 冬眠する | hibernate |  |  |
+| elewo | 噴火する | erupt |  |  |
+| tipoko | 離婚する | divorce |  |  |
+| piputo | 濾す | filter |  |  |
+| siwalo | 群がる | swarm |  |  |
 
-### adj（102語）
+### adj（111語）
 
 | Logi | 日本語 | 英語 | 手がかり | 状況 |
 |---|---|---|---|---|
@@ -2234,6 +2325,15 @@
 | muluke | だるい | sluggish |  | ok |
 | ilele | 不規則な | irregular |  | ok |
 | nimuke | すばしっこい | nimble |  | ok Claude【任意】すばしっこい は、akipe（素早い）と意味が近い。nimble と agile の差は小さい |
+| solene | 厳かな | solemn |  |  |
+| sumime | けちな | stingy |  |  |
+| anake | 古代の | ancient |  |  |
+| oline | 水平な | horizontal |  |  |
+| metape | 中世の | medieval |  |  |
+| pakupe | 照れ臭い | bashful |  |  |
+| motele | 近代の | modern |  |  |
+| temute | 臨時の | temporary |  |  |
+| pelete | 永久の | permanent |  |  |
 
 ### adv（16語）
 
