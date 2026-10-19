@@ -7,7 +7,7 @@
 - 語幹が同じ: 語尾の1文字だけが違う、別の品詞の語（例: `kuka` 名詞と `kuko` 動詞）。同じ英語の別品詞なら意図した組です。そうでなければ偶然の一致なので、見分けにくくないか見てください
 - 同じ英語の語: 同じ英語の訳を持つ、別の語（同義語の候補）
 
-確認済み(ok): 1164 / 要修正(fix): 0 / 未確認(draft): 997
+確認済み(ok): 1164 / 要修正(fix): 0 / 未確認(draft): 991
 
 ## v0.7 英検3級レベルの語（487語）
 
@@ -1132,9 +1132,9 @@
 |---|---|---|---|---|
 | onapi | オンラインで | online |  | ok |
 
-## Antigravity の追加語（dictionary/anti_additions.csv）（1108語）
+## Antigravity の追加語（dictionary/anti_additions.csv）（1102語）
 
-### noun（749語）
+### noun（746語）
 
 | Logi | 日本語 | 英語 | 手がかり | 状況 |
 |---|---|---|---|---|
@@ -1724,7 +1724,6 @@
 | monina | 坊さん | monk |  |  |
 | tapula | 船長 | captain |  |  |
 | kekoa | 天才 | genius |  |  |
-| piwata | 農民 | peasant |  | Claude【修正推奨】農民 は、既存の palita（農家、farmer）と意味が重なる。peasant は歴史的・差別的な響きもある。削除 |
 | selowa | 議長 | chairperson |  |  |
 | amata | 素人 | amateur |  |  |
 | pikewa | 掏摸 | pickpocket |  |  |
@@ -1735,7 +1734,6 @@
 | popiwa | 政治家 | politician |  |  |
 | kekuwa | 講師 | lecturer |  |  |
 | sejuma | 秘書 | secretary |  |  |
-| lujuna | ジャーナリスト | journalist |  | Claude【修正推奨】ジャーナリスト は、既存の lopola（記者、reporter）と意味が重なる。削除（journalist を lopola の別名にする案もあるが、既存語の変更なので M1ko が決める） |
 | memita | メンバー | member |  |  |
 | nupena | 観客 | spectator |  |  |
 | keteka | 刑事 | detective |  |  |
@@ -1750,7 +1748,6 @@
 | wetota | ウェートレス | waitress |  |  |
 | wukosa | 検事 | prosecutor |  |  |
 | masama | 仲人 | matchmaker |  |  |
-| luwuma | 婿 | groom |  | Claude【修正推奨】婿 は son-in-law（英語1語がない）。groom は 新郎 で別の意味。削除 |
 | kotama | 女神 | goddess |  |  |
 | mojusa | 怪物 | monster |  |  |
 | melipa | 人魚 | mermaid |  |  |
@@ -1888,7 +1885,7 @@
 | kiteja | 樋 | gutter |  |  |
 | tejapa | テラス | terrace |  |  |
 
-### verb（240語）
+### verb（238語）
 
 | Logi | 日本語 | 英語 | 手がかり | 状況 |
 |---|---|---|---|---|
@@ -2096,11 +2093,9 @@
 | peseko | 拒否する | reject |  |  |
 | waleno | 警告する | warn |  |  |
 | putoto | 抗議する | protest |  |  |
-| julujo | 購入する | purchase |  | Claude【修正推奨】購入する は、既存の puo（買う、buy）と意味が重なる。削除 |
 | ekuso | 誇張する | exaggerate | 語幹が同じ: ekuse |  |
 | awoto | 採用する | adopt |  |  |
 | ajono | 収容する | accommodate |  |  |
-| sapono | 主催する | sponsor |  | Claude【修正推奨】主催する は、既存の osuwo（催す、host）と意味が重なる。sponsor は「後援する」で意味も違う。削除 |
 | ikepo | 侵略する | invade |  |  |
 | ewopo | 実施する | enforce |  | Claude【任意】実施する は implement/carry out が近い。enforce は 法を執行する |
 | tetuko | 推理する | deduce |  |  |
@@ -2133,7 +2128,7 @@
 | komomo | 弁償する | compensate |  |  |
 | wisuko | 囁く | whisper |  |  |
 
-### adj（103語）
+### adj（102語）
 
 | Logi | 日本語 | 英語 | 手がかり | 状況 |
 |---|---|---|---|---|
@@ -2190,7 +2185,6 @@
 | tilipe | 勤勉な | diligent |  |  |
 | polute | 正式な | formal |  |  |
 | kalile | そそっかしい | careless |  | Claude【任意】そそっかしい は hasty/rash が近い。careless は 不注意な |
-| sukope | 巧みな | skillful |  | Claude【修正推奨】巧みな は、既存の sukile（上手な、skilled）と意味が重なる。削除 |
 | ikose | 無邪気な | innocent |  |  |
 | tukupe | 面倒臭い | troublesome |  |  |
 | pilule | 猛烈な | fierce |  |  |
