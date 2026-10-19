@@ -661,3 +661,40 @@ test('提案014: 同じくらい・動詞の比較・最上級の範囲', () => 
     assert.strictEqual(translator.translate(src, 'en').logi, logi, src);
   });
 });
+
+test('提案015: 変化（〜になる・だんだん・ますます・〜にする）', () => {
+  const ja = [
+    ['寒くなる。', 'li pekomo kole.'],
+    ['彼は先生になった。', 'li pasu pekomo titusa.'],
+    ['水が氷になる。', 'jeta pekomo aisa.'],
+    ['だんだん寒くなる。', 'li kulapi pekomo kole.'],
+    ['ますます忙しくなる。', 'li initi pekomo wuje.'],
+    ['もっと寒くなる。', 'li pekomo moli kole.'],
+    ['暗くなってきた。', 'li pasu pekomo take.'],
+    ['彼女は静かになった。', 'li pasu pekomo kue.'],
+    ['寒くならない。', 'li no pekomo kole.'],
+    ['寒くなると思う。', 'omo li pekomo kole.'],
+    ['私は部屋を大きくする。', 'mi koso luma lase.'],
+    ['私は彼を先生にする。', 'mi koso li titusa.'],
+    ['彼は私を幸せにした。', 'li pasu koso mi ape.'],
+    ['コーヒーにする。', 'tuso kupa.'],
+  ];
+  ja.forEach(([src, logi]) => {
+    assert.strictEqual(translator.translate(src, 'ja').logi, logi, src);
+  });
+  const en = [
+    ['It becomes cold.', 'li pekomo kole.'],
+    ['He became a teacher.', 'li pasu pekomo titusa.'],
+    ['It is getting colder.', 'li konu pekomo moli kole.'],
+    ['It got dark.', 'li pasu pekomo take.'],
+    ['It gradually becomes cold.', 'li kulapi pekomo kole.'],
+    ['It is getting colder and colder.', 'li initi konu pekomo kole.'],
+    ['Make the room big.', 'koso luma lase!'],
+    ['He made me happy.', 'li pasu koso mi ape.'],
+    ['I get cold water.', 'mi leso kole jeta.'],
+    ['Turn left.', 'tuluno [left?]!'],
+  ];
+  en.forEach(([src, logi]) => {
+    assert.strictEqual(translator.translate(src, 'en').logi, logi, src);
+  });
+});

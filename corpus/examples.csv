@@ -122,3 +122,10 @@ id,feature,logi,ja
 121,compare-not-as,li no pio seme pasute tote mi.,彼は私ほど速くない。
 122,compare-verb,li sino moli poni tanute mi.,彼女は私より上手に歌う。
 123,superlative-range,li pio mosi jowe inute misu.,彼女は私たちの中で一番若い。
+124,change-adj,li pekomo kole.,寒くなる。
+125,change-noun,li pasu pekomo titusa.,彼は先生になった。
+126,change-gradual,li kulapi pekomo kole.,だんだん寒くなる。
+127,change-increasingly,li initi pekomo wuje.,ますます忙しくなる。
+128,make-adj,mi koso luma lase.,私は部屋を大きくする。
+129,make-noun,mi koso li titusa.,私は彼を先生にする。
+130,change-comparative,li pekomo moli kole.,もっと寒くなる。
