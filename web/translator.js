@@ -342,6 +342,22 @@
       if (!jaMap[s]) addJa(s, { k: 'CTR', w: COUNTERS[s] });
     });
 
+    // 形容詞から作る副詞（docs/proposals/016）: 語尾 -e を -i に替える（ape → api）。辞書にその形の語があれば派生せず、辞書の語を使う。
+    // 日本語は〜く（い形容詞）・〜に（な形容詞）。辞書にすでにある表層形（速く・静かに など）は、辞書の副詞が先
+    var DERIVED = {};   // 派生の副詞 → 形容詞の辞書項目
+    var ADV_OF = {};    // 形容詞 → 派生の副詞
+    lexicon.forEach(function (e) {
+      if (e.pos !== 'adj' || !/e$/.test(e.w)) return;
+      var dw = e.w.slice(0, -1) + 'i';
+      if (byW[dw]) return;
+      DERIVED[dw] = e;
+      ADV_OF[e.w] = dw;
+      e.ja.forEach(function (sj) {
+        if (/い$/.test(sj)) addJa(sj.slice(0, -1) + 'く', { k: 'ADV', e: { w: dw } });
+        else if (/な$/.test(sj)) addJa(sj.slice(0, -1) + 'に', { k: 'ADV', e: { w: dw } });
+      });
+    });
+
     function toHalfWidth(s) {
       return s.replace(/[０-９]/g, function (c) { return String.fromCharCode(c.charCodeAt(0) - 0xFEE0); });
     }
@@ -1254,7 +1270,10 @@
       }
       if (GLOSS_SPECIAL[it.w]) return GLOSS_SPECIAL[it.w];
       var e = byW[it.w];
-      if (!e) return '';
+      if (!e) {
+        var d = DERIVED[it.w];
+        return d ? d.jaNote + ' / ' + (d.en[0] || '') + ' +i（形容詞から派生した副詞 / derived adverb）' : '';
+      }
       var en = e.en.length ? e.en.join(', ') : '';
       return e.jaNote + (en ? ' / ' + en : '');
     }
@@ -1422,7 +1441,18 @@
     }
     function findAdv(tok) {
       var es = (enIndex[tok] || []).filter(function (e) { return e.pos === 'adv'; });
-      return es.length ? es[0] : null;
+      if (es.length) return es[0];
+      // -ly 副詞（docs/proposals/016）: 形容詞に戻して、派生の副詞（-e → -i）にする。happily → happy → api
+      if (/ly$/.test(tok) && tok.length > 4) {
+        var bases = [tok.slice(0, -2), tok.slice(0, -1) + 'e'];
+        if (/ily$/.test(tok)) bases.push(tok.slice(0, -3) + 'y');
+        if (/ally$/.test(tok)) bases.push(tok.slice(0, -4));
+        for (var bi = 0; bi < bases.length; bi++) {
+          var adjEs = (enIndex[bases[bi]] || []).filter(function (e) { return e.pos === 'adj'; });
+          if (adjEs.length && ADV_OF[adjEs[0].w]) return { w: ADV_OF[adjEs[0].w], pos: 'adv' };
+        }
+      }
+      return null;
     }
 
     function expandContractions(text) {
