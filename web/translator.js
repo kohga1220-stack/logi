@@ -166,6 +166,14 @@
       return forms;
     }
 
+    // 変化（docs/proposals/015）: 〜になる・〜くなる（pekomo）と、〜にする・〜くする（koso）。〜てきた は過去、〜ていく は現在として読む（きた・いく は訳さない）
+    var CHANGE_FORMS = [['なる', {}], ['ならない', { neg: true }], ['なった', { past: true }], ['ならなかった', { neg: true, past: true }],
+      ['なります', {}], ['なりました', { past: true }], ['なりません', { neg: true }], ['なりませんでした', { neg: true, past: true }],
+      ['なってきた', { past: true }], ['なってきました', { past: true }], ['なっていく', {}], ['なっていきます', {}]];
+    var MAKE_FORMS = [['する', {}], ['しない', { neg: true }], ['した', { past: true }], ['しなかった', { neg: true, past: true }],
+      ['します', {}], ['しました', { past: true }], ['しません', { neg: true }], ['しませんでした', { neg: true, past: true }]];
+    var CHANGE_KINDS = { CHG: 1, BECOME: 1, CHGMAKE: 1, MAKE: 1 };
+
     lexicon.forEach(function (e) {
       var pos = e.pos;
       if (pos === 'noun') {
@@ -186,6 +194,10 @@
             addJa(stem + 'くなかった', { k: 'ADJ', e: e, tags: { neg: true, past: true } });
             addJa(stem + 'ければ', { k: 'ADJ', e: e, tags: { cond: true } });
             addJa(stem + 'かったら', { k: 'ADJ', e: e, tags: { cond: true } });
+            (s === '良い' ? [stem, 'よ'] : [stem]).forEach(function (st) {
+              if (byW.pekomo) CHANGE_FORMS.forEach(function (f) { addJa(st + 'く' + f[0], { k: 'CHG', e: e, tags: f[1] }); });
+              if (byW.koso) MAKE_FORMS.forEach(function (f) { addJa(st + 'く' + f[0], { k: 'CHGMAKE', e: e, tags: f[1] }); });
+            });
             if (s === '良い') {
               addJa('いい', { k: 'ADJ', e: e, tags: {} });
               addJa('よい', { k: 'ADJ', e: e, tags: {} });
@@ -195,6 +207,9 @@
           } else if (/な$/.test(s)) {
             addJa(s, { k: 'ADJ', e: e, tags: {}, attr: true });
             addJa(s.slice(0, -1), { k: 'ANA', e: e });
+            // 静かになる・静かにする: 副詞の「静かに」より長く一致させるため、な形容詞ごとに登録する
+            if (byW.pekomo) CHANGE_FORMS.forEach(function (f) { addJa(s.slice(0, -1) + 'に' + f[0], { k: 'CHG', e: e, tags: f[1] }); });
+            if (byW.koso) MAKE_FORMS.forEach(function (f) { addJa(s.slice(0, -1) + 'に' + f[0], { k: 'CHGMAKE', e: e, tags: f[1] }); });
           } else if (/の$/.test(s)) {
             addJa(s, { k: 'ADJ', e: e, tags: {}, attr: true });
           } else {
@@ -227,6 +242,10 @@
       if (h[0] === 'ご覧になる') forms.push(['ご覧ください', { imp: true, polite: true, endOnly: true }]);
       forms.forEach(function (f) { addJa(f[0], { k: 'V', e: byW[h[1]], tags: Object.assign({}, f[1], extra) }); });
     });
+
+    // 名詞・な形容詞 + になる／にする（docs/proposals/015）
+    if (byW.pekomo) CHANGE_FORMS.forEach(function (f) { addJa('に' + f[0], { k: 'BECOME', tags: f[1] }); });
+    if (byW.koso) MAKE_FORMS.forEach(function (f) { addJa('に' + f[0], { k: 'MAKE', tags: f[1] }); });
 
     addJa('私たち（聞き手を含む）', { k: 'PRON', e: byW.misu });
     // 指示詞・場所・はい／いいえ・いくつ（docs/proposals/001）。これ・あれ は辞書の代名詞（iliu・teliu）から入る。それ は前の文を受ける li のまま
@@ -658,7 +677,7 @@
     Object.keys(DICT_PARTICLE_PREP).forEach(function (s) { if (!PARTICLE_PREP[s]) PARTICLE_PREP[s] = DICT_PARTICLE_PREP[s]; });
 
     var NOMINAL_PARTICLES = { 'が': 1, 'は': 1, 'を': 1, 'も': 1 };
-    var PRED_KINDS = { V: 1, COP: 1, ADJ: 1, ANA: 1, FUT: 1 };
+    var PRED_KINDS = { V: 1, COP: 1, ADJ: 1, ANA: 1, FUT: 1, CHG: 1, BECOME: 1, CHGMAKE: 1, MAKE: 1 };
     function isPredLike(t) { return !!t && !!PRED_KINDS[t.k] && !(t.k === 'ADJ' && t.attr); }
     var COMPLEMENT_VERBS = { omo: 1, juo: 1, pipo: 1, mo: 1, kanao: 1, keso: 1, opo: 1, noto: 1 };
 
@@ -688,6 +707,7 @@
         }
       }
       var sub = parseJaClause(embedded, false, notes);
+      if (sub.impersonal && !sub.subject) sub.subject = [item('li')];
       if (reflexive && !sub.subject && sub.verb) sub.subject = [item('selu')];
       var main = parseJaClause(tail, question, notes);
       main.object = generate(sub);
@@ -746,6 +766,7 @@
         embedded = embedded.slice(0, -1).concat([{ k: 'V', e: pv.e, tags: { modal: 'sati', neg: !!negated } }]);
       }
       var sub = parseJaClause(embedded, false, notes);
+      if (sub.impersonal && !sub.subject) sub.subject = [item('li')];
       if (kind === 'question' && !sub.subject && sub.verb && !sub.imperative) notes.push('中身の主語が文にないため、省いています。');
       var main = parseJaClause(tail, question, notes);
       main.object = generate(sub).concat(kind === 'question' ? [item('ka')] : []);
@@ -783,6 +804,19 @@
           copTags = null;
         }
       }
+      // 変化（docs/proposals/015）: 〜になる・〜くなる は pekomo + 補語、〜にする・〜くする は koso + 目的語 + 補語
+      var changePred = null;
+      if (last && !copTags && CHANGE_KINDS[last.k]) {
+        changePred = { make: last.k === 'MAKE' || last.k === 'CHGMAKE', adj: (last.k === 'CHG' || last.k === 'CHGMAKE') ? last.e : null };
+        if (last.tags.past) tense = 'past';
+        if (last.tags.neg) neg = true;
+        toks.pop();
+        if (!changePred.adj) {
+          var ct = toks[toks.length - 1];
+          if (ct && ct.k === 'ANA') toks[toks.length - 1] = { k: 'N', e: ct.e };
+        }
+        last = null;
+      }
       if (last && last.k === 'V' && !copTags) {
         pred = { kind: 'verb', e: last.e, imp: !!last.tags.imp, polite: !!last.tags.polite, hort: !!last.tags.hort, ambig: last.tags.ambig };
         if (last.tags.past) tense = 'past';
@@ -815,6 +849,55 @@
         neg: neg, question: question, object: null, pps: [], notes: notes };
       var bare = rest.filter(function (c) { return !c.particle; });
       var withP = rest.filter(function (c) { return c.particle; });
+
+      if (changePred) {
+        var cp = changePred;
+        var chgComp;
+        var yoriC = withP.filter(function (c) { return c.particle === 'より'; })[0];
+        if (cp.adj) {
+          // もっと・一番 は形容詞の前に置く（pekomo moli kole）。ますます（initi）・だんだん（kulapi）は副詞のまま
+          var degIdx = -1;
+          ir.advs.forEach(function (a, k2) { if (a.w === 'moli' || a.w === 'mosi') degIdx = k2; });
+          var deg = degIdx >= 0 ? ir.advs.splice(degIdx, 1)[0] : null;
+          chgComp = yoriC ? [item('moli'), item(cp.adj.w), item('tanute')].concat(yoriC.items) : (deg ? [deg, item(cp.adj.w)] : [item(cp.adj.w)]);
+        } else {
+          var cc = bare.length ? bare[bare.length - 1] : null;
+          if (cc && !cc.timeKind && !cc.counter) { chgComp = cc.items; bare = bare.filter(function (c) { return c !== cc; }); }
+          else {
+            chgComp = [];
+            notes.push('「〜になる」「〜にする」の前に名詞が見つからないため、補語を省いています。');
+          }
+        }
+        var objC = cp.make ? withP.filter(function (c) { return c.particle === 'を'; })[0] : null;
+        if (cp.make) {
+          ir.verb = 'koso';
+          if (objC) ir.object = objC.items.concat(chgComp);
+          else if (!cp.adj && chgComp.length && byW.tuso) {
+            // 「コーヒーにする」は、変えるのではなく選ぶ意味（tuso）で読む
+            ir.verb = 'tuso';
+            ir.object = chgComp;
+            notes.push('目的語のない「〜にする」は「選ぶ」の意味と読んで、tuso で訳しています。');
+          } else {
+            ir.object = chgComp;
+            notes.push('「〜にする」「〜くする」は、目的語（〜を）がないため、補語だけを置いています。');
+          }
+        } else {
+          ir.verb = 'pekomo';
+          ir.complement = chgComp;
+          if (!ir.subject) ir.impersonal = true;
+        }
+        withP.filter(function (c) { return c !== objC && c !== yoriC; }).forEach(function (c) {
+          if (prepItems(c)) ir.pps.push(prepItems(c));
+          else notes.push('助詞「' + c.particle + '」は未対応です。');
+        });
+        var bareLeftC = [];
+        bare.forEach(function (c) {
+          if (c.timeKind) ir.pps.push(prepItems(c));
+          else bareLeftC.push(c);
+        });
+        leftover(ir, bareLeftC, notes);
+        return ir;
+      }
 
       if (pred && pred.kind === 'verb') {
         // いらっしゃる・参る（docs/proposals/010）: へ・に があれば行く、から があれば来る、なければ既定
@@ -1112,6 +1195,8 @@
             notes.push('主語のない節は、前の節の主語を引き継ぎました。');
           }
         });
+        // 主語のない「寒くなる」は、天候などの it にあたる li を補う（docs/proposals/015）
+        irs.forEach(function (ir) { if (ir.impersonal && !ir.subject) ir.subject = [item('li')]; });
         if (irs.length && defaultSubj) {
           var lastIr = irs[irs.length - 1];
           if (!lastIr.subject) lastIr.subject = [item(defaultSubj)];
@@ -1264,13 +1349,14 @@
       began: 'begin', begun: 'begin', taught: 'teach', caught: 'catch', chose: 'choose', chosen: 'choose',
       broke: 'break', broken: 'break', drove: 'drive', driven: 'drive', forgot: 'forget', forgotten: 'forget',
       wore: 'wear', worn: 'wear', won: 'win', left: 'leave', led: 'lead', threw: 'throw', thrown: 'throw',
-      shook: 'shake', held: 'hold', understood: 'understand', stood_: 'stand'
+      shook: 'shake', held: 'hold', understood: 'understand', stood_: 'stand',
+      became: 'become', got: 'get', gotten: 'get', grew: 'grow', grown: 'grow'
     };
     var IRREGULAR_PAST = {};
     ['ate', 'went', 'came', 'saw', 'took', 'gave', 'made', 'wrote', 'ran', 'drank', 'sang', 'swam', 'flew', 'fell',
       'slept', 'sat', 'stood', 'thought', 'knew', 'felt', 'found', 'lost', 'sold', 'sent', 'spent', 'paid', 'met',
       'said', 'told', 'heard', 'had', 'began', 'taught', 'caught', 'chose', 'broke', 'drove', 'forgot', 'wore',
-      'won', 'left', 'led', 'threw', 'shook', 'held', 'understood'].forEach(function (w) { IRREGULAR_PAST[w] = 1; });
+      'won', 'left', 'led', 'threw', 'shook', 'held', 'understood', 'became', 'got', 'grew'].forEach(function (w) { IRREGULAR_PAST[w] = 1; });
     var IRREGULAR_ADJ = { better: 'good', best: 'good', worse: 'bad', worst: 'bad' };
     var IRREGULAR_NOUN = { people: 'person', children: 'child', men: 'man', women: 'woman', feet: 'foot' };
     // to + 動詞が目的ではなく補語になる動詞（need to eat・ask him to go など）と、目的語がなくても目的を取る移動の動詞
@@ -1510,6 +1596,76 @@
       return null;
     }
 
+    // 変化（docs/proposals/015）: become / get / turn / grow + 形容詞（become は名詞も）→ pekomo + 補語、make + 目的語 + 形容詞 → koso + 目的語 + 補語
+    var CHANGE_EN = { become: 'pekomo', get: 'pekomo', turn: 'pekomo', grow: 'pekomo', make: 'koso' };
+    function changeVerbOf(tok) {
+      var cands = verbCandidates(tok);
+      for (var i = 0; i < cands.length; i++) {
+        var w = CHANGE_EN[cands[i].lemma];
+        if (w && byW[w]) return { lemma: cands[i].lemma, form: cands[i].form, w: w };
+      }
+      return null;
+    }
+    // cur は変化の動詞の位置。解析できれば ir に書き込んで true、できなければ cur を戻して false（ir は変えない）
+    function parseEnChange(cur, ctx, ir, chg) {
+      var save = cur.i;
+      cur.next();
+      var obj = null;
+      if (chg.lemma === 'make') {
+        var oTok = cur.peek();
+        if (oTok && OBJ_TO_PRON[oTok]) { obj = [item(OBJ_TO_PRON[oTok])]; cur.next(); }
+        else { var onp = parseNP(cur, ctx); obj = onp ? onp.items : null; }
+        if (!obj) { cur.i = save; return false; }
+      }
+      var advs = [];
+      var comp = [];
+      while (cur.more()) {
+        var at = cur.peek();
+        if (at === 'more') { comp.push(item('moli')); cur.next(); continue; }
+        if (at === 'very' || at === 'too') { comp.push(item(at === 'very' ? 'peli' : 'tui')); cur.next(); continue; }
+        var av = findAdv(at);
+        if (av && !findVerb(at) && !findNoun(at) && !findAdj(at)) { advs.push(item(av.w)); cur.next(); continue; }
+        break;
+      }
+      var adjTok = cur.peek();
+      var adj = adjTok ? findAdj(adjTok) : null;
+      if (chg.lemma === 'turn' && (adjTok === 'left' || adjTok === 'right')) adj = null;   // 曲がる（turn left）は変化ではない
+      var nounAlso = adjTok ? findNoun(adjTok) : null;
+      var followedByNoun = !!(cur.peek(1) && startsNP(cur.peek(1)) && cur.peek(1) !== 'than');
+      if (adj && (!nounAlso || !followedByNoun)) {
+        cur.next();
+        if (adj.deg === 'comp' && !comp.length) comp.push(item('moli'));
+        if (adj.deg === 'sup') comp.push(item('mosi'));
+        comp.push(item(adj.e.w));
+        if (cur.peek() === 'than') {
+          cur.next();
+          var ref = parseNP(cur, ctx);
+          comp.push(item('tanute'));
+          if (ref) comp = comp.concat(ref.items);
+        }
+      } else if (chg.lemma === 'become' && !comp.length) {
+        var npc = parseNP(cur, ctx);
+        if (!npc) { cur.i = save; return false; }
+        comp = npc.items;
+      } else { cur.i = save; return false; }
+      ir.verb = chg.w;
+      if (chg.lemma === 'make') ir.object = obj.concat(comp); else ir.complement = comp;
+      ir.advs = ir.advs.concat(advs);
+      while (cur.more()) {
+        var t3 = cur.peek();
+        if (PREPS[t3]) {
+          cur.next();
+          var pn = parseNP(cur, ctx);
+          if (pn) ir.pps.push([item(PREPS[t3])].concat(pn.items));
+          continue;
+        }
+        var av2 = findAdv(t3);
+        if (av2 && !findNoun(t3) && !findAdj(t3)) { ir.advs.push(item(av2.w)); cur.next(); continue; }
+        ir.extra = (ir.extra || []).concat([unknown(cur.next())]);
+      }
+      return true;
+    }
+
     function translateEnSentence(raw, question, notes, opts) {
       var text = expandContractions(raw).toLowerCase();
       return translateEnTokens(text.match(/[a-z]+|[0-9]+/g) || [], question, notes, opts);
@@ -1627,6 +1783,15 @@
           return ir;
         }
         cur.i = save;
+      }
+
+      // 変化（docs/proposals/015）
+      var chgV = cur.peek() ? changeVerbOf(cur.peek()) : null;
+      if (chgV && parseEnChange(cur, ctx, ir, chgV)) {
+        if (chgV.form === 'past' && !ir.tense && !perfect) ir.tense = 'past';
+        if (beForm && chgV.form === 'ing') ir.aspect = 'prog';
+        if (perfect) ir.aspect = 'perf';
+        return finishEn(ir, whWord, whMod);
       }
 
       if (beForm && !(cur.peek() && findVerb(cur.peek()) && findVerb(cur.peek()).form === 'ing' && !findAdj(cur.peek()))) {
@@ -2035,6 +2200,23 @@
       return out;
     }
 
+    // 「だんだん・ますます」の英語（docs/proposals/015）: more and more ADJ・ADJer and ADJer → increasingly ADJ
+    function rewriteEnChange(tokens) {
+      if (!byW.initi) return tokens;
+      var out = [];
+      for (var ti = 0; ti < tokens.length; ti++) {
+        var w0 = tokens[ti], w1 = tokens[ti + 1], w2 = tokens[ti + 2], w3 = tokens[ti + 3];
+        if (w0 === 'more' && w1 === 'and' && w2 === 'more' && w3 && findAdj(w3) && !findAdj(w3).deg) { out.push('increasingly'); ti += 2; continue; }
+        var adjE = findAdj(w0 || '');
+        if (adjE && adjE.deg === 'comp' && w1 === 'and' && w2 === w0) {
+          var base = adjE.e.en[0] ? adjE.e.en[0].toLowerCase() : '';
+          if (/^[a-z]+$/.test(base) && findAdj(base) && findAdj(base).e === adjE.e && !findAdj(base).deg) { out.push('increasingly', base); ti += 2; continue; }
+        }
+        out.push(w0);
+      }
+      return out;
+    }
+
     function translateEn(text) {
       var notes = [];
       var parts = [];
@@ -2044,7 +2226,7 @@
         if (!trimmed) return;
         var question = /\?$/.test(trimmed);
         var body = trimmed.replace(/[.!?]+$/, '');
-        var tokens = rewriteEnComparison(rewriteEnCalendar(expandContractions(body).toLowerCase().match(/[a-z]+|[0-9]+|,/g) || []));
+        var tokens = rewriteEnChange(rewriteEnComparison(rewriteEnCalendar(expandContractions(body).toLowerCase().match(/[a-z]+|[0-9]+|,/g) || [])));
         // 日常のあいさつ（docs/proposals/005）: Good morning / Good night / Sorry / Excuse me / Thanks
         var greetKey = tokens.join(' ');
         var greet = !question && EN_GREETING[greetKey];

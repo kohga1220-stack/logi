@@ -383,6 +383,17 @@ SVO + 前置詞句で代替。
 動詞 koso（させる）+ 動名詞（-na）
 - mi koso li tote komona.（私は彼を来させる）
 
+### 変化（v0.23 確定、提案015）
+- 〜になる・〜くなる: `pekomo`（成る）は `pio` と同じく、補語に名詞か形容詞を直接取る。時制・マーカーは `pekomo` の前。
+  `li pekomo kole.`（寒くなる）、`li pasu pekomo titusa.`（彼は先生になった）、`jeta pekomo aisa.`（水が氷になる）。主語のない「寒くなる」は、天候などの it にあたる `li` を補う。
+- だんだん = `kulapi`、ますます = `initi`（辞書の副詞）。どちらも副詞の位置（主語の直後、マーカーの前）。`li kulapi pekomo kole.`（だんだん寒くなる）、`li initi pekomo wuje.`（ますます忙しくなる）。
+  もっと寒くなる は補語に `moli` を付ける（`li pekomo moli kole.`。比較の形、提案014）。英語の gradually・more and more・ADJer and ADJer も同じ形にする。
+- 〜にする・〜くする: `koso`（させる）+ 目的語 + 補語（名詞か形容詞）。`mi koso luma lase.`（部屋を大きくする）、`mi koso li titusa.`（彼を先生にする）。動名詞の使役（`koso li komona`）は、そのまま。
+  目的語のない「コーヒーにする」は、変化ではなく「選ぶ」の意味で `tuso kupa.`。
+- 〜てきた・〜ていく: 時間の流れの意味は訳さない。〜てきた は過去（`pasu`）、〜ていく は現在として読む。
+- 英語: become / get / turn / grow + 形容詞（become は名詞も）、make + 目的語 + 形容詞。`turn left` は曲がる（`tuluno`）で、変化ではない。make + 目的語 + 名詞（`made him a teacher`）は、授与との区別がつかないため未対応。
+- この規則に含めないもの: 〜ことになる・〜ようになる、受け身・可能の慣用句、形容詞から副詞を作る規則。
+
 ### 仮定法
 接続詞 ipu（もし）+ 仮定マーカー wutu
 - ipu mi wutu pio pata, mi wutu pulaio.（もし鳥なら、飛ぶのに）
@@ -605,5 +616,6 @@ v0.5 で po を **tulimo**（英 dream の音訳: d→t, r→l, 子音連続を 
 | v0.20 | あいさつの続きと願いの言葉を決めた（こんばんは・Good evening = `kute ipa.`、Good afternoon = `kute apuja.`、お元気ですか = `tu pio miwe ka?`、元気です = `mi pio miwe.`、Good luck = `kute luna!`、Have a nice day = `kute teia!`、See you tomorrow = `mi putu sio tu moloa.`。提案011、§4）。翻訳機が対応。新語なし。1,745語 |
 | v0.21 | 助数詞・順序数・回数・単位を決めた（助数詞は作らず落とす、順序数は名詞のあとに `semuna` + 数、回数は `te taima`、単位は数 + 単位の語。提案013、§5）。翻訳機が日本語（個・匹・冊・本・枚・台・頭・羽・杯、N番目・第N、回・度）と英語（first〜tenth、unit + of）に対応。新語なし。M1ko は「お任せ」と返事をし、Claude がおすすめの A を採った。2,780語 |
 | v0.22 | 比較の続きを決めた（同じくらい `pio seme 形容詞 tote 基準`、動詞の比較 `moli 副詞 tanute 基準`、最上級の範囲 `inute`。提案014、§7）。翻訳機が日本語（〜と同じくらい・〜ほど…ない・〜より（動詞文）・〜の中で一番）と英語（as ~ as・better than・the + 最上級・of / in + 範囲）に対応。新語なし。M1ko は「お任せ」と返事をし、Claude がおすすめの A を採った。2,780語 |
+| v0.23 | 変化を決めた（〜になる `pekomo` + 補語、だんだん `kulapi`、ますます `initi`、〜にする `koso` + 目的語 + 補語。提案015、§7）。翻訳機が日本語（〜になる・〜くなる・〜になってきた・〜にする・〜くする・だんだん・ますます）と英語（become・get・turn・grow + 形容詞、make + 目的語 + 形容詞、gradually、more and more）に対応。新語なし。M1ko は「お任せ」と返事をし、Claude がおすすめの A を採った（ますますは、辞書の `initi` を使った）。2,880語 |
 | v0.4 | 疑問詞はその場置き、法副詞は副詞の位置（マーカーの前）と §7 に追記 |
 | v0.4 | 同義語33語を deprecated にし（status / replaced_by 列を追加）、正本の選び方を §10.6 に記載 |

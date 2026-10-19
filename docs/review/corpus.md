@@ -128,6 +128,13 @@
 | 121 | compare-not-as | li no pio seme pasute tote mi. | 彼は私ほど速くない。 |
 | 122 | compare-verb | li sino moli poni tanute mi. | 彼女は私より上手に歌う。 |
 | 123 | superlative-range | li pio mosi jowe inute misu. | 彼女は私たちの中で一番若い。 |
+| 124 | change-adj | li pekomo kole. | 寒くなる。 |
+| 125 | change-noun | li pasu pekomo titusa. | 彼は先生になった。 |
+| 126 | change-gradual | li kulapi pekomo kole. | だんだん寒くなる。 |
+| 127 | change-increasingly | li initi pekomo wuje. | ますます忙しくなる。 |
+| 128 | make-adj | mi koso luma lase. | 私は部屋を大きくする。 |
+| 129 | make-noun | mi koso li titusa. | 私は彼を先生にする。 |
+| 130 | change-comparative | li pekomo moli kole. | もっと寒くなる。 |
 
 ## 語注（辞書から機械的に生成）
 
@@ -377,3 +384,17 @@
   li=彼/彼女/それ(pronoun) sino=歌う(verb) moli=もっと(adv) poni=良く(adv) tanute=より(conj) mi=私(pronoun)
 - **123** `li pio mosi jowe inute misu.`  
   li=彼/彼女/それ(pronoun) pio=です(verb) mosi=最も(adv) jowe=若い(adj) inute=の中に(prep) misu=私たち（包括）(pronoun)
+- **124** `li pekomo kole.`  
+  li=彼/彼女/それ(pronoun) pekomo=成る(verb) kole=寒い(adj)
+- **125** `li pasu pekomo titusa.`  
+  li=彼/彼女/それ(pronoun) pasu=過去(marker) pekomo=成る(verb) titusa=先生(noun)
+- **126** `li kulapi pekomo kole.`  
+  li=彼/彼女/それ(pronoun) kulapi=だんだん(adv) pekomo=成る(verb) kole=寒い(adj)
+- **127** `li initi pekomo wuje.`  
+  li=彼/彼女/それ(pronoun) initi=ますます(adv) pekomo=成る(verb) wuje=忙しい(adj)
+- **128** `mi koso luma lase.`  
+  mi=私(pronoun) koso=させる(verb) luma=部屋(noun) lase=大きい(adj)
+- **129** `mi koso li titusa.`  
+  mi=私(pronoun) koso=させる(verb) li=彼/彼女/それ(pronoun) titusa=先生(noun)
+- **130** `li pekomo moli kole.`  
+  li=彼/彼女/それ(pronoun) pekomo=成る(verb) moli=もっと(adv) kole=寒い(adj)
