@@ -607,3 +607,57 @@ test('提案011: 日常のあいさつの続きと願いの言葉', () => {
   // 一般の形容詞だけの文には主語を補わない
   assert.strictEqual(translator.translate('寒いです。', 'ja').logi, 'pio kole.');
 });
+
+test('提案013: 助数詞は落とし、順序数は semuna、回数は taima、単位は数 + 単位の語', () => {
+  const ja = [
+    ['私はリンゴを3個食べる。', 'mi ito te apa.'],
+    ['犬が2匹いる。', 'to tuka alo.'],
+    ['私は本を3冊読む。', 'mi loto te pupa.'],
+    ['鉛筆が5本ある。', 'pe penusa alo.'],
+    ['3個のリンゴを食べる。', 'ito te apa.'],
+    ['家は3番目です。', 'usa pio semuna te.'],
+    ['第3章。', 'samota semuna te.'],
+    ['私は3回行った。', 'mi pasu iko te taima.'],
+    ['私は水を2リットル飲む。', 'mi liko to litapa jeta.'],
+    ['私は10キロメートル走る。', 'mi lano pa pulu kipoma.'],
+  ];
+  ja.forEach(([src, logi]) => {
+    assert.strictEqual(translator.translate(src, 'ja').logi, logi, src);
+  });
+  const en = [
+    ['I live in the third house.', 'mi lipo inute usa semuna te.'],
+    ['I eat the first apple.', 'mi ito apa semuna pa.'],
+    ['I drink two liters of water.', 'mi liko to litapa jeta.'],
+    ['I ran 10 kilometers.', 'mi pasu lano pa pulu kipoma.'],
+  ];
+  en.forEach(([src, logi]) => {
+    assert.strictEqual(translator.translate(src, 'en').logi, logi, src);
+  });
+  // 本・頭は、助詞のあとの数のときだけ助数詞（名詞の「本」を壊さない）
+  assert.strictEqual(translator.translate('私は本を読む。', 'ja').logi, 'mi loto pupa.');
+});
+
+test('提案014: 同じくらい・動詞の比較・最上級の範囲', () => {
+  const ja = [
+    ['私は彼と同じくらい忙しい。', 'mi pio seme wuje tote li.'],
+    ['彼は私ほど速くない。', 'li no pio seme pasute tote mi.'],
+    ['彼女は私より上手に歌う。', 'li sino moli poni tanute mi.'],
+    ['彼は私よりもっと食べる。', 'li ito moli tanute mi.'],
+    ['彼女は私たちの中で一番若い。', 'li pio mosi jowe inute misu.'],
+    ['これは一番大きい。', 'iliu pio mosi lase.'],
+  ];
+  ja.forEach(([src, logi]) => {
+    assert.strictEqual(translator.translate(src, 'ja').logi, logi, src);
+  });
+  const en = [
+    ['I am as tall as him.', 'mi pio seme wawe tote li.'],
+    ['He is not as fast as me.', 'li no pio seme pasute tote mi.'],
+    ['She sings better than me.', 'li sino moli poni tanute mi.'],
+    ['This is the biggest.', 'iliu pio mosi lase.'],
+    ['She is the youngest of us.', 'li pio mosi jowe inute misu.'],
+    ['I am better than you.', 'mi pio moli kute tanute tu.'],
+  ];
+  en.forEach(([src, logi]) => {
+    assert.strictEqual(translator.translate(src, 'en').logi, logi, src);
+  });
+});

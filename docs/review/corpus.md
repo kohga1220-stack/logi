@@ -119,6 +119,15 @@
 | 112 | wish-luck | kute luna! | 幸運を。 |
 | 113 | wish-day | kute teia! | よい一日を。 |
 | 114 | farewell-tomorrow | mi putu sio tu moloa. | また明日会いましょう。 |
+| 115 | counter-drop | mi ito te apa. | 私はリンゴを3個食べる。 |
+| 116 | counter-drop | to tuka alo. | 犬が2匹いる。 |
+| 117 | ordinal | usa pio semuna te. | 家は3番目です。 |
+| 118 | times | mi pasu iko te taima. | 私は3回行った。 |
+| 119 | unit | mi liko to litapa jeta. | 私は水を2リットル飲む。 |
+| 120 | compare-same | mi pio seme wuje tote li. | 私は彼と同じくらい忙しい。 |
+| 121 | compare-not-as | li no pio seme pasute tote mi. | 彼は私ほど速くない。 |
+| 122 | compare-verb | li sino moli poni tanute mi. | 彼女は私より上手に歌う。 |
+| 123 | superlative-range | li pio mosi jowe inute misu. | 彼女は私たちの中で一番若い。 |
 
 ## 語注（辞書から機械的に生成）
 
@@ -350,3 +359,21 @@
   kute=良い(adj) teia=日(noun)
 - **114** `mi putu sio tu moloa.`  
   mi=私(pronoun) putu=未来(marker) sio=見る(verb) tu=あなた(pronoun) moloa=明日(noun)
+- **115** `mi ito te apa.`  
+  mi=私(pronoun) ito=食べる(verb) te=3(num) apa=リンゴ(noun)
+- **116** `to tuka alo.`  
+  to=2(num) tuka=犬(noun) alo=ある(verb)
+- **117** `usa pio semuna te.`  
+  usa=家(noun) pio=です(verb) semuna=順序(noun) te=3(num)
+- **118** `mi pasu iko te taima.`  
+  mi=私(pronoun) pasu=過去(marker) iko=行く(verb) te=3(num) taima=時間(noun)
+- **119** `mi liko to litapa jeta.`  
+  mi=私(pronoun) liko=飲む(verb) to=2(num) litapa=リットル(noun) jeta=水(noun)
+- **120** `mi pio seme wuje tote li.`  
+  mi=私(pronoun) pio=です(verb) seme=同じ(adj) wuje=忙しい(adj) tote=へ(prep) li=彼/彼女/それ(pronoun)
+- **121** `li no pio seme pasute tote mi.`  
+  li=彼/彼女/それ(pronoun) no=否定(marker) pio=です(verb) seme=同じ(adj) pasute=速い(adj) tote=へ(prep) mi=私(pronoun)
+- **122** `li sino moli poni tanute mi.`  
+  li=彼/彼女/それ(pronoun) sino=歌う(verb) moli=もっと(adv) poni=良く(adv) tanute=より(conj) mi=私(pronoun)
+- **123** `li pio mosi jowe inute misu.`  
+  li=彼/彼女/それ(pronoun) pio=です(verb) mosi=最も(adv) jowe=若い(adj) inute=の中に(prep) misu=私たち（包括）(pronoun)

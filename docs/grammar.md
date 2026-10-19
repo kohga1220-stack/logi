@@ -265,6 +265,14 @@ misu iko tote ili!        （ここへ行きましょう）
 | 100 | pa kupulu |
 | 2025 | to mipulu ni kupulu to pulu pe |
 
+### 助数詞・順序数・単位（v0.21 確定、提案013）
+- **助数詞は作らない。** 数は名詞の前に置き、日本語の助数詞（個・匹・冊・本・枚・台・頭・羽・杯）は落とす。`mi ito te apa.`（リンゴを3個食べる）、`to tuka alo.`（犬が2匹いる）。
+  名詞のあとに付く数（「リンゴを3個」「犬が2匹」）は、翻訳機が名詞の前に移す（`te apa`・`to tuka`）。提案013 の例（`tuka alo to.`）は、この「数は名詞の前」の決まりに合わせて直した。
+- **順序数**: `semuna`（順序）を名詞のあとに置き、数を続ける。`usa semuna te.`（3番目の家。the third house）。英語の first〜tenth、日本語の N番目・第N に対応する。
+- **回数**: 数量の `te taima`（3回）。日本語の 回・度 も同じ。
+- **単位**: ふつうの名詞（`metela` メートル・`kipoma` キロメートル・`milima` ミリメートル・`lulama` グラム・`kikoka` キログラム・`litapa` リットル・`pepuka` パーセント）。数 + 単位の語（`pa pulu kipoma` = 10キロメートル）。「水を2リットル」「two liters of water」は、数 + 単位の語を名詞の前に置く（`to litapa jeta`。英語の of は訳さない）。
+- 日本語の本・頭は、助詞（を・が・は・も）のあとの数のときだけ助数詞として読む（名詞の「本」を壊さない）。
+
 ### 暦と時刻（v0.17 確定、提案008）
 「単位の語 + 数」は暦の番号・時刻、「数 + 単位の語」は数量（期間）。大きい単位から小さい単位の順に並べる。
 
@@ -366,7 +374,11 @@ SVO + 前置詞句で代替。
 - 最上級: mosi + 形容詞または動詞（mi mosi laiko apa.）
 - 副詞が形容詞を修飾するとき（moli, peli など）は形容詞の直前に置く。上の「副詞の位置」は動詞を修飾する副詞の規則。
 - 同等: seme + tote（〜と同じ）
-
+- 同じくらい・〜ほど…ない（v0.22 確定、提案014）: `seme` を形容詞の前に置き、基準は `tote` で導く。否定は `no` を `pio` の前に置く。
+  `mi pio seme wuje tote li.`（私は彼と同じくらい忙しい）、`li no pio seme pasute tote mi.`（彼は私ほど速くない）、英語 as ~ as も同じ。
+- 動詞の比較（v0.22）: 動詞のあとに `moli` + 副詞 + `tanute` + 基準 を、ひとまとまりで置く（副詞は辞書の副詞だけ。`poni` = よく・上手に）。
+  `li sino moli poni tanute mi.`（彼女は私より上手に歌う。She sings better than me.）、`li ito moli tanute mi.`（彼は私よりもっと食べる）。提案014 の例と同じ並び。
+- 最上級の範囲（v0.22）: 最上級のあとに前置詞 `inute` を置く。`li pio mosi jowe inute misu.`（私たちの中で一番若い。the youngest of us）。英語の the + 最上級は the を訳さない。
 ### 使役
 動詞 koso（させる）+ 動名詞（-na）
 - mi koso li tote komona.（私は彼を来させる）
@@ -591,5 +603,7 @@ v0.5 で po を **tulimo**（英 dream の音訳: d→t, r→l, 子音連続を 
 | v0.18 | 間接疑問（節 + `ka`、`?` なし）と間接命令（`sati` で言い換える。禁止は `sati no`）、引用の主語（同じ人は `selu`）を決めた（提案009、§10.3.1）。翻訳機が日本語（〜か聞いた・〜かどうか知らない・〜ように言った・〜なと言った）と英語（asked what / whether、told me to V）に対応。新語なし。1,745語 |
 | v0.19 | 敬語は段階を作らず、意味だけ訳す（敬語の動詞はふつうの動詞に直す、お／ご・さん／様は落とす、お／ご + 動詞 + ください = `pilisu, 動詞!`、いらっしゃいませ = `weluko!`、ごちそうさま = `mi tanako tu.`、お願いします = `pilisu.`。提案010、§4）。翻訳機が日本語の敬語に対応。新語なし。1,745語 |
 | v0.20 | あいさつの続きと願いの言葉を決めた（こんばんは・Good evening = `kute ipa.`、Good afternoon = `kute apuja.`、お元気ですか = `tu pio miwe ka?`、元気です = `mi pio miwe.`、Good luck = `kute luna!`、Have a nice day = `kute teia!`、See you tomorrow = `mi putu sio tu moloa.`。提案011、§4）。翻訳機が対応。新語なし。1,745語 |
+| v0.21 | 助数詞・順序数・回数・単位を決めた（助数詞は作らず落とす、順序数は名詞のあとに `semuna` + 数、回数は `te taima`、単位は数 + 単位の語。提案013、§5）。翻訳機が日本語（個・匹・冊・本・枚・台・頭・羽・杯、N番目・第N、回・度）と英語（first〜tenth、unit + of）に対応。新語なし。M1ko は「お任せ」と返事をし、Claude がおすすめの A を採った。2,780語 |
+| v0.22 | 比較の続きを決めた（同じくらい `pio seme 形容詞 tote 基準`、動詞の比較 `moli 副詞 tanute 基準`、最上級の範囲 `inute`。提案014、§7）。翻訳機が日本語（〜と同じくらい・〜ほど…ない・〜より（動詞文）・〜の中で一番）と英語（as ~ as・better than・the + 最上級・of / in + 範囲）に対応。新語なし。M1ko は「お任せ」と返事をし、Claude がおすすめの A を採った。2,780語 |
 | v0.4 | 疑問詞はその場置き、法副詞は副詞の位置（マーカーの前）と §7 に追記 |
 | v0.4 | 同義語33語を deprecated にし（status / replaced_by 列を追加）、正本の選び方を §10.6 に記載 |

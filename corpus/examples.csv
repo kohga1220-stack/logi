@@ -113,3 +113,12 @@ id,feature,logi,ja
 112,wish-luck,kute luna!,幸運を。
 113,wish-day,kute teia!,よい一日を。
 114,farewell-tomorrow,mi putu sio tu moloa.,また明日会いましょう。
+115,counter-drop,mi ito te apa.,私はリンゴを3個食べる。
+116,counter-drop,to tuka alo.,犬が2匹いる。
+117,ordinal,usa pio semuna te.,家は3番目です。
+118,times,mi pasu iko te taima.,私は3回行った。
+119,unit,mi liko to litapa jeta.,私は水を2リットル飲む。
+120,compare-same,mi pio seme wuje tote li.,私は彼と同じくらい忙しい。
+121,compare-not-as,li no pio seme pasute tote mi.,彼は私ほど速くない。
+122,compare-verb,li sino moli poni tanute mi.,彼女は私より上手に歌う。
+123,superlative-range,li pio mosi jowe inute misu.,彼女は私たちの中で一番若い。

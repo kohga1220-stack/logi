@@ -307,12 +307,18 @@
     addJa('あるいは', { k: 'OR' });
     addJa('か', { k: 'KA' });
     addJa('かどうか', { k: 'KA', whether: true });
+    // 比較の続き（docs/proposals/014）
+    if (byW.poni) ['上手に', 'うまく', 'よく'].forEach(function (a) { addJa(a, { k: 'ADV', e: byW.poni }); });
+    if (byW.mosi) addJa('一番', { k: 'ADV', e: byW.mosi });
+    addJa('ほど', { k: 'P', p: 'ほど' });
+    addJa('の中で', { k: 'P', p: 'の中で' });
+    addJa('同じくらい', { k: 'SAME' });
     addJa('、', { k: 'COMMA' });
     addJa(',', { k: 'COMMA' });
     ['。', '.', '！', '!', '？', '?'].forEach(function (s) {
       addJa(s, { k: 'END', q: s === '？' || s === '?' });
     });
-    var COUNTERS = { '歳': 'ila', '年': 'ila', '日': 'teia', '分': 'minuta', '週': 'wika' };
+    var COUNTERS = { '歳': 'ila', '年': 'ila', '日': 'teia', '分': 'minuta', '週': 'wika', '回': 'taima', '度': 'taima' };
     Object.keys(COUNTERS).forEach(function (s) {
       if (!jaMap[s]) addJa(s, { k: 'CTR', w: COUNTERS[s] });
     });
@@ -387,6 +393,8 @@
           i += rel[0].length;
           continue;
         }
+        var ordPre = /^第([0-9]+)/.exec(text.slice(i));
+        if (ordPre) { flush(); tokens.push({ k: 'ORD', n: parseInt(ordPre[1], 10) }); i += ordPre[0].length; continue; }
         var m = /^[0-9]+/.exec(text.slice(i));
         if (m) {
           flush();
@@ -400,6 +408,16 @@
             i += m[0].length + 1;
             continue;
           }
+          // 助数詞（個・匹・冊・枚・台・羽・杯。本・頭は、助詞のあとだけ）は落とす。N番目 は順序数（docs/proposals/013）
+          var restAfter = text.slice(i + m[0].length);
+          var ctrM = /^(個(?!人|性|別|室|体)|匹(?!敵)|冊(?!子)|枚(?!挙)|台(?!風|所|詞|本)|羽(?!根|織)|杯|本(?!日|当|気|物|人|来|質|屋|棚|社|店|音|文|格)|頭(?!痛|脳|部))/.exec(restAfter);
+          var prevT = tokens[tokens.length - 1];
+          if (ctrM && (ctrM[1] !== '本' && ctrM[1] !== '頭' || (prevT && prevT.k === 'P' && /^[をがはも]$/.test(prevT.p)))) {
+            tokens.push({ k: 'NUMC', n: num });
+            i += m[0].length + ctrM[1].length;
+            continue;
+          }
+          if (/^番目/.test(restAfter)) { tokens.push({ k: 'ORD', n: num }); i += m[0].length + 2; continue; }
           tokens.push({ k: 'NUM', n: num });
           i += m[0].length;
           continue;
@@ -459,7 +477,11 @@
         mods = [];
         var particle = null;
         if (i < n && tokens[i].k === 'P' && tokens[i].p !== 'の') { particle = tokens[i].p; i++; }
+        // 「彼と同じくらい」: と + 同じくらい（docs/proposals/014）
+        var same = false;
+        if (particle === 'と' && i < n && tokens[i].k === 'SAME') { same = true; i++; }
         var c = { items: items, particle: particle };
+        if (same) c.same = true;
         if (extra) for (var k in extra) c[k] = extra[k];
         chunks.push(c);
       }
@@ -481,8 +503,33 @@
         var t = tokens[i];
         if (t.k === 'ADV') { advs.push(item(t.e.w)); i++; continue; }
         if (t.k === 'WH' && (t.e.w === 'waia' || t.e.w === 'aua')) { advs.push(item(t.e.w)); i++; continue; }
+        if (t.k === 'NUMC') {
+          var qn = words(numberToLogi(t.n));
+          var pc = chunks[chunks.length - 1];
+          if (tokens[i + 1] && tokens[i + 1].k === 'P' && tokens[i + 1].p === 'の') { mods = mods.concat(qn); i += 2; continue; }
+          if (pc && !pc.counter && /^[をがはも]$/.test(pc.particle || '')) { pc.items = qn.concat(pc.items); i++; continue; }
+          mods = mods.concat(qn); i++; continue;
+        }
+        if (t.k === 'ORD') {
+          var ordItems = [item('semuna')].concat(words(numberToLogi(t.n)));
+          var ordHead = null;
+          if (tokens[i + 1] && tokens[i + 1].k === 'P' && tokens[i + 1].p === 'の' && tokens[i + 2] && tokens[i + 2].k === 'N') { ordHead = tokens[i + 2]; i += 3; }
+          else if (tokens[i + 1] && tokens[i + 1].k === 'N') { ordHead = tokens[i + 1]; i += 2; }
+          else i++;
+          finish(ordHead ? headItemsOf(ordHead).concat(ordItems) : ordItems);
+          continue;
+        }
         if (t.k === 'NUM') {
           var nums = words(numberToLogi(t.n));
+          // 「水を2リットル飲む」: 数 + 単位の語 は、直前の「〜を・〜が」の名詞に付ける（to litapa jeta）
+          var unitTok = tokens[i + 1];
+          var unitPc = chunks[chunks.length - 1];
+          if (unitTok && unitTok.k === 'N' && UNIT_WORDS[unitTok.e.w] && unitPc && !unitPc.counter && /^[をが]$/.test(unitPc.particle || '') &&
+            !(tokens[i + 2] && tokens[i + 2].k === 'P')) {
+            unitPc.items = nums.concat([item(unitTok.e.w)], unitPc.items);
+            i += 2;
+            continue;
+          }
           if (tokens[i + 1] && tokens[i + 1].k === 'CTR') {
             var ctr = tokens[i + 1];
             i += 2;
@@ -588,6 +635,8 @@
       return [item(t.e.w)];
     }
 
+    var NON_DEGREE_ADV = { kani: 1, masi: 1, sati: 1, mei: 1, olusi: 1, kuni: 1, no: 1, mosi: 1, moli: 1 };
+    var UNIT_WORDS = { metela: 1, kipoma: 1, milima: 1, lulama: 1, kikoka: 1, litapa: 1 };
     var DAYPARTS = { mola: 1, apuja: 1, ipa: 1, naita: 1 };
     var WEEKDAYS = { moputa: 1, tusuma: 1, wetuna: 1, tupusa: 1, pukipa: 1, satuka: 1, sunuta: 1 };
     // 時を表す語の前置詞（docs/proposals/008）: 時刻 atute、曜日・日付 onute、月・年 inute。毎〜・来〜・先〜は前置詞なし
@@ -604,7 +653,7 @@
 
     var PARTICLE_PREP = {
       'へ': 'tote', 'に': 'tote', 'で': 'atute', 'と': 'witute', 'から': 'pulomute',
-      'の中に': 'inute', 'の上に': 'onute', 'について': 'paute', 'のために': 'pote'
+      'の中に': 'inute', 'の中で': 'inute', 'の上に': 'onute', 'について': 'paute', 'のために': 'pote'
     };
     Object.keys(DICT_PARTICLE_PREP).forEach(function (s) { if (!PARTICLE_PREP[s]) PARTICLE_PREP[s] = DICT_PARTICLE_PREP[s]; });
 
@@ -786,6 +835,21 @@
         }
         var isExist = pred.e.w === 'alo' || pred.e.w === 'lipo';
         var purposePps = [];
+        // 動詞文の「より」（docs/proposals/014）: 私より上手に歌う → moli poni tanute mi
+        var yoriV = withP.filter(function (c) { return c.particle === 'より'; })[0];
+        if (yoriV) {
+          var advIdx = -1;
+          ir.advs.forEach(function (a, k2) { if (!NON_DEGREE_ADV[a.w]) advIdx = k2; });
+          var hasMoli = ir.advs.some(function (a) { return a.w === 'moli'; });
+          if (advIdx >= 0 || hasMoli) {
+            // 動詞のあとに、moli + 副詞 + tanute + 基準 をひとまとまりで置く（形容詞の比較と同じ並び）
+            var cmp = [item('moli')];
+            if (advIdx >= 0) cmp.push(ir.advs.splice(advIdx, 1)[0]);
+            else ir.advs = ir.advs.filter(function (a) { return a.w !== 'moli'; });
+            ir.pps.push(cmp.concat([item('tanute')], yoriV.items));
+            withP = withP.filter(function (c) { return c !== yoriV; });
+          }
+        }
         withP.forEach(function (c) {
           if (c.purpose) purposePps.push([item('pote')].concat(c.items));
           else if (c.particle === 'を' || (c.particle === 'が' && !ir.object)) ir.object = c.items;
@@ -817,16 +881,28 @@
         var comp = [];
         var yori = withP.filter(function (c) { return c.particle === 'より'; })[0];
         var to = withP.filter(function (c) { return c.particle === 'と'; })[0];
+        var hodo = withP.filter(function (c) { return c.particle === 'ほど'; })[0];
         if (adjW === 'seme' && to) {
           comp = [item('seme'), item('tote')].concat(to.items);
+        } else if (hodo) {
+          // 彼ほど速くない: 同じくらい（seme）の否定（docs/proposals/014）
+          comp = [item('seme'), item(adjW), item('tote')].concat(hodo.items);
+        } else if (to && to.same) {
+          comp = [item('seme'), item(adjW), item('tote')].concat(to.items);
         } else if (yori) {
           comp = [item('moli'), item(adjW), item('tanute')].concat(yori.items);
         } else {
           comp = [item(adjW)];
         }
+        // 一番・最も・もっと は形容詞の直前（mosi 大きい）
+        for (var ai = ir.advs.length - 1; ai >= 0; ai--) {
+          if ((ir.advs[ai].w === 'mosi' || ir.advs[ai].w === 'moli') && comp.length && !yori) {
+            comp.splice(comp.map(function (x) { return x.w; }).indexOf(adjW), 0, ir.advs.splice(ai, 1)[0]);
+          }
+        }
         ir.verb = 'pio';
         ir.complement = comp;
-        withP.filter(function (c) { return c !== yori && c !== to && c !== ga; }).forEach(function (c) {
+        withP.filter(function (c) { return c !== yori && c !== to && c !== ga && c !== hodo; }).forEach(function (c) {
           if (prepItems(c)) ir.pps.push(prepItems(c));
         });
         bare.filter(function (c) { return c.timeKind; }).forEach(function (c) { ir.pps.push(prepItems(c)); });
@@ -1173,6 +1249,7 @@
     });
     var MODALS = { can: 'kani', must: 'masi', may: 'mei', might: 'mei', should: 'sati' };
     var BE = { be: 1, am: 1, is: 1, are: 1, was: 1, were: 1, been: 1, being: 1 };
+    var ORDINALS = { first: 1, second: 2, third: 3, fourth: 4, fifth: 5, sixth: 6, seventh: 7, eighth: 8, ninth: 9, tenth: 10 };
     var NUMWORDS = { zero: 0, one: 1, two: 2, three: 3, four: 4, five: 5, six: 6, seven: 7, eight: 8, nine: 9,
       ten: 10, eleven: 11, twelve: 12, thirteen: 13, fourteen: 14, fifteen: 15, sixteen: 16, seventeen: 17,
       eighteen: 18, nineteen: 19, twenty: 20, thirty: 30, forty: 40, fifty: 50, sixty: 60, seventy: 70,
@@ -1302,6 +1379,7 @@
       var sawHead = false;
       var plural = false;
       var hasQuant = false;
+      var ordinalNum = null;
       var sawDet = false;
       while (cur.more()) {
         var tok = cur.peek();
@@ -1338,6 +1416,10 @@
         if (tok === 'what' && cur.peek(1) && !BE[cur.peek(1)] && findNoun(cur.peek(1))) { items.push(item('wata')); cur.next(); continue; }
         if (tok === 'many' || tok === 'some') { items.push(item(tok === 'many' ? 'mene' : 'some')); hasQuant = true; cur.next(); continue; }
         if (tok === 'most' && cur.peek(1) && findAdj(cur.peek(1))) { items.push(item('mosi')); cur.next(); continue; }
+        // 順序数（docs/proposals/013）: the third house → 名詞のあとに semuna + 数（usa semuna te）。名詞が続くときだけ
+        if (ORDINALS[tok] !== undefined && cur.peek(1) && findNoun(cur.peek(1)) && byW.semuna) {
+          ordinalNum = ORDINALS[tok]; cur.next(); continue;
+        }
         var adj = findAdj(tok);
         var noun = findNoun(tok);
         var nextTok = cur.peek(1);
@@ -1350,6 +1432,14 @@
           items.push(item(noun.e.w));
           plural = noun.plural;
           sawHead = true;
+          if (ordinalNum !== null) items = items.concat([item('semuna')], words(numberToLogi(ordinalNum)));
+          // 2 liters of water → to litapa jeta（単位の語のあとの of は訳さない）
+          if (UNIT_WORDS[noun.e.w] && cur.peek() === 'of') {
+            var save2 = cur.i;
+            cur.next();
+            var ofNP = parseNP(cur, ctx);
+            if (ofNP) items = items.concat(ofNP.items); else cur.i = save2;
+          }
           break;
         }
         var adv = findAdv(tok);
@@ -1600,6 +1690,12 @@
             if (ref) comp = comp.concat(ref.items);
           }
           ir.complement = comp;
+          // 形容詞のあとの前置詞句（the youngest in us・happy in the house）
+          while (cur.more() && PREPS[cur.peek()]) {
+            var p2 = cur.next();
+            var pn2 = parseNP(cur, ctx);
+            if (pn2) ir.pps.push([item(PREPS[p2])].concat(pn2.items));
+          }
           return finishEn(ir, whWord, whMod);
         }
         cur.i = save2;
@@ -1898,6 +1994,47 @@
       return out;
     }
 
+    // 比較の続き（docs/proposals/014）。as ~ as・better than（動詞のあと）・the + 最上級・最上級の of を、Logi の語列にまとめる
+    var OBJ_TO_PRON = { me: 'mi', you: 'tu', him: 'li', her: 'li', us: 'misu', them: 'lisu', it: 'li' };
+    function rewriteEnComparison(tokens) {
+      var out = [];
+      for (var ti = 0; ti < tokens.length; ti++) {
+        var w0 = tokens[ti], w1 = tokens[ti + 1], w2 = tokens[ti + 2];
+        var prev = out[out.length - 1];
+        // as ADJ as NP → seme ADJ tote NP
+        if (w0 === 'as' && w2 === 'as' && w1 && findAdj(w1)) {
+          var adjE = findAdj(w1);
+          var after = tokens[ti + 3];
+          var npWords = null, used = 0;
+          if (after && OBJ_TO_PRON[after]) { npWords = [OBJ_TO_PRON[after]]; used = 1; }
+          else if (after) {
+            var cur2 = new Cursor(tokens.slice(ti + 3));
+            var np2 = parseNP(cur2, { notes: [] });
+            if (np2) { npWords = np2.items.map(function (it) { return it.w; }); used = cur2.i; }
+          }
+          if (npWords && !adjE.deg) { out.push(calToken(['seme', adjE.e.w, 'tote'].concat(npWords))); ti += 2 + used; continue; }
+        }
+        // 動詞 + better than NP → moli poni tanute NP
+        if (w0 === 'better' && w1 === 'than' && prev && !BE[prev] && !AUX_START[prev] && findVerb(prev) && byW.poni) {
+          var after2 = tokens[ti + 2];
+          var npWords2 = null, used2 = 0;
+          if (after2 && OBJ_TO_PRON[after2]) { npWords2 = [OBJ_TO_PRON[after2]]; used2 = 1; }
+          else if (after2) {
+            var cur3 = new Cursor(tokens.slice(ti + 2));
+            var np3 = parseNP(cur3, { notes: [] });
+            if (np3) { npWords2 = np3.items.map(function (it) { return it.w; }); used2 = cur3.i; }
+          }
+          if (npWords2) { out.push(calToken(['moli', 'poni', 'tanute'].concat(npWords2))); ti += 1 + used2; continue; }
+        }
+        // the + 最上級（名詞が続かないとき）は the を訳さない
+        if (w0 === 'the' && w1 && findAdj(w1) && findAdj(w1).deg === 'sup' && !(w2 && findNoun(w2) && !BE[w2])) continue;
+        // 最上級のあとの of → in（範囲）
+        if (w0 === 'of' && prev && findAdj(prev) && findAdj(prev).deg === 'sup') { out.push('in'); continue; }
+        out.push(w0);
+      }
+      return out;
+    }
+
     function translateEn(text) {
       var notes = [];
       var parts = [];
@@ -1907,7 +2044,7 @@
         if (!trimmed) return;
         var question = /\?$/.test(trimmed);
         var body = trimmed.replace(/[.!?]+$/, '');
-        var tokens = rewriteEnCalendar(expandContractions(body).toLowerCase().match(/[a-z]+|[0-9]+|,/g) || []);
+        var tokens = rewriteEnComparison(rewriteEnCalendar(expandContractions(body).toLowerCase().match(/[a-z]+|[0-9]+|,/g) || []));
         // 日常のあいさつ（docs/proposals/005）: Good morning / Good night / Sorry / Excuse me / Thanks
         var greetKey = tokens.join(' ');
         var greet = !question && EN_GREETING[greetKey];

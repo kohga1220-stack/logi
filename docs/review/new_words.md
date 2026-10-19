@@ -7,7 +7,7 @@
 - 語幹が同じ: 語尾の1文字だけが違う、別の品詞の語（例: `kuka` 名詞と `kuko` 動詞）。同じ英語の別品詞なら意図した組です。そうでなければ偶然の一致なので、見分けにくくないか見てください
 - 同じ英語の語: 同じ英語の訳を持つ、別の語（同義語の候補）
 
-確認済み(ok): 1164 / 要修正(fix): 0 / 未確認(draft): 991
+確認済み(ok): 2155 / 要修正(fix): 0 / 未確認(draft): 0
 
 ## v0.7 英検3級レベルの語（487語）
 
@@ -1177,713 +1177,713 @@
 | aseja | 上り | ascent / uphill |  | ok |
 | sulaja | 周り | surroundings / perimeter / circumference |  | ok |
 | powula | 乗車 | boarding |  | ok |
-| kipoma | キロメートル | kilometer / kilometre |  |  |
-| milima | ミリメートル | millimeter / millimetre |  |  |
-| kikoka | キログラム | kilogram / kilo |  |  |
-| litapa | リットル | liter / litre |  |  |
-| pepuka | パーセント | percent / percentage |  |  |
-| pokuwa | 狐 | fox |  |  |
-| sunaka | 蛇 | snake / serpent |  |  |
-| muloma | 蛙 | frog / toad |  |  |
-| tujuka | 亀 | turtle / tortoise |  |  |
-| kusawa | 蟹 | crab |  |  |
-| salima | 蝦 | shrimp / prawn / lobster |  | Claude【任意】lobster（伊勢海老）は別の語。別名から外す |
-| okiwa | 蛸 | octopus |  |  |
-| sujia | 烏賊 | squid / cuttlefish |  |  |
-| selapa | 貝 | shellfish / clam / seashell |  |  |
-| kapuna | 鯉 | carp |  |  |
-| kilula | 金魚 | goldfish |  |  |
-| sapala | 雀 | sparrow |  |  |
-| jipea | 鳩 | pigeon / dove |  |  |
-| wulala | 鶴 | crane |  |  |
-| nutela | 蝶 | butterfly |  |  |
-| mosuma | 蚊 | mosquito |  |  |
-| sotuma | 苺 | strawberry |  |  |
-| julawa | 葡萄 | grape / grapes |  |  |
-| pekuma | 柿 | persimmon |  |  |
-| julula | 梅 | plum / apricot |  | Claude【任意】梅 は ume/Japanese apricot。plum（李）と apricot（杏）は別の果物で、どちらも近似 |
-| watila | 西瓜 | watermelon |  |  |
-| lemona | レモン | lemon |  |  |
-| panama | バナナ | banana |  |  |
-| katota | 人参 | carrot |  |  |
-| latika | 大根 | radish |  |  |
-| kapama | キャベツ | cabbage |  |  |
-| tukala | 葱 | scallion / leek / onion |  | Claude【任意】onion は 玉ねぎ（別の語）。別名から外す |
-| musula | 茸 | mushroom / fungus |  |  |
-| umona | 饂飩 | udon / noodle |  | Claude【任意】noodle は 麺 全般。別名から外す |
-| sokola | チョコレート | chocolate |  |  |
-| nisuka | ビスケット | biscuit / cookie / cracker |  |  |
-| muima | ジュース | juice |  |  |
-| pinaka | 酢 | vinegar |  |  |
-| silisa | 菊 | chrysanthemum |  |  |
-| pimupa | 竹 | bamboo |  |  |
-| susema | 茎 | stem / stalk |  |  |
-| tumula | 幹 | trunk |  |  |
-| mutuka | 藁 | straw / hay |  |  |
-| wapela | 滝 | waterfall / cascade |  |  |
-| pukeka | 平野 | plain / prairie |  |  |
-| ojuka | 沖 | offshore / offing |  | Claude【任意】offshore は形容詞・副詞が主で、名詞の offing はまれ。置き換えるなら open sea（2語）しかなく、現状維持でもよい |
-| lenopa | 虹 | rainbow |  |  |
-| lulona | 霜 | frost |  |  |
-| tusopa | 雫 | droplet |  |  |
-| pipuwa | 泡 | bubble / foam / froth |  |  |
-| susiwa | 湯気 | steam / vapor |  |  |
-| jusuna | 津波 | tsunami |  |  |
-| luluja | 洪水 | flood / deluge |  |  |
-| tisasa | 災害 | disaster / calamity / catastrophe |  |  |
-| tolusa | 公害 | pollution / contamination |  |  |
-| kopila | 銅 | copper / bronze |  |  |
-| mineka | 鉱物 | mineral / ore |  |  |
-| jolea | 額 | forehead / brow |  |  |
-| patoka | 尻 | buttocks / hip |  | Claude【任意】hip は 腰。別名から外す |
-| linuka | 皺 | wrinkle / crease |  |  |
-| salopa | 唾 | saliva / spit |  |  |
-| sinita | 嚔 | sneeze |  |  |
-| ikeka | しゃっくり | hiccup |  |  |
-| tisipa | 目眩 | dizziness / vertigo |  |  |
-| tiuwa | 下痢 | diarrhea |  |  |
-| muwusa | 脈 | pulse |  |  |
-| nelepa | 神経 | nerve |  |  |
-| tikosa | 消化 | digestion |  |  |
-| eseta | 食欲 | appetite |  |  |
-| papika | 疲労 | fatigue / exhaustion / weariness |  |  |
-| ikisa | 衛生 | hygiene / sanitation |  |  |
-| tinina | 消毒 | disinfection / sterilization |  |  |
-| pumewa | 予防 | prevention / precaution |  |  |
-| nulema | 看病 | nursing |  |  |
-| osewa | 入院 | hospitalization |  |  |
-| timala | 退院 | discharge |  | Claude【任意】discharge は多義（放電など）。退院 の意味では hospital discharge。現状維持でもよい |
-| panuja | 包帯 | bandage / dressing |  |  |
-| peketa | バケツ | bucket / pail |  |  |
-| mupuma | 箒 | broom |  |  |
-| wasata | 洗面器 | washbasin / basin |  |  |
-| totupa | 歯ブラシ | toothbrush |  |  |
-| lasota | 剃刀 | razor |  |  |
-| paweka | 電池 | battery |  |  |
-| sukeja | 螺子 | screw / bolt |  | Claude【任意】bolt は ボルト（別の語）。別名から外す |
-| siwina | 筒 | cylinder / tube |  |  |
-| sitopa | 栓 | stopper / plug / cork |  |  |
-| sujasa | 秤 | scale / balance |  |  |
-| lulela | 物差し | ruler |  |  |
-| ketuja | 薬缶 | kettle / teapot |  | Claude【任意】teapot は 急須（別の語）。別名から外す |
-| molula | 釜 | cauldron |  | Claude【任意】cauldron はまれ。釜 は pot が近いが使用中の可能性。現状維持でもよい |
-| kuseta | 座布団 | cushion |  |  |
-| petosa | シーツ | bedsheet / sheet |  |  |
-| kuwula | カーテン | curtain / drape |  |  |
-| pinuna | 家具 | furniture |  |  |
-| etawa | 垣根 | hedge |  |  |
-| nimuna | 煙突 | chimney / smokestack |  |  |
-| wamea | 倉庫 | warehouse / storehouse |  |  |
-| tolama | 寮 | dormitory / dorm |  |  |
-| pajuwa | 床屋 | barbershop / barber |  |  |
-| muleka | 運動場 | playground |  |  |
-| lalusa | 駐車場 | parking |  |  |
-| papasa | 広場 | plaza / piazza |  |  |
-| setoa | 歩道 | sidewalk / pavement / footpath |  |  |
-| leloka | 線路 | railroad / track |  |  |
-| tunola | トンネル | tunnel |  |  |
-| emena | エレベーター | elevator / lift |  |  |
-| kowala | 襟 | collar / lapel |  |  |
-| solipa | 袖 | sleeve |  |  |
-| sewima | 水着 | swimsuit / swimwear |  |  |
-| wujusa | ブラウス | blouse |  |  |
-| wulipa | スリッパ | slipper / slippers |  |  |
-| mekea | 化粧 | makeup / cosmetics |  |  |
-| kanoka | 蝋燭 | candle |  |  |
-| julija | 煉瓦 | brick |  |  |
-| kuneka | コンクリート | concrete / cement |  | Claude【任意】cement は セメント（別の語）。別名から外す |
-| kasosa | ガソリン | gasoline / petrol |  |  |
-| etija | エンジン | engine / motor |  |  |
-| pekaka | ブレーキ | brake / brakes |  |  |
-| lenesa | レンズ | lens |  |  |
-| tenoka | テント | tent |  |  |
-| tiluja | 太鼓 | drum / tambourine |  | Claude【任意】tambourine は タンバリン（別の語）。別名から外す |
-| luputa | 笛 | flute / whistle / fife |  |  |
-| jiopa | バイオリン | violin / fiddle |  |  |
-| suwosa | 刀 | sword / katana |  |  |
-| wiluma | 意志 | willpower / volition |  |  |
-| mioma | 違反 | violation / infringement / breach |  |  |
-| tipola | 外交 | diplomacy |  |  |
-| utapa | 外出 | outing / excursion |  |  |
-| kokepa | 会話 | conversation / dialogue |  |  |
-| ajapa | 学問 | academics |  | Claude【任意】academics（複数形）は学業・学界。学問 は learning か scholarship が近い |
-| woleta | 価値 | worth / merit |  |  |
-| solala | 給料 | salary / wage |  |  |
-| nupoa | 禁止 | prohibition / ban |  |  |
-| tenama | 傾向 | tendency / trend / inclination |  |  |
-| letila | 研究 | research / investigation |  |  |
-| iwosa | 検査 | inspection |  |  |
-| ejewa | 効果 | effect / effectiveness / efficacy |  |  |
-| sipula | 郊外 | suburb / suburbs / outskirts |  |  |
-| misana | 誤解 | misunderstanding |  |  |
-| nasusa | 国籍 | nationality / citizenship |  |  |
-| talela | 才能 | talent / aptitude |  |  |
-| sotisa | 刺激 | stimulus / stimulation |  |  |
-| uwema | 失業 | unemployment |  |  |
-| lilika | 宗教 | religion / faith |  |  |
-| tokuka | 主義 | doctrine / principle |  |  |
-| nupuka | 出版 | publishing / publication |  |  |
-| jukupa | 証明 | proof / certification |  |  |
-| lelana | 親戚 | relative / kin / kinsfolk |  |  |
-| lekama | 推薦 | recommendation / endorsement |  |  |
-| nolita | 政治 | politics |  |  |
-| manuna | 製造 | manufacture |  |  |
-| pesila | 設備 | facility / equipment |  |  |
-| sujeka | 専門 | specialty |  |  |
-| oweka | 組織 | organization |  |  |
-| nolesa | 知識 | knowledge |  |  |
-| nulowa | 地方 | province / region / district |  | Claude【任意】province は行政区画。地方 は region が近い。見出し語を region に（province は別名） |
-| weopa | 地理 | geography |  |  |
-| kotesa | 訂正 | correction / revision |  |  |
-| wuloja | 発音 | pronunciation |  |  |
-| jutuma | 判断 | judgment / judgement |  |  |
-| pajima | 病人 | patient / invalid |  | Claude【任意】patient は 患者。病人 は sick person（invalid は古風）。別名 invalid を外す |
-| soloka | 不足 | shortage / deficiency / scarcity |  |  |
-| pisapa | 物理 | physics |  |  |
-| kukema | 文法 | grammar / syntax |  | Claude【任意】syntax（統語論）は文法の一部。別名から外す |
-| pomisa | 方針 | policy / guideline |  |  |
-| mekula | 募集 | recruitment |  |  |
-| puseja | 保存 | preservation / conservation / storage |  | Claude【任意】conservation は 保護。別名から外す |
-| tujawa | 翻訳 | translation |  |  |
-| salesa | 魅力 | charm / appeal / attraction |  |  |
-| pijina | 友情 | friendship |  |  |
-| imoja | 輸入 | import |  |  |
-| temawa | 要求 | demand / claim |  |  |
-| lutaka | 予算 | budget |  |  |
-| kopasa | 良心 | conscience |  |  |
-| teoja | 理論 | theory |  |  |
-| tesosa | 論文 | thesis / treatise / dissertation |  |  |
-| meluta | 黴 | mold / mildew |  |  |
-| pemuwa | カボチャ | pumpkin / squash |  | Claude【任意】squash は ズッキーニ・スポーツ名と衝突しやすい。別名から外す |
-| nukuma | 胡瓜 | cucumber |  |  |
-| kewupa | 昆布 | kelp / seaweed |  | Claude【任意】seaweed は 海藻 全般。別名から外す（若布・海苔と衝突しやすい） |
-| wakama | 若布 | wakame |  |  |
-| sawuta | 鮭 | salmon |  |  |
-| meawa | マヨネーズ | mayonnaise |  |  |
-| kuwisa | クリーム | cream |  |  |
-| nupita | 蜘蛛 | spider |  |  |
-| milepa | 蛍 | firefly / glowworm |  |  |
-| musika | 筋肉 | muscle |  |  |
-| siloma | 絹 | silk |  |  |
-| lipupa | 口紅 | lipstick / rouge |  |  |
-| jelupa | 香水 | perfume / fragrance / cologne |  |  |
-| mupala | マフラー | scarf / muffler |  |  |
-| sipepa | ファスナー | zipper / fastener |  |  |
-| tatuma | バッジ | badge |  |  |
-| masoka | マスク | mask |  |  |
-| walula | 風船 | balloon |  |  |
-| nipua | 花火 | firework / fireworks |  |  |
-| melosa | メロディー | melody / tune |  |  |
-| lituma | リズム | rhythm |  |  |
-| posama | ポスター | poster / placard |  |  |
-| wuisa | クイズ | quiz |  |  |
-| lakeka | ラケット | racket / racquet |  |  |
-| pisema | ピストル | pistol / handgun / revolver |  |  |
-| pomepa | 爆弾 | bomb |  |  |
-| ujika | ヘリコプター | helicopter / chopper |  |  |
-| kosita | 容器 | container / receptacle / vessel |  |  |
-| pikasa | プラスチック | plastic / plastics |  |  |
-| piniwa | ビニール | vinyl |  |  |
-| ulewa | 元素 | element |  |  |
-| pamata | 高原 | plateau / highland |  |  |
-| penima | 半島 | peninsula |  |  |
-| pitila | 麓 | foothill / base |  |  |
-| lanasa | 牧場 | ranch / pasture |  |  |
-| pepisa | 吹雪 | blizzard / snowstorm |  |  |
-| moija | 湿気 | moisture / humidity / dampness |  |  |
-| sipaka | 火花 | spark |  |  |
-| ponika | 摩擦 | friction / chafing |  | Claude【任意】chafing は 擦れ。別名から外す |
-| penola | 現象 | phenomenon |  |  |
-| kutila | 構造 | structure |  |  |
-| pakisa | 要素 | factor / component |  |  |
-| jesula | 資源 | resource / resources |  |  |
-| nunula | 資金 | fund / funds |  |  |
-| ponopa | ボーナス | bonus |  |  |
-| solewa | 奨学金 | scholarship |  |  |
-| tonasa | 寄付 | donation / contribution |  |  |
-| lejuja | 履歴書 | resume |  | Claude【任意】resume（résumé）は動詞 resume と同形。cv を別名に足すと引きやすい |
-| mapusa | 原稿 | manuscript / draft |  |  |
-| pemopa | 諺 | proverb / saying / maxim |  |  |
-| onowa | 敬語 | honorific / honorifics |  |  |
-| mupeta | 述語 | predicate |  |  |
-| kimeta | 喜劇 | comedy / farce |  |  |
-| kukija | 批評 | criticism / review / critique |  |  |
-| sapeta | 迷信 | superstition |  |  |
-| panona | 空想 | fantasy / daydream |  |  |
-| somita | 孤独 | solitude / loneliness |  |  |
-| ajoka | 苦しみ | agony / suffering / anguish |  |  |
-| mukuna | 悲鳴 | scream / shriek |  |  |
-| onaja | 婚約 | engagement / betrothal |  |  |
-| luwita | 恋人 | sweetheart / lover |  |  |
-| uwia | 主婦 | housewife / homemaker |  |  |
-| tenena | 子孫 | descendant / offspring / posterity |  |  |
-| pemema | 首相 | premier / chancellor |  | Claude【任意】chancellor は ドイツ等の首相に限る。別名から外す |
-| nalia | 議会 | parliament / congress |  |  |
-| mupopa | 教授 | professor |  |  |
-| memusa | 商人 | merchant / trader / dealer |  |  |
-| pisola | 漁師 | fisherman / angler |  | Claude【任意】angler は 釣り人。別名から外す |
-| kenota | 車掌 | conductor |  | Claude【任意】conductor は指揮者の意味もあるが、車掌 を指す文脈なら可 |
-| kumuwa | 犯人 | culprit / criminal / offender |  |  |
-| wilina | 応援 | cheering / backing |  |  |
-| temoma | 鬼 | demon / ogre / fiend |  |  |
-| tepika | 悪魔 | devil / satan |  | Claude【任意】satan は固有名。別名から外す |
-| letoma | 回復 | recovery / recuperation |  |  |
-| sotapa | 学者 | scholar |  |  |
-| lilena | 学習 | learning |  |  |
-| leposa | 革命 | revolution |  |  |
-| lumata | 固まり | lump / clump / mass / cluster |  |  |
-| kakata | 空手 | karate |  |  |
-| kenila | 剣道 | kendo |  |  |
-| lapuka | 歌舞伎 | kabuki |  |  |
-| lakuna | 落語 | rakugo |  |  |
-| iwewa | 生け花 | ikebana |  |  |
-| kakena | カレンダー | calendar |  |  |
-| senoma | 感覚 | sensation / sense |  |  |
-| kunona | 冠 | crown / coronet / tiara |  |  |
-| sapuwa | 供給 | supply / provision |  |  |
-| kipapa | グラフ | graph |  |  |
-| tuseka | 訓練 | training / drill |  |  |
-| manipa | 経営 | management / administration |  |  |
-| sonota | 軽蔑 | contempt / scorn / disdain |  |  |
-| kinika | 結論 | conclusion |  |  |
-| kokosa | 憲法 | constitution |  |  |
-| onia | 航空 | aviation / aeronautics |  |  |
-| sokika | 固体 | solid |  | Claude【任意】solid は形容詞が主。名詞の固体 の意味では可 |
-| tuija | 裁縫 | sewing / needlework |  |  |
-| papola | 座敷 | parlor |  | Claude【任意】座敷 は畳の部屋。parlor は洋風の客間で、ずれる。tatami room（2語）は使えず、現状維持でもよい |
-| momana | 瞬間 | moment / instant |  |  |
-| kinasa | 消費 | consumption |  |  |
-| pimeka | 消防 | firefighting |  |  |
-| pipana | 振動 | vibration / oscillation |  |  |
-| likusa | 長方形 | rectangle / oblong |  |  |
-| umiwa | 単位 | unit / credit |  |  |
-| sitama | 段階 | stage / phase |  |  |
-| wukuwa | 彫刻 | sculpture / carving |  |  |
-| samika | 頂上 | summit / peak / top |  |  |
-| kumesa | 墜落 | crash |  | Claude【任意】crash は広い。墜落 は fall（落下）に近いが、航空機なら可 |
-| pimosa | 哲学 | philosophy |  |  |
-| naluwa | パーティー | party / banquet |  |  |
-| ijona | ハイキング | hiking / hike |  |  |
-| wikuna | ピクニック | picnic |  |  |
-| sinuma | 日焼け | sunburn / suntan / tan |  | Claude【任意】sunburn（炎症）と suntan（日焼け色）は意味が違う。見出し語は suntan が自然 |
-| satana | 標準 | standard / norm / criterion |  |  |
-| wusuta | 襖 | fusuma |  | Claude【任意】襖・団扇・刺身・空手などの日本語由来の語は、英語から引きにくいが、固有の文化語として妥当。このまま可 |
-| nutisa | 仏教 | buddhism |  |  |
-| jupuwa | 物質 | substance / matter |  |  |
-| joipa | 沸騰 | boiling |  | Claude【任意】boiling は形容詞・動名詞が主。名詞 boil は別の意味もあるが、現状維持でもよい |
-| kisata | 不満 | dissatisfaction / discontent / displeasure |  |  |
-| wupuja | 付録 | supplement / appendix |  |  |
-| sipima | 文明 | civilization / civilisation |  |  |
-| talosa | 的 | target / bullseye |  |  |
-| sepeka | 目上 | superior / senior / elder |  |  |
-| wupola | 目下 | subordinate / junior / inferior |  | Claude【任意】inferior は 劣った。別名から外す |
-| susota | 物置 | storeroom / shed |  |  |
-| wopia | 紅葉 | foliage |  | Claude【任意】foliage は葉全般。紅葉 は autumn leaves（2語）が近く、現状維持でもよい |
-| nomuka | 文句 | complaint / grumble / objection |  |  |
-| munuja | 夕焼け | sunset / afterglow |  |  |
-| petita | 嫁 | bride |  | Claude【任意】嫁 は日常では wife / daughter-in-law。bride は婚礼の花嫁に限る |
-| towuta | 連続 | continuation / succession / series |  |  |
-| jaluja | 別れ | parting / farewell / separation |  |  |
-| tiwuka | 割引 | discount / rebate |  |  |
-| makupa | 背景 | background / backdrop |  |  |
-| pokesa | 焦点 | focus |  |  |
-| kisusa | 要点 | gist / essentials |  |  |
-| tasisa | 根拠 | basis / grounds |  |  |
-| samuja | 見本 | sample / specimen |  |  |
-| mesena | 仕組み | mechanism |  |  |
-| pajosa | 過程 | process |  |  |
-| mutosa | 手順 | procedure |  |  |
-| mutama | 統計 | statistics |  |  |
-| lokipa | 論理 | logic |  |  |
-| molaka | 道徳 | morality / ethics / morals |  |  |
-| sosuka | 正義 | justice / righteousness |  |  |
-| wujita | 誇り | pride |  |  |
-| umeja | 謙遜 | humility |  |  |
-| newula | 油断 | negligence / carelessness |  | Claude【任意】negligence は法的な過失。油断 は carelessness が自然。見出し語を carelessness に |
-| lopuma | 反省 | reflection / introspection / remorse |  |  |
-| tiwapa | 失望 | disappointment / despair |  |  |
-| limula | 謎 | riddle / enigma / mystery |  |  |
-| topima | 話題 | topic / theme |  |  |
-| nekoka | 交渉 | negotiation / bargaining |  |  |
-| losela | 予約 | reservation / booking |  |  |
-| munota | 登山 | mountaineering / alpinism |  |  |
-| nisina | 釣り | fishing / angling |  |  |
-| mukia | スキー | skiing / ski |  |  |
-| mukata | スケート | skating / skate |  |  |
-| tepuwa | 夜明け | daybreak / dawn |  |  |
-| tumisa | 小雨 | drizzle / sprinkle |  |  |
-| kilesa | 三日月 | crescent |  |  |
-| pejuna | 肥料 | fertilizer / manure / compost |  |  |
-| misela | 漁業 | fishery |  |  |
-| ponena | 林業 | forestry |  |  |
-| sepiwa | 紡績 | spinning / textiles |  |  |
-| tekeka | 通信 | telecommunication / correspondence |  |  |
-| tuwaja | 輸送 | transportation / transport / transit |  |  |
-| pamesa | 小包 | parcel / package |  |  |
-| nonisa | 領事館 | consulate |  |  |
-| lusuwa | 税関 | customs |  |  |
-| sinana | 財政 | finance / finances |  |  |
-| metana | 少女 | girl |  |  |
-| sujoja | 成績 | scores / marks |  | Claude【任意】scores/marks（複数形）。成績 は grade か result が自然 |
-| metopa | 都会 | metropolis |  | Claude【任意】都会 は city が近いが、使用中なら metropolis で可 |
-| kilija | 垢 | grime / filth |  |  |
-| kakusa | 嗽 | gargle / gargling |  |  |
-| uwowa | 団扇 | uchiwa |  | Claude【任意】同上（日本語由来の文化語）。このまま可 |
-| wosuna | 延期 | postponement / adjournment |  |  |
-| pemana | 雌 | female |  |  |
-| tomuma | 顔色 | complexion |  |  |
-| semesa | 学期 | semester / term / trimester |  |  |
-| tosula | 乾杯 | toast / cheers |  |  |
-| lotema | 籖 | lottery / raffle / lot |  |  |
-| sesisa | クリスマス | christmas / xmas |  |  |
-| litita | 現実 | reality / actuality |  |  |
-| sijeta | サイレン | siren / alarm |  |  |
-| sasija | 刺身 | sashimi |  |  |
-| nosuwa | 姿勢 | posture / stance |  |  |
-| kelena | 地面 | ground |  |  |
-| sesepa | 栗 | chestnut |  |  |
-| tilawa | 蜻蛉 | dragonfly |  |  |
-| sikapa | 蝉 | cicada |  |  |
-| sajusa | 鰯 | sardine |  |  |
-| noima | 大豆 | soybean |  |  |
-| kimaka | 麒麟 | giraffe |  |  |
-| kamisa | 駱駝 | camel |  |  |
-| kasala | カンガルー | kangaroo |  |  |
-| laowa | ライオン | lion |  |  |
-| malota | 鸚鵡 | parrot |  |  |
-| wolika | 狼 | wolf |  |  |
-| tatesa | お玉杓子 | tadpole |  |  |
-| katipa | 青虫 | caterpillar |  |  |
-| lalipa | 雲雀 | lark |  |  |
-| nitika | 鴬 | nightingale |  |  |
-| mepona | メロン | melon |  |  |
-| tunika | チューリップ | tulip |  |  |
-| ketala | 杉 | cedar |  |  |
-| tojuna | 刺 | thorn |  |  |
-| petena | 花びら | petal |  |  |
-| pepota | 胡椒 | pepper |  |  |
-| omija | オムレツ | omelet |  |  |
-| kesoka | ケチャップ | ketchup |  |  |
-| wisula | ウイスキー | whisky |  |  |
-| pitawa | ビタミン | vitamin |  |  |
-| pitota | 蛋白質 | protein |  |  |
-| okusa | 酸素 | oxygen | 語幹が同じ: okuso |  |
-| kajula | 炭素 | carbon |  |  |
-| ujoma | 原子 | atom |  |  |
-| molena | 分子 | molecule |  |  |
-| kepuma | 黴菌 | germ |  |  |
-| sewana | 白鳥 | swan |  |  |
-| nuketa | 花束 | bouquet |  |  |
-| nupasa | 飛蝗 | grasshopper |  |  |
-| sonepa | 向日葵 | sunflower |  |  |
-| juwuta | 瓢箪 | gourd |  |  |
-| tanota | 蒲公英 | dandelion |  |  |
-| osuta | 駝鳥 | ostrich |  |  |
-| ujala | 躑躅 | azalea |  |  |
-| latosa | 天道虫 | ladybug |  |  |
-| kotina | 玉蜀黍 | corn |  |  |
-| lisaka | 蜥蜴 | lizard |  |  |
-| wukea | 栗鼠 | squirrel |  |  |
-| titaka | 竜 | dragon |  |  |
-| toneka | 驢馬 | donkey |  |  |
-| kujowa | 鰐 | crocodile |  |  |
-| kanima | カナリヤ | canary |  |  |
-| nalama | キャラメル | caramel |  |  |
-| tolila | ゴリラ | gorilla |  |  |
-| tawia | ダリア | dahlia |  |  |
-| akola | 団栗 | acorn |  |  |
-| menua | ペンギン | penguin |  |  |
-| mawula | 楓 | maple |  |  |
-| piwuja | 甲虫 | beetle |  |  |
-| mujuta | 芥子 | mustard |  |  |
-| saneka | 鮫 | shark |  |  |
-| kinema | 生薑 | ginger |  |  |
-| kawuja | 鯰 | catfish |  |  |
-| lisuja | 手首 | wrist |  |  |
-| tumema | 親指 | thumb |  |  |
-| pinoma | 小指 | pinky |  | Claude【任意】pinky は米国の口語。little finger は2語のため使えず、現状維持でもよい |
-| tipaja | 爪先 | tiptoe |  | Claude【任意】tiptoe は動詞・副詞が主。爪先 は toe（足の指）に近いが、未使用か要確認 |
-| timita | 靨 | dimple |  |  |
-| piwena | 脳 | brain |  |  |
-| lipila | 肝臓 | liver |  |  |
-| joana | 関節 | joint |  |  |
-| kapowa | 虫歯 | cavity |  |  |
-| tujela | 結核 | tuberculosis |  |  |
-| nanuka | 癌 | cancer |  |  |
-| lalala | 麻痺 | paralysis |  |  |
-| kopopa | 死体 | corpse |  |  |
-| limesa | 寿命 | lifespan |  |  |
-| piwisa | 体格 | physique |  |  |
-| nutawa | 体力 | stamina |  |  |
-| tejusa | 入れ歯 | denture |  |  |
-| napeka | 臍 | navel |  |  |
-| mukela | 骸骨 | skeleton |  |  |
-| simipa | 症状 | symptom |  |  |
-| oluka | 内臓 | organ |  | Claude【任意】organ は楽器（オルガン）の意味もある。内臓 は viscera/internal organ |
-| wutaja | 杭 | stake |  |  |
-| wumuma | ポンプ | pump |  |  |
-| makona | 磁石 | magnet |  |  |
-| ujepa | 制服 | uniform |  |  |
-| leweta | 梃子 | lever |  |  |
-| sanina | サンダル | sandal |  |  |
-| wotula | 担架 | stretcher |  |  |
-| litoka | ライター | lighter |  |  |
-| sapoka | 炭 | charcoal |  |  |
-| tolepa | 罠 | trap |  |  |
-| lipowa | リボン | ribbon |  |  |
-| mikuma | 顕微鏡 | microscope |  |  |
-| kawona | 大砲 | cannon |  |  |
-| sopema | シャベル | shovel |  |  |
-| pepama | ベランダ | veranda |  |  |
-| kakopa | 絨毯 | carpet |  |  |
-| memapa | 膜 | membrane |  |  |
-| pawusa | パスポート | passport |  |  |
-| loketa | ロッカー | locker |  |  |
-| kaseka | 電卓 | calculator |  |  |
-| lajuta | 筏 | raft |  |  |
-| mepupa | 石ころ | pebble |  |  |
-| telota | 体温計 | thermometer |  |  |
-| kepea | クレヨン | crayon |  |  |
-| tetola | 洗剤 | detergent |  |  |
-| nusama | 枠 | frame |  |  |
-| naloka | チョーク | chalk |  |  |
-| wupima | スピーカー | speaker |  |  |
-| jalena | 毛糸 | yarn |  |  |
-| satoma | ストーブ | stove |  |  |
-| pojela | 陶器 | pottery |  |  |
-| powasa | 磁器 | porcelain |  |  |
-| sokasa | 文房具 | stationery |  |  |
-| nilona | ナイロン | nylon |  |  |
-| setewa | ステレオ | stereo |  |  |
-| mikala | マイク | microphone |  |  |
-| toaja | ダイヤル | dial |  |  |
-| nolopa | ゴルフ | golf |  |  |
-| sowupa | サッカー | soccer |  |  |
-| powewa | バレーボール | volleyball |  |  |
-| pajeja | バレエ | ballet |  |  |
-| wipopa | 武器 | weapon |  |  |
-| luteta | 貨物 | freight |  |  |
-| sisewa | 鑿 | chisel |  |  |
-| kesia | 馬車 | carriage |  |  |
-| nenupa | 振り子 | pendulum |  |  |
-| sopawa | 箆 | spatula |  |  |
-| tewesa | 望遠鏡 | telescope |  |  |
-| wupapa | 砂利 | gravel |  |  |
-| janula | 水筒 | canteen |  |  |
-| soseta | 橇 | sled |  |  |
-| jinua | 薪 | firewood |  |  |
-| malewa | 樽 | barrel |  |  |
-| lanoma | 提灯 | lantern |  |  |
-| nunoma | 雪達磨 | snowman |  |  |
-| wakuja | 蝋 | wax |  |  |
-| siwusa | サーカス | circus |  |  |
-| tanema | タンク | tank |  |  |
-| pawaja | パラシュート | parachute |  |  |
-| nukopa | プロペラ | propeller |  |  |
-| jasuka | ヨット | yacht |  |  |
-| lukesa | リュックサック | rucksack |  |  |
-| lakima | 漆 | lacquer |  |  |
-| pesasa | 真鍮 | brass |  |  |
-| mewuka | 水銀 | mercury |  |  |
-| uwuja | 砂時計 | hourglass |  |  |
-| pipesa | 暖炉 | fireplace |  |  |
-| wumopa | 地球儀 | globe |  |  |
-| wetasa | 砥石 | whetstone |  |  |
-| soteja | 雨戸 | shutter |  |  |
-| tewipa | 装置 | device |  |  |
-| monema | 碑 | monument |  |  |
-| wujama | 炎 | flame |  |  |
-| pomaka | 火山 | volcano |  |  |
-| pawoma | 薬局 | pharmacy |  |  |
-| nunata | 泉 | fountain |  | Claude【任意】泉 は spring が近いが、spring は 春（supila）が使用中。fountain は噴水（人工）で近似。現状維持でもよい |
-| keliwa | 崖 | cliff |  |  |
-| lotusa | 灯台 | lighthouse |  |  |
-| sawapa | 沼 | swamp |  |  |
-| manowa | 屋敷 | mansion |  |  |
-| wiwupa | 渦 | whirlpool |  |  |
-| misita | 霞 | mist |  | Claude【任意】霞 は haze が近い（mist は 霧 powa=fog との区別が薄い）。現状維持でもよい |
-| sanosa | 砂場 | sandbox |  |  |
-| tetaja | 寄り道 | detour |  |  |
-| nuwuna | 保育園 | nursery |  |  |
-| jupema | スーパー | supermarket |  |  |
-| telija | 領土 | territory |  |  |
-| wowuka | 職場 | workplace |  |  |
-| ojema | 故郷 | homeland |  | Claude【任意】故郷 は hometown が自然（未使用）。homeland は 祖国 |
-| kawawa | 運河 | canal |  |  |
-| tejeja | 地形 | terrain |  |  |
-| sejita | 霙 | sleet |  |  |
-| mupisa | 微風 | breeze |  |  |
-| walaja | 宮殿 | palace |  |  |
-| jakua | 真空 | vacuum |  |  |
-| womusa | 星座 | constellation |  |  |
-| tolowa | 竜巻 | tornado |  |  |
-| lejema | 貯水池 | reservoir |  |  |
-| mepia | 流れ星 | meteor |  |  |
-| napuma | 農地 | farmland |  |  |
-| waputa | 病室 | ward |  |  |
-| monina | 坊さん | monk |  |  |
-| tapula | 船長 | captain |  |  |
-| kekoa | 天才 | genius |  |  |
-| selowa | 議長 | chairperson |  |  |
-| amata | 素人 | amateur |  |  |
-| pikewa | 掏摸 | pickpocket |  |  |
-| wenula | 画家 | painter |  |  |
-| lopola | 記者 | reporter |  |  |
-| lanila | 家主 | landlord |  |  |
-| mamuma | 人類 | mankind |  |  |
-| popiwa | 政治家 | politician |  |  |
-| kekuwa | 講師 | lecturer |  |  |
-| sejuma | 秘書 | secretary |  |  |
-| memita | メンバー | member |  |  |
-| nupena | 観客 | spectator |  |  |
-| keteka | 刑事 | detective |  |  |
-| wanuwa | 候補 | candidate |  |  |
-| lopesa | 強盗 | robber |  |  |
-| munapa | 職人 | craftsman |  |  |
-| kenawa | 紳士 | gentleman |  |  |
-| kojewa | 知事 | governor |  |  |
-| tiwima | 弟子 | disciple |  |  |
-| totota | 幼児 | toddler |  |  |
-| tasena | 旅客 | passenger |  |  |
-| wetota | ウェートレス | waitress |  |  |
-| wukosa | 検事 | prosecutor |  |  |
-| masama | 仲人 | matchmaker |  |  |
-| kotama | 女神 | goddess |  |  |
-| mojusa | 怪物 | monster |  |  |
-| melipa | 人魚 | mermaid |  |  |
-| pejepa | ベテラン | veteran |  |  |
-| wolasa | 問屋 | wholesaler |  |  |
-| tusila | 宝 | treasure |  |  |
-| wisota | 知恵 | wisdom |  |  |
-| popoka | 群れ | flock |  |  |
-| lupiwa | 速度 | speed |  |  |
-| kitosa | 艶 | gloss |  |  |
-| semila | 化学 | chemistry |  |  |
-| simema | 同情 | sympathy |  |  |
-| somuwa | 合唱 | chorus |  |  |
-| makita | 魔法 | magic |  |  |
-| luawa | 褒美 | reward |  |  |
-| kosowa | 衣装 | costume |  |  |
-| liweka | 家畜 | livestock |  |  |
-| tukiwa | 観光 | tourism |  |  |
-| jopula | 生地 | fabric |  |  |
-| juosa | 月謝 | tuition |  |  |
-| nuapa | 資格 | qualification |  |  |
-| tokema | 書類 | document |  |  |
-| timewa | 時間割り | timetable |  |  |
-| timona | 寸法 | dimension |  |  |
-| pipoja | 繊維 | fiber |  |  |
-| wiasa | 直径 | diameter |  |  |
-| nekena | 伝説 | legend |  |  |
-| kajina | 内閣 | cabinet |  |  |
-| tosesa | ダース | dozen |  |  |
-| tokapa | ドル | dollar |  |  |
-| tijana | 障害 | disability |  | Claude【任意】障害 は obstacle/disorder の意味が主。disability は 身体の障害に限る |
-| jusipa | 心理 | psychology |  | Claude【任意】心理 は mentality/psychological state。psychology は 心理学 |
-| munesa | 圧力 | pressure |  |  |
-| temina | 気質 | temperament |  |  |
-| sakawa | 犠牲 | sacrifice |  |  |
-| kipisa | 結晶 | crystal |  |  |
-| jujapa | 工芸 | craft |  |  |
-| samota | 章 | chapter |  |  |
-| tajita | 条約 | treaty |  |  |
-| jutota | 地位 | status |  |  |
-| wusaka | 分数 | fraction |  |  |
-| miaja | 方言 | dialect |  |  |
-| niowa | 暴力 | violence |  |  |
-| kajaja | 目録 | catalog |  |  |
-| lenala | 家賃 | rent |  |  |
-| pesewa | 連合 | federation |  | Claude【任意】連合 は union/alliance が近い。federation は 連邦に限る |
-| simasa | 音節 | syllable |  |  |
-| tasoma | 課題 | task |  |  |
-| nutoka | 株式 | stock |  |  |
-| mumena | 貨幣 | currency |  |  |
-| nakala | 学部 | faculty |  |  |
-| wusesa | 権威 | prestige |  | Claude【任意】権威 は authority が近い（未使用）。prestige は 威信 |
-| misosa | 使命 | mission |  |  |
-| motika | 修飾語 | modifier |  |  |
-| namuta | 助詞 | particle |  |  |
-| lewina | 体制 | regime |  |  |
-| pomona | 代名詞 | pronoun |  |  |
-| jikuta | 独裁 | dictatorship |  |  |
-| welata | 福祉 | welfare |  |  |
-| masepa | 傑作 | masterpiece |  |  |
-| wupewa | 光景 | spectacle |  |  |
-| muowa | 定員 | quota |  |  |
-| lawoa | 半径 | radius |  |  |
-| tewona | 分母 | denominator |  |  |
-| losapa | 名簿 | roster |  |  |
-| mopipa | 動機 | motive |  |  |
-| takipa | 関税 | tariff |  |  |
-| jukisa | 危機 | crisis |  |  |
-| pejawa | 刑 | penalty |  |  |
-| kawila | 経歴 | career |  |  |
-| pokana | 語彙 | vocabulary |  |  |
-| numota | 詐欺 | fraud |  |  |
-| pesona | 情熱 | passion |  |  |
-| tinula | 題名 | title |  |  |
-| lutina | 日課 | routine |  |  |
-| wojuta | 文脈 | context |  |  |
-| nuoja | ニュアンス | nuance |  |  |
-| jupia | 官僚 | bureaucrat |  |  |
-| topuja | 海豚 | dolphin |  |  |
-| wiseka | 鼬 | weasel |  |  |
-| mesota | 農薬 | pesticide |  |  |
-| wolona | 花粉 | pollen |  |  |
-| nekapa | 蜜 | nectar |  |  |
-| jetuka | レタス | lettuce |  |  |
-| lotopa | 蓮 | lotus |  |  |
-| wioja | 菫 | violet |  |  |
-| koseja | コスモス | cosmos |  |  |
-| kamoja | 椿 | camellia |  |  |
-| kakiwa | 仙人掌 | cactus |  |  |
-| ponawa | 鰹 | bonito |  |  |
-| nelima | 水母 | jellyfish |  |  |
-| jatuna | 狸 | badger |  |  |
-| leaja | 豹 | leopard |  |  |
-| piwowa | 孔雀 | peacock |  |  |
-| pijala | 雉 | pheasant |  |  |
-| wuteka | 啄木鳥 | woodpecker |  |  |
-| sikota | 鴎 | seagull |  |  |
-| pewiwa | ペリカン | pelican |  |  |
-| sotowa | 鸛 | stork |  |  |
-| nukika | 蟋蟀 | cricket |  |  |
-| matuwa | 蟷螂 | mantis |  |  |
-| sijuwa | 蚕 | silkworm |  |  |
-| jokuna | 繭 | cocoon |  |  |
-| wunela | 蝸牛 | snail |  |  |
-| siposa | スポンジ | sponge |  |  |
-| sinoka | 亜鉛 | zinc |  |  |
-| nitala | 窒素 | nitrogen |  |  |
-| numala | 澱粉 | starch |  |  |
-| nometa | 彗星 | comet |  |  |
-| sawema | 衛星 | satellite |  |  |
-| lomuja | コンパス | compass |  |  |
-| mutepa | 聴診器 | stethoscope |  |  |
-| jusela | パズル | puzzle |  |  |
-| mewala | メダル | medal |  |  |
-| sosila | 槍 | spear |  |  |
-| nekiwa | ネックレス | necklace |  |  |
-| wemuta | チョッキ | vest |  |  |
-| napapa | ナプキン | napkin |  |  |
-| tutoma | 楊枝 | toothpick |  |  |
-| kijuka | 栓抜き | corkscrew |  |  |
-| tewuja | 魔法瓶 | thermos |  |  |
-| sikiwa | 鎌 | sickle |  |  |
-| nukaja | 案山子 | scarecrow |  |  |
-| kisila | 木琴 | xylophone |  |  |
-| mejuwa | メトロノーム | metronome |  |  |
-| matata | マラソン | marathon |  |  |
-| tamama | トランポリン | trampoline |  |  |
-| sepoja | スポットライト | spotlight |  |  |
-| pamowa | パンフレット | pamphlet |  |  |
-| naleja | パレット | palette |  |  |
-| jukewa | スケッチ | sketch |  |  |
-| noseka | モザイク | mosaic |  |  |
-| tamuna | ニス | varnish |  |  |
-| mumasa | 石膏 | plaster |  |  |
-| kiteja | 樋 | gutter |  |  |
-| tejapa | テラス | terrace |  |  |
+| kipoma | キロメートル | kilometer / kilometre |  | ok |
+| milima | ミリメートル | millimeter / millimetre |  | ok |
+| kikoka | キログラム | kilogram / kilo |  | ok |
+| litapa | リットル | liter / litre |  | ok |
+| pepuka | パーセント | percent / percentage |  | ok |
+| pokuwa | 狐 | fox |  | ok |
+| sunaka | 蛇 | snake / serpent |  | ok |
+| muloma | 蛙 | frog / toad |  | ok |
+| tujuka | 亀 | turtle / tortoise |  | ok |
+| kusawa | 蟹 | crab |  | ok |
+| salima | 蝦 | shrimp / prawn / lobster |  | ok Claude【任意】lobster（伊勢海老）は別の語。別名から外す |
+| okiwa | 蛸 | octopus |  | ok |
+| sujia | 烏賊 | squid / cuttlefish |  | ok |
+| selapa | 貝 | shellfish / clam / seashell |  | ok |
+| kapuna | 鯉 | carp |  | ok |
+| kilula | 金魚 | goldfish |  | ok |
+| sapala | 雀 | sparrow |  | ok |
+| jipea | 鳩 | pigeon / dove |  | ok |
+| wulala | 鶴 | crane |  | ok |
+| nutela | 蝶 | butterfly |  | ok |
+| mosuma | 蚊 | mosquito |  | ok |
+| sotuma | 苺 | strawberry |  | ok |
+| julawa | 葡萄 | grape / grapes |  | ok |
+| pekuma | 柿 | persimmon |  | ok |
+| julula | 梅 | plum / apricot |  | ok Claude【任意】梅 は ume/Japanese apricot。plum（李）と apricot（杏）は別の果物で、どちらも近似 |
+| watila | 西瓜 | watermelon |  | ok |
+| lemona | レモン | lemon |  | ok |
+| panama | バナナ | banana |  | ok |
+| katota | 人参 | carrot |  | ok |
+| latika | 大根 | radish |  | ok |
+| kapama | キャベツ | cabbage |  | ok |
+| tukala | 葱 | scallion / leek / onion |  | ok Claude【任意】onion は 玉ねぎ（別の語）。別名から外す |
+| musula | 茸 | mushroom / fungus |  | ok |
+| umona | 饂飩 | udon / noodle |  | ok Claude【任意】noodle は 麺 全般。別名から外す |
+| sokola | チョコレート | chocolate |  | ok |
+| nisuka | ビスケット | biscuit / cookie / cracker |  | ok |
+| muima | ジュース | juice |  | ok |
+| pinaka | 酢 | vinegar |  | ok |
+| silisa | 菊 | chrysanthemum |  | ok |
+| pimupa | 竹 | bamboo |  | ok |
+| susema | 茎 | stem / stalk |  | ok |
+| tumula | 幹 | trunk |  | ok |
+| mutuka | 藁 | straw / hay |  | ok |
+| wapela | 滝 | waterfall / cascade |  | ok |
+| pukeka | 平野 | plain / prairie |  | ok |
+| ojuka | 沖 | offshore / offing |  | ok Claude【任意】offshore は形容詞・副詞が主で、名詞の offing はまれ。置き換えるなら open sea（2語）しかなく、現状維持でもよい |
+| lenopa | 虹 | rainbow |  | ok |
+| lulona | 霜 | frost |  | ok |
+| tusopa | 雫 | droplet |  | ok |
+| pipuwa | 泡 | bubble / foam / froth |  | ok |
+| susiwa | 湯気 | steam / vapor |  | ok |
+| jusuna | 津波 | tsunami |  | ok |
+| luluja | 洪水 | flood / deluge |  | ok |
+| tisasa | 災害 | disaster / calamity / catastrophe |  | ok |
+| tolusa | 公害 | pollution / contamination |  | ok |
+| kopila | 銅 | copper / bronze |  | ok |
+| mineka | 鉱物 | mineral / ore |  | ok |
+| jolea | 額 | forehead / brow |  | ok |
+| patoka | 尻 | buttocks / hip |  | ok Claude【任意】hip は 腰。別名から外す |
+| linuka | 皺 | wrinkle / crease |  | ok |
+| salopa | 唾 | saliva / spit |  | ok |
+| sinita | 嚔 | sneeze |  | ok |
+| ikeka | しゃっくり | hiccup |  | ok |
+| tisipa | 目眩 | dizziness / vertigo |  | ok |
+| tiuwa | 下痢 | diarrhea |  | ok |
+| muwusa | 脈 | pulse |  | ok |
+| nelepa | 神経 | nerve |  | ok |
+| tikosa | 消化 | digestion |  | ok |
+| eseta | 食欲 | appetite |  | ok |
+| papika | 疲労 | fatigue / exhaustion / weariness |  | ok |
+| ikisa | 衛生 | hygiene / sanitation |  | ok |
+| tinina | 消毒 | disinfection / sterilization |  | ok |
+| pumewa | 予防 | prevention / precaution |  | ok |
+| nulema | 看病 | nursing |  | ok |
+| osewa | 入院 | hospitalization |  | ok |
+| timala | 退院 | discharge |  | ok Claude【任意】discharge は多義（放電など）。退院 の意味では hospital discharge。現状維持でもよい |
+| panuja | 包帯 | bandage / dressing |  | ok |
+| peketa | バケツ | bucket / pail |  | ok |
+| mupuma | 箒 | broom |  | ok |
+| wasata | 洗面器 | washbasin / basin |  | ok |
+| totupa | 歯ブラシ | toothbrush |  | ok |
+| lasota | 剃刀 | razor |  | ok |
+| paweka | 電池 | battery |  | ok |
+| sukeja | 螺子 | screw / bolt |  | ok Claude【任意】bolt は ボルト（別の語）。別名から外す |
+| siwina | 筒 | cylinder / tube |  | ok |
+| sitopa | 栓 | stopper / plug / cork |  | ok |
+| sujasa | 秤 | scale / balance |  | ok |
+| lulela | 物差し | ruler |  | ok |
+| ketuja | 薬缶 | kettle / teapot |  | ok Claude【任意】teapot は 急須（別の語）。別名から外す |
+| molula | 釜 | cauldron |  | ok Claude【任意】cauldron はまれ。釜 は pot が近いが使用中の可能性。現状維持でもよい |
+| kuseta | 座布団 | cushion |  | ok |
+| petosa | シーツ | bedsheet / sheet |  | ok |
+| kuwula | カーテン | curtain / drape |  | ok |
+| pinuna | 家具 | furniture |  | ok |
+| etawa | 垣根 | hedge |  | ok |
+| nimuna | 煙突 | chimney / smokestack |  | ok |
+| wamea | 倉庫 | warehouse / storehouse |  | ok |
+| tolama | 寮 | dormitory / dorm |  | ok |
+| pajuwa | 床屋 | barbershop / barber |  | ok |
+| muleka | 運動場 | playground |  | ok |
+| lalusa | 駐車場 | parking |  | ok |
+| papasa | 広場 | plaza / piazza |  | ok |
+| setoa | 歩道 | sidewalk / pavement / footpath |  | ok |
+| leloka | 線路 | railroad / track |  | ok |
+| tunola | トンネル | tunnel |  | ok |
+| emena | エレベーター | elevator / lift |  | ok |
+| kowala | 襟 | collar / lapel |  | ok |
+| solipa | 袖 | sleeve |  | ok |
+| sewima | 水着 | swimsuit / swimwear |  | ok |
+| wujusa | ブラウス | blouse |  | ok |
+| wulipa | スリッパ | slipper / slippers |  | ok |
+| mekea | 化粧 | makeup / cosmetics |  | ok |
+| kanoka | 蝋燭 | candle |  | ok |
+| julija | 煉瓦 | brick |  | ok |
+| kuneka | コンクリート | concrete / cement |  | ok Claude【任意】cement は セメント（別の語）。別名から外す |
+| kasosa | ガソリン | gasoline / petrol |  | ok |
+| etija | エンジン | engine / motor |  | ok |
+| pekaka | ブレーキ | brake / brakes |  | ok |
+| lenesa | レンズ | lens |  | ok |
+| tenoka | テント | tent |  | ok |
+| tiluja | 太鼓 | drum / tambourine |  | ok Claude【任意】tambourine は タンバリン（別の語）。別名から外す |
+| luputa | 笛 | flute / whistle / fife |  | ok |
+| jiopa | バイオリン | violin / fiddle |  | ok |
+| suwosa | 刀 | sword / katana |  | ok |
+| wiluma | 意志 | willpower / volition |  | ok |
+| mioma | 違反 | violation / infringement / breach |  | ok |
+| tipola | 外交 | diplomacy |  | ok |
+| utapa | 外出 | outing / excursion |  | ok |
+| kokepa | 会話 | conversation / dialogue |  | ok |
+| ajapa | 学問 | academics |  | ok Claude【任意】academics（複数形）は学業・学界。学問 は learning か scholarship が近い |
+| woleta | 価値 | worth / merit |  | ok |
+| solala | 給料 | salary / wage |  | ok |
+| nupoa | 禁止 | prohibition / ban |  | ok |
+| tenama | 傾向 | tendency / trend / inclination |  | ok |
+| letila | 研究 | research / investigation |  | ok |
+| iwosa | 検査 | inspection |  | ok |
+| ejewa | 効果 | effect / effectiveness / efficacy |  | ok |
+| sipula | 郊外 | suburb / suburbs / outskirts |  | ok |
+| misana | 誤解 | misunderstanding |  | ok |
+| nasusa | 国籍 | nationality / citizenship |  | ok |
+| talela | 才能 | talent / aptitude |  | ok |
+| sotisa | 刺激 | stimulus / stimulation |  | ok |
+| uwema | 失業 | unemployment |  | ok |
+| lilika | 宗教 | religion / faith |  | ok |
+| tokuka | 主義 | doctrine / principle |  | ok |
+| nupuka | 出版 | publishing / publication |  | ok |
+| jukupa | 証明 | proof / certification |  | ok |
+| lelana | 親戚 | relative / kin / kinsfolk |  | ok |
+| lekama | 推薦 | recommendation / endorsement |  | ok |
+| nolita | 政治 | politics |  | ok |
+| manuna | 製造 | manufacture |  | ok |
+| pesila | 設備 | facility / equipment |  | ok |
+| sujeka | 専門 | specialty |  | ok |
+| oweka | 組織 | organization |  | ok |
+| nolesa | 知識 | knowledge |  | ok |
+| nulowa | 地方 | province / region / district |  | ok Claude【任意】province は行政区画。地方 は region が近い。見出し語を region に（province は別名） |
+| weopa | 地理 | geography |  | ok |
+| kotesa | 訂正 | correction / revision |  | ok |
+| wuloja | 発音 | pronunciation |  | ok |
+| jutuma | 判断 | judgment / judgement |  | ok |
+| pajima | 病人 | patient / invalid |  | ok Claude【任意】patient は 患者。病人 は sick person（invalid は古風）。別名 invalid を外す |
+| soloka | 不足 | shortage / deficiency / scarcity |  | ok |
+| pisapa | 物理 | physics |  | ok |
+| kukema | 文法 | grammar / syntax |  | ok Claude【任意】syntax（統語論）は文法の一部。別名から外す |
+| pomisa | 方針 | policy / guideline |  | ok |
+| mekula | 募集 | recruitment |  | ok |
+| puseja | 保存 | preservation / conservation / storage |  | ok Claude【任意】conservation は 保護。別名から外す |
+| tujawa | 翻訳 | translation |  | ok |
+| salesa | 魅力 | charm / appeal / attraction |  | ok |
+| pijina | 友情 | friendship |  | ok |
+| imoja | 輸入 | import |  | ok |
+| temawa | 要求 | demand / claim |  | ok |
+| lutaka | 予算 | budget |  | ok |
+| kopasa | 良心 | conscience |  | ok |
+| teoja | 理論 | theory |  | ok |
+| tesosa | 論文 | thesis / treatise / dissertation |  | ok |
+| meluta | 黴 | mold / mildew |  | ok |
+| pemuwa | カボチャ | pumpkin / squash |  | ok Claude【任意】squash は ズッキーニ・スポーツ名と衝突しやすい。別名から外す |
+| nukuma | 胡瓜 | cucumber |  | ok |
+| kewupa | 昆布 | kelp / seaweed |  | ok Claude【任意】seaweed は 海藻 全般。別名から外す（若布・海苔と衝突しやすい） |
+| wakama | 若布 | wakame |  | ok |
+| sawuta | 鮭 | salmon |  | ok |
+| meawa | マヨネーズ | mayonnaise |  | ok |
+| kuwisa | クリーム | cream |  | ok |
+| nupita | 蜘蛛 | spider |  | ok |
+| milepa | 蛍 | firefly / glowworm |  | ok |
+| musika | 筋肉 | muscle |  | ok |
+| siloma | 絹 | silk |  | ok |
+| lipupa | 口紅 | lipstick / rouge |  | ok |
+| jelupa | 香水 | perfume / fragrance / cologne |  | ok |
+| mupala | マフラー | scarf / muffler |  | ok |
+| sipepa | ファスナー | zipper / fastener |  | ok |
+| tatuma | バッジ | badge |  | ok |
+| masoka | マスク | mask |  | ok |
+| walula | 風船 | balloon |  | ok |
+| nipua | 花火 | firework / fireworks |  | ok |
+| melosa | メロディー | melody / tune |  | ok |
+| lituma | リズム | rhythm |  | ok |
+| posama | ポスター | poster / placard |  | ok |
+| wuisa | クイズ | quiz |  | ok |
+| lakeka | ラケット | racket / racquet |  | ok |
+| pisema | ピストル | pistol / handgun / revolver |  | ok |
+| pomepa | 爆弾 | bomb |  | ok |
+| ujika | ヘリコプター | helicopter / chopper |  | ok |
+| kosita | 容器 | container / receptacle / vessel |  | ok |
+| pikasa | プラスチック | plastic / plastics |  | ok |
+| piniwa | ビニール | vinyl |  | ok |
+| ulewa | 元素 | element |  | ok |
+| pamata | 高原 | plateau / highland |  | ok |
+| penima | 半島 | peninsula |  | ok |
+| pitila | 麓 | foothill / base |  | ok |
+| lanasa | 牧場 | ranch / pasture |  | ok |
+| pepisa | 吹雪 | blizzard / snowstorm |  | ok |
+| moija | 湿気 | moisture / humidity / dampness |  | ok |
+| sipaka | 火花 | spark |  | ok |
+| ponika | 摩擦 | friction / chafing |  | ok Claude【任意】chafing は 擦れ。別名から外す |
+| penola | 現象 | phenomenon |  | ok |
+| kutila | 構造 | structure |  | ok |
+| pakisa | 要素 | factor / component |  | ok |
+| jesula | 資源 | resource / resources |  | ok |
+| nunula | 資金 | fund / funds |  | ok |
+| ponopa | ボーナス | bonus |  | ok |
+| solewa | 奨学金 | scholarship |  | ok |
+| tonasa | 寄付 | donation / contribution |  | ok |
+| lejuja | 履歴書 | resume |  | ok Claude【任意】resume（résumé）は動詞 resume と同形。cv を別名に足すと引きやすい |
+| mapusa | 原稿 | manuscript / draft |  | ok |
+| pemopa | 諺 | proverb / saying / maxim |  | ok |
+| onowa | 敬語 | honorific / honorifics |  | ok |
+| mupeta | 述語 | predicate |  | ok |
+| kimeta | 喜劇 | comedy / farce |  | ok |
+| kukija | 批評 | criticism / review / critique |  | ok |
+| sapeta | 迷信 | superstition |  | ok |
+| panona | 空想 | fantasy / daydream |  | ok |
+| somita | 孤独 | solitude / loneliness |  | ok |
+| ajoka | 苦しみ | agony / suffering / anguish |  | ok |
+| mukuna | 悲鳴 | scream / shriek |  | ok |
+| onaja | 婚約 | engagement / betrothal |  | ok |
+| luwita | 恋人 | sweetheart / lover |  | ok |
+| uwia | 主婦 | housewife / homemaker |  | ok |
+| tenena | 子孫 | descendant / offspring / posterity |  | ok |
+| pemema | 首相 | premier / chancellor |  | ok Claude【任意】chancellor は ドイツ等の首相に限る。別名から外す |
+| nalia | 議会 | parliament / congress |  | ok |
+| mupopa | 教授 | professor |  | ok |
+| memusa | 商人 | merchant / trader / dealer |  | ok |
+| pisola | 漁師 | fisherman / angler |  | ok Claude【任意】angler は 釣り人。別名から外す |
+| kenota | 車掌 | conductor |  | ok Claude【任意】conductor は指揮者の意味もあるが、車掌 を指す文脈なら可 |
+| kumuwa | 犯人 | culprit / criminal / offender |  | ok |
+| wilina | 応援 | cheering / backing |  | ok |
+| temoma | 鬼 | demon / ogre / fiend |  | ok |
+| tepika | 悪魔 | devil / satan |  | ok Claude【任意】satan は固有名。別名から外す |
+| letoma | 回復 | recovery / recuperation |  | ok |
+| sotapa | 学者 | scholar |  | ok |
+| lilena | 学習 | learning |  | ok |
+| leposa | 革命 | revolution |  | ok |
+| lumata | 固まり | lump / clump / mass / cluster |  | ok |
+| kakata | 空手 | karate |  | ok |
+| kenila | 剣道 | kendo |  | ok |
+| lapuka | 歌舞伎 | kabuki |  | ok |
+| lakuna | 落語 | rakugo |  | ok |
+| iwewa | 生け花 | ikebana |  | ok |
+| kakena | カレンダー | calendar |  | ok |
+| senoma | 感覚 | sensation / sense |  | ok |
+| kunona | 冠 | crown / coronet / tiara |  | ok |
+| sapuwa | 供給 | supply / provision |  | ok |
+| kipapa | グラフ | graph |  | ok |
+| tuseka | 訓練 | training / drill |  | ok |
+| manipa | 経営 | management / administration |  | ok |
+| sonota | 軽蔑 | contempt / scorn / disdain |  | ok |
+| kinika | 結論 | conclusion |  | ok |
+| kokosa | 憲法 | constitution |  | ok |
+| onia | 航空 | aviation / aeronautics |  | ok |
+| sokika | 固体 | solid |  | ok Claude【任意】solid は形容詞が主。名詞の固体 の意味では可 |
+| tuija | 裁縫 | sewing / needlework |  | ok |
+| papola | 座敷 | parlor |  | ok Claude【任意】座敷 は畳の部屋。parlor は洋風の客間で、ずれる。tatami room（2語）は使えず、現状維持でもよい |
+| momana | 瞬間 | moment / instant |  | ok |
+| kinasa | 消費 | consumption |  | ok |
+| pimeka | 消防 | firefighting |  | ok |
+| pipana | 振動 | vibration / oscillation |  | ok |
+| likusa | 長方形 | rectangle / oblong |  | ok |
+| umiwa | 単位 | unit / credit |  | ok |
+| sitama | 段階 | stage / phase |  | ok |
+| wukuwa | 彫刻 | sculpture / carving |  | ok |
+| samika | 頂上 | summit / peak / top |  | ok |
+| kumesa | 墜落 | crash |  | ok Claude【任意】crash は広い。墜落 は fall（落下）に近いが、航空機なら可 |
+| pimosa | 哲学 | philosophy |  | ok |
+| naluwa | パーティー | party / banquet |  | ok |
+| ijona | ハイキング | hiking / hike |  | ok |
+| wikuna | ピクニック | picnic |  | ok |
+| sinuma | 日焼け | sunburn / suntan / tan |  | ok Claude【任意】sunburn（炎症）と suntan（日焼け色）は意味が違う。見出し語は suntan が自然 |
+| satana | 標準 | standard / norm / criterion |  | ok |
+| wusuta | 襖 | fusuma |  | ok Claude【任意】襖・団扇・刺身・空手などの日本語由来の語は、英語から引きにくいが、固有の文化語として妥当。このまま可 |
+| nutisa | 仏教 | buddhism |  | ok |
+| jupuwa | 物質 | substance / matter |  | ok |
+| joipa | 沸騰 | boiling |  | ok Claude【任意】boiling は形容詞・動名詞が主。名詞 boil は別の意味もあるが、現状維持でもよい |
+| kisata | 不満 | dissatisfaction / discontent / displeasure |  | ok |
+| wupuja | 付録 | supplement / appendix |  | ok |
+| sipima | 文明 | civilization / civilisation |  | ok |
+| talosa | 的 | target / bullseye |  | ok |
+| sepeka | 目上 | superior / senior / elder |  | ok |
+| wupola | 目下 | subordinate / junior / inferior |  | ok Claude【任意】inferior は 劣った。別名から外す |
+| susota | 物置 | storeroom / shed |  | ok |
+| wopia | 紅葉 | foliage |  | ok Claude【任意】foliage は葉全般。紅葉 は autumn leaves（2語）が近く、現状維持でもよい |
+| nomuka | 文句 | complaint / grumble / objection |  | ok |
+| munuja | 夕焼け | sunset / afterglow |  | ok |
+| petita | 嫁 | bride |  | ok Claude【任意】嫁 は日常では wife / daughter-in-law。bride は婚礼の花嫁に限る |
+| towuta | 連続 | continuation / succession / series |  | ok |
+| jaluja | 別れ | parting / farewell / separation |  | ok |
+| tiwuka | 割引 | discount / rebate |  | ok |
+| makupa | 背景 | background / backdrop |  | ok |
+| pokesa | 焦点 | focus |  | ok |
+| kisusa | 要点 | gist / essentials |  | ok |
+| tasisa | 根拠 | basis / grounds |  | ok |
+| samuja | 見本 | sample / specimen |  | ok |
+| mesena | 仕組み | mechanism |  | ok |
+| pajosa | 過程 | process |  | ok |
+| mutosa | 手順 | procedure |  | ok |
+| mutama | 統計 | statistics |  | ok |
+| lokipa | 論理 | logic |  | ok |
+| molaka | 道徳 | morality / ethics / morals |  | ok |
+| sosuka | 正義 | justice / righteousness |  | ok |
+| wujita | 誇り | pride |  | ok |
+| umeja | 謙遜 | humility |  | ok |
+| newula | 油断 | negligence / carelessness |  | ok Claude【任意】negligence は法的な過失。油断 は carelessness が自然。見出し語を carelessness に |
+| lopuma | 反省 | reflection / introspection / remorse |  | ok |
+| tiwapa | 失望 | disappointment / despair |  | ok |
+| limula | 謎 | riddle / enigma / mystery |  | ok |
+| topima | 話題 | topic / theme |  | ok |
+| nekoka | 交渉 | negotiation / bargaining |  | ok |
+| losela | 予約 | reservation / booking |  | ok |
+| munota | 登山 | mountaineering / alpinism |  | ok |
+| nisina | 釣り | fishing / angling |  | ok |
+| mukia | スキー | skiing / ski |  | ok |
+| mukata | スケート | skating / skate |  | ok |
+| tepuwa | 夜明け | daybreak / dawn |  | ok |
+| tumisa | 小雨 | drizzle / sprinkle |  | ok |
+| kilesa | 三日月 | crescent |  | ok |
+| pejuna | 肥料 | fertilizer / manure / compost |  | ok |
+| misela | 漁業 | fishery |  | ok |
+| ponena | 林業 | forestry |  | ok |
+| sepiwa | 紡績 | spinning / textiles |  | ok |
+| tekeka | 通信 | telecommunication / correspondence |  | ok |
+| tuwaja | 輸送 | transportation / transport / transit |  | ok |
+| pamesa | 小包 | parcel / package |  | ok |
+| nonisa | 領事館 | consulate |  | ok |
+| lusuwa | 税関 | customs |  | ok |
+| sinana | 財政 | finance / finances |  | ok |
+| metana | 少女 | girl |  | ok |
+| sujoja | 成績 | scores / marks |  | ok Claude【任意】scores/marks（複数形）。成績 は grade か result が自然 |
+| metopa | 都会 | metropolis |  | ok Claude【任意】都会 は city が近いが、使用中なら metropolis で可 |
+| kilija | 垢 | grime / filth |  | ok |
+| kakusa | 嗽 | gargle / gargling |  | ok |
+| uwowa | 団扇 | uchiwa |  | ok Claude【任意】同上（日本語由来の文化語）。このまま可 |
+| wosuna | 延期 | postponement / adjournment |  | ok |
+| pemana | 雌 | female |  | ok |
+| tomuma | 顔色 | complexion |  | ok |
+| semesa | 学期 | semester / term / trimester |  | ok |
+| tosula | 乾杯 | toast / cheers |  | ok |
+| lotema | 籖 | lottery / raffle / lot |  | ok |
+| sesisa | クリスマス | christmas / xmas |  | ok |
+| litita | 現実 | reality / actuality |  | ok |
+| sijeta | サイレン | siren / alarm |  | ok |
+| sasija | 刺身 | sashimi |  | ok |
+| nosuwa | 姿勢 | posture / stance |  | ok |
+| kelena | 地面 | ground |  | ok |
+| sesepa | 栗 | chestnut |  | ok |
+| tilawa | 蜻蛉 | dragonfly |  | ok |
+| sikapa | 蝉 | cicada |  | ok |
+| sajusa | 鰯 | sardine |  | ok |
+| noima | 大豆 | soybean |  | ok |
+| kimaka | 麒麟 | giraffe |  | ok |
+| kamisa | 駱駝 | camel |  | ok |
+| kasala | カンガルー | kangaroo |  | ok |
+| laowa | ライオン | lion |  | ok |
+| malota | 鸚鵡 | parrot |  | ok |
+| wolika | 狼 | wolf |  | ok |
+| tatesa | お玉杓子 | tadpole |  | ok |
+| katipa | 青虫 | caterpillar |  | ok |
+| lalipa | 雲雀 | lark |  | ok |
+| nitika | 鴬 | nightingale |  | ok |
+| mepona | メロン | melon |  | ok |
+| tunika | チューリップ | tulip |  | ok |
+| ketala | 杉 | cedar |  | ok |
+| tojuna | 刺 | thorn |  | ok |
+| petena | 花びら | petal |  | ok |
+| pepota | 胡椒 | pepper |  | ok |
+| omija | オムレツ | omelet |  | ok |
+| kesoka | ケチャップ | ketchup |  | ok |
+| wisula | ウイスキー | whisky |  | ok |
+| pitawa | ビタミン | vitamin |  | ok |
+| pitota | 蛋白質 | protein |  | ok |
+| okusa | 酸素 | oxygen | 語幹が同じ: okuso | ok |
+| kajula | 炭素 | carbon |  | ok |
+| ujoma | 原子 | atom |  | ok |
+| molena | 分子 | molecule |  | ok |
+| kepuma | 黴菌 | germ |  | ok |
+| sewana | 白鳥 | swan |  | ok |
+| nuketa | 花束 | bouquet |  | ok |
+| nupasa | 飛蝗 | grasshopper |  | ok |
+| sonepa | 向日葵 | sunflower |  | ok |
+| juwuta | 瓢箪 | gourd |  | ok |
+| tanota | 蒲公英 | dandelion |  | ok |
+| osuta | 駝鳥 | ostrich |  | ok |
+| ujala | 躑躅 | azalea |  | ok |
+| latosa | 天道虫 | ladybug |  | ok |
+| kotina | 玉蜀黍 | corn |  | ok |
+| lisaka | 蜥蜴 | lizard |  | ok |
+| wukea | 栗鼠 | squirrel |  | ok |
+| titaka | 竜 | dragon |  | ok |
+| toneka | 驢馬 | donkey |  | ok |
+| kujowa | 鰐 | crocodile |  | ok |
+| kanima | カナリヤ | canary |  | ok |
+| nalama | キャラメル | caramel |  | ok |
+| tolila | ゴリラ | gorilla |  | ok |
+| tawia | ダリア | dahlia |  | ok |
+| akola | 団栗 | acorn |  | ok |
+| menua | ペンギン | penguin |  | ok |
+| mawula | 楓 | maple |  | ok |
+| piwuja | 甲虫 | beetle |  | ok |
+| mujuta | 芥子 | mustard |  | ok |
+| saneka | 鮫 | shark |  | ok |
+| kinema | 生薑 | ginger |  | ok |
+| kawuja | 鯰 | catfish |  | ok |
+| lisuja | 手首 | wrist |  | ok |
+| tumema | 親指 | thumb |  | ok |
+| pinoma | 小指 | pinky |  | ok Claude【任意】pinky は米国の口語。little finger は2語のため使えず、現状維持でもよい |
+| tipaja | 爪先 | tiptoe |  | ok Claude【任意】tiptoe は動詞・副詞が主。爪先 は toe（足の指）に近いが、未使用か要確認 |
+| timita | 靨 | dimple |  | ok |
+| piwena | 脳 | brain |  | ok |
+| lipila | 肝臓 | liver |  | ok |
+| joana | 関節 | joint |  | ok |
+| kapowa | 虫歯 | cavity |  | ok |
+| tujela | 結核 | tuberculosis |  | ok |
+| nanuka | 癌 | cancer |  | ok |
+| lalala | 麻痺 | paralysis |  | ok |
+| kopopa | 死体 | corpse |  | ok |
+| limesa | 寿命 | lifespan |  | ok |
+| piwisa | 体格 | physique |  | ok |
+| nutawa | 体力 | stamina |  | ok |
+| tejusa | 入れ歯 | denture |  | ok |
+| napeka | 臍 | navel |  | ok |
+| mukela | 骸骨 | skeleton |  | ok |
+| simipa | 症状 | symptom |  | ok |
+| oluka | 内臓 | organ |  | ok Claude【任意】organ は楽器（オルガン）の意味もある。内臓 は viscera/internal organ |
+| wutaja | 杭 | stake |  | ok |
+| wumuma | ポンプ | pump |  | ok |
+| makona | 磁石 | magnet |  | ok |
+| ujepa | 制服 | uniform |  | ok |
+| leweta | 梃子 | lever |  | ok |
+| sanina | サンダル | sandal |  | ok |
+| wotula | 担架 | stretcher |  | ok |
+| litoka | ライター | lighter |  | ok |
+| sapoka | 炭 | charcoal |  | ok |
+| tolepa | 罠 | trap |  | ok |
+| lipowa | リボン | ribbon |  | ok |
+| mikuma | 顕微鏡 | microscope |  | ok |
+| kawona | 大砲 | cannon |  | ok |
+| sopema | シャベル | shovel |  | ok |
+| pepama | ベランダ | veranda |  | ok |
+| kakopa | 絨毯 | carpet |  | ok |
+| memapa | 膜 | membrane |  | ok |
+| pawusa | パスポート | passport |  | ok |
+| loketa | ロッカー | locker |  | ok |
+| kaseka | 電卓 | calculator |  | ok |
+| lajuta | 筏 | raft |  | ok |
+| mepupa | 石ころ | pebble |  | ok |
+| telota | 体温計 | thermometer |  | ok |
+| kepea | クレヨン | crayon |  | ok |
+| tetola | 洗剤 | detergent |  | ok |
+| nusama | 枠 | frame |  | ok |
+| naloka | チョーク | chalk |  | ok |
+| wupima | スピーカー | speaker |  | ok |
+| jalena | 毛糸 | yarn |  | ok |
+| satoma | ストーブ | stove |  | ok |
+| pojela | 陶器 | pottery |  | ok |
+| powasa | 磁器 | porcelain |  | ok |
+| sokasa | 文房具 | stationery |  | ok |
+| nilona | ナイロン | nylon |  | ok |
+| setewa | ステレオ | stereo |  | ok |
+| mikala | マイク | microphone |  | ok |
+| toaja | ダイヤル | dial |  | ok |
+| nolopa | ゴルフ | golf |  | ok |
+| sowupa | サッカー | soccer |  | ok |
+| powewa | バレーボール | volleyball |  | ok |
+| pajeja | バレエ | ballet |  | ok |
+| wipopa | 武器 | weapon |  | ok |
+| luteta | 貨物 | freight |  | ok |
+| sisewa | 鑿 | chisel |  | ok |
+| kesia | 馬車 | carriage |  | ok |
+| nenupa | 振り子 | pendulum |  | ok |
+| sopawa | 箆 | spatula |  | ok |
+| tewesa | 望遠鏡 | telescope |  | ok |
+| wupapa | 砂利 | gravel |  | ok |
+| janula | 水筒 | canteen |  | ok |
+| soseta | 橇 | sled |  | ok |
+| jinua | 薪 | firewood |  | ok |
+| malewa | 樽 | barrel |  | ok |
+| lanoma | 提灯 | lantern |  | ok |
+| nunoma | 雪達磨 | snowman |  | ok |
+| wakuja | 蝋 | wax |  | ok |
+| siwusa | サーカス | circus |  | ok |
+| tanema | タンク | tank |  | ok |
+| pawaja | パラシュート | parachute |  | ok |
+| nukopa | プロペラ | propeller |  | ok |
+| jasuka | ヨット | yacht |  | ok |
+| lukesa | リュックサック | rucksack |  | ok |
+| lakima | 漆 | lacquer |  | ok |
+| pesasa | 真鍮 | brass |  | ok |
+| mewuka | 水銀 | mercury |  | ok |
+| uwuja | 砂時計 | hourglass |  | ok |
+| pipesa | 暖炉 | fireplace |  | ok |
+| wumopa | 地球儀 | globe |  | ok |
+| wetasa | 砥石 | whetstone |  | ok |
+| soteja | 雨戸 | shutter |  | ok |
+| tewipa | 装置 | device |  | ok |
+| monema | 碑 | monument |  | ok |
+| wujama | 炎 | flame |  | ok |
+| pomaka | 火山 | volcano |  | ok |
+| pawoma | 薬局 | pharmacy |  | ok |
+| nunata | 泉 | fountain |  | ok Claude【任意】泉 は spring が近いが、spring は 春（supila）が使用中。fountain は噴水（人工）で近似。現状維持でもよい |
+| keliwa | 崖 | cliff |  | ok |
+| lotusa | 灯台 | lighthouse |  | ok |
+| sawapa | 沼 | swamp |  | ok |
+| manowa | 屋敷 | mansion |  | ok |
+| wiwupa | 渦 | whirlpool |  | ok |
+| misita | 霞 | mist |  | ok Claude【任意】霞 は haze が近い（mist は 霧 powa=fog との区別が薄い）。現状維持でもよい |
+| sanosa | 砂場 | sandbox |  | ok |
+| tetaja | 寄り道 | detour |  | ok |
+| nuwuna | 保育園 | nursery |  | ok |
+| jupema | スーパー | supermarket |  | ok |
+| telija | 領土 | territory |  | ok |
+| wowuka | 職場 | workplace |  | ok |
+| ojema | 故郷 | homeland |  | ok Claude【任意】故郷 は hometown が自然（未使用）。homeland は 祖国 |
+| kawawa | 運河 | canal |  | ok |
+| tejeja | 地形 | terrain |  | ok |
+| sejita | 霙 | sleet |  | ok |
+| mupisa | 微風 | breeze |  | ok |
+| walaja | 宮殿 | palace |  | ok |
+| jakua | 真空 | vacuum |  | ok |
+| womusa | 星座 | constellation |  | ok |
+| tolowa | 竜巻 | tornado |  | ok |
+| lejema | 貯水池 | reservoir |  | ok |
+| mepia | 流れ星 | meteor |  | ok |
+| napuma | 農地 | farmland |  | ok |
+| waputa | 病室 | ward |  | ok |
+| monina | 坊さん | monk |  | ok |
+| tapula | 船長 | captain |  | ok |
+| kekoa | 天才 | genius |  | ok |
+| selowa | 議長 | chairperson |  | ok |
+| amata | 素人 | amateur |  | ok |
+| pikewa | 掏摸 | pickpocket |  | ok |
+| wenula | 画家 | painter |  | ok |
+| lopola | 記者 | reporter |  | ok |
+| lanila | 家主 | landlord |  | ok |
+| mamuma | 人類 | mankind |  | ok |
+| popiwa | 政治家 | politician |  | ok |
+| kekuwa | 講師 | lecturer |  | ok |
+| sejuma | 秘書 | secretary |  | ok |
+| memita | メンバー | member |  | ok |
+| nupena | 観客 | spectator |  | ok |
+| keteka | 刑事 | detective |  | ok |
+| wanuwa | 候補 | candidate |  | ok |
+| lopesa | 強盗 | robber |  | ok |
+| munapa | 職人 | craftsman |  | ok |
+| kenawa | 紳士 | gentleman |  | ok |
+| kojewa | 知事 | governor |  | ok |
+| tiwima | 弟子 | disciple |  | ok |
+| totota | 幼児 | toddler |  | ok |
+| tasena | 旅客 | passenger |  | ok |
+| wetota | ウェートレス | waitress |  | ok |
+| wukosa | 検事 | prosecutor |  | ok |
+| masama | 仲人 | matchmaker |  | ok |
+| kotama | 女神 | goddess |  | ok |
+| mojusa | 怪物 | monster |  | ok |
+| melipa | 人魚 | mermaid |  | ok |
+| pejepa | ベテラン | veteran |  | ok |
+| wolasa | 問屋 | wholesaler |  | ok |
+| tusila | 宝 | treasure |  | ok |
+| wisota | 知恵 | wisdom |  | ok |
+| popoka | 群れ | flock |  | ok |
+| lupiwa | 速度 | speed |  | ok |
+| kitosa | 艶 | gloss |  | ok |
+| semila | 化学 | chemistry |  | ok |
+| simema | 同情 | sympathy |  | ok |
+| somuwa | 合唱 | chorus |  | ok |
+| makita | 魔法 | magic |  | ok |
+| luawa | 褒美 | reward |  | ok |
+| kosowa | 衣装 | costume |  | ok |
+| liweka | 家畜 | livestock |  | ok |
+| tukiwa | 観光 | tourism |  | ok |
+| jopula | 生地 | fabric |  | ok |
+| juosa | 月謝 | tuition |  | ok |
+| nuapa | 資格 | qualification |  | ok |
+| tokema | 書類 | document |  | ok |
+| timewa | 時間割り | timetable |  | ok |
+| timona | 寸法 | dimension |  | ok |
+| pipoja | 繊維 | fiber |  | ok |
+| wiasa | 直径 | diameter |  | ok |
+| nekena | 伝説 | legend |  | ok |
+| kajina | 内閣 | cabinet |  | ok |
+| tosesa | ダース | dozen |  | ok |
+| tokapa | ドル | dollar |  | ok |
+| tijana | 障害 | disability |  | ok Claude【任意】障害 は obstacle/disorder の意味が主。disability は 身体の障害に限る |
+| jusipa | 心理 | psychology |  | ok Claude【任意】心理 は mentality/psychological state。psychology は 心理学 |
+| munesa | 圧力 | pressure |  | ok |
+| temina | 気質 | temperament |  | ok |
+| sakawa | 犠牲 | sacrifice |  | ok |
+| kipisa | 結晶 | crystal |  | ok |
+| jujapa | 工芸 | craft |  | ok |
+| samota | 章 | chapter |  | ok |
+| tajita | 条約 | treaty |  | ok |
+| jutota | 地位 | status |  | ok |
+| wusaka | 分数 | fraction |  | ok |
+| miaja | 方言 | dialect |  | ok |
+| niowa | 暴力 | violence |  | ok |
+| kajaja | 目録 | catalog |  | ok |
+| lenala | 家賃 | rent |  | ok |
+| pesewa | 連合 | federation |  | ok Claude【任意】連合 は union/alliance が近い。federation は 連邦に限る |
+| simasa | 音節 | syllable |  | ok |
+| tasoma | 課題 | task |  | ok |
+| nutoka | 株式 | stock |  | ok |
+| mumena | 貨幣 | currency |  | ok |
+| nakala | 学部 | faculty |  | ok |
+| wusesa | 権威 | prestige |  | ok Claude【任意】権威 は authority が近い（未使用）。prestige は 威信 |
+| misosa | 使命 | mission |  | ok |
+| motika | 修飾語 | modifier |  | ok |
+| namuta | 助詞 | particle |  | ok |
+| lewina | 体制 | regime |  | ok |
+| pomona | 代名詞 | pronoun |  | ok |
+| jikuta | 独裁 | dictatorship |  | ok |
+| welata | 福祉 | welfare |  | ok |
+| masepa | 傑作 | masterpiece |  | ok |
+| wupewa | 光景 | spectacle |  | ok |
+| muowa | 定員 | quota |  | ok |
+| lawoa | 半径 | radius |  | ok |
+| tewona | 分母 | denominator |  | ok |
+| losapa | 名簿 | roster |  | ok |
+| mopipa | 動機 | motive |  | ok |
+| takipa | 関税 | tariff |  | ok |
+| jukisa | 危機 | crisis |  | ok |
+| pejawa | 刑 | penalty |  | ok |
+| kawila | 経歴 | career |  | ok |
+| pokana | 語彙 | vocabulary |  | ok |
+| numota | 詐欺 | fraud |  | ok |
+| pesona | 情熱 | passion |  | ok |
+| tinula | 題名 | title |  | ok |
+| lutina | 日課 | routine |  | ok |
+| wojuta | 文脈 | context |  | ok |
+| nuoja | ニュアンス | nuance |  | ok |
+| jupia | 官僚 | bureaucrat |  | ok |
+| topuja | 海豚 | dolphin |  | ok |
+| wiseka | 鼬 | weasel |  | ok |
+| mesota | 農薬 | pesticide |  | ok |
+| wolona | 花粉 | pollen |  | ok |
+| nekapa | 蜜 | nectar |  | ok |
+| jetuka | レタス | lettuce |  | ok |
+| lotopa | 蓮 | lotus |  | ok |
+| wioja | 菫 | violet |  | ok |
+| koseja | コスモス | cosmos |  | ok |
+| kamoja | 椿 | camellia |  | ok |
+| kakiwa | 仙人掌 | cactus |  | ok |
+| ponawa | 鰹 | bonito |  | ok |
+| nelima | 水母 | jellyfish |  | ok |
+| jatuna | 狸 | badger |  | ok |
+| leaja | 豹 | leopard |  | ok |
+| piwowa | 孔雀 | peacock |  | ok |
+| pijala | 雉 | pheasant |  | ok |
+| wuteka | 啄木鳥 | woodpecker |  | ok |
+| sikota | 鴎 | seagull |  | ok |
+| pewiwa | ペリカン | pelican |  | ok |
+| sotowa | 鸛 | stork |  | ok |
+| nukika | 蟋蟀 | cricket |  | ok |
+| matuwa | 蟷螂 | mantis |  | ok |
+| sijuwa | 蚕 | silkworm |  | ok |
+| jokuna | 繭 | cocoon |  | ok |
+| wunela | 蝸牛 | snail |  | ok |
+| siposa | スポンジ | sponge |  | ok |
+| sinoka | 亜鉛 | zinc |  | ok |
+| nitala | 窒素 | nitrogen |  | ok |
+| numala | 澱粉 | starch |  | ok |
+| nometa | 彗星 | comet |  | ok |
+| sawema | 衛星 | satellite |  | ok |
+| lomuja | コンパス | compass |  | ok |
+| mutepa | 聴診器 | stethoscope |  | ok |
+| jusela | パズル | puzzle |  | ok |
+| mewala | メダル | medal |  | ok |
+| sosila | 槍 | spear |  | ok |
+| nekiwa | ネックレス | necklace |  | ok |
+| wemuta | チョッキ | vest |  | ok |
+| napapa | ナプキン | napkin |  | ok |
+| tutoma | 楊枝 | toothpick |  | ok |
+| kijuka | 栓抜き | corkscrew |  | ok |
+| tewuja | 魔法瓶 | thermos |  | ok |
+| sikiwa | 鎌 | sickle |  | ok |
+| nukaja | 案山子 | scarecrow |  | ok |
+| kisila | 木琴 | xylophone |  | ok |
+| mejuwa | メトロノーム | metronome |  | ok |
+| matata | マラソン | marathon |  | ok |
+| tamama | トランポリン | trampoline |  | ok |
+| sepoja | スポットライト | spotlight |  | ok |
+| pamowa | パンフレット | pamphlet |  | ok |
+| naleja | パレット | palette |  | ok |
+| jukewa | スケッチ | sketch |  | ok |
+| noseka | モザイク | mosaic |  | ok |
+| tamuna | ニス | varnish |  | ok |
+| mumasa | 石膏 | plaster |  | ok |
+| kiteja | 樋 | gutter |  | ok |
+| tejapa | テラス | terrace |  | ok |
 
 ### verb（238語）
 
@@ -1918,7 +1918,7 @@
 | suwuno | 揺れる | swing |  | ok Claude: 英語の見出し語は sway か shake のほうが近い（任意） |
 | kunano | 与える | grant / bestow / provide |  | ok Claude【任意】既存の kipo（give/keep。保つ与える）と近い。与える = give/grant の整理は M1ko の判断 |
 | tukano | 移す | transfer / shift |  | ok |
-| pupito | 飼う | rear | 同じ英語の語: lila |  |
+| pupito | 飼う | rear | 同じ英語の語: lila | ok |
 | onelo | 重なる | overlap |  | ok |
 | satako | 重ねる | stack / layer |  | ok |
 | ejumo | 切れる | expire / snap |  | ok |
@@ -1926,7 +1926,7 @@
 | ewuno | 越える | exceed / surpass |  | ok |
 | sanelo | 壊れる | shatter / crumble / malfunction |  | ok Claude【任意】壊れるに shatter は強すぎる（粉々になる）。break は puleko が使用中。crumble か malfunction を見出し語に |
 | temulo | 下がる | decline |  | ok |
-| pakako | 空く | empty | 同じ英語の語: eme |  |
+| pakako | 空く | empty | 同じ英語の語: eme | ok |
 | kopumo | 済む | conclude |  | ok |
 | amiko | 揃える | align |  | ok |
 | kinumo | 焚く | kindle |  | ok |
@@ -1940,193 +1940,193 @@
 | minuko | 交じる | mingle / blend |  | ok |
 | sukino | 回る | spin / revolve |  | ok |
 | suseno | 汚れる | stain |  | ok Claude【任意】汚れる = get dirty。stain は印をつける意味に寄る。soil（動詞は未使用）が近い |
-| unilo | 降ろす | unload |  | Claude【任意】降ろす は lower/take down が広い。unload は荷を降ろす意味に限る |
-| pekano | 招く | beckon / summon |  | Claude【任意】招く は invite と重なる（inupo 招待する が invite を持つ）。beckon は手招き |
-| lapiso | 改める | revise / reform / amend |  |  |
-| sukumo | 掻く | scratch / scrape |  |  |
-| pumamo | 責める | blame / condemn / reproach |  |  |
-| ejapo | 経つ | elapse |  | Claude【任意】elapse はまれ（時が経つ）。pass が自然だが使用中かもしれない。現状維持でもよい |
-| pusuko | 弾く | pluck / strum |  | Claude【任意】弾く は楽器を弾く（play）が主。strum/pluck は弦楽器に限る |
-| jilupo | 憧れる | yearn / aspire |  |  |
-| opato | 溢れる | overflow / brim |  |  |
-| lesepo | 恨む | resent / grudge |  |  |
-| ukupo | 追い出す | expel / oust / evict |  |  |
-| setuto | 落ち着く | settle |  |  |
-| tupono | 溺れる | drown |  |  |
-| alowo | 固まる | harden / solidify / congeal |  |  |
-| minapo | 刻む | mince / chop / carve |  |  |
-| temopo | 崩す | demolish |  |  |
-| sumuwo | 砕く | smash / pulverize |  |  |
-| aseto | 組み立てる | assemble |  |  |
-| sakupo | 汲む | scoop / ladle / dip |  |  |
-| sunolo | 焦げる | scorch / char |  | Claude【任意】焦げる（自動詞）に対し scorch は他動詞が主。burn が自然だが使用中の可能性 |
-| sipilo | 零す | spill / slop |  |  |
-| lusuto | 錆びる | rust / corrode / tarnish |  |  |
-| sujuo | 絞る | squeeze / wring |  |  |
-| pelamo | 染みる | permeate / seep |  |  |
-| tamuko | 湿る | dampen / moisten |  | Claude【任意】湿る（自動詞）に対し dampen/moisten は他動詞。自動詞の damp が近い |
-| ikuno | 優れる | excel |  |  |
-| imuso | 迫る | impend / loom |  | Claude【任意】impend はまれ。迫る は approach/loom が近い |
-| epeo | 備える | equip / furnish |  |  |
-| kuwuto | 耕す | cultivate / plow / till |  |  |
-| salino | 縮む | shrink |  |  |
-| komano | 通じる | communicate |  | Claude【任意】通じる は「意味が伝わる・つながる」。communicate は他動詞でもあり、ずれる |
-| tetoto | 尽くす | devote / dedicate |  |  |
-| sususo | 躓く | stumble |  |  |
-| anepo | 釣る | angle |  | Claude【任意】見出し語 angle は幾何の角度と混同しやすい。fish（動詞）が自然だが tosa（魚）が使用中のため、現状維持でもよい |
-| pinato | 綴じる | bind / staple |  |  |
-| koluso | 慰める | console / comfort / soothe |  |  |
-| susalo | 怠ける | slack / shirk / laze |  |  |
-| kupolo | 這う | crawl / creep |  |  |
-| pomito | 吐く | vomit / exhale |  |  |
-| enomo | 励ます | encourage |  |  |
-| sewelo | 膨れる | swell / bulge / inflate |  |  |
-| paloko | 塞ぐ | block / obstruct |  |  |
-| mululo | 殖やす | multiply |  |  |
-| tuleto | 震える | tremble / shiver / shudder / quiver |  |  |
-| eneno | 任せる | entrust / delegate |  |  |
-| imipo | 真似る | imitate / mimic |  |  |
-| lipeno | 実る | ripen / fructify |  |  |
-| waluto | 歪む | warp / distort |  |  |
-| jilato | 譲る | yield / cede |  |  |
-| luseko | 緩む | loosen / slacken |  |  |
-| lamumo | 暴れる | rampage |  | Claude【任意】rampage はまれ。暴れる は run wild/rage が近い |
-| tetaso | 荒らす | devastate / ravage |  |  |
-| putilo | 炒める | stirfry / saute |  | Claude【任意】stirfry は英語の綴りでは stir-fry（ハイフン）。saute を見出し語にするほうが自然 |
-| posumo | 威張る | boast / brag / swagger |  | Claude【任意】威張る は swagger が近い。boast は 自慢する。見出し語を swagger に（boast, brag は別名） |
-| kutono | 唸る | groan / moan / growl / roar |  |  |
-| opono | 追い越す | overtake / outstrip |  |  |
-| kopelo | 治める | govern / reign |  |  |
-| pekuwo | 惜しむ | begrudge |  | Claude【任意】惜しむ は regret/spare/cherish に近い。begrudge は「出し渋る」 |
-| asolo | 襲う | assault / raid / ambush |  |  |
-| sujiwo | 掻き回す | stir / churn |  |  |
-| siluso | 囀る | chirp / tweet / warble |  |  |
-| numuto | 痺れる | numb / tingle |  |  |
-| kukuko | しゃがむ | crouch / squat |  |  |
-| menupo | 保つ | maintain / preserve |  |  |
-| sujeto | 千切る | shred |  |  |
-| pikalo | 漬ける | pickle / marinate |  |  |
-| mulamo | 呟く | murmur / mutter |  |  |
-| sotupo | 強める | strengthen / intensify / reinforce |  |  |
-| salumo | 研ぐ | sharpen / whet / grind / polish |  |  |
-| pumolo | 長引く | prolong / linger |  | Claude【任意】prolong は他動詞。長引く（自動詞）は linger が近い |
-| mutupo | 撫でる | stroke / pat / caress |  |  |
-| pujupo | 滲む | blur / ooze / smudge |  | Claude【任意】滲む は seep/blur の2つの意味。blur は他動詞が主 |
-| kuwalo | 睨む | glare / scowl |  |  |
-| suwawo | 飲み込む | swallow / gulp |  |  |
-| papuko | 吠える | bark / howl |  |  |
-| onuno | 祭る | enshrine / deify |  |  |
-| wututo | 跨ぐ | straddle |  |  |
-| sotalo | 見詰める | stare |  |  |
-| seluno | 見渡す | survey / overlook / scan |  | Claude【任意】overlook は「見落とす」の意味もあり逆。別名から外す |
-| pumipo | 捲る | flip |  |  |
-| ileno | 儲ける | earn / profiteer |  | Claude【任意】儲ける は make a profit。profiteer は不当な利益で否定的。別名から外す |
-| wikeno | 弱める | weaken / attenuate |  |  |
-| sileto | 庇う | shield / defend |  |  |
-| okapo | 占める | occupy |  |  |
-| lepano | 弾む | rebound |  | Claude【任意】弾む は bounce が近い。rebound は跳ね返る |
-| omimo | 省く | omit / exclude / abbreviate |  |  |
-| unono | 引き受ける | undertake |  |  |
-| pelilo | 滅びる | perish |  |  |
-| tipupo | 乱す | disturb / disrupt |  |  |
-| awalo | 申し込む | apply / subscribe |  |  |
-| talano | 訳す | translate |  |  |
-| wolumo | 拝む | worship |  | Claude【任意】拝む は pray/worship。worship は 崇拝する の含み |
-| solito | 縮める | shorten |  |  |
-| punujo | 跳ねる | bounce |  | Claude【任意】跳ねる は bounce と jump の両方に近い。bounce は 弾む と重なる可能性がある（弾む = lepano、見出し語 rebound） |
-| leteko | 減らす | reduce |  |  |
-| nesuto | 戻す | restore |  | Claude【任意】戻す は put back/return が近い。restore は 復元する |
-| ejeto | 堪える | endure |  |  |
-| tilulo | 傾ける | tilt |  |  |
-| punoso | 殴る | punch |  |  |
-| nutuno | もがく | struggle |  |  |
-| tutipo | 漂う | drift |  |  |
-| sowilo | 誓う | swear |  | Claude【任意】誓う の swear は「ののしる」の意味もある。vow が近い（未使用なら） |
-| amopo | 廃止する | abolish |  |  |
-| ameso | 慎む | abstain |  | Claude【任意】慎む は refrain/be careful が近い。abstain は 断つ・棄権する |
-| sopio | 甘やかす | spoil |  |  |
-| kotuno | 打ち明ける | confess |  |  |
-| nalato | 物語る | narrate |  |  |
-| iwelo | 受け継ぐ | inherit |  |  |
-| niolo | 犯す | violate |  |  |
-| ponuso | 集中する | concentrate |  |  |
-| wuluwo | 生存する | survive |  |  |
-| titopo | 背く | disobey |  |  |
-| pelono | 属する | belong |  |  |
-| kowulo | 対立する | confront |  | Claude【任意】対立する は oppose/conflict が近い。confront は 立ち向かう |
-| paliso | 説く | preach |  |  |
-| malaso | 行進する | march |  |  |
-| imoto | 向上する | improve |  |  |
-| kamupo | 作曲する | compose |  |  |
-| ijulo | 視察する | inspect |  |  |
-| pisupo | 処分する | dispose |  |  |
-| epamo | 蒸発する | evaporate |  |  |
-| lesiko | 制限する | restrict |  |  |
-| isujo | 遮る | interrupt |  |  |
-| piloso | 栄える | prosper |  |  |
-| teloko | 仕立てる | tailor |  |  |
-| tesimo | 指定する | designate |  |  |
-| nulito | 出血する | bleed |  |  |
-| emoso | 探検する | explore |  |  |
-| uwito | 団結する | unite |  |  |
-| uwuso | 陳列する | exhibit |  |  |
-| notipo | 告げる | notify |  |  |
-| akeno | 遂げる | accomplish |  |  |
-| ewiko | 同封する | enclose |  |  |
-| tukito | 繁盛する | thrive |  |  |
-| kokuwo | 反する | contradict |  |  |
-| peawo | 振舞う | behave |  |  |
-| puwuwo | 満たす | fulfill |  |  |
-| osuwo | 催す | host |  |  |
-| poseto | 養成する | foster |  | Claude【任意】養成する は train が近い（未使用なら）。foster は 育む・助長する |
-| letipo | 蘇る | revive |  |  |
-| owuko | 圧迫する | oppress |  | Claude【任意】圧迫する は press/compress が近い。oppress は 抑圧する（政治的） |
-| asawo | 暗殺する | assassinate |  |  |
-| ijito | 暗示する | hint |  |  |
-| kuojo | 引用する | quote |  |  |
-| sekujo | 確保する | secure |  |  |
-| kenulo | 換算する | convert |  |  |
-| umulo | 鑑賞する | appreciate |  | Claude【任意】鑑賞する の appreciate は 感謝する・評価する の意味もある。見出し語は enjoy/view に近い |
-| tutamo | 脚色する | dramatize |  |  |
-| emawo | 強調する | emphasize |  |  |
-| talito | 脅迫する | threaten |  |  |
-| peseko | 拒否する | reject |  |  |
-| waleno | 警告する | warn |  |  |
-| putoto | 抗議する | protest |  |  |
-| ekuso | 誇張する | exaggerate | 語幹が同じ: ekuse |  |
-| awoto | 採用する | adopt |  |  |
-| ajono | 収容する | accommodate |  |  |
-| ikepo | 侵略する | invade |  |  |
-| ewopo | 実施する | enforce |  | Claude【任意】実施する は implement/carry out が近い。enforce は 法を執行する |
-| tetuko | 推理する | deduce |  |  |
-| tekiko | 設計する | design |  |  |
-| ipeso | 設置する | install |  |  |
-| esoto | 設立する | establish |  |  |
-| nekulo | 宣言する | declare |  |  |
-| isopo | 捜査する | investigate |  |  |
-| pukopo | 促進する | promote |  |  |
-| pusono | 提案する | propose |  |  |
-| tisino | 派遣する | dispatch |  |  |
-| lapulo | 反映する | reflect |  |  |
-| letamo | 反撃する | retaliate |  | Claude【任意】反撃する は counterattack が近い。retaliate は 報復する |
-| kelito | 非難する | criticize |  |  |
-| epowo | 評価する | evaluate |  |  |
-| tepino | 描写する | depict |  |  |
-| anajo | 分析する | analyze |  |  |
-| anino | 予期する | anticipate |  |  |
-| ososo | 連想する | associate |  |  |
-| tumiko | 垂れる | drip |  | Claude【任意】垂れる は hang down/drip の2つの意味。drip は しずくが落ちる のみ |
-| linuso | 濯ぐ | rinse |  |  |
-| tikumo | 擽る | tickle |  |  |
-| kilino | しがみつく | cling |  |  |
-| pukato | 靡く | flutter |  | Claude【任意】靡く は sway/bend が近い。flutter は ひらひらする |
-| pusaso | 弾ける | burst |  |  |
-| sunajo | よろける | stagger |  |  |
-| sepupo | 挫く | sprain |  |  |
-| telelo | 脱線する | derail |  |  |
-| tanilo | 縺れる | tangle |  |  |
-| komomo | 弁償する | compensate |  |  |
-| wisuko | 囁く | whisper |  |  |
+| unilo | 降ろす | unload |  | ok Claude【任意】降ろす は lower/take down が広い。unload は荷を降ろす意味に限る |
+| pekano | 招く | beckon / summon |  | ok Claude【任意】招く は invite と重なる（inupo 招待する が invite を持つ）。beckon は手招き |
+| lapiso | 改める | revise / reform / amend |  | ok |
+| sukumo | 掻く | scratch / scrape |  | ok |
+| pumamo | 責める | blame / condemn / reproach |  | ok |
+| ejapo | 経つ | elapse |  | ok Claude【任意】elapse はまれ（時が経つ）。pass が自然だが使用中かもしれない。現状維持でもよい |
+| pusuko | 弾く | pluck / strum |  | ok Claude【任意】弾く は楽器を弾く（play）が主。strum/pluck は弦楽器に限る |
+| jilupo | 憧れる | yearn / aspire |  | ok |
+| opato | 溢れる | overflow / brim |  | ok |
+| lesepo | 恨む | resent / grudge |  | ok |
+| ukupo | 追い出す | expel / oust / evict |  | ok |
+| setuto | 落ち着く | settle |  | ok |
+| tupono | 溺れる | drown |  | ok |
+| alowo | 固まる | harden / solidify / congeal |  | ok |
+| minapo | 刻む | mince / chop / carve |  | ok |
+| temopo | 崩す | demolish |  | ok |
+| sumuwo | 砕く | smash / pulverize |  | ok |
+| aseto | 組み立てる | assemble |  | ok |
+| sakupo | 汲む | scoop / ladle / dip |  | ok |
+| sunolo | 焦げる | scorch / char |  | ok Claude【任意】焦げる（自動詞）に対し scorch は他動詞が主。burn が自然だが使用中の可能性 |
+| sipilo | 零す | spill / slop |  | ok |
+| lusuto | 錆びる | rust / corrode / tarnish |  | ok |
+| sujuo | 絞る | squeeze / wring |  | ok |
+| pelamo | 染みる | permeate / seep |  | ok |
+| tamuko | 湿る | dampen / moisten |  | ok Claude【任意】湿る（自動詞）に対し dampen/moisten は他動詞。自動詞の damp が近い |
+| ikuno | 優れる | excel |  | ok |
+| imuso | 迫る | impend / loom |  | ok Claude【任意】impend はまれ。迫る は approach/loom が近い |
+| epeo | 備える | equip / furnish |  | ok |
+| kuwuto | 耕す | cultivate / plow / till |  | ok |
+| salino | 縮む | shrink |  | ok |
+| komano | 通じる | communicate |  | ok Claude【任意】通じる は「意味が伝わる・つながる」。communicate は他動詞でもあり、ずれる |
+| tetoto | 尽くす | devote / dedicate |  | ok |
+| sususo | 躓く | stumble |  | ok |
+| anepo | 釣る | angle |  | ok Claude【任意】見出し語 angle は幾何の角度と混同しやすい。fish（動詞）が自然だが tosa（魚）が使用中のため、現状維持でもよい |
+| pinato | 綴じる | bind / staple |  | ok |
+| koluso | 慰める | console / comfort / soothe |  | ok |
+| susalo | 怠ける | slack / shirk / laze |  | ok |
+| kupolo | 這う | crawl / creep |  | ok |
+| pomito | 吐く | vomit / exhale |  | ok |
+| enomo | 励ます | encourage |  | ok |
+| sewelo | 膨れる | swell / bulge / inflate |  | ok |
+| paloko | 塞ぐ | block / obstruct |  | ok |
+| mululo | 殖やす | multiply |  | ok |
+| tuleto | 震える | tremble / shiver / shudder / quiver |  | ok |
+| eneno | 任せる | entrust / delegate |  | ok |
+| imipo | 真似る | imitate / mimic |  | ok |
+| lipeno | 実る | ripen / fructify |  | ok |
+| waluto | 歪む | warp / distort |  | ok |
+| jilato | 譲る | yield / cede |  | ok |
+| luseko | 緩む | loosen / slacken |  | ok |
+| lamumo | 暴れる | rampage |  | ok Claude【任意】rampage はまれ。暴れる は run wild/rage が近い |
+| tetaso | 荒らす | devastate / ravage |  | ok |
+| putilo | 炒める | stirfry / saute |  | ok Claude【任意】stirfry は英語の綴りでは stir-fry（ハイフン）。saute を見出し語にするほうが自然 |
+| posumo | 威張る | boast / brag / swagger |  | ok Claude【任意】威張る は swagger が近い。boast は 自慢する。見出し語を swagger に（boast, brag は別名） |
+| kutono | 唸る | groan / moan / growl / roar |  | ok |
+| opono | 追い越す | overtake / outstrip |  | ok |
+| kopelo | 治める | govern / reign |  | ok |
+| pekuwo | 惜しむ | begrudge |  | ok Claude【任意】惜しむ は regret/spare/cherish に近い。begrudge は「出し渋る」 |
+| asolo | 襲う | assault / raid / ambush |  | ok |
+| sujiwo | 掻き回す | stir / churn |  | ok |
+| siluso | 囀る | chirp / tweet / warble |  | ok |
+| numuto | 痺れる | numb / tingle |  | ok |
+| kukuko | しゃがむ | crouch / squat |  | ok |
+| menupo | 保つ | maintain / preserve |  | ok |
+| sujeto | 千切る | shred |  | ok |
+| pikalo | 漬ける | pickle / marinate |  | ok |
+| mulamo | 呟く | murmur / mutter |  | ok |
+| sotupo | 強める | strengthen / intensify / reinforce |  | ok |
+| salumo | 研ぐ | sharpen / whet / grind / polish |  | ok |
+| pumolo | 長引く | prolong / linger |  | ok Claude【任意】prolong は他動詞。長引く（自動詞）は linger が近い |
+| mutupo | 撫でる | stroke / pat / caress |  | ok |
+| pujupo | 滲む | blur / ooze / smudge |  | ok Claude【任意】滲む は seep/blur の2つの意味。blur は他動詞が主 |
+| kuwalo | 睨む | glare / scowl |  | ok |
+| suwawo | 飲み込む | swallow / gulp |  | ok |
+| papuko | 吠える | bark / howl |  | ok |
+| onuno | 祭る | enshrine / deify |  | ok |
+| wututo | 跨ぐ | straddle |  | ok |
+| sotalo | 見詰める | stare |  | ok |
+| seluno | 見渡す | survey / overlook / scan |  | ok Claude【任意】overlook は「見落とす」の意味もあり逆。別名から外す |
+| pumipo | 捲る | flip |  | ok |
+| ileno | 儲ける | earn / profiteer |  | ok Claude【任意】儲ける は make a profit。profiteer は不当な利益で否定的。別名から外す |
+| wikeno | 弱める | weaken / attenuate |  | ok |
+| sileto | 庇う | shield / defend |  | ok |
+| okapo | 占める | occupy |  | ok |
+| lepano | 弾む | rebound |  | ok Claude【任意】弾む は bounce が近い。rebound は跳ね返る |
+| omimo | 省く | omit / exclude / abbreviate |  | ok |
+| unono | 引き受ける | undertake |  | ok |
+| pelilo | 滅びる | perish |  | ok |
+| tipupo | 乱す | disturb / disrupt |  | ok |
+| awalo | 申し込む | apply / subscribe |  | ok |
+| talano | 訳す | translate |  | ok |
+| wolumo | 拝む | worship |  | ok Claude【任意】拝む は pray/worship。worship は 崇拝する の含み |
+| solito | 縮める | shorten |  | ok |
+| punujo | 跳ねる | bounce |  | ok Claude【任意】跳ねる は bounce と jump の両方に近い。bounce は 弾む と重なる可能性がある（弾む = lepano、見出し語 rebound） |
+| leteko | 減らす | reduce |  | ok |
+| nesuto | 戻す | restore |  | ok Claude【任意】戻す は put back/return が近い。restore は 復元する |
+| ejeto | 堪える | endure |  | ok |
+| tilulo | 傾ける | tilt |  | ok |
+| punoso | 殴る | punch |  | ok |
+| nutuno | もがく | struggle |  | ok |
+| tutipo | 漂う | drift |  | ok |
+| sowilo | 誓う | swear |  | ok Claude【任意】誓う の swear は「ののしる」の意味もある。vow が近い（未使用なら） |
+| amopo | 廃止する | abolish |  | ok |
+| ameso | 慎む | abstain |  | ok Claude【任意】慎む は refrain/be careful が近い。abstain は 断つ・棄権する |
+| sopio | 甘やかす | spoil |  | ok |
+| kotuno | 打ち明ける | confess |  | ok |
+| nalato | 物語る | narrate |  | ok |
+| iwelo | 受け継ぐ | inherit |  | ok |
+| niolo | 犯す | violate |  | ok |
+| ponuso | 集中する | concentrate |  | ok |
+| wuluwo | 生存する | survive |  | ok |
+| titopo | 背く | disobey |  | ok |
+| pelono | 属する | belong |  | ok |
+| kowulo | 対立する | confront |  | ok Claude【任意】対立する は oppose/conflict が近い。confront は 立ち向かう |
+| paliso | 説く | preach |  | ok |
+| malaso | 行進する | march |  | ok |
+| imoto | 向上する | improve |  | ok |
+| kamupo | 作曲する | compose |  | ok |
+| ijulo | 視察する | inspect |  | ok |
+| pisupo | 処分する | dispose |  | ok |
+| epamo | 蒸発する | evaporate |  | ok |
+| lesiko | 制限する | restrict |  | ok |
+| isujo | 遮る | interrupt |  | ok |
+| piloso | 栄える | prosper |  | ok |
+| teloko | 仕立てる | tailor |  | ok |
+| tesimo | 指定する | designate |  | ok |
+| nulito | 出血する | bleed |  | ok |
+| emoso | 探検する | explore |  | ok |
+| uwito | 団結する | unite |  | ok |
+| uwuso | 陳列する | exhibit |  | ok |
+| notipo | 告げる | notify |  | ok |
+| akeno | 遂げる | accomplish |  | ok |
+| ewiko | 同封する | enclose |  | ok |
+| tukito | 繁盛する | thrive |  | ok |
+| kokuwo | 反する | contradict |  | ok |
+| peawo | 振舞う | behave |  | ok |
+| puwuwo | 満たす | fulfill |  | ok |
+| osuwo | 催す | host |  | ok |
+| poseto | 養成する | foster |  | ok Claude【任意】養成する は train が近い（未使用なら）。foster は 育む・助長する |
+| letipo | 蘇る | revive |  | ok |
+| owuko | 圧迫する | oppress |  | ok Claude【任意】圧迫する は press/compress が近い。oppress は 抑圧する（政治的） |
+| asawo | 暗殺する | assassinate |  | ok |
+| ijito | 暗示する | hint |  | ok |
+| kuojo | 引用する | quote |  | ok |
+| sekujo | 確保する | secure |  | ok |
+| kenulo | 換算する | convert |  | ok |
+| umulo | 鑑賞する | appreciate |  | ok Claude【任意】鑑賞する の appreciate は 感謝する・評価する の意味もある。見出し語は enjoy/view に近い |
+| tutamo | 脚色する | dramatize |  | ok |
+| emawo | 強調する | emphasize |  | ok |
+| talito | 脅迫する | threaten |  | ok |
+| peseko | 拒否する | reject |  | ok |
+| waleno | 警告する | warn |  | ok |
+| putoto | 抗議する | protest |  | ok |
+| ekuso | 誇張する | exaggerate | 語幹が同じ: ekuse | ok |
+| awoto | 採用する | adopt |  | ok |
+| ajono | 収容する | accommodate |  | ok |
+| ikepo | 侵略する | invade |  | ok |
+| ewopo | 実施する | enforce |  | ok Claude【任意】実施する は implement/carry out が近い。enforce は 法を執行する |
+| tetuko | 推理する | deduce |  | ok |
+| tekiko | 設計する | design |  | ok |
+| ipeso | 設置する | install |  | ok |
+| esoto | 設立する | establish |  | ok |
+| nekulo | 宣言する | declare |  | ok |
+| isopo | 捜査する | investigate |  | ok |
+| pukopo | 促進する | promote |  | ok |
+| pusono | 提案する | propose |  | ok |
+| tisino | 派遣する | dispatch |  | ok |
+| lapulo | 反映する | reflect |  | ok |
+| letamo | 反撃する | retaliate |  | ok Claude【任意】反撃する は counterattack が近い。retaliate は 報復する |
+| kelito | 非難する | criticize |  | ok |
+| epowo | 評価する | evaluate |  | ok |
+| tepino | 描写する | depict |  | ok |
+| anajo | 分析する | analyze |  | ok |
+| anino | 予期する | anticipate |  | ok |
+| ososo | 連想する | associate |  | ok |
+| tumiko | 垂れる | drip |  | ok Claude【任意】垂れる は hang down/drip の2つの意味。drip は しずくが落ちる のみ |
+| linuso | 濯ぐ | rinse |  | ok |
+| tikumo | 擽る | tickle |  | ok |
+| kilino | しがみつく | cling |  | ok |
+| pukato | 靡く | flutter |  | ok Claude【任意】靡く は sway/bend が近い。flutter は ひらひらする |
+| pusaso | 弾ける | burst |  | ok |
+| sunajo | よろける | stagger |  | ok |
+| sepupo | 挫く | sprain |  | ok |
+| telelo | 脱線する | derail |  | ok |
+| tanilo | 縺れる | tangle |  | ok |
+| komomo | 弁償する | compensate |  | ok |
+| wisuko | 囁く | whisper |  | ok |
 
 ### adj（102語）
 
@@ -2148,92 +2148,92 @@
 | ateke | 憎い | hateful / odious / detestable |  | ok |
 | soiwe | めでたい | joyful / joyous / auspicious |  | ok |
 | unele | 無理な | unreasonable / excessive |  | ok |
-| nosute | 懐かしい | nostalgic |  |  |
-| pumase | 派手な | flashy / gaudy / showy |  |  |
-| sopepe | 地味な | sober / subdued |  | Claude【任意】地味な は plain が自然（使用中の可能性）。sober も可 |
-| tikule | くすぐったい | ticklish |  |  |
-| opeme | 素直な | obedient |  | Claude【任意】素直な は honest/docile。obedient は「従順」で近い |
-| pukane | 率直な | frank / candid / straightforward |  |  |
-| kalote | 暢気な | carefree / easygoing |  |  |
-| silune | 朗らかな | cheerful / merry / sunny |  |  |
-| tasule | 眩しい | dazzling / glaring |  |  |
-| ukune | 醜い | ugly / unsightly / hideous |  |  |
-| wasuke | 勿体ない | wasteful |  | Claude【任意】勿体ない は「無駄で惜しい」。wasteful は無駄遣いをする性質を指し、ずれる |
-| pukite | 脆い | brittle / fragile / frail |  |  |
-| apone | 豊かな | abundant / plentiful / affluent |  |  |
-| susume | 怪しい | suspicious / dubious / fishy |  |  |
-| ewute | 慌ただしい | hectic / hurried |  |  |
-| unoke | 意外な | unexpected / surprising |  |  |
-| amune | 異常な | abnormal / unusual |  |  |
-| koake | 臆病な | cowardly / timid |  |  |
-| penote | 幽かな | faint / dim / vague |  |  |
-| lopete | 可愛らしい | lovely / adorable |  |  |
-| katue | 気軽な | casual / lighthearted |  |  |
-| kutame | 窮屈な | cramped |  |  |
-| putuke | 下品な | vulgar / coarse / indecent |  |  |
-| samoke | 煙い | smoky |  |  |
-| sutine | 険しい | steep / rugged / grim |  |  |
-| salape | 塩辛い | salty / briny |  |  |
-| pelase | しつこい | persistent / insistent / tenacious |  |  |
-| lenone | 名高い | renowned / celebrated |  |  |
-| tutane | 長閑な | tranquil / idyllic / peaceful |  |  |
-| imule | 待ち遠しい | impatient |  | Claude【任意】待ち遠しい は eagerly awaited。impatient は「いらいらして待てない」で、否定的な響き |
-| tuleme | 物凄い | tremendous / terrific / horrendous |  |  |
-| ekoe | 等しい | equal |  |  |
-| akipe | 素早い | agile |  | Claude【任意】素早い は、既存の pasute（速い、fast|quick）と近い。agile は 敏捷。現状維持でもよい |
-| sameme | みっともない | shameful |  | Claude【任意】みっともない は unseemly/unsightly が近い。shameful は 恥ずべき |
-| tilipe | 勤勉な | diligent |  |  |
-| polute | 正式な | formal |  |  |
-| kalile | そそっかしい | careless |  | Claude【任意】そそっかしい は hasty/rash が近い。careless は 不注意な |
-| ikose | 無邪気な | innocent |  |  |
-| tukupe | 面倒臭い | troublesome |  |  |
-| pilule | 猛烈な | fierce |  |  |
-| alame | 有害な | harmful |  |  |
-| isune | 有力な | influential |  |  |
-| silote | 幼稚な | childish |  |  |
-| lasune | 合理的な | rational |  | Claude【任意】合理的な と lokike（論理的な、logical）は近い。rational と logical は区別が薄い |
-| pasape | 消極的な | passive |  | Claude【任意】消極的な は negative/reluctant が近い。passive は 受け身の |
-| puwute | 慎重な | prudent |  |  |
-| sinuse | 誠実な | sincere |  |  |
-| sulome | だらしない | sloppy |  |  |
-| senese | 敏感な | sensitive |  |  |
-| palipe | 有効な | valid |  |  |
-| atale | 有利な | advantageous |  |  |
-| lemale | 著しい | remarkable |  |  |
-| esume | 甚だしい | extreme |  |  |
-| misepe | 惨めな | miserable |  |  |
-| tokuse | 有毒な | toxic |  |  |
-| tupase | 急激な | drastic |  |  |
-| kukule | 残酷な | cruel |  |  |
-| pekuke | 独特な | peculiar |  | Claude【任意】独特な は unique が近い。peculiar は「変な」の含み |
-| kutupe | 頑固な | stubborn |  |  |
-| opuke | 客観的な | objective |  |  |
-| wolese | 健全な | wholesome |  |  |
-| kukase | 淑やかな | graceful |  | Claude【任意】淑やかな は demure が近い。graceful は 優雅な |
-| suwuse | 主観的な | subjective |  |  |
-| polope | 大胆な | bold |  |  |
-| petepe | 忠実な | faithful |  |  |
-| kupume | 無器用な | clumsy |  |  |
-| metie | 平凡な | mediocre |  | Claude【任意】平凡な は ordinary（nome が使用中）。mediocre は「並以下」の含み |
-| peneme | 有益な | beneficial |  |  |
-| ulume | 緊急な | urgent |  |  |
-| polise | 軽快な | brisk |  | Claude【任意】軽快な は light/nimble が近い。brisk は「きびきびした・活発な」 |
-| ikene | 巧妙な | ingenious |  |  |
-| lukuse | 豪華な | luxurious |  |  |
-| supale | しなやかな | supple |  |  |
-| ikake | 先天的な | innate |  |  |
-| monote | 単調な | monotonous |  |  |
-| anule | 適切な | appropriate |  |  |
-| tulike | 悲惨な | tragic |  | Claude【任意】悲惨な は、misepe（惨めな、miserable）と意味が近い。tragic は 悲劇的な |
-| supone | 微妙な | subtle |  |  |
-| okie | 明白な | obvious |  |  |
-| komeke | 有能な | competent |  |  |
-| ikuwe | 冷淡な | indifferent |  |  |
-| lokike | 論理的な | logical |  |  |
-| komime | 滑稽な | comical |  |  |
-| muluke | だるい | sluggish |  |  |
-| ilele | 不規則な | irregular |  |  |
-| nimuke | すばしっこい | nimble |  | Claude【任意】すばしっこい は、akipe（素早い）と意味が近い。nimble と agile の差は小さい |
+| nosute | 懐かしい | nostalgic |  | ok |
+| pumase | 派手な | flashy / gaudy / showy |  | ok |
+| sopepe | 地味な | sober / subdued |  | ok Claude【任意】地味な は plain が自然（使用中の可能性）。sober も可 |
+| tikule | くすぐったい | ticklish |  | ok |
+| opeme | 素直な | obedient |  | ok Claude【任意】素直な は honest/docile。obedient は「従順」で近い |
+| pukane | 率直な | frank / candid / straightforward |  | ok |
+| kalote | 暢気な | carefree / easygoing |  | ok |
+| silune | 朗らかな | cheerful / merry / sunny |  | ok |
+| tasule | 眩しい | dazzling / glaring |  | ok |
+| ukune | 醜い | ugly / unsightly / hideous |  | ok |
+| wasuke | 勿体ない | wasteful |  | ok Claude【任意】勿体ない は「無駄で惜しい」。wasteful は無駄遣いをする性質を指し、ずれる |
+| pukite | 脆い | brittle / fragile / frail |  | ok |
+| apone | 豊かな | abundant / plentiful / affluent |  | ok |
+| susume | 怪しい | suspicious / dubious / fishy |  | ok |
+| ewute | 慌ただしい | hectic / hurried |  | ok |
+| unoke | 意外な | unexpected / surprising |  | ok |
+| amune | 異常な | abnormal / unusual |  | ok |
+| koake | 臆病な | cowardly / timid |  | ok |
+| penote | 幽かな | faint / dim / vague |  | ok |
+| lopete | 可愛らしい | lovely / adorable |  | ok |
+| katue | 気軽な | casual / lighthearted |  | ok |
+| kutame | 窮屈な | cramped |  | ok |
+| putuke | 下品な | vulgar / coarse / indecent |  | ok |
+| samoke | 煙い | smoky |  | ok |
+| sutine | 険しい | steep / rugged / grim |  | ok |
+| salape | 塩辛い | salty / briny |  | ok |
+| pelase | しつこい | persistent / insistent / tenacious |  | ok |
+| lenone | 名高い | renowned / celebrated |  | ok |
+| tutane | 長閑な | tranquil / idyllic / peaceful |  | ok |
+| imule | 待ち遠しい | impatient |  | ok Claude【任意】待ち遠しい は eagerly awaited。impatient は「いらいらして待てない」で、否定的な響き |
+| tuleme | 物凄い | tremendous / terrific / horrendous |  | ok |
+| ekoe | 等しい | equal |  | ok |
+| akipe | 素早い | agile |  | ok Claude【任意】素早い は、既存の pasute（速い、fast|quick）と近い。agile は 敏捷。現状維持でもよい |
+| sameme | みっともない | shameful |  | ok Claude【任意】みっともない は unseemly/unsightly が近い。shameful は 恥ずべき |
+| tilipe | 勤勉な | diligent |  | ok |
+| polute | 正式な | formal |  | ok |
+| kalile | そそっかしい | careless |  | ok Claude【任意】そそっかしい は hasty/rash が近い。careless は 不注意な |
+| ikose | 無邪気な | innocent |  | ok |
+| tukupe | 面倒臭い | troublesome |  | ok |
+| pilule | 猛烈な | fierce |  | ok |
+| alame | 有害な | harmful |  | ok |
+| isune | 有力な | influential |  | ok |
+| silote | 幼稚な | childish |  | ok |
+| lasune | 合理的な | rational |  | ok Claude【任意】合理的な と lokike（論理的な、logical）は近い。rational と logical は区別が薄い |
+| pasape | 消極的な | passive |  | ok Claude【任意】消極的な は negative/reluctant が近い。passive は 受け身の |
+| puwute | 慎重な | prudent |  | ok |
+| sinuse | 誠実な | sincere |  | ok |
+| sulome | だらしない | sloppy |  | ok |
+| senese | 敏感な | sensitive |  | ok |
+| palipe | 有効な | valid |  | ok |
+| atale | 有利な | advantageous |  | ok |
+| lemale | 著しい | remarkable |  | ok |
+| esume | 甚だしい | extreme |  | ok |
+| misepe | 惨めな | miserable |  | ok |
+| tokuse | 有毒な | toxic |  | ok |
+| tupase | 急激な | drastic |  | ok |
+| kukule | 残酷な | cruel |  | ok |
+| pekuke | 独特な | peculiar |  | ok Claude【任意】独特な は unique が近い。peculiar は「変な」の含み |
+| kutupe | 頑固な | stubborn |  | ok |
+| opuke | 客観的な | objective |  | ok |
+| wolese | 健全な | wholesome |  | ok |
+| kukase | 淑やかな | graceful |  | ok Claude【任意】淑やかな は demure が近い。graceful は 優雅な |
+| suwuse | 主観的な | subjective |  | ok |
+| polope | 大胆な | bold |  | ok |
+| petepe | 忠実な | faithful |  | ok |
+| kupume | 無器用な | clumsy |  | ok |
+| metie | 平凡な | mediocre |  | ok Claude【任意】平凡な は ordinary（nome が使用中）。mediocre は「並以下」の含み |
+| peneme | 有益な | beneficial |  | ok |
+| ulume | 緊急な | urgent |  | ok |
+| polise | 軽快な | brisk |  | ok Claude【任意】軽快な は light/nimble が近い。brisk は「きびきびした・活発な」 |
+| ikene | 巧妙な | ingenious |  | ok |
+| lukuse | 豪華な | luxurious |  | ok |
+| supale | しなやかな | supple |  | ok |
+| ikake | 先天的な | innate |  | ok |
+| monote | 単調な | monotonous |  | ok |
+| anule | 適切な | appropriate |  | ok |
+| tulike | 悲惨な | tragic |  | ok Claude【任意】悲惨な は、misepe（惨めな、miserable）と意味が近い。tragic は 悲劇的な |
+| supone | 微妙な | subtle |  | ok |
+| okie | 明白な | obvious |  | ok |
+| komeke | 有能な | competent |  | ok |
+| ikuwe | 冷淡な | indifferent |  | ok |
+| lokike | 論理的な | logical |  | ok |
+| komime | 滑稽な | comical |  | ok |
+| muluke | だるい | sluggish |  | ok |
+| ilele | 不規則な | irregular |  | ok |
+| nimuke | すばしっこい | nimble |  | ok Claude【任意】すばしっこい は、akipe（素早い）と意味が近い。nimble と agile の差は小さい |
 
 ### adv（16語）
 
@@ -2246,15 +2246,15 @@
 | pulemi | なるべく | preferably |  | ok |
 | puluni | なお | furthermore |  | ok Claude【任意】なお は接続詞に近い（furthermore）。接続詞は機能語のため Claude/M1ko の設計 |
 | nameli | つまり | namely / briefly / shortly |  | ok Claude【任意】つまり は接続詞に近い（namely）。接続詞は機能語のため Claude/M1ko の設計 |
-| menuli | 主に | mainly / chiefly / primarily / mostly |  |  |
-| pupomi | 早速 | promptly / forthwith |  |  |
-| oiti | 暫く | awhile / temporarily |  | Claude【任意】暫く は for a while。temporarily（一時的に）は別の語。別名から外す |
-| akasi | 偶然 | accidentally / coincidentally |  |  |
-| sekuli | こっそり | secretly / stealthily / sneakily |  |  |
-| inesi | 忽ち | instantly |  |  |
-| konuki | 絶えず | constantly / continually / ceaselessly |  |  |
-| otomi | 独りでに | automatically / spontaneously |  |  |
-| laleti | 滅多に | rarely / seldom |  |  |
+| menuli | 主に | mainly / chiefly / primarily / mostly |  | ok |
+| pupomi | 早速 | promptly / forthwith |  | ok |
+| oiti | 暫く | awhile / temporarily |  | ok Claude【任意】暫く は for a while。temporarily（一時的に）は別の語。別名から外す |
+| akasi | 偶然 | accidentally / coincidentally |  | ok |
+| sekuli | こっそり | secretly / stealthily / sneakily |  | ok |
+| inesi | 忽ち | instantly |  | ok |
+| konuki | 絶えず | constantly / continually / ceaselessly |  | ok |
+| otomi | 独りでに | automatically / spontaneously |  | ok |
+| laleti | 滅多に | rarely / seldom |  | ok |
 
 ## v0.10 機能語（指示詞・はい／いいえ）（3語）
 
