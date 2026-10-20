@@ -7,7 +7,7 @@
 - 語幹が同じ: 語尾の1文字だけが違う、別の品詞の語（例: `kuka` 名詞と `kuko` 動詞）。同じ英語の別品詞なら意図した組です。そうでなければ偶然の一致なので、見分けにくくないか見てください
 - 同じ英語の語: 同じ英語の訳を持つ、別の語（同義語の候補）
 
-確認済み(ok): 2354 / 要修正(fix): 0 / 未確認(draft): 100
+確認済み(ok): 2354 / 要修正(fix): 0 / 未確認(draft): 91
 
 ## v0.7 英検3級レベルの語（487語）
 
@@ -634,7 +634,7 @@
 | nonuta | 具合 | condition |  | ok |
 | keluka | 計算 | calculation |  | ok |
 | inila | 怪我 | injury |  | ok |
-| seneta | 景色 | scenery |  | ok |
+| seneta | 景色/風景 | scenery |  | ok |
 | elama | 消しゴム | eraser |  | ok |
 | tetepa | 決心 | determination |  | ok |
 | awuka | 欠席 | absence |  | ok |
@@ -719,7 +719,7 @@
 | lusa | 根 | root | 語幹が同じ: luse, luso | ok |
 | wesa | 願い | wish | 語幹が同じ: weso | ok |
 | tukota | 喉 | throat |  | ok |
-| talina | 飲み物 | drink | 同じ英語の語: liko | ok |
+| talina | 飲み物/飲料 | drink | 同じ英語の語: liko | ok |
 | kuwa | 糊 | glue |  | ok |
 | keika | 乗り物 | vehicle |  | ok |
 | isa | 灰 | ash | 語幹が同じ: ise, isi | ok |
@@ -880,7 +880,7 @@
 | lesuno | 休む | rest | 語幹が同じ: lesuna | ok |
 | womo | 暖める | warm | 語幹が同じ: woma, wome | ok |
 | amuto | 扱う | handle |  | ok |
-| katelo | 集まる | gather |  | ok |
+| katelo | 集まる/集う | gather |  | ok |
 | apomo | 謝る | apologize |  | ok |
 | ekaso | 表す | express |  | ok |
 | komuko | 合わせる | combine |  | ok |
@@ -1049,7 +1049,7 @@
 | nakete | 裸の | naked |  | ok |
 | misute | 不思議な | mysterious |  | ok |
 | pake | 太った | fat | 語幹が同じ: paka, pako | ok |
-| iwuke | 不便な | inconvenient |  | ok |
+| iwuke | 不便な/不自由な | inconvenient |  | ok |
 | kalume | 平気な | calm |  | ok |
 | umipe | 蒸し暑い | humid |  | ok |
 | asuse | 夢中な | absorbed |  | ok |
@@ -1132,9 +1132,9 @@
 |---|---|---|---|---|
 | onapi | オンラインで | online |  | ok |
 
-## Antigravity の追加語（dictionary/anti_additions.csv）（1401語）
+## Antigravity の追加語（dictionary/anti_additions.csv）（1392語）
 
-### noun（881語）
+### noun（879語）
 
 | Logi | 日本語 | 英語 | 手がかり | 状況 |
 |---|---|---|---|---|
@@ -2001,9 +2001,7 @@
 | notaka | 炬燵 | kotatsu |  | ok |
 | piwata | 勝利 | victory |  | Claude【任意】削除済みの語形 piwata（peasant）の再利用（別の意味） |
 | melaja | 商品 | merchandise |  | Claude【任意】商品 は既存の kutusa（品物 / goods）・paloa（製品 / product）と近い |
-| peweja | 飲料 | beverage |  | Claude【修正推奨】飲料 は既存の talina（飲み物 / drink）と同じ意味。削除して、talina に 飲料 を併記するのがよい |
 | kewita | 生物 | creature |  |  |
-| lawuma | 風景 | landscape |  | Claude【修正推奨】風景 は既存の seneta（景色 / scenery）・pawa（眺め / view）と近い。削除して、seneta に 風景 を併記するのがよい |
 | sosoma | 腹痛 | stomachache |  |  |
 | tajasa | 歯痛 | toothache |  |  |
 | mojala | 君主 | monarch |  | Claude【任意】君主 は既存の kina（王 / king）と近い |
@@ -2020,7 +2018,7 @@
 | lolota | 肖像画 | portrait |  |  |
 | kewela | 画廊 | gallery |  |  |
 
-### verb（338語）
+### verb（335語）
 
 | Logi | 日本語 | 英語 | 手がかり | 状況 |
 |---|---|---|---|---|
@@ -2310,7 +2308,7 @@
 | iwimo | 干渉する | interfere |  | ok |
 | neupo | 中和する | neutralize |  | ok |
 | silano | 中傷する | slander |  | ok |
-| ototo | 調節する | adjust |  | ok |
+| ototo | 調節する/調整する | adjust |  | ok |
 | ulawo | 調和する | harmonize |  | ok |
 | peniso | 追放する | banish |  | ok |
 | lisiso | 抵抗する | resist |  | ok |
@@ -2330,7 +2328,6 @@
 | sapono | 産む | spawn |  | Claude【任意】産む に対し spawn は魚・蛙の産卵が主。bear（動詞）は未使用。削除済みの語形 sapono の再利用 |
 | tuwelo | 暮らす | dwell |  | Claude【任意】暮らす は既存の lipo（住む / live）と近い。dwell は文語的 |
 | lotuko | 泊まる | lodge |  |  |
-| julujo | 眠る | slumber |  | Claude【修正推奨】眠る は既存の neo（寝る / sleep）と近く、slumber は文語的。削除して、neo に 眠る を併記するのがよい（削除済みの語形 julujo の再利用でもある） |
 | isewo | 上る | ascend |  | Claude【任意】上る は既存の kimo（登る / climb）と近い（上る は上へ行く一般の語） |
 | kunuwo | 潤す | quench |  |  |
 | matulo | 育つ | mature |  | Claude【任意】育つ は既存の kulo（成長する / grow）と近い。mature は「成熟する」 |
@@ -2345,7 +2342,6 @@
 | kusajo | 擦り下ろす | grate |  |  |
 | kalulo | 計算する | calculate |  |  |
 | pujio | 禁じる | prohibit |  |  |
-| kiluto | 調整する | coordinate |  | Claude【修正推奨】調整する は既存の ototo（調節する / adjust）と同じ意味。削除して、ototo に 調整する を併記するのがよい |
 | kopapo | 協力する | collaborate |  |  |
 | potuto | 延期する | postpone |  |  |
 | tolemo | 我慢する | tolerate |  | Claude【任意】我慢する は既存の ejeto（堪える / endure）と近い |
@@ -2354,7 +2350,6 @@
 | lenoko | 改修する | renovate |  |  |
 | nulaso | 養う | nourish |  | Claude【任意】養う（扶養する・育てる）に対し nourish は「栄養を与える」で少しずれる |
 | pasipo | 魅了する | fascinate |  |  |
-| monulo | 集う | congregate |  | Claude【修正推奨】集う は既存の katelo（集まる / gather）と同じ意味。削除して、katelo に 集う を併記するのがよい |
 | lewono | 和解する | reconcile |  |  |
 | sepoko | 窒息する | suffocate |  |  |
 | lepojo | 反響する | reverberate |  |  |
@@ -2363,7 +2358,7 @@
 | siniso | 同調する | synchronize |  |  |
 | kotemo | 記念する | commemorate |  |  |
 
-### adj（159語）
+### adj（155語）
 
 | Logi | 日本語 | 英語 | 手がかり | 状況 |
 |---|---|---|---|---|
@@ -2380,7 +2375,7 @@
 | elie | 勇ましい | heroic / gallant / valiant |  | ok Claude【任意】勇敢な pulepe と意味が近い（勇ましい≒勇敢） |
 | atome | 偉い | admirable / noble / distinguished |  | ok |
 | lekule | 惜しい | regrettable |  | ok Claude【任意】残念 wita（pity）と意味が近い |
-| ateke | 憎い | hateful / odious / detestable |  | ok |
+| ateke | 憎い/憎らしい | hateful / odious / detestable |  | ok |
 | soiwe | めでたい | joyful / joyous / auspicious |  | ok |
 | unele | 無理な | unreasonable / excessive |  | ok |
 | nosute | 懐かしい | nostalgic |  | ok |
@@ -2491,9 +2486,7 @@
 | ijuje | 間接的な | indirect |  |  |
 | sukene | 急な | sudden |  | Claude【任意】急な は既存の ulume（緊急な）と近い（急な = sudden、緊急 = urgent） |
 | ujute | 不幸な | unfortunate |  |  |
-| kelame | 喧しい | clamorous |  | Claude【修正推奨】喧しい は既存の noie（うるさい / noisy）と同じ意味。削除して、noie に 喧しい を併記するのがよい |
 | pipime | 鮮やかな | vivid |  |  |
-| peline | 危うい | perilous |  | Claude【修正推奨】危うい は既存の tene（危険な/危ない / dangerous）と近い。削除して、tene に 危うい を併記するのがよい |
 | kunuke | 鬱陶しい | gloomy |  |  |
 | sanite | 衛生的な | sanitary |  |  |
 | itepe | 幼い | infantile |  | Claude【任意】infantile は「幼稚な」で、既存の silote（幼稚な / childish）と近い。幼い は young・little |
@@ -2504,7 +2497,7 @@
 | konune | 具体的な | concrete | 同じ英語の語: kuneka |  |
 | esone | 経済的な | economic |  | Claude【任意】経済的な は「安上がりな」の意味が主（economical）。economic は「経済の」 |
 | papote | 好調な | favorable |  | Claude【任意】favorable は「好意的な・好都合な」で、好調な（調子がよい）とずれる |
-| elowe | 心細い | helpless |  | Claude【修正推奨】心細い に対し helpless は「無力な」でずれる（心細い は uneasy / forlorn）。見出し語を uneasy に、forlorn を別名に |
+| elowe | 心細い | uneasy / forlorn |  |  |
 | polame | 幸いな | fortunate |  |  |
 | pumupe | 質素な | frugal |  | Claude【任意】質素な は simple / modest。frugal は「倹約な」 |
 | tamupe | 湿っぽい | damp |  |  |
@@ -2514,11 +2507,9 @@
 | aneme | 手軽な | handy |  |  |
 | alene | 和やかな | harmonious |  |  |
 | kopute | 情け深い | compassionate |  |  |
-| sepite | 憎らしい | spiteful |  | Claude【修正推奨】憎らしい は既存の ateke（憎い / hateful）と近い。削除して、ateke に 憎らしい を併記するのがよい |
 | punune | 鈍い | blunt |  | Claude【任意】blunt は「刃が鈍い・ぶっきらぼうな」で、鈍い（動きが鈍い）とは一部だけ合う |
 | awuwe | 馬鹿げた | absurd |  |  |
 | umuse | 不公平な | unfair |  |  |
-| upuwe | 不自由な | uncomfortable |  | Claude【修正推奨】不自由な に対し uncomfortable は「不快な」でずれ、既存の iwuke（不便な / inconvenient）とも近い。削除して、iwuke に 不自由な を併記するのがよい |
 | isase | 不十分な | insufficient |  |  |
 | utuje | 不親切な | unkind |  |  |
 | uwape | 不愉快な | unpleasant |  |  |

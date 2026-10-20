@@ -326,7 +326,7 @@
 - **89** `kasolu li juo, mi iko.`  
   kasolu=ように（様態）(conj) li=彼/彼女/それ(pronoun) juo=言う(verb) mi=私(pronoun) iko=行く(verb)
 - **90** `mi ito, patu li neo.`  
-  mi=私(pronoun) ito=食べる(verb) patu=しかし(conj) li=彼/彼女/それ(pronoun) neo=寝る(verb)
+  mi=私(pronoun) ito=食べる(verb) patu=しかし(conj) li=彼/彼女/それ(pronoun) neo=寝る/眠る(verb)
 - **91** `li pio monata te teia pe.`  
   li=彼/彼女/それ(pronoun) pio=です(verb) monata=月（暦）(noun) te=3(num) teia=日(noun) pe=5(num)
 - **92** `mi oko atute ula te.`  
