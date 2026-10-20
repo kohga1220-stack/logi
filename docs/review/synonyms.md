@@ -16,7 +16,7 @@
 | 結婚する | verb | malo | melo | 辞書の並び順（機械的） | 要 |
 | 待つ | verb | mato | weto | 例文で使用中 |  |
 | 作る | verb | meko | tuko | 辞書の並び順（機械的） | 要 |
-| 寝る | verb | neo | sulipo | 音節数が少ない |  |
+| 寝る/眠る | verb | neo | sulipo | 音節数が少ない |  |
 | 覚える | verb | upo | memo | 辞書の並び順（機械的） | 要 |
 | 座る | verb | sito | suto, suo | 辞書の並び順（機械的） | 要 |
 | 話す | verb | toko | peto | 例文で使用中 |  |

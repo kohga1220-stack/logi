@@ -586,7 +586,7 @@ aloja,noun,苦労,hardship,v0.8追加,ok,
 nonuta,noun,具合,condition,v0.8追加,ok,
 keluka,noun,計算,calculation,v0.8追加,ok,
 inila,noun,怪我,injury,v0.8追加,ok,
-seneta,noun,景色,scenery,v0.8追加,ok,
+seneta,noun,景色/風景,scenery,v0.8追加,ok,
 elama,noun,消しゴム,eraser,v0.8追加,ok,
 tetepa,noun,決心,determination,v0.8追加,ok,
 awuka,noun,欠席,absence,v0.8追加,ok,
@@ -671,7 +671,7 @@ amima,noun,入学,admission,v0.8追加,ok,
 lusa,noun,根,root,v0.8追加,ok,
 wesa,noun,願い,wish,v0.8追加,ok,
 tukota,noun,喉,throat,v0.8追加,ok,
-talina,noun,飲み物,drink,v0.8追加,ok,
+talina,noun,飲み物/飲料,drink,v0.8追加,ok,
 kuwa,noun,糊,glue,v0.8追加,ok,
 keika,noun,乗り物,vehicle,v0.8追加,ok,
 isa,noun,灰,ash,v0.8追加,ok,
@@ -827,7 +827,7 @@ enato,verb,入る,enter,v0.8追加,ok,
 lesuno,verb,休む,rest,v0.8追加,ok,
 womo,verb,暖める,warm,v0.8追加,ok,
 amuto,verb,扱う,handle,v0.8追加,ok,
-katelo,verb,集まる,gather,v0.8追加,ok,
+katelo,verb,集まる/集う,gather,v0.8追加,ok,
 apomo,verb,謝る,apologize,v0.8追加,ok,
 ekaso,verb,表す,express,v0.8追加,ok,
 komuko,verb,合わせる,combine,v0.8追加,ok,
@@ -991,7 +991,7 @@ emuwe,adj,恥ずかしい,embarrassed,v0.8追加,ok,
 nakete,adj,裸の,naked,v0.8追加,ok,
 misute,adj,不思議な,mysterious,v0.8追加,ok,
 pake,adj,太った,fat,v0.8追加,ok,
-iwuke,adj,不便な,inconvenient,v0.8追加,ok,
+iwuke,adj,不便な/不自由な,inconvenient,v0.8追加,ok,
 kalume,adj,平気な,calm,v0.8追加,ok,
 umipe,adj,蒸し暑い,humid,v0.8追加,ok,
 asuse,adj,夢中な,absorbed,v0.8追加,ok,
@@ -1909,9 +1909,7 @@ pojowa,noun,桐,paulownia,ANTI追加,ok,
 notaka,noun,炬燵,kotatsu,ANTI追加,ok,
 piwata,noun,勝利,victory,ANTI追加,draft,Claude【任意】削除済みの語形 piwata（peasant）の再利用（別の意味）
 melaja,noun,商品,merchandise,ANTI追加,draft,Claude【任意】商品 は既存の kutusa（品物 / goods）・paloa（製品 / product）と近い
-peweja,noun,飲料,beverage,ANTI追加,draft,Claude【修正推奨】飲料 は既存の talina（飲み物 / drink）と同じ意味。削除して、talina に 飲料 を併記するのがよい
 kewita,noun,生物,creature,ANTI追加,draft,
-lawuma,noun,風景,landscape,ANTI追加,draft,Claude【修正推奨】風景 は既存の seneta（景色 / scenery）・pawa（眺め / view）と近い。削除して、seneta に 風景 を併記するのがよい
 sosoma,noun,腹痛,stomachache,ANTI追加,draft,
 tajasa,noun,歯痛,toothache,ANTI追加,draft,
 mojala,noun,君主,monarch,ANTI追加,draft,Claude【任意】君主 は既存の kina（王 / king）と近い
@@ -2213,7 +2211,7 @@ itiso,verb,指導する,instruct,ANTI追加,ok,
 iwimo,verb,干渉する,interfere,ANTI追加,ok,
 neupo,verb,中和する,neutralize,ANTI追加,ok,
 silano,verb,中傷する,slander,ANTI追加,ok,
-ototo,verb,調節する,adjust,ANTI追加,ok,
+ototo,verb,調節する/調整する,adjust,ANTI追加,ok,
 ulawo,verb,調和する,harmonize,ANTI追加,ok,
 peniso,verb,追放する,banish,ANTI追加,ok,
 lisiso,verb,抵抗する,resist,ANTI追加,ok,
@@ -2233,7 +2231,6 @@ lekuko,verb,見なす,regard,ANTI追加,ok,
 sapono,verb,産む,spawn,ANTI追加,draft,Claude【任意】産む に対し spawn は魚・蛙の産卵が主。bear（動詞）は未使用。削除済みの語形 sapono の再利用
 tuwelo,verb,暮らす,dwell,ANTI追加,draft,Claude【任意】暮らす は既存の lipo（住む / live）と近い。dwell は文語的
 lotuko,verb,泊まる,lodge,ANTI追加,draft,
-julujo,verb,眠る,slumber,ANTI追加,draft,Claude【修正推奨】眠る は既存の neo（寝る / sleep）と近く、slumber は文語的。削除して、neo に 眠る を併記するのがよい（削除済みの語形 julujo の再利用でもある）
 isewo,verb,上る,ascend,ANTI追加,draft,Claude【任意】上る は既存の kimo（登る / climb）と近い（上る は上へ行く一般の語）
 kunuwo,verb,潤す,quench,ANTI追加,draft,
 matulo,verb,育つ,mature,ANTI追加,draft,Claude【任意】育つ は既存の kulo（成長する / grow）と近い。mature は「成熟する」
@@ -2248,7 +2245,6 @@ puwiko,verb,瞬く,blink,ANTI追加,draft,
 kusajo,verb,擦り下ろす,grate,ANTI追加,draft,
 kalulo,verb,計算する,calculate,ANTI追加,draft,
 pujio,verb,禁じる,prohibit,ANTI追加,draft,
-kiluto,verb,調整する,coordinate,ANTI追加,draft,Claude【修正推奨】調整する は既存の ototo（調節する / adjust）と同じ意味。削除して、ototo に 調整する を併記するのがよい
 kopapo,verb,協力する,collaborate,ANTI追加,draft,
 potuto,verb,延期する,postpone,ANTI追加,draft,
 tolemo,verb,我慢する,tolerate,ANTI追加,draft,Claude【任意】我慢する は既存の ejeto（堪える / endure）と近い
@@ -2257,7 +2253,6 @@ etajo,verb,消火する,extinguish,ANTI追加,draft,
 lenoko,verb,改修する,renovate,ANTI追加,draft,
 nulaso,verb,養う,nourish,ANTI追加,draft,Claude【任意】養う（扶養する・育てる）に対し nourish は「栄養を与える」で少しずれる
 pasipo,verb,魅了する,fascinate,ANTI追加,draft,
-monulo,verb,集う,congregate,ANTI追加,draft,Claude【修正推奨】集う は既存の katelo（集まる / gather）と同じ意味。削除して、katelo に 集う を併記するのがよい
 lewono,verb,和解する,reconcile,ANTI追加,draft,
 sepoko,verb,窒息する,suffocate,ANTI追加,draft,
 lepojo,verb,反響する,reverberate,ANTI追加,draft,
@@ -2278,7 +2273,7 @@ tisape,adj,がっかりした,disappointed,ANTI追加,ok,
 elie,adj,勇ましい,heroic|gallant|valiant,ANTI追加,ok,Claude【任意】勇敢な pulepe と意味が近い（勇ましい≒勇敢）
 atome,adj,偉い,admirable|noble|distinguished,ANTI追加,ok,
 lekule,adj,惜しい,regrettable,ANTI追加,ok,Claude【任意】残念 wita（pity）と意味が近い
-ateke,adj,憎い,hateful|odious|detestable,ANTI追加,ok,
+ateke,adj,憎い/憎らしい,hateful|odious|detestable,ANTI追加,ok,
 soiwe,adj,めでたい,joyful|joyous|auspicious,ANTI追加,ok,
 unele,adj,無理な,unreasonable|excessive,ANTI追加,ok,
 nosute,adj,懐かしい,nostalgic,ANTI追加,ok,
@@ -2389,9 +2384,7 @@ tolite,adj,恐ろしい,dreadful,ANTI追加,draft,
 ijuje,adj,間接的な,indirect,ANTI追加,draft,
 sukene,adj,急な,sudden,ANTI追加,draft,Claude【任意】急な は既存の ulume（緊急な）と近い（急な = sudden、緊急 = urgent）
 ujute,adj,不幸な,unfortunate,ANTI追加,draft,
-kelame,adj,喧しい,clamorous,ANTI追加,draft,Claude【修正推奨】喧しい は既存の noie（うるさい / noisy）と同じ意味。削除して、noie に 喧しい を併記するのがよい
 pipime,adj,鮮やかな,vivid,ANTI追加,draft,
-peline,adj,危うい,perilous,ANTI追加,draft,Claude【修正推奨】危うい は既存の tene（危険な/危ない / dangerous）と近い。削除して、tene に 危うい を併記するのがよい
 kunuke,adj,鬱陶しい,gloomy,ANTI追加,draft,
 sanite,adj,衛生的な,sanitary,ANTI追加,draft,
 itepe,adj,幼い,infantile,ANTI追加,draft,Claude【任意】infantile は「幼稚な」で、既存の silote（幼稚な / childish）と近い。幼い は young・little
@@ -2402,7 +2395,7 @@ sukope,adj,器用な,skillful,ANTI追加,draft,Claude【任意】削除済みの
 konune,adj,具体的な,concrete,ANTI追加,draft,
 esone,adj,経済的な,economic,ANTI追加,draft,Claude【任意】経済的な は「安上がりな」の意味が主（economical）。economic は「経済の」
 papote,adj,好調な,favorable,ANTI追加,draft,Claude【任意】favorable は「好意的な・好都合な」で、好調な（調子がよい）とずれる
-elowe,adj,心細い,helpless,ANTI追加,draft,Claude【修正推奨】心細い に対し helpless は「無力な」でずれる（心細い は uneasy / forlorn）。見出し語を uneasy に、forlorn を別名に
+elowe,adj,心細い,uneasy|forlorn,ANTI追加,draft,
 polame,adj,幸いな,fortunate,ANTI追加,draft,
 pumupe,adj,質素な,frugal,ANTI追加,draft,Claude【任意】質素な は simple / modest。frugal は「倹約な」
 tamupe,adj,湿っぽい,damp,ANTI追加,draft,
@@ -2412,11 +2405,9 @@ apawe,adj,抽象的な,abstract,ANTI追加,draft,
 aneme,adj,手軽な,handy,ANTI追加,draft,
 alene,adj,和やかな,harmonious,ANTI追加,draft,
 kopute,adj,情け深い,compassionate,ANTI追加,draft,
-sepite,adj,憎らしい,spiteful,ANTI追加,draft,Claude【修正推奨】憎らしい は既存の ateke（憎い / hateful）と近い。削除して、ateke に 憎らしい を併記するのがよい
 punune,adj,鈍い,blunt,ANTI追加,draft,Claude【任意】blunt は「刃が鈍い・ぶっきらぼうな」で、鈍い（動きが鈍い）とは一部だけ合う
 awuwe,adj,馬鹿げた,absurd,ANTI追加,draft,
 umuse,adj,不公平な,unfair,ANTI追加,draft,
-upuwe,adj,不自由な,uncomfortable,ANTI追加,draft,Claude【修正推奨】不自由な に対し uncomfortable は「不快な」でずれ、既存の iwuke（不便な / inconvenient）とも近い。削除して、iwuke に 不自由な を併記するのがよい
 isase,adj,不十分な,insufficient,ANTI追加,draft,
 utuje,adj,不親切な,unkind,ANTI追加,draft,
 uwape,adj,不愉快な,unpleasant,ANTI追加,draft,

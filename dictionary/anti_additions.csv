@@ -1307,9 +1307,7 @@ forever,adv,永遠に,,国語研教育基本語彙: 永遠
 somehow,adv,何とかして,,国語研教育基本語彙: 何とか
 victory,noun,勝利,,国語研教育基本語彙: 勝利
 merchandise,noun,商品,,国語研教育基本語彙: 商品
-beverage,noun,飲料,,国語研教育基本語彙: 飲料
 creature,noun,生物,,国語研教育基本語彙: 生物
-landscape,noun,風景,,国語研教育基本語彙: 風景
 stomachache,noun,腹痛,,国語研教育基本語彙: 腹痛
 toothache,noun,歯痛,,国語研教育基本語彙: 歯痛
 monarch,noun,君主,,国語研教育基本語彙: 王
@@ -1330,9 +1328,7 @@ dreadful,adj,恐ろしい,,国語研教育基本語彙: 恐ろしい
 indirect,adj,間接的な,,国語研教育基本語彙: 間接
 sudden,adj,急な,,国語研教育基本語彙: 急
 unfortunate,adj,不幸な,,国語研教育基本語彙: 不幸
-clamorous,adj,喧しい,,国語研教育基本語彙: 喧しい
 vivid,adj,鮮やかな,,国語研教育基本語彙: 鮮やか
-perilous,adj,危うい,,国語研教育基本語彙: 危うい
 gloomy,adj,鬱陶しい,,国語研教育基本語彙: 鬱陶しい
 sanitary,adj,衛生的な,,国語研教育基本語彙: 衛生的
 infantile,adj,幼い,,国語研教育基本語彙: 幼い
@@ -1343,7 +1339,7 @@ skillful,adj,器用な,,国語研教育基本語彙: 器用
 concrete,adj,具体的な,,国語研教育基本語彙: 具体的
 economic,adj,経済的な,,国語研教育基本語彙: 経済的
 favorable,adj,好調な,,国語研教育基本語彙: 好調
-helpless,adj,心細い,,国語研教育基本語彙: 心細い
+uneasy,adj,心細い,forlorn,国語研教育基本語彙: 心細い
 fortunate,adj,幸いな,,国語研教育基本語彙: 幸い
 frugal,adj,質素な,,国語研教育基本語彙: 質素
 damp,adj,湿っぽい,,国語研教育基本語彙: 湿っぽい
@@ -1353,11 +1349,9 @@ abstract,adj,抽象的な,,国語研教育基本語彙: 抽象的
 handy,adj,手軽な,,国語研教育基本語彙: 手軽
 harmonious,adj,和やかな,,国語研教育基本語彙: 和やか
 compassionate,adj,情け深い,,国語研教育基本語彙: 情け深い
-spiteful,adj,憎らしい,,国語研教育基本語彙: 憎らしい
 blunt,adj,鈍い,,国語研教育基本語彙: 鈍い
 absurd,adj,馬鹿げた,,国語研教育基本語彙: 馬鹿馬鹿しい
 unfair,adj,不公平な,,国語研教育基本語彙: 不公平
-uncomfortable,adj,不自由な,,国語研教育基本語彙: 不自由
 insufficient,adj,不十分な,,国語研教育基本語彙: 不十分
 unkind,adj,不親切な,,国語研教育基本語彙: 不親切
 unpleasant,adj,不愉快な,,国語研教育基本語彙: 不愉快
@@ -1368,7 +1362,6 @@ youthful,adj,若々しい,,国語研教育基本語彙: 若若しい
 spawn,verb,産む,,国語研教育基本語彙: 産む
 dwell,verb,暮らす,,国語研教育基本語彙: 暮らす
 lodge,verb,泊まる,,国語研教育基本語彙: 泊まる
-slumber,verb,眠る,,国語研教育基本語彙: 眠る
 ascend,verb,上る,,国語研教育基本語彙: 上る
 quench,verb,潤す,,国語研教育基本語彙: 潤す
 mature,verb,育つ,,国語研教育基本語彙: 育つ
@@ -1383,7 +1376,6 @@ blink,verb,瞬く,,国語研教育基本語彙: 瞬く
 grate,verb,擦り下ろす,,国語研教育基本語彙: 擦る
 calculate,verb,計算する,,国語研教育基本語彙: 計算
 prohibit,verb,禁じる,,国語研教育基本語彙: 禁止
-coordinate,verb,調整する,,国語研教育基本語彙: 調和
 collaborate,verb,協力する,,国語研教育基本語彙: 協力
 postpone,verb,延期する,,国語研教育基本語彙: 延期
 tolerate,verb,我慢する,,国語研教育基本語彙: 我慢
@@ -1392,7 +1384,6 @@ extinguish,verb,消火する,,国語研教育基本語彙: 消火
 renovate,verb,改修する,,国語研教育基本語彙: 修理
 nourish,verb,養う,,国語研教育基本語彙: 養う
 fascinate,verb,魅了する,,国語研教育基本語彙: 魅了
-congregate,verb,集う,,国語研教育基本語彙: 集う
 reconcile,verb,和解する,,国語研教育基本語彙: 和解
 suffocate,verb,窒息する,,国語研教育基本語彙: 窒息
 reverberate,verb,反響する,,国語研教育基本語彙: 反響

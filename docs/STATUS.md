@@ -10,13 +10,13 @@
 |---|---|---|
 | 提案018: 動詞に続く表現（〜たい・〜始める・〜すぎる・〜やすい。Q1〜Q3）| `docs/proposals/018-verb-phrases.md` | 決定待ち（「お任せ」でもよい。おすすめは Q1〜Q3 すべて A）|
 | 提案019: 授受（あげる・くれる・もらう・〜てくれる。Q1〜Q3）| `docs/proposals/019-giving-and-receiving.md` | 決定待ち（018より後でよい。「お任せ」でもよい。おすすめは Q1〜Q3 すべて A）|
-| 第27弾の追加語（100語）の確認 | `dictionary/word_review.csv` | Claude・M1ko の確認待ち（status = pending 100語）|
+| 第27弾の追加語（100語）の確認 | `dictionary/word_review.csv`、`docs/review/new_words.md` | Claude の確認は済み（【修正推奨】10語、【任意】26語）。【修正推奨】10語の直し（9語を削除して、残す既存語に意味を併記、`elowe` の見出し語を uneasy に）は、直しのPR（既存語の削除と書き換えなので M1ko がマージ）に入っている。マージ後、M1ko の確認待ち（`draft` → `ok` / `fix`）|
 
 ## 進行中のPR
 
 | PR | 担当 | 内容 | 状態 |
 |---|---|---|---|
-| （なし）| | | |
+| （直しのPR）| Claude | 第27弾の【修正推奨】10語の直し（削除9語、見出し語の変更1語、既存語9語への意味の併記）| M1ko のマージ待ち |
 
 ## 文法への依頼（Antigravity → Claude）
 
