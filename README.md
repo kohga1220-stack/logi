@@ -108,7 +108,7 @@ logi/
 ├── web/
 │   └── index.html          Translator page (Japanese/English → Logi) / 翻訳機（see web/README.md）
 ├── corpus/
-│   └── examples.csv        149 example sentences by grammar feature / 機能別例文149文
+│   └── examples.csv        157 example sentences by grammar feature / 機能別例文157文
 ├── dictionary/
 │   ├── final.csv           3,070-word validated dictionary / 検証済み辞書3,070語
 │   ├── eiken3_additions.csv  Eiken grade-3 level word list added in v0.7 / 英検3級レベルの追加語リスト
@@ -166,6 +166,7 @@ logi/
 | v0.24 | Adverbs from adjectives — decided in `docs/proposals/016` (M1ko left it to Claude; option A): adjective ending `-e` → `-i` (`ape` → `api`, `piete` → `pieti`), derived adverbs are not stored in the dictionary, a dictionary word with the same form wins; the translator handles Japanese 〜く/〜に and English -ly; no new words |
 | v0.25 | Multiples, fractions and percentages — decided in `docs/proposals/017` (M1ko left it to Claude; option A): twice = `N taima seme ADJ tote X`, half = `alema` + noun, fractions = numerator + `semuna` + denominator (`pa semuna te`), percent = number + `pepuka`; the translator handles them; no new words |
 | v0.26 | Verb phrases — decided in `docs/proposals/018` (M1ko left it to Claude; option A): *want to* = `wonuto` + gerund, *start / finish / continue* = `sutato` / `pino` / `konupo` + gerund, *too* = `tui` (adverb position: `mi tui pasu ito.`), *easy / hard to* = `pio ise` / `pio tipike` + gerund; the translator handles Japanese and English, and the English `too` → `olusi` bug is fixed; no new words |
+| v0.27 | Giving and receiving — decided in `docs/proposals/019` (M1ko left it to Claude; option A): *give* = `kipo` + thing + `tote` + receiver, *receive* = `leso` + thing + `pulomute` + giver, *do (something) for me* = the verb + `pote` + receiver, *have (someone) do* = an active sentence with the doer as subject; the translator handles Japanese and English; no new words |
 
 ---
 

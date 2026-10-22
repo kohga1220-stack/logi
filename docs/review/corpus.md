@@ -154,6 +154,14 @@
 | 147 | too-adjective | iliu tui pio lase. | これは大きすぎる。 |
 | 148 | easy-to | iliu pupa pio ise lotona. | この本は読みやすい。 |
 | 149 | hard-to | iliu pupa pio tipike lotona. | この本は読みにくい。 |
+| 150 | give | li pasu kipo pupa tote mi. | 彼は私に本をくれた。 |
+| 151 | give | mi pasu kipo pupa tote li. | 私は彼に本をあげた。 |
+| 152 | receive | mi pasu leso pupa pulomute li. | 私は彼から本をもらった。 |
+| 153 | benefactive-give | mama pasu puo kulosa pote mi. | 母が私に服を買ってくれた。 |
+| 154 | benefactive-receive | pulena pasu elupo mi. | 私は友達に助けてもらった。 |
+| 155 | benefactive-receive | pulena pasu loto pupa pote mi. | 私は友達に本を読んでもらった。 |
+| 156 | benefactive-give | mi pasu elupo li. | 私は彼を助けてあげた。 |
+| 157 | benefactive-give-negation | li pasu no puo kulosa pote mi. | 彼は私に服を買ってくれなかった。 |
 
 ## 語注（辞書から機械的に生成）
 
@@ -455,3 +463,19 @@
   iliu=これ（この）(pronoun) pupa=本(noun) pio=です(verb) ise=簡単な(adj) lotona=読む(verb)+na(動名詞)
 - **149** `iliu pupa pio tipike lotona.`  
   iliu=これ（この）(pronoun) pupa=本(noun) pio=です(verb) tipike=難しい(adj) lotona=読む(verb)+na(動名詞)
+- **150** `li pasu kipo pupa tote mi.`  
+  li=彼/彼女/それ(pronoun) pasu=過去(marker) kipo=保つ与える(verb) pupa=本(noun) tote=へ(prep) mi=私(pronoun)
+- **151** `mi pasu kipo pupa tote li.`  
+  mi=私(pronoun) pasu=過去(marker) kipo=保つ与える(verb) pupa=本(noun) tote=へ(prep) li=彼/彼女/それ(pronoun)
+- **152** `mi pasu leso pupa pulomute li.`  
+  mi=私(pronoun) pasu=過去(marker) leso=受け取る(verb) pupa=本(noun) pulomute=から(prep) li=彼/彼女/それ(pronoun)
+- **153** `mama pasu puo kulosa pote mi.`  
+  mama=母(noun) pasu=過去(marker) puo=買う(verb) kulosa=服(noun) pote=のために(prep) mi=私(pronoun)
+- **154** `pulena pasu elupo mi.`  
+  pulena=友達(noun) pasu=過去(marker) elupo=助ける(verb) mi=私(pronoun)
+- **155** `pulena pasu loto pupa pote mi.`  
+  pulena=友達(noun) pasu=過去(marker) loto=読む(verb) pupa=本(noun) pote=のために(prep) mi=私(pronoun)
+- **156** `mi pasu elupo li.`  
+  mi=私(pronoun) pasu=過去(marker) elupo=助ける(verb) li=彼/彼女/それ(pronoun)
+- **157** `li pasu no puo kulosa pote mi.`  
+  li=彼/彼女/それ(pronoun) pasu=過去(marker) no=否定(marker) puo=買う(verb) kulosa=服(noun) pote=のために(prep) mi=私(pronoun)
