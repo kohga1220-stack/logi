@@ -1,6 +1,12 @@
 # 提案 018: 動詞に続く表現（〜たい・〜始める・〜続ける・〜すぎる・〜やすい）
 
-状態: **決定待ち**。M1ko が Q1〜Q3 を選んだら、Claude が実装します（「お任せ」でも進められます）。
+状態: **決定済み（2026-10-22）**。M1ko が「提案018・019: 「お任せ」」と返事をしたので、Claude がおすすめの A（Q1〜Q3 すべて）を選んで実装した（v0.26）。仕様は docs/grammar.md §7 を参照。
+
+**実装で変えた点**:
+- すぎる（`tui`）の位置は、提案の例（`mi pasu tui ito.`）ではなく、既存の副詞の位置の規則（主語の直後、マーカーの前。`docs/grammar.md` §7）に合わせて `mi tui pasu ito.` にした。
+- 形容詞 + すぎる（暑すぎる）と、英語の too + 形容詞・副詞（too hot・too fast）も、同じ `tui` にした（`li tui pio ote.`）。英語の `too` が「も」の `olusi` になる誤りは、この規則で直った。文末の too（〜も）は `olusi` のまま。
+- 英語の keep ~ing（kept eating）は `konupo`（続ける）にした。keep + 名詞は `kipo` のまま。
+- 英語の hard to V は「難しい」（`tipike`）、to + 動詞が続かない hard は「硬い」（`aluke`）のまま。
 
 ## 1. 何が足りないか
 
@@ -57,7 +63,7 @@
 
 | 案 | 内容 | 例 |
 |---|---|---|
-| **A（おすすめ）** | すぎる = `tui` を動詞の前に置く。やすい = `pio ise` + 動名詞、にくい = `pio tipike` + 動名詞 | `mi pasu tui ito.`（食べすぎた）<br>`iliu pio ise lotona.`（これは読みやすい）<br>`iliu pio tipike lotona.`（読みにくい）|
+| **A（おすすめ）** | すぎる = `tui` を動詞の前に置く。やすい = `pio ise` + 動名詞、にくい = `pio tipike` + 動名詞 | `mi tui pasu ito.`（食べすぎた）<br>`iliu pio ise lotona.`（これは読みやすい）<br>`iliu pio tipike lotona.`（読みにくい）|
 | B | 〜すぎる・〜やすい・〜にくい を、専用の語にする | |
 | C | 決めない | |
 

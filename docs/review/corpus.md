@@ -144,6 +144,16 @@
 | 137 | half | mi ito alema apa. | 私はリンゴを半分食べる。 |
 | 138 | fraction | mi ito pa semuna te apa. | 私はリンゴの3分の1を食べる。 |
 | 139 | percent | mi pasu ito to pulu pepuka apa. | 私はリンゴを20パーセント食べた。 |
+| 140 | want | mi wonuto itona. | 私は食べたい。 |
+| 141 | want-negation | mi no wonuto itona. | 私は食べたくない。 |
+| 142 | want-past | mi pasu wonuto ikona. | 私は行きたかった。 |
+| 143 | begin | li pasu sutato itona. | 彼は食べ始めた。 |
+| 144 | finish | mi pasu pino lotona pupa. | 私は本を読み終わった。 |
+| 145 | continue | li pasu konupo likona jeta. | 彼は水を飲み続けた。 |
+| 146 | too-much | mi tui pasu ito. | 私は食べすぎた。 |
+| 147 | too-adjective | iliu tui pio lase. | これは大きすぎる。 |
+| 148 | easy-to | iliu pupa pio ise lotona. | この本は読みやすい。 |
+| 149 | hard-to | iliu pupa pio tipike lotona. | この本は読みにくい。 |
 
 ## 語注（辞書から機械的に生成）
 
@@ -425,3 +435,23 @@
   mi=私(pronoun) ito=食べる(verb) pa=1(num) semuna=順序(noun) te=3(num) apa=リンゴ(noun)
 - **139** `mi pasu ito to pulu pepuka apa.`  
   mi=私(pronoun) pasu=過去(marker) ito=食べる(verb) to=2(num) pulu=十（位の単位）(num) pepuka=パーセント(noun) apa=リンゴ(noun)
+- **140** `mi wonuto itona.`  
+  mi=私(pronoun) wonuto=欲する(verb) itona=食べる(verb)+na(動名詞)
+- **141** `mi no wonuto itona.`  
+  mi=私(pronoun) no=否定(marker) wonuto=欲する(verb) itona=食べる(verb)+na(動名詞)
+- **142** `mi pasu wonuto ikona.`  
+  mi=私(pronoun) pasu=過去(marker) wonuto=欲する(verb) ikona=行く(verb)+na(動名詞)
+- **143** `li pasu sutato itona.`  
+  li=彼/彼女/それ(pronoun) pasu=過去(marker) sutato=始まる(verb) itona=食べる(verb)+na(動名詞)
+- **144** `mi pasu pino lotona pupa.`  
+  mi=私(pronoun) pasu=過去(marker) pino=終わる(verb) lotona=読む(verb)+na(動名詞) pupa=本(noun)
+- **145** `li pasu konupo likona jeta.`  
+  li=彼/彼女/それ(pronoun) pasu=過去(marker) konupo=続ける(verb) likona=飲む(verb)+na(動名詞) jeta=水(noun)
+- **146** `mi tui pasu ito.`  
+  mi=私(pronoun) tui=すぎる(adv) pasu=過去(marker) ito=食べる(verb)
+- **147** `iliu tui pio lase.`  
+  iliu=これ（この）(pronoun) tui=すぎる(adv) pio=です(verb) lase=大きい(adj)
+- **148** `iliu pupa pio ise lotona.`  
+  iliu=これ（この）(pronoun) pupa=本(noun) pio=です(verb) ise=簡単な(adj) lotona=読む(verb)+na(動名詞)
+- **149** `iliu pupa pio tipike lotona.`  
+  iliu=これ（この）(pronoun) pupa=本(noun) pio=です(verb) tipike=難しい(adj) lotona=読む(verb)+na(動名詞)

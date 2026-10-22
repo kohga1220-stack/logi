@@ -752,3 +752,43 @@ test('提案017: 倍・半分・分数・割合', () => {
     assert.strictEqual(translator.translate(src, 'en').logi, logi, src);
   });
 });
+
+test('提案018: 動詞に続く表現（〜たい・〜始める・〜終わる・〜続ける・〜すぎる・〜やすい・〜にくい）', () => {
+  const ja = [
+    ['私は食べたい。', 'mi wonuto itona.'],
+    ['私は食べたくない。', 'mi no wonuto itona.'],
+    ['私は行きたかった。', 'mi pasu wonuto ikona.'],
+    ['私は本を読みたいです。', 'mi wonuto lotona pupa.'],
+    ['彼は食べ始めた。', 'li pasu sutato itona.'],
+    ['私は本を読み終わった。', 'mi pasu pino lotona pupa.'],
+    ['彼は水を飲み続けた。', 'li pasu konupo likona jeta.'],
+    ['私は食べすぎた。', 'mi tui pasu ito.'],
+    ['彼は走りすぎた。', 'li tui pasu lano.'],
+    ['これは大きすぎる。', 'iliu tui pio lase.'],
+    ['この本は読みやすい。', 'iliu pupa pio ise lotona.'],
+    ['この本は読みにくい。', 'iliu pupa pio tipike lotona.'],
+    ['読みやすい本が好きだ。', 'pupa ta li pio ise lotona pio suke.'],
+    ['食べたい人が来た。', 'mana ta li wonuto itona pasu komo.'],
+  ];
+  ja.forEach(([src, logi]) => {
+    assert.strictEqual(translator.translate(src, 'ja').logi, logi, src);
+  });
+  const en = [
+    ['I want to eat.', 'mi wonuto itona.'],
+    ['I don\'t want to eat.', 'mi no wonuto itona.'],
+    ['He started to eat.', 'li pasu sutato itona.'],
+    ['I finished eating.', 'mi pasu pino itona.'],
+    ['He kept eating.', 'li pasu konupo itona.'],
+    ['I keep a book.', 'mi kipo pupa.'],          // keep + 名詞 は kipo のまま
+    ['I ate too much.', 'mi tui pasu ito.'],
+    ['It is too hot.', 'li tui pio ote.'],
+    ['I want it too.', 'mi olusi wonuto li.'],      // 文末の too（〜も）は olusi のまま
+    ['It is easy to eat.', 'li pio ise itona.'],
+    ['This book is difficult to read.', 'iliu pupa pio tipike lotona.'],
+    ['It is hard to read.', 'li pio tipike lotona.'],
+    ['The bed is hard.', 'pita pio aluke.'],       // to + 動詞が続かない hard は「硬い」のまま
+  ];
+  en.forEach(([src, logi]) => {
+    assert.strictEqual(translator.translate(src, 'en').logi, logi, src);
+  });
+});
