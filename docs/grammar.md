@@ -408,6 +408,16 @@ SVO + 前置詞句で代替。
 - 英語: become / get / turn / grow + 形容詞（become は名詞も）、make + 目的語 + 形容詞。`turn left` は曲がる（`tuluno`）で、変化ではない。make + 目的語 + 名詞（`made him a teacher`）は、授与との区別がつかないため未対応。
 - この規則に含めないもの: 〜ことになる・〜ようになる、受け身・可能の慣用句、形容詞から副詞を作る規則。
 
+### 動詞に続く表現（v0.26 確定、提案018）
+新しい語は作らない。辞書の語と、動名詞（`-na`、§3）を使う。否定 `no`・時制 `pasu` `putu` は、これまでどおり動詞（ここでは `wonuto` など）の前に置く。
+- 〜たい: `wonuto`（欲する）+ 動名詞。`mi wonuto itona.`（食べたい）、`mi no wonuto itona.`（食べたくない）、`mi pasu wonuto ikona.`（行きたかった）。動名詞のあとに、目的語・前置詞句が続く（`mi wonuto lotona pupa.` = 本を読みたい）。
+- 〜始める・〜終わる・〜続ける: `sutato`・`pino`・`konupo` + 動名詞。`li pasu sutato itona.`（食べ始めた）、`mi pasu pino lotona pupa.`（本を読み終わった）、`li pasu konupo likona jeta.`（水を飲み続けた）。
+- 〜すぎる: `tui`（あまりに）を、副詞の位置（主語の直後、マーカーの前）に置く。`mi tui pasu ito.`（食べすぎた）。形容詞の「暑すぎる」も同じ（`li tui pio ote.`）。名詞を修飾する形容詞のときは、形容詞の直前（`tui kue luma.` = 静かすぎる部屋）。
+- 〜やすい・〜にくい: `pio ise` / `pio tipike` + 動名詞。主語は、動作の対象（日本語・英語の主語と同じ）。`iliu pupa pio ise lotona.`（この本は読みやすい）、`iliu pupa pio tipike lotona.`（読みにくい）。名詞を修飾するときは関係節（`pupa ta li pio ise lotona`）。
+- 英語: want to V、start / begin / finish / continue / keep + ~ing（keep は `konupo`）、too + 形容詞・副詞・much（`tui`。文末の too = 〜も は `olusi`）、easy / difficult / hard + to V（hard は「難しい」）。
+- 名詞にする形（〜たいこと など）は、動名詞にできないため、〜たい・〜すぎる の部分を省く（翻訳機が注意を出す）。
+- この規則に含めないもの: 〜かける・〜出す・〜きる・〜そうだ・〜らしい・〜はずだ などの様態・推量、受け身。
+
 ### 仮定法
 接続詞 ipu（もし）+ 仮定マーカー wutu
 - ipu mi wutu pio pata, mi wutu pulaio.（もし鳥なら、飛ぶのに）
@@ -633,5 +643,6 @@ v0.5 で po を **tulimo**（英 dream の音訳: d→t, r→l, 子音連続を 
 | v0.23 | 変化を決めた（〜になる `pekomo` + 補語、だんだん `kulapi`、ますます `initi`、〜にする `koso` + 目的語 + 補語。提案015、§7）。翻訳機が日本語（〜になる・〜くなる・〜になってきた・〜にする・〜くする・だんだん・ますます）と英語（become・get・turn・grow + 形容詞、make + 目的語 + 形容詞、gradually、more and more）に対応。新語なし。M1ko は「お任せ」と返事をし、Claude がおすすめの A を採った（ますますは、辞書の `initi` を使った）。2,880語 |
 | v0.24 | 形容詞から作る副詞を決めた（語尾 `-e` → `-i`、派生は辞書に登録しない。辞書に同じ形の語があれば派生しない。提案016、§3）。翻訳機が日本語（〜く・〜に）と英語（-ly）に対応。M1ko は「お任せ」と返事をし、Claude がおすすめの A を採った（Q2 は、別の副詞を足す語を 6 語から 2 語に絞った）。2,880語 |
 | v0.25 | 倍・半分・分数・割合を決めた（倍 `N taima seme 形容詞 tote 基準`、半分 `alema` + 名詞、分数 `分子 semuna 分母`、割合 `数 pepuka`。提案017、§5）。翻訳機が日本語（N倍・半分・N分のM・%）と英語（twice as ~ as・N times as ~ as・half of・two thirds of・percent・%）に対応。新語なし。M1ko は「お任せ」と返事をし、Claude がおすすめの A を採った。2,979語 |
+| v0.26 | 動詞に続く表現を決めた（〜たい `wonuto`、〜始める・〜終わる・〜続ける `sutato`・`pino`・`konupo`、〜すぎる `tui`、〜やすい・〜にくい `pio ise`・`pio tipike`。すべて動名詞を使う。提案018、§7）。翻訳機が日本語と英語（want to・start / finish / keep ~ing・too・easy / hard to）に対応し、英語 `too` が `olusi` になる誤りを直した。新語なし。M1ko は「お任せ」と返事をし、Claude がおすすめの A を採った（すぎる の語順は、既存の副詞の位置の規則に合わせた）。3,070語 |
 | v0.4 | 疑問詞はその場置き、法副詞は副詞の位置（マーカーの前）と §7 に追記 |
 | v0.4 | 同義語33語を deprecated にし（status / replaced_by 列を追加）、正本の選び方を §10.6 に記載 |

@@ -138,3 +138,13 @@ id,feature,logi,ja
 137,half,mi ito alema apa.,私はリンゴを半分食べる。
 138,fraction,mi ito pa semuna te apa.,私はリンゴの3分の1を食べる。
 139,percent,mi pasu ito to pulu pepuka apa.,私はリンゴを20パーセント食べた。
+140,want,mi wonuto itona.,私は食べたい。
+141,want-negation,mi no wonuto itona.,私は食べたくない。
+142,want-past,mi pasu wonuto ikona.,私は行きたかった。
+143,begin,li pasu sutato itona.,彼は食べ始めた。
+144,finish,mi pasu pino lotona pupa.,私は本を読み終わった。
+145,continue,li pasu konupo likona jeta.,彼は水を飲み続けた。
+146,too-much,mi tui pasu ito.,私は食べすぎた。
+147,too-adjective,iliu tui pio lase.,これは大きすぎる。
+148,easy-to,iliu pupa pio ise lotona.,この本は読みやすい。
+149,hard-to,iliu pupa pio tipike lotona.,この本は読みにくい。

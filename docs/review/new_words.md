@@ -7,7 +7,7 @@
 - 語幹が同じ: 語尾の1文字だけが違う、別の品詞の語（例: `kuka` 名詞と `kuko` 動詞）。同じ英語の別品詞なら意図した組です。そうでなければ偶然の一致なので、見分けにくくないか見てください
 - 同じ英語の語: 同じ英語の訳を持つ、別の語（同義語の候補）
 
-確認済み(ok): 2354 / 要修正(fix): 0 / 未確認(draft): 91
+確認済み(ok): 2444 / 要修正(fix): 0 / 未確認(draft): 1
 
 ## v0.7 英検3級レベルの語（487語）
 
@@ -1999,24 +1999,24 @@
 | tonona | 稲妻 | lightning / thunderbolt |  | ok |
 | pojowa | 桐 | paulownia |  | ok |
 | notaka | 炬燵 | kotatsu |  | ok |
-| piwata | 勝利 | victory |  | Claude【任意】削除済みの語形 piwata（peasant）の再利用（別の意味） |
-| melaja | 商品 | merchandise |  | Claude【任意】商品 は既存の kutusa（品物 / goods）・paloa（製品 / product）と近い |
-| kewita | 生物 | creature |  |  |
-| sosoma | 腹痛 | stomachache |  |  |
-| tajasa | 歯痛 | toothache |  |  |
-| mojala | 君主 | monarch |  | Claude【任意】君主 は既存の kina（王 / king）と近い |
-| lujuna | 足音 | footstep |  | Claude【任意】削除済みの語形 lujuna（journalist）の再利用（別の意味） |
-| netesa | 歩行者 | pedestrian |  |  |
-| wemepa | 墓地 | cemetery |  |  |
-| lusasa | 氷河 | glacier |  |  |
-| nanaja | 渓谷 | canyon |  | Claude【任意】渓谷 は既存の tala（谷 / valley）と近い |
-| lupoma | 潜水艦 | submarine |  |  |
-| mapoma | 気圧計 | barometer |  |  |
-| kieka | 伝記 | biography |  |  |
-| lapopa | 寓話 | fable |  |  |
-| mimuwa | 交響曲 | symphony |  |  |
-| lolota | 肖像画 | portrait |  |  |
-| kewela | 画廊 | gallery |  |  |
+| piwata | 勝利 | victory |  | ok Claude【任意】削除済みの語形 piwata（peasant）の再利用（別の意味） |
+| melaja | 商品 | merchandise |  | ok Claude【任意】商品 は既存の kutusa（品物 / goods）・paloa（製品 / product）と近い |
+| kewita | 生物 | creature |  | ok |
+| sosoma | 腹痛 | stomachache |  | ok |
+| tajasa | 歯痛 | toothache |  | ok |
+| mojala | 君主 | monarch |  | ok Claude【任意】君主 は既存の kina（王 / king）と近い |
+| lujuna | 足音 | footstep |  | ok Claude【任意】削除済みの語形 lujuna（journalist）の再利用（別の意味） |
+| netesa | 歩行者 | pedestrian |  | ok |
+| wemepa | 墓地 | cemetery |  | ok |
+| lusasa | 氷河 | glacier |  | ok |
+| nanaja | 渓谷 | canyon |  | ok Claude【任意】渓谷 は既存の tala（谷 / valley）と近い |
+| lupoma | 潜水艦 | submarine |  | ok |
+| mapoma | 気圧計 | barometer |  | ok |
+| kieka | 伝記 | biography |  | ok |
+| lapopa | 寓話 | fable |  | ok |
+| mimuwa | 交響曲 | symphony |  | ok |
+| lolota | 肖像画 | portrait |  | ok |
+| kewela | 画廊 | gallery |  | ok |
 
 ### verb（335語）
 
@@ -2325,38 +2325,38 @@
 | kuawo | 保証する | guarantee |  | ok |
 | ikiwo | 無視する | ignore |  | ok |
 | lekuko | 見なす | regard |  | ok |
-| sapono | 産む | spawn |  | Claude【任意】産む に対し spawn は魚・蛙の産卵が主。bear（動詞）は未使用。削除済みの語形 sapono の再利用 |
-| tuwelo | 暮らす | dwell |  | Claude【任意】暮らす は既存の lipo（住む / live）と近い。dwell は文語的 |
-| lotuko | 泊まる | lodge |  |  |
-| isewo | 上る | ascend |  | Claude【任意】上る は既存の kimo（登る / climb）と近い（上る は上へ行く一般の語） |
-| kunuwo | 潤す | quench |  |  |
-| matulo | 育つ | mature |  | Claude【任意】育つ は既存の kulo（成長する / grow）と近い。mature は「成熟する」 |
-| saputo | 抑える | suppress |  | Claude【任意】抑える に対し suppress は「抑圧する・鎮圧する」で強い |
-| pujowo | 動かす | propel |  | Claude【任意】propel は「推進する」で、動かす（mujo = 動く の他動詞）とずれる |
-| pololo | 映す | project | 同じ英語の語: puposa | Claude【任意】映す（姿・映像を映す）は reflect か project。既存の lapulo（反映する / reflect）と近い |
-| mumuno | 悲しむ | mourn |  | Claude【任意】悲しむ に対し mourn は「死を悼む」で狭い。grieve は未使用 |
-| kumimo | 煌めく | glimmer |  | Claude【任意】煌めく は既存の sipo（輝く / shine）と近い（煌めく は sparkle / twinkle） |
-| wanumo | 彷徨う | wander |  |  |
-| lutuso | 散策する | stroll |  |  |
-| puwiko | 瞬く | blink |  |  |
-| kusajo | 擦り下ろす | grate |  |  |
-| kalulo | 計算する | calculate |  |  |
-| pujio | 禁じる | prohibit |  |  |
-| kopapo | 協力する | collaborate |  |  |
-| potuto | 延期する | postpone |  |  |
-| tolemo | 我慢する | tolerate |  | Claude【任意】我慢する は既存の ejeto（堪える / endure）と近い |
-| sitimo | 刺激する | stimulate |  |  |
-| etajo | 消火する | extinguish |  |  |
-| lenoko | 改修する | renovate |  |  |
-| nulaso | 養う | nourish |  | Claude【任意】養う（扶養する・育てる）に対し nourish は「栄養を与える」で少しずれる |
-| pasipo | 魅了する | fascinate |  |  |
-| lewono | 和解する | reconcile |  |  |
-| sepoko | 窒息する | suffocate |  |  |
-| lepojo | 反響する | reverberate |  |  |
-| tiwujo | 散開する | disperse |  | Claude【任意】散開する は既存の sakato（散る / scatter）と近い（散開 は群れが散らばる） |
-| nupumo | 水没する | submerge |  |  |
-| siniso | 同調する | synchronize |  |  |
-| kotemo | 記念する | commemorate |  |  |
+| sapono | 産む | spawn |  | ok Claude【任意】産む に対し spawn は魚・蛙の産卵が主。bear（動詞）は未使用。削除済みの語形 sapono の再利用 |
+| tuwelo | 暮らす | dwell |  | ok Claude【任意】暮らす は既存の lipo（住む / live）と近い。dwell は文語的 |
+| lotuko | 泊まる | lodge |  | ok |
+| isewo | 上る | ascend |  | ok Claude【任意】上る は既存の kimo（登る / climb）と近い（上る は上へ行く一般の語） |
+| kunuwo | 潤す | quench |  | ok |
+| matulo | 育つ | mature |  | ok Claude【任意】育つ は既存の kulo（成長する / grow）と近い。mature は「成熟する」 |
+| saputo | 抑える | suppress |  | ok Claude【任意】抑える に対し suppress は「抑圧する・鎮圧する」で強い |
+| pujowo | 動かす | propel |  | ok Claude【任意】propel は「推進する」で、動かす（mujo = 動く の他動詞）とずれる |
+| pololo | 映す | project | 同じ英語の語: puposa | ok Claude【任意】映す（姿・映像を映す）は reflect か project。既存の lapulo（反映する / reflect）と近い |
+| mumuno | 悲しむ | mourn |  | ok Claude【任意】悲しむ に対し mourn は「死を悼む」で狭い。grieve は未使用 |
+| kumimo | 煌めく | glimmer |  | ok Claude【任意】煌めく は既存の sipo（輝く / shine）と近い（煌めく は sparkle / twinkle） |
+| wanumo | 彷徨う | wander |  | ok |
+| lutuso | 散策する | stroll |  | ok |
+| puwiko | 瞬く | blink |  | ok |
+| kusajo | 擦り下ろす | grate |  | ok |
+| kalulo | 計算する | calculate |  | ok |
+| pujio | 禁じる | prohibit |  | ok |
+| kopapo | 協力する | collaborate |  | ok |
+| potuto | 延期する | postpone |  | ok |
+| tolemo | 我慢する | tolerate |  | ok Claude【任意】我慢する は既存の ejeto（堪える / endure）と近い |
+| sitimo | 刺激する | stimulate |  | ok |
+| etajo | 消火する | extinguish |  | ok |
+| lenoko | 改修する | renovate |  | ok |
+| nulaso | 養う | nourish |  | ok Claude【任意】養う（扶養する・育てる）に対し nourish は「栄養を与える」で少しずれる |
+| pasipo | 魅了する | fascinate |  | ok |
+| lewono | 和解する | reconcile |  | ok |
+| sepoko | 窒息する | suffocate |  | ok |
+| lepojo | 反響する | reverberate |  | ok |
+| tiwujo | 散開する | disperse |  | ok Claude【任意】散開する は既存の sakato（散る / scatter）と近い（散開 は群れが散らばる） |
+| nupumo | 水没する | submerge |  | ok |
+| siniso | 同調する | synchronize |  | ok |
+| kotemo | 記念する | commemorate |  | ok |
 
 ### adj（155語）
 
@@ -2481,42 +2481,42 @@
 | imope | 図図しい | impudent |  | ok |
 | lekite | 正当な | legitimate |  | ok |
 | lelue | 頼もしい | reliable |  | ok |
-| komone | 当たり前の | commonplace |  | Claude【任意】commonplace は「ありふれた」で、既存の nome（普通の / ordinary）に近い。当たり前の（当然の）とはずれる |
-| tolite | 恐ろしい | dreadful |  |  |
-| ijuje | 間接的な | indirect |  |  |
-| sukene | 急な | sudden |  | Claude【任意】急な は既存の ulume（緊急な）と近い（急な = sudden、緊急 = urgent） |
-| ujute | 不幸な | unfortunate |  |  |
-| pipime | 鮮やかな | vivid |  |  |
-| kunuke | 鬱陶しい | gloomy |  |  |
-| sanite | 衛生的な | sanitary |  |  |
-| itepe | 幼い | infantile |  | Claude【任意】infantile は「幼稚な」で、既存の silote（幼稚な / childish）と近い。幼い は young・little |
-| manupe | 男らしい | manly |  |  |
-| womane | 女らしい | womanly |  | Claude【任意】womanly は古風。feminine（未使用）が自然 |
-| pikole | 活発な | vigorous |  |  |
-| sukope | 器用な | skillful |  | Claude【任意】削除済みの語形 sukope（skillful 巧みな）の再利用。器用な は既存の sukile（上手な / skilled）とも近い |
-| konune | 具体的な | concrete | 同じ英語の語: kuneka |  |
-| esone | 経済的な | economic |  | Claude【任意】経済的な は「安上がりな」の意味が主（economical）。economic は「経済の」 |
-| papote | 好調な | favorable |  | Claude【任意】favorable は「好意的な・好都合な」で、好調な（調子がよい）とずれる |
+| komone | 当たり前の | commonplace |  | ok Claude【任意】commonplace は「ありふれた」で、既存の nome（普通の / ordinary）に近い。当たり前の（当然の）とはずれる |
+| tolite | 恐ろしい | dreadful |  | ok |
+| ijuje | 間接的な | indirect |  | ok |
+| sukene | 急な | sudden |  | ok Claude【任意】急な は既存の ulume（緊急な）と近い（急な = sudden、緊急 = urgent） |
+| ujute | 不幸な | unfortunate |  | ok |
+| pipime | 鮮やかな | vivid |  | ok |
+| kunuke | 鬱陶しい | gloomy |  | ok |
+| sanite | 衛生的な | sanitary |  | ok |
+| itepe | 幼い | infantile |  | ok Claude【任意】infantile は「幼稚な」で、既存の silote（幼稚な / childish）と近い。幼い は young・little |
+| manupe | 男らしい | manly |  | ok |
+| womane | 女らしい | womanly |  | ok Claude【任意】womanly は古風。feminine（未使用）が自然 |
+| pikole | 活発な | vigorous |  | ok |
+| sukope | 器用な | skillful |  | ok Claude【任意】削除済みの語形 sukope（skillful 巧みな）の再利用。器用な は既存の sukile（上手な / skilled）とも近い |
+| konune | 具体的な | concrete | 同じ英語の語: kuneka | ok |
+| esone | 経済的な | economic |  | ok Claude【任意】経済的な は「安上がりな」の意味が主（economical）。economic は「経済の」 |
+| papote | 好調な | favorable |  | ok Claude【任意】favorable は「好意的な・好都合な」で、好調な（調子がよい）とずれる |
 | elowe | 心細い | uneasy / forlorn |  |  |
-| polame | 幸いな | fortunate |  |  |
-| pumupe | 質素な | frugal |  | Claude【任意】質素な は simple / modest。frugal は「倹約な」 |
-| tamupe | 湿っぽい | damp |  |  |
-| akese | 積極的な | active |  |  |
-| iwote | 知的な | intellectual |  |  |
-| apawe | 抽象的な | abstract |  |  |
-| aneme | 手軽な | handy |  |  |
-| alene | 和やかな | harmonious |  |  |
-| kopute | 情け深い | compassionate |  |  |
-| punune | 鈍い | blunt |  | Claude【任意】blunt は「刃が鈍い・ぶっきらぼうな」で、鈍い（動きが鈍い）とは一部だけ合う |
-| awuwe | 馬鹿げた | absurd |  |  |
-| umuse | 不公平な | unfair |  |  |
-| isase | 不十分な | insufficient |  |  |
-| utuje | 不親切な | unkind |  |  |
-| uwape | 不愉快な | unpleasant |  |  |
-| minine | 無意味な | meaningless |  |  |
-| iwipe | 無限の | infinite |  |  |
-| lekape | 無茶な | reckless |  |  |
-| jutune | 若々しい | youthful |  |  |
+| polame | 幸いな | fortunate |  | ok |
+| pumupe | 質素な | frugal |  | ok Claude【任意】質素な は simple / modest。frugal は「倹約な」 |
+| tamupe | 湿っぽい | damp |  | ok |
+| akese | 積極的な | active |  | ok |
+| iwote | 知的な | intellectual |  | ok |
+| apawe | 抽象的な | abstract |  | ok |
+| aneme | 手軽な | handy |  | ok |
+| alene | 和やかな | harmonious |  | ok |
+| kopute | 情け深い | compassionate |  | ok |
+| punune | 鈍い | blunt |  | ok Claude【任意】blunt は「刃が鈍い・ぶっきらぼうな」で、鈍い（動きが鈍い）とは一部だけ合う |
+| awuwe | 馬鹿げた | absurd |  | ok |
+| umuse | 不公平な | unfair |  | ok |
+| isase | 不十分な | insufficient |  | ok |
+| utuje | 不親切な | unkind |  | ok |
+| uwape | 不愉快な | unpleasant |  | ok |
+| minine | 無意味な | meaningless |  | ok |
+| iwipe | 無限の | infinite |  | ok |
+| lekape | 無茶な | reckless |  | ok |
+| jutune | 若々しい | youthful |  | ok |
 
 ### adv（23語）
 
@@ -2540,11 +2540,11 @@
 | laleti | 滅多に | rarely / seldom |  | ok |
 | sulili | ずる賢く | slyly |  | ok |
 | uji | 高く | high / highly | 同じ英語の語: ile | ok |
-| tonesi | 階下で | downstairs |  |  |
-| inami | 屋内で | indoors |  |  |
-| asiti | 脇に | aside |  |  |
-| polepi | 永遠に | forever |  |  |
-| sopei | 何とかして | somehow |  |  |
+| tonesi | 階下で | downstairs |  | ok |
+| inami | 屋内で | indoors |  | ok |
+| asiti | 脇に | aside |  | ok |
+| polepi | 永遠に | forever |  | ok |
+| sopei | 何とかして | somehow |  | ok |
 
 ## v0.10 機能語（指示詞・はい／いいえ）（3語）
 

@@ -163,7 +163,22 @@
           [potential + 'た', { modal: 'kani', past: true }], [potential + 'なかった', { modal: 'kani', neg: true, past: true }],
           [potential + 'ます', { modal: 'kani' }], [potential + 'ません', { modal: 'kani', neg: true }]);
       }
+      forms.stemI = stemI;
       return forms;
+    }
+
+    // い形容詞の活用（〜たい・〜やすい・〜にくい に使う）
+    function iAdjForms(s) {
+      var st = s.slice(0, -1);
+      return [[s, {}], [st + 'かった', { past: true }], [st + 'くない', { neg: true }], [st + 'くなかった', { neg: true, past: true }],
+        [s + 'です', {}], [st + 'かったです', { past: true }], [st + 'くないです', { neg: true }], [st + 'くなかったです', { neg: true, past: true }],
+        [st + 'くありません', { neg: true }], [st + 'くありませんでした', { neg: true, past: true }]];
+    }
+    // 一段・五段の動詞の、ふつうの活用だけ（否定・過去・ます形）
+    var plainCache = {};
+    function plainForms(ja) {
+      if (plainCache[ja]) return plainCache[ja];
+      return plainCache[ja] = verbForms(ja).filter(function (f) { return Object.keys(f[1]).every(function (k) { return k === 'neg' || k === 'past'; }); });
     }
 
     // 変化（docs/proposals/015）: 〜になる・〜くなる（pekomo）と、〜にする・〜くする（koso）。〜てきた は過去、〜ていく は現在として読む（きた・いく は訳さない）
@@ -246,6 +261,41 @@
     // 名詞・な形容詞 + になる／にする（docs/proposals/015）
     if (byW.pekomo) CHANGE_FORMS.forEach(function (f) { addJa('に' + f[0], { k: 'BECOME', tags: f[1] }); });
     if (byW.koso) MAKE_FORMS.forEach(function (f) { addJa('に' + f[0], { k: 'MAKE', tags: f[1] }); });
+
+    // 動詞に続く表現（docs/proposals/018）: 〜たい（wonuto）・〜始める（sutato）・〜終わる（pino）・〜続ける（konupo）は、その語 + 動詞の動名詞。
+    // 〜すぎる は副詞 tui。〜やすい（ise）・〜にくい（tipike）は pio + 形容詞 + 動名詞。辞書の語を先に登録したあとに足す（同じ綴りは辞書が優先）
+    var AUX_V = [];   // 動詞のあとに付く形: [接尾辞, タグ]（すべての動詞で共通なので、先に作っておく）
+    var AUX_ADJ = []; // [接尾辞, 形容詞の語, タグ]
+    if (byW.wonuto) iAdjForms('たい').forEach(function (f) { AUX_V.push([f[0], Object.assign({ aux: 'wonuto' }, f[1])]); });
+    [['sutato', ['始める', 'はじめる']], ['pino', ['終わる', 'おわる', '終える']], ['konupo', ['続ける', 'つづける']]].forEach(function (a) {
+      if (byW[a[0]]) a[1].forEach(function (x) { plainForms(x).forEach(function (f) { AUX_V.push([f[0], Object.assign({ aux: a[0] }, f[1])]); }); });
+    });
+    if (byW.tui) ['すぎる', '過ぎる'].forEach(function (x) { plainForms(x).forEach(function (f) { AUX_V.push([f[0], Object.assign({ too: true }, f[1])]); }); });
+    [['ise', ['やすい']], ['tipike', ['にくい', '難い']]].forEach(function (a) {
+      if (byW[a[0]]) a[1].forEach(function (x) { iAdjForms(x).forEach(function (f) { AUX_ADJ.push([f[0], byW[a[0]], f[1]]); }); });
+    });
+    lexicon.forEach(function (e) {
+      if (e.pos !== 'verb' || e.w === 'pio') return;
+      e.ja.forEach(function (s) {
+        var stem = verbForms(s).stemI;
+        if (!stem || s === 'いる') return;
+        AUX_V.forEach(function (f) { addJa(stem + f[0], { k: 'V', e: e, tags: f[1] }); });
+        AUX_ADJ.forEach(function (f) { addJa(stem + f[0], { k: 'ADJ', e: f[1], tags: f[2], gerundOf: e }); });
+      });
+    });
+    // 形容詞 + すぎる（暑すぎる・静かすぎる）も tui。形容詞の前に置く
+    if (byW.tui) lexicon.forEach(function (e) {
+      if (e.pos !== 'adj') return;
+      e.ja.forEach(function (s) {
+        if (!/[いな]$/.test(s)) return;
+        var st = s.slice(0, -1);
+        (s === '良い' ? [st, 'よ'] : [st]).forEach(function (b) {
+          ['すぎる', '過ぎる'].forEach(function (x) {
+            plainForms(x).forEach(function (f) { addJa(b + f[0], { k: 'ADJ', e: e, tags: Object.assign({ too: true }, f[1]) }); });
+          });
+        });
+      });
+    });
 
     addJa('私たち（聞き手を含む）', { k: 'PRON', e: byW.misu });
     // 指示詞・場所・はい／いいえ・いくつ（docs/proposals/001）。これ・あれ は辞書の代名詞（iliu・teliu）から入る。それ は前の文を受ける li のまま
@@ -500,9 +550,11 @@
 
     function verbItems(t) {
       var out = [];
+      if (t.tags && t.tags.too) out.push(item('tui'));
       if (t.tags && t.tags.past) out.push(item('pasu'));
       if (t.tags && t.tags.neg) out.push(item('no'));
-      out.push(item(t.e.w));
+      if (t.tags && t.tags.aux) out.push(item(t.tags.aux), item(t.e.w + 'na', { gerund: t.e.w }));
+      else out.push(item(t.e.w));
       return out;
     }
 
@@ -627,7 +679,19 @@
           finish(qty);
           continue;
         }
-        if (t.k === 'ADJ' && (t.attr || isNpStart(tokens[i + 1])) && isNpStart(tokens[i + 1])) { mods.push(item(t.e.w)); i++; continue; }
+        // 「読みやすい本」: 関係節（本 ta li pio ise lotona）（docs/proposals/018）
+        if (t.k === 'ADJ' && t.gerundOf && isNpStart(tokens[i + 1])) {
+          var rcA = [item('ta'), item('li')].concat(t.tags.past ? [item('pasu')] : [], t.tags.neg ? [item('no')] : [],
+            [item('pio'), item(t.e.w), item(t.gerundOf.w + 'na', { gerund: t.gerundOf.w })]);
+          var headA = headItemsOf(tokens[i + 1]);
+          i += 2;
+          finish(headA.concat(rcA));
+          continue;
+        }
+        if (t.k === 'ADJ' && (t.attr || isNpStart(tokens[i + 1])) && isNpStart(tokens[i + 1])) {
+          if (t.tags && t.tags.too) mods.push(item('tui'));
+          mods.push(item(t.e.w)); i++; continue;
+        }
         if (t.k === 'ANA' && isNpStart(tokens[i + 1])) { mods.push(item(t.e.w)); i++; continue; }
         if (t.k === 'V') {
           // 「Vこと」「Vのが／のは／のを」: 動詞を動名詞（V + na）にして、直前の目的語・前置詞句を取り込む
@@ -644,6 +708,7 @@
             continue;
           }
           if (nominal) {
+            if (t.tags && (t.tags.aux || t.tags.too)) notes.push('「' + t.e.jaNote + '」に続く〜たい・〜始める・〜すぎる などは、名詞にするときは表せないため、省略しました。');
             if (t.tags && (t.tags.neg || t.tags.past)) notes.push('「' + t.e.jaNote + '」を名詞にするときの否定・過去は表せないため、省略しました。');
             var gerund = item(t.e.w + 'na', { gerund: t.e.w });
             i += nominal;
@@ -880,10 +945,14 @@
         if (last.tags.prog) aspect = 'prog';
         if (last.tags.perf) aspect = 'perf';
         if (last.tags.modal) advs.unshift(item(last.tags.modal));
+        // 〜すぎる（tui）・〜たい／〜始める／〜終わる／〜続ける（wonuto／sutato／pino／konupo + 動名詞）（docs/proposals/018）
+        if (last.tags.too) advs.push(item('tui'));
+        if (last.tags.aux) { pred.gerundOf = last.e; pred.e = byW[last.tags.aux]; }
         toks.pop();
       } else if (last && (last.k === 'ADJ' || last.k === 'ANA') && !last.attr) {
-        pred = { kind: 'adj', e: last.e };
+        pred = { kind: 'adj', e: last.e, gerundOf: last.gerundOf };
         var tg = last.tags || {};
+        if (tg.too) advs.push(item('tui'));
         if (tg.past || (copTags && copTags.past)) tense = 'past';
         if (tg.neg || (copTags && copTags.neg)) neg = true;
         toks.pop();
@@ -1007,6 +1076,7 @@
           else bareLeft.push(c);
         });
         leftover(ir, bareLeft, notes);
+        if (pred.gerundOf) ir.object = [item(pred.gerundOf.w + 'na', { gerund: pred.gerundOf.w })].concat(ir.object || []);
         return ir;
       }
       if (pred && pred.kind === 'adj') {
@@ -1037,6 +1107,12 @@
         } else {
           comp = [item(adjW)];
         }
+        // 〜やすい・〜にくい: 形容詞のあとに、動詞の動名詞（と〜を の目的語）を置く（docs/proposals/018）
+        var gerWo = null;
+        if (pred.gerundOf) {
+          gerWo = withP.filter(function (c) { return c.particle === 'を'; })[0];
+          comp = comp.concat([item(pred.gerundOf.w + 'na', { gerund: pred.gerundOf.w })], gerWo ? gerWo.items : []);
+        }
         // 一番・最も・もっと は形容詞の直前（mosi 大きい）
         for (var ai = ir.advs.length - 1; ai >= 0; ai--) {
           if ((ir.advs[ai].w === 'mosi' || ir.advs[ai].w === 'moli') && comp.length && !yori && !multC) {
@@ -1045,7 +1121,7 @@
         }
         ir.verb = 'pio';
         ir.complement = comp;
-        withP.filter(function (c) { return c !== yori && c !== to && c !== ga && c !== hodo && c !== multC; }).forEach(function (c) {
+        withP.filter(function (c) { return c !== yori && c !== to && c !== ga && c !== hodo && c !== multC && c !== gerWo; }).forEach(function (c) {
           if (prepItems(c)) ir.pps.push(prepItems(c));
         });
         bare.filter(function (c) { return c.timeKind; }).forEach(function (c) { ir.pps.push(prepItems(c)); });
@@ -1413,13 +1489,13 @@
       broke: 'break', broken: 'break', drove: 'drive', driven: 'drive', forgot: 'forget', forgotten: 'forget',
       wore: 'wear', worn: 'wear', won: 'win', left: 'leave', led: 'lead', threw: 'throw', thrown: 'throw',
       shook: 'shake', held: 'hold', understood: 'understand', stood_: 'stand',
-      became: 'become', got: 'get', gotten: 'get', grew: 'grow', grown: 'grow'
+      became: 'become', got: 'get', gotten: 'get', grew: 'grow', grown: 'grow', kept: 'keep'
     };
     var IRREGULAR_PAST = {};
     ['ate', 'went', 'came', 'saw', 'took', 'gave', 'made', 'wrote', 'ran', 'drank', 'sang', 'swam', 'flew', 'fell',
       'slept', 'sat', 'stood', 'thought', 'knew', 'felt', 'found', 'lost', 'sold', 'sent', 'spent', 'paid', 'met',
       'said', 'told', 'heard', 'had', 'began', 'taught', 'caught', 'chose', 'broke', 'drove', 'forgot', 'wore',
-      'won', 'left', 'led', 'threw', 'shook', 'held', 'understood', 'became', 'got', 'grew'].forEach(function (w) { IRREGULAR_PAST[w] = 1; });
+      'won', 'left', 'led', 'threw', 'shook', 'held', 'understood', 'became', 'got', 'grew', 'kept'].forEach(function (w) { IRREGULAR_PAST[w] = 1; });
     var IRREGULAR_ADJ = { better: 'good', best: 'good', worse: 'bad', worst: 'bad' };
     var IRREGULAR_NOUN = { people: 'person', children: 'child', men: 'man', women: 'woman', feet: 'foot' };
     // to + 動詞が目的ではなく補語になる動詞（need to eat・ask him to go など）と、目的語がなくても目的を取る移動の動詞
@@ -1427,6 +1503,7 @@
       offer: 1, prepare: 1, continue: 1, forget: 1, remember: 1, seem: 1, ask: 1, tell: 1, allow: 1, help: 1, advise: 1, order: 1,
       force: 1, teach: 1, invite: 1, encourage: 1, enable: 1, persuade: 1, remind: 1, require: 1, ought: 1, use: 1 };
     var MOTION_VERB = { go: 1, come: 1, leave: 1, return: 1, run: 1, walk: 1, travel: 1, hurry: 1, stop: 1 };
+    var TO_ADJ_EN = { easy: 'ise', difficult: 'tipike', hard: 'tipike' };
     var VERB_WANTS_GERUND = { want: 1, like: 1, love: 1, hope: 1, wish: 1, try: 1, start: 1, begin: 1,
       enjoy: 1, stop: 1, finish: 1, keep: 1, avoid: 1, practice: 1, quit: 1, continue: 1, hate: 1 };
 
@@ -1483,6 +1560,12 @@
       }
       return null;
     }
+    // too + 形容詞・副詞・much・many は「あまりに」（tui）。文末の too（〜も）は olusi のまま（docs/proposals/018）
+    function tooDegree(cur) {
+      var n = cur.peek(1);
+      return cur.peek() === 'too' && !!byW.tui && !!n && (n === 'much' || n === 'many' || !!findAdj(n) || (!!findAdv(n) && !findNoun(n)));
+    }
+
     function findAdv(tok) {
       var es = (enIndex[tok] || []).filter(function (e) { return e.pos === 'adv'; });
       if (es.length) return es[0];
@@ -1838,6 +1921,12 @@
         if (MODALS[tk]) { modal = MODALS[tk]; cur.next(); continue; }
         if (tk === 'not') { ir.neg = true; cur.next(); continue; }
         if (tk === 'never') { ir.advs.push(item('nepi')); cur.next(); continue; }
+        if (tooDegree(cur)) {
+          cur.next();
+          ir.advs.push(item('tui'));
+          if (cur.peek() === 'much') cur.next();
+          continue;
+        }
         if ((tk === 'have' || tk === 'has' || tk === 'had') && cur.peek(1)) {
           var nv = findVerb(cur.peek(1));
           var isPP = nv && (nv.form === 'pp' || nv.form === 'past');
@@ -1931,7 +2020,18 @@
           cur.next();
           if (adj.deg === 'comp' && !comp.length) comp.push(item('moli'));
           if (adj.deg === 'sup') comp.push(item('mosi'));
-          comp.push(item(adj.e.w));
+          // easy / difficult / hard to V → ise / tipike + 動名詞（docs/proposals/018）。hard は「難しい」と読む
+          var toAdj = TO_ADJ_EN[adjTok] && byW[TO_ADJ_EN[adjTok]] && cur.peek() === 'to' && cur.peek(1) && findVerb(cur.peek(1)) &&
+            findVerb(cur.peek(1)).form === 'base' ? TO_ADJ_EN[adjTok] : null;
+          if (toAdj) {
+            cur.next();
+            var tv = findVerb(cur.next());
+            comp.push(item(toAdj), item(tv.e.w + 'na', { gerund: tv.e.w }));
+            if (cur.peek() && startsNP(cur.peek()) && !PREPS[cur.peek()]) {
+              var tobj = parseNP(cur, ctx);
+              if (tobj) comp = comp.concat(tobj.items);
+            }
+          } else comp.push(item(adj.e.w));
           if (cur.peek() === 'than') {
             cur.next();
             var ref = parseNP(cur, ctx);
@@ -1977,6 +2077,8 @@
       if (verb.form === 'past' && !ir.tense && !perfect) ir.tense = 'past';
       ir.verb = verb.e.w;
       var lemma = verb.lemma;
+      // keep ~ing は「続ける」（konupo）。keep だけなら kipo（保つ・与える）のまま（docs/proposals/018）
+      if (lemma === 'keep' && byW.konupo && cur.peek() && findVerb(cur.peek()) && findVerb(cur.peek()).form === 'ing') ir.verb = 'konupo';
       // 間接疑問（docs/proposals/009）: asked what I ate / know whether he comes → 節 + ka
       var qWord = cur.peek();
       var qRecipient = null;
@@ -2073,6 +2175,12 @@
         if (gv2 && gv2.form === 'ing' && VERB_WANTS_GERUND[lemma] && !ir.object) {
           cur.next();
           ir.object = [item(gv2.e.w + 'na', { gerund: gv2.e.w })];
+          continue;
+        }
+        if (tooDegree(cur)) {
+          cur.next();
+          ir.advs.push(item('tui'));
+          if (cur.peek() === 'much') cur.next();
           continue;
         }
         var adv2 = findAdv(t2);
