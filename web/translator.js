@@ -164,6 +164,7 @@
           [potential + 'ます', { modal: 'kani' }], [potential + 'ません', { modal: 'kani', neg: true }]);
       }
       forms.stemI = stemI;
+      forms.stemTe = stemTe;
       return forms;
     }
 
@@ -313,6 +314,29 @@
     [['くれません', false], ['くれます', false], ['くれない', false], ['もらえません', true], ['もらえます', true], ['もらえない', true],
       ['くださいません', true], ['くださいます', true], ['いただけません', true], ['いただけます', true]].forEach(function (r) {
       addJa(r[0], { k: 'REQ', pol: r[1] });
+    });
+    // 授受（docs/proposals/019）: あげる・くれる = kipo、もらう = leso（もらう は「に」「から」が与えた人）。
+    // 〜てあげる・〜てくれる は元の動詞の文に pote + 受け手、〜てもらう は与えた人を主語にした文に直す。
+    // くれない・くれます・くれません は、〜てくれませんか などの依頼（REQ）として、上で登録済み
+    [['あげる', 'kipo', {}], ['くれる', 'kipo', {}], ['もらう', 'leso', { recv: true }]].forEach(function (g) {
+      if (!byW[g[1]]) return;
+      verbForms(g[0]).forEach(function (f) { addJa(f[0], { k: 'V', e: byW[g[1]], tags: Object.assign({}, g[2], f[1]) }); });
+    });
+    var BENEFIT_FORMS = [['あげる', 'give', {}], ['あげた', 'give', { past: true }], ['あげない', 'give', { neg: true }],
+      ['あげなかった', 'give', { neg: true, past: true }], ['あげます', 'give', {}], ['あげました', 'give', { past: true }],
+      ['あげません', 'give', { neg: true }], ['あげませんでした', 'give', { neg: true, past: true }],
+      ['くれる', 'give', {}], ['くれた', 'give', { past: true }], ['くれなかった', 'give', { neg: true, past: true }],
+      ['くれました', 'give', { past: true }], ['くれませんでした', 'give', { neg: true, past: true }],
+      ['もらう', 'recv', {}], ['もらった', 'recv', { past: true }], ['もらわない', 'recv', { neg: true }],
+      ['もらわなかった', 'recv', { neg: true, past: true }], ['もらいます', 'recv', {}], ['もらいました', 'recv', { past: true }],
+      ['もらいません', 'recv', { neg: true }], ['もらいませんでした', 'recv', { neg: true, past: true }]];
+    if (byW.pote) lexicon.forEach(function (e) {
+      if (e.pos !== 'verb' || e.w === 'pio' || e.w === 'kipo' || e.w === 'leso') return;
+      e.ja.forEach(function (s) {
+        var te = verbForms(s).stemTe;
+        if (!te || s === 'いる') return;
+        BENEFIT_FORMS.forEach(function (f) { addJa(te + f[0], { k: 'V', e: e, tags: Object.assign({ benefit: f[1] }, f[2]) }); });
+      });
     });
     // 禁止の言い方（〜てはいけない・〜てはならない。docs/proposals/006）。「て＋は」のあとだけ拾う
     ['いけない', 'いけません', 'ならない', 'なりません'].forEach(function (x) { addJa(x, { k: 'PROHIB' }); });
@@ -775,6 +799,8 @@
       return [item(t.e.w)];
     }
 
+    // 〜てもらう のとき、受け手を目的語にする動詞（人を助ける）。ほかの動詞は pote + 受け手
+    var BENEFIT_OBJECT = { elupo: 1 };
     var NON_DEGREE_ADV = { kani: 1, masi: 1, sati: 1, mei: 1, olusi: 1, kuni: 1, no: 1, mosi: 1, moli: 1 };
     var UNIT_WORDS = { metela: 1, kipoma: 1, milima: 1, lulama: 1, kikoka: 1, litapa: 1, pepuka: 1 };
     var DAYPARTS = { mola: 1, apuja: 1, ipa: 1, naita: 1 };
@@ -948,6 +974,8 @@
         // 〜すぎる（tui）・〜たい／〜始める／〜終わる／〜続ける（wonuto／sutato／pino／konupo + 動名詞）（docs/proposals/018）
         if (last.tags.too) advs.push(item('tui'));
         if (last.tags.aux) { pred.gerundOf = last.e; pred.e = byW[last.tags.aux]; }
+        pred.benefit = last.tags.benefit;
+        pred.recv = last.tags.recv;
         toks.pop();
       } else if (last && (last.k === 'ADJ' || last.k === 'ANA') && !last.attr) {
         pred = { kind: 'adj', e: last.e, gerundOf: last.gerundOf };
@@ -1041,6 +1069,30 @@
           if (!subjectChunk) ir.subject = [item('mi')];
           ir.advs.unshift(item('sati'));
         }
+        // 授受（docs/proposals/019）: 〜てあげる・〜てくれる は、に の人を pote で受け手にする。〜てもらう は、に・から の人を主語に、元の主語を受け手にする
+        var recipientObj = null;
+        if (pred.benefit === 'give') {
+          var giveTo = withP.filter(function (c) { return c.particle === 'に' && !c.timeKind; })[0];
+          if (giveTo) {
+            withP = withP.filter(function (c) { return c !== giveTo; });
+            ir.pps.push([item('pote')].concat(giveTo.items));
+          }
+        } else if (pred.benefit === 'recv') {
+          var giver = withP.filter(function (c) { return (c.particle === 'に' || c.particle === 'から') && !c.timeKind; })[0];
+          if (giver) withP = withP.filter(function (c) { return c !== giver; });
+          var recv = subjectChunk ? subjectChunk.items : [item('mi')];
+          ir.subject = giver ? giver.items : null;
+          if (BENEFIT_OBJECT[pred.e.w] && !withP.some(function (c) { return c.particle === 'を'; })) recipientObj = recv;
+          else ir.pps.push([item('pote')].concat(recv));
+        }
+        // 〜をもらう の「に」も与えた人（から と同じ）
+        if (pred.recv) {
+          var srcNi = withP.filter(function (c) { return c.particle === 'に' && !c.timeKind; })[0];
+          if (srcNi && !withP.some(function (c) { return c.particle === 'から'; })) {
+            withP = withP.filter(function (c) { return c !== srcNi; });
+            ir.pps.push([item('pulomute')].concat(srcNi.items));
+          }
+        }
         var isExist = pred.e.w === 'alo' || pred.e.w === 'lipo';
         var purposePps = [];
         // 動詞文の「より」（docs/proposals/014）: 私より上手に歌う → moli poni tanute mi
@@ -1076,6 +1128,7 @@
           else bareLeft.push(c);
         });
         leftover(ir, bareLeft, notes);
+        if (recipientObj && !ir.object) ir.object = recipientObj;
         if (pred.gerundOf) ir.object = [item(pred.gerundOf.w + 'na', { gerund: pred.gerundOf.w })].concat(ir.object || []);
         return ir;
       }
@@ -1489,13 +1542,13 @@
       broke: 'break', broken: 'break', drove: 'drive', driven: 'drive', forgot: 'forget', forgotten: 'forget',
       wore: 'wear', worn: 'wear', won: 'win', left: 'leave', led: 'lead', threw: 'throw', thrown: 'throw',
       shook: 'shake', held: 'hold', understood: 'understand', stood_: 'stand',
-      became: 'become', got: 'get', gotten: 'get', grew: 'grow', grown: 'grow', kept: 'keep'
+      became: 'become', got: 'get', gotten: 'get', grew: 'grow', grown: 'grow', kept: 'keep', bought: 'buy', built: 'build', lent: 'lend', brought: 'bring'
     };
     var IRREGULAR_PAST = {};
     ['ate', 'went', 'came', 'saw', 'took', 'gave', 'made', 'wrote', 'ran', 'drank', 'sang', 'swam', 'flew', 'fell',
       'slept', 'sat', 'stood', 'thought', 'knew', 'felt', 'found', 'lost', 'sold', 'sent', 'spent', 'paid', 'met',
       'said', 'told', 'heard', 'had', 'began', 'taught', 'caught', 'chose', 'broke', 'drove', 'forgot', 'wore',
-      'won', 'left', 'led', 'threw', 'shook', 'held', 'understood', 'became', 'got', 'grew', 'kept'].forEach(function (w) { IRREGULAR_PAST[w] = 1; });
+      'won', 'left', 'led', 'threw', 'shook', 'held', 'understood', 'became', 'got', 'grew', 'kept', 'bought', 'built', 'lent', 'brought'].forEach(function (w) { IRREGULAR_PAST[w] = 1; });
     var IRREGULAR_ADJ = { better: 'good', best: 'good', worse: 'bad', worst: 'bad' };
     var IRREGULAR_NOUN = { people: 'person', children: 'child', men: 'man', women: 'woman', feet: 'foot' };
     // to + 動詞が目的ではなく補語になる動詞（need to eat・ask him to go など）と、目的語がなくても目的を取る移動の動詞
@@ -1503,6 +1556,8 @@
       offer: 1, prepare: 1, continue: 1, forget: 1, remember: 1, seem: 1, ask: 1, tell: 1, allow: 1, help: 1, advise: 1, order: 1,
       force: 1, teach: 1, invite: 1, encourage: 1, enable: 1, persuade: 1, remind: 1, require: 1, ought: 1, use: 1 };
     var MOTION_VERB = { go: 1, come: 1, leave: 1, return: 1, run: 1, walk: 1, travel: 1, hurry: 1, stop: 1 };
+    // 受け手が「〜のために」になる動詞（bought me a book = 私のために買った）。give・show・send などは tote のまま
+    var BENEFACTIVE_EN = { buy: 1, cook: 1, find: 1, bake: 1, build: 1, fix: 1, order: 1, save: 1, choose: 1, prepare: 1, draw: 1 };
     var TO_ADJ_EN = { easy: 'ise', difficult: 'tipike', hard: 'tipike' };
     var VERB_WANTS_GERUND = { want: 1, like: 1, love: 1, hope: 1, wish: 1, try: 1, start: 1, begin: 1,
       enjoy: 1, stop: 1, finish: 1, keep: 1, avoid: 1, practice: 1, quit: 1, continue: 1, hate: 1 };
@@ -2201,10 +2256,10 @@
           if (np) {
             if (!ir.object) {
               ir.object = np.items;
-              // 授与動詞: V 受け手 物 → V 物 tote 受け手
+              // 授与動詞: V 受け手 物 → V 物 tote 受け手（buy などの恩恵の動詞は pote。docs/proposals/019）
               if (cur.more() && startsNP(cur.peek()) && np.items.length === 1 && byW[np.items[0].w] && byW[np.items[0].w].pos === 'pronoun') {
                 var np2 = parseNP(cur, ctx);
-                if (np2) { ir.pps.push([item('tote')].concat(np.items)); ir.object = np2.items; }
+                if (np2) { ir.pps.push([item(BENEFACTIVE_EN[lemma] ? 'pote' : 'tote')].concat(np.items)); ir.object = np2.items; }
               }
             } else ir.pps.push(np.items);
             continue;

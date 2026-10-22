@@ -17,8 +17,8 @@ function readCorpus() {
   });
 }
 
-// 日本語の入力として未対応の構文（使役・目的語の対比の「は」・くれる/あげる）と、英語から入れる願いの言葉（112〜114）
-const UNSUPPORTED_JA = new Set([19, 22, 26, 35, 112, 113, 114]);
+// 日本語の入力として未対応の構文（使役・目的語の対比の「は」・関係節の中の目的語や受け手）と、英語から入れる願いの言葉（112〜114）
+const UNSUPPORTED_JA = new Set([19, 22, 26, 112, 113, 114]);
 
 test('corpus: 対応する日本語の例文は例文集の Logi と一致する', () => {
   const failures = [];
@@ -787,6 +787,36 @@ test('提案018: 動詞に続く表現（〜たい・〜始める・〜終わる
     ['This book is difficult to read.', 'iliu pupa pio tipike lotona.'],
     ['It is hard to read.', 'li pio tipike lotona.'],
     ['The bed is hard.', 'pita pio aluke.'],       // to + 動詞が続かない hard は「硬い」のまま
+  ];
+  en.forEach(([src, logi]) => {
+    assert.strictEqual(translator.translate(src, 'en').logi, logi, src);
+  });
+});
+
+test('提案019: 授受（あげる・くれる・もらう・〜てあげる・〜てくれる・〜てもらう）', () => {
+  const ja = [
+    ['彼は私に本をくれた。', 'li pasu kipo pupa tote mi.'],
+    ['私は彼に本をあげた。', 'mi pasu kipo pupa tote li.'],
+    ['私は彼から本をもらった。', 'mi pasu leso pupa pulomute li.'],
+    ['私は彼に本をもらった。', 'mi pasu leso pupa pulomute li.'],   // もらう の「に」は与えた人
+    ['母が私に服を買ってくれた。', 'mama pasu puo kulosa pote mi.'],
+    ['彼は私に服を買ってくれなかった。', 'li pasu no puo kulosa pote mi.'],
+    ['私は友達に助けてもらった。', 'pulena pasu elupo mi.'],            // 助ける は受け手が目的語
+    ['私は友達に本を読んでもらった。', 'pulena pasu loto pupa pote mi.'],
+    ['私は彼を助けてあげた。', 'mi pasu elupo li.'],
+    ['私は友達に本を読んであげた。', 'mi pasu loto pupa pote pulena.'],
+  ];
+  ja.forEach(([src, logi]) => {
+    assert.strictEqual(translator.translate(src, 'ja').logi, logi, src);
+  });
+  // 〜てくれませんか は依頼のまま（授受の くれる にしない）
+  assert.ok(/ka\?$/.test(translator.translate('買ってくれませんか。', 'ja').logi));
+  const en = [
+    ['She bought me a book.', 'li pasu puo pupa pote mi.'],
+    ['She bought a book for me.', 'li pasu puo pupa pote mi.'],
+    ['He gave me a book.', 'li pasu kipo pupa tote mi.'],            // give・show・send などは tote のまま
+    ['She lent me a book.', 'li pasu lenuto pupa tote mi.'],
+    ['I received a book from him.', 'mi pasu leso pupa pulomute li.'],
   ];
   en.forEach(([src, logi]) => {
     assert.strictEqual(translator.translate(src, 'en').logi, logi, src);

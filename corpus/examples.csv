@@ -148,3 +148,11 @@ id,feature,logi,ja
 147,too-adjective,iliu tui pio lase.,これは大きすぎる。
 148,easy-to,iliu pupa pio ise lotona.,この本は読みやすい。
 149,hard-to,iliu pupa pio tipike lotona.,この本は読みにくい。
+150,give,li pasu kipo pupa tote mi.,彼は私に本をくれた。
+151,give,mi pasu kipo pupa tote li.,私は彼に本をあげた。
+152,receive,mi pasu leso pupa pulomute li.,私は彼から本をもらった。
+153,benefactive-give,mama pasu puo kulosa pote mi.,母が私に服を買ってくれた。
+154,benefactive-receive,pulena pasu elupo mi.,私は友達に助けてもらった。
+155,benefactive-receive,pulena pasu loto pupa pote mi.,私は友達に本を読んでもらった。
+156,benefactive-give,mi pasu elupo li.,私は彼を助けてあげた。
+157,benefactive-give-negation,li pasu no puo kulosa pote mi.,彼は私に服を買ってくれなかった。
