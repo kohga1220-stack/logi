@@ -181,6 +181,13 @@
 | 174 | result-state | winuta pio apele. | 窓が開いている。 |
 | 175 | make-become | mi pasu koso li titusa. | 私は彼を先生にした。 |
 | 176 | make-create | li pasu meko lunusa pote mi. | 彼は私に昼食を作ってくれた。 |
+| 177 | quantity-adverb | mi meni pasu ito. | 私はたくさん食べた。 |
+| 178 | all-adverb | mi epuli pasu ito li. | 私はそれを全部食べた。 |
+| 179 | most | elumi epule mana pasu komo. | ほとんどの人が来た。 |
+| 180 | not-very | iliu peli no pio ile. | これはあまり高くない。 |
+| 181 | not-much | mi meni no ito. | 私はあまり食べない。 |
+| 182 | a-little | mi sumoli pio tilete. | 私は少し疲れている。 |
+| 183 | degree-noun | peli lase usa alo. | とても大きい家がある。 |
 
 ## 語注（辞書から機械的に生成）
 
@@ -536,3 +543,17 @@
   mi=私(pronoun) pasu=過去(marker) koso=させる(verb) li=彼/彼女/それ(pronoun) titusa=先生(noun)
 - **176** `li pasu meko lunusa pote mi.`  
   li=彼/彼女/それ(pronoun) pasu=過去(marker) meko=作る(verb) lunusa=昼食(noun) pote=のために(prep) mi=私(pronoun)
+- **177** `mi meni pasu ito.`  
+  mi=私(pronoun) meni=多くの(adj)+i(派生の副詞) pasu=過去(marker) ito=食べる(verb)
+- **178** `mi epuli pasu ito li.`  
+  mi=私(pronoun) epuli=すべての(adj)+i(派生の副詞) pasu=過去(marker) ito=食べる(verb) li=彼/彼女/それ(pronoun)
+- **179** `elumi epule mana pasu komo.`  
+  elumi=ほとんど(adv) epule=すべての(adj) mana=人(noun) pasu=過去(marker) komo=来る(verb)
+- **180** `iliu peli no pio ile.`  
+  iliu=これ（この）(pronoun) peli=とても(adv) no=否定(marker) pio=です(verb) ile=高い(adj)
+- **181** `mi meni no ito.`  
+  mi=私(pronoun) meni=多くの(adj)+i(派生の副詞) no=否定(marker) ito=食べる(verb)
+- **182** `mi sumoli pio tilete.`  
+  mi=私(pronoun) sumoli=少し(adv) pio=です(verb) tilete=疲れた(adj)
+- **183** `peli lase usa alo.`  
+  peli=とても(adv) lase=大きい(adj) usa=家(noun) alo=ある(verb)

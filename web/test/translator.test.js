@@ -914,6 +914,41 @@ test('提案023: 可能形 + ようになる・結果の状態の〜ている・
   });
 });
 
+test('提案024: 数量・程度の言い方', () => {
+  const ja = [
+    ['私はたくさん食べた。', 'mi meni pasu ito.'],
+    ['私はそれを全部食べた。', 'mi epuli pasu ito li.'],
+    ['ほとんどの人が来た。', 'elumi epule mana pasu komo.'],
+    ['ほとんど食べなかった。', 'elumi pasu no ito.'],     // 動詞のほとんどは、これまでどおり
+    ['私はあまり食べない。', 'mi meni no ito.'],
+    ['これはあまり高くない。', 'iliu peli no pio ile.'],
+    ['私は少し疲れている。', 'mi sumoli pio tilete.'],
+    ['とても大きい家がある。', 'peli lase usa alo.'],
+    ['たくさんの本を読んだ。', 'pasu loto mene pupa.'],
+  ];
+  ja.forEach(([src, logi]) => {
+    assert.strictEqual(translator.translate(src, 'ja').logi, logi, src);
+  });
+  const en = [
+    ['I ate a lot.', 'mi meni pasu ito.'],
+    ['I do not eat much.', 'mi meni no ito.'],
+    ['I eat a little.', 'mi sumoli ito.'],
+    ['I am a little tired.', 'mi sumoli pio tilete.'],
+    ['Most people came.', 'elumi epule mana pasu komo.'],
+    ['Most of the people came.', 'elumi epule mana pasu komo.'],
+    ['Few students came.', 'piue sutua pasu komo.'],
+    ['All the students came.', 'epule sutua pasu komo.'],
+    ['Many people came.', 'mene mana pasu komo.'],
+    ['I ate all of it.', 'mi epuli pasu ito li.'],
+    ['He is not very tall.', 'li peli no pio wawe.'],
+    ['I read a lot of books.', 'mi loto mene pupa.'],
+    ['Students came.', 'mene sutua pasu komo.'],          // 数量の語がない複数形は、これまでどおり
+  ];
+  en.forEach(([src, logi]) => {
+    assert.strictEqual(translator.translate(src, 'en').logi, logi, src);
+  });
+});
+
 test('日本語の入力の取りこぼし: 関係節の中の目的語・使役・目的語の対比の「は」', () => {
   const ja = [
     ['私は私にリンゴをくれた人を見る。', 'mi sio mana ta li pasu kipo apa tote mi.'],
