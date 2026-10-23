@@ -2057,7 +2057,7 @@
 | wisama | 泡立て器 | whisk |  |  |
 | wimuja | 指ぬき | thimble |  |  |
 | luwuma | 水たまり | puddle |  |  |
-| wuwika | 小川 | creek |  |  |
+| wuwika | 小川 | creek |  | Claude【任意】小川 は既存の lipa（川 / river）の小さいもの。区別できる語としては残してよいが、使い分け（小さい川）を確認 |
 | tuma | 露 | dew |  |  |
 | oma | 雹 | hail | 語幹が同じ: omo |  |
 | anupa | 錨 | anchor |  |  |
@@ -2065,7 +2065,7 @@
 | ona | 櫂 | oar | 語幹が同じ: one, ono |  |
 | atika | 屋根裏 | attic |  |  |
 | sejaja | 地下室 | cellar |  |  |
-| loliwa | ポーチ | porch |  |  |
+| loliwa | ポーチ | porch |  | Claude【修正推奨】ポーチ は既存の pepama（ベランダ / veranda）と同じ種類の場所（玄関や居室の外の張り出し）で、意味が重なる。削除して、pepama に ポーチ を併記するのがよい |
 
 ### verb（358語）
 
@@ -2416,16 +2416,16 @@
 | keapo | 復権させる/更生させる | rehabilitate |  | ok |
 | nomo | 頷く | nod | 語幹が同じ: nome |  |
 | nito | 編む | knit | 語幹が同じ: nita |  |
-| pinulo | 抓る | pinch |  |  |
+| pinulo | 抓る | pinch |  | Claude【任意】削除済みの語形 pinulo（pinch = 摘む）の再利用（別の意味 = 抓る）。抓る は難しい表記で、つねる が普通。日本語を つねる/抓る にするか検討 |
 | peko | 覗く | peek | 語幹が同じ: peka |  |
-| julujo | 竦める | shrug |  |  |
+| julujo | 竦める | shrug |  | Claude【任意】竦める は 肩をすくめる の「すくめる」で、目的語（肩）が要る。自動詞の shrug とずれるので、日本語を 肩をすくめる にするか検討 |
 | nipo | 跪く | kneel | 語幹が同じ: nipe, nipi |  |
 | jono | 欠伸する | yawn |  |  |
 | salo | 溜息をつく | sigh | 語幹が同じ: sala, sale |  |
 | tupo | 染める | dye | 語幹が同じ: tupa |  |
 | sopo | 浸す | soak | 語幹が同じ: sopa |  |
 | pato | 色褪せる | fade | 語幹が同じ: pata, pati |  |
-| ilo | 癒える | heal | 語幹が同じ: ila, ile, ili |  |
+| ilo | 癒える | heal | 語幹が同じ: ila, ile, ili | Claude【任意】癒える は既存の leketo（直る / recover）に近い。heal の他動詞（癒す）の意味は表せない |
 | saleko | 降伏する | surrender |  |  |
 | pemumo | 発酵する | ferment |  |  |
 | poliko | 受粉する | pollinate |  |  |
@@ -2600,13 +2600,13 @@
 | litie | 光り輝く/輝かしい | radiant |  | ok |
 | pikute | 絵画的な | picturesque |  | ok |
 | opane | 不透明な | opaque |  |  |
-| etase | 弾力的な | elastic |  |  |
-| satike | 粘着性のある | sticky |  |  |
+| etase | 弾力的な | elastic |  | Claude【任意】弾力的な は「柔軟な」の意味にも読める。elastic は 弾力のある / 伸縮性のある に直すか検討 |
+| satike | 粘着性のある | sticky |  | Claude【任意】日本語が 粘着性のある という句の形で硬い。ねばねばした / べたべたした に直すか検討 |
 | selipe | 滑りやすい | slippery |  |  |
 | lusupe | 錆びた | rusty |  |  |
 | molupe | 黴びた | moldy |  |  |
-| kose | 居心地のよい | cozy | 語幹が同じ: kosa, koso |  |
-| tise | 目眩のする | dizzy | 語幹が同じ: tisa |  |
+| kose | 居心地のよい | cozy | 語幹が同じ: kosa, koso | Claude【任意】居心地のよい は既存の komate（快適な / comfortable）と近い。cozy の「こぢんまりして暖かい」の意味を日本語に足すか検討 |
+| tise | 目眩のする | dizzy | 語幹が同じ: tisa | Claude【任意】日本語が 目眩のする という句の形。形容詞の見出しは 目眩がする / ふらふらする など自然な言い方に直すか検討（目眩 は tisipa として名詞にある） |
 | peloke | 肥沃な | fertile |  |  |
 | kuime | 後ろめたい | guilty |  |  |
 
@@ -2645,7 +2645,7 @@
 | unumi | 水中に | underwater |  |  |
 | uneti | 地下に | underground |  |  |
 | situi | 横に | sideways |  |  |
-| lenupi | 縦に | lengthwise |  |  |
+| lenupi | 縦に | lengthwise |  | Claude【任意】縦に は、既存の形容詞 pelume（縦の / vertical）から作る派生の副詞 pelumi（-e → -i。docs/grammar.md §3）で言える。副詞を別に登録しなくてもよい。lengthwise の英語を引く目的なら残してよい |
 | pepoli | あらかじめ | beforehand |  |  |
 
 ## v0.10 機能語（指示詞・はい／いいえ）（3語）
