@@ -822,3 +822,36 @@ test('提案019: 授受（あげる・くれる・もらう・〜てあげる・
     assert.strictEqual(translator.translate(src, 'en').logi, logi, src);
   });
 });
+
+test('提案020: 経験・予定・決心・〜たばかり', () => {
+  const ja = [
+    ['私は本を読んだことがある。', 'mi pinu loto pupa.'],
+    ['私は魚を食べたことがない。', 'mi nepi pinu ito tosa.'],
+    ['私は魚を食べたことがありません。', 'mi nepi pinu ito tosa.'],
+    ['あなたは本を読んだことがありますか。', 'tu epepi pinu loto pupa ka?'],
+    ['私は本を読むつもりだ。', 'mi pulao lotona pupa.'],
+    ['私は本を読むつもりはない。', 'mi no pulao lotona pupa.'],
+    ['私は行くつもりでした。', 'mi pasu pulao ikona.'],
+    ['私は毎日本を読むことにした。', 'mi pasu poso lotona pupa epule teia.'],
+    ['私は本を読んだばかりだ。', 'mi onuli pasu loto pupa.'],
+    ['私は本を読んだ。', 'mi pasu loto pupa.'],            // ふつうの過去は変わらない
+    ['食べることが好きだ。', 'itona pio suke.'],            // 名詞の「こと」は変わらない
+  ];
+  ja.forEach(([src, logi]) => {
+    assert.strictEqual(translator.translate(src, 'ja').logi, logi, src);
+  });
+  const en = [
+    ['I have read a book.', 'mi pinu loto pupa.'],            // read は原形と同じ形の過去分詞
+    ['I have never read a book.', 'mi nepi pinu loto pupa.'],
+    ['Have you ever read a book?', 'tu epepi pinu loto pupa ka?'],
+    ['I have been to school.', 'mi pinu iko tote sukula.'],
+    ['I have just read a book.', 'mi onuli pasu loto pupa.'],
+    ['I decided to read a book.', 'mi pasu poso lotona pupa.'],
+    ['I plan to read a book.', 'mi pulao lotona pupa.'],
+    ['I intend to read a book.', 'mi pulao lotona pupa.'],
+    ['I have eaten.', 'mi pinu ito.'],
+  ];
+  en.forEach(([src, logi]) => {
+    assert.strictEqual(translator.translate(src, 'en').logi, logi, src);
+  });
+});
