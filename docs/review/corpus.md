@@ -177,6 +177,10 @@
 | 170 | about-to | mi suni ito. | 私は食べるところだ。 |
 | 171 | in-the-middle | mi konu ito. | 私は食べているところだ。 |
 | 172 | just-now | mi onuli pasu ito. | 私は食べたところだ。 |
+| 173 | ability-change | mi pasu pekomo kani suwimo. | 私は泳げるようになった。 |
+| 174 | result-state | winuta pio apele. | 窓が開いている。 |
+| 175 | make-become | mi pasu koso li titusa. | 私は彼を先生にした。 |
+| 176 | make-create | li pasu meko lunusa pote mi. | 彼は私に昼食を作ってくれた。 |
 
 ## 語注（辞書から機械的に生成）
 
@@ -524,3 +528,11 @@
   mi=私(pronoun) konu=進行(marker) ito=食べる(verb)
 - **172** `mi onuli pasu ito.`  
   mi=私(pronoun) onuli=だけ(adv) pasu=過去(marker) ito=食べる(verb)
+- **173** `mi pasu pekomo kani suwimo.`  
+  mi=私(pronoun) pasu=過去(marker) pekomo=成る(verb) kani=できる(adv) suwimo=泳ぐ(verb)
+- **174** `winuta pio apele.`  
+  winuta=窓(noun) pio=です(verb) apele=開いた(adj)
+- **175** `mi pasu koso li titusa.`  
+  mi=私(pronoun) pasu=過去(marker) koso=させる(verb) li=彼/彼女/それ(pronoun) titusa=先生(noun)
+- **176** `li pasu meko lunusa pote mi.`  
+  li=彼/彼女/それ(pronoun) pasu=過去(marker) meko=作る(verb) lunusa=昼食(noun) pote=のために(prep) mi=私(pronoun)

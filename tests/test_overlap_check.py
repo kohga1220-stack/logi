@@ -66,7 +66,7 @@ def test_render_skips_words_without_overlap():
 
 def _stub_synsets(groups):
     """作り物の類義語表: {英語: {まとまりの名前}}（形容詞の隣り合うまとまりは expand=True のとき足す）。"""
-    def synsets(word, pos, expand=False):
+    def synsets(word, pos, expand=False, main_only=False):
         names = set(groups.get(word.lower(), set()))
         if expand:
             for n in list(names):
@@ -114,3 +114,18 @@ def test_table_puts_strong_overlaps_first_and_marks_kanji_only_rows():
     first_row = body[4]
     assert "sleep (verb)" in first_row and "（要記入）" in first_row
     assert "漢字が共通するだけ" in table and "重なりなし" in table
+
+
+def test_audit_finds_pairs_inside_the_dictionary_and_puts_both_reasons_first():
+    rows = [
+        _row("aaa", "noun", "技術者", "engineer"),
+        _row("bbb", "noun", "科学技術", "technology"),   # 日本語が近い（技術）、英語も類義語
+        _row("ccc", "adj", "丈夫な", "sturdy"),
+        _row("ddd", "adj", "頑強な", "stout"),            # 英語だけ類義語
+        _row("eee", "verb", "走る", "run"),
+    ]
+    english = {"engineer": ["aaa"], "technology": ["bbb"], "sturdy": ["ccc"], "stout": ["ddd"], "run": ["eee"]}
+    synsets = _stub_synsets({"engineer": {"s1"}, "technology": {"s1"}, "sturdy": {"s2"}, "stout": {"s2"}})
+    pairs = overlap_check.audit(rows, english, synsets)
+    assert pairs == [("aaa", "bbb", "日本語が近い・英語が類義語"), ("ccc", "ddd", "英語が類義語")]   # 品詞が違う run は出ない
+    assert overlap_check.audit(rows, english) == [("aaa", "bbb", "日本語が近い")]   # WordNet がなければ日本語だけ

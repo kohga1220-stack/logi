@@ -84,10 +84,10 @@ def load_synsets():
         return None
     cache = {}
 
-    def synsets(word, pos, expand=False):
+    def synsets(word, pos, expand=False, main_only=False):
         """expand=True のとき、形容詞は「似た意味」でつながる1つ隣のまとまり（頭の語と衛星の語）も含める。
         片方だけ広げて比べるので、同じ頭の語につながるだけの遠い語（generous と big など）は出ない。"""
-        key = (word.lower(), pos, expand)
+        key = (word.lower(), pos, expand, main_only)
         if pos not in _WN_POS:   # 代名詞・前置詞などは WordNet にない
             return set()
         if key not in cache:
@@ -98,6 +98,8 @@ def load_synsets():
                     names.add(s.name())
                     if expand and pos == "adj":
                         names.update(t.name() for t in s.similar_tos())
+                    if main_only:   # 最もよく使われる意味（WordNet の先頭）だけ
+                        break
             cache[key] = names
         return cache[key]
 
@@ -182,6 +184,45 @@ def check(candidates, rows, by_word, english, synsets=None):
     return report
 
 
+def audit(rows, english, synsets=None):
+    """辞書の中の語どうしで、意味が重なる組を探す（すでにある語の見直し用）。返り値: [(語A, 語B, 理由)]。
+    理由は「日本語が近い」（2文字の連なりが同じ）と「英語が類義語」（WordNet）。漢字が1字共通するだけの組は出さない（多すぎるため）。"""
+    by_word = {r["regenerated"]: r for r in rows}
+    tokens_of = {}
+    for token, words in english.items():
+        for w in words:
+            tokens_of.setdefault(w, []).append(token)
+    windows = {r["regenerated"]: japanese_stems(m) for r in rows for m in [min(surfaces(r["meaning_ja"]) or [""], key=len)]}
+    syn_index = {}
+    if synsets:
+        for r in rows:
+            for token in tokens_of.get(r["regenerated"], []):
+                for name in synsets(token, r["pos"], True, True):
+                    syn_index.setdefault(name, set()).add(r["regenerated"])
+    pairs = {}
+    by_pos = {}
+    for r in rows:
+        by_pos.setdefault(r["pos"], []).append(r["regenerated"])
+    for pos, words in by_pos.items():
+        for i, a in enumerate(words):
+            for b in words[i + 1:]:
+                if windows[a] & windows[b]:
+                    pairs.setdefault((a, b), []).append("日本語が近い")
+    if synsets:
+        for r in rows:
+            a = r["regenerated"]
+            for token in tokens_of.get(a, []):
+                for name in synsets(token, r["pos"], False, True):
+                    for b in syn_index.get(name, ()):
+                        if b != a and by_word[b]["pos"] == r["pos"]:
+                            key = (a, b) if a < b else (b, a)
+                            if "英語が類義語" not in pairs.setdefault(key, []):
+                                pairs[key].append("英語が類義語")
+    # 両方の理由がある組、英語の類義語、日本語が近い、の順（人が見る順番）
+    order = {"日本語が近い・英語が類義語": 0, "英語が類義語": 1, "日本語が近い": 2}
+    return sorted(((a, b, "・".join(why)) for (a, b), why in pairs.items()), key=lambda t: (order.get(t[2], 3), t[0], t[1]))
+
+
 def new_candidates(additions=ADDITIONS, rows=()):
     """追加リストのうち、まだ辞書に入っていない行（英語 + 品詞 + 日本語の意味が辞書の見出しにない）。"""
     taken = {(r["original"].lower(), r["pos"], r["meaning_ja"]) for r in rows}
@@ -245,9 +286,20 @@ def main(argv=None):
     parser.add_argument("csv", nargs="?", help="候補の CSV（省略すると dictionary/anti_additions.csv の未追加の行）")
     parser.add_argument("--all-new", type=int, metavar="N", help="辞書の末尾 N 語を候補として、それより前の語と比べる")
     parser.add_argument("--table", action="store_true", help="PR 本文に貼る確認表（Markdown）を出す")
+    parser.add_argument("--audit", action="store_true", help="辞書の中の語どうしで、意味が重なる組を探す（すでにある語の見直し用）")
     args = parser.parse_args(argv)
 
     rows, by_word, english = load_existing()
+    if args.audit:
+        synsets = load_synsets()
+        if synsets is None:
+            print("注意: WordNet が入っていないので、英語の類義語は調べていません（pip install wn==0.0.23）。", file=sys.stderr)
+        by_word_ = {r["regenerated"]: r for r in rows}
+        print("| 語A | 意味A | 語B | 意味B | 品詞 | 理由 | 判断（同じ意味か、別の意味か。使い分ける場面を例文で）|")
+        print("|---|---|---|---|---|---|---|")
+        for a, b, why in audit(rows, english, synsets):
+            print(f"| {a} | {by_word_[a]['meaning_ja']} | {b} | {by_word_[b]['meaning_ja']} | {by_word_[a]['pos']} | {why} | （要記入）|")
+        return 0
     if args.all_new:
         tail = rows[-args.all_new:]
         older = rows[:-args.all_new]
