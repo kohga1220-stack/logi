@@ -108,7 +108,7 @@ logi/
 ├── web/
 │   └── index.html          Translator page (Japanese/English → Logi) / 翻訳機（see web/README.md）
 ├── corpus/
-│   └── examples.csv        164 example sentences by grammar feature / 機能別例文164文
+│   └── examples.csv        172 example sentences by grammar feature / 機能別例文172文
 ├── dictionary/
 │   ├── final.csv           3,122-word validated dictionary / 検証済み辞書3,122語
 │   ├── eiken3_additions.csv  Eiken grade-3 level word list added in v0.7 / 英検3級レベルの追加語リスト
@@ -168,6 +168,7 @@ logi/
 | v0.26 | Verb phrases — decided in `docs/proposals/018` (M1ko left it to Claude; option A): *want to* = `wonuto` + gerund, *start / finish / continue* = `sutato` / `pino` / `konupo` + gerund, *too* = `tui` (adverb position: `mi tui pasu ito.`), *easy / hard to* = `pio ise` / `pio tipike` + gerund; the translator handles Japanese and English, and the English `too` → `olusi` bug is fixed; no new words |
 | v0.27 | Giving and receiving — decided in `docs/proposals/019` (M1ko left it to Claude; option A): *give* = `kipo` + thing + `tote` + receiver, *receive* = `leso` + thing + `pulomute` + giver, *do (something) for me* = the verb + `pote` + receiver, *have (someone) do* = an active sentence with the doer as subject; the translator handles Japanese and English; no new words |
 | v0.28 | Experience, plans and decisions — decided in `docs/proposals/020` (M1ko left it to Claude; option A): *have read / have never read* = `pinu` (+ `nepi` / `epepi`), *plan to* = `pulao` + gerund, *decide to* = `poso` + gerund, *have just ~ed* = `onuli pasu`; the translator handles Japanese and English; no new words |
+| v0.29 | States, becoming and "about to" — decided in `docs/proposals/022` (M1ko left it to Claude; option A): stative verbs in *-te iru* get no progressive marker (`li malo.` = he is married), *come to V* = `pekomo` + gerund, *it was decided that* = `somena pasu poso` + gerund, *about to V* = `suni`; the translator handles Japanese and English; no new words |
 
 ---
 

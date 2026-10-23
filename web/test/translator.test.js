@@ -855,3 +855,34 @@ test('提案020: 経験・予定・決心・〜たばかり', () => {
     assert.strictEqual(translator.translate(src, 'en').logi, logi, src);
   });
 });
+
+test('提案022: 〜ている（状態と進行）・〜ようになる・〜ことになる・〜ところだ', () => {
+  const ja = [
+    ['彼は結婚している。', 'li malo.'],                       // 状態の動詞は konu を付けない
+    ['私は彼を知っている。', 'mi mo li.'],
+    ['彼は結婚していた。', 'li pasu malo.'],
+    ['彼は食べている。', 'li konu ito.'],                    // 動作は進行のまま
+    ['彼は本を読むようになった。', 'li pasu pekomo lotona pupa.'],
+    ['彼は本を読むようにならない。', 'li no pekomo lotona pupa.'],
+    ['来月結婚することになった。', 'somena pasu poso malona nete monata.'],
+    ['私は来月結婚することになった。', 'somena pasu poso mi malona nete monata.'],
+    ['私は本を読むことにした。', 'mi pasu poso lotona pupa.'],   // 自分で決めた ことにする は変わらない
+    ['私は食べるところだ。', 'mi suni ito.'],
+    ['私は食べるところでした。', 'mi suni pasu ito.'],
+    ['私は食べているところだ。', 'mi konu ito.'],
+    ['私は食べたところだ。', 'mi onuli pasu ito.'],
+  ];
+  ja.forEach(([src, logi]) => {
+    assert.strictEqual(translator.translate(src, 'ja').logi, logi, src);
+  });
+  const en = [
+    ['I am about to eat.', 'mi suni ito.'],
+    ['She was about to leave.', 'li suni pasu lepo.'],
+    ['I am eating.', 'mi konu ito.'],
+    ['I came to like it.', 'mi pasu pekomo laikona li.'],
+    ['I come to see you.', 'mi komo pote siona tu.'],       // 目的の to は変わらない
+  ];
+  en.forEach(([src, logi]) => {
+    assert.strictEqual(translator.translate(src, 'en').logi, logi, src);
+  });
+});
