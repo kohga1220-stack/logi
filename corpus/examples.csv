@@ -156,3 +156,10 @@ id,feature,logi,ja
 155,benefactive-receive,pulena pasu loto pupa pote mi.,私は友達に本を読んでもらった。
 156,benefactive-give,mi pasu elupo li.,私は彼を助けてあげた。
 157,benefactive-give-negation,li pasu no puo kulosa pote mi.,彼は私に服を買ってくれなかった。
+158,experience,mi pinu loto pupa.,私は本を読んだことがある。
+159,experience-negation,mi nepi pinu ito tosa.,私は魚を食べたことがない。
+160,experience-question,tu epepi pinu loto pupa ka?,あなたは本を読んだことがありますか。
+161,plan,mi pulao lotona pupa.,私は本を読むつもりだ。
+162,plan-negation,mi no pulao lotona pupa.,私は本を読むつもりはない。
+163,decision,mi pasu poso lotona pupa epule teia.,私は毎日本を読むことにした。
+164,just-now,mi onuli pasu loto pupa.,私は本を読んだばかりだ。
