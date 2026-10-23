@@ -7,7 +7,7 @@
 - 語幹が同じ: 語尾の1文字だけが違う、別の品詞の語（例: `kuka` 名詞と `kuko` 動詞）。同じ英語の別品詞なら意図した組です。そうでなければ偶然の一致なので、見分けにくくないか見てください
 - 同じ英語の語: 同じ英語の訳を持つ、別の語（同義語の候補）
 
-確認済み(ok): 2497 / 要修正(fix): 0 / 未確認(draft): 0
+確認済み(ok): 2497 / 要修正(fix): 0 / 未確認(draft): 50
 
 ## v0.7 英検3級レベルの語（487語）
 
@@ -397,7 +397,7 @@
 | lonele | 寂しい | lonely |  | ok |
 | mume | 幸運な | lucky |  | ok |
 | sulite | 眠い | sleepy |  | ok |
-| moke | 申し訳ない | sorry |  | ok |
+| moke | 申し訳ない | sorry | 語幹が同じ: moka | ok |
 | sulupe | 驚いた | surprised |  | ok |
 | tiluse | 喉が渇いた | thirsty |  | ok |
 | tilete | 疲れた | tired |  | ok |
@@ -422,7 +422,7 @@
 | jowe | 若い | young |  | ok |
 | time | 深い | deep | 語幹が同じ: tima | ok |
 | ipe | 重い | heavy | 語幹が同じ: ipa, ipo | ok |
-| ile | 高い | high | 語幹が同じ: ila, ili; 同じ英語の語: uji | ok |
+| ile | 高い | high | 語幹が同じ: ila, ili, ilo; 同じ英語の語: uji | ok |
 | lote | 長い | long | 語幹が同じ: lota, loto | ok |
 | loke | 低い | low | 語幹が同じ: loka, loko | ok |
 | solume | 短い | short |  | ok |
@@ -440,7 +440,7 @@
 | sepele | 数個の | several |  | ok |
 | alite | 生きた | alive |  | ok |
 | ineke | 国際的な | international |  | ok |
-| nipe | 十分な | enough | 語幹が同じ: nipi | ok |
+| nipe | 十分な | enough | 語幹が同じ: nipi, nipo | ok |
 | pasike | 基本的な | basic |  | ok |
 | komate | 快適な | comfortable |  | ok |
 | poleke | 外国の | foreign |  | ok |
@@ -569,7 +569,7 @@
 | supowa | 地下鉄 | subway |  | ok |
 | elusa | 出口 | exit |  | ok |
 | toma | 人形 | doll |  | ok |
-| tupa | 歯 | tooth |  | ok |
+| tupa | 歯 | tooth | 語幹が同じ: tupo | ok |
 | taluka | 話 | talk | 同じ英語の語: toko | ok |
 | alema | 半分 | half |  | ok |
 | toiwa | トイレ | toilet |  | ok |
@@ -1132,9 +1132,9 @@
 |---|---|---|---|---|
 | onapi | オンラインで | online |  | ok |
 
-## Antigravity の追加語（dictionary/anti_additions.csv）（1444語）
+## Antigravity の追加語（dictionary/anti_additions.csv）（1494語）
 
-### noun（908語）
+### noun（928語）
 
 | Logi | 日本語 | 英語 | 手がかり | 状況 |
 |---|---|---|---|---|
@@ -2046,8 +2046,28 @@
 | makema | 人台/マネキン | mannequin |  | ok |
 | tiwota | 蒸留所 | distillery |  | ok |
 | lunepa | 鋳造所 | foundry |  | ok |
+| eapa | 眉 | eyebrow |  |  |
+| nina | 顎 | chin |  |  |
+| kika | 頬 | cheek | 語幹が同じ: kiko |  |
+| elupa | 肘 | elbow | 語幹が同じ: elupo |  |
+| apula | 前掛け/エプロン | apron |  |  |
+| tupoja | ちりとり | dustpan |  |  |
+| moka | モップ | mop | 語幹が同じ: moke |  |
+| nolawa | ざる | colander |  |  |
+| wisama | 泡立て器 | whisk |  |  |
+| wimuja | 指ぬき | thimble |  |  |
+| luwuma | 水たまり | puddle |  |  |
+| wuwika | 小川 | creek |  |  |
+| tuma | 露 | dew |  |  |
+| oma | 雹 | hail | 語幹が同じ: omo |  |
+| anupa | 錨 | anchor |  |  |
+| lujewa | 舵 | rudder |  |  |
+| ona | 櫂 | oar | 語幹が同じ: one, ono |  |
+| atika | 屋根裏 | attic |  |  |
+| sejaja | 地下室 | cellar |  |  |
+| loliwa | ポーチ | porch |  |  |
 
-### verb（343語）
+### verb（358語）
 
 | Logi | 日本語 | 英語 | 手がかり | 状況 |
 |---|---|---|---|---|
@@ -2394,8 +2414,23 @@
 | nualo | 隔離する | quarantine |  | ok |
 | sopuwo | 実証する/裏付ける | substantiate |  | ok |
 | keapo | 復権させる/更生させる | rehabilitate |  | ok |
+| nomo | 頷く | nod | 語幹が同じ: nome |  |
+| nito | 編む | knit | 語幹が同じ: nita |  |
+| pinulo | 抓る | pinch |  |  |
+| peko | 覗く | peek | 語幹が同じ: peka |  |
+| julujo | 竦める | shrug |  |  |
+| nipo | 跪く | kneel | 語幹が同じ: nipe, nipi |  |
+| jono | 欠伸する | yawn |  |  |
+| salo | 溜息をつく | sigh | 語幹が同じ: sala, sale |  |
+| tupo | 染める | dye | 語幹が同じ: tupa |  |
+| sopo | 浸す | soak | 語幹が同じ: sopa |  |
+| pato | 色褪せる | fade | 語幹が同じ: pata, pati |  |
+| ilo | 癒える | heal | 語幹が同じ: ila, ile, ili |  |
+| saleko | 降伏する | surrender |  |  |
+| pemumo | 発酵する | ferment |  |  |
+| poliko | 受粉する | pollinate |  |  |
 
-### adj（165語）
+### adj（175語）
 
 | Logi | 日本語 | 英語 | 手がかり | 状況 |
 |---|---|---|---|---|
@@ -2564,8 +2599,18 @@
 | osuje | 手厚い/もてなしのよい | hospitable |  | ok |
 | litie | 光り輝く/輝かしい | radiant |  | ok |
 | pikute | 絵画的な | picturesque |  | ok |
+| opane | 不透明な | opaque |  |  |
+| etase | 弾力的な | elastic |  |  |
+| satike | 粘着性のある | sticky |  |  |
+| selipe | 滑りやすい | slippery |  |  |
+| lusupe | 錆びた | rusty |  |  |
+| molupe | 黴びた | moldy |  |  |
+| kose | 居心地のよい | cozy | 語幹が同じ: kosa, koso |  |
+| tise | 目眩のする | dizzy | 語幹が同じ: tisa |  |
+| peloke | 肥沃な | fertile |  |  |
+| kuime | 後ろめたい | guilty |  |  |
 
-### adv（28語）
+### adv（33語）
 
 | Logi | 日本語 | 英語 | 手がかり | 状況 |
 |---|---|---|---|---|
@@ -2597,6 +2642,11 @@
 | asopi | 岸に | ashore |  | ok |
 | aimi | 前方に | ahead |  | ok |
 | otepi | さもなければ/さもないと | otherwise |  | ok |
+| unumi | 水中に | underwater |  |  |
+| uneti | 地下に | underground |  |  |
+| situi | 横に | sideways |  |  |
+| lenupi | 縦に | lengthwise |  |  |
+| pepoli | あらかじめ | beforehand |  |  |
 
 ## v0.10 機能語（指示詞・はい／いいえ）（3語）
 
