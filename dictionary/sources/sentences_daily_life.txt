@@ -1,0 +1,230 @@
+# 日常生活（起床・身支度・家事・通勤・仕事・買い物・料理・夕食・入浴・就寝）
+# 自分で作成した日本語と英語の実文（192文）
+
+# 朝の起床と身支度 (Japanese)
+朝早く起きる。
+目覚まし時計のアラームを止める。
+カーテンを開けて朝日を浴びる。
+窓を開けて部屋の空気を入れ替える。
+ベッドから起き上がる。
+スリッパを履く。
+洗面所に行く。
+歯磨き粉を歯ブラシにつける。
+丁寧に歯を磨く。
+口を水ですすぐ。
+温かいお湯で顔を洗う。
+タオルで顔の水分を拭き取る。
+鏡を見て髪をブラシで梳かす。
+電気剃刀で髭を剃る。
+パジャマを脱いで洋服に着替える。
+
+# 朝食と台所 (Japanese)
+台所に行ってやかんにお水を入れる。
+ガスコンロに火をつける。
+お湯を沸かして緑茶を淹れる。
+冷蔵庫から卵と牛乳を取り出す。
+フライパンを火にかける。
+バターを溶かす。
+フライパンで卵とソーセージを炒める。
+トースターで食パンを焼く。
+こんがり焼けたパンにバターを塗る。
+朝食をテーブルに運ぶ。
+椅子に座る。
+温かいトーストと卵焼きを食べる。
+コップに牛乳を注ぐ。
+新聞を広げて朝のニュースを読む。
+食べ終わった皿を流しに運ぶ。
+スポンジに洗剤をつける。
+汚れた皿やフライパンを水で洗う。
+洗った皿を布巾で拭いて棚に片付ける。
+ゴミ箱からゴミ袋を取り出す。
+生ゴミと燃えるゴミを分別する。
+
+# 出勤と移動 (Japanese)
+玄関で靴を履く。
+コートを着てマフラーを巻く。
+鍵をポケットに入れる。
+鞄を持って玄関のドアを開ける。
+ドアに鍵をかける。
+駅に向かって歩く。
+横断歩道を渡る。
+信号が赤から青に変わる。
+駅の階段を上る。
+改札機に定期券をタッチする。
+ホームで電車を待つ。
+電車がホームに入ってくる。
+ドアが開いて乗客が降りる。
+電車に乗って吊り革につかまる。
+次の駅で多くの人が乗り込む。
+目的地で電車を降りる。
+
+# 仕事と学校 (Japanese)
+会社に着いて同僚に挨拶する。
+自分の席に座ってパソコンの電源を入れる。
+メールを読んで返信を書く。
+会議室で新しい計画を話し合う。
+書類を印刷してホチキスで留める。
+ペンで書類に署名する。
+引き出しからハサミとテープを取り出す。
+昼休みに弁当を食べる。
+自動販売機で冷たい缶コーヒーを買う。
+午後の仕事を始める。
+資料を整理してファイルに保存する。
+夕方に仕事が終わる。
+机の上を片付けてパソコンを落とす。
+
+# 買い物と夕方 (Japanese)
+スーパーに寄って晩ご飯の買い出しをする。
+買い物かごを持って売り場を歩く。
+新鮮な豚肉と野菜を選ぶ。
+カレーのルーと調味料を買う。
+レジに並んで会計を済ませる。
+財布から小銭を出して支払う。
+レシートを受け取って買った物を袋に詰める。
+夕暮れの道を歩いて家に帰る。
+家の玄関の鍵を開けて中に入る。
+手洗いとうがいをする。
+
+# 夕食と料理 (Japanese)
+エプロンを着けて台所に立つ。
+まな板の上に包丁を置く。
+玉ねぎとジャガイモの皮を剥く。
+人参を一口大に切る。
+鍋に油を引いて肉と野菜を炒める。
+鍋に水を注いで弱火でじっくり煮込む。
+灰汁を丁寧にお玉ですくい取る。
+カレーのルーを割り入れてよく溶かす。
+ご飯を茶碗によそう。
+スプーンで熱々のカレーを食べる。
+家族と一緒に夕食を楽しむ。
+流し台で大きな鍋やフライパンを洗う。
+台所の布巾でテーブルを綺麗に拭く。
+
+# 入浴・洗濯・就寝 (Japanese)
+お風呂のお湯を沸かす。
+温かい湯船にゆっくり浸かる。
+石鹸で体を洗ってシャンプーで髪を洗う。
+柔らかいバスタオルで体を拭く。
+清潔な服に着替える。
+ドライヤーで濡れた髪を乾かす。
+洗濯機に汚れた服を入れて洗剤を入れる。
+洗濯機を回す。
+洗い上がった洗濯物をベランダに干す。
+ハンガーにシャツを掛ける。
+リビングのソファーに座ってテレビを見る。
+温かいお茶を飲んで一息つく。
+眠気を感じてあくびが出る。
+目覚まし時計を明日の朝の時刻にセットする。
+部屋の電気を消す。
+布団に入って目を閉じる。
+静かな部屋で眠りにつく。
+
+# Morning Routine (English)
+I wake up early every morning.
+The alarm clock rings loudly at six.
+She turns off the alarm and gets out of bed.
+He draws the curtains and opens the bedroom window.
+Fresh morning air flows into the room.
+I walk to the bathroom in my slippers.
+She puts toothpaste on her toothbrush and brushes thoroughly.
+He rinses his mouth with cool water.
+I wash my face with mild soap and warm water.
+She dries her wet face with a soft towel.
+He looks into the mirror and combs his hair neatly.
+I shave my beard with an electric razor.
+She changes into clean work clothes.
+
+# Breakfast and Kitchen (English)
+He heads to the kitchen to prepare breakfast.
+I fill the stainless kettle with tap water.
+She ignites the gas stove and boils water for coffee.
+He takes butter, eggs, and bacon from the refrigerator.
+I melt butter in a hot frying pan.
+She fries eggs and bacon over medium heat.
+He toasts two slices of bread in the toaster.
+I spread butter and strawberry jam on warm toast.
+She pours fresh milk into a glass.
+We sit together around the dining table.
+They enjoy a warm and hearty breakfast.
+I read the morning newspaper while drinking hot coffee.
+She brings dirty plates and cups to the kitchen sink.
+He squeezes liquid detergent onto a damp sponge.
+I wash the greasy dishes and rinse them under running water.
+She dries each ceramic dish with a clean cotton towel.
+He sorts kitchen garbage into recyclable and burnable bags.
+I tie the plastic garbage bag tightly and take it outside.
+
+# Commute and Travel (English)
+She puts on her wool coat and wraps a scarf around her neck.
+He checks his pockets for keys, wallet, and smartphone.
+I grab my backpack and open the heavy front door.
+She locks the door and walks toward the train station.
+We cross the pedestrian crossing when the light turns green.
+Many commuters walk quickly along the busy street.
+I tap my transit card at the ticket gate.
+Passengers wait patiently on the railway platform.
+The morning train arrives on time and stops smoothly.
+The train doors open and arriving passengers step off.
+I board the crowded train and hold onto an overhead strap.
+She reads an interesting paperback book on the train.
+He gets off at the central station downtown.
+
+# Work and Office (English)
+I arrive at the office building and greet my coworkers.
+She turns on her desktop computer and logs into her account.
+He checks urgent emails and writes polite replies.
+We hold a team meeting in the conference room to discuss the project.
+I print necessary documents and staple the pages together.
+She signs the official contract with a black pen.
+He takes scissors, glue, and paper clips from his desk drawer.
+During lunch break, we eat sandwiches in the sunny courtyard.
+I buy a cold drink from the vending machine in the hallway.
+She returns to her desk and resumes typing reports.
+He organizes electronic files into appropriate folders.
+The workday ends at five in the evening.
+I shut down my computer and tidy up my desk surface.
+
+# Shopping and Errands (English)
+She stops by the local supermarket on her way home.
+He takes a shopping cart and browses through the produce aisle.
+I pick fresh green vegetables, garlic, and ripe tomatoes.
+She selects fresh fish and lean chicken from the meat counter.
+We stand in line at the cash register to pay.
+The cashier scans each item and announces the total price.
+I pay with coins and bills from my leather wallet.
+She takes the printed receipt and packs groceries into reusable bags.
+He walks home while the sun sets behind the western hills.
+I unlock the front door and step into the warm house.
+She washes her hands and gargles at the sink.
+
+# Dinner and Cooking (English)
+He puts on an apron and begins cooking dinner in the kitchen.
+I place a wooden cutting board on the kitchen counter.
+She chops yellow onions and carrots with a sharp kitchen knife.
+He heats cooking oil in a large stew pot.
+I saute the chopped meat and vegetables until fragrant.
+She pours rich broth into the pot and simmers it gently.
+He skims foam and grease from the soup surface with a ladle.
+The delicious aroma of home cooking fills the whole room.
+We set the table with bowls, spoons, and chopsticks.
+Everyone gathers around the table for family dinner.
+We eat hot stew and steamed rice together happily.
+After dinner, he washes all the pots and cooking utensils.
+She wipes the dining table thoroughly with a damp rag.
+
+# Evening, Bath, and Bedtime (English)
+I draw a hot bath in the bathtub.
+She soaks in the deep hot water to soothe tired muscles.
+He washes his body with fragrant soap and rinses with warm water.
+I wrap myself in a thick fluffy bath towel.
+She dries her wet hair with a warm hair dryer.
+He puts dirty laundry into the washing machine drum.
+I add laundry detergent and start the wash cycle.
+She hangs wet shirts and socks on the balcony drying rack.
+We relax on the comfortable sofa in the living room.
+He sips hot herbal tea while listening to soft music.
+I yawn and feel very sleepy after a long day.
+She sets the alarm clock on her bedside nightstand.
+He switches off the bedroom light and climbs into bed.
+I pull the warm blanket up to my chin and close my eyes.
+We fall asleep peacefully in the dark and quiet room.
