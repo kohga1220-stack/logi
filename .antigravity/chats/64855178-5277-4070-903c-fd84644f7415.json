@@ -3,6 +3,43 @@
   "name": "ここまでの作業わかる？",
   "createdAt": "2026-10-23T17:00:33.271Z",
   "filename": "64855178-5277-4070-903c-fd84644f7415.json",
-  "geminiStarted": false,
-  "messages": []
+  "geminiStarted": true,
+  "messages": [
+    {
+      "id": "06c3ae4f-6d99-4af6-a947-1d07d721f8f9",
+      "role": "user",
+      "content": "ここまでの作業わかる？",
+      "status": "pending",
+      "model": "gemini-3.8-flash-high",
+      "client_type": "gemini-bridge",
+      "parent_message_id": null,
+      "created_at": "2026-10-23T17:00:43.949Z",
+      "sender": "ios",
+      "is_cancelled": false
+    },
+    {
+      "id": "ed9b61c7-58dd-4cc2-a2c7-4a9f891c8589",
+      "role": "agent",
+      "content": "はい、全体の開発状況と現在のタスク状況を把握しています。\n\n---\n\n### 1. 開発体制と役割\n- **M1ko さん（決定者）**: 提案の決定、語感の確認、マージ判断\n- **Claude（文法設計）**: 文法規則・翻訳機・テスト・CI\n- **Antigravity（自分）**: 内容語（名詞・動詞・形容詞・副詞）の増量\n\n---\n\n### 2. 直近で完了したこと（最新: v0.27）\n- **提案019の実装（Claude）**: 授受表現（あげる・くれる・もらう・〜てあげる等）の翻訳機・テスト・文書が `main` にマージ完了（PR #103）。\n- **第27弾の追加語（Antigravity）**: 90語が `ok` に更新され、修正推奨10語の対処（削除・見出し語修正・既存語への併記）も完了（PR #101, #102）。\n\n---\n\n### 3. 現在のステータスと「決定待ち」\n詳しくは [docs/STATUS.md](https://github.com/kohga1220-stack/logi/blob/main/docs/STATUS.md) の通りです。\n\n1. **提案020（経験・予定・決心）の決定待ち（M1ko さん）**\n   - [docs/proposals/020-experience-and-plans.md](https://github.com/kohga1220-stack/logi/blob/main/docs/proposals/020-experience-and-plans.md)（Q1〜Q3、おすすめはすべて A）\n2. **`elowe`（心細い）の確認待ち（M1ko さん）**\n   - 見出し語を `uneasy` / `forlorn` に見直したため、[dictionary/word_review.csv](https://github.com/kohga1220-stack/logi/blob/main/dictionary/word_review.csv) で `draft` のままとなっています。\n\n---\n\n### 4. Antigravity（自分）の次の作業\n第27弾の確認が完了しているため、承認済みの **第28弾（60語）** に着手できる状態です。\n\n- **内訳**: 名詞 30 / 形容詞 15 / 動詞 10 / 副詞 5（計60語）\n- **作業手順**:\n  - `python tools/overlap_check.py` および手動での類義語検索で既存語との重複をチェック\n  - まれな語は動詞で5語まで\n  - [docs/WORKFLOW.md](https://github.com/kohga1220-stack/logi/blob/main/docs/WORKFLOW.md) §5 の各種検査（`coin_words.py`, `validate.py`, `pytest`, node テスト等）を通過させて PR を作成\n\n指示をいただければ、第28弾の選定・追加作業をすぐに進められます。",
+      "status": "completed",
+      "model": "gemini-3.8-flash-high",
+      "client_type": "gemini-bridge",
+      "parent_message_id": "06c3ae4f-6d99-4af6-a947-1d07d721f8f9",
+      "created_at": "2026-10-23T17:01:27.083Z",
+      "sender": "macOS",
+      "is_cancelled": false
+    },
+    {
+      "id": "1e7d7a56-01f0-46e6-9f10-1dc1f2f8fa1a",
+      "role": "user",
+      "content": "PR #103 の通知を読みました。CI の完了、ドラフト解除、マージ済みの3件で、先ほどの報告と同じ経過です。新しくやることはありません。\n\n**【区切り報告】**\n- やったこと: 追加の作業はありません。#102 と #103 は、どちらもマージ済みで、購読も自動で終わりました。\n- 結果: 変更はありません（前回の報告のまま）。\n- 直さなかったこと・確認していないこと: 前回の報告と同じです。\n- あなたの判断が要ること:\n  - 提案020（Q1〜Q3。「お任せ」でもよい）。\n  - `elowe` の `ok` / `fix`。\n  - Antigravity が自分でマージしてよいPRの範囲。\n- 次にやること: 提案020の決定と、ANTI の第28弾（60語）を待ちます。",
+      "status": "cancelled",
+      "model": "gemini-3.8-flash-high",
+      "client_type": "gemini-bridge",
+      "parent_message_id": null,
+      "created_at": "2026-10-23T17:02:22.681Z",
+      "sender": "ios",
+      "is_cancelled": true
+    }
+  ]
 }
