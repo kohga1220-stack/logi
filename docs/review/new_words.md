@@ -7,7 +7,7 @@
 - 語幹が同じ: 語尾の1文字だけが違う、別の品詞の語（例: `kuka` 名詞と `kuko` 動詞）。同じ英語の別品詞なら意図した組です。そうでなければ偶然の一致なので、見分けにくくないか見てください
 - 同じ英語の語: 同じ英語の訳を持つ、別の語（同義語の候補）
 
-確認済み(ok): 2546 / 要修正(fix): 0 / 未確認(draft): 0
+確認済み(ok): 2546 / 要修正(fix): 0 / 未確認(draft): 100
 
 ## v0.7 英検3級レベルの語（487語）
 
@@ -1132,9 +1132,9 @@
 |---|---|---|---|---|
 | onapi | オンラインで | online |  | ok |
 
-## Antigravity の追加語（dictionary/anti_additions.csv）（1493語）
+## Antigravity の追加語（dictionary/anti_additions.csv）（1593語）
 
-### noun（927語）
+### noun（967語）
 
 | Logi | 日本語 | 英語 | 手がかり | 状況 |
 |---|---|---|---|---|
@@ -2065,8 +2065,48 @@
 | ona | 櫂 | oar | 語幹が同じ: one, ono | ok |
 | atika | 屋根裏 | attic |  | ok |
 | sejaja | 地下室 | cellar |  | ok |
+| tomipa | 画鋲 | thumbtack |  |  |
+| lemewa | 領収書 | receipt |  |  |
+| latuja | 湯船 | bathtub |  |  |
+| lunima | 調理台 | counter |  |  |
+| wuwota | 出汁 | broth |  |  |
+| tosawa | トースター | toaster |  |  |
+| tatiwa | 歯磨き粉 | toothpaste |  |  |
+| sasasa | 紙留め器 | stapler |  |  |
+| kepipa | クリップ | clip |  |  |
+| tokisa | トング | tongs |  |  |
+| nujuwa | 吊り革 | strap |  |  |
+| nunewa | 漏斗 | funnel |  |  |
+| kituwa | 中庭 | courtyard |  |  |
+| nasika | ニンニク | garlic |  |  |
+| nakoma | ベーコン | bacon |  |  |
+| tapona | 食卓布 | tablecloth |  |  |
+| wosepa | 受け皿 | saucer |  |  |
+| niseja | 水差し | pitcher |  |  |
+| jawuma | 手の平 | palm |  |  |
+| niwuta | 握り拳 | fist |  |  |
+| wesika | 胴回り | waist |  |  |
+| napina | 背骨 | spine |  |  |
+| ninena | 松ぼっくり | pinecone |  |  |
+| lakaja | アライグマ | raccoon |  |  |
+| welisa | 漂白剤 | bleach |  |  |
+| towena | 排水口 | drain |  |  |
+| lolaja | 靴紐 | shoelace |  |  |
+| kekeja | 鍵ホルダー | keychain |  |  |
+| tilopa | ドアノブ | doorknob |  |  |
+| mejata | 郵便受け | mailbox |  |  |
+| josema | 片手鍋 | saucepan |  |  |
+| jujuja | 卓上調味差し | cruet |  |  |
+| josuja | コップ敷き | coaster |  |  |
+| numepa | 踏み台 | stepladder |  |  |
+| wunawa | 日焼け止め | sunscreen |  |  |
+| wopuwa | 石鹸置き | soapdish |  |  |
+| lukoja | 本棚 | bookshelf |  |  |
+| muwila | 毛抜き | tweezer |  |  |
+| kitima | 爪切り | clipper |  |  |
+| lamaka | 電灯笠 | lampshade |  |  |
 
-### verb（358語）
+### verb（388語）
 
 | Logi | 日本語 | 英語 | 手がかり | 状況 |
 |---|---|---|---|---|
@@ -2428,8 +2468,38 @@
 | saleko | 降伏する | surrender |  | ok |
 | pemumo | 発酵する | ferment |  | ok |
 | poliko | 受粉する | pollinate |  | ok |
+| sakimo | すくい取る | skim |  |  |
+| muliko | 薄切りにする | slice |  |  |
+| pasuso | 留める | fasten |  |  |
+| umeto | 荷解きする | unpack |  |  |
+| muloto | 閲覧する | browse |  |  |
+| sokulo | こすり洗いする | scrub |  |  |
+| sipato | ふるいにかける | sift |  |  |
+| muleso | 追究する | pursue |  |  |
+| solapo | 平手打ちする | slap |  |  |
+| kuniko | 滑空する | glide |  |  |
+| pukeno | 突入する | plunge |  |  |
+| mukuto | よじ登る | scramble |  |  |
+| tawulo | ぶら下がる | dangle |  |  |
+| kilaso | 握り締める | clasp |  |  |
+| totepo | よろめく | totter |  |  |
+| paleto | 口ごもる | falter |  |  |
+| puniwo | 明滅する | flicker |  |  |
+| tenuno | 解凍する | defrost |  |  |
+| panuto | 換気する | ventilate |  |  |
+| jutuwo | 整頓する | straighten |  |  |
+| tikipo | 消毒する | disinfect |  |  |
+| seniko | 忍び笑いする | snicker |  |  |
+| pituno | そわそわ動く | fidget |  |  |
+| kasuno | 息をのむ | gasp |  |  |
+| kusumo | くしゃくしゃにする | crumple |  |  |
+| lumapo | 引っかき回す | rummage |  |  |
+| luloko | 開花する | blossom |  |  |
+| kelumo | 発芽する | germinate |  |  |
+| metito | 瞑想する | meditate |  |  |
+| neilo | 下稽古する | rehearse |  |  |
 
-### adj（175語）
+### adj（195語）
 
 | Logi | 日本語 | 英語 | 手がかり | 状況 |
 |---|---|---|---|---|
@@ -2608,8 +2678,28 @@
 | tise | 目眩がする/ふらふらする | dizzy | 語幹が同じ: tisa | ok |
 | peloke | 肥沃な | fertile |  | ok |
 | kuime | 後ろめたい | guilty |  | ok |
+| paluwe | 禿げた | bald |  |  |
+| ojuse | 嗄れた | hoarse |  |  |
+| kumise | 歯切れのよい | crisp |  |  |
+| palone | 不毛な | barren |  |  |
+| kilise | 脂っこい | greasy |  |  |
+| milume | まろやかな | mild |  |  |
+| wulute | 抜け目のない | shrewd |  |  |
+| kuese | 古風な | quaint |  |  |
+| setale | 鮮度の落ちた | stale |  |  |
+| pusame | 味気ない | bland |  |  |
+| pukume | ふくよかな | plump |  |  |
+| susake | 希薄な | sparse |  |  |
+| sotipe | 強張った | stiff |  |  |
+| kusune | 歪んだ | crooked |  |  |
+| suname | 傾斜した | slanted |  |  |
+| kumope | 艶やかな | glossy |  |  |
+| limute | ぐったりした | limp |  |  |
+| meteke | 几帳面な | meticulous |  |  |
+| pumote | 霜の降りた | frosty |  |  |
+| tusuke | 濁った | turbid |  |  |
 
-### adv（33語）
+### adv（43語）
 
 | Logi | 日本語 | 英語 | 手がかり | 状況 |
 |---|---|---|---|---|
@@ -2646,6 +2736,16 @@
 | situi | 横に | sideways |  | ok |
 | lenupi | 縦に | lengthwise |  | ok Claude確認: 残す。縦に は pelumi でも言えるが、英語の lengthwise を引くために残す |
 | pepoli | あらかじめ | beforehand |  | ok |
+| apipi | その後に | afterwards |  |  |
+| ipuli | 内陸に | inland |  |  |
+| tonili | 坂を下って | downhill |  |  |
+| okeli | 一晩中 | overnight |  |  |
+| okui | 家路に | homeward |  |  |
+| pakawi | 後方に | backwards |  |  |
+| kuloti | 時計回りに | clockwise |  |  |
+| kulesi | 十文字に | crosswise |  |  |
+| enasi | 今後は | henceforth |  |  |
+| sosui | 幾分 | somewhat |  |  |
 
 ## v0.10 機能語（指示詞・はい／いいえ）（3語）
 
