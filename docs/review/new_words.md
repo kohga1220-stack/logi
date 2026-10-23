@@ -7,7 +7,7 @@
 - 語幹が同じ: 語尾の1文字だけが違う、別の品詞の語（例: `kuka` 名詞と `kuko` 動詞）。同じ英語の別品詞なら意図した組です。そうでなければ偶然の一致なので、見分けにくくないか見てください
 - 同じ英語の語: 同じ英語の訳を持つ、別の語（同義語の候補）
 
-確認済み(ok): 2497 / 要修正(fix): 0 / 未確認(draft): 50
+確認済み(ok): 2497 / 要修正(fix): 0 / 未確認(draft): 49
 
 ## v0.7 英検3級レベルの語（487語）
 
@@ -367,7 +367,7 @@
 | putano | 植える | plant | 語幹が同じ: putana | ok |
 | kowo | 恐れる | fear | 語幹が同じ: kowa | ok |
 | popo | 借りる | borrow | 語幹が同じ: popa, pope | ok |
-| poiwo | 沸かす | boil |  | ok |
+| poiwo | 沸かす/茹でる | boil |  | ok |
 | kutito | 挨拶する | greet |  | ok |
 | kosuto | 費用がかかる | cost | 同じ英語の語: kosa | ok |
 | pikuso | 修理する | fix |  | ok |
@@ -1132,9 +1132,9 @@
 |---|---|---|---|---|
 | onapi | オンラインで | online |  | ok |
 
-## Antigravity の追加語（dictionary/anti_additions.csv）（1494語）
+## Antigravity の追加語（dictionary/anti_additions.csv）（1493語）
 
-### noun（928語）
+### noun（927語）
 
 | Logi | 日本語 | 英語 | 手がかり | 状況 |
 |---|---|---|---|---|
@@ -1634,7 +1634,7 @@
 | mikuma | 顕微鏡 | microscope |  | ok |
 | kawona | 大砲 | cannon |  | ok |
 | sopema | シャベル | shovel |  | ok |
-| pepama | ベランダ | veranda |  | ok |
+| pepama | ベランダ/ポーチ | veranda |  | ok |
 | kakopa | 絨毯 | carpet |  | ok |
 | memapa | 膜 | membrane |  | ok |
 | pawusa | パスポート | passport |  | ok |
@@ -2065,7 +2065,6 @@
 | ona | 櫂 | oar | 語幹が同じ: one, ono |  |
 | atika | 屋根裏 | attic |  |  |
 | sejaja | 地下室 | cellar |  |  |
-| loliwa | ポーチ | porch |  | Claude【修正推奨】ポーチ は既存の pepama（ベランダ / veranda）と同じ種類の場所（玄関や居室の外の張り出し）で、意味が重なる。削除して、pepama に ポーチ を併記するのがよい |
 
 ### verb（358語）
 
@@ -2406,7 +2405,7 @@
 | nupumo | 水没する | submerge |  | ok |
 | siniso | 同調する | synchronize |  | ok |
 | kotemo | 記念する | commemorate |  | ok |
-| ipojo | 拍手する | applaud |  | ok |
+| ipojo | 拍手する/手を叩く | applaud |  | ok |
 | suneso | 鼾をかく | snore |  | ok |
 | saloto | 敬礼する | salute |  | ok |
 | ewejo | 避難する | evacuate |  | ok |

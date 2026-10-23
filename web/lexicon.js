@@ -524,7 +524,7 @@ var LOGI_LEXICON = [
 {"w":"waite","pos":"adj","ja":["白い"],"jaNote":"白い","en":["white"]},
 {"w":"wete","pos":"adj","ja":["濡れた"],"jaNote":"濡れた","en":["wet"]},
 {"w":"wike","pos":"adj","ja":["弱い"],"jaNote":"弱い","en":["weak"]},
-{"w":"wite","pos":"adj","ja":["広い"],"jaNote":"広い","en":["wide","broad"]},
+{"w":"wite","pos":"adj","ja":["広い","広々とした"],"jaNote":"広い/広々とした","en":["wide","broad"]},
 {"w":"wome","pos":"adj","ja":["暖かい"],"jaNote":"暖かい","en":["warm"]},
 {"w":"aki","pos":"adv","ja":["再び"],"jaNote":"再び","en":["again"]},
 {"w":"aloi","pos":"adv","ja":["いつも"],"jaNote":"いつも","en":["always"]},
@@ -938,7 +938,7 @@ var LOGI_LEXICON = [
 {"w":"putano","pos":"verb","ja":["植える"],"jaNote":"植える","en":["plant"]},
 {"w":"kowo","pos":"verb","ja":["恐れる"],"jaNote":"恐れる","en":["fear"]},
 {"w":"popo","pos":"verb","ja":["借りる"],"jaNote":"借りる","en":["borrow"]},
-{"w":"poiwo","pos":"verb","ja":["沸かす"],"jaNote":"沸かす","en":["boil"]},
+{"w":"poiwo","pos":"verb","ja":["沸かす","茹でる"],"jaNote":"沸かす/茹でる","en":["boil"]},
 {"w":"kutito","pos":"verb","ja":["挨拶する"],"jaNote":"挨拶する","en":["greet"]},
 {"w":"kosuto","pos":"verb","ja":["費用がかかる"],"jaNote":"費用がかかる","en":["cost"]},
 {"w":"pikuso","pos":"verb","ja":["修理する"],"jaNote":"修理する","en":["fix"]},
@@ -2346,7 +2346,7 @@ var LOGI_LEXICON = [
 {"w":"mikuma","pos":"noun","ja":["顕微鏡"],"jaNote":"顕微鏡","en":["microscope"]},
 {"w":"kawona","pos":"noun","ja":["大砲"],"jaNote":"大砲","en":["cannon"]},
 {"w":"sopema","pos":"noun","ja":["シャベル"],"jaNote":"シャベル","en":["shovel"]},
-{"w":"pepama","pos":"noun","ja":["ベランダ"],"jaNote":"ベランダ","en":["veranda"]},
+{"w":"pepama","pos":"noun","ja":["ベランダ","ポーチ"],"jaNote":"ベランダ/ポーチ","en":["veranda"]},
 {"w":"kakopa","pos":"noun","ja":["絨毯"],"jaNote":"絨毯","en":["carpet"]},
 {"w":"memapa","pos":"noun","ja":["膜"],"jaNote":"膜","en":["membrane"]},
 {"w":"pawusa","pos":"noun","ja":["パスポート"],"jaNote":"パスポート","en":["passport"]},
@@ -3042,7 +3042,7 @@ var LOGI_LEXICON = [
 {"w":"asopi","pos":"adv","ja":["岸に"],"jaNote":"岸に","en":["ashore"]},
 {"w":"aimi","pos":"adv","ja":["前方に"],"jaNote":"前方に","en":["ahead"]},
 {"w":"otepi","pos":"adv","ja":["さもなければ","さもないと"],"jaNote":"さもなければ/さもないと","en":["otherwise"]},
-{"w":"ipojo","pos":"verb","ja":["拍手する"],"jaNote":"拍手する","en":["applaud"]},
+{"w":"ipojo","pos":"verb","ja":["拍手する","手を叩く"],"jaNote":"拍手する/手を叩く","en":["applaud"]},
 {"w":"suneso","pos":"verb","ja":["鼾をかく"],"jaNote":"鼾をかく","en":["snore"]},
 {"w":"saloto","pos":"verb","ja":["敬礼する"],"jaNote":"敬礼する","en":["salute"]},
 {"w":"ewejo","pos":"verb","ja":["避難する"],"jaNote":"避難する","en":["evacuate"]},
@@ -3137,7 +3137,6 @@ var LOGI_LEXICON = [
 {"w":"lujewa","pos":"noun","ja":["舵"],"jaNote":"舵","en":["rudder"]},
 {"w":"ona","pos":"noun","ja":["櫂"],"jaNote":"櫂","en":["oar"]},
 {"w":"atika","pos":"noun","ja":["屋根裏"],"jaNote":"屋根裏","en":["attic"]},
-{"w":"sejaja","pos":"noun","ja":["地下室"],"jaNote":"地下室","en":["cellar"]},
-{"w":"loliwa","pos":"noun","ja":["ポーチ"],"jaNote":"ポーチ","en":["porch"]}
+{"w":"sejaja","pos":"noun","ja":["地下室"],"jaNote":"地下室","en":["cellar"]}
 ];
 if (typeof module !== 'undefined') { module.exports = LOGI_LEXICON; }
