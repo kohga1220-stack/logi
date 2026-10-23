@@ -23,7 +23,7 @@
 | 16 | superlative | mi mosi laiko apa. | 私はリンゴが最も好きだ。 |
 | 17 | equality | li pio seme tote mi. | 彼は私と同じだ。 |
 | 18 | relative-clause | mi sio mana ta li lano. | 私は走っている人を見る。 |
-| 19 | relative-clause | mi sio mana ta li kipo apa tote mi. | 私は私にリンゴをくれた人を見る。 |
+| 19 | relative-clause | mi sio mana ta li pasu kipo apa tote mi. | 私は私にリンゴをくれた人を見る。 |
 | 20 | gerund | mi laiko lotona. | 私は読むことが好きだ。 |
 | 21 | gerund | mi wonuto komona. | 私は来ることを欲する。 |
 | 22 | causative | mi koso li tote komona. | 私は彼を来させる。 |
@@ -220,8 +220,8 @@
   li=彼/彼女/それ(pronoun) pio=です(verb) seme=同じ(adj) tote=へ(prep) mi=私(pronoun)
 - **18** `mi sio mana ta li lano.`  
   mi=私(pronoun) sio=見る(verb) mana=人(noun) ta=関係(marker) li=彼/彼女/それ(pronoun) lano=走る(verb)
-- **19** `mi sio mana ta li kipo apa tote mi.`  
-  mi=私(pronoun) sio=見る(verb) mana=人(noun) ta=関係(marker) li=彼/彼女/それ(pronoun) kipo=保つ与える(verb) apa=リンゴ(noun) tote=へ(prep) mi=私(pronoun)
+- **19** `mi sio mana ta li pasu kipo apa tote mi.`  
+  mi=私(pronoun) sio=見る(verb) mana=人(noun) ta=関係(marker) li=彼/彼女/それ(pronoun) pasu=過去(marker) kipo=保つ与える(verb) apa=リンゴ(noun) tote=へ(prep) mi=私(pronoun)
 - **20** `mi laiko lotona.`  
   mi=私(pronoun) laiko=好む(verb) lotona=読む(verb)+na(動名詞)
 - **21** `mi wonuto komona.`  
