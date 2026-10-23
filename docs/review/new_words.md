@@ -7,7 +7,7 @@
 - 語幹が同じ: 語尾の1文字だけが違う、別の品詞の語（例: `kuka` 名詞と `kuko` 動詞）。同じ英語の別品詞なら意図した組です。そうでなければ偶然の一致なので、見分けにくくないか見てください
 - 同じ英語の語: 同じ英語の訳を持つ、別の語（同義語の候補）
 
-確認済み(ok): 2444 / 要修正(fix): 0 / 未確認(draft): 61
+確認済み(ok): 2444 / 要修正(fix): 0 / 未確認(draft): 53
 
 ## v0.7 英検3級レベルの語（487語）
 
@@ -387,7 +387,7 @@
 | apupe | 怖い | afraid |  | ok |
 | kalepe | 注意深い | careful | 語幹が同じ: kalepi | ok |
 | ekuse | 興奮した | excited | 語幹が同じ: ekuso | ok |
-| pulime | 親しみやすい | friendly |  | ok |
+| pulime | 親しみやすい/友好的な | friendly |  | ok |
 | miwe | 元気な | fine |  | ok |
 | june | おかしい | funny | 同じ英語の語: inime | ok |
 | kulate | 嬉しい | glad |  | ok |
@@ -1029,12 +1029,12 @@
 | ite | 痒い | itchy | 語幹が同じ: ita, ito | ok |
 | supipe | 辛い | spicy |  | ok |
 | pitipe | かわいそうな | pitiful / poor | 同じ英語の語: pue | ok |
-| sutete | 厳しい | strict |  | ok |
+| sutete | 厳しい/厳格な | strict |  | ok |
 | sumepe | 臭い | smelly |  | ok |
 | pupuse | 悔しい | frustrated |  | ok |
 | tetele | 詳しい | detailed |  | ok |
 | pupope | 盛んな | prosperous |  | ok |
-| sutoke | 丈夫な | sturdy |  | ok |
+| sutoke | 丈夫な/頑強な | sturdy |  | ok |
 | salute | 鋭い | sharp |  | ok |
 | sute | ずるい | sly | 語幹が同じ: suta, suti | ok |
 | palese | 大切な | precious |  | ok |
@@ -1132,9 +1132,9 @@
 |---|---|---|---|---|
 | onapi | オンラインで | online |  | ok |
 
-## Antigravity の追加語（dictionary/anti_additions.csv）（1452語）
+## Antigravity の追加語（dictionary/anti_additions.csv）（1444語）
 
-### noun（909語）
+### noun（908語）
 
 | Logi | 日本語 | 英語 | 手がかり | 状況 |
 |---|---|---|---|---|
@@ -2023,7 +2023,6 @@
 | mosasa | 修道院 | monastery |  |  |
 | kejeta | 大聖堂 | cathedral |  |  |
 | japesa | 礼拝堂 | chapel |  |  |
-| witata | 城塞 | citadel |  | Claude【修正推奨】城塞 は同じバッチの joloma（fortress 要塞）・既存の kasuma（城 / castle）とほぼ同じ意味。まれな語なので削除し、必要なら要塞に城塞を併記 |
 | ejisa | 天文台 | observatory |  |  |
 | sajama | 聖域 | sanctuary |  |  |
 | sowata | 競技場 | stadium |  |  |
@@ -2037,7 +2036,7 @@
 | mawesa | 湿地 | marsh |  | Claude【任意】湿地 は既存の sawapa（沼 / swamp）と近い。marsh と swamp は英語でも近い語 |
 | luwala | 鍾乳石 | stalactite |  |  |
 | sojima | 蒸気船 | steamboat |  |  |
-| joloma | 要塞 | fortress |  |  |
+| joloma | 要塞/城塞 | fortress |  |  |
 | wapaka | 兵舎 | barracks |  | Claude【任意】barracks は複数形のような語形（単数でも barracks）。見出し語としては残してよいが、複数形を避ける方針との関係を確認 |
 | nonola | 独白 | monologue |  |  |
 | lapeja | 迷宮 | labyrinth |  |  |
@@ -2048,7 +2047,7 @@
 | tiwota | 蒸留所 | distillery |  |  |
 | lunepa | 鋳造所 | foundry |  |  |
 
-### verb（345語）
+### verb（343語）
 
 | Logi | 日本語 | 英語 | 手がかり | 状況 |
 |---|---|---|---|---|
@@ -2252,7 +2251,7 @@
 | umulo | 鑑賞する | appreciate |  | ok Claude【任意】鑑賞する の appreciate は 感謝する・評価する の意味もある。見出し語は enjoy/view に近い |
 | tutamo | 脚色する | dramatize |  | ok |
 | emawo | 強調する | emphasize |  | ok |
-| talito | 脅迫する | threaten |  | ok |
+| talito | 脅迫する/威嚇する | threaten |  | ok |
 | peseko | 拒否する | reject |  | ok |
 | waleno | 警告する | warn |  | ok |
 | putoto | 抗議する | protest |  | ok |
@@ -2393,12 +2392,10 @@
 | ewejo | 避難する | evacuate |  |  |
 | monopo | 独占する | monopolize |  |  |
 | nualo | 隔離する | quarantine |  |  |
-| isano | 威嚇する | intimidate |  | Claude【修正推奨】威嚇する は既存の talito（脅迫する / threaten）とほぼ同じ意味。まれな語なので削除し、talito に 威嚇する を併記 |
 | sopuwo | 実証する | substantiate |  | Claude【任意】実証する は既存の jukupa（証明）と近い。prove の動詞（証明する）が辞書にないので、別の意味（証拠で示す）として残してよい |
-| iwono | 就任させる | inaugurate |  | Claude【修正推奨】inaugurate の意味は「就任式を行う・開始する」で、日本語の 就任させる とは合わない。既存の sutato（始まる）・apelo（開ける）とも重なる。まれな語なので削除 |
 | keapo | 復権させる | rehabilitate |  | Claude【任意】rehabilitate は 更生させる・リハビリさせる が普通の意味。復権させる は法律用語に寄っている。日本語を 更生させる/復権させる にするか検討 |
 
-### adj（170語）
+### adj（165語）
 
 | Logi | 日本語 | 英語 | 手がかり | 状況 |
 |---|---|---|---|---|
@@ -2563,15 +2560,10 @@
 | motase | 控えめな | modest |  |  |
 | tilane | 透明な | transparent |  |  |
 | punape | 芳しい | fragrant |  |  |
-| likipe | 厳格な | rigid |  | Claude【修正推奨】厳格な は既存の sutete（厳しい / strict）とほぼ同じ意味。削除して sutete に 厳格な を併記 |
 | upuwe | 唐突な | abrupt |  | Claude【任意】唐突な は既存の sukene（急な / sudden）・unoke（意外な）と近い。abrupt の「そっけない」の意味は表せない |
-| ajike | 乾燥した | arid |  | Claude【修正推奨】乾燥した は既存の tulaie（乾いた / dry）とほぼ同じ意味。削除して tulaie に 乾燥した を併記 |
-| sotute | 頑強な | stout |  | Claude【修正推奨】頑強な は既存の sutoke（丈夫な / sturdy）・tulone（強い）とほぼ同じ意味。stout は「太った」の意味もあり見出し語としても紛らわしい。削除して sutoke に 頑強な を併記 |
 | osuje | 手厚い | hospitable |  | Claude【任意】hospitable の意味は もてなしのよい。手厚い だけだと別の語（手厚い看護 など）に読める。日本語を もてなしのよい に直すか検討 |
-| selewe | 澄み渡った | serene |  | Claude【修正推奨】serene は 穏やか・静か の意味で、既存の tutane（長閑な / peaceful）・kue（静かな / quiet）・kalume（calm）と重なる。日本語の 澄み渡った とも合わない。削除 |
 | litie | 光り輝く | radiant |  | Claude【任意】光り輝く は既存の sipo（輝く / shine）・pulaite（明るい / bright）と近い。radiant の自然な訳は 輝くばかりの。重なりを承知で残すか検討 |
 | pikute | 絵画的な | picturesque |  |  |
-| amije | 友好的な | amicable |  | Claude【修正推奨】友好的な は既存の pulime（親しみやすい / friendly）・ipume（親しい）とほぼ同じ意味。削除して pulime に 友好的な を併記 |
 
 ### adv（28語）
 
