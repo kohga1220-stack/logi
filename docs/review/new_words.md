@@ -2017,34 +2017,34 @@
 | mimuwa | 交響曲 | symphony |  | ok |
 | lolota | 肖像画 | portrait |  | ok |
 | kewela | 画廊 | gallery |  | ok |
-| wilewa | 旋風 | whirlwind |  |  |
+| wilewa | 旋風 | whirlwind |  | Claude【任意】旋風 は既存の tolowa（竜巻 / tornado）と近い。whirlwind は つむじ風 の意味もある |
 | kepata | 火口 | crater |  |  |
 | tosika | 化石 | fossil |  |  |
 | mosasa | 修道院 | monastery |  |  |
 | kejeta | 大聖堂 | cathedral |  |  |
 | japesa | 礼拝堂 | chapel |  |  |
-| witata | 城塞 | citadel |  |  |
+| witata | 城塞 | citadel |  | Claude【修正推奨】城塞 は同じバッチの joloma（fortress 要塞）・既存の kasuma（城 / castle）とほぼ同じ意味。まれな語なので削除し、必要なら要塞に城塞を併記 |
 | ejisa | 天文台 | observatory |  |  |
 | sajama | 聖域 | sanctuary |  |  |
 | sowata | 競技場 | stadium |  |  |
-| sejoka | 帆船 | sailboat |  |  |
+| sejoka | 帆船 | sailboat |  | Claude【任意】帆船 は既存の sipa（船）・jasuka（ヨット / yacht）と近い。種類を表す語なので残してよい |
 | soniwa | 日時計 | sundial |  |  |
 | mitowa | 神話 | mythology |  |  |
 | pokoja | 民間伝承 | folklore |  |  |
 | kowija | 協奏曲 | concerto |  |  |
 | sojaka | 奏鳴曲 | sonata |  |  |
 | tapewa | 綴れ織り | tapestry |  |  |
-| mawesa | 湿地 | marsh |  |  |
+| mawesa | 湿地 | marsh |  | Claude【任意】湿地 は既存の sawapa（沼 / swamp）と近い。marsh と swamp は英語でも近い語 |
 | luwala | 鍾乳石 | stalactite |  |  |
 | sojima | 蒸気船 | steamboat |  |  |
 | joloma | 要塞 | fortress |  |  |
-| wapaka | 兵舎 | barracks |  |  |
+| wapaka | 兵舎 | barracks |  | Claude【任意】barracks は複数形のような語形（単数でも barracks）。見出し語としては残してよいが、複数形を避ける方針との関係を確認 |
 | nonola | 独白 | monologue |  |  |
 | lapeja | 迷宮 | labyrinth |  |  |
 | mameta | 万華鏡 | kaleidoscope |  |  |
-| nusola | 序幕 | prologue |  |  |
+| nusola | 序幕 | prologue |  | Claude【任意】序幕 は演劇向きの言い方。prologue は プロローグ・序章 が普通。日本語を プロローグ/序章 に直すか検討 |
 | jiuna | 高架橋 | viaduct |  |  |
-| makema | 人台 | mannequin |  |  |
+| makema | 人台 | mannequin |  | Claude【任意】人台 は一般的でない。日本語は マネキン が普通。既存の toma（人形 / doll）とは別の意味（衣服を着せる台） |
 | tiwota | 蒸留所 | distillery |  |  |
 | lunepa | 鋳造所 | foundry |  |  |
 
@@ -2393,10 +2393,10 @@
 | ewejo | 避難する | evacuate |  |  |
 | monopo | 独占する | monopolize |  |  |
 | nualo | 隔離する | quarantine |  |  |
-| isano | 威嚇する | intimidate |  |  |
-| sopuwo | 実証する | substantiate |  |  |
-| iwono | 就任させる | inaugurate |  |  |
-| keapo | 復権させる | rehabilitate |  |  |
+| isano | 威嚇する | intimidate |  | Claude【修正推奨】威嚇する は既存の talito（脅迫する / threaten）とほぼ同じ意味。まれな語なので削除し、talito に 威嚇する を併記 |
+| sopuwo | 実証する | substantiate |  | Claude【任意】実証する は既存の jukupa（証明）と近い。prove の動詞（証明する）が辞書にないので、別の意味（証拠で示す）として残してよい |
+| iwono | 就任させる | inaugurate |  | Claude【修正推奨】inaugurate の意味は「就任式を行う・開始する」で、日本語の 就任させる とは合わない。既存の sutato（始まる）・apelo（開ける）とも重なる。まれな語なので削除 |
+| keapo | 復権させる | rehabilitate |  | Claude【任意】rehabilitate は 更生させる・リハビリさせる が普通の意味。復権させる は法律用語に寄っている。日本語を 更生させる/復権させる にするか検討 |
 
 ### adj（170語）
 
@@ -2563,15 +2563,15 @@
 | motase | 控えめな | modest |  |  |
 | tilane | 透明な | transparent |  |  |
 | punape | 芳しい | fragrant |  |  |
-| likipe | 厳格な | rigid |  |  |
-| upuwe | 唐突な | abrupt |  |  |
-| ajike | 乾燥した | arid |  |  |
-| sotute | 頑強な | stout |  |  |
-| osuje | 手厚い | hospitable |  |  |
-| selewe | 澄み渡った | serene |  |  |
-| litie | 光り輝く | radiant |  |  |
+| likipe | 厳格な | rigid |  | Claude【修正推奨】厳格な は既存の sutete（厳しい / strict）とほぼ同じ意味。削除して sutete に 厳格な を併記 |
+| upuwe | 唐突な | abrupt |  | Claude【任意】唐突な は既存の sukene（急な / sudden）・unoke（意外な）と近い。abrupt の「そっけない」の意味は表せない |
+| ajike | 乾燥した | arid |  | Claude【修正推奨】乾燥した は既存の tulaie（乾いた / dry）とほぼ同じ意味。削除して tulaie に 乾燥した を併記 |
+| sotute | 頑強な | stout |  | Claude【修正推奨】頑強な は既存の sutoke（丈夫な / sturdy）・tulone（強い）とほぼ同じ意味。stout は「太った」の意味もあり見出し語としても紛らわしい。削除して sutoke に 頑強な を併記 |
+| osuje | 手厚い | hospitable |  | Claude【任意】hospitable の意味は もてなしのよい。手厚い だけだと別の語（手厚い看護 など）に読める。日本語を もてなしのよい に直すか検討 |
+| selewe | 澄み渡った | serene |  | Claude【修正推奨】serene は 穏やか・静か の意味で、既存の tutane（長閑な / peaceful）・kue（静かな / quiet）・kalume（calm）と重なる。日本語の 澄み渡った とも合わない。削除 |
+| litie | 光り輝く | radiant |  | Claude【任意】光り輝く は既存の sipo（輝く / shine）・pulaite（明るい / bright）と近い。radiant の自然な訳は 輝くばかりの。重なりを承知で残すか検討 |
 | pikute | 絵画的な | picturesque |  |  |
-| amije | 友好的な | amicable |  |  |
+| amije | 友好的な | amicable |  | Claude【修正推奨】友好的な は既存の pulime（親しみやすい / friendly）・ipume（親しい）とほぼ同じ意味。削除して pulime に 友好的な を併記 |
 
 ### adv（28語）
 
@@ -2604,7 +2604,7 @@
 | opili | 頭上に | overhead |  |  |
 | asopi | 岸に | ashore |  |  |
 | aimi | 前方に | ahead |  |  |
-| otepi | さもなければ | otherwise |  |  |
+| otepi | さもなければ | otherwise |  | Claude【任意】さもなければ は既存の接続詞 ulesu（でなければ / unless）と近い。otherwise は副詞なので残してよいが、使い分けを確認 |
 
 ## v0.10 機能語（指示詞・はい／いいえ）（3語）
 
