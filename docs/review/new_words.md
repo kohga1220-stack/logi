@@ -7,7 +7,7 @@
 - 語幹が同じ: 語尾の1文字だけが違う、別の品詞の語（例: `kuka` 名詞と `kuko` 動詞）。同じ英語の別品詞なら意図した組です。そうでなければ偶然の一致なので、見分けにくくないか見てください
 - 同じ英語の語: 同じ英語の訳を持つ、別の語（同義語の候補）
 
-確認済み(ok): 2444 / 要修正(fix): 0 / 未確認(draft): 1
+確認済み(ok): 2444 / 要修正(fix): 0 / 未確認(draft): 61
 
 ## v0.7 英検3級レベルの語（487語）
 
@@ -1132,9 +1132,9 @@
 |---|---|---|---|---|
 | onapi | オンラインで | online |  | ok |
 
-## Antigravity の追加語（dictionary/anti_additions.csv）（1392語）
+## Antigravity の追加語（dictionary/anti_additions.csv）（1452語）
 
-### noun（879語）
+### noun（909語）
 
 | Logi | 日本語 | 英語 | 手がかり | 状況 |
 |---|---|---|---|---|
@@ -2017,8 +2017,38 @@
 | mimuwa | 交響曲 | symphony |  | ok |
 | lolota | 肖像画 | portrait |  | ok |
 | kewela | 画廊 | gallery |  | ok |
+| wilewa | 旋風 | whirlwind |  |  |
+| kepata | 火口 | crater |  |  |
+| tosika | 化石 | fossil |  |  |
+| mosasa | 修道院 | monastery |  |  |
+| kejeta | 大聖堂 | cathedral |  |  |
+| japesa | 礼拝堂 | chapel |  |  |
+| witata | 城塞 | citadel |  |  |
+| ejisa | 天文台 | observatory |  |  |
+| sajama | 聖域 | sanctuary |  |  |
+| sowata | 競技場 | stadium |  |  |
+| sejoka | 帆船 | sailboat |  |  |
+| soniwa | 日時計 | sundial |  |  |
+| mitowa | 神話 | mythology |  |  |
+| pokoja | 民間伝承 | folklore |  |  |
+| kowija | 協奏曲 | concerto |  |  |
+| sojaka | 奏鳴曲 | sonata |  |  |
+| tapewa | 綴れ織り | tapestry |  |  |
+| mawesa | 湿地 | marsh |  |  |
+| luwala | 鍾乳石 | stalactite |  |  |
+| sojima | 蒸気船 | steamboat |  |  |
+| joloma | 要塞 | fortress |  |  |
+| wapaka | 兵舎 | barracks |  |  |
+| nonola | 独白 | monologue |  |  |
+| lapeja | 迷宮 | labyrinth |  |  |
+| mameta | 万華鏡 | kaleidoscope |  |  |
+| nusola | 序幕 | prologue |  |  |
+| jiuna | 高架橋 | viaduct |  |  |
+| makema | 人台 | mannequin |  |  |
+| tiwota | 蒸留所 | distillery |  |  |
+| lunepa | 鋳造所 | foundry |  |  |
 
-### verb（335語）
+### verb（345語）
 
 | Logi | 日本語 | 英語 | 手がかり | 状況 |
 |---|---|---|---|---|
@@ -2357,8 +2387,18 @@
 | nupumo | 水没する | submerge |  | ok |
 | siniso | 同調する | synchronize |  | ok |
 | kotemo | 記念する | commemorate |  | ok |
+| ipojo | 拍手する | applaud |  |  |
+| suneso | 鼾をかく | snore |  |  |
+| saloto | 敬礼する | salute |  |  |
+| ewejo | 避難する | evacuate |  |  |
+| monopo | 独占する | monopolize |  |  |
+| nualo | 隔離する | quarantine |  |  |
+| isano | 威嚇する | intimidate |  |  |
+| sopuwo | 実証する | substantiate |  |  |
+| iwono | 就任させる | inaugurate |  |  |
+| keapo | 復権させる | rehabilitate |  |  |
 
-### adj（155語）
+### adj（170語）
 
 | Logi | 日本語 | 英語 | 手がかり | 状況 |
 |---|---|---|---|---|
@@ -2517,8 +2557,23 @@
 | iwipe | 無限の | infinite |  | ok |
 | lekape | 無茶な | reckless |  | ok |
 | jutune | 若々しい | youthful |  | ok |
+| imese | 厚かましい | insolent |  |  |
+| sunote | 自発的な | spontaneous |  |  |
+| kenele | 寛大な | generous |  |  |
+| motase | 控えめな | modest |  |  |
+| tilane | 透明な | transparent |  |  |
+| punape | 芳しい | fragrant |  |  |
+| likipe | 厳格な | rigid |  |  |
+| upuwe | 唐突な | abrupt |  |  |
+| ajike | 乾燥した | arid |  |  |
+| sotute | 頑強な | stout |  |  |
+| osuje | 手厚い | hospitable |  |  |
+| selewe | 澄み渡った | serene |  |  |
+| litie | 光り輝く | radiant |  |  |
+| pikute | 絵画的な | picturesque |  |  |
+| amije | 友好的な | amicable |  |  |
 
-### adv（23語）
+### adv（28語）
 
 | Logi | 日本語 | 英語 | 手がかり | 状況 |
 |---|---|---|---|---|
@@ -2545,6 +2600,11 @@
 | asiti | 脇に | aside |  | ok |
 | polepi | 永遠に | forever |  | ok |
 | sopei | 何とかして | somehow |  | ok |
+| minupi | その間に | meanwhile |  |  |
+| opili | 頭上に | overhead |  |  |
+| asopi | 岸に | ashore |  |  |
+| aimi | 前方に | ahead |  |  |
+| otepi | さもなければ | otherwise |  |  |
 
 ## v0.10 機能語（指示詞・はい／いいえ）（3語）
 
