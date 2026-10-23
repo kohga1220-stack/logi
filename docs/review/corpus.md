@@ -169,6 +169,14 @@
 | 162 | plan-negation | mi no pulao lotona pupa. | 私は本を読むつもりはない。 |
 | 163 | decision | mi pasu poso lotona pupa epule teia. | 私は毎日本を読むことにした。 |
 | 164 | just-now | mi onuli pasu loto pupa. | 私は本を読んだばかりだ。 |
+| 165 | state-verb | li malo. | 彼は結婚している。 |
+| 166 | state-verb | mi mo li. | 私は彼を知っている。 |
+| 167 | progressive | li konu ito. | 彼は食べている。 |
+| 168 | become-habit | li pasu pekomo lotona pupa. | 彼は本を読むようになった。 |
+| 169 | decided-by-others | somena pasu poso malona nete monata. | 来月結婚することになった。 |
+| 170 | about-to | mi suni ito. | 私は食べるところだ。 |
+| 171 | in-the-middle | mi konu ito. | 私は食べているところだ。 |
+| 172 | just-now | mi onuli pasu ito. | 私は食べたところだ。 |
 
 ## 語注（辞書から機械的に生成）
 
@@ -500,3 +508,19 @@
   mi=私(pronoun) pasu=過去(marker) poso=決める(verb) lotona=読む(verb)+na(動名詞) pupa=本(noun) epule=すべての(adj) teia=日(noun)
 - **164** `mi onuli pasu loto pupa.`  
   mi=私(pronoun) onuli=だけ(adv) pasu=過去(marker) loto=読む(verb) pupa=本(noun)
+- **165** `li malo.`  
+  li=彼/彼女/それ(pronoun) malo=結婚する(verb)
+- **166** `mi mo li.`  
+  mi=私(pronoun) mo=知る(verb) li=彼/彼女/それ(pronoun)
+- **167** `li konu ito.`  
+  li=彼/彼女/それ(pronoun) konu=進行(marker) ito=食べる(verb)
+- **168** `li pasu pekomo lotona pupa.`  
+  li=彼/彼女/それ(pronoun) pasu=過去(marker) pekomo=成る(verb) lotona=読む(verb)+na(動名詞) pupa=本(noun)
+- **169** `somena pasu poso malona nete monata.`  
+  somena=誰か(pronoun) pasu=過去(marker) poso=決める(verb) malona=結婚する(verb)+na(動名詞) nete=次の(adj) monata=月（暦）(noun)
+- **170** `mi suni ito.`  
+  mi=私(pronoun) suni=すぐに(adv) ito=食べる(verb)
+- **171** `mi konu ito.`  
+  mi=私(pronoun) konu=進行(marker) ito=食べる(verb)
+- **172** `mi onuli pasu ito.`  
+  mi=私(pronoun) onuli=だけ(adv) pasu=過去(marker) ito=食べる(verb)

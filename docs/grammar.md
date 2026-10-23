@@ -437,6 +437,15 @@ SVO + 前置詞句で代替。
 - 英語: have / has / had + 過去分詞（read・put・cut のように原形と同じ形の過去分詞も）、have ever / never / just / already + 過去分詞、have been to X（`pinu iko tote X`）、plan to・intend to・decide to + 動詞。
 - この規則に含めないもの: 〜ことになる・〜ようになる（受動態の禁止と関わる。別に決める）、〜ところだ（直前・最中）、〜てばかりいる。
 
+### 〜ている・〜ようになる・〜ことになる・〜ところだ（v0.29 確定、提案022）
+新しい語は作らない。`konu`（進行）、`pekomo`（成る）、`poso`（決める）、`somena`（誰か）、`suni`（すぐに）、`onuli`（ちょうど）と、動名詞（§3）を使う。
+- 〜ている（状態と進行）: 動作の「〜ている」は進行（`konu`）のまま（`li konu ito.` = 食べている）。状態を表す動詞（知る・結婚する・住む・持つ・着る・座る・立つ・分かる・愛する・信じる・覚える・太る・痩せる・死ぬ・壊れる）の「〜ている」は、`konu` を付けず、ふつうの形にする（`li malo.` = 結婚している、`mi mo li.` = 知っている、`li pasu malo.` = 結婚していた）。リストにない動詞は進行のまま。翻訳機の中のリストで決めている。
+- 〜ようになる: `pekomo` + 動名詞。`li pasu pekomo lotona pupa.`（彼は本を読むようになった）。
+- 〜ことになる（他の人が決めた）: `somena`（誰か）を主語にした `poso` + 動名詞（受動態を避ける）。`somena pasu poso malona nete monata.`（来月結婚することになった）。もとの主語（なる人）がある文は、動名詞の前に置く（`somena pasu poso mi malona nete monata.`）。自分で決めた 〜ことにする（`mi pasu poso lotona pupa.`）は、これまでどおり。
+- 〜ところだ: これから（〜するところだ）= `suni` を副詞の位置に置く（`mi suni ito.`）。最中（〜しているところだ）= 進行の `konu` だけ（「ところ」は訳さない。`mi konu ito.`）。直後（〜したところだ）= `onuli pasu`（〜たばかりと同じ。`mi onuli pasu ito.`）。
+- 英語: be about to V（`suni`）、come to like / love / know / understand（`pekomo` + 動名詞。come to see you のような目的の to は除く）。
+- この規則に含めないもの: 可能形 + ようになる（話せるようになる）、結果の状態の〜ている（開いている。辞書にない動詞）、〜ばかりいる、受け身。
+
 ### 仮定法
 接続詞 ipu（もし）+ 仮定マーカー wutu
 - ipu mi wutu pio pata, mi wutu pulaio.（もし鳥なら、飛ぶのに）
@@ -665,5 +674,6 @@ v0.5 で po を **tulimo**（英 dream の音訳: d→t, r→l, 子音連続を 
 | v0.26 | 動詞に続く表現を決めた（〜たい `wonuto`、〜始める・〜終わる・〜続ける `sutato`・`pino`・`konupo`、〜すぎる `tui`、〜やすい・〜にくい `pio ise`・`pio tipike`。すべて動名詞を使う。提案018、§7）。翻訳機が日本語と英語（want to・start / finish / keep ~ing・too・easy / hard to）に対応し、英語 `too` が `olusi` になる誤りを直した。新語なし。M1ko は「お任せ」と返事をし、Claude がおすすめの A を採った（すぎる の語順は、既存の副詞の位置の規則に合わせた）。3,070語 |
 | v0.27 | 授受を決めた（あげる・くれる `kipo` + 物 + `tote` + 受け手、もらう `leso` + 物 + `pulomute` + 与えた人、〜てあげる・〜てくれる は `pote` + 受け手、〜てもらう は与えた人を主語にした能動態。提案019、§7）。翻訳機が日本語（あげる・くれる・もらう・〜てあげる・〜てくれる・〜てもらう）と英語（bought me ~ など）に対応し、例文35が日本語から訳せるようになった。新語なし。M1ko は「お任せ」と返事をし、Claude がおすすめの A を採った。3,070語 |
 | v0.28 | 経験・予定・決心・〜たばかりを決めた（経験 `pinu` + `nepi` / `epepi`、つもり・予定 `pulao` + 動名詞、ことにする `poso` + 動名詞、たばかり `onuli pasu`。提案020、§7）。翻訳機が日本語（〜たことがある・ない、〜つもり、〜予定、〜ことにする、〜たばかり）と英語（have + 過去分詞・never / ever / just、read のような同形の過去分詞、have been to、plan / intend / decide to）に対応した。新語なし。M1ko は「お任せとする」と返事をし、Claude がおすすめの A を採った。3,122語 |
+| v0.29 | 〜ている（状態と進行）・〜ようになる・〜ことになる・〜ところだを決めた（状態の動詞の〜ているは `konu` なし、〜ようになる `pekomo` + 動名詞、〜ことになる `somena` を主語にした `poso` + 動名詞、〜ところだ `suni` / `konu` / `onuli pasu`。提案022、§7）。翻訳機が日本語と英語（be about to、come to like）に対応した。新語なし。M1ko は「おまかせ」と返事をし、Claude がおすすめの A を採った。3,122語 |
 | v0.4 | 疑問詞はその場置き、法副詞は副詞の位置（マーカーの前）と §7 に追記 |
 | v0.4 | 同義語33語を deprecated にし（status / replaced_by 列を追加）、正本の選び方を §10.6 に記載 |

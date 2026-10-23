@@ -278,19 +278,33 @@
     // 経験・たばかり・つもり・予定・ことにする（docs/proposals/020）。動詞のあとの決まった言い方を、字面で見て1つの動詞の語にする。
     // 経験は pinu（+ nepi / epepi）、たばかり は onuli + 過去、つもり・予定 は pulao、ことにする は poso（どちらも動詞の動名詞つき）
     var TA_SUFFIX = [[/^こと[がは](ある|あります)/, { exp: true }], [/^こと[がは](ない|ありません)/, { exp: true, expNeg: true }],
-      [/^ばかり(だ|です|でした|だった)/, { just: true }]];
+      [/^ばかり(だ|です|でした|だった)/, { just: true }], [/^ところ(だ|です|でした|だった)/, { just: true }]];
+    // 〜ているところだ（最中）は「ところ」を訳さず、進行（konu）だけ（docs/proposals/022）
+    var PROG_SUFFIX = [[/^ところ(?:だ|です)/, { prog: true }], [/^ところ(?:でした|だった)/, { prog: true, past: true }]];
     var PLAIN_SUFFIX = [];
     if (byW.pulao) PLAIN_SUFFIX.push([/^(?:つもり|予定)(?:だ|です)/, { aux: 'pulao' }], [/^(?:つもり|予定)(?:でした|だった)/, { aux: 'pulao', past: true }],
       [/^つもり(?:はない|はありません|ではない|じゃない)/, { aux: 'pulao', neg: true }]);
+    // 〜するところだ（これから）は suni、〜ようになる は pekomo + 動名詞、〜ことになる（他の人が決めた）は somena を主語にした poso + 動名詞（docs/proposals/022）
+    if (byW.suni) PLAIN_SUFFIX.push([/^ところ(?:だ|です)/, { soon: true }], [/^ところ(?:でした|だった)/, { soon: true, past: true }]);
+    if (byW.pekomo) PLAIN_SUFFIX.push([/^ようにな(?:る|ります)/, { aux: 'pekomo' }], [/^ようにな(?:った|りました)/, { aux: 'pekomo', past: true }],
+      [/^ようにな(?:らない|りません)/, { aux: 'pekomo', neg: true }], [/^ようにな(?:らなかった|りませんでした)/, { aux: 'pekomo', neg: true, past: true }]);
+    if (byW.poso && byW.somena) PLAIN_SUFFIX.push([/^ことにな(?:る|ります)/, { aux: 'poso', agent: true }], [/^ことにな(?:った|りました)/, { aux: 'poso', agent: true, past: true }],
+      [/^ことにな(?:らない|りません)/, { aux: 'poso', agent: true, neg: true }]);
     if (byW.poso) PLAIN_SUFFIX.push([/^ことに(?:する|します)/, { aux: 'poso' }], [/^ことに(?:した|しました)/, { aux: 'poso', past: true }],
       [/^ことに(?:しない|しません)/, { aux: 'poso', neg: true }], [/^ことに(?:しなかった|しませんでした)/, { aux: 'poso', neg: true, past: true }]);
+    // 〜ている が状態を表す動詞（知っている・結婚している）は、進行（konu）にしない（docs/proposals/022）
+    var STATE_JA = ['知る', '結婚する', '住む', '持つ', '着る', '座る', '立つ', '似る', '分かる', '愛する', '信じる', '覚える', '太る', '痩せる', '死ぬ', '壊れる'];
+    var STATE_W = {};
+    lexicon.forEach(function (e) {
+      if (e.pos === 'verb' && e.ja.some(function (j) { return STATE_JA.indexOf(j) >= 0; })) STATE_W[e.w] = 1;
+    });
     function onlyTags(tags, keys) {
       var own = Object.keys(tags || {});
       return own.length === keys.length && own.every(function (k) { return keys.indexOf(k) >= 0; });
     }
     // 動詞の語 tok の直後（rest）が、上の言い方なら、{ tok, len } を返す
     function verbSuffix(tok, rest) {
-      var rules = onlyTags(tok.tags, ['past']) ? TA_SUFFIX : onlyTags(tok.tags, []) ? PLAIN_SUFFIX : null;
+      var rules = onlyTags(tok.tags, ['past']) ? TA_SUFFIX : onlyTags(tok.tags, []) ? PLAIN_SUFFIX : onlyTags(tok.tags, ['prog']) ? PROG_SUFFIX : null;
       if (!rules || tok.e.w === 'alo' || tok.e.w === 'pio') return null;
       for (var r = 0; r < rules.length; r++) {
         var m = rules[r][0].exec(rest);
@@ -1000,7 +1014,7 @@
         pred = { kind: 'verb', e: last.e, imp: !!last.tags.imp, polite: !!last.tags.polite, hort: !!last.tags.hort, ambig: last.tags.ambig };
         if (last.tags.past) tense = 'past';
         if (last.tags.neg) neg = true;
-        if (last.tags.prog) aspect = 'prog';
+        if (last.tags.prog && !STATE_W[last.e.w]) aspect = 'prog';
         if (last.tags.perf) aspect = 'perf';
         if (last.tags.modal) advs.unshift(item(last.tags.modal));
         // 〜すぎる（tui）・〜たい／〜始める／〜終わる／〜続ける（wonuto／sutato／pino／konupo + 動名詞）（docs/proposals/018）
@@ -1015,6 +1029,8 @@
           else if (question) advs.push(item('epepi'));
         }
         if (last.tags.just) { advs.push(item('onuli')); tense = 'past'; }
+        if (last.tags.soon) advs.push(item('suni'));
+        pred.agent = last.tags.agent;
         toks.pop();
       } else if (last && (last.k === 'ADJ' || last.k === 'ANA') && !last.attr) {
         pred = { kind: 'adj', e: last.e, gerundOf: last.gerundOf };
@@ -1168,7 +1184,12 @@
         });
         leftover(ir, bareLeft, notes);
         if (recipientObj && !ir.object) ir.object = recipientObj;
-        if (pred.gerundOf) ir.object = [item(pred.gerundOf.w + 'na', { gerund: pred.gerundOf.w })].concat(ir.object || []);
+        if (pred.gerundOf) {
+          // 〜ことになる: 主語を somena にし、もとの主語（なる人）は動名詞の前に置く（受動態を避ける。docs/proposals/022）
+          var affected = pred.agent && ir.subject ? ir.subject : [];
+          ir.object = affected.concat([item(pred.gerundOf.w + 'na', { gerund: pred.gerundOf.w })], ir.object || []);
+        }
+        if (pred.agent) ir.subject = [item('somena')];
         return ir;
       }
       if (pred && pred.kind === 'adj') {
@@ -1603,6 +1624,7 @@
     // have のあとに入れられる副詞と、原形と同じ形の過去分詞（docs/proposals/020）
     var PERFECT_ADV = { not: 1, never: 1, ever: 1, just: 1, already: 1 };
     var SAME_PP = { read: 1, put: 1, cut: 1, set: 1, let: 1, hit: 1, hurt: 1, cost: 1, shut: 1, quit: 1, spread: 1 };
+    var COME_TO_STATE = { like: 1, love: 1, hate: 1, know: 1, understand: 1, believe: 1, respect: 1, enjoy: 1, appreciate: 1, trust: 1, accept: 1 };
     var TO_ADJ_EN = { easy: 'ise', difficult: 'tipike', hard: 'tipike' };
     var VERB_WANTS_GERUND = { want: 1, like: 1, love: 1, hope: 1, wish: 1, try: 1, start: 1, begin: 1,
       enjoy: 1, stop: 1, finish: 1, keep: 1, avoid: 1, practice: 1, quit: 1, continue: 1, hate: 1, plan: 1, decide: 1, intend: 1 };
@@ -2037,6 +2059,14 @@
           var isBeen = cur.peek(hk) === 'been';
           if (isPP || afterNot || isBeen) { perfect = true; if (tk === 'had') ir.tense = 'past'; cur.next(); continue; }
         }
+        // be about to V は「これから〜する」。suni（すぐに）を副詞の位置に置き、be は使わない（docs/proposals/022）
+        if (beForm && tk === 'about' && cur.peek(1) === 'to' && cur.peek(2) && findVerb(cur.peek(2)) && findVerb(cur.peek(2)).form === 'base') {
+          if (beForm === 'was' || beForm === 'were') ir.tense = 'past';
+          beForm = null;
+          ir.advs.push(item('suni'));
+          cur.next(); cur.next();
+          continue;
+        }
         // have been to X は「行ったことがある」。been を gone に読み替えて、行く（iko）+ 前置詞句にする（docs/proposals/020）
         if (tk === 'been' && perfect && cur.peek(1) === 'to') { cur.t[cur.i] = 'gone'; break; }
         if (BE[tk]) { beForm = tk; cur.next(); continue; }
@@ -2185,6 +2215,13 @@
       if (verb.form === 'past' && !ir.tense && !perfect) ir.tense = 'past';
       ir.verb = verb.e.w;
       var lemma = verb.lemma;
+      // come to V は「〜するようになる」（pekomo + 動名詞）。plan と同じ to + 動詞の扱いにする（docs/proposals/022）
+      // 目的（come to see you）と区別するため、気持ち・理解の動詞（like・love・know など）が続くときだけ
+      var comeTo = lemma === 'come' && cur.peek() === 'to' && cur.peek(1) && findVerb(cur.peek(1)) && findVerb(cur.peek(1)).form === 'base' && COME_TO_STATE[findVerb(cur.peek(1)).lemma];
+      if (comeTo && byW.pekomo) {
+        ir.verb = 'pekomo';
+        lemma = 'plan';
+      }
       // keep ~ing は「続ける」（konupo）。keep だけなら kipo（保つ・与える）のまま（docs/proposals/018）
       if (lemma === 'keep' && byW.konupo && cur.peek() && findVerb(cur.peek()) && findVerb(cur.peek()).form === 'ing') ir.verb = 'konupo';
       // 間接疑問（docs/proposals/009）: asked what I ate / know whether he comes → 節 + ka
