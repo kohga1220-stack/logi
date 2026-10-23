@@ -387,7 +387,7 @@ SVO + 前置詞句で代替。
 - 比較級: moli + 形容詞 + tanute + 基準（〜より）（moli は辞書既存の副詞「もっと」。mor の代替）
   例: mi pio moli kute tanute tu.（私はあなたより良い）
 - 最上級: mosi + 形容詞または動詞（mi mosi laiko apa.）
-- 副詞が形容詞を修飾するとき（moli, peli など）は形容詞の直前に置く。上の「副詞の位置」は動詞を修飾する副詞の規則。
+- 副詞が形容詞を修飾するとき（moli など）は形容詞の直前に置く。上の「副詞の位置」は動詞を修飾する副詞の規則。程度の副詞（peli・sumoli・tui など）は、述語の形容詞のときは副詞の位置（`li peli pio wawe.`）、名詞を修飾する形容詞のときは形容詞の直前（`peli kue luma.`。v0.31 で明記）。
 - 同等: seme + tote（〜と同じ）
 - 同じくらい・〜ほど…ない（v0.22 確定、提案014）: `seme` を形容詞の前に置き、基準は `tote` で導く。否定は `no` を `pio` の前に置く。
   `mi pio seme wuje tote li.`（私は彼と同じくらい忙しい）、`li no pio seme pasute tote mi.`（彼は私ほど速くない）、英語 as ~ as も同じ。
@@ -453,6 +453,17 @@ SVO + 前置詞句で代替。
 - 結果の状態の〜ている: 変化を表す動詞の「〜ている」は、対応する形容詞があるとき、進行（`konu`）にせず `pio` + 形容詞にする。`winuta pio apele.`（窓が開いている）、`pupula pio tulaie.`（床が乾いている）。対応する形容詞がない動詞（辞書にない動詞）は、ANTI が追加するまで訳さない。動作の〜ている（走っている）は、進行のまま。
 - make + 目的語 + 名詞: 目的語のあとの名詞が役割・身分（teacher・king・captain など）なら「〜にした」（`koso` + 目的語 + 名詞。`mi pasu koso li titusa.`）。それ以外の名詞（lunch・tea など）なら「作ってくれた」（`meko` + 物 + `pote` + 受け手。`li pasu meko lunusa pote mi.`）。make + 名詞だけ（I made tea）は `meko`。make + 代名詞 + 動詞（I made him come）は、使役の `koso`（§7 の使役）。
 - この規則に含めないもの: 辞書にない動詞、受け身。
+
+### 数量・程度の言い方（v0.31 確定、提案024）
+新しい語は作らない。`mene`（多くの）・`epule`（すべての）の派生副詞（`-e` → `-i`）と、辞書の `elumi`（ほとんど）・`sumoli`（少し）・`peli`（とても）を使う。
+- たくさん・much・a lot（動詞を修飾）: `meni` を副詞の位置に置く。`mi meni pasu ito.`（たくさん食べた）。名詞を修飾するとき（たくさんの本・a lot of books）は `mene pupa`。
+- 全部・all of it（動詞を修飾）: `epuli` を副詞の位置に置く。`mi epuli pasu ito li.`（I ate all of it）。名詞を修飾するとき（すべての学生・all the students）は `epule sutua`。
+- ほとんどの N・most N: `elumi epule` + 名詞。`elumi epule mana pasu komo.`（ほとんどの人が来た）。動詞の「ほとんど〜した」は、`elumi` を副詞の位置に置く。
+- あまり〜ない・not very・not much: 述語が形容詞なら `peli`、動詞なら `meni` を副詞の位置に置き、`no` を続ける。`li peli no pio wawe.`（あまり背が高くない）、`mi meni no ito.`（あまり食べない）。
+- 少し・a little: `sumoli` を副詞の位置に置く。`mi sumoli pio tilete.`（少し疲れている）、`mi sumoli ito.`（少し食べた）。
+- 程度の副詞（`peli`・`sumoli`・`ekisi`・`lateli`・`tui`）が、名詞を修飾する形容詞にかかるときは、形容詞の直前に置く: `peli lase usa alo.`（とても大きい家がある）。
+- 英語の複数形に数量の語（many・most・all・few・some）がつくときは、複数形の `mene` を足さない: `piue sutua pasu komo.`（Few students came）。
+- 否定のない「あまり」は訳さない（注意を表示する）。
 
 ### 仮定法
 接続詞 ipu（もし）+ 仮定マーカー wutu
@@ -684,5 +695,6 @@ v0.5 で po を **tulimo**（英 dream の音訳: d→t, r→l, 子音連続を 
 | v0.28 | 経験・予定・決心・〜たばかりを決めた（経験 `pinu` + `nepi` / `epepi`、つもり・予定 `pulao` + 動名詞、ことにする `poso` + 動名詞、たばかり `onuli pasu`。提案020、§7）。翻訳機が日本語（〜たことがある・ない、〜つもり、〜予定、〜ことにする、〜たばかり）と英語（have + 過去分詞・never / ever / just、read のような同形の過去分詞、have been to、plan / intend / decide to）に対応した。新語なし。M1ko は「お任せとする」と返事をし、Claude がおすすめの A を採った。3,122語 |
 | v0.29 | 〜ている（状態と進行）・〜ようになる・〜ことになる・〜ところだを決めた（状態の動詞の〜ているは `konu` なし、〜ようになる `pekomo` + 動名詞、〜ことになる `somena` を主語にした `poso` + 動名詞、〜ところだ `suni` / `konu` / `onuli pasu`。提案022、§7）。翻訳機が日本語と英語（be about to、come to like）に対応した。新語なし。M1ko は「おまかせ」と返事をし、Claude がおすすめの A を採った。3,122語 |
 | v0.30 | 可能形 + ようになる・結果の状態の〜ている・make + 目的語 + 名詞を決めた（`pekomo kani 動詞`、`pio` + 形容詞、役割の名詞は `koso`・それ以外は `meko` + `pote`。提案023、§7）。翻訳機が日本語と英語に対応した。新語なし。M1ko は「全て一任する」と返事をし、Claude がおすすめの A を採った。3,171語 |
+| v0.31 | 数量・程度の言い方を決めた（たくさん = `meni`、全部 = `epuli`、ほとんどの N = `elumi epule` + N、あまり〜ない = `peli`／`meni` + `no`、少し = `sumoli`。提案024、§7）。翻訳機が日本語と英語に対応した。新語なし。M1ko は「全て許可」と返事をし、Claude がおすすめの A を採った。3,171語 |
 | v0.4 | 疑問詞はその場置き、法副詞は副詞の位置（マーカーの前）と §7 に追記 |
 | v0.4 | 同義語33語を deprecated にし（status / replaced_by 列を追加）、正本の選び方を §10.6 に記載 |

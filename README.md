@@ -108,7 +108,7 @@ logi/
 ├── web/
 │   └── index.html          Translator page (Japanese/English → Logi) / 翻訳機（see web/README.md）
 ├── corpus/
-│   └── examples.csv        176 example sentences by grammar feature / 機能別例文176文
+│   └── examples.csv        183 example sentences by grammar feature / 機能別例文183文
 ├── dictionary/
 │   ├── final.csv           3,171-word validated dictionary / 検証済み辞書3,171語
 │   ├── eiken3_additions.csv  Eiken grade-3 level word list added in v0.7 / 英検3級レベルの追加語リスト
@@ -170,6 +170,7 @@ logi/
 | v0.28 | Experience, plans and decisions — decided in `docs/proposals/020` (M1ko left it to Claude; option A): *have read / have never read* = `pinu` (+ `nepi` / `epepi`), *plan to* = `pulao` + gerund, *decide to* = `poso` + gerund, *have just ~ed* = `onuli pasu`; the translator handles Japanese and English; no new words |
 | v0.29 | States, becoming and "about to" — decided in `docs/proposals/022` (M1ko left it to Claude; option A): stative verbs in *-te iru* get no progressive marker (`li malo.` = he is married), *come to V* = `pekomo` + gerund, *it was decided that* = `somena pasu poso` + gerund, *about to V* = `suni`; the translator handles Japanese and English; no new words |
 | v0.30 | Ability, resulting states and *make* — decided in `docs/proposals/023` (M1ko left everything to Claude; option A): *became able to* = `pekomo kani V`, *-te iru* for a resulting state = `pio` + adjective (`winuta pio apele.`), *make him a teacher* = `koso` (role nouns) vs *make me lunch* = `meko` + `pote`; the translator handles Japanese and English; no new words |
+| v0.31 | Quantity and degree — decided in `docs/proposals/024` (M1ko said "全て許可"; option A): *a lot* = `meni`, *all of it* = `epuli`, *most N* = `elumi epule` N, *not very / not much* = `peli` / `meni` + `no`, *a little* = `sumoli`; the translator handles Japanese and English; no new words |
 
 ---
 

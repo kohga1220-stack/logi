@@ -510,6 +510,15 @@
       });
     });
 
+    // 数量・程度の言い方（docs/proposals/024）: たくさん → meni（mene の派生副詞）、全部 → epuli（epule の派生副詞）、
+    // ほとんどの N → elumi epule N、あまり〜ない → peli（形容詞）／meni（動詞）+ no
+    if (ADV_OF.mene) ['たくさん', '沢山', 'いっぱい', 'たっぷり'].forEach(function (a) { addJa(a, { k: 'ADV', e: { w: ADV_OF.mene } }); });
+    if (ADV_OF.epule) ['全部', 'すべて', '全て', '全く全部'].forEach(function (a) { addJa(a, { k: 'ADV', e: { w: ADV_OF.epule } }); });
+    if (byW.mene) ['たくさんの', '沢山の', '数多くの', 'いっぱいの'].forEach(function (a) { addJa(a, { k: 'ADJ', e: byW.mene, tags: {}, attr: true }); });
+    if (byW.elumi && byW.epule) ['ほとんどの', '大半の', '大部分の'].forEach(function (a) { addJa(a, { k: 'ADJ', e: byW.epule, tags: {}, attr: true, pre: 'elumi' }); });
+    ['あまり', 'あんまり'].forEach(function (a) { addJa(a, { k: 'DEGNEG' }); });
+    var DEG_ADV = { peli: 1, ekisi: 1, lateli: 1, sumoli: 1, tui: 1 };
+
     function toHalfWidth(s) {
       return s.replace(/[０-９]/g, function (c) { return String.fromCharCode(c.charCodeAt(0) - 0xFEE0); });
     }
@@ -706,6 +715,8 @@
       }
       while (i < n) {
         var t = tokens[i];
+        // 名詞を修飾する形容詞の前の程度の副詞（とても大きい家 → peli lase usa）は、形容詞の直前に置く
+        if (t.k === 'ADV' && DEG_ADV[t.e.w] && tokens[i + 1] && tokens[i + 1].k === 'ADJ' && !(tokens[i + 1].tags && (tokens[i + 1].tags.past || tokens[i + 1].tags.neg)) && isNpStart(tokens[i + 2])) { mods.push(item(t.e.w)); i++; continue; }
         if (t.k === 'ADV') { advs.push(item(t.e.w)); i++; continue; }
         if (t.k === 'WH' && (t.e.w === 'waia' || t.e.w === 'aua')) { advs.push(item(t.e.w)); i++; continue; }
         if (t.k === 'NUMC') {
@@ -802,6 +813,7 @@
         }
         if (t.k === 'ADJ' && (t.attr || isNpStart(tokens[i + 1])) && isNpStart(tokens[i + 1])) {
           if (t.tags && t.tags.too) mods.push(item('tui'));
+          if (t.pre) mods.push(item(t.pre));
           mods.push(item(t.e.w)); i++; continue;
         }
         if (t.k === 'ANA' && isNpStart(tokens[i + 1])) { mods.push(item(t.e.w)); i++; continue; }
@@ -889,6 +901,7 @@
     }
 
     // 〜てもらう のとき、受け手を目的語にする動詞（人を助ける）。ほかの動詞は pote + 受け手
+    var QUANT_ADJ = { epule: 1, mene: 1, piue: 1, some: 1, ituse: 1, pope: 1, totale: 1, sukate: 1 };
     var BENEFIT_OBJECT = { elupo: 1 };
     var NON_DEGREE_ADV = { kani: 1, masi: 1, sati: 1, mei: 1, olusi: 1, kuni: 1, no: 1, mosi: 1, moli: 1 };
     var UNIT_WORDS = { metela: 1, kipoma: 1, milima: 1, lulama: 1, kikoka: 1, litapa: 1, pepuka: 1 };
@@ -1023,6 +1036,9 @@
       var advs = [];
       var tense = null, aspect = null, neg = false;
       var toks = tokens.filter(function (t) { return t.k !== 'COMMA'; });
+      // あまり〜ない（docs/proposals/024）: 述語が形容詞なら peli、動詞なら meni を、副詞の位置に置く。否定のないあまりは訳さない
+      var degNeg = toks.some(function (t) { return t.k === 'DEGNEG'; });
+      if (degNeg) toks = toks.filter(function (t) { return t.k !== 'DEGNEG'; });
       var comp = splitComplement(toks, question, notes) || splitIndirect(toks, question, notes);
       if (comp) return comp;
       var pred = null;
@@ -1088,6 +1104,10 @@
         pred = { kind: 'cop' };
         if (copTags.past) tense = 'past';
         if (copTags.neg) neg = true;
+      }
+      if (degNeg) {
+        if (neg && pred && (pred.kind === 'adj' || pred.kind === 'verb')) advs.push(item(pred.kind === 'adj' ? 'peli' : 'meni'));
+        else notes.push('否定のない「あまり」は訳しません。');
       }
       var chunks = chunkJa(toks, advs, notes);
       var subjectChunk = null;
@@ -1763,6 +1783,7 @@
     function findAdv(tok) {
       var es = (enIndex[tok] || []).filter(function (e) { return e.pos === 'adv'; });
       if (es.length) return es[0];
+      if (tok === 'much' && ADV_OF.mene) return { w: ADV_OF.mene, pos: 'adv' };
       // -ly 副詞（docs/proposals/016）: 形容詞に戻して、派生の副詞（-e → -i）にする。happily → happy → api
       if (/ly$/.test(tok) && tok.length > 4) {
         var bases = [tok.slice(0, -2), tok.slice(0, -1) + 'e'];
@@ -1862,6 +1883,12 @@
         if (tok === 'what' && cur.peek(1) && !BE[cur.peek(1)] && findNoun(cur.peek(1))) { items.push(item('wata')); cur.next(); continue; }
         if (tok === 'many' || tok === 'some') { items.push(item(tok === 'many' ? 'mene' : 'some')); hasQuant = true; cur.next(); continue; }
         if (tok === 'most' && cur.peek(1) && findAdj(cur.peek(1))) { items.push(item('mosi')); cur.next(); continue; }
+        // most people → elumi epule mana（ほとんどすべての）。most of the people も同じ（docs/proposals/024）
+        if (tok === 'most' && byW.elumi && byW.epule && cur.peek(1) && (cur.peek(1) === 'of' || DETERMINERS[cur.peek(1)] || POSSESSIVES[cur.peek(1)] || findNoun(cur.peek(1)))) {
+          items.push(item('elumi'), item('epule')); hasQuant = true; cur.next();
+          if (cur.peek() === 'of') cur.next();
+          continue;
+        }
         // 順序数（docs/proposals/013）: the third house → 名詞のあとに semuna + 数（usa semuna te）。名詞が続くときだけ
         if (ORDINALS[tok] !== undefined && cur.peek(1) && findNoun(cur.peek(1)) && byW.semuna) {
           ordinalNum = ORDINALS[tok]; cur.next(); continue;
@@ -1871,7 +1898,9 @@
         var nextTok = cur.peek(1);
         if (adj && !(noun && !(nextTok && (findNoun(nextTok) || findAdj(nextTok))) )) {
           if (adj.deg === 'sup') items.push(item('mosi'));
-          items.push(item(adj.e.w)); cur.next(); continue;
+          items.push(item(adj.e.w));
+          if (QUANT_ADJ[adj.e.w]) hasQuant = true;
+          cur.next(); continue;
         }
         if (noun) {
           cur.next();
@@ -2032,9 +2061,23 @@
       return translateEnTokens(text.match(/[a-z]+|[0-9]+/g) || [], question, notes, opts);
     }
 
+    // 数量の言い方（docs/proposals/024）: a lot of・lots of → many、a lot・lots → much（副詞）、a little + 形容詞・副詞・文末 → little（sumoli）
+    function quantityPhrases(tokens) {
+      var out = [];
+      for (var i = 0; i < tokens.length; i++) {
+        var t = tokens[i], n = tokens[i + 1];
+        if (t === 'a' && n === 'lot') { if (tokens[i + 2] === 'of') { out.push('many'); i += 2; } else { out.push('much'); i += 1; } continue; }
+        if (t === 'lots') { if (n === 'of') { out.push('many'); i += 1; } else out.push('much'); continue; }
+        if (t === 'a' && n === 'little' && !(tokens[i + 2] && findNoun(tokens[i + 2]) && !findAdj(tokens[i + 2]))) { out.push('little'); i += 1; continue; }
+        out.push(t);
+      }
+      return out;
+    }
+
     function translateEnTokens(tokens, question, notes, opts) {
       opts = opts || {};
       if (!tokens.length) return null;
+      tokens = quantityPhrases(tokens);
       var ir = { subject: null, advs: [], tense: null, aspect: null, neg: false, question: question,
         object: null, pps: [], notes: notes };
       var ctx = { notes: notes };
@@ -2207,7 +2250,11 @@
         var comp = [];
         var save2 = cur.i;
         var degAdv = cur.peek();
-        if (degAdv === 'very' || degAdv === 'too' || degAdv === 'more' || degAdv === 'most') {
+        if (degAdv === 'little' && byW.sumoli && cur.peek(1) && findAdj(cur.peek(1))) {
+          // a little + 形容詞は、very と同じく副詞の位置（li sumoli pio sulite）
+          cur.next();
+          ir.advs.push(item('sumoli'));
+        } else if (degAdv === 'very' || degAdv === 'too' || degAdv === 'more' || degAdv === 'most') {
           cur.next();
           if (degAdv === 'more') comp.push(item('moli'));
           else if (degAdv === 'most') comp.push(item('mosi'));
@@ -2398,6 +2445,13 @@
           cur.next();
           ir.advs.push(item('tui'));
           if (cur.peek() === 'much') cur.next();
+          continue;
+        }
+        // all / all of it → epuli（全部）: 動詞のあと、代名詞の目的語の前か文末（docs/proposals/024）
+        if (t2 === 'all' && byW.epule && ADV_OF.epule && ((cur.peek(1) === 'of' && PRONOUNS[cur.peek(2)]) || !cur.peek(1))) {
+          cur.next();
+          if (cur.peek() === 'of') cur.next();
+          ir.advs.push(item(ADV_OF.epule));
           continue;
         }
         var adv2 = findAdv(t2);
