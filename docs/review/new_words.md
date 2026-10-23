@@ -7,7 +7,7 @@
 - 語幹が同じ: 語尾の1文字だけが違う、別の品詞の語（例: `kuka` 名詞と `kuko` 動詞）。同じ英語の別品詞なら意図した組です。そうでなければ偶然の一致なので、見分けにくくないか見てください
 - 同じ英語の語: 同じ英語の訳を持つ、別の語（同義語の候補）
 
-確認済み(ok): 2497 / 要修正(fix): 0 / 未確認(draft): 49
+確認済み(ok): 2546 / 要修正(fix): 0 / 未確認(draft): 0
 
 ## v0.7 英検3級レベルの語（487語）
 
@@ -2046,25 +2046,25 @@
 | makema | 人台/マネキン | mannequin |  | ok |
 | tiwota | 蒸留所 | distillery |  | ok |
 | lunepa | 鋳造所 | foundry |  | ok |
-| eapa | 眉 | eyebrow |  |  |
-| nina | 顎 | chin |  |  |
-| kika | 頬 | cheek | 語幹が同じ: kiko |  |
-| elupa | 肘 | elbow | 語幹が同じ: elupo |  |
-| apula | 前掛け/エプロン | apron |  |  |
-| tupoja | ちりとり | dustpan |  |  |
-| moka | モップ | mop | 語幹が同じ: moke |  |
-| nolawa | ざる | colander |  |  |
-| wisama | 泡立て器 | whisk |  |  |
-| wimuja | 指ぬき | thimble |  |  |
-| luwuma | 水たまり | puddle |  |  |
-| wuwika | 小川 | creek |  | Claude【任意】小川 は既存の lipa（川 / river）の小さいもの。区別できる語としては残してよいが、使い分け（小さい川）を確認 |
-| tuma | 露 | dew |  |  |
-| oma | 雹 | hail | 語幹が同じ: omo |  |
-| anupa | 錨 | anchor |  |  |
-| lujewa | 舵 | rudder |  |  |
-| ona | 櫂 | oar | 語幹が同じ: one, ono |  |
-| atika | 屋根裏 | attic |  |  |
-| sejaja | 地下室 | cellar |  |  |
+| eapa | 眉 | eyebrow |  | ok |
+| nina | 顎 | chin |  | ok |
+| kika | 頬 | cheek | 語幹が同じ: kiko | ok |
+| elupa | 肘 | elbow | 語幹が同じ: elupo | ok |
+| apula | 前掛け/エプロン | apron |  | ok |
+| tupoja | ちりとり | dustpan |  | ok |
+| moka | モップ | mop | 語幹が同じ: moke | ok |
+| nolawa | ざる | colander |  | ok |
+| wisama | 泡立て器 | whisk |  | ok |
+| wimuja | 指ぬき | thimble |  | ok |
+| luwuma | 水たまり | puddle |  | ok |
+| wuwika | 小川 | creek |  | ok Claude確認: 残す。lipa（川）の小さいもの（小川）として区別できる |
+| tuma | 露 | dew |  | ok |
+| oma | 雹 | hail | 語幹が同じ: omo | ok |
+| anupa | 錨 | anchor |  | ok |
+| lujewa | 舵 | rudder |  | ok |
+| ona | 櫂 | oar | 語幹が同じ: one, ono | ok |
+| atika | 屋根裏 | attic |  | ok |
+| sejaja | 地下室 | cellar |  | ok |
 
 ### verb（358語）
 
@@ -2413,21 +2413,21 @@
 | nualo | 隔離する | quarantine |  | ok |
 | sopuwo | 実証する/裏付ける | substantiate |  | ok |
 | keapo | 復権させる/更生させる | rehabilitate |  | ok |
-| nomo | 頷く | nod | 語幹が同じ: nome |  |
-| nito | 編む | knit | 語幹が同じ: nita |  |
-| pinulo | 抓る | pinch |  | Claude【任意】削除済みの語形 pinulo（pinch = 摘む）の再利用（別の意味 = 抓る）。抓る は難しい表記で、つねる が普通。日本語を つねる/抓る にするか検討 |
-| peko | 覗く | peek | 語幹が同じ: peka |  |
-| julujo | 竦める | shrug |  | Claude【任意】竦める は 肩をすくめる の「すくめる」で、目的語（肩）が要る。自動詞の shrug とずれるので、日本語を 肩をすくめる にするか検討 |
-| nipo | 跪く | kneel | 語幹が同じ: nipe, nipi |  |
-| jono | 欠伸する | yawn |  |  |
-| salo | 溜息をつく | sigh | 語幹が同じ: sala, sale |  |
-| tupo | 染める | dye | 語幹が同じ: tupa |  |
-| sopo | 浸す | soak | 語幹が同じ: sopa |  |
-| pato | 色褪せる | fade | 語幹が同じ: pata, pati |  |
-| ilo | 癒える | heal | 語幹が同じ: ila, ile, ili | Claude【任意】癒える は既存の leketo（直る / recover）に近い。heal の他動詞（癒す）の意味は表せない |
-| saleko | 降伏する | surrender |  |  |
-| pemumo | 発酵する | ferment |  |  |
-| poliko | 受粉する | pollinate |  |  |
+| nomo | 頷く | nod | 語幹が同じ: nome | ok |
+| nito | 編む | knit | 語幹が同じ: nita | ok |
+| pinulo | つねる/抓る | pinch |  | ok |
+| peko | 覗く | peek | 語幹が同じ: peka | ok |
+| julujo | 肩をすくめる/竦める | shrug |  | ok |
+| nipo | 跪く | kneel | 語幹が同じ: nipe, nipi | ok |
+| jono | 欠伸する | yawn |  | ok |
+| salo | 溜息をつく | sigh | 語幹が同じ: sala, sale | ok |
+| tupo | 染める | dye | 語幹が同じ: tupa | ok |
+| sopo | 浸す | soak | 語幹が同じ: sopa | ok |
+| pato | 色褪せる | fade | 語幹が同じ: pata, pati | ok |
+| ilo | 癒える/治る | heal | 語幹が同じ: ila, ile, ili | ok |
+| saleko | 降伏する | surrender |  | ok |
+| pemumo | 発酵する | ferment |  | ok |
+| poliko | 受粉する | pollinate |  | ok |
 
 ### adj（175語）
 
@@ -2598,16 +2598,16 @@
 | osuje | 手厚い/もてなしのよい | hospitable |  | ok |
 | litie | 光り輝く/輝かしい | radiant |  | ok |
 | pikute | 絵画的な | picturesque |  | ok |
-| opane | 不透明な | opaque |  |  |
-| etase | 弾力的な | elastic |  | Claude【任意】弾力的な は「柔軟な」の意味にも読める。elastic は 弾力のある / 伸縮性のある に直すか検討 |
-| satike | 粘着性のある | sticky |  | Claude【任意】日本語が 粘着性のある という句の形で硬い。ねばねばした / べたべたした に直すか検討 |
-| selipe | 滑りやすい | slippery |  |  |
-| lusupe | 錆びた | rusty |  |  |
-| molupe | 黴びた | moldy |  |  |
-| kose | 居心地のよい | cozy | 語幹が同じ: kosa, koso | Claude【任意】居心地のよい は既存の komate（快適な / comfortable）と近い。cozy の「こぢんまりして暖かい」の意味を日本語に足すか検討 |
-| tise | 目眩のする | dizzy | 語幹が同じ: tisa | Claude【任意】日本語が 目眩のする という句の形。形容詞の見出しは 目眩がする / ふらふらする など自然な言い方に直すか検討（目眩 は tisipa として名詞にある） |
-| peloke | 肥沃な | fertile |  |  |
-| kuime | 後ろめたい | guilty |  |  |
+| opane | 不透明な | opaque |  | ok |
+| etase | 弾力のある/伸縮性のある/弾力的な | elastic |  | ok |
+| satike | ねばねばした/べたべたした/粘着性のある | sticky |  | ok |
+| selipe | 滑りやすい | slippery |  | ok |
+| lusupe | 錆びた | rusty |  | ok |
+| molupe | 黴びた | moldy |  | ok |
+| kose | 居心地のよい | cozy | 語幹が同じ: kosa, koso | ok Claude確認: 残す。komate（快適な）と近いが、cozy を引くために残す |
+| tise | 目眩がする/ふらふらする | dizzy | 語幹が同じ: tisa | ok |
+| peloke | 肥沃な | fertile |  | ok |
+| kuime | 後ろめたい | guilty |  | ok |
 
 ### adv（33語）
 
@@ -2641,11 +2641,11 @@
 | asopi | 岸に | ashore |  | ok |
 | aimi | 前方に | ahead |  | ok |
 | otepi | さもなければ/さもないと | otherwise |  | ok |
-| unumi | 水中に | underwater |  |  |
-| uneti | 地下に | underground |  |  |
-| situi | 横に | sideways |  |  |
-| lenupi | 縦に | lengthwise |  | Claude【任意】縦に は、既存の形容詞 pelume（縦の / vertical）から作る派生の副詞 pelumi（-e → -i。docs/grammar.md §3）で言える。副詞を別に登録しなくてもよい。lengthwise の英語を引く目的なら残してよい |
-| pepoli | あらかじめ | beforehand |  |  |
+| unumi | 水中に | underwater |  | ok |
+| uneti | 地下に | underground |  | ok |
+| situi | 横に | sideways |  | ok |
+| lenupi | 縦に | lengthwise |  | ok Claude確認: 残す。縦に は pelumi でも言えるが、英語の lengthwise を引くために残す |
+| pepoli | あらかじめ | beforehand |  | ok |
 
 ## v0.10 機能語（指示詞・はい／いいえ）（3語）
 
