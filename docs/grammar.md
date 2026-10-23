@@ -446,6 +446,13 @@ SVO + 前置詞句で代替。
 - 英語: be about to V（`suni`）、come to like / love / know / understand（`pekomo` + 動名詞。come to see you のような目的の to は除く）。
 - この規則に含めないもの: 可能形 + ようになる（話せるようになる）、結果の状態の〜ている（開いている。辞書にない動詞）、〜ばかりいる、受け身。
 
+### 可能形 + ようになる・結果の状態の〜ている・make + 目的語 + 名詞（v0.30 確定、提案023）
+新しい語は作らない。`pekomo`（成る）、`kani`（できる）、`koso`（させる）、`meko`（作る）を使う。
+- 可能形 + ようになる: `pekomo` のあとに `kani` と動詞を置く（動名詞にしない）。`mi pasu pekomo kani suwimo.`（泳げるようになった）。`kani` は、ここだけ `pekomo` の後ろに置く（副詞の位置の規則の例外）。否定は `no` を `pekomo` の前に置く（`mi pasu no pekomo kani lano.`）。
+- 結果の状態の〜ている: 変化を表す動詞の「〜ている」は、対応する形容詞があるとき、進行（`konu`）にせず `pio` + 形容詞にする。`winuta pio apele.`（窓が開いている）、`pupula pio tulaie.`（床が乾いている）。対応する形容詞がない動詞（辞書にない動詞）は、ANTI が追加するまで訳さない。動作の〜ている（走っている）は、進行のまま。
+- make + 目的語 + 名詞: 目的語のあとの名詞が役割・身分（teacher・king・captain など）なら「〜にした」（`koso` + 目的語 + 名詞。`mi pasu koso li titusa.`）。それ以外の名詞（lunch・tea など）なら「作ってくれた」（`meko` + 物 + `pote` + 受け手。`li pasu meko lunusa pote mi.`）。make + 名詞だけ（I made tea）は `meko`。make + 代名詞 + 動詞（I made him come）は、使役の `koso`（§7 の使役）。
+- この規則に含めないもの: 辞書にない動詞、受け身。
+
 ### 仮定法
 接続詞 ipu（もし）+ 仮定マーカー wutu
 - ipu mi wutu pio pata, mi wutu pulaio.（もし鳥なら、飛ぶのに）
@@ -675,5 +682,6 @@ v0.5 で po を **tulimo**（英 dream の音訳: d→t, r→l, 子音連続を 
 | v0.27 | 授受を決めた（あげる・くれる `kipo` + 物 + `tote` + 受け手、もらう `leso` + 物 + `pulomute` + 与えた人、〜てあげる・〜てくれる は `pote` + 受け手、〜てもらう は与えた人を主語にした能動態。提案019、§7）。翻訳機が日本語（あげる・くれる・もらう・〜てあげる・〜てくれる・〜てもらう）と英語（bought me ~ など）に対応し、例文35が日本語から訳せるようになった。新語なし。M1ko は「お任せ」と返事をし、Claude がおすすめの A を採った。3,070語 |
 | v0.28 | 経験・予定・決心・〜たばかりを決めた（経験 `pinu` + `nepi` / `epepi`、つもり・予定 `pulao` + 動名詞、ことにする `poso` + 動名詞、たばかり `onuli pasu`。提案020、§7）。翻訳機が日本語（〜たことがある・ない、〜つもり、〜予定、〜ことにする、〜たばかり）と英語（have + 過去分詞・never / ever / just、read のような同形の過去分詞、have been to、plan / intend / decide to）に対応した。新語なし。M1ko は「お任せとする」と返事をし、Claude がおすすめの A を採った。3,122語 |
 | v0.29 | 〜ている（状態と進行）・〜ようになる・〜ことになる・〜ところだを決めた（状態の動詞の〜ているは `konu` なし、〜ようになる `pekomo` + 動名詞、〜ことになる `somena` を主語にした `poso` + 動名詞、〜ところだ `suni` / `konu` / `onuli pasu`。提案022、§7）。翻訳機が日本語と英語（be about to、come to like）に対応した。新語なし。M1ko は「おまかせ」と返事をし、Claude がおすすめの A を採った。3,122語 |
+| v0.30 | 可能形 + ようになる・結果の状態の〜ている・make + 目的語 + 名詞を決めた（`pekomo kani 動詞`、`pio` + 形容詞、役割の名詞は `koso`・それ以外は `meko` + `pote`。提案023、§7）。翻訳機が日本語と英語に対応した。新語なし。M1ko は「全て一任する」と返事をし、Claude がおすすめの A を採った。3,171語 |
 | v0.4 | 疑問詞はその場置き、法副詞は副詞の位置（マーカーの前）と §7 に追記 |
 | v0.4 | 同義語33語を deprecated にし（status / replaced_by 列を追加）、正本の選び方を §10.6 に記載 |

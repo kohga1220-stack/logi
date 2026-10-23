@@ -15,7 +15,7 @@
 | 書く | verb | kako | laito | 音節数が少ない |  |
 | 結婚する | verb | malo | melo | 例文で使用中 |  |
 | 待つ | verb | mato | weto | 例文で使用中 |  |
-| 作る | verb | meko | tuko | 辞書の並び順（機械的） | 要 |
+| 作る | verb | meko | tuko | 例文で使用中 |  |
 | 寝る/眠る | verb | neo | sulipo | 音節数が少ない |  |
 | 覚える | verb | upo | memo | 辞書の並び順（機械的） | 要 |
 | 座る | verb | sito | suto, suo | 辞書の並び順（機械的） | 要 |
@@ -35,4 +35,4 @@
 | 愚かな | adj | sije | sutue | 音節数が少ない |  |
 | 良く | adv | poni | kuti | 例文で使用中 |  |
 
-機械的に決めたグループ（要確認）: 12
+機械的に決めたグループ（要確認）: 11

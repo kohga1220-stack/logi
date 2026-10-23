@@ -165,6 +165,7 @@
       }
       forms.stemI = stemI;
       forms.stemTe = stemTe;
+      forms.stemTa = stemTa;
       return forms;
     }
 
@@ -230,6 +231,12 @@
             addJa(s, { k: 'ADJ', e: e, tags: {}, attr: true });
           } else {
             addJa(s, { k: 'ANA', e: e });
+            // 開いた → 開いている（結果の状態）。形容詞のまま pio + 形容詞（docs/proposals/023）
+            if (/た$/.test(s)) {
+              var rs = s.slice(0, -1);
+              [['ている', {}], ['ています', {}], ['ていた', { past: true }], ['ていました', { past: true }], ['ていない', { neg: true }],
+                ['ていません', { neg: true }], ['ていなかった', { neg: true, past: true }]].forEach(function (f) { addJa(rs + f[0], { k: 'ADJ', e: e, tags: f[1] }); });
+            }
           }
         });
       } else if (pos === 'verb') {
@@ -238,6 +245,19 @@
           verbForms(s).forEach(function (f) { addJa(f[0], { k: 'V', e: e, tags: f[1] }); });
         });
       }
+    });
+    // 結果の状態の〜ている（錆びている・乾いている）: 動詞の過去形と同じ形の形容詞（錆びた・乾いた）があるときは、進行（konu）にせず、
+    // pio + 形容詞にする（docs/proposals/023）
+    lexicon.forEach(function (e) {
+      if (e.pos !== 'verb' || e.w === 'pio') return;
+      e.ja.forEach(function (sj) {
+        var vf = verbForms(sj);
+        var adjTok = vf.stemTa ? jaMap[vf.stemTa] : null;
+        if (!adjTok || adjTok.k !== 'ANA' || !adjTok.e || adjTok.e.pos !== 'adj' || !vf.stemTe) return;
+        [['いる', {}], ['います', {}], ['いた', { past: true }], ['いました', { past: true }], ['いない', { neg: true }], ['いません', { neg: true }]].forEach(function (f) {
+          jaMap[vf.stemTe + f[0]] = { k: 'ADJ', e: adjTok.e, tags: f[1] };
+        });
+      });
     });
     // いる（存在）は ある と同じ alo に対応させる
     verbForms('いる').forEach(function (f) { addJa(f[0], { k: 'V', e: byW.alo, tags: f[1] }); });
@@ -298,13 +318,18 @@
     lexicon.forEach(function (e) {
       if (e.pos === 'verb' && e.ja.some(function (j) { return STATE_JA.indexOf(j) >= 0; })) STATE_W[e.w] = 1;
     });
+    // 可能形 + ようになる（泳げるようになった）: pekomo + kani + 動詞（動名詞にしない）（docs/proposals/023）
+    var ABIL_SUFFIX = [];
+    if (byW.pekomo && byW.kani) ABIL_SUFFIX.push([/^ようにな(?:る|ります)/, { aux: 'pekomo', abil: true }], [/^ようにな(?:った|りました)/, { aux: 'pekomo', abil: true, past: true }],
+      [/^ようにな(?:らない|りません)/, { aux: 'pekomo', abil: true, neg: true }], [/^ようにな(?:らなかった|りませんでした)/, { aux: 'pekomo', abil: true, neg: true, past: true }]);
     function onlyTags(tags, keys) {
       var own = Object.keys(tags || {});
       return own.length === keys.length && own.every(function (k) { return keys.indexOf(k) >= 0; });
     }
     // 動詞の語 tok の直後（rest）が、上の言い方なら、{ tok, len } を返す
     function verbSuffix(tok, rest) {
-      var rules = onlyTags(tok.tags, ['past']) ? TA_SUFFIX : onlyTags(tok.tags, []) ? PLAIN_SUFFIX : onlyTags(tok.tags, ['prog']) ? PROG_SUFFIX : null;
+      var rules = onlyTags(tok.tags, ['past']) ? TA_SUFFIX : onlyTags(tok.tags, []) ? PLAIN_SUFFIX : onlyTags(tok.tags, ['prog']) ? PROG_SUFFIX :
+        onlyTags(tok.tags, ['modal']) && tok.tags.modal === 'kani' ? ABIL_SUFFIX : null;
       if (!rules || tok.e.w === 'alo' || tok.e.w === 'pio') return null;
       for (var r = 0; r < rules.length; r++) {
         var m = rules[r][0].exec(rest);
@@ -1031,6 +1056,7 @@
         if (last.tags.just) { advs.push(item('onuli')); tense = 'past'; }
         if (last.tags.soon) advs.push(item('suni'));
         pred.agent = last.tags.agent;
+        pred.abil = last.tags.abil;
         toks.pop();
       } else if (last && (last.k === 'ADJ' || last.k === 'ANA') && !last.attr) {
         pred = { kind: 'adj', e: last.e, gerundOf: last.gerundOf };
@@ -1187,7 +1213,9 @@
         if (pred.gerundOf) {
           // 〜ことになる: 主語を somena にし、もとの主語（なる人）は動名詞の前に置く（受動態を避ける。docs/proposals/022）
           var affected = pred.agent && ir.subject ? ir.subject : [];
-          ir.object = affected.concat([item(pred.gerundOf.w + 'na', { gerund: pred.gerundOf.w })], ir.object || []);
+          // 泳げるようになる: 動名詞ではなく kani + 動詞（docs/proposals/023）
+          var inner = pred.abil ? [item('kani'), item(pred.gerundOf.w)] : [item(pred.gerundOf.w + 'na', { gerund: pred.gerundOf.w })];
+          ir.object = affected.concat(inner, ir.object || []);
         }
         if (pred.agent) ir.subject = [item('somena')];
         return ir;
@@ -1625,6 +1653,12 @@
     var PERFECT_ADV = { not: 1, never: 1, ever: 1, just: 1, already: 1 };
     var SAME_PP = { read: 1, put: 1, cut: 1, set: 1, let: 1, hit: 1, hurt: 1, cost: 1, shut: 1, quit: 1, spread: 1 };
     var COME_TO_STATE = { like: 1, love: 1, hate: 1, know: 1, understand: 1, believe: 1, respect: 1, enjoy: 1, appreciate: 1, trust: 1, accept: 1 };
+    // make + 目的語 + 名詞 で「〜にした」と読む、役割・身分の名詞（docs/proposals/023）
+    var ROLE_W = {};
+    ['teacher', 'king', 'queen', 'leader', 'captain', 'president', 'doctor', 'manager', 'chief', 'boss', 'champion', 'hero', 'star',
+      'professor', 'member', 'student', 'friend', 'enemy', 'father', 'mother', 'chairman', 'secretary', 'judge', 'priest', 'prince', 'princess'].forEach(function (w) {
+      (enIndex[w] || []).forEach(function (e) { if (e.pos === 'noun') ROLE_W[e.w] = 1; });
+    });
     var TO_ADJ_EN = { easy: 'ise', difficult: 'tipike', hard: 'tipike' };
     var VERB_WANTS_GERUND = { want: 1, like: 1, love: 1, hope: 1, wish: 1, try: 1, start: 1, begin: 1,
       enjoy: 1, stop: 1, finish: 1, keep: 1, avoid: 1, practice: 1, quit: 1, continue: 1, hate: 1, plan: 1, decide: 1, intend: 1 };
@@ -2349,6 +2383,11 @@
               // 授与動詞: V 受け手 物 → V 物 tote 受け手（buy などの恩恵の動詞は pote。docs/proposals/019）
               if (cur.more() && startsNP(cur.peek()) && np.items.length === 1 && byW[np.items[0].w] && byW[np.items[0].w].pos === 'pronoun') {
                 var np2 = parseNP(cur, ctx);
+                // make + 目的語 + 名詞: 役割・身分の名詞は「〜にした」（koso + 目的語 + 名詞）、それ以外は「作ってくれた」（meko + 物 + pote + 受け手）（docs/proposals/023）
+                if (np2 && lemma === 'make' && byW.meko) {
+                  if (np2.items.some(function (it) { return ROLE_W[it.w]; })) ir.object = np.items.concat(np2.items);
+                  else { ir.verb = 'meko'; ir.pps.push([item('pote')].concat(np.items)); ir.object = np2.items; }
+                } else
                 if (np2) { ir.pps.push([item(BENEFACTIVE_EN[lemma] ? 'pote' : 'tote')].concat(np.items)); ir.object = np2.items; }
               }
             } else ir.pps.push(np.items);
@@ -2358,6 +2397,9 @@
         // 未登録語
         ir.object = (ir.object || []).concat([unknown(cur.next())]);
       }
+      // make + 名詞だけ（目的語が1つ）は「作る」（meko）。代名詞が続く make him come などは、これまでどおり koso（docs/proposals/023）
+      if (lemma === 'make' && ir.verb === 'koso' && byW.meko && ir.object && !ir.pps.length &&
+        !(ir.object[0] && byW[ir.object[0].w] && byW[ir.object[0].w].pos === 'pronoun')) ir.verb = 'meko';
       return finishEn(ir, whWord, whMod);
     }
 

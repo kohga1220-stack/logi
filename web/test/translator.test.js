@@ -886,3 +886,30 @@ test('提案022: 〜ている（状態と進行）・〜ようになる・〜こ
     assert.strictEqual(translator.translate(src, 'en').logi, logi, src);
   });
 });
+
+test('提案023: 可能形 + ようになる・結果の状態の〜ている・make + 目的語 + 名詞', () => {
+  const ja = [
+    ['私は泳げるようになった。', 'mi pasu pekomo kani suwimo.'],
+    ['私は走れるようにならなかった。', 'mi pasu no pekomo kani lano.'],
+    ['窓が開いている。', 'winuta pio apele.'],
+    ['窓が開いていた。', 'winuta pasu pio apele.'],
+    ['床が乾いている。', 'pupula pio tulaie.'],
+    ['彼は走っている。', 'li konu lano.'],                 // 動作の〜ている は進行のまま
+    ['私は彼を先生にした。', 'mi pasu koso li titusa.'],
+    ['彼は私に昼食を作ってくれた。', 'li pasu meko lunusa pote mi.'],
+  ];
+  ja.forEach(([src, logi]) => {
+    assert.strictEqual(translator.translate(src, 'ja').logi, logi, src);
+  });
+  const en = [
+    ['They made him a teacher.', 'lisu pasu koso li titusa.'],
+    ['He made me lunch.', 'li pasu meko lunusa pote mi.'],
+    ['She made me a cup.', 'li pasu meko kapa pote mi.'],
+    ['The news made her happy.', 'nota pasu koso li ape.'],
+    ['I made tea.', 'mi pasu meko tia.'],
+    ['I made him come.', 'mi pasu koso li [come?].'],       // 代名詞が続く make は、これまでどおり
+  ];
+  en.forEach(([src, logi]) => {
+    assert.strictEqual(translator.translate(src, 'en').logi, logi, src);
+  });
+});

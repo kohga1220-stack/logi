@@ -1,6 +1,12 @@
 # 提案 023: 可能形 + ようになる・結果の状態の〜ている・make + 目的語 + 名詞
 
-状態: **決定待ち**。M1ko が Q1〜Q3 を選んだら、Claude が実装します（「お任せ」でも進められます）。
+状態: **決定済み（2026-10-24）**。M1ko が「全て一任する」と返事をしたので、Claude がおすすめの A（Q1〜Q3 すべて）を選んで実装した（v0.30）。仕様は docs/grammar.md §7 を参照。
+
+**実装で変えた点**:
+- Q1 の `kani` は、`pekomo` の前ではなく後ろ（`mi pasu pekomo kani suwimo.`）に置いた。提案どおり。ただし、副詞の位置の規則（主語の直後）の例外になるので、grammar.md に明記した。
+- Q2 は、翻訳機が「形容詞が過去形の見た目の語（開いた・乾いた・濡れた）」の〜ている・〜ていた・〜ていない を、形容詞のまま `pio` + 形容詞で訳す形にした。動詞の過去形と同じ見た目の形容詞（錆びた = `lusuto` の過去形）は、動詞が先に引かれるので、対象外。
+- Q3 の役割の名詞のリストは、teacher・king・queen・leader・captain・president・doctor・manager・chief・boss・champion・hero・star・professor・member・student・friend・enemy・father・mother・chairman・secretary・judge・priest・prince・princess。
+- 提案の範囲外だが、make + 名詞だけ（I made tea）が `koso` になる誤りも、`meko`（作る）に直した。make + 代名詞（I made him come）は、これまでどおり。
 
 ## 1. 何が足りないか
 
