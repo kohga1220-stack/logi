@@ -62,3 +62,55 @@ def test_common_kanji_do_not_count_as_shared():
 def test_render_skips_words_without_overlap():
     candidates = [{"english": "zzz", "pos": "verb", "meaning_ja": "走る", "aliases": ""}]
     assert overlap_check.render(overlap_check.check(candidates, ROWS, BY_WORD, ENGLISH)) == ""
+
+
+def _stub_synsets(groups):
+    """作り物の類義語表: {英語: {まとまりの名前}}（形容詞の隣り合うまとまりは expand=True のとき足す）。"""
+    def synsets(word, pos, expand=False):
+        names = set(groups.get(word.lower(), set()))
+        if expand:
+            for n in list(names):
+                names |= groups.get(n, set())
+        return names
+    return synsets
+
+
+def test_english_synonym_is_found_through_wordnet_style_groups():
+    rows = ROWS + [_row("fff", "adj", "丈夫な", "sturdy")]
+    by_word = {r["regenerated"]: r for r in rows}
+    english = {"adjust": ["aaa"], "sturdy": ["fff"]}
+    synsets = _stub_synsets({"sturdy": {"hardy"}, "stout": {"hardy"}})
+    candidates = [{"english": "stout", "pos": "adj", "meaning_ja": "頑強な", "aliases": ""}]
+    report = overlap_check.check(candidates, rows, by_word, english, synsets)
+    assert [(t, w, tok) for t, w, tok, _ in report[0][4]] == [("stout", "fff", "sturdy")]
+    assert overlap_check.check(candidates, rows, by_word, english)[0][4] == []   # WordNet がなければ調べない
+
+
+def test_candidates_in_the_same_batch_are_compared_with_each_other():
+    candidates = [
+        {"english": "citadel", "pos": "noun", "meaning_ja": "城塞", "aliases": ""},
+        {"english": "fortress", "pos": "noun", "meaning_ja": "要塞", "aliases": ""},
+        {"english": "walk", "pos": "verb", "meaning_ja": "歩く", "aliases": ""},
+    ]
+    synsets = _stub_synsets({"citadel": {"fort"}, "fortress": {"fort"}})
+    pairs = overlap_check.batch_overlaps(candidates, synsets)
+    assert pairs == [(0, 1, "漢字が共通・英語が類義語")]   # 品詞が違う語は比べない
+    report = overlap_check.check(candidates, ROWS, BY_WORD, ENGLISH, synsets)
+    assert [e for e, _, _ in report[0][5]] == ["fortress"] and [e for e, _, _ in report[1][5]] == ["citadel"]
+
+
+def test_table_puts_strong_overlaps_first_and_marks_kanji_only_rows():
+    candidates = [
+        {"english": "coordinate", "pos": "verb", "meaning_ja": "調整する", "aliases": ""},   # 漢字が1字共通するだけ
+        {"english": "sleep", "pos": "verb", "meaning_ja": "寝る", "aliases": ""},       # 英語の見出し語が同じ → 強い
+        {"english": "zzz", "pos": "noun", "meaning_ja": "走者", "aliases": ""},
+    ]
+    rows = ROWS
+    by_word = BY_WORD
+    english = {"adjust": ["aaa"], "drink": ["bbb"], "sleep": ["ccc"]}
+    table = overlap_check.render_table(overlap_check.check(candidates, rows, by_word, english))
+    body = table.splitlines()
+    assert body[0].startswith("強い重なりのある語: 1 / 3 語")
+    first_row = body[4]
+    assert "sleep (verb)" in first_row and "（要記入）" in first_row
+    assert "漢字が共通するだけ" in table and "重なりなし" in table

@@ -428,6 +428,15 @@ SVO + 前置詞句で代替。
 - 英語: gave me ~ / gave ~ to me は `tote`、buy・cook・find・bake・build・fix・order・save・choose・prepare・draw の `bought me ~` / `bought ~ for me` は `pote`。received ~ from him は `pulomute`。
 - この規則に含めないもの: 〜ていただく・〜てくださる・〜させてもらう、受け身、関係節の中の授受（`私にリンゴをくれた人`）。`make me lunch`（`make` が2語にまたがる）。
 
+### 経験・予定・決心・〜たばかり（v0.28 確定、提案020）
+新しい語は作らない。完了のマーカー `pinu`、副詞（`epepi` これまでに、`nepi` 決してない、`onuli` ちょうど）、`pulao`（計画する）、`poso`（決める）と、動名詞（§3）を使う。
+- 経験（〜たことがある・〜たことがない）: `pinu` で表す。英語の現在完了（have read）と同じ形で、同じ曖昧さ（完了と経験）を持つ。ない は `nepi`、疑問の「これまでに」は `epepi` を、副詞の位置（主語の直後、マーカーの前）に置く。`mi pinu loto pupa.`（本を読んだことがある）、`mi nepi pinu ito tosa.`（魚を食べたことがない）、`tu epepi pinu loto pupa ka?`（本を読んだことがありますか）。
+- つもり・予定: `pulao` + 動名詞。否定の `no`・過去の `pasu` は `pulao` の前。`mi pulao lotona pupa.`（本を読むつもりだ）、`mi no pulao lotona pupa.`（読むつもりはない）、`mi pasu pulao ikona.`（行くつもりでした）。
+- 〜ことにする・〜ことにした: `poso` + 動名詞。`mi pasu poso lotona pupa epule teia.`（毎日本を読むことにした）。
+- 〜たばかり・ちょうど〜した: `onuli`（ちょうど）を副詞の位置に置き、時制は `pasu`。`mi onuli pasu loto pupa.`（本を読んだばかりだ）。英語の have just ~ed も同じ形にする。
+- 英語: have / has / had + 過去分詞（read・put・cut のように原形と同じ形の過去分詞も）、have ever / never / just / already + 過去分詞、have been to X（`pinu iko tote X`）、plan to・intend to・decide to + 動詞。
+- この規則に含めないもの: 〜ことになる・〜ようになる（受動態の禁止と関わる。別に決める）、〜ところだ（直前・最中）、〜てばかりいる。
+
 ### 仮定法
 接続詞 ipu（もし）+ 仮定マーカー wutu
 - ipu mi wutu pio pata, mi wutu pulaio.（もし鳥なら、飛ぶのに）
@@ -655,5 +664,6 @@ v0.5 で po を **tulimo**（英 dream の音訳: d→t, r→l, 子音連続を 
 | v0.25 | 倍・半分・分数・割合を決めた（倍 `N taima seme 形容詞 tote 基準`、半分 `alema` + 名詞、分数 `分子 semuna 分母`、割合 `数 pepuka`。提案017、§5）。翻訳機が日本語（N倍・半分・N分のM・%）と英語（twice as ~ as・N times as ~ as・half of・two thirds of・percent・%）に対応。新語なし。M1ko は「お任せ」と返事をし、Claude がおすすめの A を採った。2,979語 |
 | v0.26 | 動詞に続く表現を決めた（〜たい `wonuto`、〜始める・〜終わる・〜続ける `sutato`・`pino`・`konupo`、〜すぎる `tui`、〜やすい・〜にくい `pio ise`・`pio tipike`。すべて動名詞を使う。提案018、§7）。翻訳機が日本語と英語（want to・start / finish / keep ~ing・too・easy / hard to）に対応し、英語 `too` が `olusi` になる誤りを直した。新語なし。M1ko は「お任せ」と返事をし、Claude がおすすめの A を採った（すぎる の語順は、既存の副詞の位置の規則に合わせた）。3,070語 |
 | v0.27 | 授受を決めた（あげる・くれる `kipo` + 物 + `tote` + 受け手、もらう `leso` + 物 + `pulomute` + 与えた人、〜てあげる・〜てくれる は `pote` + 受け手、〜てもらう は与えた人を主語にした能動態。提案019、§7）。翻訳機が日本語（あげる・くれる・もらう・〜てあげる・〜てくれる・〜てもらう）と英語（bought me ~ など）に対応し、例文35が日本語から訳せるようになった。新語なし。M1ko は「お任せ」と返事をし、Claude がおすすめの A を採った。3,070語 |
+| v0.28 | 経験・予定・決心・〜たばかりを決めた（経験 `pinu` + `nepi` / `epepi`、つもり・予定 `pulao` + 動名詞、ことにする `poso` + 動名詞、たばかり `onuli pasu`。提案020、§7）。翻訳機が日本語（〜たことがある・ない、〜つもり、〜予定、〜ことにする、〜たばかり）と英語（have + 過去分詞・never / ever / just、read のような同形の過去分詞、have been to、plan / intend / decide to）に対応した。新語なし。M1ko は「お任せとする」と返事をし、Claude がおすすめの A を採った。3,122語 |
 | v0.4 | 疑問詞はその場置き、法副詞は副詞の位置（マーカーの前）と §7 に追記 |
 | v0.4 | 同義語33語を deprecated にし（status / replaced_by 列を追加）、正本の選び方を §10.6 に記載 |

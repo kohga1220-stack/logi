@@ -275,6 +275,33 @@
     [['ise', ['やすい']], ['tipike', ['にくい', '難い']]].forEach(function (a) {
       if (byW[a[0]]) a[1].forEach(function (x) { iAdjForms(x).forEach(function (f) { AUX_ADJ.push([f[0], byW[a[0]], f[1]]); }); });
     });
+    // 経験・たばかり・つもり・予定・ことにする（docs/proposals/020）。動詞のあとの決まった言い方を、字面で見て1つの動詞の語にする。
+    // 経験は pinu（+ nepi / epepi）、たばかり は onuli + 過去、つもり・予定 は pulao、ことにする は poso（どちらも動詞の動名詞つき）
+    var TA_SUFFIX = [[/^こと[がは](ある|あります)/, { exp: true }], [/^こと[がは](ない|ありません)/, { exp: true, expNeg: true }],
+      [/^ばかり(だ|です|でした|だった)/, { just: true }]];
+    var PLAIN_SUFFIX = [];
+    if (byW.pulao) PLAIN_SUFFIX.push([/^(?:つもり|予定)(?:だ|です)/, { aux: 'pulao' }], [/^(?:つもり|予定)(?:でした|だった)/, { aux: 'pulao', past: true }],
+      [/^つもり(?:はない|はありません|ではない|じゃない)/, { aux: 'pulao', neg: true }]);
+    if (byW.poso) PLAIN_SUFFIX.push([/^ことに(?:する|します)/, { aux: 'poso' }], [/^ことに(?:した|しました)/, { aux: 'poso', past: true }],
+      [/^ことに(?:しない|しません)/, { aux: 'poso', neg: true }], [/^ことに(?:しなかった|しませんでした)/, { aux: 'poso', neg: true, past: true }]);
+    function onlyTags(tags, keys) {
+      var own = Object.keys(tags || {});
+      return own.length === keys.length && own.every(function (k) { return keys.indexOf(k) >= 0; });
+    }
+    // 動詞の語 tok の直後（rest）が、上の言い方なら、{ tok, len } を返す
+    function verbSuffix(tok, rest) {
+      var rules = onlyTags(tok.tags, ['past']) ? TA_SUFFIX : onlyTags(tok.tags, []) ? PLAIN_SUFFIX : null;
+      if (!rules || tok.e.w === 'alo' || tok.e.w === 'pio') return null;
+      for (var r = 0; r < rules.length; r++) {
+        var m = rules[r][0].exec(rest);
+        if (m) {
+          var tags = Object.assign({}, rules[r][1]);
+          if (tok.tags.past && tags.aux) tags.past = true;
+          return { tok: { k: 'V', e: tok.e, tags: tags }, len: m[0].length };
+        }
+      }
+      return null;
+    }
     lexicon.forEach(function (e) {
       if (e.pos !== 'verb' || e.w === 'pio') return;
       e.ja.forEach(function (s) {
@@ -558,7 +585,12 @@
           }
           if (cand) { found = { tok: cand, len: len }; break; }
         }
-        if (found) { flush(); tokens.push(found.tok); i += found.len; }
+        if (found) {
+          flush();
+          var vs = found.tok.k === 'V' && found.tok.e ? verbSuffix(found.tok, text.slice(i + found.len)) : null;
+          if (vs) { tokens.push(vs.tok); i += found.len + vs.len; }
+          else { tokens.push(found.tok); i += found.len; }
+        }
         else if (!unk && (text.charAt(i) === 'お' || text.charAt(i) === 'ご') && startsContentWord(text, i + 1)) { i++; }   // 接頭辞のお・ごは落とす（docs/proposals/010）
         else { unk += text.charAt(i); i++; }
       }
@@ -976,6 +1008,13 @@
         if (last.tags.aux) { pred.gerundOf = last.e; pred.e = byW[last.tags.aux]; }
         pred.benefit = last.tags.benefit;
         pred.recv = last.tags.recv;
+        // 〜たことがある（pinu。ない は nepi、疑問は epepi）・〜たばかり（onuli + 過去）（docs/proposals/020）
+        if (last.tags.exp) {
+          aspect = 'perf';
+          if (last.tags.expNeg) advs.push(item('nepi'));
+          else if (question) advs.push(item('epepi'));
+        }
+        if (last.tags.just) { advs.push(item('onuli')); tense = 'past'; }
         toks.pop();
       } else if (last && (last.k === 'ADJ' || last.k === 'ANA') && !last.attr) {
         pred = { kind: 'adj', e: last.e, gerundOf: last.gerundOf };
@@ -1502,6 +1541,9 @@
       });
     });
 
+    // intend は plan（pulao）と同じ（docs/proposals/020）
+    if (byW.pulao) (enIndex.intend = enIndex.intend || []).push(byW.pulao);
+
     var PRONOUNS = {
       i: 'mi', me: 'mi', you: 'tu', he: 'li', she: 'li', it: 'li', him: 'li', her: 'li', we: 'misu', us: 'misu',
       they: 'lisu', them: 'lisu', myself: 'selu', yourself: 'selu', himself: 'selu', herself: 'selu',
@@ -1558,9 +1600,12 @@
     var MOTION_VERB = { go: 1, come: 1, leave: 1, return: 1, run: 1, walk: 1, travel: 1, hurry: 1, stop: 1 };
     // 受け手が「〜のために」になる動詞（bought me a book = 私のために買った）。give・show・send などは tote のまま
     var BENEFACTIVE_EN = { buy: 1, cook: 1, find: 1, bake: 1, build: 1, fix: 1, order: 1, save: 1, choose: 1, prepare: 1, draw: 1 };
+    // have のあとに入れられる副詞と、原形と同じ形の過去分詞（docs/proposals/020）
+    var PERFECT_ADV = { not: 1, never: 1, ever: 1, just: 1, already: 1 };
+    var SAME_PP = { read: 1, put: 1, cut: 1, set: 1, let: 1, hit: 1, hurt: 1, cost: 1, shut: 1, quit: 1, spread: 1 };
     var TO_ADJ_EN = { easy: 'ise', difficult: 'tipike', hard: 'tipike' };
     var VERB_WANTS_GERUND = { want: 1, like: 1, love: 1, hope: 1, wish: 1, try: 1, start: 1, begin: 1,
-      enjoy: 1, stop: 1, finish: 1, keep: 1, avoid: 1, practice: 1, quit: 1, continue: 1, hate: 1 };
+      enjoy: 1, stop: 1, finish: 1, keep: 1, avoid: 1, practice: 1, quit: 1, continue: 1, hate: 1, plan: 1, decide: 1, intend: 1 };
 
     // 英語の表層形 → [{lemma, form}] の候補
     function verbCandidates(tok) {
@@ -1983,11 +2028,17 @@
           continue;
         }
         if ((tk === 'have' || tk === 'has' || tk === 'had') && cur.peek(1)) {
-          var nv = findVerb(cur.peek(1));
-          var isPP = nv && (nv.form === 'pp' || nv.form === 'past');
-          var afterNot = cur.peek(1) === 'not' && cur.peek(2) && findVerb(cur.peek(2));
-          if (isPP || afterNot) { perfect = true; if (tk === 'had') ir.tense = 'past'; cur.next(); continue; }
+          // have + (not / never / ever / just / already) + 過去分詞。read のように原形と同じ形の過去分詞も読む（docs/proposals/020）
+          var hk = 1;
+          while (cur.peek(hk) && PERFECT_ADV[cur.peek(hk)]) hk++;
+          var nv = cur.peek(hk) ? findVerb(cur.peek(hk)) : null;
+          var isPP = nv && (nv.form === 'pp' || nv.form === 'past' || (nv.form === 'base' && SAME_PP[nv.lemma]));
+          var afterNot = hk > 1 && !!nv;
+          var isBeen = cur.peek(hk) === 'been';
+          if (isPP || afterNot || isBeen) { perfect = true; if (tk === 'had') ir.tense = 'past'; cur.next(); continue; }
         }
+        // have been to X は「行ったことがある」。been を gone に読み替えて、行く（iko）+ 前置詞句にする（docs/proposals/020）
+        if (tk === 'been' && perfect && cur.peek(1) === 'to') { cur.t[cur.i] = 'gone'; break; }
         if (BE[tk]) { beForm = tk; cur.next(); continue; }
         var adv = findAdv(tk);
         if (adv && !findVerb(tk) && !findNoun(tk) && !findAdj(tk)) {
@@ -1997,6 +2048,8 @@
         }
         break;
       }
+      // have just + 過去分詞 は、過去（onuli pasu）と同じ形にする（docs/proposals/020）
+      if (perfect && ir.advs.some(function (a) { return a.w === 'onuli'; })) { perfect = false; if (!ir.tense) ir.tense = 'past'; }
       if (modal) ir.advs.unshift(item(modal));
       if (beForm === 'was' || beForm === 'were') ir.tense = 'past';
 

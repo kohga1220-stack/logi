@@ -162,6 +162,13 @@
 | 155 | benefactive-receive | pulena pasu loto pupa pote mi. | 私は友達に本を読んでもらった。 |
 | 156 | benefactive-give | mi pasu elupo li. | 私は彼を助けてあげた。 |
 | 157 | benefactive-give-negation | li pasu no puo kulosa pote mi. | 彼は私に服を買ってくれなかった。 |
+| 158 | experience | mi pinu loto pupa. | 私は本を読んだことがある。 |
+| 159 | experience-negation | mi nepi pinu ito tosa. | 私は魚を食べたことがない。 |
+| 160 | experience-question | tu epepi pinu loto pupa ka? | あなたは本を読んだことがありますか。 |
+| 161 | plan | mi pulao lotona pupa. | 私は本を読むつもりだ。 |
+| 162 | plan-negation | mi no pulao lotona pupa. | 私は本を読むつもりはない。 |
+| 163 | decision | mi pasu poso lotona pupa epule teia. | 私は毎日本を読むことにした。 |
+| 164 | just-now | mi onuli pasu loto pupa. | 私は本を読んだばかりだ。 |
 
 ## 語注（辞書から機械的に生成）
 
@@ -479,3 +486,17 @@
   mi=私(pronoun) pasu=過去(marker) elupo=助ける(verb) li=彼/彼女/それ(pronoun)
 - **157** `li pasu no puo kulosa pote mi.`  
   li=彼/彼女/それ(pronoun) pasu=過去(marker) no=否定(marker) puo=買う(verb) kulosa=服(noun) pote=のために(prep) mi=私(pronoun)
+- **158** `mi pinu loto pupa.`  
+  mi=私(pronoun) pinu=完了(marker) loto=読む(verb) pupa=本(noun)
+- **159** `mi nepi pinu ito tosa.`  
+  mi=私(pronoun) nepi=決してない(adv) pinu=完了(marker) ito=食べる(verb) tosa=魚(noun)
+- **160** `tu epepi pinu loto pupa ka?`  
+  tu=あなた(pronoun) epepi=これまでに(adv) pinu=完了(marker) loto=読む(verb) pupa=本(noun) ka=疑問(marker)
+- **161** `mi pulao lotona pupa.`  
+  mi=私(pronoun) pulao=計画する(verb) lotona=読む(verb)+na(動名詞) pupa=本(noun)
+- **162** `mi no pulao lotona pupa.`  
+  mi=私(pronoun) no=否定(marker) pulao=計画する(verb) lotona=読む(verb)+na(動名詞) pupa=本(noun)
+- **163** `mi pasu poso lotona pupa epule teia.`  
+  mi=私(pronoun) pasu=過去(marker) poso=決める(verb) lotona=読む(verb)+na(動名詞) pupa=本(noun) epule=すべての(adj) teia=日(noun)
+- **164** `mi onuli pasu loto pupa.`  
+  mi=私(pronoun) onuli=だけ(adv) pasu=過去(marker) loto=読む(verb) pupa=本(noun)
