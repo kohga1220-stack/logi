@@ -361,7 +361,7 @@ losupo,verb,あぶる,roast,v0.7追加,ok,
 apupe,adj,怖い,afraid,v0.7追加,ok,
 kalepe,adj,注意深い,careful,v0.7追加,ok,
 ekuse,adj,興奮した,excited,v0.7追加,ok,
-pulime,adj,親しみやすい,friendly,v0.7追加,ok,
+pulime,adj,親しみやすい/友好的な,friendly,v0.7追加,ok,
 miwe,adj,元気な,fine,v0.7追加,ok,
 june,adj,おかしい,funny,v0.7追加,ok,
 kulate,adj,嬉しい,glad,v0.7追加,ok,
@@ -971,12 +971,12 @@ kenume,adj,おとなしい,gentle|docile,v0.8追加,ok,
 ite,adj,痒い,itchy,v0.8追加,ok,
 supipe,adj,辛い,spicy,v0.8追加,ok,
 pitipe,adj,かわいそうな,pitiful|poor,v0.8追加,ok,
-sutete,adj,厳しい,strict,v0.8追加,ok,
+sutete,adj,厳しい/厳格な,strict,v0.8追加,ok,
 sumepe,adj,臭い,smelly,v0.8追加,ok,
 pupuse,adj,悔しい,frustrated,v0.8追加,ok,
 tetele,adj,詳しい,detailed,v0.8追加,ok,
 pupope,adj,盛んな,prosperous,v0.8追加,ok,
-sutoke,adj,丈夫な,sturdy,v0.8追加,ok,
+sutoke,adj,丈夫な/頑強な,sturdy,v0.8追加,ok,
 salute,adj,鋭い,sharp,v0.8追加,ok,
 sute,adj,ずるい,sly,v0.8追加,ok,
 palese,adj,大切な,precious,v0.8追加,ok,
@@ -1931,7 +1931,6 @@ tosika,noun,化石,fossil,ANTI追加,draft,
 mosasa,noun,修道院,monastery,ANTI追加,draft,
 kejeta,noun,大聖堂,cathedral,ANTI追加,draft,
 japesa,noun,礼拝堂,chapel,ANTI追加,draft,
-witata,noun,城塞,citadel,ANTI追加,draft,Claude【修正推奨】城塞 は同じバッチの joloma（fortress 要塞）・既存の kasuma（城 / castle）とほぼ同じ意味。まれな語なので削除し、必要なら要塞に城塞を併記
 ejisa,noun,天文台,observatory,ANTI追加,draft,
 sajama,noun,聖域,sanctuary,ANTI追加,draft,
 sowata,noun,競技場,stadium,ANTI追加,draft,
@@ -1945,7 +1944,7 @@ tapewa,noun,綴れ織り,tapestry,ANTI追加,draft,
 mawesa,noun,湿地,marsh,ANTI追加,draft,Claude【任意】湿地 は既存の sawapa（沼 / swamp）と近い。marsh と swamp は英語でも近い語
 luwala,noun,鍾乳石,stalactite,ANTI追加,draft,
 sojima,noun,蒸気船,steamboat,ANTI追加,draft,
-joloma,noun,要塞,fortress,ANTI追加,draft,
+joloma,noun,要塞/城塞,fortress,ANTI追加,draft,
 wapaka,noun,兵舎,barracks,ANTI追加,draft,Claude【任意】barracks は複数形のような語形（単数でも barracks）。見出し語としては残してよいが、複数形を避ける方針との関係を確認
 nonola,noun,独白,monologue,ANTI追加,draft,
 lapeja,noun,迷宮,labyrinth,ANTI追加,draft,
@@ -2155,7 +2154,7 @@ kenulo,verb,換算する,convert,ANTI追加,ok,
 umulo,verb,鑑賞する,appreciate,ANTI追加,ok,Claude【任意】鑑賞する の appreciate は 感謝する・評価する の意味もある。見出し語は enjoy/view に近い
 tutamo,verb,脚色する,dramatize,ANTI追加,ok,
 emawo,verb,強調する,emphasize,ANTI追加,ok,
-talito,verb,脅迫する,threaten,ANTI追加,ok,
+talito,verb,脅迫する/威嚇する,threaten,ANTI追加,ok,
 peseko,verb,拒否する,reject,ANTI追加,ok,
 waleno,verb,警告する,warn,ANTI追加,ok,
 putoto,verb,抗議する,protest,ANTI追加,ok,
@@ -2296,9 +2295,7 @@ saloto,verb,敬礼する,salute,ANTI追加,draft,
 ewejo,verb,避難する,evacuate,ANTI追加,draft,
 monopo,verb,独占する,monopolize,ANTI追加,draft,
 nualo,verb,隔離する,quarantine,ANTI追加,draft,
-isano,verb,威嚇する,intimidate,ANTI追加,draft,Claude【修正推奨】威嚇する は既存の talito（脅迫する / threaten）とほぼ同じ意味。まれな語なので削除し、talito に 威嚇する を併記
 sopuwo,verb,実証する,substantiate,ANTI追加,draft,Claude【任意】実証する は既存の jukupa（証明）と近い。prove の動詞（証明する）が辞書にないので、別の意味（証拠で示す）として残してよい
-iwono,verb,就任させる,inaugurate,ANTI追加,draft,Claude【修正推奨】inaugurate の意味は「就任式を行う・開始する」で、日本語の 就任させる とは合わない。既存の sutato（始まる）・apelo（開ける）とも重なる。まれな語なので削除
 keapo,verb,復権させる,rehabilitate,ANTI追加,draft,Claude【任意】rehabilitate は 更生させる・リハビリさせる が普通の意味。復権させる は法律用語に寄っている。日本語を 更生させる/復権させる にするか検討
 tenuse,adj,濃い,dense,ANTI追加,ok,
 ipume,adj,親しい,intimate,ANTI追加,ok,
@@ -2461,15 +2458,10 @@ kenele,adj,寛大な,generous,ANTI追加,draft,
 motase,adj,控えめな,modest,ANTI追加,draft,
 tilane,adj,透明な,transparent,ANTI追加,draft,
 punape,adj,芳しい,fragrant,ANTI追加,draft,
-likipe,adj,厳格な,rigid,ANTI追加,draft,Claude【修正推奨】厳格な は既存の sutete（厳しい / strict）とほぼ同じ意味。削除して sutete に 厳格な を併記
 upuwe,adj,唐突な,abrupt,ANTI追加,draft,Claude【任意】唐突な は既存の sukene（急な / sudden）・unoke（意外な）と近い。abrupt の「そっけない」の意味は表せない
-ajike,adj,乾燥した,arid,ANTI追加,draft,Claude【修正推奨】乾燥した は既存の tulaie（乾いた / dry）とほぼ同じ意味。削除して tulaie に 乾燥した を併記
-sotute,adj,頑強な,stout,ANTI追加,draft,Claude【修正推奨】頑強な は既存の sutoke（丈夫な / sturdy）・tulone（強い）とほぼ同じ意味。stout は「太った」の意味もあり見出し語としても紛らわしい。削除して sutoke に 頑強な を併記
 osuje,adj,手厚い,hospitable,ANTI追加,draft,Claude【任意】hospitable の意味は もてなしのよい。手厚い だけだと別の語（手厚い看護 など）に読める。日本語を もてなしのよい に直すか検討
-selewe,adj,澄み渡った,serene,ANTI追加,draft,Claude【修正推奨】serene は 穏やか・静か の意味で、既存の tutane（長閑な / peaceful）・kue（静かな / quiet）・kalume（calm）と重なる。日本語の 澄み渡った とも合わない。削除
 litie,adj,光り輝く,radiant,ANTI追加,draft,Claude【任意】光り輝く は既存の sipo（輝く / shine）・pulaite（明るい / bright）と近い。radiant の自然な訳は 輝くばかりの。重なりを承知で残すか検討
 pikute,adj,絵画的な,picturesque,ANTI追加,draft,
-amije,adj,友好的な,amicable,ANTI追加,draft,Claude【修正推奨】友好的な は既存の pulime（親しみやすい / friendly）・ipume（親しい）とほぼ同じ意味。削除して pulime に 友好的な を併記
 lepipi,adv,たびたび,repeatedly,ANTI追加,ok,
 initi,adv,ますます,increasingly,ANTI追加,ok,
 ituti,adv,なるほど,indeed,ANTI追加,ok,
