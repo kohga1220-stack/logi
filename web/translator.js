@@ -166,6 +166,7 @@
       forms.stemI = stemI;
       forms.stemTe = stemTe;
       forms.stemTa = stemTa;
+      forms.stemA = stemA;
       return forms;
     }
 
@@ -295,6 +296,10 @@
     [['ise', ['やすい']], ['tipike', ['にくい', '難い']]].forEach(function (a) {
       if (byW[a[0]]) a[1].forEach(function (x) { iAdjForms(x).forEach(function (f) { AUX_ADJ.push([f[0], byW[a[0]], f[1]]); }); });
     });
+    // 使役の語幹のあとに続く形（させる・させた・させない …）。te・ながら などは対象外
+    var CAUS_TAGS = { 'る': {}, 'ます': {}, 'た': { past: true }, 'ました': { past: true }, 'ない': { neg: true }, 'ません': { neg: true },
+      'なかった': { neg: true, past: true }, 'ませんでした': { neg: true, past: true } };
+    var CAUS_END = /^(ませんでした|なかった|ました|ません|ます|ない|る|た)/;
     // 経験・たばかり・つもり・予定・ことにする（docs/proposals/020）。動詞のあとの決まった言い方を、字面で見て1つの動詞の語にする。
     // 経験は pinu（+ nepi / epepi）、たばかり は onuli + 過去、つもり・予定 は pulao、ことにする は poso（どちらも動詞の動名詞つき）
     var TA_SUFFIX = [[/^こと[がは](ある|あります)/, { exp: true }], [/^こと[がは](ない|ありません)/, { exp: true, expNeg: true }],
@@ -347,6 +352,12 @@
         var stem = verbForms(s).stemI;
         if (!stem || s === 'いる') return;
         AUX_V.forEach(function (f) { addJa(stem + f[0], { k: 'V', e: e, tags: f[1] }); });
+        // 使役（食べさせる・書かせる・来させる）: 語幹だけ登録し、あとに続く る・た・ない などは字面で読む（verbSuffix と同じ作り）
+        if (byW.koso) {
+          var vfc = verbForms(s);
+          var cs = /する$/.test(s) ? s.slice(0, -2) + 'させ' : !vfc.stemA ? null : vfc.stemA === vfc.stemI ? vfc.stemA + 'させ' : vfc.stemA + 'せ';
+          if (cs) addJa(cs, { k: 'CAUS', e: e });
+        }
         AUX_ADJ.forEach(function (f) { addJa(stem + f[0], { k: 'ADJ', e: f[1], tags: f[2], gerundOf: e }); });
       });
     });
@@ -614,6 +625,7 @@
             // 勧誘の形のあとの「か」は、申し出（食べましょうか）
             if (nx && !/[、，,。．.！？!?\s]/.test(nx) && !((cand.tags.hort || cand.tags.req) && nx === 'か')) cand = null;
           }
+          if (cand && cand.k === 'CAUS' && !CAUS_END.test(text.slice(i + len))) cand = null;
           if (cand && cand.k === 'PROHIB') {
             var lastTok = tokens[tokens.length - 1];
             if (unk || !lastTok || lastTok.k !== 'P' || lastTok.p !== 'は') cand = null;
@@ -624,7 +636,12 @@
           }
           if (cand) { found = { tok: cand, len: len }; break; }
         }
-        if (found) {
+        if (found && found.tok.k === 'CAUS') {
+          flush();
+          var cm = CAUS_END.exec(text.slice(i + found.len));
+          tokens.push({ k: 'V', e: found.tok.e, tags: Object.assign({ aux: 'koso', caus: true }, CAUS_TAGS[cm[1]]) });
+          i += found.len + cm[0].length;
+        } else if (found) {
           flush();
           var vs = found.tok.k === 'V' && found.tok.e ? verbSuffix(found.tok, text.slice(i + found.len)) : null;
           if (vs) { tokens.push(vs.tok); i += found.len + vs.len; }
@@ -811,7 +828,8 @@
             continue;
           }
           if (isNpStart(tokens[i + 1])) {
-            var rc = [item('ta'), item('li')].concat(verbItems(t));
+            // 関係節の中の「〜を」「〜に」は、動詞のあとに置く（私にリンゴをくれた人 → ta li pasu kipo apa tote mi）
+            var rc = [item('ta'), item('li')].concat(verbItems(t), takeClauseChunks());
             if (t.tags.prog) notes.push('「' + t.e.jaNote + '」の進行形は関係節の中では表せないため、省略しました。');
             var save = tokens[i + 1];
             i++;
@@ -1057,6 +1075,7 @@
         if (last.tags.soon) advs.push(item('suni'));
         pred.agent = last.tags.agent;
         pred.abil = last.tags.abil;
+        pred.caus = last.tags.caus;
         toks.pop();
       } else if (last && (last.k === 'ADJ' || last.k === 'ANA') && !last.attr) {
         pred = { kind: 'adj', e: last.e, gerundOf: last.gerundOf };
@@ -1215,7 +1234,15 @@
           var affected = pred.agent && ir.subject ? ir.subject : [];
           // 泳げるようになる: 動名詞ではなく kani + 動詞（docs/proposals/023）
           var inner = pred.abil ? [item('kani'), item(pred.gerundOf.w)] : [item(pred.gerundOf.w + 'na', { gerund: pred.gerundOf.w })];
-          ir.object = affected.concat(inner, ir.object || []);
+          if (pred.caus) {
+            // 使役: koso + させられる人 + tote + 動名詞（+ 目的語）。に の人があればその人、なければ を の人（私は彼を来させる → mi koso li tote komona）
+            var toIdx = -1;
+            ir.pps.forEach(function (pp, k2) { if (toIdx < 0 && pp[0] && pp[0].w === 'tote') toIdx = k2; });
+            var causee, causeRest;
+            if (toIdx >= 0) { causee = ir.pps.splice(toIdx, 1)[0].slice(1); causeRest = ir.object || []; }
+            else { causee = ir.object || []; causeRest = []; }
+            ir.object = causee.concat([item('tote')], inner, causeRest);
+          } else ir.object = affected.concat(inner, ir.object || []);
         }
         if (pred.agent) ir.subject = [item('somena')];
         return ir;
@@ -1228,6 +1255,8 @@
           ir.object = ga.items;
           return ir;
         }
+        // 「猫は好きではない」: 前の節に主語があるとき、は の語は対比の目的語（translateJa で組み替える）
+        if (adjW === 'suke' && !ga && ir.subject && subjectChunk && subjectChunk.particle === 'は') ir.contrastObject = true;
         var comp = [];
         var multC = rest.filter(function (c) { return c.mult; })[0];
         var yori = withP.filter(function (c) { return c.particle === 'より'; })[0];
@@ -1464,6 +1493,15 @@
           ir.sub = c.sub;
           if (seg.hyp) ir.hyp = true;
           return ir;
+        });
+        // 対比の「は」: 私は犬が好きだが、猫は好きではない → mi laiko tuka, patu mi no laiko kata（目的語の は）
+        irs.forEach(function (ir, idx) {
+          if (idx > 0 && ir.contrastObject && ir.verb === 'pio' && irs[idx - 1].subject && ir.complement && ir.complement.length === 1) {
+            ir.verb = 'laiko';
+            ir.object = ir.subject;
+            ir.subject = irs[idx - 1].subject;
+            ir.complement = null;
+          }
         });
         // 主語のない節は、前の節の主語を引き継ぐ
         irs.forEach(function (ir, idx) {

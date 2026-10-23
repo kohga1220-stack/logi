@@ -17,8 +17,8 @@ function readCorpus() {
   });
 }
 
-// 日本語の入力として未対応の構文（使役・目的語の対比の「は」・関係節の中の目的語や受け手）と、英語から入れる願いの言葉（112〜114）
-const UNSUPPORTED_JA = new Set([19, 22, 26, 112, 113, 114]);
+// 英語から入れる願いの言葉（112〜114）は、日本語からは入れない
+const UNSUPPORTED_JA = new Set([112, 113, 114]);
 
 test('corpus: 対応する日本語の例文は例文集の Logi と一致する', () => {
   const failures = [];
@@ -911,5 +911,22 @@ test('提案023: 可能形 + ようになる・結果の状態の〜ている・
   ];
   en.forEach(([src, logi]) => {
     assert.strictEqual(translator.translate(src, 'en').logi, logi, src);
+  });
+});
+
+test('日本語の入力の取りこぼし: 関係節の中の目的語・使役・目的語の対比の「は」', () => {
+  const ja = [
+    ['私は私にリンゴをくれた人を見る。', 'mi sio mana ta li pasu kipo apa tote mi.'],
+    ['私は本を読んだ人を見る。', 'mi sio mana ta li pasu loto pupa.'],
+    ['私は彼を来させる。', 'mi koso li tote komona.'],
+    ['私は彼に食べさせる。', 'mi koso li tote itona.'],
+    ['私は彼に本を読ませた。', 'mi pasu koso li tote lotona pupa.'],
+    ['私は彼を走らせなかった。', 'mi pasu no koso li tote lanona.'],
+    ['私は犬が好きだが、猫は好きではない。', 'mi laiko tuka, patu mi no laiko kata.'],
+    ['猫は好きではない。', 'kata no pio suke.'],          // 前の節がなければ、猫が主語のまま
+    ['私は彼に本を見せた。', 'mi pasu mowo pupa tote li.'],  // 辞書の 見せる が先（使役の 見させる ではない）
+  ];
+  ja.forEach(([src, logi]) => {
+    assert.strictEqual(translator.translate(src, 'ja').logi, logi, src);
   });
 });
