@@ -11,7 +11,7 @@
 | 提案022: 〜ている（状態と進行）・〜ようになる・〜ことになる・〜ところだ（Q1〜Q3）| `docs/proposals/022-state-and-change-phrases.md` | 決定待ち（「お任せ」でもよい。おすすめは Q1〜Q3 すべて A）|
 | 提案021: Antigravity の語の選び方の癖と、指示の改善（Q1: `docs/WORKFLOW.md` §2 への反映、Q2: 第29弾は50語）| `docs/proposals/021-anti-error-patterns.md` | M1ko の依頼（2026-10-23）で作成。§2 への反映は別のPR（決まりの変更なので M1ko がマージ）|
 | `elowe`（心細い）の確認 | `dictionary/word_review.csv` | 第27弾の `elowe` だけ `draft` のまま（見出し語を forlorn / uneasy に直したため）。M1ko の `ok` / `fix` 待ち |
-| 第28弾の追加語（60語）の確認 | `dictionary/word_review.csv`、`docs/review/new_words.md` | Claude の確認は済み。【修正推奨】8語の直し（削除8語、既存語6語への意味の併記）は #106 でマージ済み。残りは M1ko の確認（`draft` → `ok` / `fix`）と、【任意】12語を直すかの判断 |
+| 第28弾の追加語（60語）の確認 | `dictionary/word_review.csv`、`docs/review/new_words.md` | Claude の確認は済み。【修正推奨】8語の直しは #106 でマージ済み。【任意】12語の直し（11語に日本語の言い方を併記、`wapaka` は変更なし）は、直しのPR（既存語の書き換えなので M1ko がマージ）に入っている。マージ後、M1ko の確認待ち（`draft` → `ok` / `fix`）|
 
 （決定済み: 提案018 → v0.26、提案019 → v0.27、提案020 → v0.28 で実装。第27弾の追加語 90語 → `ok`（【任意】26語は、M1ko の指示でそのまま）。第28弾（60語）の案 → 承認済み。いずれも 2026-10-22 の M1ko の返事）
 
@@ -19,7 +19,7 @@
 
 | PR | 担当 | 内容 | 状態 |
 |---|---|---|---|
-| （なし）| | | |
+| （直しのPR）| Claude | 第28弾の【任意】12語の直し（日本語の言い方の併記11語、`wapaka` は変更なし）| M1ko のマージ待ち |
 
 ## 文法への依頼（Antigravity → Claude）
 

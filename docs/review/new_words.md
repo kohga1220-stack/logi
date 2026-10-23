@@ -2017,7 +2017,7 @@
 | mimuwa | 交響曲 | symphony |  | ok |
 | lolota | 肖像画 | portrait |  | ok |
 | kewela | 画廊 | gallery |  | ok |
-| wilewa | 旋風 | whirlwind |  | Claude【任意】旋風 は既存の tolowa（竜巻 / tornado）と近い。whirlwind は つむじ風 の意味もある |
+| wilewa | 旋風/つむじ風 | whirlwind |  |  |
 | kepata | 火口 | crater |  |  |
 | tosika | 化石 | fossil |  |  |
 | mosasa | 修道院 | monastery |  |  |
@@ -2026,24 +2026,24 @@
 | ejisa | 天文台 | observatory |  |  |
 | sajama | 聖域 | sanctuary |  |  |
 | sowata | 競技場 | stadium |  |  |
-| sejoka | 帆船 | sailboat |  | Claude【任意】帆船 は既存の sipa（船）・jasuka（ヨット / yacht）と近い。種類を表す語なので残してよい |
+| sejoka | 帆船/帆掛け船 | sailboat |  |  |
 | soniwa | 日時計 | sundial |  |  |
 | mitowa | 神話 | mythology |  |  |
 | pokoja | 民間伝承 | folklore |  |  |
 | kowija | 協奏曲 | concerto |  |  |
 | sojaka | 奏鳴曲 | sonata |  |  |
 | tapewa | 綴れ織り | tapestry |  |  |
-| mawesa | 湿地 | marsh |  | Claude【任意】湿地 は既存の sawapa（沼 / swamp）と近い。marsh と swamp は英語でも近い語 |
+| mawesa | 湿地/湿原 | marsh |  |  |
 | luwala | 鍾乳石 | stalactite |  |  |
 | sojima | 蒸気船 | steamboat |  |  |
 | joloma | 要塞/城塞 | fortress |  |  |
-| wapaka | 兵舎 | barracks |  | Claude【任意】barracks は複数形のような語形（単数でも barracks）。見出し語としては残してよいが、複数形を避ける方針との関係を確認 |
+| wapaka | 兵舎 | barracks |  | Claude確認: barracks は単複同形の名詞。見出し語はそのまま |
 | nonola | 独白 | monologue |  |  |
 | lapeja | 迷宮 | labyrinth |  |  |
 | mameta | 万華鏡 | kaleidoscope |  |  |
-| nusola | 序幕 | prologue |  | Claude【任意】序幕 は演劇向きの言い方。prologue は プロローグ・序章 が普通。日本語を プロローグ/序章 に直すか検討 |
+| nusola | 序幕/序章/プロローグ | prologue |  |  |
 | jiuna | 高架橋 | viaduct |  |  |
-| makema | 人台 | mannequin |  | Claude【任意】人台 は一般的でない。日本語は マネキン が普通。既存の toma（人形 / doll）とは別の意味（衣服を着せる台） |
+| makema | 人台/マネキン | mannequin |  |  |
 | tiwota | 蒸留所 | distillery |  |  |
 | lunepa | 鋳造所 | foundry |  |  |
 
@@ -2392,8 +2392,8 @@
 | ewejo | 避難する | evacuate |  |  |
 | monopo | 独占する | monopolize |  |  |
 | nualo | 隔離する | quarantine |  |  |
-| sopuwo | 実証する | substantiate |  | Claude【任意】実証する は既存の jukupa（証明）と近い。prove の動詞（証明する）が辞書にないので、別の意味（証拠で示す）として残してよい |
-| keapo | 復権させる | rehabilitate |  | Claude【任意】rehabilitate は 更生させる・リハビリさせる が普通の意味。復権させる は法律用語に寄っている。日本語を 更生させる/復権させる にするか検討 |
+| sopuwo | 実証する/裏付ける | substantiate |  |  |
+| keapo | 復権させる/更生させる | rehabilitate |  |  |
 
 ### adj（165語）
 
@@ -2560,9 +2560,9 @@
 | motase | 控えめな | modest |  |  |
 | tilane | 透明な | transparent |  |  |
 | punape | 芳しい | fragrant |  |  |
-| upuwe | 唐突な | abrupt |  | Claude【任意】唐突な は既存の sukene（急な / sudden）・unoke（意外な）と近い。abrupt の「そっけない」の意味は表せない |
-| osuje | 手厚い | hospitable |  | Claude【任意】hospitable の意味は もてなしのよい。手厚い だけだと別の語（手厚い看護 など）に読める。日本語を もてなしのよい に直すか検討 |
-| litie | 光り輝く | radiant |  | Claude【任意】光り輝く は既存の sipo（輝く / shine）・pulaite（明るい / bright）と近い。radiant の自然な訳は 輝くばかりの。重なりを承知で残すか検討 |
+| upuwe | 唐突な/ぶっきらぼうな | abrupt |  |  |
+| osuje | 手厚い/もてなしのよい | hospitable |  |  |
+| litie | 光り輝く/輝かしい | radiant |  |  |
 | pikute | 絵画的な | picturesque |  |  |
 
 ### adv（28語）
@@ -2596,7 +2596,7 @@
 | opili | 頭上に | overhead |  |  |
 | asopi | 岸に | ashore |  |  |
 | aimi | 前方に | ahead |  |  |
-| otepi | さもなければ | otherwise |  | Claude【任意】さもなければ は既存の接続詞 ulesu（でなければ / unless）と近い。otherwise は副詞なので残してよいが、使い分けを確認 |
+| otepi | さもなければ/さもないと | otherwise |  |  |
 
 ## v0.10 機能語（指示詞・はい／いいえ）（3語）
 
