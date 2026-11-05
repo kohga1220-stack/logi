@@ -517,6 +517,15 @@
     if (byW.mene) ['たくさんの', '沢山の', '数多くの', 'いっぱいの'].forEach(function (a) { addJa(a, { k: 'ADJ', e: byW.mene, tags: {}, attr: true }); });
     if (byW.elumi && byW.epule) ['ほとんどの', '大半の', '大部分の'].forEach(function (a) { addJa(a, { k: 'ADJ', e: byW.epule, tags: {}, attr: true, pre: 'elumi' }); });
     ['あまり', 'あんまり'].forEach(function (a) { addJa(a, { k: 'DEGNEG' }); });
+    // 否定の範囲（docs/proposals/025）: 〜わけではない・〜とは限らない は節を否定する。数量語・いつも・必ず がある節は、その語の直前に no を置く（部分否定）
+    ['わけではない', 'わけじゃない', 'わけでもない', 'わけではありません', 'とは限らない', 'とは限りません', 'とは限りません'].forEach(function (a) { addJa(a, { k: 'WAKENEG' }); });
+    ['わけではなかった', 'わけじゃなかった', 'わけではありませんでした'].forEach(function (a) { addJa(a, { k: 'WAKENEG', past: true }); });
+    if (byW.suli) addJa('必ずしも', { k: 'ADV', e: byW.suli, partial: true });
+    if (jaMap['みんな']) ['全員', '皆', '皆さん'].forEach(function (a) { if (!jaMap[a]) addJa(a, jaMap['みんな']); });
+    // 誰も・何も + ない（全否定）: 誰でも（awa）・何でも（aja）+ no
+    if (byW.awa) ['誰も', 'だれも'].forEach(function (a) { addJa(a, { k: 'NEGPRON', e: byW.awa, particle: 'が' }); });
+    if (byW.aja) ['何も', 'なにも'].forEach(function (a) { addJa(a, { k: 'NEGPRON', e: byW.aja, particle: 'を' }); });
+    var PARTIAL_W = { ewa: 1, epule: 1, epuli: 1, aloi: 1, suli: 1 };
     var DEG_ADV = { peli: 1, ekisi: 1, lateli: 1, sumoli: 1, tui: 1 };
 
     function toHalfWidth(s) {
@@ -717,7 +726,7 @@
         var t = tokens[i];
         // 名詞を修飾する形容詞の前の程度の副詞（とても大きい家 → peli lase usa）は、形容詞の直前に置く
         if (t.k === 'ADV' && DEG_ADV[t.e.w] && tokens[i + 1] && tokens[i + 1].k === 'ADJ' && !(tokens[i + 1].tags && (tokens[i + 1].tags.past || tokens[i + 1].tags.neg)) && isNpStart(tokens[i + 2])) { mods.push(item(t.e.w)); i++; continue; }
-        if (t.k === 'ADV') { advs.push(item(t.e.w)); i++; continue; }
+        if (t.k === 'ADV') { if (t.negFirst || t.partial) advs.push(item('no')); advs.push(item(t.e.w)); i++; continue; }
         if (t.k === 'WH' && (t.e.w === 'waia' || t.e.w === 'aua')) { advs.push(item(t.e.w)); i++; continue; }
         if (t.k === 'NUMC') {
           var qn = words(numberToLogi(t.n));
@@ -813,6 +822,7 @@
         }
         if (t.k === 'ADJ' && (t.attr || isNpStart(tokens[i + 1])) && isNpStart(tokens[i + 1])) {
           if (t.tags && t.tags.too) mods.push(item('tui'));
+          if (t.negFirst) mods.push(item('no'));
           if (t.pre) mods.push(item(t.pre));
           mods.push(item(t.e.w)); i++; continue;
         }
@@ -897,7 +907,7 @@
     function headItemsOf(t) {
       if (t.k === 'UNK') return [unknown(t.text)];
       if (t.k === 'ADJ' || t.k === 'ANA') return [item(t.e.w)];
-      return [item(t.e.w)];
+      return t.negFirst ? [item('no'), item(t.e.w)] : [item(t.e.w)];
     }
 
     // 〜てもらう のとき、受け手を目的語にする動詞（人を助ける）。ほかの動詞は pote + 受け手
@@ -1039,6 +1049,20 @@
       // あまり〜ない（docs/proposals/024）: 述語が形容詞なら peli、動詞なら meni を、副詞の位置に置く。否定のないあまりは訳さない
       var degNeg = toks.some(function (t) { return t.k === 'DEGNEG'; });
       if (degNeg) toks = toks.filter(function (t) { return t.k !== 'DEGNEG'; });
+      // 〜わけではない・〜とは限らない（docs/proposals/025）: 前の節を否定する。「わけ」は訳さない
+      var wakeNeg = null;
+      if (toks.length && toks[toks.length - 1].k === 'WAKENEG') wakeNeg = toks.pop();
+      // 誰も・何も（全否定）: 誰でも・何でも + が／を。述語は否定にする
+      var negPron = toks.some(function (t) { return t.k === 'NEGPRON'; });
+      if (negPron) {
+        var rebuilt = [];
+        toks.forEach(function (t) {
+          if (t.k !== 'NEGPRON') { rebuilt.push(t); return; }
+          var asObj = t.particle === 'を';
+          rebuilt.push({ k: 'PRON', e: t.e }, { k: 'P', p: asObj ? 'を' : 'が' });
+        });
+        toks = rebuilt;
+      }
       var comp = splitComplement(toks, question, notes) || splitIndirect(toks, question, notes);
       if (comp) return comp;
       var pred = null;
@@ -1108,6 +1132,19 @@
       if (degNeg) {
         if (neg && pred && (pred.kind === 'adj' || pred.kind === 'verb')) advs.push(item(pred.kind === 'adj' ? 'peli' : 'meni'));
         else notes.push('否定のない「あまり」は訳しません。');
+      }
+      if (negPron && pred && (pred.kind === 'verb' || pred.kind === 'adj')) neg = true;
+      // 必ずしも〜ない: 「ない」は必ずしもの否定に含める（li no suli komo）
+      if (toks.some(function (t) { return t.k === 'ADV' && t.partial; }) && neg && !wakeNeg) neg = false;
+      if (wakeNeg) {
+        if (wakeNeg.past && !tense) tense = 'past';
+        var pIdx = -1;
+        toks.forEach(function (t, ix) {
+          var w = t.e && t.e.w;
+          if (pIdx < 0 && w && PARTIAL_W[w] && (t.k === 'N' || t.k === 'PRON' || t.k === 'ADJ' || t.k === 'ADV')) pIdx = ix;
+        });
+        if (pIdx >= 0) toks[pIdx] = Object.assign({}, toks[pIdx], { negFirst: true });
+        else neg = true;
       }
       var chunks = chunkJa(toks, advs, notes);
       var subjectChunk = null;
@@ -1784,6 +1821,7 @@
       var es = (enIndex[tok] || []).filter(function (e) { return e.pos === 'adv'; });
       if (es.length) return es[0];
       if (tok === 'much' && ADV_OF.mene) return { w: ADV_OF.mene, pos: 'adv' };
+      if (tok === 'necessarily' && byW.suli) return { w: 'suli', pos: 'adv' };
       // -ly 副詞（docs/proposals/016）: 形容詞に戻して、派生の副詞（-e → -i）にする。happily → happy → api
       if (/ly$/.test(tok) && tok.length > 4) {
         var bases = [tok.slice(0, -2), tok.slice(0, -1) + 'e'];
@@ -2078,6 +2116,21 @@
       opts = opts || {};
       if (!tokens.length) return null;
       tokens = quantityPhrases(tokens);
+      // 否定の範囲（docs/proposals/025）: Not all / Not everyone → no + 数量語（部分否定）。Nobody / No one / Nothing が主語 → anyone / anything + no（全否定）
+      var PARTIAL_EN = { all: 1, every: 1, everyone: 1, everybody: 1, everything: 1, both: 1 };
+      if (tokens[0] === 'not' && PARTIAL_EN[tokens[1]] && !opts.partialDone) {
+        var irP = translateEnTokens(tokens.slice(1), question, notes, Object.assign({}, opts, { partialDone: true }));
+        if (irP && irP.subject) irP.subject = [item('no')].concat(irP.subject);
+        return irP;
+      }
+      var NEG_SUBJ = { nobody: 'anyone', nothing: 'anything' };
+      var negRest = NEG_SUBJ[tokens[0]] ? [NEG_SUBJ[tokens[0]]].concat(tokens.slice(1)) :
+        (tokens[0] === 'no' && (tokens[1] === 'one' || tokens[1] === 'body') ? ['anyone'].concat(tokens.slice(2)) : null);
+      if (negRest && !question && !opts.partialDone) {
+        var irN = translateEnTokens(negRest, question, notes, Object.assign({}, opts, { partialDone: true }));
+        if (irN) irN.neg = true;
+        return irN;
+      }
       var ir = { subject: null, advs: [], tense: null, aspect: null, neg: false, question: question,
         object: null, pps: [], notes: notes };
       var ctx = { notes: notes };
@@ -2188,6 +2241,8 @@
         var adv = findAdv(tk);
         if (adv && !findVerb(tk) && !findNoun(tk) && !findAdj(tk)) {
           cur.next();
+          // do not always eat → no aloi（いつも〜するわけではない）。not necessarily も同じ（docs/proposals/025）
+          if (ir.neg && (adv.w === 'aloi' || adv.w === 'suli')) { ir.advs.push(item('no'), item(adv.w)); ir.neg = false; continue; }
           ir.advs.push(item(adv.w));
           continue;
         }
@@ -2464,6 +2519,8 @@
             ir.advs.push(item(adv2.w));
             continue;
           }
+          // do not always eat → no aloi（いつも〜するわけではない）。not necessarily も同じ（docs/proposals/025）
+          if (ir.neg && (adv2.w === 'aloi' || adv2.w === 'suli')) { ir.advs.push(item('no'), item(adv2.w)); ir.neg = false; continue; }
           ir.advs.push(item(adv2.w));
           continue;
         }

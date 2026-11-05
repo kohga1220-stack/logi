@@ -182,3 +182,10 @@ id,feature,logi,ja
 181,not-much,mi meni no ito.,私はあまり食べない。
 182,a-little,mi sumoli pio tilete.,私は少し疲れている。
 183,degree-noun,peli lase usa alo.,とても大きい家がある。
+184,partial-negation,no ewa pasu komo.,みんなが来たわけではない。
+185,partial-negation-all,no epule sutua pasu komo.,すべての学生が来たわけではない。
+186,partial-negation-always,mi no aloi ito mita.,私はいつも肉を食べるわけではない。
+187,not-necessarily,li no suli komo.,彼は必ずしも来ない。
+188,negative-pronoun,awa pasu no komo.,誰も来なかった。
+189,negative-pronoun-object,mi pasu no ito aja.,私は何も食べなかった。
+190,negative-pronoun-know,awa no mo.,誰も知らない。
