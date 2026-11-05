@@ -302,7 +302,7 @@
 - **55** `pipolu li komo, mi ito.`  
   pipolu=前に(conj) li=彼/彼女/それ(pronoun) komo=来る(verb) mi=私(pronoun) ito=食べる(verb)
 - **56** `aputi li pasu komo, mi ito.`  
-  aputi=後で(conj) li=彼/彼女/それ(pronoun) pasu=過去(marker) komo=来る(verb) mi=私(pronoun) ito=食べる(verb)
+  aputi=後で/その後に(conj) li=彼/彼女/それ(pronoun) pasu=過去(marker) komo=来る(verb) mi=私(pronoun) ito=食べる(verb)
 - **57** `utilu li komo, mi mato.`  
   utilu=まで(conj) li=彼/彼女/それ(pronoun) komo=来る(verb) mi=私(pronoun) mato=待つ(verb)
 - **58** `oluto li pasu komo, mi pasu no iko.`  
@@ -554,6 +554,6 @@
 - **181** `mi meni no ito.`  
   mi=私(pronoun) meni=多くの(adj)+i(派生の副詞) no=否定(marker) ito=食べる(verb)
 - **182** `mi sumoli pio tilete.`  
-  mi=私(pronoun) sumoli=少し(adv) pio=です(verb) tilete=疲れた(adj)
+  mi=私(pronoun) sumoli=少し/幾分(adv) pio=です(verb) tilete=疲れた(adj)
 - **183** `peli lase usa alo.`  
   peli=とても(adv) lase=大きい(adj) usa=家(noun) alo=ある(verb)
