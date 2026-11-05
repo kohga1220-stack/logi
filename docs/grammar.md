@@ -465,6 +465,14 @@ SVO + 前置詞句で代替。
 - 英語の複数形に数量の語（many・most・all・few・some）がつくときは、複数形の `mene` を足さない: `piue sutua pasu komo.`（Few students came）。
 - 否定のない「あまり」は訳さない（注意を表示する）。
 
+### 否定の範囲（v0.32 確定、提案025）
+新しい語は作らない。`no` は直後の語を否定する。
+- 部分否定: 数量の語（`ewa` みんな・`epule` すべての・`epuli` 全部）または副詞（`aloi` いつも・`suli` 必ず）の**直前**に `no` を置く。`no ewa pasu komo.`（みんなが来たわけではない。Not everyone came）、`no epule sutua pasu komo.`（Not all students came）、`mi no aloi ito mita.`（いつも肉を食べるわけではない。I do not always eat meat）、`li no suli komo.`（彼は必ずしも来ない）。
+- 全否定: 動詞（または `pio`）の前に `no` を置く。誰も = `awa`（誰でも）、何も = `aja`（何でも）。`awa pasu no komo.`（誰も来なかった。Nobody came）、`mi pasu no ito aja.`（何も食べなかった）。`noka`（何もない）は名詞のまま（`mi pasu ito noka.` = I ate nothing）。
+- 〜わけではない・〜とは限らない: 「わけ」「とは限らない」は訳さず、前の節を否定する。節に数量の語・いつも・必ず があれば、その語の直前に `no`。なければ、述語の否定。`mi no ito mita.`（肉を食べるわけではない）。
+- 「副詞 + `no` + 動詞」は、副詞が否定を修飾する（`mi enuti no mo.` = 全く知らない）。「`no` + 副詞 + 動詞」は、副詞を否定する。
+- この規則に含めないもの: 〜だけではなく〜も、どこにも・一度も。
+
 ### 仮定法
 接続詞 ipu（もし）+ 仮定マーカー wutu
 - ipu mi wutu pio pata, mi wutu pulaio.（もし鳥なら、飛ぶのに）
@@ -696,5 +704,6 @@ v0.5 で po を **tulimo**（英 dream の音訳: d→t, r→l, 子音連続を 
 | v0.29 | 〜ている（状態と進行）・〜ようになる・〜ことになる・〜ところだを決めた（状態の動詞の〜ているは `konu` なし、〜ようになる `pekomo` + 動名詞、〜ことになる `somena` を主語にした `poso` + 動名詞、〜ところだ `suni` / `konu` / `onuli pasu`。提案022、§7）。翻訳機が日本語と英語（be about to、come to like）に対応した。新語なし。M1ko は「おまかせ」と返事をし、Claude がおすすめの A を採った。3,122語 |
 | v0.30 | 可能形 + ようになる・結果の状態の〜ている・make + 目的語 + 名詞を決めた（`pekomo kani 動詞`、`pio` + 形容詞、役割の名詞は `koso`・それ以外は `meko` + `pote`。提案023、§7）。翻訳機が日本語と英語に対応した。新語なし。M1ko は「全て一任する」と返事をし、Claude がおすすめの A を採った。3,171語 |
 | v0.31 | 数量・程度の言い方を決めた（たくさん = `meni`、全部 = `epuli`、ほとんどの N = `elumi epule` + N、あまり〜ない = `peli`／`meni` + `no`、少し = `sumoli`。提案024、§7）。翻訳機が日本語と英語に対応した。新語なし。M1ko は「全て許可」と返事をし、Claude がおすすめの A を採った。3,171語 |
+| v0.32 | 否定の範囲を決めた（部分否定は数量の語・副詞の直前に `no`、全否定は `awa`／`aja` + `no`、〜わけではない・〜とは限らないは前の節の否定。提案025、§7）。翻訳機が日本語と英語に対応した。新語なし。M1ko は「全て許可」と返事をし、Claude がおすすめの A を採った。3,251語 |
 | v0.4 | 疑問詞はその場置き、法副詞は副詞の位置（マーカーの前）と §7 に追記 |
 | v0.4 | 同義語33語を deprecated にし（status / replaced_by 列を追加）、正本の選び方を §10.6 に記載 |
