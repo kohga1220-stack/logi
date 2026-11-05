@@ -188,6 +188,13 @@
 | 181 | not-much | mi meni no ito. | 私はあまり食べない。 |
 | 182 | a-little | mi sumoli pio tilete. | 私は少し疲れている。 |
 | 183 | degree-noun | peli lase usa alo. | とても大きい家がある。 |
+| 184 | partial-negation | no ewa pasu komo. | みんなが来たわけではない。 |
+| 185 | partial-negation-all | no epule sutua pasu komo. | すべての学生が来たわけではない。 |
+| 186 | partial-negation-always | mi no aloi ito mita. | 私はいつも肉を食べるわけではない。 |
+| 187 | not-necessarily | li no suli komo. | 彼は必ずしも来ない。 |
+| 188 | negative-pronoun | awa pasu no komo. | 誰も来なかった。 |
+| 189 | negative-pronoun-object | mi pasu no ito aja. | 私は何も食べなかった。 |
+| 190 | negative-pronoun-know | awa no mo. | 誰も知らない。 |
 
 ## 語注（辞書から機械的に生成）
 
@@ -557,3 +564,17 @@
   mi=私(pronoun) sumoli=少し/幾分(adv) pio=です(verb) tilete=疲れた(adj)
 - **183** `peli lase usa alo.`  
   peli=とても(adv) lase=大きい(adj) usa=家(noun) alo=ある(verb)
+- **184** `no ewa pasu komo.`  
+  no=否定(marker) ewa=みんな(pronoun) pasu=過去(marker) komo=来る(verb)
+- **185** `no epule sutua pasu komo.`  
+  no=否定(marker) epule=すべての(adj) sutua=学生(noun) pasu=過去(marker) komo=来る(verb)
+- **186** `mi no aloi ito mita.`  
+  mi=私(pronoun) no=否定(marker) aloi=いつも(adv) ito=食べる(verb) mita=肉(noun)
+- **187** `li no suli komo.`  
+  li=彼/彼女/それ(pronoun) no=否定(marker) suli=必ず(adv) komo=来る(verb)
+- **188** `awa pasu no komo.`  
+  awa=誰でも(pronoun) pasu=過去(marker) no=否定(marker) komo=来る(verb)
+- **189** `mi pasu no ito aja.`  
+  mi=私(pronoun) pasu=過去(marker) no=否定(marker) ito=食べる(verb) aja=何でも(pronoun)
+- **190** `awa no mo.`  
+  awa=誰でも(pronoun) no=否定(marker) mo=知る(verb)

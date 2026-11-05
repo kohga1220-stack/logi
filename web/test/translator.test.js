@@ -949,6 +949,37 @@ test('提案024: 数量・程度の言い方', () => {
   });
 });
 
+test('提案025: 否定の範囲（部分否定・全否定）', () => {
+  const ja = [
+    ['みんなが来たわけではない。', 'no ewa pasu komo.'],
+    ['全員が来たわけではない。', 'no ewa pasu komo.'],
+    ['すべての学生が来たわけではない。', 'no epule sutua pasu komo.'],
+    ['全部食べたわけではない。', 'no epuli pasu ito.'],
+    ['私はいつも肉を食べるわけではない。', 'mi no aloi ito mita.'],
+    ['彼は必ずしも来ない。', 'li no suli komo.'],
+    ['私は肉を食べるわけではない。', 'mi no ito mita.'],
+    ['誰も来なかった。', 'awa pasu no komo.'],
+    ['私は何も食べなかった。', 'mi pasu no ito aja.'],
+    ['誰も知らない。', 'awa no mo.'],
+  ];
+  ja.forEach(([src, logi]) => {
+    assert.strictEqual(translator.translate(src, 'ja').logi, logi, src);
+  });
+  const en = [
+    ['Not all students came.', 'no epule sutua pasu komo.'],
+    ['Not everyone came.', 'no ewa pasu komo.'],
+    ['Nobody came.', 'awa pasu no komo.'],
+    ['No one knows.', 'awa no mo.'],
+    ['I do not always eat meat.', 'mi no aloi ito mita.'],
+    ['He does not necessarily come.', 'li no suli komo.'],
+    ['Everyone came.', 'ewa pasu komo.'],
+    ['I ate nothing.', 'mi pasu ito noka.'],        // 名詞の nothing は、これまでどおり
+  ];
+  en.forEach(([src, logi]) => {
+    assert.strictEqual(translator.translate(src, 'en').logi, logi, src);
+  });
+});
+
 test('日本語の入力の取りこぼし: 関係節の中の目的語・使役・目的語の対比の「は」', () => {
   const ja = [
     ['私は私にリンゴをくれた人を見る。', 'mi sio mana ta li pasu kipo apa tote mi.'],
