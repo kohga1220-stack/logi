@@ -7,7 +7,7 @@
 - 語幹が同じ: 語尾の1文字だけが違う、別の品詞の語（例: `kuka` 名詞と `kuko` 動詞）。同じ英語の別品詞なら意図した組です。そうでなければ偶然の一致なので、見分けにくくないか見てください
 - 同じ英語の語: 同じ英語の訳を持つ、別の語（同義語の候補）
 
-確認済み(ok): 2546 / 要修正(fix): 0 / 未確認(draft): 100
+確認済み(ok): 2626 / 要修正(fix): 0 / 未確認(draft): 0
 
 ## v0.7 英検3級レベルの語（487語）
 
@@ -783,7 +783,7 @@
 | ajiwa | 様子 | appearance |  | ok |
 | mipuna | 夜中 | midnight |  | ok |
 | papena | 両親 | parents |  | ok |
-| kolisa | 廊下 | corridor |  | ok |
+| kolisa | 廊下 | corridor / hallway |  | ok |
 | kotoka | 綿 | cotton |  | ok |
 | lajea | 割合 | ratio |  | ok |
 | ijaka | インク | ink |  | ok |
@@ -914,7 +914,7 @@
 | lupo | 擦る | rub | 語幹が同じ: lupa | ok |
 | lepuso | 断る | refuse |  | ok |
 | kilo | 殺す | kill | 語幹が同じ: kila, kile, kili | ok |
-| putumo | 咲く | bloom |  | ok |
+| putumo | 咲く/開花する | bloom |  | ok |
 | suno | 叫ぶ | shout | 語幹が同じ: suna, suni | ok |
 | lolo | 下げる | lower | 語幹が同じ: lola, lole | ok |
 | sukapo | 刺す | stab |  | ok |
@@ -958,7 +958,7 @@
 | kuo | 並ぶ | queue | 語幹が同じ: kue | ok |
 | apano | 並べる | arrange |  | ok |
 | lijo | 鳴る | ring | 語幹が同じ: lija; 同じ英語の語: lina | ok |
-| kupipo | 握る | grip |  | ok |
+| kupipo | 握る/握り締める | grip |  | ok |
 | suso | 縫う | sew | 語幹が同じ: susa | ok |
 | unapo | 脱ぐ | undress |  | ok |
 | penuko | 塗る | paint |  | ok |
@@ -1072,7 +1072,7 @@
 
 | Logi | 日本語 | 英語 | 手がかり | 状況 |
 |---|---|---|---|---|
-| sumoli | 少し | little / a little | 語幹が同じ: sumole | ok |
+| sumoli | 少し/幾分 | little / a little | 語幹が同じ: sumole | ok |
 | kili | はっきり | clearly | 語幹が同じ: kila, kile, kilo | ok |
 | tiliki | 一生懸命 | diligently |  | ok |
 | someti | いつか | someday |  | ok |
@@ -1132,9 +1132,9 @@
 |---|---|---|---|---|
 | onapi | オンラインで | online |  | ok |
 
-## Antigravity の追加語（dictionary/anti_additions.csv）（1593語）
+## Antigravity の追加語（dictionary/anti_additions.csv）（1573語）
 
-### noun（967語）
+### noun（965語）
 
 | Logi | 日本語 | 英語 | 手がかり | 状況 |
 |---|---|---|---|---|
@@ -1634,7 +1634,7 @@
 | mikuma | 顕微鏡 | microscope |  | ok |
 | kawona | 大砲 | cannon |  | ok |
 | sopema | シャベル | shovel |  | ok |
-| pepama | ベランダ/ポーチ | veranda |  | ok |
+| pepama | ベランダ/ポーチ | veranda / balcony |  | ok |
 | kakopa | 絨毯 | carpet |  | ok |
 | memapa | 膜 | membrane |  | ok |
 | pawusa | パスポート | passport |  | ok |
@@ -1681,7 +1681,7 @@
 | pawaja | パラシュート | parachute |  | ok |
 | nukopa | プロペラ | propeller |  | ok |
 | jasuka | ヨット | yacht |  | ok |
-| lukesa | リュックサック | rucksack |  | ok |
+| lukesa | リュックサック | rucksack / backpack |  | ok |
 | lakima | 漆 | lacquer |  | ok |
 | pesasa | 真鍮 | brass |  | ok |
 | mewuka | 水銀 | mercury |  | ok |
@@ -2065,48 +2065,46 @@
 | ona | 櫂 | oar | 語幹が同じ: one, ono | ok |
 | atika | 屋根裏 | attic |  | ok |
 | sejaja | 地下室 | cellar |  | ok |
-| tomipa | 画鋲 | thumbtack |  |  |
-| lemewa | 領収書 | receipt |  |  |
-| latuja | 湯船 | bathtub |  |  |
-| lunima | 調理台 | counter |  |  |
-| wuwota | 出汁 | broth |  |  |
-| tosawa | トースター | toaster |  |  |
-| tatiwa | 歯磨き粉 | toothpaste |  |  |
-| sasasa | 紙留め器 | stapler |  |  |
-| kepipa | クリップ | clip |  |  |
-| tokisa | トング | tongs |  |  |
-| nujuwa | 吊り革 | strap |  |  |
-| nunewa | 漏斗 | funnel |  |  |
-| kituwa | 中庭 | courtyard |  |  |
-| nasika | ニンニク | garlic |  |  |
-| nakoma | ベーコン | bacon |  |  |
-| tapona | 食卓布 | tablecloth |  |  |
-| wosepa | 受け皿 | saucer |  |  |
-| niseja | 水差し | pitcher |  |  |
-| jawuma | 手の平 | palm |  |  |
-| niwuta | 握り拳 | fist |  |  |
-| wesika | 胴回り | waist |  |  |
-| napina | 背骨 | spine |  |  |
-| ninena | 松ぼっくり | pinecone |  |  |
-| lakaja | アライグマ | raccoon |  |  |
-| welisa | 漂白剤 | bleach |  |  |
-| towena | 排水口 | drain |  |  |
-| lolaja | 靴紐 | shoelace |  |  |
-| kekeja | 鍵ホルダー | keychain |  |  |
-| tilopa | ドアノブ | doorknob |  |  |
-| mejata | 郵便受け | mailbox |  |  |
-| josema | 片手鍋 | saucepan |  |  |
-| jujuja | 卓上調味差し | cruet |  |  |
-| josuja | コップ敷き | coaster |  |  |
-| numepa | 踏み台 | stepladder |  |  |
-| wunawa | 日焼け止め | sunscreen |  |  |
-| wopuwa | 石鹸置き | soapdish |  |  |
-| lukoja | 本棚 | bookshelf |  |  |
-| muwila | 毛抜き | tweezer |  |  |
-| kitima | 爪切り | clipper |  |  |
-| lamaka | 電灯笠 | lampshade |  |  |
+| tomipa | 画鋲 | thumbtack |  | ok |
+| lemewa | 領収書 | receipt |  | ok |
+| latuja | 湯船 | bathtub |  | ok |
+| lunima | 調理台 | countertop |  | ok Claude【修正】英語の見出しを counter（窓口・カウンター）から countertop に直した |
+| wuwota | 出汁 | broth |  | ok |
+| tosawa | トースター | toaster |  | ok |
+| tatiwa | 歯磨き粉 | toothpaste |  | ok |
+| sasasa | 紙留め器 | stapler |  | ok Claude【任意】日本語の見出しがあまり一般的でない（ホッチキス・ステープラーが一般的）。辞書では未確認 |
+| kepipa | クリップ | clip |  | ok |
+| tokisa | トング | tongs |  | ok |
+| nujuwa | 吊り革 | strap |  | ok |
+| nunewa | 漏斗 | funnel |  | ok |
+| kituwa | 中庭 | courtyard |  | ok |
+| nasika | ニンニク | garlic |  | ok |
+| nakoma | ベーコン | bacon |  | ok |
+| tapona | 食卓布 | tablecloth |  | ok Claude【任意】日本語はテーブルクロスのほうが一般的。辞書では未確認 |
+| wosepa | 受け皿 | saucer |  | ok |
+| niseja | 水差し | pitcher |  | ok |
+| jawuma | 手の平 | palm |  | ok |
+| niwuta | 握り拳 | fist |  | ok |
+| wesika | 胴回り | waist |  | ok Claude【任意】日本語はウエストのほうが一般的 |
+| napina | 背骨 | spine |  | ok |
+| ninena | 松ぼっくり | pinecone |  | ok |
+| welisa | 漂白剤 | bleach |  | ok |
+| towena | 排水口 | drain |  | ok |
+| lolaja | 靴紐 | shoelace |  | ok |
+| kekeja | 鍵ホルダー | keychain |  | ok Claude【任意】日本語はキーホルダーのほうが一般的 |
+| tilopa | ドアノブ | doorknob |  | ok |
+| mejata | 郵便受け | mailbox |  | ok |
+| josema | 片手鍋 | saucepan |  | ok |
+| jujuja | 卓上調味差し | cruet |  | ok Claude【任意】日本語の見出しがあまり一般的でない（調味料入れが一般的）。辞書では未確認 |
+| josuja | コップ敷き | coaster |  | ok Claude【任意】日本語はコースターのほうが一般的 |
+| numepa | 踏み台 | stepladder |  | ok |
+| wunawa | 日焼け止め | sunscreen |  | ok |
+| lukoja | 本棚 | bookshelf |  | ok |
+| muwila | 毛抜き | tweezer |  | ok |
+| kitima | 爪切り | clipper |  | ok |
+| lamaka | 電灯笠 | lampshade |  | ok Claude【任意】日本語はランプシェードのほうが一般的。辞書では未確認 |
 
-### verb（388語）
+### verb（380語）
 
 | Logi | 日本語 | 英語 | 手がかり | 状況 |
 |---|---|---|---|---|
@@ -2179,7 +2177,7 @@
 | temopo | 崩す | demolish |  | ok |
 | sumuwo | 砕く | smash / pulverize |  | ok |
 | aseto | 組み立てる | assemble |  | ok |
-| sakupo | 汲む | scoop / ladle / dip |  | ok |
+| sakupo | 汲む/すくい取る | scoop / ladle / dip |  | ok |
 | sunolo | 焦げる | scorch / char |  | ok Claude【任意】焦げる（自動詞）に対し scorch は他動詞が主。burn が自然だが使用中の可能性 |
 | sipilo | 零す | spill / slop |  | ok |
 | lusuto | 錆びる | rust / corrode / tarnish |  | ok |
@@ -2220,7 +2218,7 @@
 | kopelo | 治める | govern / reign |  | ok |
 | pekuwo | 惜しむ | begrudge |  | ok Claude【任意】惜しむ は regret/spare/cherish に近い。begrudge は「出し渋る」 |
 | asolo | 襲う | assault / raid / ambush |  | ok |
-| sujiwo | 掻き回す | stir / churn |  | ok |
+| sujiwo | 掻き回す/引っかき回す | stir / churn |  | ok |
 | siluso | 囀る | chirp / tweet / warble |  | ok |
 | numuto | 痺れる | numb / tingle |  | ok |
 | kukuko | しゃがむ | crouch / squat |  | ok |
@@ -2342,7 +2340,7 @@
 | kilino | しがみつく | cling |  | ok |
 | pukato | 靡く | flutter |  | ok Claude【任意】靡く は sway/bend が近い。flutter は ひらひらする |
 | pusaso | 弾ける | burst |  | ok |
-| sunajo | よろける | stagger |  | ok |
+| sunajo | よろける/よろめく | stagger |  | ok |
 | sepupo | 挫く | sprain |  | ok |
 | telelo | 脱線する | derail |  | ok |
 | tanilo | 縺れる | tangle |  | ok |
@@ -2468,38 +2466,30 @@
 | saleko | 降伏する | surrender |  | ok |
 | pemumo | 発酵する | ferment |  | ok |
 | poliko | 受粉する | pollinate |  | ok |
-| sakimo | すくい取る | skim |  |  |
-| muliko | 薄切りにする | slice |  |  |
-| pasuso | 留める | fasten |  |  |
-| umeto | 荷解きする | unpack |  |  |
-| muloto | 閲覧する | browse |  |  |
-| sokulo | こすり洗いする | scrub |  |  |
-| sipato | ふるいにかける | sift |  |  |
-| muleso | 追究する | pursue |  |  |
-| solapo | 平手打ちする | slap |  |  |
-| kuniko | 滑空する | glide |  |  |
-| pukeno | 突入する | plunge |  |  |
-| mukuto | よじ登る | scramble |  |  |
-| tawulo | ぶら下がる | dangle |  |  |
-| kilaso | 握り締める | clasp |  |  |
-| totepo | よろめく | totter |  |  |
-| paleto | 口ごもる | falter |  |  |
-| puniwo | 明滅する | flicker |  |  |
-| tenuno | 解凍する | defrost |  |  |
-| panuto | 換気する | ventilate |  |  |
-| jutuwo | 整頓する | straighten |  |  |
-| tikipo | 消毒する | disinfect |  |  |
-| seniko | 忍び笑いする | snicker |  |  |
-| pituno | そわそわ動く | fidget |  |  |
-| kasuno | 息をのむ | gasp |  |  |
-| kusumo | くしゃくしゃにする | crumple |  |  |
-| lumapo | 引っかき回す | rummage |  |  |
-| luloko | 開花する | blossom |  |  |
-| kelumo | 発芽する | germinate |  |  |
-| metito | 瞑想する | meditate |  |  |
-| neilo | 下稽古する | rehearse |  |  |
+| muliko | 薄切りにする | slice |  | ok Claude【任意】日本語の見出しが句の形（注意3）。既存の kato（切る）・minapo（刻む）に近い |
+| pasuso | 留める | fasten |  | ok Claude【任意】既存の atoso（付ける）・tilo（縛る）に近い |
+| umeto | 荷解きする | unpack |  | ok |
+| muloto | 閲覧する | browse |  | ok |
+| sokulo | こすり洗いする | scrub |  | ok Claude【任意】waso（洗う）+ lupo（擦る）で言える |
+| sipato | ふるいにかける | sift |  | ok Claude【任意】日本語の見出しが句の形（注意3）。既存の piputo（濾す）に近い |
+| muleso | 追究する | pursue |  | ok Claude【任意】英語 pursue は「追う」（saso）が主。追究は抽象的な意味 |
+| solapo | 平手打ちする | slap |  | ok Claude【任意】既存の io（打つ）の一種。動作が限定されるので残す |
+| kuniko | 滑空する | glide |  | ok Claude【任意】既存の sulako（滑る）・pulaio（飛ぶ）に近い。まれな語 |
+| pukeno | 突入する | plunge |  | ok Claude【任意】既存の enato（入る）に近い |
+| tawulo | ぶら下がる | dangle |  | ok |
+| paleto | 口ごもる | falter |  | ok Claude【任意】英語 falter は「よろめく・ひるむ」が主で、口ごもる（stammer）とずれる |
+| puniwo | 明滅する | flicker |  | ok Claude【任意】既存の puwiko（瞬く）に近い |
+| tenuno | 解凍する | defrost |  | ok |
+| panuto | 換気する | ventilate |  | ok |
+| tikipo | 消毒する | disinfect |  | ok |
+| seniko | 忍び笑いする | snicker |  | ok Claude【任意】既存の lapo（笑う）の仕方の違い。英語 snicker はまれ |
+| pituno | そわそわ動く | fidget |  | ok |
+| kasuno | 息をのむ | gasp |  | ok Claude【任意】日本語の見出しが句の形（注意3）。既存の salo（溜息をつく）と同じ型なので残す |
+| kusumo | くしゃくしゃにする | crumple |  | ok Claude【任意】既存の kupuso（潰す）・polato（折る）に近い |
+| kelumo | 発芽する | germinate |  | ok Claude【任意】既存の supamo（生える）に近い |
+| neilo | 下稽古する | rehearse |  | ok Claude【任意】既存の putako（練習する）に近い。日本語は「リハーサルする」のほうが一般的 |
 
-### adj（195語）
+### adj（190語）
 
 | Logi | 日本語 | 英語 | 手がかり | 状況 |
 |---|---|---|---|---|
@@ -2678,28 +2668,23 @@
 | tise | 目眩がする/ふらふらする | dizzy | 語幹が同じ: tisa | ok |
 | peloke | 肥沃な | fertile |  | ok |
 | kuime | 後ろめたい | guilty |  | ok |
-| paluwe | 禿げた | bald |  |  |
-| ojuse | 嗄れた | hoarse |  |  |
-| kumise | 歯切れのよい | crisp |  |  |
-| palone | 不毛な | barren |  |  |
-| kilise | 脂っこい | greasy |  |  |
-| milume | まろやかな | mild |  |  |
-| wulute | 抜け目のない | shrewd |  |  |
-| kuese | 古風な | quaint |  |  |
-| setale | 鮮度の落ちた | stale |  |  |
-| pusame | 味気ない | bland |  |  |
-| pukume | ふくよかな | plump |  |  |
-| susake | 希薄な | sparse |  |  |
-| sotipe | 強張った | stiff |  |  |
-| kusune | 歪んだ | crooked |  |  |
-| suname | 傾斜した | slanted |  |  |
-| kumope | 艶やかな | glossy |  |  |
-| limute | ぐったりした | limp |  |  |
-| meteke | 几帳面な | meticulous |  |  |
-| pumote | 霜の降りた | frosty |  |  |
-| tusuke | 濁った | turbid |  |  |
+| paluwe | 禿げた | bald |  | ok |
+| ojuse | 嗄れた | hoarse |  | ok |
+| kumise | 歯切れのよい | crisp |  | ok Claude【任意】日本語の見出しが句の形（注意3） |
+| palone | 不毛な | barren |  | ok |
+| kilise | 脂っこい | greasy |  | ok |
+| kuese | 古風な | quaint |  | ok Claude【任意】quaint は文語的な英語（WORKFLOW §2 手順2）。既存の ole（古い）に近い |
+| pukume | ふくよかな | plump |  | ok Claude【任意】既存の pake（太った）に近い |
+| susake | 希薄な | sparse |  | ok Claude【任意】sparse は「まばらな」が近い。既存の sine（薄い）・sukate（少ない）に近い |
+| sotipe | 強張った | stiff |  | ok Claude【任意】第28弾で rigid を削除した（aluke 硬い に近い）のと同じ種類 |
+| kusune | 歪んだ | crooked |  | ok |
+| suname | 傾斜した | slanted |  | ok Claude【任意】既存の jiaka（斜め）に近い |
+| kumope | 艶やかな | glossy |  | ok Claude【任意】まれな語 |
+| limute | ぐったりした | limp |  | ok |
+| meteke | 几帳面な | meticulous |  | ok |
+| pumote | 霜の降りた | frosty |  | ok Claude【任意】日本語の見出しが句の形（注意3） |
 
-### adv（43語）
+### adv（38語）
 
 | Logi | 日本語 | 英語 | 手がかり | 状況 |
 |---|---|---|---|---|
@@ -2736,16 +2721,11 @@
 | situi | 横に | sideways |  | ok |
 | lenupi | 縦に | lengthwise |  | ok Claude確認: 残す。縦に は pelumi でも言えるが、英語の lengthwise を引くために残す |
 | pepoli | あらかじめ | beforehand |  | ok |
-| apipi | その後に | afterwards |  |  |
-| ipuli | 内陸に | inland |  |  |
-| tonili | 坂を下って | downhill |  |  |
-| okeli | 一晩中 | overnight |  |  |
-| okui | 家路に | homeward |  |  |
-| pakawi | 後方に | backwards |  |  |
-| kuloti | 時計回りに | clockwise |  |  |
-| kulesi | 十文字に | crosswise |  |  |
-| enasi | 今後は | henceforth |  |  |
-| sosui | 幾分 | somewhat |  |  |
+| tonili | 坂を下って | downhill |  | ok Claude【任意】日本語の見出しが句の形（注意3）。まれな副詞 |
+| okui | 家路に | homeward |  | ok Claude【任意】日本語の見出しが句の形。まれな副詞 |
+| pakawi | 後方に | backwards |  | ok Claude【任意】既存の peite（の後ろに）・aimi（前方に）と対になる。まれな副詞 |
+| kuloti | 時計回りに | clockwise |  | ok Claude【任意】まれな副詞 |
+| kulesi | 十文字に | crosswise |  | ok Claude【任意】まれな副詞 |
 
 ## v0.10 機能語（指示詞・はい／いいえ）（3語）
 
